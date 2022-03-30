@@ -1,0 +1,48 @@
+Summary of Introduction to GitHub short course:
+
+
+1) First, you need to clone the existing repository on your computer. This only needs to be done once. Make sure you are already in a directory on your computer where you want to keep this clone in (see https://www.computerhope.com/issues/chusedos.htm for how to navigate the Windows command line):
+
+git clone <HTTPS--this is found under the green "Code" dropdown in the online GitHub repository and looks like https://github.com/....git>
+cd <name of respository>
+
+2) Editing files happens on branches, which are copies of the main branch that can eventually be merged with the main branch. To push in commmand line, you might need to make a personal access token: https://github.com/settings/tokens
+
+git branch <name of branch>
+git push --set-upstream origin <name of branch>
+
+3) Now, enter the branch you just created:
+
+git checkout <name of branch>
+
+By the way, to return to the main branch, use
+
+git checkout main
+
+4) To add a file from your local repository to your branch, use the following commands:
+
+git add <name of file>
+git commit -m "<YOUR-MESSAGE>"
+git push
+
+5) Similarly, to remove a file from both your repository and your branch, use
+
+git rm <name of file>
+git commit -m "<YOUR-MESSAGE>"
+git push
+
+6) To compare your branch with the main branch, create a pull request (third menu item in the GitHub repository).
+
+7) Once you are confident with the edits in your branch, you can merge it with the main branch. 
+
+git checkout main
+git merge <name of branch>
+git push
+
+8) After merging, delete your local branch:
+
+git branch -d <name of branch>
+
+9) To update your local repository from the GitHub repository (Do this every time you begin your work, so that you are working on the most recent) use
+
+git pull origin main
