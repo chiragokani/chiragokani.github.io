@@ -13,7 +13,7 @@
       font-size: 24px;
     }
 
-	 p {
+    p {
       line-height: 1.5; /* Adjust this value to increase or decrease the spacing */
     }
 
@@ -32,11 +32,15 @@
     .section-content {
       display: none;
     }
+
+    .section-content.open {
+      display: block;
+    }
   </style>
   <script>
     function toggleSection(sectionId) {
       var sectionContent = document.getElementById(sectionId);
-      sectionContent.style.display = (sectionContent.style.display === 'none') ? 'block' : 'none';
+      sectionContent.classList.toggle('open');
     }
   </script>
 </head>
