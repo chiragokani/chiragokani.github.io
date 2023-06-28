@@ -34,7 +34,23 @@
     }
 
     .section-content.open {
-      display: block;
+      display: flex;
+    }
+
+    .text-region {
+      flex: 1;
+    }
+
+    .image-region {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-region img {
+      max-width: 60%;
+      max-height: 60%;
     }
   </style>
   <script>
@@ -48,18 +64,23 @@
   <h1>Chirag Gokani</h1>
 
   <div class="section" onclick="toggleSection('about')">
-    <div class="section-title">About me</div>
+    <div class="section-title">About</div>
     <div id="about" class="section-content">
-      <p>I am a 3rd-year PhD student in <a href="https://www.texasacoustics.org/" target="_blank" rel="noopener noreferrer">acoustics</a> at the University of Texas at Austin. I am co-advised by <a href="https://www.me.utexas.edu/people/faculty-directory/haberman" target="_blank" rel="noopener noreferrer">Prof. Michael Haberman</a> and <a href="https://www.me.utexas.edu/people/faculty-directory/hamilton" target="_blank" rel="noopener noreferrer">Prof. Mark Hamilton</a> am studying vortex beams, radiation force, and bianisotropy. My work is theoretical, with applications in biomedical acoustics, advanced manufacturing, and sensor design. </p>
+      <div class="text-region">
+        <p>I am a 3rd-year PhD student in <a href="https://www.texasacoustics.org/" target="_blank" rel="noopener noreferrer">acoustics</a> at the University of Texas at Austin. I am co-advised by <a href="https://www.me.utexas.edu/people/faculty-directory/haberman" target="_blank" rel="noopener noreferrer">Prof. Michael Haberman</a> and <a href="https://www.me.utexas.edu/people/faculty-directory/hamilton" target="_blank" rel="noopener noreferrer">Prof. Mark Hamilton</a> am studying vortex beams, radiation force, and bianisotropy. My work is theoretical, with applications in biomedical acoustics, advanced manufacturing, and sensor design. </p>
 
 <p>As a student member of the <a href="https://acousticalsociety.org" target="_blank" rel="noopener noreferrer">Acoustical Society of America</a> (ASA), I enjoy serving as a room monitor and <a href="https://asastudents.org/programs/sonic/" target="_blank" rel="noopener noreferrer">Student Outreach for Networking and Integrating Colleagues</a> mentor at the biannual meetings. Currently, I serve as the <a href="https://tcbaasa.org" target="_blank" rel="noopener noreferrer">Biomedical Acoustics Technical Committee</a> (BATC) Student Council Representative. </p>
 
 <p>In my free time, I enjoy being in thunderstorms, playing in waves at the beach, and getting stuck in traffic jams!</p>
 
 <p><a href="Chirag Gokani Resume.pdf">CV</a></p>
-
+      </div>
+      <div class="image-region">
+        <img src="untitled.png" alt="Publication Image">
+      </div>
     </div>
   </div>
+
 
   <div class="section" onclick="toggleSection('publications')">
     <div class="section-title">Publications</div>
