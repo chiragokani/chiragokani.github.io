@@ -58,6 +58,9 @@
       var sectionContent = document.getElementById(sectionId);
       sectionContent.classList.toggle('open');
     }
+    function preventCollapse(event) {
+      event.stopPropagation();
+    }
   </script>
 </head>
 <body>
@@ -65,7 +68,7 @@
 
   <div class="section" onclick="toggleSection('about')">
     <div class="section-title">About</div>
-    <div id="about" class="section-content">
+    <div id="about" class="section-content" onclick="preventCollapse(event)">
       <div class="text-region">
         <p>I am a 3rd-year PhD student in <a href="https://www.texasacoustics.org/" target="_blank" rel="noopener noreferrer">acoustics</a> at the University of Texas at Austin. I am co-advised by <a href="https://www.me.utexas.edu/people/faculty-directory/haberman" target="_blank" rel="noopener noreferrer">Prof. Michael Haberman</a> and <a href="https://www.me.utexas.edu/people/faculty-directory/hamilton" target="_blank" rel="noopener noreferrer">Prof. Mark Hamilton</a> and am studying vortex beams, radiation force, and bianisotropy. My work is theoretical, with applications in biomedical acoustics, advanced manufacturing, and sensor design. </p>
 
@@ -79,19 +82,20 @@
         <img src="untitled.png" alt="Publication Image">
       </div>
     </div>
+
   </div>
 
 
   <div class="section" onclick="toggleSection('publications')">
     <div class="section-title">Publications</div>
-    <div id="publications" class="section-content">
+    <div id="publications" class="section-content" onclick="preventCollapse(event)">
       <p>Coming soon...</p>
     </div>
   </div>
 
   <div class="section" onclick="toggleSection('conference_proceedings')">
     <div class="section-title">Conference Proceedings</div>
-    <div id="conference_proceedings" class="section-content">
+    <div id="conference_proceedings" class="section-content" onclick="preventCollapse(event)">
       <ol>
 <li><p>C. A. Gokani, T. S. Jerome, M. R. Haberman, M. F. Hamilton. <a href="https://doi.org/10.1121/2.0001646" target="_blank" rel="noopener noreferrer">"Born approximation of acoustic radiation force used for acoustofluidic separation,"</a> Proc. Mtgs. Acoust. <b>48</b>, 045002 (2022).</p> </li>
 </ol>
@@ -100,7 +104,7 @@
 
   <div class="section" onclick="toggleSection('conference_abstracts')">
     <div class="section-title">Conference Abstracts</div>
-    <div id="conference_abstracts" class="section-content">
+    <div id="conference_abstracts" class="section-content" onclick="preventCollapse(event)">
 <p>
 <ol>
 <li><p>C. A. Gokani, S. P. Wallen, M. F. Hamilton, M. R. Haberman. <a href="https://doi.org/10.1121/10.0018365" target="_blank" rel="noopener noreferrer">"Source-driven homogenization theory for electro-momentum coupled scatterers,"</a> <i>J. Acoust. Soc. Am.</i> <b>153</b>, A120 (2023).</p></li>	
@@ -119,7 +123,7 @@
 
   <div class="section" onclick="toggleSection('notes_musings')">
     <div class="section-title">Notes on acoustics</div>
-    <div id="notes_musings" class="section-content">
+    <div id="notes_musings" class="section-content" onclick="preventCollapse(event)">
       <ul>
     <li><p><a href="Angle of Intromission.pdf" target="_blank" rel="noopener noreferrer">Angle of Intromission</a>: the angle of intromission is the angle that corresponds to perfect transmission of sound between two media. Its <a href="Angle of Intromission.pdf" target="_blank" rel="noopener noreferrer">derivation</a> is straightforward but was not discussed in class, so I have shown the steps that lead to David Blackstock's equation (B-14) in section 5.B.2.a.</p></li>
 
@@ -161,7 +165,7 @@
 
   <div class="section" onclick="toggleSection('outreach')">
     <div class="section-title">Acoustics practice problems</div>
-    <div id="outreach" class="section-content">
+    <div id="outreach" class="section-content" onclick="preventCollapse(event)">
  
     <ul>
     <li><p><a href="Exam 1 practice problem.pdf" target="_blank" rel="noopener noreferrer">Acoustics I practice problem</a>: an entertaining practice problem I wrote while studying for my Acoustics I midterm exam. It involves a "Gaussian comb" pressure-amplitude profile. [<a href="Exam 1 practice solution.pdf" target="_blank" rel="noopener noreferrer">solution</a>]. </p></li>
@@ -183,7 +187,7 @@
 
  <div class="section" onclick="toggleSection('code')">
     <div class="section-title">Code</div>
-    <div id="code" class="section-content">
+    <div id="code" class="section-content" onclick="preventCollapse(event)">
  
     <ul>
 
@@ -207,7 +211,7 @@
 
  <div class="section" onclick="toggleSection('sideprojects')">
     <div class="section-title">Extracurriculars</div>
-    <div id="sideprojects" class="section-content">
+    <div id="sideprojects" class="section-content" onclick="preventCollapse(event)">
     <ul>
     <li><p><a href="https://cag170030.github.io/Custom-Chimes/" target="_blank" rel="noopener noreferrer">Custom Chimes</a>: I began handcrafting wind chimes as a sophomore at UTD. To date, these wind chimes ring across seven states and two continents, encompass over 30 tunings, and span 7 octaves.</p></li>
 
@@ -222,6 +226,7 @@
 <li><p><a href="https://cag170030.github.io/chirag/soundjournal.html" target="_blank" rel="noopener noreferrer">Sound journal</a>: a continually updated journal of sounds I have kept since fall 2019.</p></li>
 
     <li><p><a href="https://diversity.utexas.edu/womeninstem/" target="_blank" rel="noopener noreferrer">WiSTEM</a>: I volunteer over the summer in these diversity initiatives at UT Austin.</a></p></li>	
+
 
 </ul>
     </div>
