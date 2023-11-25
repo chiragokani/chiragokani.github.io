@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+%\documentclass[a4paper,14pt]{extarticle} turn on for size 14 font
+
+%general things:
+\usepackage[hidelinks]{hyperref} %I dislike the colored boxed hyperlinks. This hides those colored boxes.
+\usepackage{enumitem} %for (a) (b) (c) enumeration
+\usepackage{fullpage} %sets the margins to 1inch. Turn off for the more restrictive TeX default...
+\usepackage{epigraph} %I love epigraphs...
+\usepackage{appendix}
+
+%fonts:
+\usepackage[T1]{fontenc}
+\usepackage{kpfonts} %Thanks to AJ Lawrence for this one
+\usepackage{aurical} % for Kyle Spratt's dissertation appearance, usse baskervald
+%\usepackage{baskervald} %calligraphic font
+
+%math
+\usepackage{amsmath}
+%this handles numbering according to section/subsection/subsubsection
+%\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{tkz-euclide} %use mathcha.io for generating beautiful figures in TeX
+\usepackage{braket} %quantum
+\usepackage{tikzducks}%ducks
+
+
+%color:
+\usepackage{xcolor}
+
+%beautiful boxed equations
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+\newtcbox{\maybe}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=yellow!65!black,
+    colback=yellow!15, boxrule=0.75pt,
+    #1}
+\newtcbox{\love}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=pink!65!black,
+    colback=pink!15, boxrule=0.75pt,
+    #1}
+\newtcbox{\eq}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=blue!65!black,
+    colback=yellow!10, boxrule=0.75pt,
+    #1}
+\newtcbox{\correct}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=green!65!black,
+    colback=green!10, boxrule=0.75pt,
+    #1}
+
+\newtcbox{\incorrect}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=red!65!black,
+    colback=red!10, boxrule=0.75pt,
+    #1}
+
+%text boxes
+\newtcolorbox{graytext}[2][%
+    enhanced, 
+    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colframe=gray!65!black,fonttitle=\bfseries, boxrule=0.75pt, colbacktitle=gray!85!black,enhanced,
+attach boxed title to top center={yshift=-2mm},
+  title={#2},#1}
+
+\newtcolorbox{bluetext}[2][%
+    enhanced, 
+    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colframe=blue!65!black,colback=blue!10,fonttitle=\bfseries, boxrule=0.75pt, colbacktitle=blue!85!black,enhanced,
+attach boxed title to top center={yshift=-2mm},
+  title={#2},#1}
+
+%User-defined commands
+%Ordering:
+\newcommand{\Order}{\mathcal{O}}
+%vector and tensor symbols:
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\tensor}[1]{\underline{\boldsymbol{#1}}} %may need to change to renewcommand. 
+\renewcommand{\div}{\boldsymbol{\nabla}\cdot}
+\newcommand{\grad}{\boldsymbol{\nabla}} 
+\newcommand{\curl}{\boldsymbol{\nabla}\times}
+\newcommand{\Laplacian}{\nabla^2}
+\newcommand{\dAlambertian}{\Box^2}
+\newcommand{\T}{^{\mathsf{T}}}%transpose
+%even and odd:
+\newcommand{\even}{^{\mathrm{e}}} %even quantity in wavenumber
+\newcommand{\odd}{^{\mathrm{o}}} %odd quantity in wavenumber
+%micros/meso/macro-related subscripts
+\newcommand{\s}{_\mathrm{s}} %scattered quantity subscript
+
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%D O C U M E N T        
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+% S T A R T S   
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+% H E R E
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+\title{\textsf{kpfonts} notes template}
+\author{Chirag\footnote{\texttt{chiragokani@gmail.com}}} %can use \Fontlukas or \Fontauri for calligraphic font
+\date{\today}
+\begin{document}
+%\maketitle
+\begin{empheq}[box=\eq]{equation}
+yello
+\end{empheq}
+\end{document}
