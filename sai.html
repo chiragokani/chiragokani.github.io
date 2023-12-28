@@ -1,60 +1,104 @@
 <!DOCTYPE html>
-<html>
-   
+<html lang="en">
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<title>Jai Sai Baba</title>
-</head>	
-	
-<style>
-div {
-  border: ;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-right: 100px;
-  margin-left: 100px;
-  background-color: white;
-}
-</style>    
-    
-<style>
-  .bottom-three {
-     margin-bottom: 1cm;
-  }
-</style>	
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai Sai Baba</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0907798c, #ff6347a9);
+            color: #3a3a3a; /* Ivory/White */
+            font-family: 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            line-height: 1.5;
+        }
+
+        header {
+            text-align: center;
+            background-color: #FF6347; /* Ochre */
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #FFFFF0; /* Ivory/White */
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .textbox {
+            background-color: rgba(255, 253, 230, 0.866);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+    }
+
+
+        .rounded-image {
+            border-radius: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .floating-table-of-contents {
+            position: fixed;
+            top: 23%;
+            right: 0pt;
+            transform: translateY(-50%);
+            background-color:  rgba(255, 253, 230, 0.626);
+            padding: 8px;
+            border-radius: 7px;
+        }
+
+        .toc-link {
+            display: block;
+            margin-bottom: 10px;
+            color: #FF6347; /* Ochre */
+            text-decoration: none;
+        }
+        .photo-gallery {
+            text-align: center; /* Center the images */
+        }
+        .photo-gallery img {
+            border-radius: 20px;
+            margin-bottom: 10px;
+            max-width: 40%;
+             height: 200px; /* Set a specific height for all images */
+        }
+    </style>
+</head>
 <body>
+    <header>
+        <h1>Jai Sai Baba</h1>
+    </header>
 
-<h2 align="middle">Jai Sai Baba</h2> 
+    <nav class="floating-table-of-contents">
+        <a href="#assurances" class="toc-link">Assurances</a>
+        <a href="#arati" class="toc-link">Arati</a>
+        <a href="#music" class="toc-link">Music</a>
+        <a href="#mantra" class="toc-link">Mantra box</a>
+        <a href="#sayings" class="toc-link">Sayings</a>
+        <a href="#photo-gallery" class="toc-link">Photos</a>
+    </nav>
 
-<img src="Shirdi_sai2.jpeg" width="393" height="518" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<main>
+<div class="photo-gallery">
 
- 
-<div>
+<img src="Shirdi_sai2.jpeg" class="rounded-image"><br>
+</div>
 
-
-	     
-<p><i>Table of Contents</i></p>
-	
-<ul>
-    <li><a href="#0">Sai Baba's Assurances</a></li>  
-    <li><a href="#1">Om Sai Namo Namaha</a></li>
-    <li><a href="#2">Om Sai Ram Sai Sham Hare Hare</a></li>	
-    <li><a href="#3">Sai Sai Sai Sai</a></li>	
-    <li><a href="#4">Om Sai Shiv Sai</a></li>
-    <li><a href="#5">Baba Sai Sai Sai</a></li>
-    <li><a href="#6">Dhoop Aarti</a></li>	
-    <li><a href="#7">Sayings of Sai Baba</a></li> 
-</ul>	   
-
-
-<hr style="height:2px;border-width:0;color:gray;background-color:gray">   
-    
-<h3 id="0">Sai Baba's Assurances</h3>
-
+<section id="assurances">
+<div class="textbox"><h2>Assurances &#128255;</h2>
 <ol>
     <li>No harm shall befall him who steps on the soil of Shirdi.</li>  
     <li>He who comes to my Samadhi, his sorrow and suffering shall cease.</li>
@@ -67,193 +111,116 @@ div {
     <li>Knock, and the door shall open; ask and it shall be granted.</li>
     <li>To him who surrenders unto me totally, I shall be ever indebted.</li>  
     <li>Blessed is he who has become one with me.</li>
-</ol>	
+</ol>	        
+</div>
+</section>
 
-<hr>
-	
+<section id="arati">
+<div class="textbox">	<h2>Arati &#128591; </h2>
+<h3>Morning arati</h3>
+<audio controls><source src="Arati_01_morning.mp3" type="audio/mpeg"></audio>
 
-<h3 id="1">Om Sai Namo Namaha</h3>
+<h3>Noon arati</h3>
+<audio controls><source src="Arati_02_noon.mp3" type="audio/mpeg"></audio>
+
+<h3>Evening arati</h3>
+<audio controls><source src="Arati_03_evening.mp3" type="audio/mpeg"></audio>
+
+<h3>Bedtime arati</h3>
+<audio controls><source src="Arati_04_night_compressed.mp3" type="audio/mpeg"></audio>
+
+<h3>Abridged arati</h3>
+<audio controls><source src="Sai Aarti (short).mp3" type="audio/mpeg"></audio>
+</div>
+</section>
+
+<section id="music">
+<div class="textbox"><h2>Music &#127926;</h2>
+
+<h3>Sai Nath Tere Harazon Haath</h3>
+<audio controls><source src="01 SAI NATH TERE HAZARON HAATH.mp3" type="audio/mpeg"></audio>
+
+<h3>Subha Subha Shirdi Mein</h3>
+<audio controls><source src="04 SUBHA SUBHA SHIRDI MEIN.mp3" type="audio/mpeg"></audio>
+
+<h3>Kabhi Darshan KO Shirdi Tu Aaya Nahin</h3>
+<audio controls><source src="09 KABHI DARSHAN KO SHIRDI TU AAYA NAHIN.mp3" type="audio/mpeg"></audio>
+
+<h3>Bolo Sai</h3>
+<audio controls><source src="25 BOLO SAI.mp3" type="audio/mpeg"></audio>
+
+<h3>Daya Karo Sai Nath</h3>
+<audio controls><source src="27 DAYA KARO SAI NATH.mp3" type="audio/mpeg"></audio>
+
+
+<h3>Ya Devi Sarva Bhuteshu</h3>
+<audio controls><source src="Ya Devi Sarv Bhuteshu (Devi Stuti Bhajan) (128 kbps).mp3" type="audio/mpeg"></audio>
+
+<h3>Ruso Na Sai</h3>
+<audio controls><source src="Ruso Na Sai.mp3" type="audio/mpeg"></audio>
+
+<h3>Sounds from Shirdi</h3>
+<audio controls><source src="Shirdi Puntamba Road 2.mp3" type="audio/mpeg"></audio>
+
+<h3>Raga Durga</h3>
+<audio controls><source src="Raga Durga.mp3" type="audio/mpeg"></audio>
+
+<h3>He Lives in You</h3>
+<audio controls><source src="He_Lives_in_You.mp3" type="audio/mpeg"></audio>
+
+<h3>Wicked Game</h3>
+<audio controls><source src="Wicked game - Greg Reiter.mp3" type="audio/mpeg"></audio>
+
+<h3>Sombody's Crying</h3>
+<audio controls><source src="Somebody's Cryin' (Live).mp3" type="audio/mpeg"></audio>
+
+<h3>September</h3>
+<audio controls><source src="September.mp3" type="audio/mpeg"></audio>
+
+<h3>Isn't She Lovely</h3>
+<audio controls><source src="Isnt She Lovely   Bireli Lagrene  Gipsy Project.mp3" type="audio/mpeg"></audio>
+
+<h3>If You Want Me to Stay</h3>
+<audio controls><source src="If You Want Me To Stay _ Thank You (Fallentin Me Be Mice Elf Agin) (128 kbps).mp3" type="audio/mpeg"></audio>
+
+<h3>Say You'll Be There & Wanabe</h3>
+<audio controls><source src="Say You'll Be There and Wannabe.mp3" type="audio/mpeg"></audio>
+
+<h3>Amazing Grace</h3>
+<audio controls><source src="Amazing_Grace_Cory_Henry_Arturo_Sandoval.mp3" type="audio/mpeg"></audio>
+
+<h3>Linger</h3>
+<audio controls><source src="06242022.mp3" type="audio/mpeg"></audio>
+
+<h3><a href="https://drive.google.com/file/d/1zUTylJ39hRPJAfjNs1bCdsNgxagbL_wS/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Sai Dhun Pt. 1</a> </h3>
+
+<h3><a href="https://drive.google.com/file/d/1wG4GVBrEuW43yaaFEohpW7oU1xZjtyco/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Sai Dhun Pt. 2</a> </h3>
+
+</div>
+</section>
+
+<section id="mantra"></section>
+<div class="textbox"><h2>Mantra box</h2>
+
+<h3>Om Sai Namo Namaha</h3>
 <audio controls><source src="01 Om Sai Namonamaha.mp3" type="audio/mpeg"></audio>
 
-<h3 id="2">Om Sai Ram Sai Sham Hare Hare</h3>
+<h3>Om Sai Ram Sai Sham Hare Hare</h3>
 <audio controls><source src="02 Om Sai Ram Sai Sham Hare Hare.mp3" type="audio/mpeg"></audio>	
 
-<h3 id="3">Sai Ram Sai Ram</h3>
+<h3>Sai Ram Sai Ram</h3>
 <audio controls><source src="03 Sai.mp3" type="audio/mpeg"></audio>	
 
-<h3 id="4">Om Sai Shiv Sai</h3>
+<h3>Om Sai Shiv Sai</h3>
 <audio controls><source src="04-Om-Sai-Shiv-Sai.mp3" type="audio/mpeg"></audio>	
 
-<h3 id="5">Baba Sai Sai Sai</h3>
+<h3>Baba Sai Sai Sai</h3>
 <audio controls><source src="05-Baba-Sai-Sai-Sai.mp3" type="audio/mpeg"></audio>	
-	
-<h3 id="6">Dhoop Aarti</h3>
-<audio controls><source src="Dhoop_Aarti.mp3" type="audio/mpeg"></audio>	
-
-<blockquote>Shri Satchitaanand Sadguru Sainath Maharaaj ki Jai!</blockquote>
-
-<h4>Aarti</h4> 
-<blockquote>We do Aarti to Sai Baba, the soul that and the giver of happiness to all. Give refuge to the downtrodden devotees who are at your feet. We do Aarti to you Sai Baba.
-</blockquote>
-
-<blockquote>Burn the desires. To the seekers of Self, teach them the way to get Moksha (state of pure bliss). With their own eyes, they see the Lord Vishnu (Sriranga). We do Aarti to you Sai Baba.</blockquote>
-
-
-<blockquote>You grant suitable experiences to everybody in accordance with their faith and devotion. O, the merciful one, such is your way. O kind one. We do Aarti to you Sai Baba.</blockquote>
-
-<blockquote>Meditation of your name removes the worldly sufferings. Your actions are unfathomable. Show the path to unfortunate ones. We do Aarti to you Sai Baba.</blockquote>
-
-<blockquote>In this age of Kaliyug (The dark and troublesome age of present ), you are the true incarnation of Brahama, that has taken form and descended on this earth. You are also Swami Datta Digambar (Three-headed deity who is considered as a combined incarnation of Brahma-Vishnu-Maheh). Datta Digambar. We do Aarti to you Sai Baba.</blockquote>
-
-<blockquote>On Thursdays, every week, the devotees take a trip (to Shirdi), to have a glimpse of the Lord’s feet and to avert their worldly fears. We do Aarti to you Sai Baba.</blockquote>
-
-
-<blockquote>The only wealth I desire is to serve at thy feet. O Lord of Lords. We do Aarti to you Sai Baba.</blockquote>
-
-<blockquote>Just as the chatak bird desires to drink pure raw water, so O Lord! And kindly give me your assurance (that I will receive such direct knowledge). We do Aarti to you Sai Baba.</blockquote>
-
-<h4>Abhang</h4>
-<blockquote>Shirdi is my Pandharpur. Sai Baba is the husband of Rama i.e. Lord Vishnu. Baba is the presiding deity there. Sai...</blockquote>
-
-<blockquote>Pure devotion is like the river Chandrabhaga (River at Pandharpur). Our devotional feelings for Pundalik (Lord Vishnu called Vithal) has awakened.</blockquote>
-
-<blockquote>Come along, all the people. Pray Baba and pray Sai.</blockquote>
-
-<blockquote>Ganu (Das ganu, the composer of this aarti) requests: Sai Baba to run and give us blessings, My Mother give your blessings.</blockquote>
-
-<h4>Naman</h4>
-<blockquote>Prostrating myself with a touch of your feet and see thy beautiful form. Embracing you with love, I worship you and do your aarti with devotion.</blockquote>
-
-<blockquote>You are my mother, my father, my brother, you are my friend. You are knowledge, You are the embodiment of love and tenderness. You are my everything, O! Lord.</blockquote>
-
-
-<blockquote>My body, my speech, my mind and all my senses, my intellect, my innate being – all these I offer to you, Narayana.</blockquote>
-
-<blockquote>I pray Achyut, Keshav, Ramnarayan, Krishnadamodar, Vasudev, Hari, Shridhar, Madhav, Gopika-Vallabh, Janaki-Nayakam, Ramachandra. (various names of Vishnu and His incarnations).</blockquote>
-
-<blockquote>Hare Rama, Hare Rama. Rama Rama Hare Hare
-Hare Krishna, Hare Krishna. Krishna Krishna Hare Hare.
-Hare Rama, Hare Rama. Rama Rama Hare Hare</blockquote>
-
-
-
-<blockquote>Shri Gurudeva Datta!</blockquote>
-
-
-<h4>Namaskaaraastak</h4>
-<blockquote>Even the thousand tongued Shesha(a Hindu mythological snake on whom Lord Vishnu rests) finds it inadequate to sing thy prayers of greatness. Salutations with prostrations, O! Sainath.</blockquote>
-
-<blockquote>Those who remember your feet every day with pure devotion and thought, cross over this illusionary world. O! father, Salutations with prostrations, O! Sainath.</blockquote>
-
-<blockquote>Appearing an ordinary person to the ignorant, he carries on His divine action(Leelas). He is the giver of inner spiritual knowledge and unity with God – Salutations with prostrations, O! Sainath.</blockquote>
-
-<blockquote>It is great luck to be born as a human being. Human beings alone can do Sadhna(practices for obtaining purity and liberation). Hold on to the Love of Sai and kill the ego. Salutations with prostrations, O! Sainath.</blockquote>
-
-<blockquote>Hold the hands of ignorant children like us. Bless us with a Kiss on our cheeks, give us love. Salutations with prostrations, O! Sainath.</blockquote>
-
-<blockquote>Gods and others worship your feet. Say Suka and others treat you as equal. The Prayag (confluence of rivers) and holy places bow at your feet – Salutations with prostrations, O! Sainath.</blockquote>
-
-<blockquote>The Gopis are always delighted to see your feet. They always dance with Krishna-natha having immersed their thoughts in Him. Salutations with prostrations, Shri Sainath.</blockquote>
-
-<blockquote>I request you to grant me just one boon. I humbly fold my hands, and with deep faith, Mohaniraj (says, the composer of this part of Aarti) asks you: save me from this world of bewitching desires and ferry me across the ocean of existence. Salutations with prostrations, Shri Sainath.</blockquote>
-
-<h4>Aisaa eyee baa</h4>
-
-<blockquote>Such art thou, Sai Baba! Sai Digambara! The incarnation of the imperishable spirit, you are all-pervading. You are the knower of the essence of the shrutis (Vedas), belonging to the lineage of the sage Atri and His wife Anusuya.</blockquote>
-
-<blockquote>Every day, bathing in the Holy waters of the Kashi and worshipping there; then going to Kolhapur for Alms; drinking the pure waters of the Tungabhadra and then sleeping at Mahur province (sleeping place of Lord Datta). Please come like this O! Baba.</blockquote>
-
-
-<blockquote>A ‘Jholi’ (bag for alms hanging from the shoulder) hanging on the left shoulder, and carrying the trident ‘damru’ (kind of tabor) you bless the devotees with permanent happiness, granting them four-fold liberation viz. The resemblance to God, nearness to God, residing with the deity and absorption into the essence of Brahman. Please come like this O! Baba.</blockquote>
-
-<blockquote>Wearing wooden sandals, carrying Jap Mala (prayer beads) Kamandalu (Container of water), wearing deerskin; on your head is the crown of serpent-like coiled tresses of your hair, which looks beautiful. Please come like this O! Baba.</blockquote>
-
-<blockquote>All those who meditate on you diligently have Lakshmi, the Goddess of wealth, dwelling in their homes, day and night uninterruptedly (Lakshmi, otherwise is fleet-floated and does not stay in one place for a long time). You also protect them by removing all their difficulties. Please come like this O! Baba.</blockquote>
-
-<blockquote>When I behold you in my eyes and your handsome figure, Gururaya, I experience complete bliss and please make me sing the Lord’s praises. Please come like this O! Baba.</blockquote>
-
-<h4>Shri Sainath Mahimna Strotram</h4>
-<blockquote>Let us bow down to the God Sadguru Sainath, who is Truth Incarnate and is always in Consciousness and Bliss; the God who is the cause of creation, existence and destruction of the world; and, who has come into this world in a human form for the sake of his own devotees.</blockquote>
-
-
-<blockquote>Let us bow down to the God Sadguru Sainath, who is the bright sun whose light destroys the darkness of worldly desires; who is beyond the realm of speech and mind, but accessible to the sages who are engrossed in Thy meditation – One who pervades the whole world, pure and devoid of all attributes.</blockquote>
-
-<blockquote>Let us bow down to the God Sadguru Sainath, who has manifested in this kaliyug (The dark and the troublesome age of present) for the salvation of those who believe in devotion to Him and those who have taken refuge at his feet as they are drowning and tormented by the ocean of worldliness.</blockquote>
-
-<blockquote>Let us bow down to the God Sadguru Sainath who, By His constant abode under the margosa tree, whose juice though by nature is bitter and distasteful, has turned it nectar-like sweet because He has exalted the tree above the legendary Kalpavriksh (the wish-fulfilling tree).</blockquote>
-
-<blockquote>Let us bow down to the God Sadguru Sainath, whom people go to worship and render devotional services, knowing Him to be Himself the kalpavriksh always; for those people he satisfies their worldly desires and grants them salvation</blockquote>
-
-<blockquote>Let us bow down to the God Sadguru Sainath, whose innumerable and wonderful Leelas(divine play), unheard of and unimagined, have displayed His divine splendorous glory; yet who is devoid of ego and is happily absorbed in the Self.</blockquote>
-
-
-<blockquote>Let us bow down to the God Sadguru Sainath, who is the perennial abode of rest, repose and refuge for the virtuous people and to whom praises are directed by good and pious persons- He who is the bestower of happiness and welfare to His devotees.</blockquote>
-
-<blockquote>Let us bow down to the God Sadguru Sainath, who is the Self-manifested, the Absolute Brahman, verily the Supreme Creator Incarnate, the Being without beginning or end, who has descended on this earth in the Ram avatar (Incarnation). O Lord, I have been sanctified by your darshan.</blockquote>
-
-<blockquote>O Lord Sai, treasure-house of mercy, the bestower of all wealth, success and inspiration, even the creator is unable to describe the incomparable power of the dust of your feet. With my folded hands and true devotion, I surrender to you O Lord. There is no refuge for me, except the lotus feet of Shrimat Sainath, the Lord.</blockquote>
-
-<blockquote>Lord Sai is the avatar of Raghav (Incarnation of Ram), the Lord who fulfills the desires of His devotees for the purification of their infatuated and deluded hearts and minds – to whom I pray, day and night, untiringly and blissfully.</blockquote>
-
-<blockquote>Lord Sainath, the canopy of your mercy is like the intense luster of the autumn moon. Grant the cool shade (from that canopy) from the blazing heat of the three-fold calamities of life to those who have taken shelter at your feet.</blockquote>
-
-
-<blockquote>Lord Sainath, you are my God, whom I worship. I extol your praises. Let my mind dwell lovingly at your lotus feet, just as the bee hovers over the lotus flowers enticed by the desire of honey.</blockquote>
-
-<blockquote>Lord Sai, Guru Ocean of compassion, bless me and pardon me for all my innumerable faults. May my boundless sins which have accumulated over several cycles of life be destroyed by the darshan of your feet.</blockquote>
-
-<blockquote>Those whose minds become purified by the nectar of truth (Water deemed to be Holy from the washings of Lord’s feet) of Shri Sainath, those who are constantly absorbed in His service with – devotion they get freed from the distress caused by worldliness and attain salvation.</blockquote>
-
-<blockquote>Whosoever always recites this hymn with devotion and absorption will certainly be the recipient of the grace of Sadguru until he lives.</blockquote>
-
-<h4>Guru Prasada Yachanaastakam</h4>
-<blockquote>My darling mother, my father; my wife, my son, my daughter, my sister, my brother, my father-in-law, my mother-in-law, all may be annoyed with me but never my Dattaguru, my mother Sai, be annoyed with me.</blockquote>
-
-
-<blockquote>My daughter-in-law, my brother’s wife; my dear ones, kith and kin may turn away from me or even people from my own caste; my selfless friend or any friend may turn away from me, or even my own people or my relatives; but never my Guru, my mother Sai, be annoyed with me.</blockquote>
-
-<blockquote>Women, children, young and old may turn away from me. The elders, the youngsters, the venerable and the tiny ones may turn away from me. The virtuous and the wicked may turn away from me; let the well-meaning and saintly also turn away from me; but never, ever, my Guru, my mother Sai, be annoyed with me.</blockquote>
-
-<blockquote>Persons of acumen, knowers of Vedas, men of learning, wise men, maybe annoyed with me or even the knowledgeable, the erudite women, the clever learned ladies may be annoyed with me, but never my Dattaguru, my mother Sai, be annoyed with me.</blockquote>
-
-<blockquote>The poets, the seers, the sages, those void of sin, and the inspired yogi may be annoyed with me. The family deity and the village deity may be annoyed with me. The base person, the devil, the foul witch may be annoyed with me, but never my Dattaguru, my mother Sai, be annoyed with me.</blockquote>
-
-<blockquote>Deers, birds, insects, the entire animal and birds may be annoyed with me. The trees, stones, mountains, rivers, seas may be annoyed with me. The sky, wind, fire, water, earth —- the five elements may be annoyed with me, but never my Dattaguru, my mother Sai, be annoyed with me.</blockquote>
-
-
-<blockquote>The pure celestial musicians, unsullied female deities, or celestial nymphs may be annoyed with me. The moon, sun, other stars from the skies, the planets may be annoyed with me. The immortal king Indra, merciless Dharmaraja may be annoyed with me, but never my Dattaguru, my mother Sai, be annoyed with me.</blockquote>
-
-<blockquote>Let my reasoning, speech and fickle mind be annoyed with me. Let my own body, all the ten directions, be annoyed with me. Let all-pervading difficult times be annoyed with me. Let the entire world, the universe be annoyed with me; but never my Dattaguru, my mother Sai, be annoyed with me.</blockquote>
-
-<blockquote>Let the people call me a fool and laugh. Let envy not sting me. Let me delight at the touch of the feet of the Lord. Let me not get trapped by the mire of the world. Let not the fort of chivalry topple down. Let me not wish evil with anyone. Let me be angry with the worldly affairs I am engaged in. Let me be disinterested, and let that indifference stay firmly in my mind.</blockquote>
-
-<blockquote>Let me not be contemptuous of anyone. Let me have no desires. Let there be only Sai in my heart, intellect and meditation. Let my love be oozing towards the lord’s feet (As the cow’s milk begins to flow when she sees her calf). Wherever I look in the world, I should see him only. My Lord, do not deny me these above-mentioned entreaties.</blockquote>
-
-<h4>Mantra Pushpam</h4>
-<blockquote>Hari Om! (Invocation of Primordial sound) in the beginning, the devas (Celestial beings) worshipped Lord Vishnu by means of a sacrificial fire(yagyan) by such religious deeds they attain greatness in heaven (the abode of the divine, Celestial beings).</blockquote>
-
-
-<blockquote>“Om! Salutation to Vaishravan(Celestial being in heaven in charge of wealth). He is the King of Kings, who is help. May he thy grant me my desires as Vaishravan, the lord of all my desires.</blockquote>
-
-<blockquote>Om! Let there be well being! Let he attain universal sovereignty eternally, enjoyment (of pleasures), independence, perfect detachment, distinction and position of a great king, and supreme Lordship so that he rules the universe and become the paramount ruler of the whole earth all his life, possessed of longevity and fullness of life, and be the absolute king of the earth stretching up to its oceanic shores.</blockquote>
-
-<blockquote>It is a prayer for Marutt, the son of Avikshit excelling in the four qualities of knowledge, righteousness, detachment and longevity – whose abode all Celestial deities visit.</blockquote>
-
-<blockquote>O! Shri Narayan Vasudev Sachchidananad! Sadguru Sainath Maharaj!</blockquote>
-
-<blockquote>For the sins done by the hands and the feet, by the tongue and the body, or by the ears and the eyes, or those done in thought, or any other follies, known or unknown – for all these, forgive me.</blockquote>
-
-<blockquote>Hail! Hail! O compassionate one, Shri Prabhu Sainath!</blockquote>
-
-<blockquote>Lat us Hail! Shri Narayan Vasudev Sachchidananad! Sadguru Sainath Maharaj!</blockquote>
-
-<blockquote>Let us Hail! Shri Sachchidananda Sadguru Sainath Maharaj!</blockquote>
-
-<blockquote>Om! King of Kings! King of Yogis! Absolute Brahman! Sainath Maharaj! Let us Hail! Shri Sachchidananda Sadguru Sainath Maharaj!</blockquote>	
-<hr>	
-	
-<h3 id="7">Sayings of Sai Baba</h3>
-
+</div>
+
+<section id="sayings">
+<div class="textbox">
+<h2>Sayings&#9962;&#128331;&#128332; &#128333;&#128725;</h2>
 <ol>
     <li>Why fear when I am here?</li>  
     <li>I am formless and everywhere.</li>
@@ -352,9 +319,22 @@ Hare Rama, Hare Rama. Rama Rama Hare Hare</blockquote>
     <li>Have faith and patience. Then I will always be with you wherever you are.</li>
 
 </ol>		
-
-
 </div>
+</section>
 
+<section id="photo-gallery">
+<div class="photo-gallery">
+<img src="Sai_Ma_blessing.jpeg" class="rounded-image">
+<img src="Sai_Ma_at_home.jpeg" class="rounded-image">
+<img src="Thakur.jpeg" class="rounded-image">
+<img src="Holy-Mother.jpeg" class="rounded-image">
+<img src="Compassionate_Jesus.jpeg" class="rounded-image">
+<img src="Compassionate_Mother_Kali.jpeg" class="rounded-image">
+<img src="Thakur_Ma_Kali.jpeg" class="rounded-image">
+<img src="Hanuman_Rama.jpeg" class="rounded-image">
+</div>
+</section>
+</main>
+<p align="center"><i>Om!!!</i> Peace! Peace! Peace! <br><span style='font-size:50px;'>&#128329;</span></p> 
 </body>
 </html>
