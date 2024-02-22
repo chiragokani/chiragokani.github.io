@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chirag Gokani</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'ams'
+  }
+};
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\boldsymbol{#1}',1] ,
+      div: "{\\boldsymbol{\\nabla}\\cdot}",
+      grad: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      FTt: "{\\mathcal{F}_t}",
+      IFTt: "{\\mathcal{F}_t^{-1}}",
+      FTx: "{\\mathcal{F}_x}",
+      IFTx: "{\\mathcal{F}_x^{-1}}",      
+      FTr: "{\\mathcal{F}_\\rho}",
+      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
+      HT: "{\\mathcal{H}_\\rho}",
+      IHT: "{\\mathcal{H}_\\rho^{-1}}",  
+      FTxy: "{\\mathcal{F}_{xy}}",
+      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
+      rect: "{\\mathrm{\\,rect\\,}}",
+      tri: "{\\mathrm{\\,tri\\,}}",
+      circfn: "{\\mathrm{\\,circ\\,}}",
+      sinc: "{\\mathrm{\\,sinc\\,}}",
+      ex: "{\\hat{e}_x}",           
+      ey: "{\\hat{e}_y}",
+      ez: "{\\hat{e}_z}"
+    }
+  }
+};
+</script>	
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 40px;
+      line-height: 1.5;
+      max-width: 1000px; /* Adjust this value as needed */
+    }
+    h1 {
+      text-align: left;
+    }
+    #contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    #contact-info img {
+      margin-right: 10px;
+    }
+    #table-of-contents {
+      margin-bottom: 20px;
+    }
+    #table-of-contents ul {
+      list-style-type: none;
+    }
+    #table-of-contents ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chirag Gokani</h1>
+
+  <div id="contact-info">
+    <img src="untitled.png" alt="Chirag" width="100" height="100">
+    <div>
+      <p>PhD student in physical acoustics<br>
+      E-mail: <a href="mailto:chiragokani@gmail.com" target="_blank" rel="noopener noreferrer">chiragokani [at] gmail.com</a> <br>
+      Office: <a href="https://maps.app.goo.gl/6jGuvaHZGGH8Dnah6" target="_blank" rel="noopener noreferrer">ETC 4.156</a> <br>      
+      <a href="Chirag Gokani Resume.pdf" target="_blank" rel="noopener noreferrer">CV</a></p>
+
+    </div>
+  </div>
+
+
+<ul> 
+<li><a href="#about">About</a></li>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#proceedings">Proceedings</a></li>
+<li><a href="#abstracts">Abstracts</a></li>
+<li><a href="#practice">Practice problems (and solutions)</a></li>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#extracurriculars">Extracurriculars</a></li>
+</ul>
+
+<section id="about">
+<h2>About</h2>
+<p>I am a 3rd-year PhD student in <a href="https://www.texasacoustics.org/" target="_blank" rel="noopener noreferrer">acoustics</a> at the University of Texas at Austin and the Applied Research Laboratories. I am co-advised by <a href="https://www.me.utexas.edu/people/faculty-directory/haberman" target="_blank" rel="noopener noreferrer">Prof. Michael Haberman</a> and <a href="https://www.me.utexas.edu/people/faculty-directory/hamilton" target="_blank" rel="noopener noreferrer">Prof. Mark Hamilton</a>. I use principles from continuum mechanics, electrodynamics, and quantum mechanics to describe the diffraction and scattering sound, as well as its coupling to different domains. Applications of my work lie in biomedical, electrical, and mechanical engineering.</p>
+
+<p>As a student member of the <a href="https://acousticalsociety.org" target="_blank" rel="noopener noreferrer">Acoustical Society of America</a> (ASA), I enjoy serving as a room monitor and <a href="https://asastudents.org/programs/sonic/" target="_blank" rel="noopener noreferrer">Student Outreach for Networking and Integrating Colleagues</a> mentor at the biannual meetings. Currently, I serve as the <a href="https://tcbaasa.org" target="_blank" rel="noopener noreferrer">Biomedical Acoustics Technical Committee</a> (BATC) Student Council Representative. </p>
+
+<p>I have had a lifelong appreciation for waves&mdash;thunder, ocean dynamics, traffic jams, music, etc.&mdash;and it is a dream-come-true to get to study what underlies such phenomena at a fundamental level. I share my wonder for this wave-like world through my practice problems, notes, and outreach activities through <a href="https://diversity.utexas.edu/womeninstem/" target="_blank" rel="noopener noreferrer">WiSTEM</a> and <a href="https://www.intellichoice.org/pages/about/" target="_blank" rel="noopener noreferrer">IntelliChoice</a>. </p>
+</section>
+
+<section id="publications">
+<h2>Publications</h2>
+<ol>
+<li>C. A. Gokani, M. R. Haberman, M. F. Hamilton. "Paraxial and ray approximations of acoustic vortex beams,"  <i>J. Acoust. Soc. Am.</i> (in review, submitted January 19, 2024).</li>
+</ol>
+</section>
+
+<section id="proceedings">
+<h2>Proceedings</h2>
+<ol>
+<li>C. A. Gokani, T. S. Jerome, M. R. Haberman, M. F. Hamilton. <a href="https://doi.org/10.1121/2.0001646" target="_blank" rel="noopener noreferrer">"Born approximation of acoustic radiation force used for acoustofluidic separation,"</a> <i>Proc. Mtgs. Acoust</i>, <b> 48</b>, 045002 (2022).</li>
+</ol>
+</section>
+
+<section id="abstracts">
+<h2>Abstracts</h2>
+<ol>
+<li>C. A. Gokani, J. M. Cormack, M. F. Hamilton. <a href="https://doi.org/10.1121/10.0023693" target="_blank" rel="noopener noreferrer">"Growth rates of harmonics in nonlinear vortex beams,"</a> <i>J. Acoust. Soc. Am.</i> <b>154</b>, A328 (2023).</li>	
+	  
+<li>C. A. Gokani, S. P. Wallen, M. R. Haberman. <a href="https://doi.org/10.1121/10.0022976" target="_blank" rel="noopener noreferrer">"Reciprocity, passivity, and causality in fully coupled acousto-electrodynamic media,"</a> <i>J. Acoust. Soc. Am.</i> <b>154</b>, A118 (2023).</li>	
+	  
+<li>C. A. Gokani, S. P. Wallen, M. F. Hamilton, M. R. Haberman. <a href="https://doi.org/10.1121/10.0018365" target="_blank" rel="noopener noreferrer">"Source-driven homogenization theory for electro-momentum coupled scatterers,"</a> <i>J. Acoust. Soc. Am.</i> <b>153</b>, A120 (2023).</li>	
+	
+<li>S. P. Wallen, B. M. Goldsberry, C. A. Gokani, M. R. Haberman. <a href="https://doi.org/10.1121/10.0018366" target="_blank" rel="noopener noreferrer">"Computational analysis of sub-wavelength scatterers exhibiting electro-momentum coupling,"</a> <i>J. Acoust. Soc. Am.</i> <b>153</b>, A120 (2023).</li>
+	
+<li>C. A. Gokani, Y. Meng, M. R. Haberman, M. F. Hamilton. <a href="https://doi.org/10.1121/10.0015524" target="_blank" rel="noopener noreferrer">"Analytical solution for a focused vortex beam radiated by a Gaussian source,"</a> <i>J. Acoust. Soc. Am.</i> <b>152</b>, A56 (2022). </li>
+
+<li>C. A. Gokani, M. R. Haberman, M. F. Hamilton. <a href="https://doi.org/10.1121/10.0015910" target="_blank" rel="noopener noreferrer">"Physical acoustics homework problems written by students: Undisciplined, irreverent, and original,"</a><i>J. Acoust. Soc. Am.</i> <b>152</b>, A168 (2022).</li>	
+	
+<li>C. A. Gokani, T. S. Jerome, M. R. Haberman, M. F. Hamilton. <a href="https://doi.org/10.1121/10.0010753" target="_blank" rel="noopener noreferrer">"Born approximation of acoustic radiation force used for acoustofluidic separation,"</a> <i>J. Acoust. Soc. Am.</i> <b>151</b>, A90 (2022).</li>
+</ol>
+</section>
+
+<section id="practice">
+<h2>Practice problems (and solutions)</h2>
+<ul>
+<li><p><a href="https://chiragokani.github.io/quals/index.html" target="_blank" rel="noopener noreferrer">Acoustics PhD qualifier exam review site</a>: website with everything I need to know for my qualifier exam. </p></li>
+	     
+<li><p><a href="Exam 1 practice problem.pdf" target="_blank" rel="noopener noreferrer">Acoustics I practice problem</a>: an entertaining practice problem I wrote while studying for my Acoustics I midterm exam. It involves a "Gaussian comb" pressure-amplitude profile. [<a href="Exam 1 practice solution.pdf" target="_blank" rel="noopener noreferrer">solution</a>]. </p></li>
+
+<li><p><a href="practice_problem_final.pdf" target="_blank" rel="noopener noreferrer">Acoustics I practice problem</a>: created in preparation for the Acoustics I final. [<a href="practice_problem_final_solution.pdf" target="_blank" rel="noopener noreferrer">solution</a>].</p></li>
+
+<li><p><a href="Practice_problem_statement_midterm_acoustics_II.pdf" target="_blank" rel="noopener noreferrer">Acoustics II practice problem</a>: starring me and Jackson, created in preparation for the Acoustics II midterm. [<a href="Practice_problem_solution_midterm_acoustics_II.pdf" target="_blank" rel="noopener noreferrer">solution</a>].</p></li>
+	
+<li><p><a href="midterm_study_guide_questions.pdf" target="_blank" rel="noopener noreferrer">Nonlinear acoustics study guide for midterm</a>: problems that review the first half of Dr. Mark Hamilton's nonlinear acoustics course. [<a href="midterm_study_guide_solutions.pdf" target="_blank" rel="noopener noreferrer">solutions</a>]. </p></li>
+
+<li><p><a href="final_study_guide_questions.pdf" target="_blank" rel="noopener noreferrer">Nonlinear acoustics study guide for final</a>: problems that review the second half of Dr. Mark Hamilton's nonlinear acoustics course. [<a href="final_study_guide_solutions.pdf" target="_blank" rel="noopener noreferrer">solutions</a>]. </p></li>
+</ul>
+</section>
+
+<section id="notes">
+<h2>Notes</h2>
+<ul>
+<li><p><a href="Angle of Intromission.pdf" target="_blank" rel="noopener noreferrer">Angle of Intromission</a>: the angle of intromission is the angle that corresponds to perfect transmission of sound between two media. Its <a href="Angle of Intromission.pdf" target="_blank" rel="noopener noreferrer">derivation</a> is straightforward but was not discussed in class, so I have shown the steps that lead to David Blackstock's equation (B-14) in section 5.B.2.a.</p></li>
+
+<li><p><a href="Bohr Radius.pdf" target="_blank" rel="noopener noreferrer">Bohr radius from variation principle</a>: based on class notes from Dr. Yuri Gartstein's Quantum I course at UTD.</p></li>	
+  
+<li><p><a href="10-10.html" target="_blank" rel="noopener noreferrer">Concentric Pressure-Release Spheres</a>: based on an Acoustics II homework problem, displayed here are numerically determined combinations of <i>ka</i> and <i>kb</i> that correspond to the eigenfrequencies for sound enclosed between two concentric pressure-release spheres. Bright spots on the surface plots correspond to eigenfrequencies.</p></li>	
+
+<li><p><a href="converging_spherical.pdf" target="_blank" rel="noopener noreferrer">Converging spherical waves</a>: notes to wrap my mind around converging spherical waves.</p> </li>	
+
+<li><p><a href="Coriolis and Centrifugal Forces.pdf" target="_blank" rel="noopener noreferrer">Coriolis and Centrifugal Forces</a>: slides on fictitious forces.</p></li>	
+  
+<li><p><a href="press-release-wvgd.pdf" target="_blank" rel="noopener noreferrer">Double Pressure-Release Parallel Planes</a>: here is the solution for (1) a radially pulsating cylindrical source of sound extending between two pressure-release parallel planes. Dr. Blackstock mentions this kind of waveguide on page 432 in <i>Fundamentals of Physical Acoustics</i>. He solves for (2) a radially pulsating cylindrical source between two rigid, parallel planes on page 430, and assigns the case of (3) a radially pulsating cylindrical source between one rigid boundary and one pressure-release boundary (a 0th-order model of sound in the ocean) as problem 12-13. Interestingly, case (1) and (3) excite many modes, but case (2) excites only the lowest mode.</p></li>
+
+<li><p><a href="fourier_acoustics_notes.pdf" target="_blank" rel="noopener noreferrer">Fourier acoustics</a>: in the <i>i</i>(<i>kx</i> - <i>&#969;t</i>) convention.</p></li>	
+
+<li><p><a href="https://chiragokani.github.io/fubini.html" target="_blank" rel="noopener noreferrer">The Fubini solution</a>: The Fubini solution solves the lossless nonlinear approximate evolution equation (accurate to quadratic order) as a Fourier sine series from 0 &#8804; &sigma; &lt; 1, where &sigma; is distance nondimensionalized by the shock-formation distance. The expansion coefficients <i>B<sub>n</sub></i> involve integrating over &theta; from &theta; = 0 to &theta; = &pi;. The phase &Phi; of the Fubini solution is given by the dimensionless phase of the lossless nonlinear approximate solution, &Phi; = &theta; + &sigma; sin(&Phi;). This page answers the question, "Why does &Phi; take on the same limits as &theta; in the integration?"</p> 
+
+<li><p><a href="green's_function_1.pdf" target="_blank" rel="noopener noreferrer">Green's functions</a>: I show that Green's functions are solutions of an inhomogeneous Helmholtz equation. [<a href="volume-integral-jackson.pdf" target="_blank" rel="noopener noreferrer">How to directly integrate</a> the first integral on the left-hand-side of equation (2)]. <a href="green's_function_2.pdf" target="_blank" rel="noopener noreferrer">Here</a> I re-derive Morse and Ingard's integral equation (7.1.17). <a href="green's_function_3.pdf" target="_blank" rel="noopener noreferrer">This</a> is a derivation of the Sommerfeld radiation condition.</p></li>
+	
+<li><p><a href="energy_density.pdf" target="_blank" rel="noopener noreferrer">Linear energy density of sound in air</a>. The potential and kinetic energies being equal for progressive waves recovers a special case of the virial theorem.</p></li>
+	
+<li><p><a href="blackstock pg 50.pdf" target="_blank" rel="noopener noreferrer">Intensity integral</a>: evaluation of the integral for intensity in David Blackstock's <i>Fundamentals of Physical Acoustics</i>, section 1E-3 (page 50). <a href="intensity_calculation.pdf" target="_blank" rel="noopener noreferrer">Dr. Hamilton's approach</a>, setting <i>f</i> = pressure and <i>g</i> = particle velocity.</p></li>
+
+<li><p><a href="linear sound speed gradient.pdf" target="_blank" rel="noopener noreferrer">Linear Sound Speed Gradient</a>: I use the calculus of variations to show that arcs of circles minimize the travel time between two points in a medium where the sound speed varies linearly (i.e., the upper ocean). <i>This recovers the result in "Acoustics: An Introduction to its Physical Principles and Applications" by Allan D. Pierce, section 8-3.</i></p></li>	
+
+<li><p><a href="https://chiragokani.github.io/geometry_2020" target="_blank" rel="noopener noreferrer">Pappus's theorem:</a> interesting theorem derived in Dr. Mohammad Akbar's undergraduate geometry course.</p></li>  
+  
+<li><p><a href="Planck_quantities.pdf" target="_blank" rel="noopener noreferrer">Planck quantities:</a> based on Prof. Xiaoyan Shi's first Modern Physics lecture at UTD. </p></li>  
+  
+<li><p><a href="Radiation-axisymmetric.pdf" target="_blank" rel="noopener noreferrer">Radiation from General Axisymmetric Spherical Source</a>: re-organized for clarity.</p></li>
+
+<li><p><a href="general_axisymmetric_enclosure.pdf" target="_blank" rel="noopener noreferrer">Sound in General Axisymmetric Spherical Enclosure</a>: following Dr. Hamilton's approach for radiation due to a general axisymmetric source.</a></p></li>
+
+<li><p><a href="Thoughts-on-spherical-coords.pdf" target="_blank" rel="noopener noreferrer">Spherical Symmetry in Acoustics and Quantum Mechanics</a>: physically, why do eigenfrequencies of sound spherical coordinates not depend on the azimuthal index <i>m</i>?</a></p></li>
+
+<li><p><a href="Equality of Mixed Partials.pdf" target="_blank" rel="noopener noreferrer">Thoughts on the 1D linear wave equation</a>: thoughts from the first week of grad school. It turns out that d'Alembert, Euler, Bernoulli, and others had <a href="String Controversy.pdf" target="_blank" rel="noopener noreferrer">contentiously debated</a> these very issues 250 years ago!</a></p></li>
+
+<li><p><a href="three-medium-problem.pdf" target="_blank" rel="noopener noreferrer">Three-Medium-Problem Demystified</a> I derive the pressure reflection and transmission coefficients of the three-medium problem in a way that makes sense to me.</p></li>
+
+<li><p><a href="Virial_theorem_and_strings.pdf" target="_blank" rel="noopener noreferrer">Virial theorem for string</a>: a well-known result of Hamilton's formulation of classical dynamics that relates the average kinetic energy of a system to its virial. I have never seen it applied to waves on a string, but in Dr. Mark Hamilton's Acoustics I course, we arrived at a special case of the theorem that showed that the kinetic and potential energies are equal for progressive waves on a string. I derive and apply the virial theorem to show the more general result.</p></li>
+
+<li><p><a href="waves_on_string_Blackstock.pdf" target="_blank" rel="noopener noreferrer">1D wave equation for large deformations on string</a>: a clear step-by-step of Dr. Blackstock's pages 23-24 of <i>Fundamentals of Physical Acoustics</i>.</p></li>
+
+<li><p><a href="https://chiragokani.github.io/wave/" target="_blank" rel="noopener noreferrer">Wave Phenomena notes</a>: my notes from Dr. Hamilton's course, spring 2024.</i>.</p></li>
+</ul>
+</section>  
+
+<section id="code">
+<h2>Code</h2>
+<h3>\(\LaTeX\)</h3> 
+<ul>
+<li><p><a href="TeX presentation default UT.zip" target="_blank" rel="noopener noreferrer">UT Austin/ARL LaTeX Beamer class presentation theme</a>: a TeX template for compilation in XeTeX that uses kpfonts for math and sans serif fonts for all other text. Boxed equations, figures, etc. </p></li>
+	    	    
+<li><p><a href="kpfonts.zip" target="_blank" rel="noopener noreferrer">kpfonts with biblatex and more</a>: my go-to template; contains short and long versions and an example bibliography built using biblatex. Contains all the features below and more.</p></li>	    	    
+<li><p><a href="kpfonts_full.tex" target="_blank" rel="noopener noreferrer">kpfonts template</a>: boxed equations using tcolorbox and beautiful text and math rendering in kpfonts, aurical calligraphic font, and epigraphs. </p></li>
+<li><p><a href="kpfonts_short.tex" target="_blank" rel="noopener noreferrer">kpfonts abbreviated template</a>: short version of the above for quick note-taking.</p></li> 
+<li><p><a href="euler_beton.tex" target="_blank" rel="noopener noreferrer">euler-beton template</a>: AMS Euler math and Beton text. </p></li> 
+<li><p><a href="garamond.tex" target="_blank" rel="noopener noreferrer">garamond template</a>: Garamond math and text for compilation in XeTeX. </p></li>	 
+<li><p><a href="WU - Gokani - 2023-MM-DD.tex" target="_blank" rel="noopener noreferrer">helvetica</a>: format for Haberman group weekly update. </p></li>	    	    
+</ul>
+
+<h3>MATLAB	</h3>   
+<ul>
+<li><p><a href="oscillator.m" target="_blank" rel="noopener noreferrer">Oscillator with damping:</a> dimensionless code for motion of oscillator with damping. </p></li>
+<li><p><a href="fourier_transform.m" target="_blank" rel="noopener noreferrer">Fourier transform</a>: using fft in MATLAB.</p></li>
+<li><p><a href="legendre_vs_legendreP.m" target="_blank" rel="noopener noreferrer">Legendre Polynomials and Associated Legendre Functions in MATLAB</a>: demo of MATLAB functions for Legendre polynomials and associated Legendre functions.</p></li>
+<li><p><a href="Bessel, Neumann, Hankel.zip" target="_blank" rel="noopener noreferrer">Spherical Bessel, Neumann, and Hankel functions in MATLAB</a>: package that includes user-defined functions for the spherical Bessel, Neumann, and Hankel functions, along with a demo.</a></p></li>
+</ul>
+</section>
+
+<section id="extracurriculars">
+<h2>Extracurriculars</h2>
+<ul>
+<li><p><a href="https://chiragokani.github.io/chimes/" target="_blank" rel="noopener noreferrer">Chimes by Chirag</a>: I began handcrafting wind chimes as a sophomore at UTD. </p></li>
+
+<li><p><a href="https://chiragokani.github.io/echo_amphitheater.html" target="_blank" rel="noopener noreferrer">Echo Amphitheater</a>: something I did for fun to better understand the echoic properties of this enchanting natural formation in northern New Mexico.</p></li>
+
+<li><p><a href="https://chiragokani.github.io/tutoring/" target="_blank" rel="noopener noreferrer">IntelliChoice SAT Math camp</a>: this course originally served ~100 high school students in the DFW area during summer 2020 (COVID). Daily lessons and homeworks are now publicly available.</p> </li>
+
+<li><p><a href="https://chiragokani.github.io/Europe_2022/masala_chai-compressed.pdf" target="_blank" rel="noopener noreferrer">Masala cha</a>: traditional Indian tea</p></li>
+
+<li><p><a href="https://diversity.utexas.edu/womeninstem/" target="_blank" rel="noopener noreferrer">WiSTEM</a>: I volunteer over the summer in these diversity initiatives at UT Austin.</a></p></li>	
+
+<li><p><a href="portal-protected.html" target="_blank" rel="noopener noreferrer">&#9784;</a></p></li>  
+</ul>
+</section>
+
+</body>
+</html>
