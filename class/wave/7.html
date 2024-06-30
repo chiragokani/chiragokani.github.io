@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Periodic media</title>
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'ams'
+  }
+};
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\boldsymbol{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times\\,}",
+      Laplacian: "{\\nabla^2}",
+      Laplacianp: "{\\nabla'^2}",
+      Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      FTt: "{\\mathcal{F}_t}",
+      IFTt: "{\\mathcal{F}_t^{-1}}",
+      FTx: "{\\mathcal{F}_x}",
+      IFTx: "{\\mathcal{F}_x^{-1}}",      
+      FTr: "{\\mathcal{F}_\\rho}",
+      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
+      HT: "{\\mathcal{H}}",
+      IHT: "{\\mathcal{H}^{-1}}",  
+      FTxy: "{\\mathcal{F}_{xy}}",
+      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
+      rect: "{\\mathrm{\\,rect\\,}}",
+      tri: "{\\mathrm{\\,tri\\,}}",
+      circfn: "{\\mathrm{\\,circ\\,}}",
+      sinc: "{\\mathrm{\\,sinc\\,}}",
+      ex: "{\\hat{e}_x}",           
+      ey: "{\\hat{e}_y}",
+      ez: "{\\hat{e}_z}",
+      ephi: "{\\hat{e}_\\phi}",
+      thetaHP: "{\\theta_{\\mathrm{HP}}}",
+      erf: "{\\mathrm{\\,erf\\,}}",
+      NF: "{_\\mathrm{NF}}",
+      
+    }
+  }
+};
+</script>	
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.5;
+      max-width: 900px; /* Adjust this value as needed */
+      background: linear-gradient(to bottom,  #577abdd8, #f3c86cd3); 
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .textbox {
+      background-color: rgba(241, 241, 241, 0.986);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .example {
+      background-color: rgba(197, 197, 197, 0.836);
+      border-radius: 3px;
+      padding-top: 1px;
+      padding-bottom: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      border-style: solid;
+      border-width: thin;
+      border-color: #9b9b9b94;
+    }
+
+    .wrong {
+      background-color: rgba(255, 205, 205, 0.856);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    nav {
+      background-color: #0000003d;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      flex: 1;
+    }
+
+    nav ul li a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 2px;
+      font-size: 13px;
+    }
+
+    nav ul li a:hover {
+      background-color: #03030365;
+    }
+
+    .Q {
+      color:  #09008a ;
+    }
+
+    .floating-table-of-contents {
+            position: fixed;
+            top: 100%;
+            right: 15pt;
+            transform: translateY(-50%);
+            background-color:  rgba(255, 255, 255, 0);
+            padding: 3px;
+            border-radius: 6px;
+        }
+
+        .toc-link {
+            display: block;
+            margin-bottom: 20px;
+            color: #091c4165; 
+            text-decoration: none;
+            font-size:8pt;
+        }
+  </style>
+
+</head>
+<body>
+  <nav>
+    <ul>
+	 <li><a href="index.html"> Homepage<br> &#127968;</a></li>
+      <li><a href="1.html">Mathematical <br>preliminary</a></li>
+      <li><a href="2.html">Fourier <br>acoustics</a></li>
+      <li><a href="3.html">Rayleigh <br>integrals</a></li>
+      <li><a href="4.html">Fraunhofer <br>approximation</a></li>
+      <li><a href="5.html">Fresnel <br>approximation</a></li>
+      <li><a href="6.html">Moving <br>media</a></li>
+      <li><a href="7.html"><b>Periodic <br>media</b></a></li>
+      <li><a href="8.html">Scattering <br>theory</a></li>
+    </ul>
+  </nav>
+
+<nav class="floating-table-of-contents">
+<a href="#top" class="toc-link">Back to top</a>
+</nav>
+
+<div class="textbox">
+<h1 id="top">Periodic media</h1>
+<blockquote><i>While I am certainly not asking you to close your eyes to the experiences of earlier generations, I want to advise you not to conform too soon and to resist the pressure of practical necessity. Free imagination is the inestimable prerogative of youth and it must be cherished and guarded as a treasure.
+</i></blockquote>
+<p align="right">&ndash;<a href="https://en.wikiquote.org/wiki/Felix_Bloch" target="_blank" rel="noopener noreferrer">Felix Bloch</a></p>
+
+<p>This section on periodic media consists of only two sections. The first discusses the mass-spring transmission line, through which wave propagation is dispersive. Three special cases of the dispersion relation are studied. The second section discusses waves in layered media. This topic involves lots of algebra, much of which is skipped over. Invoking Bloch-Floquet theory, a dispersion relation is derived, and two limiting cases are considered.</p>
+
+
+<p>
+  <i>Contents:</i>
+<ul>
+<li><a href="#line">Mass-spring transmission line</a></li>
+<li><a href="#layer">Waves in layered media</a></li>
+</ul>	
+</p>
+</div>
+
+<div class="textbox"><h2 id="line">Mass-spring transmission line</h2>
+<p>Consider a mass-spring transmission line: </p>
+<p align="middle"> <img src="mass_spring.svg" width="400" height="auto"></p>
+<p> 
+The position of the \(n\)th mass is given by
+\begin{align*}
+x_n &= nd + \xi_n\\
+\text{where}\quad d &= \text{ equilibrium separation distance}\\
+\xi_n &= \text{ displacement}
+\end{align*}
+The dynamical equation \(\vec{F} = m\vec{a}\) for the \(n\)th mass is one-dimensional:
+\begin{align}
+m \frac{\partial^2\xi_n}{\partial t^2} &= k(\xi_{n-1}- \xi_n) - k(\xi_n - \xi_{n+1}) \notag\\
+&= k(\xi_{n-1} - 2\xi_n + \xi_{n+1})\,. \tag{1}\label{1period}
+\end{align}
+</p>
+<p><span class="Q">The signs can be determined by considering the case if the middle mass is held still (\(\xi_n = 0\)), but the mass on the left is moved to the right (\(\xi_{n-1} >0 \)). Then the middle mass experiences a positive force. Thus the first term on the RHS of Eq. \eqref{1period} is positive. Meanwhile, if the middle mass is held still (\(\xi_n = 0\)) while the mass on the right is moved to the right (\(\xi_{n+1} >0 \)), Then the middle mass experiences a negative force, explaining why the second term on the RHS of Eq. \eqref{1period} is negative. </span></p>
+<p>
+A solution of Eq. \eqref{1period} is sought that describes wave motion. Thus a traveling wave solution is assumed,
+\begin{align*}
+\xi_n &= A e^{i(\beta n d - \omega t)}\\
+\text{where }\beta &= \text{ propagation constant}\,.
+\end{align*}
+<i>Note that \(\beta\) and \(\alpha\) are flipped in Morse and Ingard. </i> Let us denote
+\begin{align*}
+\lambda &= \text{ spatial period}\\
+x &= nd = \text{spatial coordinate}\,.
+\end{align*}
+Then the spatial part of the complex exponential in the assumed form of solution can be written as 
+\begin{align}\label{2period}
+e^{i\beta n d} = e^{i\beta x } = e^{i\beta(x + \lambda)}\,,\tag{2}
+\end{align}
+which is satisfied by 
+\begin{align*}
+\beta \lambda = 2\pi \implies \lambda = 2\pi/\beta.
+\end{align*}
+This condition ensures that the motion is periodic in \(\lambda\). Substituting Eq. \eqref{2period} into \eqref{1period} results in
+\begin{align*}
+-m\omega^2 \xi_n &= k (e^{-i\beta d} - 2 + e^{i\beta d})\xi_n\\
+&= k(e^{i\beta d/2} - e^{i\beta d/2})^2 \xi_n\\
+&= -4 k \sin^2(\beta d/2)\xi_n\,.
+\end{align*}
+Nontrivial solutions (\(\xi_n \neq 0\)) arise for 
+\begin{align*}
+\omega &= 2 \sqrt{k/m} \, \sin (\beta d/2)\,,
+\end{align*}
+or, identifying \(\omega_0 = 2\sqrt{k/m}\),
+\[\boxed{\omega = \omega_0 \sin(\beta d/2)\,.}\]
+Three few cases of this dispersion relation are studied:
+</p>
+
+
+<h4>Case I</h4>
+First consider frequencies \(\omega < \omega_0\). In this frequency range, the dispersion relation satisfies \(\omega/\omega_0 = \sin(\beta d/2) < 1\), which implies that \(-\pi/2 < \beta d/2 < \pi/2\), or simply \(-\pi < \beta d < \pi\). The magnitude of the dispersion relation, \(|\omega/ \omega_0| = |\sin(\beta d/2)|\), is plotted below in this domain over \(\beta d\):
+</p>
+
+<p align="middle"> <img src="mass_spring_1.svg" width="250" height="auto"></p>
+<p>
+Since \(\lambda = 2\pi/\beta\), at \(\omega = \omega_0\),
+\begin{align*}
+\lambda \equiv \lambda_0 = \frac{2\pi}{\beta}\bigg\rvert_{\beta = \pi/d} = 2d\,,
+\end{align*}
+which is to say that the spatial period is \(2d\). </p>
+
+The corresponding phase and group velocities are
+\begin{align*}
+c_\mathrm{ph} &= \frac{\omega}{\beta} = \frac{\omega_0}{\beta} \sin\frac{\beta d}{d} = \frac{1}{2} \omega_0 d \frac{\sin(\beta d/2)}{\beta d/2}\,.\\
+c_\mathrm{gr} &= \frac{d\omega}{d\beta} = \frac{1}{2}\omega_0 d\cos \frac{\beta d}{2}\,.
+\end{align*}
+In the limit that \(|\beta d|\ll 1\) (which corresponds to \(\omega \ll \omega_0\)), the phase and group velocities become 
+\begin{align*}
+c_\mathrm{ph} \simeq c_\mathrm{gr} \simeq \frac{1}{2} \omega_0 d = d \sqrt{k/m}\,.
+\end{align*}
+This asymptote is used to normalize the plot below of the phase and group speeds: </p>
+<p align="middle"> <img src="mass_spring_2.svg" width="200" height="auto"></p>
+
+<div class="example"><h3>Example: Recovery of continuum in the low frequency limit</h3>
+<p>
+The propagation of sound in a fluid can be thought of the limiting case of the mass-spring chain. Specifically, it can be thought of lots of small mass-spring oscillators whose length scale is much smaller than a wavelength, i.e.,  \(d\ll \lambda\), which is equivalent to the limit \(|\beta d| \ll 1\) (because \(\lambda/d = 2\pi/\beta d \gg 1\)). In this limit, as noted above,  
+\begin{align*}
+c_\mathrm{ph} = c_\mathrm{gr} = d \sqrt{k/m} = c_0\,.
+\end{align*}
+The mass and stiffness of a fluid are related to the quantities
+\begin{align*}
+\rho_0 &= \text{ density} = m/V\\
+B &= \text{ bulk modulus} = -V \frac{\partial P}{\partial V} = -d\frac{\partial P}{\partial x}\,,
+\end{align*}
+while the pressure can be described by the force divided by the surface area, \(P = kx/S\), as illustrated below:
+<p align="middle"> <img src="mass_spring_c0.svg" width="450" height="auto"></p>
+Thus the bulk modulus becomes
+\[B = -d \frac{d}{dx} (-kx/S) = kd/S \implies k = SB/d\,.\]
+Inserting \(k = sB/d\) and \(m = \rho_0 Sd\) into \(c_0 = d\sqrt{k/m}\), the sound speed is found to be  
+\begin{align*}
+c_0 &= d \sqrt{\frac{SB/d}{\rho_0 Sd}} = \sqrt{B/\rho_0}
+\end{align*}
+which is familiar sound speed of a fluid. <i>For more discussion, see page 88 of Morse & Ingard.</i>
+</p>
+</div>
+
+<div class="example"><h3>Example: Wavelength ambiguity</h3>
+<p>"Wavelength ambiguity" is now discussed as an example of the case \(\omega < \omega_0 = 2\sqrt{k/m}\), for which
+\begin{align}
+\frac{\omega}{\omega_0} = \sin (\beta d/2)\,, \beta \in \Re
+\end{align}
+which is valid for <b>all</b> \(\beta d\), as shown below:
+<p align="middle"> <img src="mass_spring_ambig.svg" width="400" height="auto"></p>
+That is to say, from the displacements
+\begin{align*}
+\xi_n = A e^{i(n\beta d - \omega t)},
+\end{align*}
+are unaltered if \(\beta d\) is replaced by 
+\begin{align*}
+(\beta d)' = \beta d \pm 2\pi m\,, \quad m = \text{ integer}\,.
+\end{align*}
+In other words, all the points separated by \(2\pi m\) on the dispersion curve give the same solution, which is ambiguous. That is why the domain is restricted to 
+\[-\pi \leq \beta d \leq \pi\]
+or 
+\[2d \leq \lambda \leq \infty\,.\]
+Wavelengths \(\lambda\) less than \(2d\) are called aliased (or ''undersampled''). 
+</p>
+</div>
+
+<h4>Case II</h4>
+<p>
+Now consider \(\omega > \omega_0\), which is the case that the drive frequency is greater than \(\omega_0 = 2\sqrt{k/m}\). Then, the dispersion relation must satisfy \(\omega/ \omega_0 = \sin(\beta d/2) > 1\), which requires that \(\beta\) must be complex (since \(d/2\) is real). Thus define 
+\begin{align*}
+\beta d/2 = \gamma + i\alpha\,,
+\end{align*}
+insert this identification into the dispersion relation, and use the sine double-angle identity:
+\begin{align*}
+\frac{\omega}{\omega_0} &= \sin(\gamma + i\alpha)\\
+&= \sin \gamma \cos i\alpha + \cos \gamma \sin i\alpha\\
+&= \sin\gamma \cosh\alpha + i\cos\gamma \sinh\alpha\,.
+\end{align*}
+The drive frequency \(\omega\) must be real, which requires \(\gamma = \pi/2\) in the above relation. So 
+\begin{align*}
+\omega/\omega_0 = \cosh \alpha \geq 1\,.
+\end{align*}
+Then the motion of the \(n\)th mass is therefore 
+\begin{align*}
+\xi_n &= A e^{i(n\beta d-\omega t)}\,,\quad \beta d = \pi + i2\alpha \\
+&= A e^{i(n\pi + i2n\alpha - \omega t)}\\
+&= (-1)^n A e^{-2n\alpha}e^{-i\omega t}
+\implies |\xi| = A e^{-2n\alpha}\,,
+\end{align*}
+That is to say, the motion of each mass is exponential decay, and the direction in which the masses move alternates from mass to mass. The dispersion relation \(\omega/\omega_0 = \cosh \alpha \) is plotted below:
+</p>
+<p align="middle"> <img src="mass_spring_3.svg" width="250" height="auto"></p>
+
+
+<h4>Case III</h4>
+<p>
+Finally, the case \(\omega = \omega_0\) is considered. Then the dispersion relation reads \(1 = \sin \beta d/2\), whose solution is \(\beta d = \pi\) (and thus \(\lambda = 2\pi/\beta = 2d\)). The motion of the \(n\)th mass is therefore given by \(\xi_n = Ae^{in\pi - i\omega}\), which gives
+\begin{align*}
+\xi_n = (-1)^n A e^{i\omega t}\,.
+\end{align*}
+Thus for the case \(\omega = \omega_0\), the motion of all adjacent masses are equal and opposite to any given mass, and each moves as a simple harmonic oscillator.
+</p>
+
+<p>In summary, all three cases are shown in the dispersion curve below:</p>
+<p align="middle"> <img src="mass_spring_disp.svg" width="400" height="auto"></p>
+<p>Propagation occurs only drive frequencies less than \(\omega_0\), i.e., the stopband is seen to extend for \(\omega/\omega_0> 1\).</p>
+</div>
+
+<div class="textbox"><h2 id="layer">Waves in layered media</h2>
+<p>
+Consider a layered medium with alternating impedances \(z_1\) and \(z_2\), where the \(z_1\) medium has thickness \(d_1\) while the thickness of the \(z_2\) medium has thickness \(d_2\):
+<p align="middle"> <img src="layered.svg" width="250" height="auto"></p>
+<p>
+The impedances are denoted \(z_j = \rho_j c_j\), where \(j=1,2\). The wave equations are 
+\[\frac{\partial^2 p_j}{\partial x^2} = \frac{1}{c_j^2}\frac{\partial^2 p_j}{\partial t^2}.\]
+Assume the form of the pressure (and thus the particle velocity, by the momentum equation) is 
+\begin{align*}
+p_j &= (A_j e^{ik_jx} + B_j e^{-ik_jx}) e^{-i\omega x} \label{1layer}\tag{1} \\
+u_j &= \frac{1}{z_j}(A_j e^{ik_jx} - B_j e^{-ik_jx}) e^{-i\omega x}\,,\label{2layer}\tag{2} 
+\end{align*}
+where \(k_j = \omega/c_j\). There are four unknowns in the unit cell, which is \(d\) wide, from \(-d_1 \leq x\leq d_2\):
+\begin{align*}
+A_1, B_1, A_2, B_2\,.
+\end{align*}
+The pressure and particle velocity must match at \(x = 0\):
+\begin{align*}
+p_1(0) &= p_2(0)\\
+u_1(0) &= u_2(0)\,.
+\end{align*}
+So from Eqs. \eqref{1layer} and \eqref{2layer} (resectively),
+\begin{align}
+A_1 + B_1 &= A_2 + B_2 \label{3layer}\tag{3}\\
+Z_2(A_1 - B_1) &= Z_1(A_2- B_2)\,. \label{4layer}\tag{4}
+\end{align}
+To close the system algebraically, two more conditions are needed. For this, the concept of periodicity is invoked through 
+\begin{align*}
+q &= \text{ Bloch wave number}\\
+P,U &= \text{ Bloch wave functions}\,,
+\end{align*}
+such that 
+\begin{align*}
+p_j &= P_j(x)e^{i(qx- \omega t)} \label{5layer}\tag{5}\\
+u_j &= U_j(x)e^{i(qx- \omega t)}\,, \label{6layer}\tag{6}
+\end{align*}
+where, by equating Eqs. \eqref{1layer} and \eqref{2layer} to Eqs. \eqref{5layer} and \eqref{6layer}, respectively, \(P_j\) and \(U_j\) are identified,
+\begin{align*}
+P_j(x) &= A_j e^{ik_j^-x} + B_je^{-ik_j^+x}\label{7layer}\tag{7}\\
+U_j(x) &= \frac{1}{Z_j} \big(A_j e^{ik_j^-x} - B_je^{-ik_j^+x}\big)\label{8layer}\tag{8}\,,
+\end{align*}
+where \[k_j^\pm = k_j \pm q\,.\]
+According to Floquet theory, because \(p\) and \(u\) are continuous across interfaces, \(P\) and \(U\) must be periodic:
+\begin{align*}
+P_1(-d_1) &= P_2(d_2)\\
+U_1(-d_1) &= U_2(d_2)\,.
+\end{align*}
+Note that \(p\) and \(u\) are not necessarily periodic in \(d\). (Recall, for example, the mass-spring lattice, for which \(\lambda \in [2d,\infty)\), e.g., the wavelength of \(p\) and \(u\) can be much larger than \(d\)). Enforcing Floquet's result on Eqs. \eqref{7layer} and \eqref{8layer} results in 
+\begin{align*}
+A_1e^{-ik_1^-d_1}  + B_1e^{ik_1^+ d_1} &= A_2e^{ik_2^-d_2} + B_2 e^{-ik_2^+d_2}\label{9layer}\tag{9}\\
+Z_2 (A_1 e^{-ik_1^-d_1}  - B_1e^{ik_1^+ d_1}) &= Z_1 (A_2e^{ik_2^-d_2} - B_2 e^{-ik_2^+d_2}) \label{10layer}\tag{10}\,.
+\end{align*}
+Now Eqs. \eqref{3layer}, \eqref{4layer}, \eqref{9layer}, and \eqref{10layer} are combined:
+\begin{align*}
+[A] \cdot \begin{bmatrix}
+A_1 \\ B_1 \\ -A_2 \\ - B_2
+\end{bmatrix} = [0]\,,
+\end{align*}
+where 
+\begin{align*}
+[A] = \begin{bmatrix}
+1 & 1 & 1 & 1 \\
+Z_2 & -Z_2 & Z_1 & -Z_1 \\
+e^{-ik_1^-d_1} & e^{ik_1^+d_1} & e^{ik_2^-d_2} & e^{-ik_2^+d_2} \\
+Z_2 e^{-ik_1^-d_1} & -Z_2 e^{ik_1^+d_1} & Z_1 e^{ik_2^-d_2} & -Z_1 e^{-ik_2^+d_2} 
+\end{bmatrix}\,.
+\end{align*}
+Nontrivial solutions correspond to \(\det [A] = 0\), which result in the characteristic equation
+\begin{align}
+\boxed{\cos qd = \cos k_1d_1\, \cos k_2 d_2 - \frac{1}{2}\bigg(\frac{z_1}{z_2} + \frac{z_2}{z_1}\bigg) \sin k_1 d_1 \sin k_2d_2 \,.}\label{11layer}\tag{11}
+\end{align}
+Equation \eqref{11layer} is wirtten in the form 
+\begin{align*}
+\cos qd = f(\omega)\,.
+\end{align*}
+Then [Bradley, JASA <b>96</b>, 1844 (1994)], 
+\begin{align*}
+qd &=
+\begin{cases}
+ \arccos (f) = \Re \,, \quad -1 \leq f \leq 1\\
+n\pi + i\mathrm{arccosh}^{-1} f \,, n \text{ even }\,, f > 1\\
+n\pi + i\mathrm{arccosh}^{-1} |f| \,, n \text{ odd }\,,  f \text{ less than } 1
+\end{cases}
+\end{align*}
+Thus the Bloch wavenumber is 
+\begin{align*}
+q &= q_R + iq_I \\
+q_I &= 0\,, \quad \text{passband}\\
+q_I &\neq 0\,, \quad \text{stopband}
+\end{align*}
+and the Bloch wave phase speed is 
+\begin{align*}
+c_B = \omega/q_R\,.
+\end{align*}</p>
+<p align="middle"> <img src="layered_disp.svg" width="650" height="auto"></p>
+
+<p>Two limiting cases of Eq. \eqref{11layer} are now considered.</p> 
+
+<h3>Limiting case I: \(z_1 = z_2\)</h3> 
+<p>
+The dispersion relation becomes 
+\begin{align*}
+\cos qd &= \cos k_1 d_1 \cos k_2 d_2 - \sin k_1 d_1 \sin k_2 d_2\\
+&= \cos (k_1 d_1 + k_2 d_2)\,.
+\end{align*}
+Thus there are no stopbands, e.g., \(q\) is always real and equal to \(\omega /c_B\), where \(c_B\) is the Bloch wave speed defined above. From this limiting form, the relation 
+\begin{align*}
+\frac{d}{c_B} = \frac{d_1}{c_1} + \frac{d_2}{c_2}\,,
+\end{align*}
+which results in an analytical expression for the Bloch wave speed: 
+\[c_B = \frac{d}{d_1/c_1  + d_2/c_2}\,.\]
+</p>
+
+<h3>Limiting case II: \(\lambda \gg d\) (\(\omega \to 0\), the effective medium limit)</h3> 
+<p>The terms of dispersion relation in this low-frequency limit become
+\begin{align*}
+\cos qd &\sim 1 - \frac{1}{2} (qd)^2\\
+\sin kd &\sim kd\,. 
+\end{align*}
+Through \(\Order (q^2 , k^2)\), the dispersion relation reads 
+\begin{align*}
+1 - \frac{1}{2}(qd)^2 = 1 - \frac{1}{2} (k_1 d_1)^2 -  \frac{1}{2} (k_2 d_2)^2 - \frac{1}{2} \left(\frac{z_1}{z_2} + \frac{z_2}{z_1} \right) k_1 d_1 k_2 d_2 \,.
+\end{align*}
+Rearranging this relation results in 
+\begin{align*}
+\frac{d^2}{c_B^2} = \frac{d_1^2}{c_1^2} + \left(\frac{z_1}{z_2} + \frac{z_2}{z_1}\right) \frac{d_1 d_2}{c_1 c_2} + \frac{d_2^2}{c_2^2}\,,
+\end{align*}
+which is a constant (i.e., no dispersion). Interestingly, if \(c_1 = c_2 \equiv c_0\) and yet \(\rho_1 \neq \rho_2\), then \(c_B < c_0\), which is not necessarily an obvious result. 
+</p>
+
+<p>
+Now attention is turned back to the eigenvectors corresponding to \(q\). The matrix equation is re-labeled: (<span class="Q">Where does this come from?</span>)
+\begin{align*}
+\begin{pmatrix}
+A_1 \\ B_1 \\ -A_2 \\ -B_2
+\end{pmatrix}
+=
+A 
+\begin{pmatrix}
+C_{11} \\ C_{12} \\ C_{13} \\ C_{14}
+\end{pmatrix}\,,
+\end{align*}
+where 
+\begin{align*}
+C_{ij} = (-1)^{i+j} \det A_{ij}
+\end{align*}
+is the cofactor of \(A_{ij}\), and where \(A\) is an arbitrary constant.  Then, define from Eq. \eqref{7layer}
+\begin{align}
+P_0(x) &= A [C_{11} e^{i(k_1 - q)x} + C_{12} e^{-i(k_1 + q)x}]\,,\quad -d_1 \leq x \leq 0\,. \label{12layer}\tag{12}\\
+&= -A [C_{13} e^{i(k_2 - q)x} + C_{14} e^{-i(k_2 + q)x}]\,,\quad 0 \leq x \leq d_2\,. \label{13layer}\tag{13}\\
+&=0 \text{ elsewhere}\,.
+\end{align}
+Then \(P(x) = P_0(x)\) in the reference unit cell, labeled \(n=0\). Since \(P_0\) is repeated in other cells, then
+\begin{align}
+p(x,t) &= [P_0(x) * \sum_{n=-\infty}^{\infty} \delta(x-nd)] e^{i(qx -\omega t)} \label{14layer}\tag{14}
+\end{align}
+where \(P_0(x) * \sum_{n=-\infty}^{\infty} \delta(x-nd) = \Phi(x)\) is the so-called Bloch function.
+</p>
+
+<div class="example"><h3>Example: Thin periodic barriers </h3>
+<p>
+Consider the limits \(k_2 d_2 \ll 1\) and \(z_2/z_1 \gg 1\), e.g., the mass law. Layer 2 is thus a thin mass, e.g., \(d_1 \simeq d\). Call \(\rho_1 c_1 = \rho_0 c_0\):</p>
+<p align="middle"> <img src="layered_thin.svg" width="400" height="auto"></p>
+
+<p>The mass per unit area is \(m = \rho_2 d_2\). Then the dispersion relation becomes
+\begin{align*}
+\cos q d = \cos (\omega d/c_0) - \frac{1}{2} \frac{z_2}{z_1} k_2 d_2 \sin(\omega d/c_0)\,.
+\end{align*}
+Noting that the factor \(\frac{z_2}{z_1}k_2d_2\) can be written
+\begin{align*}
+\frac{z_2}{z_1}k_2d_2 = \frac{\rho_2 c_2}{\rho_0 c_0}\frac{\omega d_2}{c_2} = \frac{\rho_2 d_2 \omega}{\rho_0 c_0} = \frac{m\omega }{\rho_0 c_0}\,,
+\end{align*}
+the dispersion relation becomes 
+\begin{align*}
+\cos qd = \cos (\omega d/c_0) - \frac{m\omega}{2\rho_0 c_0} \sin (\omega d/c_0).
+\end{align*}
+This relation can be written in a dimensionless form by defining \(Q \equiv qd\), \(\Omega = \omega d/c_0\), and \(M = m/2\rho_0 d\):
+\begin{align}\tag{1}\label{ex1}
+\cos Q = \cos \Omega - M\Omega \sin \Omega\,.
+\end{align}
+For increasing \(M\Omega\), one obtains increasingly narrower passbands centered at \(\Omega \sim n\pi\). </p>
+
+<p>In the Bloch function, set \(d_1= d\) and \(k_2d_2= 0\) in \([A]\):
+\begin{align*}
+C_{11} &= \det \begin{bmatrix}
+-z_2 & z_1 & -z_1 \\
+e^{ik^+d} & 1 & 1 \\
+-Z_2e^{ik^+d} & z_1 & -z_1
+\end{bmatrix}
+= 2 z_1 z_2 [1 - e^{i(k+q)d}]\\
+C_{12} &= - \det \begin{bmatrix}
+z_2 & z_1 & -z_1 \\
+e^{ik^-d} & 1 & 1 \\
+Z_2e^{ik^-d} & z_1 & -z_1
+\end{bmatrix}
+= 2 z_1 z_2 [1 - e^{-i(k-q)d}]
+\end{align*}
+Thus from \(-d\leq x \leq 0\),
+\begin{align*}
+\boxed{P_0(x) = [1 - e^{i(k+q)d} ] e^{i(k - q)x} + [1 - e^{-i(k-q)d}] e^{-i(k + q)x}\,.}
+\end{align*}
+and \(P_0(x) = 0\) elsewhere. By Eq. \eqref{14layer}, the solution in the entire medium is 
+\begin{align*}
+\boxed{p(x,t) = \underbrace{P_0 \left[\sum_{n = -\infty}^{\infty} P_0(x-nd) \right]}_{\text{periodic in }d}\,\, \underbrace{e^{i(qx-\omega t)}}_{\text{periodic in } 2\pi/\Re q}  \,.}
+\end{align*}
+As a sanity check, note that for \(M = 0\), \(q = \omega/c_0 = k\), and thus 
+\begin{align*}
+P_0(x) = A (1 - e^{i2kd}) \to B = \text{ const.}
+\end{align*}
+Thus 
+\begin{align*}
+p(x,t) = B e^{i(kx - \omega t)}\,.
+\end{align*}
+Note that although \(d_2 \to 0\), \(P_0(0) \neq P_1 (d_2) = P_0(-d_1)\) because of pressure jumps across the mass. 
+</p>
+</div>
+
+
+</div>
+
+
+</body>
+</html>
