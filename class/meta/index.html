@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acoustic Metamaterials term project</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'ams'
+  }
+};
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+      Order: "{\\mathcal O}",
+      dyad: ['\\boldsymbol{#1}',1],
+      triad: ['\\tilde{#1}',1],
+      quadrad: ['\\mathsf{#1}',1],
+      divergence: "{\\vec{\\nabla}\\cdot}",
+      gradient: "{\\vec\\nabla}",
+      curl: "{\\vec\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      Laplacianv: "{\\vec\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      FTt: "{\\mathcal{F}_t}",
+      IFTt: "{\\mathcal{F}_t^{-1}}",
+      FTx: "{\\mathcal{F}_x}",
+      IFTx: "{\\mathcal{F}_x^{-1}}",      
+      FTr: "{\\mathcal{F}_\\rho}",
+      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
+      HT: "{\\mathcal{H}_\\rho}",
+      IHT: "{\\mathcal{H}_\\rho^{-1}}",  
+      FTxy: "{\\mathcal{F}_{xy}}",
+      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
+      rect: "{\\mathrm{\\,rect\\,}}",
+      tri: "{\\mathrm{\\,tri\\,}}",
+      circfn: "{\\mathrm{\\,circ\\,}}",
+      sinc: "{\\mathrm{\\,sinc\\,}}"
+    }
+  }
+};
+</script>	
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 40px;
+      line-height: 1.5;
+      max-width: 900px; /* Adjust this value as needed */
+      font-family: 'Times New Roman', Times, serif;
+    }
+    h1 {
+      text-align: left;
+    }
+    #contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    #contact-info img {
+      margin-right: 10px;
+    }
+    #table-of-contents {
+      margin-bottom: 20px;
+    }
+    #table-of-contents ul {
+      list-style-type: none;
+    }
+    #table-of-contents ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Finite element replication of acoustic Dirac-like cone and double zero refractive index</h1>
+<p>Term Project for Acoustic Metamaterials<br>
+Fall 2021<br>
+Akash Nivarthi, Chirag Gokani, Ryan Whitney
+</p>
+
+
+<ul>
+<li><a href="Memo.pdf" target="_blank" rel="noopener noreferrer">Memo</a></li>
+<li><a href="Acoustic_Metamaterials_Group_Project.pdf" target="_blank" rel="noopener noreferrer">Paper</a></li>
+<li><a href="AMM_presentation.pdf" target="_blank" rel="noopener noreferrer">Presentation</a></li>
+</ul>    
+  
+<img src="band diagram-grayscale.PNG" width="246" height="406" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p align="middle">Calculated band diagram, with data generated in COMSOL and patched together in MATLAB. The Dirac point occurs at the Brillouin zone at 18.7 kHz.</p> 	   
+     
+
+</body>
+</html>
