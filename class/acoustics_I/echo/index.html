@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Echo Amphitheater</title>
+<style>
+    body {
+      margin: 0 auto;
+      padding: 40px;
+      line-height: 1.5;
+      max-width: 900px; /* Adjust this value as needed */
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    audio { width: 300px; height: 30px; }    
+</style>    
+</head>
+<body>
+
+
+<h1>Echo Amphitheater, Abiquiu, New Mexico</h1> 
+
+<img src="coverphoto.jpg" width="400"/>
+	
+<p>In spring 2021, I visited Echo Amphitheater, a naturally formed amphitheater near Abuiquiu, New Mexico. The site has never (to my knowledge) been studied for its acoustical properties. To gain a better sense of the exotic acoustics of the amphitheater, I recorded myself clapping my hands four times with a TASCAM DR-05 field recorder. Below is the original data, as well as (limited) analysis of the echo times, decay, and bandpass of the canyon. As I learn more about acoustics, I hope to more carefully analyze the data, and maybe visit the canyon again.</p>
+ 
+
+<p><i>Table of Contents</i></p>
+	
+<ul>
+    <li><a href="#data">Data</a></li>	
+    <li><a href="#echo">Echo</a></li>	
+    <li><a href="#decay">Decay</a></li>
+    <li><a href="#bandpass">Bandpass</a></li>
+<!--    <li><a href="#Presentation">Presentation</a></li> -->
+</ul>	   
+    
+  
+    
+<h2 id="data">Data</h2>
+
+<p>Below are the four handclaps. Feel free to download, share, analyze, etc.</p>
+
+<h4>Clap 1</h4>
+  <h4><audio controls><source src="01 Clap 1.mp3" type="audio/mpeg"></audio></h4>
+<h4>Clap 2</h4>
+  <h4><audio controls><source src="02 Clap 2.mp3" type="audio/mpeg"></audio></h4>
+<h4>Clap 3</h4>
+  <h4><audio controls><source src="03 Clap 3.mp3" type="audio/mpeg"></audio></h4>
+<h4>Clap 4</h4>
+  <h4><audio controls><source src="04 Clap 4.mp3" type="audio/mpeg"></audio></h4>
+  
+  
+    
+<h2 id="echo">Echo</h2>
+
+<p>The annotated waveforms below identify the first four echoes and indicate their order.</p>	
+	
+<img src="echo_fig1.png" width="642" height="261" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 1</i>. Annotated waveform for the first clap. The top waveform corresponds to the right channel, and the bottom to the left.</p> 
+
+<img src="echo_fig2.png" width="596" height="323" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 2</i>. Annotated waveform for the second clap. Note the significant anharmonic noise due to wind (which can be heard in the data above).</p> 
+	
+<img src="echo_fig3.png" width="692" height="315" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 3</i>. Annotated waveform for the third clap. This was the "cleanest" of claps.</p> 
+
+<img src="echo_fig4.png" width="687" height="314" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 4</i>. Annotated waveform for the fourth clap.</p> 
+
+<p>In the table below, the time between each echo from the previous echo is recorded. The initial clap is set at <i>t</i> = 0.</p>
+<table align="middle" style="width:75%">
+  <tr>
+    <th>Clap #</th>
+    <th>1st order echo time (s)</th> 
+    <th>2nd order echo time (s)</th> 
+    <th>3rd order echo time (s)</th> 
+    <th>4th order echo time (s)</th> 
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0.379</td>
+    <td>0.196</td> 
+    <td>0.165</td> 
+    <td>0.149</td> 
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>0.395</td>
+    <td>0.261</td> 
+    <td>0.186</td> 
+    <td>0.158</td> 
+  </tr>
+    <tr>
+    <td>3</td>
+    <td>0.401</td>
+    <td>0.213</td> 
+    <td>0.187</td> 
+    <td>0.174</td> 
+  </tr>
+    <tr>
+    <td>4</td>
+    <td>0.406</td>
+    <td>0.269</td> 
+    <td>0.225</td> 
+    <td>0.132</td> 
+  </tr>
+  <th>Average</th>
+  <td>0.39525</td>
+  <td>0.23475</td> 
+  <td>0.19075</td> 
+  <td>0.15325</td> 	
+	
+  
+</table>
+ 
+<br>
+<img src="echo_fig5.PNG" width="445" height="460" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 5</i>. Plot of average echo time vs. echo order </p> 
+
+
+<!--
+
+<p>We can learn more about the size and geometry of the Echo Amphitheater by considering the speed of sound (<i>v</i>  &#8771; 343 m/s). </p>  
+
+
+<img src="echo_fig6.PNG" width="717" height="628" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 6</i>. This is a schematic of the simplest model that explains the first-fourth order echoes. The lengths of the paths traveled by the sound are denoted by <i>l<sub>a, b, c, d, e, f, g</sub></i>.</p> 
+
+<p>Now considering that the distance traveled <i>l = vt</i>, </p>
+<br>
+
+<img src="echo_fig6(1).PNG" width="350" height="278" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+
+<br>
+
+<p>The path defined by the lengths <i>l<sub>b</sub></i>, <i>l<sub>d</sub></i>, and <i>l<sub>f</sub></i> can help us find the curvature of the canyon. We have two ways to find the lengths (depending on the experimental setup):</p>
+
+<h4>Near-field (applicable to my setup):</h4>
+
+<p>If we set up the microphone and source near the center of the amphitheater wall, <i>l<sub>b</sub></i> &#8771; <i>l<sub>c</sub></i>, <i>l<sub>d</sub></i> &#8771; <i>l<sub>e</sub></i>, and <i>l<sub>f</sub></i> &#8771; <i>l<sub>g</sub></i>. The above system of undetermined equations then becomes determined:</p>
+
+<img src="echo_fig6(3).PNG" width="243" height="242" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<br>
+
+
+<h4>Far-field (maybe for my next visit to NM, but requires a stronger source and more sensitive microphone):</h4>
+<p>If we set up the microphone and source a good distance away from the amphitheater wall (<i>l<sub>a</sub></i> &#8771; <i>l<sub>c</sub></i> &#8771; <i>l<sub>e</sub></i>  &#8771; <i>l<sub>g</sub></i>), the above system of undetermined equations becomes determined:</p>
+<br>
+
+<img src="echo_fig6(2).PNG" width="319" height="246" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<br>
+
+Proceeding with the <b>near-field limit</b>, we find <i>l<sub>a</sub></i> = 67.78 m, <i>l<sub>b</sub></i> = 40.25 m, <i>l<sub>d</sub></i> = 32.71 m, and <i>l<sub>f</sub></i> = 26.28 m. <i>l<sub>a</sub></i> tells us that the first-order depth of the amphitheater is 67.78 m. We can use the other path lengths to construct a 2D model of the amphitheater's curvature. Considering 45-degree-incidence, for example, three points along the amphitheater wall would be (<i>l<sub>b</sub></i> , 0), ((<i>l<sub>b</sub></i>-<i>l<sub>d</sub></i>) cos 45, <i>l<sub>a</sub></i>/3), and ((<i>l<sub>b</sub></i>-<i>l<sub>d</sub></i>+<i>l<sub>f</sub></i>) cos 45, 2<i>l<sub>a</sub></i>/3):
+
+<img src="echo_fig8.PNG" width="541" height="317" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<br>
+
+
+We can then compute the radius of curvature of the amphitheater to be 
+
+<img src="echo_fig9.PNG" width="363" height="180" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+
+<br>
+
+This is a useful parameter that can be used to model the echo and geometry of the amphitheater.
+-->
+  
+
+<h2 id="decay">Decay</h2>
+    
+<p>We can find the decay factor (measured in dB per echo order) of the canyon by analyzing the intensity of the initial claps and the first-third-order echoes (the fourth order echo was too faint to accurately measure the intensity). The decay factor is average of the slope of the graphs below.</p>
+
+<br>
+
+<img src="echo_decay1.PNG" width="412" height="281" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 6.</i> Echo order vs dB for clap 1</p> 
+
+<img src="echo_decay2.PNG" width="412" height="281" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 7.</i> Echo order vs dB for clap 2</p> 
+
+<img src="echo_decay3.PNG" width="411" height="285" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 8.</i> Echo order vs dB for clap 3.</p> 
+
+<img src="echo_decay4.PNG" width="412" height="281" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 9.</i> Echo order vs dB for clap 4.</p> 
+ 
+
+<p>The decay factor was calculated to be -12.225 dB/echo order. </p>
+
+    
+<h2 id="bandpass">Bandpass</h2>
+ 
+<p>In addition to modulating the delay and amplitude of the input signal, and the amphitheater modulates the spectrum, acting as a low-pass filter. This can be seen below:</p>
+
+<br>
+
+<img src="echo_BP1.PNG" width="886" height="293" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 10</i>. In this plot of clap 1, the waveform and spectrum are plotted side-by-side. The intensity of frequencies is indicated by the red color. Note that the first-order echo is devoid of the 5000-8000 Hz frequencies abundant in the initial clap.</p> 
+
+<p>Since the peak of the initial clap was around 1000 Hz, the bandwidth (BW) is about three octaves:</p>
+
+<img src="echo_BP2.PNG" width="405" height="293" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 11</i>. Zoomed-in spectrum of the initial clap and first-order echo for clap 1.</p> 
+
+<p>We see a similar ~three octave bandwidth (BW) for claps 2-4:</p>
+
+<img src="echo_BP3.PNG" width="472" height="291" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 12</i>. Zoomed-in spectrum of the initial clap and first-order echo for clap 2.</p>
+
+<img src="echo_BP4.PNG" width="443" height="291" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 13</i>. Zoomed-in spectrum of the initial clap and first-order echo for clap 3.</p>
+
+<img src="echo_BP5.PNG" width="345" height="298" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+<p class="bottom-three" align="middle"><i>Fig. 14</i>. Zoomed-in spectrum of the initial clap and first-order echo for clap 4.</p>
+
+
+<!-- 
+<p>We can quantify this calculate low-pass effect with the so-called <i>Q</i>-factor:<p>
+
+<img src="echo_BP6.PNG" width="285" height="246" style = "display: block; margin-left: auto; margin-right: auto;"/></td>
+
+
+<hr>  
+<h3 id="Presentation">Presentation</h3>
+
+<p align="middle"> <iframe width="560" height="315" src="https://www.youtube.com/embed/cO-OJdVMHoQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </p>
+
+ -->
+<p><a href="../../index.html">&uparrow; Return to educational resources</a></p>
+
+
+</body>
+</html>
