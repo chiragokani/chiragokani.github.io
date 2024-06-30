@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational resources</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'ams'
+  }
+};
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+      Order: "{\\mathcal O}",
+      dyad: ['\\boldsymbol{#1}',1],
+      triad: ['\\tilde{#1}',1],
+      quadrad: ['\\mathsf{#1}',1],
+      divergence: "{\\vec{\\nabla}\\cdot}",
+      gradient: "{\\vec\\nabla}",
+      curl: "{\\vec\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      Laplacianv: "{\\vec\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      FTt: "{\\mathcal{F}_t}",
+      IFTt: "{\\mathcal{F}_t^{-1}}",
+      FTx: "{\\mathcal{F}_x}",
+      IFTx: "{\\mathcal{F}_x^{-1}}",      
+      FTr: "{\\mathcal{F}_\\rho}",
+      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
+      HT: "{\\mathcal{H}_\\rho}",
+      IHT: "{\\mathcal{H}_\\rho^{-1}}",  
+      FTxy: "{\\mathcal{F}_{xy}}",
+      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
+      rect: "{\\mathrm{\\,rect\\,}}",
+      tri: "{\\mathrm{\\,tri\\,}}",
+      circfn: "{\\mathrm{\\,circ\\,}}",
+      sinc: "{\\mathrm{\\,sinc\\,}}"
+    }
+  }
+};
+</script>	
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 40px;
+      line-height: 1.5;
+      max-width: 900px; /* Adjust this value as needed */
+      font-family: 'Times New Roman', Times, serif;
+    }
+    h1 {
+      text-align: left;
+    }
+    #contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    #contact-info img {
+      margin-right: 10px;
+    }
+    #table-of-contents {
+      margin-bottom: 20px;
+    }
+    #table-of-contents ul {
+      list-style-type: none;
+    }
+    #table-of-contents ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+<h1>Educational resources</h1>
+
+<p>[<a href="#publications">Websites</a>] [<a href="#practice">Practice problems</a>] [<a href="#notes">Notes</a>] [<a href="#projects">Class projects</a>]</p>
+
+<section id="websites">
+<h2>Websites</h2>
+<ul>
+<li><p><a href="wave/index.html" target="_blank" rel="noopener noreferrer">Wave Phenomena notes</a>: my notes from Prof. Hamilton's course, spring 2024.</i></p></li>
+
+<li><p><a href="quals/index.html" target="_blank" rel="noopener noreferrer">Acoustics PhD qualifying exam review site</a>: website with everything I need to know for my qualifying exam. </p></li>
+
+<li><p><a href="tutor/index.html" target="_blank" rel="noopener noreferrer">IntelliChoice SAT Math camp</a>: this course originally served ~100 high school students in the DFW area during summer 2020 (COVID). Daily lessons and homeworks are now publicly available.</p> </li>	     
+</ul>
+</section>
+
+<section id="practice">
+<h2>Practice problems</h2>
+<ul>
+<li><p><a href="acoustics_I/midterm_practice.pdf" target="_blank" rel="noopener noreferrer">Acoustics I practice problem</a>: an entertaining practice problem I wrote while studying for my Acoustics I midterm exam. It involves a "Gaussian comb" pressure-amplitude profile. [<a href="acoustics_I/midterm_practice_sol.pdf" target="_blank" rel="noopener noreferrer">solution</a>]. </p></li>
+
+<li><p><a href="acoustics_I/final_practice.pdf" target="_blank" rel="noopener noreferrer">Acoustics I practice problem</a>: created in preparation for the Acoustics I final. [<a href="acoustics_I/final_practice_sol.pdf" target="_blank" rel="noopener noreferrer">solution</a>].</p></li>
+
+<li><p><a href="acoustics_II/practice.pdf" target="_blank" rel="noopener noreferrer">Acoustics II practice problem</a>: starring me and Jackson, created in preparation for the Acoustics II midterm. [<a href="acoustics_II/practice_sol.pdf" target="_blank" rel="noopener noreferrer">solution</a>].</p></li>
+	
+<li><p><a href="nonlinear/midterm_study_guide_questions.pdf" target="_blank" rel="noopener noreferrer">Nonlinear acoustics study guide for midterm</a>: problems that review the first half of Prof. Hamilton's nonlinear acoustics course. [<a href="nonlinear/midterm_study_guide_solutions.pdf" target="_blank" rel="noopener noreferrer">solutions</a>]. </p></li>
+
+<li><p><a href="nonlinear/final_study_guide_questions.pdf" target="_blank" rel="noopener noreferrer">Nonlinear acoustics study guide for final</a>: problems that review the second half of Prof. Hamilton's nonlinear acoustics course. [<a href="nonlinear/final_study_guide_solutions.pdf" target="_blank" rel="noopener noreferrer">solutions</a>]. </p></li>
+</ul>
+</section>
+
+<section id="notes">
+<h2>Notes</h2>
+<ul>
+<li><p><a href="acoustics_I/intromission.pdf" target="_blank" rel="noopener noreferrer">Angle of intromission</a>: the angle of intromission is the angle that corresponds to perfect transmission of sound between two media. Its derivation is straightforward but was not discussed in class, so I have shown the steps that lead to Blackstock's Eq. (B-14) in Sec. 5.B.2.a of <i>Fundamentals of Physical Acoustics</i>.</p></li>
+
+<li><p><a href="quantum/bohr.pdf" target="_blank" rel="noopener noreferrer">Bohr radius from variation principle</a>: an elegant way of calculating the Bohr radius without looking at the Schr&ouml;dinger equation. Based on class notes from Prof. Yuri Gartstein's Quantum I course at UTD.</p></li>	
+  
+<li><p><a href="acoustics_II/10-10.html" target="_blank" rel="noopener noreferrer">Concentric pressure-release spheres</a>: based on an Blackstock's problem 10-10 from <i>Fundamentals of Physical Acoustics</i>. Displayed here are numerically determined combinations of \(ka\) and \(kb\) that correspond to the eigenfrequencies for sound enclosed between two concentric pressure-release spheres. Bright spots on the surface plots correspond to eigenfrequencies.</p></li>	
+
+<li><p><a href="acoustics_I/converging_spherical.pdf" target="_blank" rel="noopener noreferrer">Converging spherical waves</a>: notes to wrap my mind around converging spherical waves.</p> </li>	
+
+<li><p><a href="classical/coriolis_slides.pdf" target="_blank" rel="noopener noreferrer">Coriolis and centrifugal forces</a>: slides on fictitious forces.</p></li>	
+  
+<li><p><a href="acoustics_II/press-release-wvgd.pdf" target="_blank" rel="noopener noreferrer">Double pressure-release parallel planes</a>: here is the solution for (1) a radially pulsating cylindrical source of sound extending between two pressure-release parallel planes. Prof. Blackstock mentions this kind of waveguide on page 432 in <i>Fundamentals of Physical Acoustics</i>. He solves for (2) a radially pulsating cylindrical source between two rigid, parallel planes on page 430, and assigns the case of (3) a radially pulsating cylindrical source between one rigid boundary and one pressure-release boundary (a 0th-order model of sound in the ocean) as problem 12-13. Interestingly, case (1) and (3) excite many modes, but case (2) excites only the lowest mode.</p></li>
+
+<li><a href="acoustics_I/echo/index.html" target="_blank" rel="noopener noreferrer">Echo Amphitheater</a>: something I did for fun to better understand the echoic properties of this enchanting natural formation in northern New Mexico.</li>
+
+<li><p><a href="acoustics_II/fourier_acoustics_notes.pdf" target="_blank" rel="noopener noreferrer">Fourier acoustics</a>: in the \(i(kx-\omega t)\) convention.</p></li>	
+
+<li><p><a href="nonlinear/fubini.html" target="_blank" rel="noopener noreferrer">Fubini solution</a>: The Fubini solution solves the lossless nonlinear approximate evolution equation (accurate to quadratic order) as a Fourier sine series from \(0 \leq \sigma < 1\), where \(\sigma\) is distance nondimensionalized by the shock-formation distance. The expansion coefficients \(B_n\) involve integrating over \(\theta\) from \(\theta = 0 \) to \(\theta = \pi\). The phase \(\Phi\) of the Fubini solution is given by the dimensionless phase of the lossless nonlinear approximate solution, \(\Phi = \theta + \sigma \sin(\Phi)\). This page answers the question, "Why does \(\Phi\) take on the same limits as \(\theta\) in the integration?"</p> 
+
+<li><p><a href="acoustics_II/greens_function_1.pdf" target="_blank" rel="noopener noreferrer">Green's functions</a>: working out the approach prescribed in <i>Theoretical Acoustics</i> by Morse and Ingard, I show that \(e^{ikR}/4\pi R\) solves the 3D inhomogeneous Helmholtz equation \((\Laplacian + k^2)f = -\delta(\vec{r}-\vec{r}_0)\). [<a href="acoustics_II/volume-integral-jackson.pdf" target="_blank" rel="noopener noreferrer">How to directly integrate</a> the first integral on the left-hand-side of Eq. (2)]. <a href="acoustics_II/greens_function_2.pdf" target="_blank" rel="noopener noreferrer">Here</a> I re-derive Morse and Ingard's integral equation (7.1.17), which is the Helmholtz-Kirchhoff integral. <a href="acoustics_II/greens_function_3.pdf" target="_blank" rel="noopener noreferrer">This</a> is a derivation of the Sommerfeld radiation condition. For much more on Green's functions, see <a href="wave/8.html#green" target="_blank" rel="noopener noreferrer">my notes from Prof. Hamilton's Wave Phenomena course</a>.</p> </li>
+	
+<li><p><a href="acoustics_I/energy_density.pdf" target="_blank" rel="noopener noreferrer">Linear energy density of sound in air</a>. The potential and kinetic energies being equal for progressive waves recovers a special case of the virial theorem.</p></li>
+	
+<li><p><a href="acoustics_I/blackstock_p_50.pdf" target="_blank" rel="noopener noreferrer">Intensity integral</a>: evaluation of the integral for intensity in Prof. Blackstock's <i>Fundamentals of Physical Acoustics</i>, Sec. 1E-3 (page 50). <a href="acoustics_I/intensity_calculation.pdf" target="_blank" rel="noopener noreferrer">Prof. Hamilton's approach</a>, setting \(f =\) pressure and \(g =\) particle velocity.</p></li>
+
+<li><p><a href="acoustics_I/linear_gradient.pdf" target="_blank" rel="noopener noreferrer">Linear sound speed gradient</a>: I use the calculus of variations to show that arcs of circles minimize the travel time between two points in a medium where the sound speed varies linearly (i.e., the upper ocean). <i>This recovers the result in "Acoustics: An Introduction to its Physical Principles and Applications" by Allan D. Pierce, section 8-3.</i></p></li>	
+
+<li><p><a href="../music/europe/masala_chai-compressed.pdf" target="_blank" rel="noopener noreferrer">Masala chai</a>: traditional Indian tea</p></li>
+
+<li><p><a href="acoustics_I/waves_on_string_Blackstock.pdf" target="_blank" rel="noopener noreferrer">Nonlinear wave equation for large deformations on string</a>: a clear step-by-step of Prof. Blackstock's pp. 23-24 of <i>Fundamentals of Physical Acoustics</i>.</p></li>
+  
+<li><p><a href="quantum/planck.pdf" target="_blank" rel="noopener noreferrer">Planck quantities:</a> based on Prof. Xiaoyan Shi's first Modern Physics lecture at UTD. </p></li>  
+  
+<li><p><a href="acoustics_II/Radiation-axisymmetric.pdf" target="_blank" rel="noopener noreferrer">Radiation from general axisymmetric spherical source</a>: re-organized for clarity.</p></li>
+
+<li><p><a href="acoustics_II/general_axisymmetric_enclosure.pdf" target="_blank" rel="noopener noreferrer">Sound in general axisymmetric spherical enclosure</a>: following Prof. Hamilton's approach for radiation due to a general axisymmetric spherical source.</a></p></li>
+
+<li><p><a href="acoustics_II/Thoughts-on-spherical-coords.pdf" target="_blank" rel="noopener noreferrer">Spherical symmetry in acoustics and quantum mechanics</a>: physically, why do eigenfrequencies of sound spherical coordinates not depend on the azimuthal index <i>m</i>?</a> (Confusingly the letters conventionally used for the indices corresponding to spherical harmonics in acoustics are flipped from those used in quantum mechanics!)</p></li>
+
+<li><p><a href="acoustics_I/Equality of Mixed Partials.pdf" target="_blank" rel="noopener noreferrer">Thoughts on the 1D linear wave equation</a>: thoughts from the first week of grad school. It turns out that d'Alembert, Euler, Bernoulli, and others had <a href="String Controversy.pdf" target="_blank" rel="noopener noreferrer">contentiously debated</a> these very issues 250 years ago!</a></p></li>
+
+<li><p><a href="acoustics_I/three-medium-problem.pdf" target="_blank" rel="noopener noreferrer">Three-medium-problem demystified</a> I derive the pressure reflection and transmission coefficients of the three-medium problem in a way that makes sense to me.</p></li>
+
+<li><p><a href="acoustics_I/Virial_theorem_and_strings.pdf" target="_blank" rel="noopener noreferrer">Virial theorem for string</a>: a well-known result of Hamilton's formulation of classical dynamics that relates the average kinetic energy of a system to its virial. In Acoustics I, we arrived at a special case of the theorem that showed that the kinetic and potential energies are equal for progressive waves on a string. I derive and apply the virial theorem to show the more general result.</p></li>
+</ul>
+</section>  
+
+
+<section id="projects">
+<h2>Class projects</h2>
+<ul>
+
+<li><p><a href="meta/index.html" target="_blank" rel="noopener noreferrer">Finite element replication of acoustic Dirac-like cone and double zero refractive index:</a> term project for Prof. Michael Haberman's course on acoustic metamaterials, ME 397, fall 2021.</p></li>
+
+<li><p><a href="geometry/index.html" target="_blank" rel="noopener noreferrer">Pappus's theorem:</a> interesting theorem derived for my end-of-semester group project in Prof. Mohammad Akbar's undergraduate geometry course at UTD, MATH 3321, summer 2020.</p></li>  
+
+<li><p><a href="ultrasonics/index.html" target="_blank" rel="noopener noreferrer">Theoretical Analysis of Ultrasonic Vortex Beam Generation with Single-Element Transducer and Phase Plate:</a> term project for Prof. Michael Haberman's course on ultrasonics, ME/EE 384N, spring 2022.</p></li>
+</ul>
+</section>
+
+<p><a href="..\index.html">&uparrow; Return to home</a></p>
+</body>
+</html>
