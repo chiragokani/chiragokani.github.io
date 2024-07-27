@@ -30,76 +30,7 @@ window.MathJax = {
   }
 };
 </script>	
-  <style>
-    body {
-      margin: 0 auto;
-      padding: 20px;
-      max-width: 900px; 
-      background: linear-gradient(to bottom, #192a56, #b53471);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: 'Times New Roman', Times, serif;
-      height: 100%;
-      line-height: 1.5;
-    }
-
-    .textbox {
-      background-color: rgba(211, 211, 211);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    nav {
-      background-color: #696969;
-      margin-bottom: 20px;
-    }
-
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-    }
-
-    nav ul li {
-      flex: 1;
-    }
-
-    nav ul li a {
-      display: block;
-      color: #fff;
-      text-decoration: none;
-      text-align: center;
-      padding: 10px;
-    }
-
-    nav ul li a:hover {
-      background-color: #555;
-    }
-
-    .expandable-content {
-      visibility: hidden;
-      height: 0;
-      overflow: hidden;
-      transition: visibility 0s, height 0.3s ease; 
-    }
-    
-    .expandable-content.expanded {
-      visibility: visible;
-      height: auto;
-    }
-    
-    .expandable-toggle {
-      cursor: pointer;
-      font: italic small-caps 12px/25px Times New Roman, serif;
-      color: #0000A0;
-    }
-  </style>
+<link rel="stylesheet" href="quals.css">
 
  <script>
     function toggleExpandableContent(id) {
@@ -114,20 +45,10 @@ window.MathJax = {
 
 </head>
 <body>
-<nav>
-    <ul>
-	 <li><a href="index.html">Home</a></li>
-      <li><a href="physical.html">Physical acoustics</a></li>
-      <li><a href="ultrasonics.html">Ultrasonics</a></li>
-      <li><a href="nonlinear.html">Nonlinear acoustics</a></li>
-      <li><a href="math.html">Math</a></li>
-    </ul>
-  </nav>
+<div class="textbox">
+<h1>Math</h1>
 
-  <div class="textbox">
-    <h1>Math</h1>
-
-    <p>This page covers the list of math topics provided <a href="https://www.me.utexas.edu/academics/graduate-program/qualifying-exams/acoustics-qualifying-exam" target="_blank" rel="noopener noreferrer">here</a>:</p>
+<p>This page covers the list of math topics provided <a href="https://www.me.utexas.edu/academics/graduate-program/qualifying-exams/acoustics-qualifying-exam" target="_blank" rel="noopener noreferrer">here</a>:</p>
 <blockquote>
 solutions of ordinary and partial differential equations, power series solutions, linear independence, elementary linear algebra, determinants, Taylor series, eigenvalue problems, orthogonality, Fourier series and integrals, integration by parts, vector algebra, complex numbers, special functions (e.g., Bessel functions and Legendre polynomials).
 </blockquote>
@@ -142,7 +63,8 @@ solutions of ordinary and partial differential equations, power series solutions
     <li><a href="#vector">Vector algebra & vector calculus</a></li>
     <li><a href="#PDE">Partial differential equations</a></li>
 </ol>	
-<p>Concepts and problems I find challenging are denoted by the wheel of dharma, <span style='font-size:24px;'>&#9784;</span>.</p>
+<p><a href="index.html">&leftarrow; Return to home</a></p>
+
 </div>
 
 
