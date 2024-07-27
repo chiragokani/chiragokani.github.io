@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+%\documentclass[a4paper,14pt]{extarticle} turn on for size 14 font
+
+%general things:
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!65!black,
+	linkcolor=blue!65!black,
+    filecolor=blue!65!black,    
+    urlcolor=blue!65!black,
+	citecolor=blue!65!black
+    } 
+\urlstyle{same}
+\usepackage{enumitem} %for (a) (b) (c) enumeration
+\usepackage{fullpage} %sets the margins to 1inch. Turn off for the more restrictive TeX default...
+\usepackage{epigraph} %I love epigraphs...
+\usepackage{appendix}
+\usepackage[figurename=Fig.]{caption}
+\captionsetup[figure]{font=small,labelfont=bf}
+\captionsetup[table]{font=small,labelfont=bf}
+
+
+%fonts:
+%\usepackage{kpfonts} %Thanks to AJ Lawrence for this one
+\usepackage{aurical} 
+
+%biblatex bibliography management:
+\usepackage[
+backend=biber, %change build settings from BibTeX to biber 
+style=numeric,
+sorting=none
+]{biblatex}
+\addbibresource{C:/Users/chira/Documents/research/refs/refs.bib} %path to your local notes
+
+%math
+\usepackage{amsmath}
+
+%this handles numbering according to section/subsection/subsubsection
+%\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{tkz-euclide} %use mathcha.io for generating beautiful figures in TeX
+\usepackage{braket} %quantum
+\usepackage{tikzducks} %ducks
+\usepackage{halloweenmath} %batties
+
+%color:
+\usepackage{xcolor}
+
+%beautiful boxed equations
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+\newtcbox{\maybe}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=yellow!65!black,
+    colback=yellow!15, boxrule=0.75pt,
+    #1}
+\newtcbox{\love}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=pink!65!black,
+    colback=pink!15, boxrule=0.75pt,
+    #1}
+\newtcbox{\eq}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=blue!65!black,
+    colback=yellow!10, boxrule=0.75pt,
+    #1}
+\newtcbox{\correct}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=green!65!black,
+    colback=green!10, boxrule=0.75pt,
+    #1}
+
+\newtcbox{\incorrect}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=red!65!black,
+    colback=red!10, boxrule=0.75pt,
+    #1}
+
+%text boxes
+\newtcolorbox{exercise}[2][%
+    enhanced, 
+    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colframe=black, boxrule=0.75pt, colbacktitle=gray!80!yellow,enhanced, colback=yellow!10!white,
+underlay={\begin{tcbclipinterior} 
+\draw[help lines,step=5mm,yellow!60!gray!45!white,shift={(interior.north west)}]
+(interior.south west) grid (interior.north east);
+\end{tcbclipinterior}} 
+attach boxed title to top center={yshift=-2mm},
+  title={#2},#1}
+
+\newtcolorbox{graytext}[2][%
+    enhanced, 
+    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colframe=gray!65!black,fonttitle=\bfseries, boxrule=0.75pt, colbacktitle=gray!85!black,enhanced,
+attach boxed title to top center={yshift=-2mm},
+  title={#2},#1}
+
+\newtcolorbox{bluetext}[2][%
+    enhanced, 
+    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colframe=blue!65!black,colback=blue!10,fonttitle=\bfseries, boxrule=0.75pt, colbacktitle=blue!85!black,enhanced,
+attach boxed title to top center={yshift=-2mm},
+  title={#2},#1}
+
+%User-defined commands
+%Ordering:
+\newcommand{\Order}{\mathcal{O}}
+%vector and tensor symbols:
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\tensor}[1]{\underline{\boldsymbol{#1}}} %may need to change to renewcommand. 
+\newcommand{\divergence}{\boldsymbol{\nabla}\cdot}
+\newcommand{\gradient}{\boldsymbol{\nabla}} 
+\newcommand{\curl}{\boldsymbol{\nabla}\times}
+\newcommand{\Laplacian}{\nabla^2}
+%\newcommand{\dAlambertian}{\Box^2}
+\newcommand{\T}{^{\mathsf{T}}}%transpose
+%even and odd:
+\newcommand{\even}{^{\mathrm{e}}} %even quantity in wavenumber
+\newcommand{\odd}{^{\mathrm{o}}} %odd quantity in wavenumber
+%micros/meso/macro-related subscripts
+\newcommand{\s}{_\mathrm{s}} %scattered quantity subscript
+\newcommand{\FTt}{\mathcal{F}_t} %time fourier transform
+\newcommand{\IFTt}{\mathcal{F}_t^{-1}} %inverse fourier transforms
+\newcommand{\FTx}{\mathcal{F}_x} %time fourier transform
+\newcommand{\IFTx}{\mathcal{F}_x^{-1}} %inverse fourier transforms
+\newcommand{\FTxy}{\mathcal{F}_{xy}}
+\newcommand{\IFTxy}{\mathcal{F}_{xy}^{-1}}
+\newcommand{\FTr}{\mathcal{F}_{\rho}}
+\newcommand{\IFTr}{\mathcal{F}_{\rho}^{-1}}
+\newcommand{\HT}{\mathcal{H}_{\rho}}
+\newcommand{\IHT}{\mathcal{H}_{\rho}^{-1}}
+\newcommand{\ex}{\hat{e}_x}
+\newcommand{\ey}{\hat{e}_y}
+\newcommand{\ez}{\hat{e}_z}
+%
+\newcommand{\rect}{\text{ rect }}
+\newcommand{\tri}{\text{ tri }}
+\newcommand{\circfn}{\text{ circ }}
+
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%D O C U M E N T        
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+% S T A R T S   
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+% H E R E
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+\title{Using Fourier acoustics to \\derive the Fresnel diffraction integral}
+\author{Chirag\footnote{\href{mailto:chiragokani@gmail.com}{\texttt{chiragokani@gmail.com}}}} %can use \Fontlukas or \Fontauri for calligraphic font
+\date{\today}
+\begin{document}
+\maketitle
+Given an arbitrary normal velocity distribution
+\begin{align*}
+\vec{u} &= (x,y,0,t) = u_0(x,y) e^{-i\omega t} \ez \,.
+\end{align*} 
+Follow the recipe for the calculation of the field. The 2D spatial Fourier transform of the source condition, and its mapping to a pressure source, is
+\begin{align*}
+U_0(k_x,k_y,0) &= \FTxy \{u_0(x,y)\}\,,\\
+P_0(k_x,k_y,0) &= \rho_0c_0 \frac{k}{k_z} U(k_x,k_y,0)\,,
+\end{align*}
+where now \(k_z\) is not \(\sqrt{k^2 - k_x^2 - k_y^2}\) but is rather approximated by its binomial expansion:
+\begin{align}\label{eq:kz}
+k_z \simeq k \left(1 - \frac{k_x^2 + k_y^2}{2k^2}\right)\,.
+\end{align}
+Then the solution of the paraxial equation is 
+\begin{align*}
+p_\omega(x,y,z) &= \IFTxy\{P_0(k_x,k_y) e^{ik_zz}\}\\
+&= \rho_0c_0 k\, \IFTxy \{U_0 (k_x,k_y) e^{ik_zz}/k_z\}\\
+&= \rho_0c_0 k\, \IFTxy \{U_0 (k_x,k_y)\} ** \IFTxy\{ e^{ik_zz}/k_z\}\\
+&= \rho_0c_0 k\, u(x,y) ** \frac{e^{ikr}}{i2\pi r}\,,
+\end{align*}
+where the convolution theorem has been used to arrive at the third line above, and where the result from class, \(\FTxy \{e^{ikr}/r\} = i2\pi e^{ik_z|z|}/k_z\), has been used to evaluate that line. Noting that \(r\simeq z[1 + (x^2+y^2)/2z^2]\) (rather than \(\sqrt{x^2 + y^2 + z^2}\)) in the Fresnel approximation, the above becomes
+\begin{align*}
+p_\omega(x,y,z) &= \rho_0c_0 k\, u(x,y) ** \frac{e^{ikz[1 + (x^2+y^2)/2z^2]}}{i2\pi z}\,,
+\end{align*}
+Writing the convolution explicitly results in 
+\begin{align}
+p_\omega(x,y,z) &= -\frac{ik\rho_0c_0 }{2\pi}\, \frac{e^{ikz}}{z} \iint_{-\infty}^\infty u(x_0,y_0) e^{ikz[(x-x_0)^2+(y-y_0)^2]/2z^2} dx_0dy_0\notag\\
+&= {-\frac{ik\rho_0c_0 }{2\pi}\, \frac{e^{ikz}}{z} \iint_{-\infty}^\infty u(x_0,y_0) e^{ik[(x-x_0)^2+(y-y_0)^2]/2z} dx_0dy_0 \,.}\label{eq:fresnel}
+\end{align}
+Equation ~\eqref{eq:fresnel} is precisely the Fresnel diffraction integral, which is traditionally derived by taking the Fresnel approximation of the Rayleigh integral.
+
+
+\printbibliography
+%Filters bibliography
+%\printbibliography[heading=subbibintoc,keyword={acoustics},title={Acoustics only}]
+%\printbibliography[heading=subbibintoc,keyword={electrodynamics},title={Electrodynamics only}]
+%\printbibliography[heading=subbibintoc,keyword={generalized},title={Generalized media only}]
+\end{document}

@@ -1,0 +1,37 @@
+audio { width: 300px; height: 30px; }
+
+body {
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.5;
+  max-width: 900px; /* Adjust this value as needed */
+  font-family: 'Times New Roman', Times, serif; /*Arial, sans-serif;*/
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.textbox {
+  background-color: rgba(241, 241, 241, 0.986);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.example {
+  background-color: rgb(223, 223, 223);
+  padding-top: 1px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.Q {
+  color:  #09008a ;
+}
+
+.aligncenter {
+text-align: center;
+}
