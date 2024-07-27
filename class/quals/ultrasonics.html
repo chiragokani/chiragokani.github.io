@@ -30,104 +30,14 @@ window.MathJax = {
   }
 };
 </script>	
-  <style>
-    body {
-      margin: 0 auto;
-      padding: 20px;
-      max-width: 900px; 
-      background: linear-gradient(to bottom, #192a56, #b53471);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: 'Times New Roman', Times, serif;
-      height: 100%;
-      line-height: 1.5;
-    }
-
-    .textbox {
-      background-color: rgba(211, 211, 211);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    nav {
-      background-color: #696969;
-      margin-bottom: 20px;
-    }
-
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-    }
-
-    nav ul li {
-      flex: 1;
-    }
-
-    nav ul li a {
-      display: block;
-      color: #fff;
-      text-decoration: none;
-      text-align: center;
-      padding: 10px;
-    }
-
-    nav ul li a:hover {
-      background-color: #555;
-    }
-
-    .expandable-content {
-      visibility: hidden;
-      height: 0;
-      overflow: hidden;
-      transition: visibility 0s, height 0.3s ease; 
-    }
-    
-    .expandable-content.expanded {
-      visibility: visible;
-      height: auto;
-    }
-    
-    .expandable-toggle {
-      cursor: pointer;
-      font: italic small-caps 12px/25px Times New Roman, serif;
-      color: #0000A0;
-    }
-  </style>
-
- <script>
-    function toggleExpandableContent(id) {
-      var content = document.getElementById(id);
-      if (content.classList.contains("expanded")) {
-        content.classList.remove("expanded");
-      } else {
-        content.classList.add("expanded");
-      }
-    }
-  </script>
+<link rel="stylesheet" href="quals.css">
 
 </head>
 <body>
-<nav>
-    <ul>
-	 <li><a href="index.html">Home</a></li>
-      <li><a href="physical.html">Physical acoustics</a></li>
-      <li><a href="ultrasonics.html">Ultrasonics</a></li>
-      <li><a href="nonlinear.html">Nonlinear acoustics</a></li>
-      <li><a href="math.html">Math</a></li>
-    </ul>
-  </nav>
-
   <div class="textbox">
     <h1>Ultrasonics</h1>
 
-<p>My main mode of study for ultrasonics was reviewing the homework assignments. The questions below are mostly based on the lecture notes and attempt to cover the most essential topics of the course.</p>
+<p>My main mode of study for ultrasonics was reviewing the homework assignments. The questions below are mostly based on the lecture notes and attempt to cover the most essential topics of the course. Introductory topics covered in the course are not listed above because they can be found elsewhere on this site. Index notation is covered in <a href="math.html#vector" target="_blank" rel="noopener noreferrer">the vector algebra and vector calculus section</a> of the Math page. Basic wave phenomena are covered in the "<a href="physical.html#1" target="_blank" rel="noopener noreferrer">What is a wave?</a>" section  of the Physical Acoustics page. The final sections of that page cover <a href="physical.html#13-14" target="_blank" rel="noopener noreferrer">diffraction</a> and <a href="physical.html#15" target="_blank" rel="noopener noreferrer">arrays</a>.</p>
 <ol>
     <li><a href="#elasticity">Elasticity</a></li>
     <li><a href="#EWE">Derivation of elastic wave equation</a></li>
@@ -136,7 +46,8 @@ window.MathJax = {
     <li><a href="#plates">Waves in plates</a></li>
     <li><a href="#signal">Signal processing</a></li>
 </ol>	
-<p>Introductory topics covered in the course are not listed above because they can be found elsewhere on this site. Index notation is covered in <a href="math.html#vector" target="_blank" rel="noopener noreferrer">the vector algebra and vector calculus section</a> of the Math page. Basic wave phenomena are covered in the "<a href="physical.html#1" target="_blank" rel="noopener noreferrer">What is a wave?</a>" section  of the Physical Acoustics page. The final sections of that page cover <a href="physical.html#13-14" target="_blank" rel="noopener noreferrer">diffraction</a> and <a href="physical.html#15" target="_blank" rel="noopener noreferrer">arrays</a>.</p>
+
+<p><a href="index.html">&leftarrow; Return to home</a></p>
 </div>
 
 
