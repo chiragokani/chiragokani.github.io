@@ -66,7 +66,7 @@ The scientist's urge to investigate, like the faith of the devout or the inspira
 </i></blockquote>
 <p align="right">&ndash;<a href="https://en.wikiquote.org/wiki/Max_Born" target="_blank" rel="noopener noreferrer">Max Born</a></p>
 
-<p>The scattering of waves is described by adding an inhomogeneous term (a \(\delta\) function) to the Helmholtz equation, which is solved by the Green's function. Green's functions in 1D, 2D, and 3D are developed in the first two sections. Reciprocity's constraints on the Green's function for situations in which there exist boundaries are then discussed. See <a href="green_normal.pdf" target="_blank" rel="noopener noreferrer">here</a> for Dr. Hamilton's notes on how to expand \(G\) using normal mode expansions (not covered in the lecture). The Helmholtz-Kirchhoff integral is derived. It is then shown that the multipole expansion can be expressed entirely in terms of Green's functions and their derivatives. The exact theory of scattering is then derived. Three useful approximations of of this exact theory are then derived: Fraunhofer (far-field), Born, and Rayleigh. The remainder of the course applies these approximations to the scattering of sound by bubbles.</p>
+<p>The scattering of waves is described by adding an inhomogeneous term (a \(\delta\) function) to the Helmholtz equation, which is solved by the Green's function. Green's functions in 1D, 2D, and 3D are developed in the first two sections. Reciprocity's constraints on the Green's function for situations in which there exist boundaries are then discussed. See <a href="green_normal.pdf" target="_blank" rel="noopener noreferrer">here</a> for Dr. Hamilton's notes on how to expand \(G\) using normal mode expansions (not covered in the lecture). The Helmholtz-Kirchhoff integral is derived. It is then shown that the multipole expansion can be expressed entirely in terms of Green's functions and their derivatives. The exact theory of scattering is then derived. Three useful approximations of of this exact theory are then derived: far-field, Born, and Rayleigh. The remainder of the course applies these approximations to the scattering of sound by bubbles.</p>
 
 
 <p>
@@ -78,7 +78,7 @@ The scientist's urge to investigate, like the faith of the devout or the inspira
 <li><a href="#hk">Helmholtz-Kirchhoff Integral</a></li>
 <li><a href="#multipole">Multipole expansion</a></li>
 <li><a href="#scattering">Scattering from inhomogeneities</a></li>
-<li><a href="#approximations">Fraunhofer, Born, and Rayleigh scattering</a></li>
+<li><a href="#approximations">Far-field, Born, and Rayleigh scattering</a></li>
 <li><a href="#bubbles_1">Born scattering from bubbles below resonance</a></li>
 <li><a href="#bubbles">Scattering from bubbles at arbitrary frequencies</a></li>
 </ul>	
@@ -639,9 +639,9 @@ Then Eq. \eqref{rayleigh5} can be written in terms of monopole strengths and dip
 </p>
 </div>
 
-<div class="textbox"><h2 id="approximations">Fraunhofer, Born, and Rayleigh scattering</h2>
-<p>Using the results of the previous section, several scattering approximations are now made. These approximations are increasingly liberal. The Fraunhofer (far-field) approximation is implicit and simply considers in far-field limit of the exact theory. The Born approximation builds on the far-field approximation and further assumes that the scattered field is much weaker than the incident field, making the scattering theory implicit. Rayleigh scattering builds on the Born approximation (though not historically) and further assumes the scatterer is subwavelength.</p>
-<h3>Fraunhofer approximation, \(r\gg a\)</h3>
+<div class="textbox"><h2 id="approximations">Far-field, Born, and Rayleigh scattering</h2>
+<p>Using the results of the previous section, several scattering approximations are now made. These approximations are increasingly liberal. The far-field approximation is implicit and simply considers in far-field limit of the exact theory. The Born approximation builds on the far-field approximation and further assumes that the scattered field is much weaker than the incident field, making the scattering theory implicit. Rayleigh scattering builds on the Born approximation (though not historically) and further assumes the scatterer is subwavelength.</p>
+<h3>Far-field approximation, \(r\gg a\)</h3>
 <p>
 The far field of the scattered wave is now considered, as illustrated schematically below:</p>
 <p align="middle"> <img src="scatterer_far.svg" width="330" height="auto"></p>
@@ -652,7 +652,7 @@ g(\vec{r}|\vec{r}_0) = \frac{e^{ik|\vec{r} - \vec{r}_0|}}{4\pi |\vec{r} - \vec{r
 where 
 \begin{align*}
 |\vec{r}- \vec{r}_0| &= \sqrt{(\vec{r} - \vec{r}_0)\cdot (\vec{r}- \vec{r}_0)}
-= \sqrt{r^2 - 2\vec{r}\cdot \vec{r}_0 + r_0^2} = r \left(1- 2\frac{\vec{r}\cdot \vec{r}}{r^2} + \frac{r_0^2}{r^2} \right)^{1/2}\,.
+= \sqrt{r^2 - 2\vec{r}\cdot \vec{r}_0 + r_0^2} = r \left(1- 2\frac{\vec{r}\cdot \vec{r}_0}{r^2} + \frac{r_0^2}{r^2} \right)^{1/2}\,.
 \end{align*}
 For \(r\gg a\), where \(a\) is the characteristic radius of the scatterer, binomial expansion and retention to linear order of the above expression leads to
 \begin{align*}
