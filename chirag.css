@@ -4,8 +4,8 @@ body {
   line-height: 1.5;
   max-width: 900px; /* Adjust this value as needed */
   font-family: 'Times New Roman', Times, serif;
-  text-align: justify;
-  text-justify: inter-word;
+  /*text-align: justify;
+  text-justify: inter-word;*/
   }
 
 h1 {
