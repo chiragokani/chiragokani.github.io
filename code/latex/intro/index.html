@@ -67,7 +67,7 @@ window.MathJax = {
 <li><a href="#bats">including bats</a></li>
 </ul>
 
-To download the final result of this step-by-step tutorial, see <a href="https://github.com/chiragokani/chiragokani.github.io/tree/main/code/latex/intro" target="_blank" rel="noopener noreferrer">here</a>.   
+To download the final result of this step-by-step tutorial, see <a href="https://github.com/chiragokani/chiragokani.github.io/tree/main/code/latex/intro" target="_blank" rel="noopener noreferrer">here</a> [<a href="sample.pdf" target="_blank" rel="noopener noreferrer">pdf</a>].   
 </p>
 
 <h2 id="install">Install \(\LaTeX\)</h2>
@@ -149,10 +149,11 @@ math goes &= here
 
 <h2 id="commands">User-defined commands</h2>
 <p>Include the following commands in your preamble. <code>\renewcommand</code> is used to redefine a pre-existing command.</p>
-<pre><code>\renewcommand{\vec}[1]{\mathbf{#1}} %Dr. Hamilton likes vectors denoted this way (boldface upright)
-\newcommand{\gradient}{\vec{\nabla}}
-\newcommand{\divergence}{\vec{\nabla}\cdot}
-\newcommand{\curl}{\vec{\nabla}\times}
+<pre><code>
+\renewcommand{\vec}[1]{\mathbf{#1}} %Dr. Hamilton likes vectors denoted this way (boldface upright)
+\newcommand{\gradient}{\boldsymbol{\nabla}}
+\newcommand{\divergence}{\boldsymbol{\nabla}\cdot}
+\newcommand{\curl}{\boldsymbol{\nabla}\times}
 \newcommand{\Laplacian}{\nabla^2}
 </code></pre>
 
@@ -163,6 +164,8 @@ math goes &= here
     <li>kpfonts: <code>\usepackage{kpfonts}</code></li>
     <li>Libertine: <code>\usepackage{libertine}</code></li>
 </ul>
+<p>For more fonts (in particular, those with complementary math support), see <a href="https://tug.org/FontCatalogue/mathfonts.html" target="_blank" rel="noopener noreferrer">https://tug.org/FontCatalogue/mathfonts.html</a>.</p>
+
 <h2 id="texstudio">Download TeXStudio</h2>
 <p>For a very good \(\LaTeX\) editor, I recommend <a href="https://www.texstudio.org/#home" target="_blank" rel="noopener noreferrer">TeXstudio</a>. Other options are Sublime Text, VSCode, etc. </p>
 
