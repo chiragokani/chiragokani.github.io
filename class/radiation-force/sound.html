@@ -60,6 +60,10 @@ window.MathJax = {
     <li><a href="sound.html#standing">Due to standing waves</a></li>
   </ul>
 <li><a href="sound.html#discussion">Is radiation force a linear or nonlinear effect?</a></li>
+  <ul>
+    <li><a href="sound.html#nonlinear">Arguments as to why radiation force is a nonlinear effect</a></li>
+    <li><a href="sound.html#linear">Arguments as to why radiation force is a linear effect</a></li>
+  </ul>
   </ul>
 
 <p>Kinetic and potential energy densities of fields predicted by linear acoustics are first derived from exact nonlinear expressions of the energies. [The acoustic Poynting theorem (a theorem that relates power and intensity) is then derived, which is written in terms of the energy densities of the linear acoustic fields. This derivation is not actually needed in the calculation of radiation force.] The acoustic radiation stress tensor is derived from the conservation of momentum and mass. Diagonal elements of the matrix representation of this tensor are related to the <i>mean excess pressure</i>, which can be written in terms of energy densities. The acoustic radiation force is calculated by appealing to the conservation of momentum and mass, which is written as a single differential equation in terms of the acoustic radiation stress tensor. </p> 
@@ -502,7 +506,7 @@ Assuming the form \(\)</p>
 <h3 id="discussion">Is radiation force a linear or nonlinear effect?</h3>
 <!--<p>Thanks to J. S. Hallveld, M. R. Haberman, P. S. Wilson, G. W. Swift, M. F. Hamilton, A. A. Atchley, and J. D. Maynard for conversations on this topic.</p>-->
 
-<h3 id="nonlinear">Arguments as to why radiation force is a nonlinear effect</h3>
+<h4 id="nonlinear">Arguments as to why radiation force is a nonlinear effect</h4>
 <p>
 In the <a href="sound.html#stress">derivation of the acoustic radiation stress tensor</a>, nonlinear terms in the momentum \eqref{eq:mom:exact} and continuity \eqref{eq:cont:exact} equations must be retained to obtain a nonzero stress tensor. Since radiation force is given by the surface integral of the acoustic radiation stress tensor [See Eq. \eqref{eq:mom:stress:int}], the radiation force is \(0\) if only linear terms in the momentum equation are retained. Thus radiation force is a nonlinear effect. </p>
 
@@ -511,7 +515,7 @@ In the <a href="sound.html#stress">derivation of the acoustic radiation stress t
 Radiation forces do not superpose, as can be seen by considering two plane waves with pressure amplitudes \(p_1\) and \(p_2\). If \(p_2 = 0\), the force on the object can be calculated by Eq. \eqref{eq:mom:stress:int} to be \(F_1\), and if \(p_1 = 0\), the force on the object can similarly be calculated to be \(F_2\). The radiation force \(F_{12}\) on an object insonified by <i>both</i> \(p_1\) and \(p_2\) is <i>not</i> \(F_1 + F_2\). Instead, the radiation stress tensor given by Eq. \eqref{eq:stress} must be re-calculated, and it will contain cross terms proportional to \(p_1p_2\) (and \(v_1v_2\), the corresponding velocity fields). Radiation force is a nonlinear effect because the superposition principle, a hallmark of linear phenomena, does not apply.
 </p>
 
-<h3 id="nonlinear">Arguments as to why radiation force is a linear effect</h3>
+<h4 id="linear">Arguments as to why radiation force is a linear effect</h4>
 <p>While admitting the above arguments, one might still hesitate to categorize radiation force as "nonlinear acoustics," a term that <i>implies that the governing wave equation is nonlinear</i> (For example, see the introduction of the Wikipedia entry for "<a href="https://en.wikipedia.org/wiki/Nonlinear_acoustics" target="_blank" rel="noopener noreferrer">Nonlinear Acoustics</a>"). The acoustic radiation stress tensor \eqref{eq:stress} and mean excess pressure \eqref{eq:excess} are formed by the squares of quantities that are solutions of the linear wave equation, and thus the calculation of radiation force does not involve solving any nonlinear wave equations. </p>
 
 <p>One might argue that linear quantities are squared when solving nonlinear wave equations by the perturbation techniques&mdash;see Sec. 2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[15]</a>. But these squares are then substituted into the nonlinear wave equations, which are in turn solved for higher-order solutions. Radiation force, in contrast, involves no "higher-order solutions" for the acoustic fields.</p>
