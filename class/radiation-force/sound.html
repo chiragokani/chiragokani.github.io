@@ -196,7 +196,7 @@ In orthonormal index notation, the \(ij^\mathrm{th}\) component of Eq. \eqref{eq
 \begin{align}\label{eq:stress:ind}
 {\sigma_{ij} = - \delta_{ij} \langle P-P_0 \rangle - \rho_0  \left\langle v_i v_j\right\rangle\,,}
 \end{align}
-recovering Eq. (7) of Ch. 6, Sec. 2.1.2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. The letter "\(\sigma\)" is used for the stress tensor rather than "\(S\)," which is reserved for the Poynting vector. In terms of the acoustic radiation stress tensor, Eq. \eqref{eq:mom:stress} becomes
+recovering Eq. (7) of Ch. 6, Sec. 2.1.2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. The letter "\(\sigma\)" is used for the stress tensor rather than "\(S\)," which is reserved for the Poynting vector. In terms of the acoustic radiation stress tensor, Eq. \eqref{eq:mom} becomes
 \begin{align}\label{eq:mom:stress}
 \boxed{\divergence \dyad{\sigma} = \vec{0}\,.}
 \end{align} 
@@ -365,7 +365,7 @@ where it has been noted that \(\hat{n}\) equals \(\hat{r}\) on the surface \(A_0
 \begin{equation}\label{eq:vs}
 \vec{v}_s = p_s \hat{k}_s /\rho_0c_0\,,
 \end{equation}
-where \(\vec{k}_s = k\hat{r}\) is the scattered wave vector, which is to say that the scattered wave is locally planar in the far field. Thus \(\langle \mathcal{L}_i\rangle = 0\), because the kinetic and potential energy densities are equal in plane progressive waves. Making use of the definition of the outer product (See the introduction to the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>), Eq. \eqref{eq:vs}, and the fact that \(\vec{v}_i \cdot \hat{r} = v_i\cos\psi\), the outer products in Eq. \eqref{eq:int:F:L:1} become
+where \(\vec{k}_s = k\hat{r}\) is the scattered wave vector, which is to say that the scattered wave is locally planar in the far field. Thus \(\langle \mathcal{L}_s\rangle = 0\), because the kinetic and potential energy densities are equal in plane progressive waves. Making use of the definition of the outer product (See the introduction to the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>), Eq. \eqref{eq:vs}, and the fact that \(\vec{v}_i \cdot \hat{r} = v_i\cos\psi\), the outer products in Eq. \eqref{eq:int:F:L:1} become
 \begin{align}
 (\vec{v}_s\otimes \vec{v}_s) \cdot \hat{r}\, dA_0 &= (\vec{v}_s \cdot \hat{r} \, dA_0) \vec{v}_s = p_s v_s \, \hat{r}\, dA_0/\rho_0c_0 \label{eq:outer:simp:1}\\
 (\vec{v}_i\otimes \vec{v}_s) \cdot \hat{r}\, dA_0 &= (\vec{v}_s \cdot \hat{r}\, dA_0) \vec{v}_i =  p_s \vec{v}_i \, dA_0/\rho_0c_0 \label{eq:outer:simp:2}\\
@@ -382,16 +382,34 @@ Using Eqs. and \eqref{eq:outer:simp:1}-\eqref{eq:L:is:2}, along with the fact th
 \end{align*}
 The first and last terms in the integrand cancel, resulting in 
 \begin{align}
-\vec{F} = -\frac{1}{c_0}\oint_{A_0} \left\langle p_s \vec{v}_i  +  p_i v_s \hat{r} + p_s v_s \hat{r} \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt}
+\boxed{\vec{F} = -\frac{1}{c_0}\oint_{A_0} \left\langle p_s \vec{v}_i  +  p_i v_s \hat{r} + p_s v_s \hat{r} \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt}}
 \end{align}
-where the terms in Eq. \eqref{eq:int:F:Westervelt} have been rearranged to match those of Eq. (12) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. {Note that "\(dA\)" in the first integral on the left-hand side of Eq. (11) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> should be boldfaced to indicate that it is a vector.}
+where the terms in Eq. \eqref{eq:int:F:Westervelt} have been rearranged to match the ordering of terms in Eq. (12) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. 
 </p>
 
-<p>Equation \eqref{eq:int:F:Westervelt} can be dotted into \(\hat{k}_i = \vec{k}_i/k\) to determine the component of the force in the direction of the incident wave. Noting that \(\vec{v}_i \cdot \hat{k}_i = v_i\) and \(\hat{r} \cdot \hat{k}_i = \cos\psi\), this component is
+<p>Equation \eqref{eq:int:F:Westervelt} can be dotted into \(\hat{k}_i = \vec{k}_i/k\) to determine the component of the force in the direction of the incident wave. Noting that \(\vec{v}_i \cdot \hat{k}_i = v_i\) and \(\hat{r} \cdot \hat{k}_i = \cos\psi\), this component is \(F_\parallel = -c_0^{-1}\oint_{A_0} \left\langle p_s v_i \cos\psi  +  p_i v_s  + p_s v_s \cos\psi\right\rangle    \, dA_0\). But since the scattered and incident fields are considered to be planar, one can write \(p_i \hat{k}_i = \vec{v}_i \rho_0c_0\) and \(p_s \hat{r} = \vec{v}_s \rho_0c_0\). Thus 
 \begin{align}
-F_\parallel &= -\frac{1}{c_0}\oint_{A_0} \left\langle p_s v_i  +  p_i v_s \cos\theta \right\rangle  \, dA_0  -\frac{1}{c_0}\oint_{A_0} \left\langle p_s v_s \right\rangle \cos\psi   \, dA_0 \,.\label{eq:int:F:Westervelt:parallel}
+p_s\vec{v}_i = v_s \rho_0c_0 p_i\hat{k}_i/\rho_0c_0 = p_iv_s \hat{k}_i \label{eq:squares:switch:1}\\
+p_i \vec{v}_s = v_i\rho_0c_0 p_s \hat{r}/\rho_0c_0 = p_s v_i\hat{r} \label{eq:squares:switch:2}
 \end{align}
-The quantity \(\langle p_s v_s\rangle\) in the second integral is identified as the time-averaged Poynting vector of the scattered wave. Since \(v_s = p_s/\rho_0c_0\), this quantity equals \(\langle p_s^2 \rangle/\rho_0c_0\), which can recast in terms of energy density by noting that this quantity equals \(2c_0 \langle \mathcal{E}_{s,V}\rangle\) from Eq. \eqref{eq:potential}. Since \(\langle \mathcal{E}_{s,V}\rangle = \langle \mathcal{E}_{s,T}\rangle = \langle \mathcal{E}\rangle/2\) in plane progressive waves, \(\langle p_s v_s\rangle = c_0 \langle \mathcal{E}_s\rangle\). Westervelt simplifies further by writing \(\langle \mathcal{E}_s\rangle\) in terms of the "asymptotic scattered intensity," but this quantity will not be introduced here. Westervelt also recasts the first integral in Eq. \eqref{eq:int:F:Westervelt:parallel} in terms of the power scattered and absorbed, but it will be more convenient here to write Eq. \eqref{eq:int:F:Westervelt:parallel} in terms of \(p_s\).
+Inserting Eqs. \eqref{eq:squares:switch:1} and \eqref{eq:squares:switch:2} into Eq. \eqref{eq:int:F:Westervelt} yields
+\begin{align}
+\vec{F} = -\frac{1}{c_0}\oint_{A_0} \left\langle p_iv_s \hat{k}_i   +  p_s v_i\hat{r} + p_s v_s \hat{r} \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt:switch}
+\end{align}
+Dotting Eq. \eqref{eq:int:F:Westervelt:switch} into the incident wave unit vector \(\hat{k}_i\) gives the force in the direction of the incident wave,
+\begin{align}
+\boxed{F_\parallel = -\frac{1}{c_0}\oint_{A_0} \left\langle p_i v_s   +  p_s v_i \cos\psi \right\rangle  \, dA_0  -\frac{1}{c_0}\oint_{A_0} \left\langle p_s v_s \right\rangle \cos\psi   \, dA_0 \,,}\label{eq:int:F:Westervelt:parallel}
+\end{align}
+recovering Eq. (13) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. </p>
+
+<p>The quantity \(\langle p_s v_s\rangle\) in the second integral of Eq. \eqref{eq:int:F:Westervelt:parallel} is identified as the time-averaged Poynting vector of the scattered wave. Since \(v_s = p_s/\rho_0c_0\), this quantity equals \(\langle p_s^2 \rangle/\rho_0c_0\), which can be recast in terms of energy density by noting that this quantity equals \(2c_0 \langle \mathcal{E}_{s,V}\rangle\) from Eq. \eqref{eq:potential}. Since \(\langle \mathcal{E}_{V}\rangle = \langle \mathcal{E}_{T}\rangle = \langle \mathcal{E}\rangle/2\) in plane progressive waves, \(\langle p_s v_s\rangle = c_0 \langle \mathcal{E}_s\rangle\). Normalizing \(\langle \mathcal{E}_s\rangle\) to \(\langle \mathcal{E}_i\rangle = \langle p_i^2 \rangle/ \rho_0c_0^2 = p_0^2/2\rho_0c_0^2\), where \(p_0\) is the pressure amplitude of the incident plane wave, the second integral of Eq. \eqref{eq:int:F:Westervelt:parallel} can be written as \(-\langle\mathcal{E}_i\rangle \oint \gamma \cos\psi\, dA_0\), where \(\gamma \equiv \langle\mathcal{E}_s\rangle/\langle\mathcal{E}_i\rangle\) is the "the magnitude of the mean asymptotic scattered intensity per unit incident intensity" <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>.</p>
+
+<p>Meanwhile, Westervelt identifies \(-c_0^{-1} \oint \langle p_i u_s + p_s u_i \cos\theta \rangle dA \) as \(\langle \mathcal{E_i}\rangle (\pi_s + \pi_a)\) {See Eq. (14) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>}, where \(\pi_a\) and \(\pi_s\) are "the cross sections for absorption and scattering respectively" <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. The argument for this identification is based on Lamb's discussion of cross terms in the product \((p_i + p_s)(\vec{v}_i + \vec{v}_s)\). Lamb writes that the surface integral over the time average of these cross terms in the far field equals "the total rate at which energy is withdrawn from the primary waves, in consequence of the presence of the obstacle" <a href="refs.html" target="_blank" rel="noopener noreferrer">[14]</a>.
+
+</p>
+
+
+<p>
 </p>
 
 <p>Similarly, the force in the direction perpendicular to \(\vec{v}_i\) can be calculated by dotting Eq. \eqref{eq:int:F:Westervelt} into a unit vector \(\hat{m}\) that is perpendicular to \(\vec{v}_i\). Since \(\vec{v}_i \cdot \hat{m} = 0\), the first term in Eq. \eqref{eq:int:F:Westervelt} is zero, leaving
@@ -406,22 +424,28 @@ Westervelt claims in Ref. <a href="refs.html" target="_blank" rel="noopener nore
 F_\perp = -c_0^{-1} \oint_{A_0} \langle p_s v_s\rangle   \hat{r}\cdot \hat{m} \, dA_0\,.
 \end{align}
 </blockquote>
-<i>(This discussion is incomplete&mdash;I will follow up on this point.)</i> 
+<i>This discussion is incomplete&mdash;I will follow up on this point. Is not \(\hat{r} \cdot \hat{m}\) simply \(\sin\psi\)? For example, suppose the incident wave is oriented along the Cartesian unit vector \(\hat{z}\). Then \(\hat{m}\) becomes the cylindrical radial unit vector \(\hat{s} = \cos\phi \hat{x} + \sin\phi \hat{y}\), which is perpendicular to \(\hat{z}\). Since the spherical radial unit vector in terms of the Cartesian unit vectors is \(\hat{r} = \sin\theta \cos\phi \hat{x} + \sin\theta \sin\phi \hat{y} + \cos\theta \hat{z}\), the quantity \(\hat{r} \cdot \hat{s}\) is
+\begin{align}
+\hat{r} \cdot \hat{s} &= \sin\theta \cos^2\phi + \sin\theta \sin^2\phi = \sin\theta\,.
+\end{align}
+</i> 
 </p>
 
-<p>As mentioned above, it is preferred to write Eqs. \eqref{eq:int:F:Westervelt}, \eqref{eq:int:F:Westervelt:parallel}, and \eqref{eq:int:F:Westervelt:perp} in terms of \(p_s^2\), because linear scattering theory usually expresses the scattered field in terms of \(p_s\), as will be seen in the <a href="sound.html#traveling-my" target="_blank" rel="noopener noreferrer">following section</a>. Using the relations \(\vec{v}_i = v_i \hat{k}_i = p_i \hat{k}_i/\rho_0c_0\) and \(v_s = p_s/\rho_0c_0\), Eq. \eqref{eq:int:F:Westervelt} becomes 
+<!--
+<p>It might be desired to write Eqs. \eqref{eq:int:F:Westervelt}, \eqref{eq:int:F:Westervelt:parallel}, and \eqref{eq:int:F:Westervelt:perp} in terms of \(p_s^2\), because linear scattering theory usually expresses the scattered field in terms of \(p_s\), as will be seen in the <a href="sound.html#traveling-my" target="_blank" rel="noopener noreferrer">following section</a>. Using the relations \(\vec{v}_i = v_i \hat{k}_i = p_i \hat{k}_i/\rho_0c_0\) and \(v_s = p_s/\rho_0c_0\), Eq. \eqref{eq:int:F:Westervelt} becomes 
 \begin{align}
-\boxed{\vec{F} = -\frac{1}{\rho_0c_0^2}\oint_{A_0} \left\langle p_s p_i \hat{k}_i  +  p_i p_s \hat{r} + p_s^2 \hat{r} \right\rangle  \, dA_0\,,} \label{eq:int:F}
+{\vec{F} = -\frac{1}{\rho_0c_0^2}\oint_{A_0} \left\langle p_i p_s (\hat{k}_i + \hat{r}) + p_s^2 \hat{r} \right\rangle  \, dA_0\,,} \label{eq:int:F}
 \end{align}
 while its parallel and perpendicular components given by Eqs. \eqref{eq:int:F:Westervelt:parallel} and \eqref{eq:int:F:Westervelt:perp} respectively become
 \begin{align}
-\boxed{F_\parallel = -\frac{1}{\rho_0c_0^2}\oint_{A_0} \left\langle p_s p_i  +  p_i p_s \cos\psi + p_s^2  \cos\psi  \right\rangle \, dA_0}\label{eq:int:F:parallel}
+{F_\parallel = -\frac{1}{\rho_0c_0^2}\oint_{A_0} \left\langle p_ip_s(1+\cos\psi)  + p_s^2  \cos\psi  \right\rangle \, dA_0}\label{eq:int:F:parallel}
 \end{align}
 and
 \begin{align}
-\boxed{F_\perp = -\frac{1}{\rho_0c_0^2} \oint_{A_0} \langle p_s^2\rangle   \hat{r}\cdot \hat{m} \, dA_0\,.} \label{eq:int:F:perp}
+{F_\perp = -\frac{1}{\rho_0c_0^2} \oint_{A_0} \langle p_s^2\rangle   \hat{r}\cdot \hat{m} \, dA_0\,.} \label{eq:int:F:perp}
 \end{align}
 </p>
+-->
 
 <!--
 <p>For convenience, complex numbers are used to describe wave fields, where the physical wave field corresponds to the real part of the complex values. As such, \(p\) and \(\vec{v}\) in the formalism to follow will be given by 
