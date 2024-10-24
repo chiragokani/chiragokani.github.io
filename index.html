@@ -11,17 +11,11 @@
 <script>
 window.MathJax = {
   tex: {
-    tags: 'ams'
-  }
-};
-</script>
-<script type="text/javascript">
-window.MathJax = {
-  tex: {
+    tags: 'ams',
     macros: {
       Order: "{\\mathcal O}",
-      dyad: ['\\boldsymbol{#1}',1],
-      triad: ['\\tilde{#1}',1],
+      dyad: ['\\underline{#1}',1],
+      triad: ['\\boldsymbol{#1}',1],
       quadrad: ['\\mathsf{#1}',1],
       divergence: "{\\vec{\\nabla}\\cdot}",
       gradient: "{\\vec\\nabla}",
