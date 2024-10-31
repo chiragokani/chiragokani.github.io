@@ -422,18 +422,34 @@ recovering Eq. (13) of Ref. <a href="refs.html" target="_blank" rel="noopener no
 F_\perp
 &= -\frac{1}{c_0}\oint_{A_0} \left\langle p_i v_s \hat{r}\cdot \hat{m} + p_s v_s \hat{r}\cdot \hat{m} \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt:perp}
 \end{align}
-Westervelt claims in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> that the surface integral over the first term in the integrand of Eq. \eqref{eq:int:F:Westervelt:perp} evaluates to zero, but the logic is not clear:
+Westervelt claims in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> that the surface integral over the first term in the integrand of Eq. \eqref{eq:int:F:Westervelt:perp} evaluates to zero. His argument is based on replacing the scattering object with a simple sources with source strength \(q\). Westervelt writes (The notation has been adjusted to match that of the present discussion) <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>, </p>
 <blockquote>
-[S]ince the interaction force density is in the direction of the incident wave, the total interaction force can have no component at right angles to the incident wave. This proves that \(c_0^{-1} \hat{m} \cdot \oint \langle p_i v_s \rangle \hat{r}dA_0\) vanishes and that the perpendicular force is given simply by 
+<p>Consider the scattering object to be replaced by a volume distribution of simple sources. Choose the phase and amplitude of these sources in such a way that the field radiated by the sources is identical (this identity need only occur asymptotically at a large distance from the source distribution) with the scattered field of the object. This is equivalent to replacing the scattering object by a suitable collection of multipoles[,] although there is here no restriction that all the multipoles be located at the same point. </p>
+
+<p>The force on the scattering object will be equal to the force on the source distribution by virtue of the identity of the far field in each case. The force on the sources is equal to the force arising from their radiation (equal to \(-\rho_0 \oint d\vec{A}_0\cdot \langle \vec{v}_s \otimes \vec{v}_s\rangle\)) plus the force arising from the interaction of the unperturbed incident wave with the sources. The latter force is the volume integral, over the source distribution, of an interaction force density equal to \(\rho_0 \langle q \vec{v}_i\rangle\), where \(\rho_0\) is the density of the medium, \(q\) is the instantaneous source strength density (that is, the volume of fluid generated per unit time per unit volume), and \(\vec{v}_i\) is the particle velocity of the incident wave. It is clear that, since the interaction force density is in the direction of the incident wave, the total interaction force can have no component at right angles to the incident wave. This proves that \(c_0^{-1} \hat{m} \cdot \oint \langle p_i v_s \rangle \hat{r}dA_0\) vanishes and that the perpendicular force is given simply by 
 \begin{align}
 F_\perp = -c_0^{-1} \oint_{A_0} \langle p_s v_s\rangle   \hat{r}\cdot \hat{m} \, dA_0\,.
-\end{align}
+\end{align}</p>
 </blockquote>
-<i>This discussion is incomplete&mdash;I will follow up on this point. Is not \(\hat{r} \cdot \hat{m}\) simply \(\sin\psi\)? For example, suppose the incident wave is oriented along the Cartesian unit vector \(\hat{z}\). Then \(\hat{m}\) becomes the cylindrical radial unit vector \(\hat{s} = \cos\phi \hat{x} + \sin\phi \hat{y}\), which is perpendicular to \(\hat{z}\). Since the spherical radial unit vector in terms of the Cartesian unit vectors is \(\hat{r} = \sin\theta \cos\phi \hat{x} + \sin\theta \sin\phi \hat{y} + \cos\theta \hat{z}\), the quantity \(\hat{r} \cdot \hat{s}\) is
+
+<p>
+Meanwhile, Westervelt regards \(\hat{r} \cdot \hat{m}\) as \(\cos\beta\), where <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a></p>
+<blockquote>
+\(beta\) is the angle formed by \(\hat{m}\) and...the mean scattered intensity vector. Should the object scatter but a single beam at the angle \(\theta\) with respect to the incident wave, \(\cos\beta = \sin\psi\) in the direction of [the mean scattered intensity vector], and the expression given in 1951 <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a> yields the correct answer.
+</blockquote>
+<p>By "the expression given in 1951," I think Westervelt is referring to the imaginary part of Eq. (13) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a>, but he does not point to which specific equation of the 1951 paper he is referring to. Westervelt elaborates <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>,</p>
+
+<blockquote>The force at right angles to the incident beam is in a direction which depends on the nature of the scatterer. Its component in any particular direction is clearly given by \(-E_I \oint \gamma \cos\beta \, dA_0\), where \(\beta\) is the angle between the particular direction and \(\vec{\gamma}\). An obvious error was made in 1951 where this force was stated to be \(-E_I \oint \gamma \sin\psi \, dA_0\) which, as can be seen from Fig. 1, is true only if \(\gamma = 0\) everywhere except when \(\cos\beta = \sin\psi\); such a condition can for example occur when the object scatters but one specular component.</blockquote>
+
+<p>Westervelt's distinction between \(\beta\) and \(\psi\) (Westervelt's \(\theta\)) is not clear. Does Westervelt implicitly consider \(\theta\) to be the spherical polar angle? (There is nothing in his papers that indicate this. Here too, the argument is written independent of coordinate systems, and to emphasize this, \(\psi\) was used to denote the angle between the incident and scattered wave vectors, while \(\theta\) is reserved for the spherical polar angle). If Westervelt tacitly assumed that \(\theta\) is the spherical polar angle, then \(\hat{r} \cdot \hat{m} = \sin\psi = \cos\beta\), which is generally not equal to \(\sin\theta\), as is now seen:</p>
+
+<p>Suppose the incident wave is oriented along the Cartesian unit vector \(\hat{z}\). Only if \(\hat{m}\) is taken to be the cylindrical radial unit vector \(\hat{s} = \cos\phi \hat{x} + \sin\phi \hat{y}\) (which is perpendicular to \(\hat{z}\)) does \(\hat{r} \cdot \hat{s} = \sin\theta\). Indeed, the spherical radial unit vector in terms of the Cartesian unit vectors is \(\hat{r} = \sin\theta \cos\phi \hat{x} + \sin\theta \sin\phi \hat{y} + \cos\theta \hat{z}\), the quantity \(\hat{r} \cdot \hat{s}\) is
 \begin{align}
 \hat{r} \cdot \hat{s} &= \sin\theta \cos^2\phi + \sin\theta \sin^2\phi = \sin\theta\,.
 \end{align}
-</i> 
+Meanwhile, if \(\hat{m} = \hat{x}\) (which is also perpendicular to \(\hat{z}\)), then 
+\[\hat{r}\cdot \hat{x} = \sin\theta \cos^2\phi \neq \sin\theta\,.\]
+Is an argument like this along the lines of what Westervelt means?
 </p>
 
 <!--
