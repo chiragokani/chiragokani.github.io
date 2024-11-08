@@ -18,8 +18,11 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      vecxi: "{\\boldsymbol{\\xi}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
       gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times\\,}",
       Laplacian: "{\\nabla^2}",
@@ -42,14 +45,13 @@ window.MathJax = {
       tri: "{\\mathrm{\\,tri\\,}}",
       circfn: "{\\mathrm{\\,circ\\,}}",
       sinc: "{\\mathrm{\\,sinc\\,}}",
-      ex: "{\\hat{e}_x}",           
-      ey: "{\\hat{e}_y}",
-      ez: "{\\hat{e}_z}",
-      ephi: "{\\hat{e}_\\phi}",
+      ex: "{\\vec{e}_x}",           
+      ey: "{\\vec{e}_y}",
+      ez: "{\\vec{e}_z}",
+      ephi: "{\\vec{e}_\\phi}",
       thetaHP: "{\\theta_{\\mathrm{HP}}}",
       erf: "{\\mathrm{\\,erf\\,}}",
-      NF: "{_\\mathrm{NF}}",
-      
+      NF: "{_\\mathrm{NF}}"      
     }
   }
 };
@@ -557,13 +559,13 @@ Otherwise, \(\sin\phi = \sqrt{1- \cos^2\phi}\), which is imaginary and correspon
 
 <p>Now the amplitudes \(A\) and \(\xi_0\) are related to each other. Following Morse and Ingard's approach, the (exact) momentum equation is appealed to: 
 \begin{align*}
-\rho \frac{D\vec{u}}{Dt} = \rho \frac{D^2 \vec{\xi}}{D t^2} = -\gradient P\,,
+\rho \frac{D\vec{u}}{Dt} = \rho \frac{D^2 \vecxi}{D t^2} = -\gradient P\,,
 \end{align*}
 where \(D/Dt = \partial/\partial t + (\vec{v}_0 + \vec{u})\cdot \gradient\) is the material derivative. Linearization results in 
 \begin{align*}
-\rho_0 \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \gradient \bigg)^2 \vec{\xi} = -\gradient p\,.
+\rho_0 \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \gradient \bigg)^2 \vecxi = -\gradient p\,.
 \end{align*}
-Since \(\vec{\xi}\) and \(\vec{v}_0\) are perpendicular, i.e., \(\vec{\xi} = \xi\ex\) and \(\vec{v} = v_0\ey\), the momentum equation reduces to 
+Since \(\vecxi\) and \(\vec{v}_0\) are perpendicular, i.e., \(\vecxi = \xi\ex\) and \(\vec{v} = v_0\ey\), the momentum equation reduces to 
 \begin{align}
 \frac{\partial p}{\partial x} &= -\rho_0 (i\omega  + v_0 \partial/\partial y)^2 \notag\\
 &=-\rho_0 (-i\omega + ik_z v_0)^2 \xi \notag\\
@@ -651,7 +653,7 @@ Now the radiation due to a piston in a crossflow is studied. Determining the bou
 
 <p>Ingard pointed out that the fundamental boundary condition is on the displacement field, not the velocity. Note that the velocity field is given in terms of the displacement field by
 \begin{align}
-\vec{u} &= \frac{D\vec{\xi}}{Dt} = \bigg(\frac{\partial }{\partial t} + \vec{v}_0 \cdot \gradient\bigg) \vec{\xi}\,, \label{eq:disp}\tag{1}
+\vec{u} &= \frac{D\vecxi}{Dt} = \bigg(\frac{\partial }{\partial t} + \vec{v}_0 \cdot \gradient\bigg) \vecxi\,, \label{eq:disp}\tag{1}
 \end{align}
 and let the \(z\) component of the displacement be
 \begin{align*}
@@ -707,7 +709,7 @@ k_z &= \sqrt{(k_0 - Mk_x)^2 - k_x^2 - k_y^2}\,,\quad k_0 = \omega/c_0\,.
 From the 2D spatial Fourier transform of momentum equation, 
 \begin{align*}
 \vec{U} &= \frac{\vec{k}P}{\rho_0 c_0 (k_0 - \vec{M} \cdot \vec{k})} \\
-k_z &= \sqrt{(k_0 - \vec{M}_\perp \cdot \vec{\kappa})^2 - \kappa^2}
+k_z &= \sqrt{(k_0 - \vec{M}_\perp \cdot \veckappa)^2 - \kappa^2}
 \end{align*}
 where \(\vec{M}_\perp = M_x \ex + M_y\ey\)
 </p>
