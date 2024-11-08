@@ -18,9 +18,12 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
-      grad: "{\\boldsymbol\\nabla}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      vecxi: "{\\boldsymbol{\\xi}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times\\,}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
@@ -40,10 +43,10 @@ window.MathJax = {
       tri: "{\\mathrm{\\,tri\\,}}",
       circfn: "{\\mathrm{\\,circ\\,}}",
       sinc: "{\\mathrm{\\,sinc\\,}}",
-      ex: "{\\hat{e}_x}",           
-      ey: "{\\hat{e}_y}",
-      ez: "{\\hat{e}_z}",
-      ephi: "{\\hat{e}_\\phi}"
+      ex: "{\\vec{e}_x}",           
+      ey: "{\\vec{e}_y}",
+      ez: "{\\vec{e}_z}",
+      ephi: "{\\vec{e}_\\phi}"
     }
   }
 };
@@ -77,11 +80,11 @@ window.MathJax = {
 <p>Let \(f(x,y,z) = e^{ikr}/r\) be the functional dependence of the radiation due to a point source at \(r=0\) (i.e., the amplitude factor has been neglected), where \(r = \sqrt{x^2+y^2+z^2}\) and \(\rho = \sqrt{x^2 + y^2}\). To obtain the plane wave decomposition (angular spectrum) of the spherical wave in all space, first calculate the 2D spatial Fourier transform of the wave at the source \(f(x,y,0)\): 
 \begin{align*}
 F_0(\kappa) = F_0(k_x,k_y) &= \FTxy \{f(x,y,0)\} = \iint_{-\infty}^\infty \frac{e^{ik\rho}}{\rho} e^{-i(k_xx + k_yy)}\, dx\, dy\\
-&= \FTxy \{f(x,y,0)\} = \iint_{-\infty}^\infty \frac{e^{ik\rho}}{\rho} e^{-i\vec{\kappa}\cdot \vec{\rho}} \rho \, d\rho \, d\phi
+&= \FTxy \{f(x,y,0)\} = \iint_{-\infty}^\infty \frac{e^{ik\rho}}{\rho} e^{-i\veckappa\cdot \vecrho} \rho \, d\rho \, d\phi
 \end{align*}
-As before, due to axisymmetry, take \(\vec{\kappa} = \kappa \hat{e}_x\), giving
+As before, due to axisymmetry, take \(\veckappa = \kappa \vec{e}_x\), giving
 \begin{align*}
-\vec{\kappa} \cdot \vec{\rho} = \kappa\rho \cos\phi\,.
+\veckappa \cdot \vecrho = \kappa\rho \cos\phi\,.
 \end{align*}
 So
 \begin{align*}
