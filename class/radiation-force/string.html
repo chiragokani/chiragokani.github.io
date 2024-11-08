@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiation force of a string</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    tags: 'ams',
+    macros: {
+    Order: "{\\mathcal O}",
+    vec: ['\\mathbf{#1}',1],
+    dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+    divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+    gradient: "{\\boldsymbol\\nabla}",
+    curl: "{\\boldsymbol\\nabla\\times\\,}",
+    Laplacian: "{\\nabla^2}",
+    Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
+    }
+  }
+};
+</script>	
+<link rel="stylesheet" href="..\..\chirag.css">
+</head>
+<body>
+
+<h2>Radiation force of a string</h2>
+  <ul>
+  <li><a href="string.html#linear">As a consequence of linear equations of motion</a></li>
+  <li><a href="string.html#nonlinear">As a consequence of nonlinear equations of motion</a></li>
+  </ul>
+
+
+<h3 id="linear">As a consequence of linear equations of motion</h3>
+<p>The 1D wave equation is derived by setting the transverse force in the string \(F_y\) equal to \(m \ddot{\xi}= \rho \Delta x \ddot{\xi}\). Denoting the tension in the string \(T\), the transverse force is \(T\sin [\theta(x + \Delta x)] - T\sin[\theta(x)]\), where \(\theta(x,t)\) is the deflection angle of the string. Assuming \(\theta \ll 1\) allows for the transverse force to be written as \(T[\theta(x + \Delta x) -\theta(x)]\), so the equation of motion becomes 
+\[\rho\Delta x \ddot{\xi} = T[\theta(x + \Delta x) -\theta(x)].\] 
+Dividing this equation by \(\Delta x\) and taking the limit as \(\Delta x \to 0\) yields
+\[\rho \ddot{\xi} = T\frac{\partial \theta}{\partial x},\]
+Noting that \(\partial \xi /\partial x = \tan \theta \simeq \theta\) results in
+\[\frac{\partial^2\xi}{\partial x^2} - \frac{1}{c_0^2} \frac{\partial^2\xi}{\partial t^2} = 0,\]
+where \(c_0 = \sqrt{T/\rho}\). </p>
+
+<p>For a fixed-fixed string of length \(l\), the solution of the 1D wave equation above is
+\[\xi(x,t) = \sin(n\pi x/l)[A \sin (2\pi t/\tau_n) + B\cos (2\pi t/\tau_n)]\,,\]
+where \(n = 1, 2, 3, \dots\), and where \(\tau_n = 2l/cn\). Consider the \(n = 1\) mode, for which 
+\begin{equation}\label{eq:string:tau}
+\tau_n = 2l/c\,.
+\end{equation}
+In Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[1]</a>, Beyer extends <a href="pendulum.html#adiabat">the relation from adiabatic invariance</a> 
+\begin{align}\label{eq:string:adiabat}
+\frac{F\,dl}{\langle E\rangle} = \frac{d\tau}{\tau}
+\end{align}
+to discuss the radiation force in this situation. Combining Eqs. \eqref{eq:string:tau} and \eqref{eq:string:adiabat} yields the radiation force,
+\begin{align}\label{eq:string:adiabat:1}
+\boxed{F = \frac{d\tau}{dl} \frac{\langle E\rangle}{\tau} = \frac{2}{c} \frac{\langle E\rangle}{2l/c} = {\langle E\rangle}/{l}\,.}
+\end{align}
+</p>
+
+<h3 id="nonlinear">As a consequence of nonlinear equations of motion</h3>
+<p>Balancing the forces in the transverse (\(x\)) direction led to the linear wave equation. Balancing the forces in the \(y\) direction yields
+\begin{align}\label{eq:string:force:1}
+F_x = T\cos[\theta(x + \Delta x)] - T\cos[\theta(x)]\,.
+\end{align}
+For small \(\theta\), Eq. \eqref{eq:string:force:1} becomes 
+\begin{align}\label{eq:string:force:2}
+F_x = \frac{T}{2} [-\theta^2(x + \Delta x) + \theta^2(x)]\,.
+\end{align}
+Multiplying and dividing Eq. \eqref{eq:string:force:2} by \(\Delta x\) and taking the limit as \(\Delta x \to 0\) yields
+\begin{align}
+F_x &= -\Delta x \frac{T}{2} \lim_{\Delta x \to 0} \frac{\theta^2(x + \Delta x) - \theta^2(x)}{\Delta x} = -\Delta x \frac{T}{2} \frac{\partial \theta^2}{\partial x} \,. \label{eq:string:force:3}
+\end{align}
+Since \(\partial \xi/\partial x = \tan\theta \simeq \theta\), \(\theta^2 = (\partial \xi/\partial x)^2\), so Eq. \eqref{eq:string:force:3} becomes
+\begin{align}
+F_x &=
+-\Delta x \frac{T}{2} \frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right)^2 \,. \label{eq:string:force:4}
+\end{align}
+Taking the time average of Eq. \eqref{eq:string:force:4} yields the radiation force in the \(x\) direction:
+\begin{align}
+\boxed{\langle F_x \rangle =
+-\Delta x \frac{T}{2}\left\langle \frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right)^2\right\rangle \,.} \label{eq:string:force}
+\end{align}
+It can be seen that Eq. \eqref{eq:string:force} has arisen due to the nonlinear equation of motion given by Eq. \eqref{eq:string:force:3}.
+</p>
+
+<p>The relationship between Eqs. \eqref{eq:string:adiabat:1} and \eqref{eq:string:force} is not immediately apparent. The two forces to do not appear to be equivalent, even though they are both formed by quadratic quantities of the wave variable \(\xi\). These derivations show that radiation force can arise from to linear or nonlinear governing equations of motion.</p>
+
+<p><a href="index.html">&leftarrow; Return to radiation force homepage</a></p>
+</body>
+</html>
