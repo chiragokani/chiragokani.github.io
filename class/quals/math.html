@@ -18,14 +18,15 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      div: "{\\boldsymbol{\\nabla}\\cdot}",
-      grad: "{\\boldsymbol\\nabla}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
       Order: "{\\mathcal O}",
-      T: "{^\\mathsf{T}}"
+      T: "{^\\mathsf{T}}",
+      vecell: "{\\boldsymbol\\ell}",
     }
   }
 };
@@ -819,10 +820,10 @@ Taking the square root of equation (\ref{triangle3}) gives the triangle inequali
 </div>
 </li>
 
-<li>\(a_x\hat{x} + a_y\hat{y} + a_z\hat{z}\) is a Cartesian 3-vector. Does the subset of all vectors with \(a_z = 0\) constitute a vector space? If so, what is its dimension; if not, why not?
+<li>\(a_x\vec{e}_x + a_y\vec{e}_y + a_z\vec{e}_z\) is a Cartesian 3-vector. Does the subset of all vectors with \(a_z = 0\) constitute a vector space? If so, what is its dimension; if not, why not?
 <span class="expandable-toggle" onclick="toggleExpandableContent('lin2')">[answer]</span>
 <div id="lin2" class="expandable-content" style="color: #0000A0;">
-<p>  Yes, \(a_x\hat{x} + a_y\hat{y}\) constitutes a vector space in the \(x\)-\(y\) plane of dimension \(2\). 
+<p>  Yes, \(a_x\vec{e}_x + a_y\vec{e}_y\) constitutes a vector space in the \(x\)-\(y\) plane of dimension \(2\). 
 </p>
 </div>
 </li>
@@ -1193,30 +1194,30 @@ I verified these calculations in MATLAB.
 
 
 
-<li>&#9784; Qualitatively, what is the difference between \(\mathsf{A}\) (sans-serif) and \(A\) (italicized)? Similarly, what is the difference between \(\vec{\mathsf{v}}\) and \(\vec{v}\)?  
+<li>&#9784; Qualitatively, what is the difference between \(\mathsf{A}\) (sans-serif) and \(A\) (italicized)? Similarly, what is the difference between \(\mathsf{v}\) and \(\vec{v}\)?  
 <span class="expandable-toggle" onclick="toggleExpandableContent('qual')">[answer]</span>
 <div id="qual" class="expandable-content" style="color: #0000A0;">
 <p>  \(\mathsf{A}\) is a tensor, while \(A\) is a matrix. \(A\) is a representation of \(\mathsf{A}\) in a chosen basis. The difference between \(\mathsf{A}\) and \(A\) is analogous to the difference between a quantum mechanical operator \(\mathcal{H}\) and its matrix representation in a particular basis \(\hat{H}\).</p> 
 
-<p>Similarly, \(\vec{\mathsf{v}}\) is a vector, while \(\vec{v}\) is that vector evaluated in a particular basis. The difference between \(\vec{\mathsf{v}}\) and \(\vec{v}\) is analogous to the difference between the ket \(|\psi\rangle\) and the wave function \(\psi(x)\) in quantum mechanics: the latter is a representation of the former in the basis of Euclidean 3-space. It is also analogous to the difference between the operator \(\text{curl }\) and its vector representation in Cartesian coordinates \(\vec{\nabla} \times\) (or any of the vector calculus operators, like divergence, gradient, and the Laplacian). 
+<p>Similarly, \(\mathsf{v}\) is a vector, while \(\vec{v}\) is that vector evaluated in a particular basis. The difference between \(\mathsf{v}\) and \(\vec{v}\) is analogous to the difference between the ket \(|\psi\rangle\) and the wave function \(\psi(x)\) in quantum mechanics: the latter is a representation of the former in the basis of Euclidean 3-space. It is also analogous to the difference between the operator \(\text{curl }\) and its vector representation in Cartesian coordinates \(\gradient \times\) (or any of the vector calculus operators, like divergence, gradient, and the Laplacian). 
 </p>
 </div>
 </li>
 
 
-<li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two dyadic tensors (dyads). Show that \((\mathsf{A}\mathsf{B})^\mathsf{T} = \mathsf{B}^\mathsf{T} \mathsf{A}^\mathsf{T}\). Hint: introduce two auxiliary vectors \(\vec{\mathsf{u}}\) and \(\vec{\mathsf{v}}\) and use the definition of transpose, \((\mathsf{A}^\mathsf{T} \vec{\mathsf{u}})\cdot \vec{\mathsf{v}} = (\mathsf{A} \vec{\mathsf{v}})\cdot \vec{\mathsf{u}}\) twice.
+<li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two dyadic tensors (dyads). Show that \((\mathsf{A}\mathsf{B})^\mathsf{T} = \mathsf{B}^\mathsf{T} \mathsf{A}^\mathsf{T}\). Hint: introduce two auxiliary vectors \(\mathsf{u}\) and \(\mathsf{v}\) and use the definition of transpose, \((\mathsf{A}^\mathsf{T} \mathsf{u})\cdot \mathsf{v} = (\mathsf{A} \mathsf{v})\cdot \mathsf{u}\) twice.
 <span class="expandable-toggle" onclick="toggleExpandableContent('lin9')">[answer]</span>
 <div id="lin9" class="expandable-content" style="color: #0000A0;">
-<p>  Multiply \(\vec{\mathsf{u}}\) on the right-hand side by the identity matrix \(\mathsf{I}\) twice:
+<p>  Multiply \(\mathsf{u}\) on the right-hand side by the identity matrix \(\mathsf{I}\) twice:
 \begin{align*}
-[(\mathsf{A}\mathsf{B})^\mathsf{T} \vec{\mathsf{u}}]\cdot \vec{\mathsf{v}} &= [(\mathsf{A}\mathsf{B}) \vec{\mathsf{v}}]\cdot \vec{\mathsf{u}}\\
-&=\mathsf{A}[\mathsf{B} \vec{\mathsf{v}}]\cdot \vec{\mathsf{u}}\\
-&=(\mathsf{A}^\mathsf{T}\vec{\mathsf{u}})\cdot[\mathsf{B} \vec{\mathsf{v}}]\\
-&=\mathsf{B} \vec{\mathsf{v}}\cdot \mathsf{A}^\mathsf{T}\vec{\mathsf{u}}\\
-&=\mathsf{B}^\mathsf{T} (\mathsf{A}^\mathsf{T} \vec{\mathsf{u}}) \cdot \vec{\mathsf{v}}\\
-&=\mathsf{B}^\mathsf{T} \mathsf{A}^\mathsf{T} \vec{\mathsf{u}} \cdot \vec{\mathsf{v}}
+[(\mathsf{A}\mathsf{B})^\mathsf{T} \mathsf{u}]\cdot \mathsf{v} &= [(\mathsf{A}\mathsf{B}) \mathsf{v}]\cdot \mathsf{u}\\
+&=\mathsf{A}[\mathsf{B} \mathsf{v}]\cdot \mathsf{u}\\
+&=(\mathsf{A}^\mathsf{T}\mathsf{u})\cdot[\mathsf{B} \mathsf{v}]\\
+&=\mathsf{B} \mathsf{v}\cdot \mathsf{A}^\mathsf{T}\mathsf{u}\\
+&=\mathsf{B}^\mathsf{T} (\mathsf{A}^\mathsf{T} \mathsf{u}) \cdot \mathsf{v}\\
+&=\mathsf{B}^\mathsf{T} \mathsf{A}^\mathsf{T} \mathsf{u} \cdot \mathsf{v}
 \end{align*}
-Since \(\vec{\mathsf{u}}\) and \(\vec{\mathsf{v}}\)  are arbitrary, the proof is complete.
+Since \(\mathsf{u}\) and \(\mathsf{v}\)  are arbitrary, the proof is complete.
 </p>
 </div>
 </li>
@@ -1225,15 +1226,15 @@ Since \(\vec{\mathsf{u}}\) and \(\vec{\mathsf{v}}\)  are arbitrary, the proof is
 <li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two invertible dyads. Show that \((\mathsf{A}\mathsf{B})^{-1} = \mathsf{B}^{-1} \mathsf{A}^{-1}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('lin10')">[answer]</span>
 <div id="lin10" class="expandable-content" style="color: #0000A0;">
-<p>  Multiply \(\vec{\mathsf{u}}\) on the right-hand side by the identity tensor \(\mathsf{I}\) twice:
+<p>  Multiply \(\mathsf{u}\) on the right-hand side by the identity tensor \(\mathsf{I}\) twice:
 \begin{align*}
-(\mathsf{A}\mathsf{B})^{-1} \vec{\mathsf{u}} &= (\mathsf{A}\mathsf{B})^{-1} \mathsf{I}\mathsf{I}\vec{\mathsf{u}}\\
-&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{I}\mathsf{A}\mathsf{A}^{-1}\vec{\mathsf{u}}\\
-&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{A}\mathsf{I}\mathsf{A}^{-1}\vec{\mathsf{u}}\\
-&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{A}\mathsf{B}\mathsf{B}^{-1}\mathsf{A}^{-1}\vec{\mathsf{u}}\\
-&= \mathsf{B}^{-1}\mathsf{A}^{-1}\vec{\mathsf{u}}
+(\mathsf{A}\mathsf{B})^{-1} \mathsf{u} &= (\mathsf{A}\mathsf{B})^{-1} \mathsf{I}\mathsf{I}\mathsf{u}\\
+&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{I}\mathsf{A}\mathsf{A}^{-1}\mathsf{u}\\
+&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{A}\mathsf{I}\mathsf{A}^{-1}\mathsf{u}\\
+&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{A}\mathsf{B}\mathsf{B}^{-1}\mathsf{A}^{-1}\mathsf{u}\\
+&= \mathsf{B}^{-1}\mathsf{A}^{-1}\mathsf{u}
 \end{align*}
-Since \(\vec{\mathsf{u}}\) is arbitrary, the proof is complete. 
+Since \(\mathsf{u}\) is arbitrary, the proof is complete. 
 </p>
 </div>
 </li>
@@ -1277,7 +1278,7 @@ Adding the above equations shows that \(\mathsf{T} = \mathsf{H} + \mathsf{K}\).
 </div>
 </li>
 
-<li>&#9784; For some tensorial linear equation \(\mathsf{A}\vec{\mathsf{x}}= \vec{\mathsf{b}}\), suppose there is one representation of this equation in the primed basis \('\),
+<li>&#9784; For some tensorial linear equation \(\mathsf{A}\mathsf{x}= \mathsf{b}\), suppose there is one representation of this equation in the primed basis \('\),
 \[A'\vec{x}' = \vec{b}'\]
 and another representation in the unprimed basis,
 \[A \vec{x} = \vec{b}.\]
@@ -2536,11 +2537,11 @@ The integrands must be equal, which gives the desired result:
 <h2 id="vector">Vector algebra & vector calculus</h2>
 <p>Vector calculus (for whatever reason) is not listed as a topic on the math section. However, as essentially all of acoustics is formulated in terms of the calculus of vector fields, I think it is very worthy of my review.</p>
 
-<p>An orthonormal vector basis may be assumed; no need to work out the proofs below in general curvilinear coordinates. Therefore, one can write \(\vec{\mathsf{v}} = \vec{v}\). </p>
+<p>An orthonormal vector basis may be assumed; no need to work out the proofs below in general curvilinear coordinates. Therefore, one can write \(\mathsf{v} = \vec{v}\). </p>
 
 <p>Some of the problems below come from chapter 1 of <i>Introduction to Electrodynamics</i> by D. J. Griffiths.</p>
 <ol>
-<li> Suppose we have a barrel of fruit that contains \(a_x\) bananas, \(a_y\) pears, and \(a_z\) apples. Denoting \(\hat{n}\) as the unit vector in the \(n\) direction in space, is \(\vec{a} = a_x\hat{x} + a_y\hat{y} + a_z\hat{z}\), a vector? Explain. 
+<li> Suppose we have a barrel of fruit that contains \(a_x\) bananas, \(a_y\) pears, and \(a_z\) apples. Denoting \(\vec{e}_n\) as the unit vector in the \(n\) direction in space, is \(\vec{a} = a_x\vec{e}_x + a_y\vec{e}_y + a_z\vec{e}_z\), a vector? Explain. 
 <span class="expandable-toggle" onclick="toggleExpandableContent('8sol0')">[answer]</span>
 <div id="8sol0" class="expandable-content" style="color: #0000A0;">
 <p>No, because \(\vec{a}\) does not obey coordinate transformations. For example, choosing a different set of axes does not turn a pear into a banana. By definition, "a vector is any set of three components that transforms in the same manner as a displacement when you change coordinates." (from Griffiths <i>Introduction to Electrodynamics</i>, section 1.1.5).</p>
@@ -2548,13 +2549,13 @@ The integrands must be equal, which gives the desired result:
 </li>
 
 
-<li> How do the components \(a_x\), \(a_y\), and \(a_z\) of a vector \(\vec{a} = a_x \hat{x} + a_y \hat{y} + a_z \hat{z} \) transform under the translation of coordinates? 
+<li> How do the components \(a_x\), \(a_y\), and \(a_z\) of a vector \(\vec{a} = a_x \vec{e}_x + a_y \vec{e}_y + a_z \vec{e}_z \) transform under the translation of coordinates? 
 \begin{align*}
 x' &= x\\
 y' &= y-a\\
 z' &= z
 \end{align*} 
-In other words, what happens to \(a_x\), \(a_y\), and \(a_z\) when \(\vec{a}\) is written as \(\vec{a} = a_x \hat{x}' + a_y \hat{y}' + a_z \hat{z}' \)?
+In other words, what happens to \(a_x\), \(a_y\), and \(a_z\) when \(\vec{a}\) is written as \(\vec{a} = a_x \vec{e}_x' + a_y \vec{e}_y' + a_z \vec{e}_z' \)?
 <span class="expandable-toggle" onclick="toggleExpandableContent('8sol0a')">[answer]</span>
 <div id="8sol0a" class="expandable-content" style="color: #0000A0;">
 <p>The components of a vector are invariant under this transformation.</p>
@@ -2567,7 +2568,7 @@ x' &= -x\\
 y' &= -y\\
 z' &= -z
 \end{align*} 
-In other words, what happens to \(a_x\), \(a_y\), and \(a_z\) when \(\vec{a}\) is written as \(\vec{a} = a_x \hat{x}' + a_y \hat{y}' + a_z \hat{z}' \)?
+In other words, what happens to \(a_x\), \(a_y\), and \(a_z\) when \(\vec{a}\) is written as \(\vec{a} = a_x \vec{e}_x' + a_y \vec{e}_y' + a_z \vec{e}_z' \)?
 <span class="expandable-toggle" onclick="toggleExpandableContent('8sol0b')">[answer]</span>
 <div id="8sol0b" class="expandable-content" style="color: #0000A0;">
 <p>The components are also inverted. \(a_x\mapsto -a_x\), \(a_y\mapsto -a_y\), and \(a_z\mapsto -a_y\).</p>
@@ -2616,29 +2617,29 @@ The scalar triple product transforms as \(-\vec{w}\cdot(-\vec{u} \times -\vec{v}
 </div>
 </li>
 
-<li> &#9784; Prove that \(\vec{\nabla} (\vec{a} \cdot \vec{b}) = \vec{a}\times(\vec{\nabla} \times \vec{b}) + \vec{b}\times(\vec{\nabla}\times \vec{a}) + (\vec{a}\cdot\vec{\nabla})\vec{b} + (\vec{b} \cdot \vec{\nabla})\vec{a}\).
+<li> &#9784; Prove that \(\gradient (\vec{a} \cdot \vec{b}) = \vec{a}\times(\gradient \times \vec{b}) + \vec{b}\times(\gradient\times \vec{a}) + (\vec{a}\cdot\gradient)\vec{b} + (\vec{b} \cdot \gradient)\vec{a}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol3')">[answer]</span>
 <div id="9sol3" class="expandable-content" style="color: #0000A0;">
 <p>  It is much easier to go from the right-hand side to the left-hand side.
 \begin{align*}
-[\vec{a}\times(\vec{\nabla} \times \vec{b}) &+ \vec{b}\times(\vec{\nabla}\times \vec{a}) + (\vec{a}\cdot\vec{\nabla})\vec{b} + (\vec{b} \cdot \vec{\nabla})\vec{a}]_i\\
+[\vec{a}\times(\gradient \times \vec{b}) &+ \vec{b}\times(\gradient\times \vec{a}) + (\vec{a}\cdot\gradient)\vec{b} + (\vec{b} \cdot \gradient)\vec{a}]_i\\
 &=\epsilon_{ijk}a_j (\epsilon_{klm}\partial_l b_m) + \epsilon_{ijk}b_j (\epsilon_{klm}\partial_l a_m) + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= \epsilon_{kij}\epsilon_{klm}a_j \partial_l b_m + \epsilon_{kij}\epsilon_{klm} b_j \partial_l a_m + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{lj})a_j \partial_l b_m + (\delta_{il}\delta_{jm}-\delta_{im}\delta_{lj}) b_j \partial_l a_m + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= a_m \partial_i b_m - a_l \partial_l b_i  + b_j \partial_i a_j- b_l \partial_l a_i  + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= a_j \partial_i b_j  + b_j \partial_i a_j\\
 &=  \partial_i (a_j b_j)\\
-&= [\vec{\nabla} (\vec{a} \cdot \vec{b})]_i  
+&= [\gradient (\vec{a} \cdot \vec{b})]_i  
 \end{align*}</p>
 Since this holds for all three components, the proof is complete.
 </div>
 </li>
 
-<li> Prove that \(\vec{\nabla}\times(\vec{a}\times \vec{b}) = (\vec{b}\cdot \vec{\nabla})\vec{a} - (\vec{a}\cdot\vec{\nabla})\vec{b} + \vec{a}(\vec{\nabla}\cdot\vec{b}) -\vec{b}(\vec{\nabla}\cdot\vec{a})\).
+<li> Prove that \(\gradient\times(\vec{a}\times \vec{b}) = (\vec{b}\cdot \gradient)\vec{a} - (\vec{a}\cdot\gradient)\vec{b} + \vec{a}(\gradient\cdot\vec{b}) -\vec{b}(\gradient\cdot\vec{a})\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol4')">[answer]</span>
 <div id="9sol4" class="expandable-content" style="color: #0000A0;">
 <p> \begin{align*}
-\vec{\nabla}\times(\vec{a}\times \vec{b}) &= \epsilon_{ijk}\partial_j (\epsilon_{klm}a_l b_m)\\
+\gradient\times(\vec{a}\times \vec{b}) &= \epsilon_{ijk}\partial_j (\epsilon_{klm}a_l b_m)\\
 &=\epsilon_{ijk}\epsilon_{klm} \partial_j a_l b_m\\
 &=\epsilon_{kij}\epsilon_{klm} \partial_j a_l b_m\\
 &= (\delta_{il}\delta_{jm}- \delta_{im}\delta_{jl})\partial_j a_l b_m\\
@@ -2647,7 +2648,7 @@ Since this holds for all three components, the proof is complete.
 &= b_j \partial_j a_i  + a_i \partial_j b_j - a_i \partial_j  b_j -  b_j \partial_j a_i\\
 &= \partial_j (a_i b_j)- \partial_j (a_i b_j)\\
 &= b_j \partial_j a_i  - a_i \partial_j  b_j + a_i \partial_j b_j -  b_j \partial_j a_i\\
-&= (\vec{b}\cdot \vec{\nabla})\vec{a} - (\vec{a}\cdot\vec{\nabla})\vec{b} + \vec{a}(\vec{\nabla}\cdot\vec{b}) -\vec{b}(\vec{\nabla}\cdot\vec{a})  
+&= (\vec{b}\cdot \gradient)\vec{a} - (\vec{a}\cdot\gradient)\vec{b} + \vec{a}(\gradient\cdot\vec{b}) -\vec{b}(\gradient\cdot\vec{a})  
 \end{align*}</p>
 </div>
 </li>  
@@ -2656,13 +2657,13 @@ Since this holds for all three components, the proof is complete.
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol5')">[answer]</span>
 <div id="9sol5" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align}
-\vec{\nabla} \cdot (\vec{\nabla}\times\vec{u}) &= \partial_i (\epsilon_{ijk}\partial_j u_k)\notag\\
+\gradient \cdot (\gradient\times\vec{u}) &= \partial_i (\epsilon_{ijk}\partial_j u_k)\notag\\
 &= -\partial_i (\epsilon_{jik}\partial_j u_k) \tag{permute}\\
 &= -\partial_j (\epsilon_{ijk}\partial_i u_k)\tag{relabel}\\
 &= -\partial_i (\epsilon_{ijk}\partial_j u_k)\tag{equality of mixed pt'ls}
 \end{align}
 \(-\partial_i (\epsilon_{ijk}\partial_j u_k) = \partial_i (\epsilon_{ijk}\partial_j u_k)\) is of the form \(a = -a\), which means that \(a=0\), i.e., \(-\partial_i (\epsilon_{jik}\partial_j u_k) = 0\), which completes the proof:
-\(\vec{\nabla} \cdot (\vec{\nabla}\times\vec{u})  = 0\).</p>
+\(\gradient \cdot (\gradient\times\vec{u})  = 0\).</p>
 </div>
 </li>  
 
@@ -2670,61 +2671,61 @@ Since this holds for all three components, the proof is complete.
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol6')">[answer]</span>
 <div id="9sol6" class="expandable-content" style="color: #0000A0;">
 <p> \begin{align}
-\vec{\nabla} \times (\vec{\nabla} f) &= \epsilon_{ijk}\partial_j (\vec{\nabla} f)_k\notag\\
+\gradient \times (\gradient f) &= \epsilon_{ijk}\partial_j (\gradient f)_k\notag\\
 &=\epsilon_{ijk}\partial_j \partial_k f\notag\\
 &=-\epsilon_{ikj}\partial_j \partial_k f\tag{permute}\\
 &=-\epsilon_{ijk}\partial_k \partial_j f\tag{relabel}\\
 &=-\epsilon_{ijk}\partial_j \partial_k f\tag{equality of mixed pt'ls}\\
 \end{align}
-Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \partial_k f\), \(\epsilon_{ijk}\partial_j \partial_k f=0\), which completes the proof: \(\vec{\nabla} \times (\vec{\nabla} f)  = 0\).
+Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \partial_k f\), \(\epsilon_{ijk}\partial_j \partial_k f=0\), which completes the proof: \(\gradient \times (\gradient f)  = 0\).
 </p>
 </div>
 </li> 
 
-<li> Show that \(\vec{\nabla}\times(\vec{\nabla}\times \vec{a}) = \vec{\nabla}(\vec{\nabla} \cdot\vec{a})-\nabla^2 \vec{a}\).
+<li> Show that \(\gradient\times(\gradient\times \vec{a}) = \gradient(\gradient \cdot\vec{a})-\nabla^2 \vec{a}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol7')">[answer]</span>
 <div id="9sol7" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-[\vec{\nabla}\times(\vec{\nabla}\times \vec{a})]_i &= \epsilon_{ijk} \partial_j (\vec{\nabla}\times \vec{a})_k \\
+[\gradient\times(\gradient\times \vec{a})]_i &= \epsilon_{ijk} \partial_j (\gradient\times \vec{a})_k \\
 &=\epsilon_{ijk} \partial_j \epsilon_{klm} \partial_l a_m \\
 &=\epsilon_{ijk} \epsilon_{klm} \partial_j  \partial_l a_m \\
 &=\epsilon_{kij} \epsilon_{klm} \partial_j  \partial_l a_m \\
 &=(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}) \partial_j \partial_l a_m \\
 &=\delta_{il}\delta_{jm}\partial_j \partial_l a_m -\delta_{im}\delta_{jl}\partial_j \partial_l a_m  \\
 &= \partial_i\partial_j  a_j -\partial_l \partial_l a_i  \\
-&= \partial_i(\vec{\nabla}\cdot \vec{a}) -[\nabla^2 \vec{a}]_i  \\
-&=[\vec{\nabla}(\vec{\nabla} \cdot\vec{a})-\nabla^2 \vec{a}]_i
+&= \partial_i(\gradient\cdot \vec{a}) -[\nabla^2 \vec{a}]_i  \\
+&=[\gradient(\gradient \cdot\vec{a})-\nabla^2 \vec{a}]_i
 \end{align*}</p>
 </div>
 </li> 
 
 
-<li> In Cartesian coordinates, \(\vec{r} = x\hat{x} + y\hat{x} + z\hat{x}\) and thus \(r = \sqrt{x^2 + y^2 + z^2}\). Find \(\vec{\nabla} r \).
+<li> In Cartesian coordinates, \(\vec{r} = x\vec{e}_x + y\vec{e}_x + z\vec{e}_x\) and thus \(r = \sqrt{x^2 + y^2 + z^2}\). Find \(\gradient r \).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol8')">[answer]</span>
 <div id="9sol8" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-\vec{\nabla} r &= \vec{\nabla} (x^2 + y^2 +z^2)^{1/2} \\
-&= \frac{1}{r}(x\hat{x} + y\hat{x} + z\hat{x})\\
+\gradient r &= \gradient (x^2 + y^2 +z^2)^{1/2} \\
+&= \frac{1}{r}(x\vec{e}_x + y\vec{e}_x + z\vec{e}_x)\\
 &= \frac{\vec{r}}{r}
 \end{align*} </p>
 </div>
 </li> 
 
 
-<li> Let \(\vec{R} = \vec{r}- \vec{r}'\) be the position vector. Thus in Cartesian coordinates, \(R = \sqrt{(x-x')^2+(y-y')^2+(z-z')^2}\). Find \(\vec{\nabla} R^2\).
+<li> Let \(\vec{R} = \vec{r}- \vec{r}'\) be the position vector. Thus in Cartesian coordinates, \(R = \sqrt{(x-x')^2+(y-y')^2+(z-z')^2}\). Find \(\gradient R^2\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol9')">[answer]</span>
 <div id="9sol9" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-\vec{\nabla} R^2 = 2\vec{R}
+\gradient R^2 = 2\vec{R}
 \end{align*}</p>
 </div>
 </li> 
 
-<li> Find \(\vec{\nabla} R^{-1}\).
+<li> Find \(\gradient R^{-1}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('Rinverse')">[answer]</span>
 <div id="Rinverse" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-\vec{\nabla} 1/R = -\vec{R}/R^3 = -\hat{R}/R^2
+\gradient 1/R = -\vec{R}/R^3 = -\vec{e}_r/R^2
 \end{align*}</p>
 </div>
 </li> 
@@ -2733,20 +2734,20 @@ Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \parti
 <span class="expandable-toggle" onclick="toggleExpandableContent('9stokersa')">[answer]</span>
 <div id="9stokersa" class="expandable-content" style="color: #0000A0;">
 <p> 
-\[\vec{\nabla} \cdot \vec{F} = \lim_{V\to 0}\frac{1}{V}\oint_S \vec{F}\cdot d\vec{a}\,.\]
+\[\gradient \cdot \vec{F} = \lim_{V\to 0}\frac{1}{V}\oint_S \vec{F}\cdot d\vec{a}\,.\]
 </p>
 </div>
 </li> 
 
-<li> &#9784; Find the divergence of \(\hat{r}/r^2 = \vec{r}/r^3\) in both Cartesian and spherical coordinates. Note that the \(r\) component of the divergence of \(\vec{v}\) in spherical coordinates is \(\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 v_r)\). Explain the result.
+<li> &#9784; Find the divergence of \(\vec{e}_r/r^2 = \vec{r}/r^3\) in both Cartesian and spherical coordinates. Note that the \(r\) component of the divergence of \(\vec{v}\) in spherical coordinates is \(\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 v_r)\). Explain the result.
 <span class="expandable-toggle" onclick="toggleExpandableContent('divergence1')">[answer]</span>
 <div id="divergence1" class="expandable-content" style="color: #0000A0;">
 <p> 
 In cartesian coordinates,
 \begin{align*}
-\vec{\nabla} \cdot \frac{\hat{r}}{r^2}&= \vec{\nabla} \cdot\frac{\vec{r}}{r^3} \\ 
-&=\vec{\nabla} \cdot \frac{x\hat{x} + y\hat{y} + z\hat{z}}{(x^2+y^2+z^2)^{3/2}}\\
-&=\vec{\nabla} \cdot ({x\hat{x} + y\hat{y} + z\hat{z}})(x^2+y^2+z^2)^{-3/2}\\
+\gradient \cdot \frac{\vec{e}_r}{r^2}&= \gradient \cdot\frac{\vec{r}}{r^3} \\ 
+&=\gradient \cdot \frac{x\vec{e}_x + y\vec{e}_y + z\vec{e}_z}{(x^2+y^2+z^2)^{3/2}}\\
+&=\gradient \cdot ({x\vec{e}_x + y\vec{e}_y + z\vec{e}_z})(x^2+y^2+z^2)^{-3/2}\\
 &=\frac{\partial}{\partial x} [x(x^2+y^2+z^2)^{-3/2}] +\frac{\partial}{\partial y} [y(x^2+y^2+z^2)^{-3/2}] +\frac{\partial}{\partial z} [z(x^2+y^2+z^2)^{-3/2}] \\
 &= -\frac{3}{2}(x^2 + y^2 + z^2)^{-5/2}2x^2 + (x^2 + y^2 +z^2)^{-3/2} + \dots\\
 &= \frac{3}{r^3} - \frac{3\cdot 2(x^2+y^2+z^2)}{2r^5}\\
@@ -2754,12 +2755,12 @@ In cartesian coordinates,
 \end{align*}
 In spherical coordinates,
 \begin{align*}
-\vec{\nabla} \cdot \frac{\hat{r}}{r^2}&= \frac{1}{r^2}
+\gradient \cdot \frac{\vec{e}_r}{r^2}&= \frac{1}{r^2}
  \frac{\partial}{\partial r} \bigg(r^2 \frac{1}{r^2}\bigg)\\
 &= \frac{1}{r^2}
  \frac{\partial}{\partial r} (1) = 0\,.\\
 \end{align*}
-It is a paradoxical result, because \(\hat{r}/r^2\) is a function that points away from the origin radially in all directions and quadratically falling off in amplitude. That is a pretty divergent function. The resolution to the paradox is that \(\hat{r}/r^2\to\infty\) at the origin, at which the divergence is <i>not</i> \(0\).
+It is a paradoxical result, because \(\vec{e}_r/r^2\) is a function that points away from the origin radially in all directions and quadratically falling off in amplitude. That is a pretty divergent function. The resolution to the paradox is that \(\vec{e}_r/r^2\to\infty\) at the origin, at which the divergence is <i>not</i> \(0\).
 </p>
 </div>
 </li> 
@@ -2769,7 +2770,7 @@ It is a paradoxical result, because \(\hat{r}/r^2\) is a function that points aw
 <span class="expandable-toggle" onclick="toggleExpandableContent('9stokersb')">[answer]</span>
 <div id="9stokersb" class="expandable-content" style="color: #0000A0;">
 <p> 
-\[\vec{\nabla} \times \vec{F} = \lim_{S\to 0}\frac{1}{S}\oint_C \vec{F}\cdot d\vec{\ell}\,.\]
+\[\gradient \times \vec{F} = \lim_{S\to 0}\frac{1}{S}\oint_C \vec{F}\cdot d\vecell\,.\]
 </p>
 </div>
 </li> 
@@ -2777,17 +2778,17 @@ It is a paradoxical result, because \(\hat{r}/r^2\) is a function that points aw
 <li>Construct a non-constant vector function that has zero divergence and zero curl everywhere.
 <span class="expandable-toggle" onclick="toggleExpandableContent('freesters')">[answer]</span>
 <div id="freesters" class="expandable-content" style="color: #0000A0;">
-<p> The vector-valued function \(\vec{f} = x\hat{x} - y\hat{y}\) has zero divergence and zero curl everywhere. Another example is \(\vec{f} = y\hat{x} + x\hat{y}\).
+<p> The vector-valued function \(\vec{f} = x\vec{e}_x - y\vec{e}_y\) has zero divergence and zero curl everywhere. Another example is \(\vec{f} = y\vec{e}_x + x\vec{e}_y\).
 </p>
 </div>
 </li> 
 
-<li> Calculate the line integral of the function \(\vec{v} = y^2 \hat{x} + 2x(y+1)\hat{y}\) from \(\vec{a} = (1,1,0)\) to \(\vec{b} = (2,2,0)\),  following the path from \((x,y,z) = (1,1,0)\) to \((2,1,0)\) to \((2,2,0)\). Then calculate the line integral following the path from \(\vec{a} = (1,1,0)\) to \(\vec{b} = (2,2,0)\) directly. Finally calculate \(\oint \vec{v}\cdot d\vec{\ell}\) for the loop going from \((1,1,0)\) to \((2,1,0)\) to \((2,2,0)\) to \((1,1,0)\).
+<li> Calculate the line integral of the function \(\vec{v} = y^2 \vec{e}_x + 2x(y+1)\vec{e}_y\) from \(\vec{a} = (1,1,0)\) to \(\vec{b} = (2,2,0)\),  following the path from \((x,y,z) = (1,1,0)\) to \((2,1,0)\) to \((2,2,0)\). Then calculate the line integral following the path from \(\vec{a} = (1,1,0)\) to \(\vec{b} = (2,2,0)\) directly. Finally calculate \(\oint \vec{v}\cdot d\vecell\) for the loop going from \((1,1,0)\) to \((2,1,0)\) to \((2,2,0)\) to \((1,1,0)\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9liners1')">[answer]</span>
 <div id="9liners1" class="expandable-content" style="color: #0000A0;">
 <p>The integral for first path \(C_1\) from \((x,y,z) = (1,1,0)\) to \((2,1,0)\) (for which \(y= 1\)) and then to \((2,2,0)\) (for which \(x = 2\)) is
 \begin{align*}
-\int_{C_1} \vec{v}\cdot d\vec{\ell} &= \int_{C_1} [y^2 \hat{x} + 2x(y+1)\hat{y}]\cdot [dx\hat{x} + dy\hat{y}]\\
+\int_{C_1} \vec{v}\cdot d\vecell &= \int_{C_1} [y^2 \vec{e}_x + 2x(y+1)\vec{e}_y]\cdot [dx\vec{e}_x + dy\vec{e}_y]\\
 &=\int_{C_1} [y^2 dx + 2x(y+1)dy]\\
 &= \int_1^2 1^2 dx + \int_{1}^2 2\cdot 2(y+1)dy\\
 &= \int_1^2 dx + 4\int_{1}^2 (y+1)dy\\
@@ -2796,7 +2797,7 @@ It is a paradoxical result, because \(\hat{r}/r^2\) is a function that points aw
 
 The integral for the second path \(C_2\) from \((x,y,z) = (1,1,0)\) to \((2,2,0)\) (for which \(y = x\)) is
 \begin{align*}
-\int_{C_2} \vec{v}\cdot d\vec{\ell} &= \int_{C_2} [y^2 \hat{x} + 2x(y+1)\hat{y}]\cdot [dx\hat{x} + dy\hat{y}]\\
+\int_{C_2} \vec{v}\cdot d\vecell &= \int_{C_2} [y^2 \vec{e}_x + 2x(y+1)\vec{e}_y]\cdot [dx\vec{e}_x + dy\vec{e}_y]\\
 &=\int_{C_2} [x^2 dx + 2y(y+1)dy]\\
 &= \int_1^2 x^2 dx + \int_{1}^2 2y(y+1)dy\\
 &= 10
@@ -2804,17 +2805,17 @@ The integral for the second path \(C_2\) from \((x,y,z) = (1,1,0)\) to \((2,2,0)
 
 The integral over the closed loop is easy to calculate, now that the individual paths forming the loop have been calculated. The loop going from \((1,1,0)\) to \((2,1,0)\) to \(2,2,0\) and finally back to \((1,1,0)\) can be written as 
 \begin{align*}
-\int_{C_1} \vec{v}\cdot d\vec{\ell} - \int_{C_2} \vec{v}\cdot d\vec{\ell} = 11-10 = 1 
+\int_{C_1} \vec{v}\cdot d\vecell - \int_{C_2} \vec{v}\cdot d\vecell = 11-10 = 1 
 \end{align*} </p>
 </div>
 </li> 
 
-<li>Calculate the surface integral of \(\vec{v} = 2xz \hat{x} + (x+2)\hat{y} + y(z^2-3)\hat{z}\) over five sides (excluding the bottom) of a cubical box whose bottom edge extends from \(x = 0\) to \(x = 2\). 
+<li>Calculate the surface integral of \(\vec{v} = 2xz \vec{e}_x + (x+2)\vec{e}_y + y(z^2-3)\vec{e}_z\) over five sides (excluding the bottom) of a cubical box whose bottom edge extends from \(x = 0\) to \(x = 2\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9surfers1')">[answer]</span>
 <div id="9surfers1" class="expandable-content" style="color: #0000A0;">
-<p> The surface integral \(\int_S \vec{v} \cdot d\vec{a}\) is to be calculated. It will be given by the sum of five integrals: at \(x=2\) and \(x=0\) (for which \(d\vec{a} = dydz\hat{x}\)), at \(z = 2\) and \(z=0\) (for which \(d\vec{a}= dxdy\hat{z}\)), and at \(y=0\) (for which \(d\vec{a} = dxdz\hat{y}\)). 
+<p> The surface integral \(\int_S \vec{v} \cdot d\vec{a}\) is to be calculated. It will be given by the sum of five integrals: at \(x=2\) and \(x=0\) (for which \(d\vec{a} = dydz\vec{e}_x\)), at \(z = 2\) and \(z=0\) (for which \(d\vec{a}= dxdy\vec{e}_z\)), and at \(y=0\) (for which \(d\vec{a} = dxdz\vec{e}_y\)). 
 \begin{align*}
-\int_S \vec{v} \cdot d\vec{a}&= \int_S [2xz \hat{x} + (x+2)\hat{y} + y(z^2-3)\hat{z}] \cdot d\vec{a}\\
+\int_S \vec{v} \cdot d\vec{a}&= \int_S [2xz \vec{e}_x + (x+2)\vec{e}_y + y(z^2-3)\vec{e}_z] \cdot d\vec{a}\\
 &=\int_{0}^{2}\int_{0}^{2} 4z dy dz + \int_{0}^{2}\int_{0}^{2} 0 dy dz\\&\quad + \int_{0}^{2}\int_{0}^{2} y(4-3) dx dy +  \int_{0}^{2}\int_{0}^{2} -3y dx dy + \int_{0}^{2}\int_{0}^{2} (x+2) dx dz\\
 &=16+ 0 + 4 -12 + 12 = 20  
 \end{align*}
@@ -2846,21 +2847,21 @@ The volume integral \(\int_{V'} T dV\) is to be calculated:
 <p> 
 The gradient theorem states that
 \begin{align*}
-\int_{\vec{a}}^{\vec{b}} \vec{\nabla} V \cdot d\vec{\ell} &= V(b) - V(a)
+\int_{\vec{a}}^{\vec{b}} \gradient V \cdot d\vecell &= V(b) - V(a)
 \end{align*}
-A conservative field is one that is given by a scalar potential function. For example, \(\vec{\nabla} V \) above is a conservative field. The gradient theorem says that the line integral over a conservative field is independent of the path. Examples of conservative fields are the gravitational and electric fields, given by minus the gradient of the gravitational and electrical potential respectively. Meanwhile, the magnetic field is given by the curl of a vector potential, and is therefore not a conservative field. 
+A conservative field is one that is given by a scalar potential function. For example, \(\gradient V \) above is a conservative field. The gradient theorem says that the line integral over a conservative field is independent of the path. Examples of conservative fields are the gravitational and electric fields, given by minus the gradient of the gravitational and electrical potential respectively. Meanwhile, the magnetic field is given by the curl of a vector potential, and is therefore not a conservative field. 
 </p>
 </div>
 </li> 
 
-<li> Calculate the line integral \(\int_{\vec{a}}^{\vec{b}} \vec{\nabla}T \cdot d\vec{\ell}\) for \(T = x^2 + 4xy + 2yz^3\) where \(\vec{a} = (0,0,0)\) and \(b = (1,1,1)\) for the path \((0,0,0)\to (1,0,0)\to (1,1,0)\to (1,1,1)\). Then calculate the integral for the path  \((0,0,0)\to (0,0,1)\to (0,1,1)\to (1,1,1)\). Next, calculate the integral for the parabolic path \(z=x^2,\, y=x\). Finally, check the result with the gradient theorem. 
+<li> Calculate the line integral \(\int_{\vec{a}}^{\vec{b}} \gradient T \cdot d\vecell\) for \(T = x^2 + 4xy + 2yz^3\) where \(\vec{a} = (0,0,0)\) and \(b = (1,1,1)\) for the path \((0,0,0)\to (1,0,0)\to (1,1,0)\to (1,1,1)\). Then calculate the integral for the path  \((0,0,0)\to (0,0,1)\to (0,1,1)\to (1,1,1)\). Next, calculate the integral for the parabolic path \(z=x^2,\, y=x\). Finally, check the result with the gradient theorem. 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9grad2')">[answer]</span>
 <div id="9grad2" class="expandable-content" style="color: #0000A0;">
 <p> 
 For the first path from \((0,0,0)\to (1,0,0)\to (1,1,0)\to (1,1,1)\),
 \begin{align*}
-\int_{\vec{a}}^{\vec{b}} \vec{\nabla}T \cdot d\vec{\ell}&= \int_{\vec{a}}^{\vec{b}} \vec{\nabla} (x^2 + 4xy + 2yz^3)  \cdot (dx\hat{x} + dy\hat{y} + dz\hat{z})\\
-&=\int_{\vec{a}}^{\vec{b}} [(2x + 4y)\hat{x} + (4x +2z^3)\hat{y} + (6yz^2)\hat{z}] \cdot (dx\hat{x} + dy\hat{y} + dz\hat{z})\\
+\int_{\vec{a}}^{\vec{b}} \gradient T \cdot d\vecell&= \int_{\vec{a}}^{\vec{b}} \gradient (x^2 + 4xy + 2yz^3)  \cdot (dx\vec{e}_x + dy\vec{e}_y + dz\vec{e}_z)\\
+&=\int_{\vec{a}}^{\vec{b}} [(2x + 4y)\vec{e}_x + (4x +2z^3)\vec{e}_y + (6yz^2)\vec{e}_z] \cdot (dx\vec{e}_x + dy\vec{e}_y + dz\vec{e}_z)\\
 &=\int_{\vec{a}}^{\vec{b}} [(2x + 4y)dx + (4x +2z^3)dy + (6yz^2)dz]
 \end{align*}
 The integral splits into three integrals. For \((0,0,0)\to (1,0,0)\), \(y=z=0\). For \((1,0,0)\to (1,1,0)\), \(x=1\) and \(z=0\). For \((1,1,0)\to (1,1,1)\), \(x=y=1\):
@@ -2899,34 +2900,34 @@ T(\vec{b}) - T(\vec{a}) &= x^2 +4xy +2yz^3\bigg\rvert_{(0,0,0)}^{(1,1,1)}\notag\
 <span class="expandable-toggle" onclick="toggleExpandableContent('9stokers')">[answer]</span>
 <div id="9stokers" class="expandable-content" style="color: #0000A0;">
 <p> The divergence theorem is 
-\[\oint \vec{F}\cdot d\vec{a} = \int \vec{\nabla}\cdot\vec{F}\, dV\,,\]
+\[\oint \vec{F}\cdot d\vec{a} = \int \gradient\cdot\vec{F}\, dV\,,\]
 and Stokes's theorem is
-\[\oint \vec{F}\cdot d\vec{l} = \int (\vec{\nabla}\times\vec{F}) \cdot d\vec{a}\,.\]
+\[\oint \vec{F}\cdot d\vecell = \int (\gradient\times\vec{F}) \cdot d\vec{a}\,.\]
 They are immediate from the definitions of divergence and curl above, but to see what motivates these definitions, see <a href="vector_calc_thms.pdf" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>
 </li> 
 
 
-<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing curl, i.e., \(\vec{\nabla}\times \vec{F} = 0\). 
+<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing curl, i.e., \(\gradient\times \vec{F} = 0\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9final1')">[answer]</span>
 <div id="9final1" class="expandable-content" style="color: #0000A0;">
 <p> 
 <ul>
-<li>The line integral \(\int_{\vec{a}}^{\vec{b}} \vec{F}\cdot d\vec{\ell}\) is independent of the path. 
-<li> The line integral over any closed loop is zero, i.e., \(\oint_{\vec{a}}^{\vec{a}} \vec{F}\cdot d\vec{\ell} = 0\).
-<li> \(\vec{F}\) is given by the gradient of a scalar potential, i.e., \(\vec{F} = -\vec{\nabla} V\). 
+<li>The line integral \(\int_{\vec{a}}^{\vec{b}} \vec{F}\cdot d\vecell\) is independent of the path. 
+<li> The line integral over any closed loop is zero, i.e., \(\oint_{\vec{a}}^{\vec{a}} \vec{F}\cdot d\vecell = 0\).
+<li> \(\vec{F}\) is given by the gradient of a scalar potential, i.e., \(\vec{F} = -\gradient V\). 
 </ul>
 </p>
 
 
-<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing divergence, i.e., \(\vec{\nabla}\cdot \vec{F} = 0\). 
+<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing divergence, i.e., \(\gradient\cdot \vec{F} = 0\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9final2')">[answer]</span>
 <div id="9final2" class="expandable-content" style="color: #0000A0;">
 <p> 
 <ul>
-<li>The surface integral \(\int_{S} \vec{F}\cdot d\vec{a}\) is indepndent of the surface (but the line integral \(\int_{\vec{a}}^{\vec{b}} \vec{F}\cdot d\vec{\ell}\) <i>depends</i> on the path.) 
+<li>The surface integral \(\int_{S} \vec{F}\cdot d\vec{a}\) is indepndent of the surface (but the line integral \(\int_{\vec{a}}^{\vec{b}} \vec{F}\cdot d\vecell\) <i>depends</i> on the path.) 
 <li> The integral over any closed surface is zero, i.e., \(\oint_{S}\vec{F}\cdot d\vec{a} = 0\).
-<li> \(\vec{F}\) is given by the curl of a vector potential, i.e., \(\vec{F} = \vec{\nabla} \times \vec{A}\).
+<li> \(\vec{F}\) is given by the curl of a vector potential, i.e., \(\vec{F} = \gradient \times \vec{A}\).
 </ul>
 </p>
 
