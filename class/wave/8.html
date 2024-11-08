@@ -18,8 +18,11 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      vecxi: "{\\boldsymbol{\\xi}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
       gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times\\,}",
       Laplacian: "{\\nabla^2}",
@@ -42,10 +45,10 @@ window.MathJax = {
       tri: "{\\mathrm{\\,tri\\,}}",
       circfn: "{\\mathrm{\\,circ\\,}}",
       sinc: "{\\mathrm{\\,sinc\\,}}",
-      ex: "{\\hat{e}_x}",           
-      ey: "{\\hat{e}_y}",
-      ez: "{\\hat{e}_z}",
-      ephi: "{\\hat{e}_\\phi}",
+      ex: "{\\vec{e}_x}",           
+      ey: "{\\vec{e}_y}",
+      ez: "{\\vec{e}_z}",
+      ephi: "{\\vec{e}_\\phi}",
       thetaHP: "{\\theta_{\\mathrm{HP}}}",
       erf: "{\\mathrm{\\,erf\\,}}",
       NF: "{_\\mathrm{NF}}",
@@ -214,15 +217,15 @@ Equivalently, the inhomogeneous Helmholtz equation can be written in 3D as
 where the Laplacian is the 3D operator, and where \[f(x,y) = \delta(x-x_0)\delta(y-y_0)\,.\]
 The 3D solution of Eq. \eqref{2D1} was found to be 
 \begin{align*}
-g(\vec{\rho}|\vec{\rho}_0) &= \int f(x_0,y_0) g(\vec{r|\vec{r}_1}) dV_1\,,\quad g(\vec{r}|\vec{r}_1)  = \frac{e^{ik|\vec{r}-\vec{r}_1|}}{4\pi |\vec{r} - \vec{r}_1|}\,.
+g(\vecrho|\vecrho_0) &= \int f(x_0,y_0) g(\vec{r|\vec{r}_1}) dV_1\,,\quad g(\vec{r}|\vec{r}_1)  = \frac{e^{ik|\vec{r}-\vec{r}_1|}}{4\pi |\vec{r} - \vec{r}_1|}\,.
 
 \end{align*}
 Thus in 2D Cartesian coordinates, the Green's function is 
 \begin{align*}
-g(\vec{\rho}|\vec{\rho}_0) &= \int \delta(x_1 - x_0)\delta(y_1 - y_0) \frac{e^{ik\sqrt{(x-x_1)^2 + (y-y_1)^2 + (z-z_1)^2}}}{4\pi \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z-z_1)^2}} dV_1\,,\\
+g(\vecrho|\vecrho_0) &= \int \delta(x_1 - x_0)\delta(y_1 - y_0) \frac{e^{ik\sqrt{(x-x_1)^2 + (y-y_1)^2 + (z-z_1)^2}}}{4\pi \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z-z_1)^2}} dV_1\,,\\
 &= \frac{1}{4\pi}  \int_{-\infty}^\infty \frac{e^{ik\sqrt{(x-x_0)^2 + (y-y_0)^2 + (z-z_1)^2}}}{4\pi \sqrt{(x-x_0)^2 + (y-y_0)^2 + (z-z_1)^2}} dz_1\,,\\
 \end{align*}
-where \(dV_1 = dx_1 dy_1 dz_1\). Note that \((x-x_0)^2 + (y-y_0)^2 = |\vec{\rho} -\vec{\rho}_0|^2\), as illustrated below:</p>
+where \(dV_1 = dx_1 dy_1 dz_1\). Note that \((x-x_0)^2 + (y-y_0)^2 = |\vecrho -\vecrho_0|^2\), as illustrated below:</p>
 <p align="middle"> <img src="greens_2D.svg" width="175" height="auto"></p>
 <p> Employing the change-of-variables 
 \begin{align*}
@@ -230,7 +233,7 @@ k(z-z_1) &= -t\,, \quad dz_1 = \frac{dt}{k}\,,
 \end{align*}
 the integral above becomes
 \begin{align*}
-g(\vec{\rho}|\vec{\rho}_0) = \frac{1}{4\pi}  \int_{-\infty}^\infty \frac{e^{ik\sqrt{k^2|\vec{\rho}-\vec{\rho}_0|^2 + t^2}}}{4\pi \sqrt{k^2|\vec{\rho}-\vec{\rho}_0|^2 + t^2}} dt\,.
+g(\vecrho|\vecrho_0) = \frac{1}{4\pi}  \int_{-\infty}^\infty \frac{e^{ik\sqrt{k^2|\vecrho-\vecrho_0|^2 + t^2}}}{4\pi \sqrt{k^2|\vecrho-\vecrho_0|^2 + t^2}} dt\,.
 \end{align*}
 Now note that an integral representation of the \(0\)th order Hankel function of the first kind is 
 \begin{align*}
@@ -238,7 +241,7 @@ H_0^{(1)} (x) = \frac{1}{i\pi}\int_{-\infty}^{\infty} \frac{e^{i\sqrt{x^2 + t^2}
 \end{align*}
 The 2D Green's function is therefore
 \begin{align*}
-\boxed{g(\vec{\rho}|\vec{\rho}_0) = \frac{i}{4} H_0^{(1)} (k|\vec{\rho} - \vec{\rho}_0|)\,.}
+\boxed{g(\vecrho|\vecrho_0) = \frac{i}{4} H_0^{(1)} (k|\vecrho - \vecrho_0|)\,.}
 \end{align*}
 Note that since 
 \begin{align*}
@@ -246,7 +249,7 @@ H_0^{(1)} (x) \simeq \sqrt{\frac{2}{\pi z}} e^{i(z-\pi/4)}\,,\quad |z| \gg 1\,,
 \end{align*}
 the 2D Green's function in the far field is 
 \begin{align*}
-g(\vec{\rho}|\vec{\rho}_0) \simeq \frac{e^{i\pi/4}}{\sqrt{8\pi}} \frac{e^{ik|\vec{\rho} - \vec{\rho}_0|}}{\sqrt{k|\vec{\rho} - \vec{\rho}_0|}}\,, \quad k|\vec{\rho}-\vec{\rho_0}| \gg 1\,. 
+g(\vecrho|\vecrho_0) \simeq \frac{e^{i\pi/4}}{\sqrt{8\pi}} \frac{e^{ik|\vecrho - \vecrho_0|}}{\sqrt{k|\vecrho - \vecrho_0|}}\,, \quad k|\vecrho-\vecrho_0| \gg 1\,. 
 \end{align*}
 The above approximation of the 2D Green's function of the Helmholtz equation is often a starting-point for the ocean acousticians, who always seem to work in the far field. 
 </p>
