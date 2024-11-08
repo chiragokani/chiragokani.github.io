@@ -18,9 +18,9 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      div: "{\\boldsymbol{\\nabla}\\cdot}",
-      grad: "{\\boldsymbol\\nabla}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
@@ -157,10 +157,10 @@ Note that both problems are <i>forced wave</i> problems, which are <i>boundary-v
 </div>
 </li>
 
-<li>In what sense are tsunamis shallow-water waves? What does this assumption imply about the particle velocity \(\boldsymbol{u}\)? 
+<li>In what sense are tsunamis shallow-water waves? What does this assumption imply about the particle velocity \(\vec{u}\)? 
 <span class="expandable-toggle" onclick="toggleExpandableContent('1sol4')">[answer]</span>
 <div id="1sol4" class="expandable-content" style="color: #0000A0;">
-<p>  Tsunamis are shallow-water waves in the sense that the wavelength \(\lambda\) is much greater than the depth of the ocean \(h_0\), i.e., \(h_0\ll\lambda\). This means that the particle velocity is purely in the \(x\)-direction, i.e., \(\boldsymbol{u} = u\hat{x}\).</p>
+<p>  Tsunamis are shallow-water waves in the sense that the wavelength \(\lambda\) is much greater than the depth of the ocean \(h_0\), i.e., \(h_0\ll\lambda\). This means that the particle velocity is purely in the \(x\)-direction, i.e., \(\vec{u} = u\vec{e}_x\).</p>
 </div>
 </li>
 
@@ -731,26 +731,26 @@ Newton was the first to calculate the rate of change of pressure with density, a
 <li>What is the meaning of \(D/Dt\)?
 <span class="expandable-toggle" onclick="toggleExpandableContent('2sol2')">[answer]</span>
 <div id="2sol2" class="expandable-content" style="color: #0000A0;">
-<p>  This is the material derivative, defined by \[\frac{\partial}{\partial t} + \vec{u}\cdot \vec{\nabla}\,.\]</p>
+<p>  This is the material derivative, defined by \[\frac{\partial}{\partial t} + \vec{u}\cdot \gradient\,.\]</p>
 </div>
 </li>
   
 
 <li>&#9784; Explain the meaning of each term in 
 \begin{align}
-\frac{D\rho}{Dt} + \rho \vec{\nabla}\cdot \vec{u} &=0 \label{blacksters1}\tag{i}\\
-\rho \frac{D\vec{u}}{Dt} + \vec{\nabla} P &= (\lambda + 2\mu) \vec{\nabla}(\vec{\nabla}\cdot \vec{u}) - \mu \vec{\nabla} \times \vec{\nabla} \times \vec{u}\label{blacksters2}\tag{ii}\\ 
-\rho C_v \frac{DT}{Dt} + P \vec{\nabla}\cdot \vec{u} &= \Phi^{\text{(visc)}} + \kappa \nabla^2 T \label{blacksters3}\tag{iii}\\ 
+\frac{D\rho}{Dt} + \rho \gradient\cdot \vec{u} &=0 \label{blacksters1}\tag{i}\\
+\rho \frac{D\vec{u}}{Dt} + \gradient P &= (\lambda + 2\mu) \gradient(\gradient\cdot \vec{u}) - \mu \gradient \times \gradient \times \vec{u}\label{blacksters2}\tag{ii}\\ 
+\rho C_v \frac{DT}{Dt} + P \gradient\cdot \vec{u} &= \Phi^{\text{(visc)}} + \kappa \nabla^2 T \label{blacksters3}\tag{iii}\\ 
 P &= R\rho T\,, \label{blacksters4}\tag{iv}
 \end{align}
 which correspond to Blackstock's eqs. A-47 - A-49.  
 <span class="expandable-toggle" onclick="toggleExpandableContent('2sol2f')">[answer]</span>
 <div id="2sol2f" class="expandable-content" style="color: #0000A0;">
 <p>  
-All four of the equations above are exact, i.e., \(\rho\), \(P\), and \(T\) are the exact density, pressure, and temperature. Equation (\ref{blacksters1}) is the continuity equation. Abandoning the material derivative, it is written \[\frac{\partial \rho}{\partial t} + \vec{\nabla}\cdot (\rho \vec{u}) = 0\,.\]
+All four of the equations above are exact, i.e., \(\rho\), \(P\), and \(T\) are the exact density, pressure, and temperature. Equation (\ref{blacksters1}) is the continuity equation. Abandoning the material derivative, it is written \[\frac{\partial \rho}{\partial t} + \gradient\cdot (\rho \vec{u}) = 0\,.\]
 
 Equation (\ref{blacksters2}) is the momentum equation. \(\lambda \) is the dilatational viscosity coefficient, and \(\mu\) is the shear viscosity coefficient. (Sometimes the two are combined as \(\nabla  + 2\mu = \tilde{V}\), where \(\tilde{V}\) is the viscosity number). Abandoning the material derivative, this equation becomes
-\[\rho \frac{\partial\vec{u}}{\partial t} + \rho (\vec{u}\cdot \vec{\nabla}) \vec{u} + \vec{\nabla} P = (\lambda + 2\mu) \vec{\nabla}(\vec{\nabla}\cdot \vec{u}) - \mu \vec{\nabla} \times \vec{\nabla} \times \vec{u} \]
+\[\rho \frac{\partial\vec{u}}{\partial t} + \rho (\vec{u}\cdot \gradient) \vec{u} + \gradient P = (\lambda + 2\mu) \gradient(\gradient\cdot \vec{u}) - \mu \gradient \times \gradient \times \vec{u} \]
 
 Equation (\ref{blacksters3}) is the energy equation. \(C_v\) is the heat capacity at constant volume. \(\Phi^{\text{(visc)}}\) is the nonlinear viscous dissipation function, and \(\kappa\) is the thermal conduction coefficient. 
 
@@ -2260,7 +2260,7 @@ Dividing through by \(\mathcal{O}(u/\lambda^2)\) gives
 \begin{align*}
 \mathcal{O}(1) + \mathcal{O}(\lambda/L) - \mathcal{O}(1) =0 
 \end{align*}
-But \(\mathcal{O}(\lambda/L) = 0\), so the middle term of equation (\ref{horny}) is much smaller than the first and third terms, resulting in  \[\frac{\partial^2 u}{\partial z^2} - \frac{1}{c_0}\frac{\partial^2 u }{\partial t^2}\].
+But \(\mathcal{O}(\lambda/L) = 0\), so the middle term of equation (\ref{horny}) is much smaller than the first and third terms, resulting in  \[\frac{\partial^2 u}{\partial z^2} - \frac{1}{c_0}\frac{\partial^2 u }{\partial t^2}\,.\]
 In the above equation, note that \(c_0=c_0(z)\), whereas in the "normal" 1D wave equation for isotropic medium, \(c_0\) is a constant. 
 </p>
 </div>
@@ -2669,9 +2669,9 @@ Since \(\vec{x} \neq 0\), by the zero product property, \(\lambda-\mu = 0 \impli
 <li>&#9784; For a boundary condition on a Cartesian coordinate, show that the particle velocity attains an extremum at a pressure-release surface. Also show that the particle velocity is zero at a rigid surface. For a boundary condition on a spherical coordinate, does the particle velocity attain an extremum at a pressure-release surface? Is the particle velocity zero at a rigid surface?
 <span class="expandable-toggle" onclick="toggleExpandableContent('10sol4afa')">[answer]</span>
 <div id="10sol4afa" class="expandable-content" style="color: #0000A0;">
-<p><b>Boundary condition on Cartesian coordinate.</b> The boundary condition at a pressure-release surface is that \(p= 0\). Therefore, when the continuity equation \(\vec{\nabla} \cdot (\rho \vec{u}) + \partial \rho/\partial t = 0\) is linearized and applied to a time-harmonic pressure, one obtains the condition 
+<p><b>Boundary condition on Cartesian coordinate.</b> The boundary condition at a pressure-release surface is that \(p= 0\). Therefore, when the continuity equation \(\gradient \cdot (\rho \vec{u}) + \partial \rho/\partial t = 0\) is linearized and applied to a time-harmonic pressure, one obtains the condition 
 \begin{align}\tag{i}\label{contersslkfsdlkjf}
-j\omega p + \rho_0 c_0^2 \vec{\nabla}\cdot \vec{u} = 0,
+j\omega p + \rho_0 c_0^2 \gradient\cdot \vec{u} = 0,
 \end{align}
 where the linear relation \(\rho' c_0^2= p\) has been used to eliminate density. 
 In Cartesian coordinates, equation (\ref{contersslkfsdlkjf}) applied at the \(n\)th surface reads
@@ -2681,7 +2681,7 @@ from which it can be seen that at the pressure release surface, \(\frac{\partial
 
 <p>Meanwhile the boundary condition at the \(n\)th rigid surface is that \(\partial p/\partial n = 0\). Therefore, by the the linearized momentum equation for a time-harmonic particle velocity, 
 \begin{align}\tag{i}\label{sdkjjlsdflkjafsamsdfm}
-\vec{\nabla}p + j\omega \rho_0 \vec{u} &= 0\,,
+\gradientp + j\omega \rho_0 \vec{u} &= 0\,,
 \end{align}
 from which it can be see that at the rigid surface defined along coordinate \(n\), \(u^{(n)} = 0\), i.e., the particle velocity vanishes.   </p>
 
@@ -2926,7 +2926,7 @@ derived in the previous problem, note that \(p/p_\text{free} = 2j\sin (kh \cos\t
 <p>
 The power is given by the surface integral of the intensity. The intensity is calculated by noting that \(\langle I \rangle/\langle I_\text{free}\rangle = |p/p_\text{free}|^2 = 4\sin^2(kh\cos\theta)\). Thus \(\langle I\rangle = \langle I_\text{free}\rangle 4\sin^2(kh\cos\theta)\).
 \begin{align*}
-W&= 4 \langle I_\text{free} \rangle \, \oint \sin^2 (kh \cos\theta) \hat{r} \cdot d\vec{A}\\
+W&= 4 \langle I_\text{free} \rangle \, \oint \sin^2 (kh \cos\theta) \vec{e}_r \cdot d\vec{A}\\
 &= 4 \langle  I_\text{free} \rangle \,\int_0^{\pi/2} \int_{0}^{2\pi} \sin^2 (kh \cos\theta)r^2\sin\theta d\theta d\psi\\
 &= 8 \langle I_\text{free} \rangle \,\pi r^2 \int_{0}^{\pi/2} \sin^2 (kh \cos\theta) \sin\theta d\theta
 \end{align*} 
@@ -3399,8 +3399,8 @@ Therefore, for a given \(n\), as the wavelength is increased, \(\theta_i\) becom
 \end{align*}
 The divergence theorem is applied to the first integral: 
 \begin{align*}
-\int \nabla^2 g dV &= \int \vec{\nabla}\cdot(\vec{\nabla} g) dV\\
-&= \oint \vec{\nabla} g\, dS \\
+\int \nabla^2 g dV &= \int \gradient\cdot(\gradient g) dV\\
+&= \oint \gradient g\, dS \\
 &= 4\pi R^2 \frac{d}{dR}\bigg(\frac{e^{-jkR}}{4\pi R}\bigg)\bigg\rvert_{R=0}^{R=\epsilon}\\
 &= 4\pi R^2 \bigg(-\frac{1}{4\pi R^2} - \frac{jk}{4\pi R}\bigg)e^{-jkR}\bigg\rvert_{R=0}^{R=\epsilon}\\
 &= -(1 + jkR)\, e^{-jkR}\big\rvert_{R=0}^{R=\epsilon}\\
@@ -3490,7 +3490,7 @@ If the medium is reciprocal, the surface integral vanishes in free space because
 \begin{align}\label{Rayleigh integral}\tag{15}
 p(\vec{r}) &= \frac{j\omega \rho_0}{2\pi}\oint_\mathcal{S}  \frac{e^{-jkR}}{R}  u^{(z)}(\vec{r}_0) dS_0
 \end{align}
-which gives the pressure field due to a <i>velocity</i> source. Let \(\hat{n}_0\) be the unit outward normal, and align the surface source in the plane \(z=0\), as shown below. 
+which gives the pressure field due to a <i>velocity</i> source. Let \(\vec{e}_{n0}\) be the unit outward normal, and align the surface source in the plane \(z=0\), as shown below. 
 <img src="rayleigh-int.png" width="434" height="237" style = "display: block; margin-left: auto; margin-right: auto;"/>
 
 <i>Outline: Let the first integral in equation (\ref{HKint}) be zero, i.e., assume no sources distributed in the volume. With the remaining surface integral, write \(\partial p(\vec{r}_0)/\partial n_0 = -\partial p(\vec{r}_0)/\partial z_0\) in terms of particle velocity using the momentum equation. With the second term, choose \(G\) such that \(\partial G/\partial n_0 = 0\) on the surface. The correct choice (show this) is \(G(\vec{r}|\vec{r}_0) = g_+(\vec{r}|\vec{r}_0) + g_-(\vec{r}|\vec{r}_0)\), where \(g_\pm = e^{-jkR_\pm}/4\pi R_\pm\), where \(R_\pm = \sqrt{(x-x_0)^2 + (y-y_0)^2 + (z\mp z_0)^2}\).</i> 
