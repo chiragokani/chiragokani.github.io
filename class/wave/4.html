@@ -18,9 +18,12 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
-      grad: "{\\boldsymbol\\nabla}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      vecxi: "{\\boldsymbol{\\xi}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times\\,}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
@@ -41,10 +44,10 @@ window.MathJax = {
       tri: "{\\mathrm{\\,tri\\,}}",
       circfn: "{\\mathrm{\\,circ\\,}}",
       sinc: "{\\mathrm{\\,sinc\\,}}",
-      ex: "{\\hat{e}_x}",           
-      ey: "{\\hat{e}_y}",
-      ez: "{\\hat{e}_z}",
-      ephi: "{\\hat{e}_\\phi}",
+      ex: "{\\vec{e}_x}",           
+      ey: "{\\vec{e}_y}",
+      ez: "{\\vec{e}_z}",
+      ephi: "{\\vec{e}_\\phi}",
       thetaHP: "{\\theta_{\\mathrm{HP}}}",
       
     }
