@@ -5,9 +5,9 @@ body {
   padding: 20px;
   line-height: 1.5;
   max-width: 900px; /* Adjust this value as needed */
-  font-family: 'Times New Roman', Times, serif; /*Arial, sans-serif;*/
-  /* text-align: justify;
-  text-justify: inter-word;*/
+  font-family: 'Times New Roman', Times, serif;/*Garamond, serif;*/
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .textbox {
