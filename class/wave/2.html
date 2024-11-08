@@ -18,9 +18,12 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
-      grad: "{\\boldsymbol\\nabla}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      vecxi: "{\\boldsymbol{\\xi}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times\\,}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
@@ -40,10 +43,10 @@ window.MathJax = {
       tri: "{\\mathrm{\\,tri\\,}}",
       circfn: "{\\mathrm{\\,circ\\,}}",
       sinc: "{\\mathrm{\\,sinc\\,}}",
-      ex: "{\\hat{e}_x}",           
-      ey: "{\\hat{e}_y}",
-      ez: "{\\hat{e}_z}",
-      ephi: "{\\hat{e}_\\phi}"
+      ex: "{\\vec{e}_x}",           
+      ey: "{\\vec{e}_y}",
+      ez: "{\\vec{e}_z}",
+      ephi: "{\\vec{e}_\\phi}"
     }
   }
 };
@@ -168,11 +171,11 @@ p_0(\rho) = p_0\, J_0(\alpha \rho)\,,\quad \rho \leq a\,.
 <div class="textbox"><h2 id="velocitysource">Velocity source</h2>
 <p> For a velocity source (which is more practical), we should recall the linearized Newton's law:
 \begin{align*}
-\rho_0 \frac{\partial \vec{u}}{\partial t} + \grad p = 0\,,
+\rho_0 \frac{\partial \vec{u}}{\partial t} + \gradient p = 0\,,
 \end{align*}
-or for time-harmonic waves, \(-i\omega\rho_0 \vec{u}_\omega + \grad p_\omega = 0\). Solving for \(\vec{u}\) gives
+or for time-harmonic waves, \(-i\omega\rho_0 \vec{u}_\omega + \gradient p_\omega = 0\). Solving for \(\vec{u}\) gives
 \begin{equation*}
-\vec{u}_\omega = \frac{\grad p_\omega}{ik\rho_0c_0}\,.
+\vec{u}_\omega = \frac{\gradient p_\omega}{ik\rho_0c_0}\,.
 \end{equation*}
 The 2D spatial Fourier transform of the left-hand side of the above is simply
 \begin{align*}
@@ -180,7 +183,7 @@ The 2D spatial Fourier transform of the left-hand side of the above is simply
 \end{align*}
 Meanwhile, for the right-hand side, note that by the <a href="1.html#transform_theorems" target="_blank" rel="noopener noreferrer">derivative property of the Fourier transform</a>,
 \begin{align*}
-\FTxy\{\grad p_\omega(x,y,z)\} &= \FTxy\bigg\{\bigg(\ex \frac{\partial}{\partial x} + \ey \frac{\partial}{\partial y} + \ez \frac{\partial }{\partial z}\bigg)p_\omega\bigg\}\\
+\FTxy\{\gradient p_\omega(x,y,z)\} &= \FTxy\bigg\{\bigg(\ex \frac{\partial}{\partial x} + \ey \frac{\partial}{\partial y} + \ez \frac{\partial }{\partial z}\bigg)p_\omega\bigg\}\\
 &= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  +\ez \FTxy\bigg\{\frac{\partial p_\omega}{\partial z}\bigg\}\,.
 \end{align*}
 But since \(P(k_x,k_y,z) = P(k_x,k_y,0) e^{ik_zz}\), the last term of the above, \(\ez \FTxy\{\partial p_\omega/\partial z\}\), is
@@ -192,14 +195,14 @@ But since \(P(k_x,k_y,z) = P(k_x,k_y,0) e^{ik_zz}\), the last term of the above,
 \end{align*}
 So 
 \begin{align*}
-\FTxy\{ \grad p_\omega(x,y,z)\} &= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  + \ez  ik_z P(k_x,k_y,z) \\
+\FTxy\{ \gradient p_\omega(x,y,z)\} &= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  + \ez  ik_z P(k_x,k_y,z) \\
 &=i\vec{k} P(k_x,k_y,z)\,,
 \end{align*}
 where
 \begin{align*}
 \vec{k} &= k_x\ex + k_y\ey + (k^2 - k_x^2 - k_y^2)^{1/2}\ez = \vec{k} (k_x,k_y)\,.
 \end{align*}
-Since \(\vec{u}_\omega = \frac{\grad p_\omega}{ik\rho_0c_0}\), its 2D spatial Fourier transform is
+Since \(\vec{u}_\omega = \frac{\gradient p_\omega}{ik\rho_0c_0}\), its 2D spatial Fourier transform is
 \begin{align}\label{U}\tag{3}
 \vec{U}(k_x,k_y,z) &= \frac{1}{\rho_0c_0} \frac{\vec{k}}{k} P(k_x,k_y,z)\,.
 \end{align}
@@ -212,7 +215,7 @@ Solving for the 2D spatial Fourier transform of the source pressure gives
 \[P_0(k_x,k_y) = \rho_0 c_0 \frac{k}{k_z} U(k_x,k_y)\,.\]
 Since \(p_\omega(x,y,z) = \IFTxy \{P_0(k_x,k_y)e^{ik_zz}\}\), the full field due to a velocity source is
 \begin{align*}
-\boxed{p_\omega (x,y,z) = \rho_0c_0\IFTxy \{U_0(k_x,k_y)\frac{k}{k_z} e^{-ikz}\}\,,}
+\boxed{p_\omega (x,y,z) = \rho_0c_0\IFTxy \left\{U_0(k_x,k_y)\frac{k}{k_z} e^{-ikz} \right\}\,,}
 \end{align*}
 where \(P_0(k_x,k_y) = \FTxy\{p_0(x,y)\}\). Note that there is a singularity at \(k_z = 0\), corresponding to the perimeter of the radiation circle.</p>
 </div>
@@ -227,7 +230,7 @@ How does one calculate intensity using Fourier acoustics? <a href="https://chira
 where 
 \begin{align*}
 p_\omega (x,y,z) &= \IFTxy\{P(k_x,k_y,z)\}\\
-\text{and}\quad \vec{u}_\omega (x,y,z) &= \IFTxy\{\vec{U}(k_x,k_y,z)\}=\IFTxy\{U_x\hat{e}_x + U_y\hat{e}_y + U_z\hat{e}_z\}\,.
+\text{and}\quad \vec{u}_\omega (x,y,z) &= \IFTxy\{\vec{U}(k_x,k_y,z)\}=\IFTxy\{U_x\vec{e}_x + U_y\vec{e}_y + U_z\vec{e}_z\}\,.
 \end{align*} 
 </div>
 
@@ -273,7 +276,7 @@ If \(k > k_b\) (or \(c_b > c_0\)), then the wave propagates into the fluid, whil
 <p>
 For additional insight, convert pressure to the particle velocity:
 \begin{align*}
-\vec{u}_\omega (x,y,z) &= \grad p_\omega/ik\rho_0c_0\\
+\vec{u}_\omega (x,y,z) &= \gradient p_\omega/ik\rho_0c_0\\
 &= u_0 \frac{k_b\ex }{\sqrt{k^2-k_b^2}} e^{ik_bx + i\sqrt{k^2 - k_b^2}z}\,.
 \end{align*}
 The intensity can then be calculated:
@@ -293,24 +296,24 @@ p_\omega(x,y,z) &= \rho_0c_0 u_0 e^{ikz}\,.
 
 <div class="textbox"><h2 id="elastic"> Generalization to elastic waves in isotropic solids</h2>
 
-Let \(\vec{\xi}\) be the particle displacement. It can be separated into a irrotational and rotational components,
+Let \(\vecxi\) be the particle displacement. It can be separated into a irrotational and rotational components,
 \begin{align*}
-\vec{\xi} = \vec{\xi}_l + \vec{\xi}_t\,,
+\vecxi = \vecxi_l + \vecxi_t\,,
 \end{align*}
-where \(\vec{\xi}_l\) is the longitudinal (compressional) wave displacement (\(\curl \vec{\xi}_l = 0\)), and where \(\vec{\xi}_t\) is the shear (transverse) wave displacement (\(\divergence \vec{\xi}_t = 0\)). These two displacements above satisfy wave equations of their own. <span class="Q"> This was shown without proof, but the derivation is worked out from first principles <a href="https://chiragokani.github.io/quals/ultrasonics.html#EWE" target="_blank" rel="noopener noreferrer">here</a>.</span> 
+where \(\vecxi_l\) is the longitudinal (compressional) wave displacement (\(\curl \vecxi_l = \vec{0}\)), and where \(\vecxi_t\) is the shear (transverse) wave displacement (\(\divergence \vecxi_t = 0\)). These two displacements above satisfy wave equations of their own. <span class="Q"> This was shown without proof, but the derivation is worked out from first principles <a href="https://chiragokani.github.io/quals/ultrasonics.html#EWE" target="_blank" rel="noopener noreferrer">here</a>.</span> 
 
 <h3>Compressional waves</h3>
 The compressional wave equation is
 \begin{align*}
-\Laplacian \vec{\xi}_l &= \frac{1}{c_l^2} \frac{\partial \vec{\xi}_l}{\partial t^2}
+\Laplacian \vecxi_l &= \frac{1}{c_l^2} \frac{\partial \vecxi_l}{\partial t^2}
 \end{align*}
 where the longitudinal sound speed is
 \begin{align*}
 c_l &= \sqrt{\frac{K + 4\mu/3}{\rho}}\,,
 \end{align*}
-where \(K\) is the bulk modulus and \(\mu\) is the shear modulus. By the Helmholtz decomposition theorem, \(\vec{\xi}_\ell\) is defined as the gradient of a scalar potential \(\phi\),
+where \(K\) is the bulk modulus and \(\mu\) is the shear modulus. By the Helmholtz decomposition theorem, \(\vecxi_\ell\) is defined as the gradient of a scalar potential \(\phi\),
 \begin{align*}
-\vec{\xi}_l = \grad \phi\,,
+\vecxi_l = \gradient \phi\,,
 \end{align*}
 giving
 \begin{align*}
@@ -328,11 +331,11 @@ Thus we can swap out \(p\) for \(\phi\) in Fourier theory presented earlier, and
 <h3>Shear waves </h3>
 The wave equation for shear waves is vectorial, i.e.,
 \begin{align}\label{vectorwave}\tag{1}
-\Laplacian \vec{\xi}_t = \frac{1}{c_t^2}\frac{\partial \vec{\xi}_t}{\partial t^2}\, \quad c_t = \sqrt{\mu/\rho}
+\Laplacian \vecxi_t = \frac{1}{c_t^2}\frac{\partial \vecxi_t}{\partial t^2}\, \quad c_t = \sqrt{\mu/\rho}
 \end{align}
-The other condition noted above is that \(\divergence \vec{\xi}_t = 0\), which is often utilized to to defined terms of the vector potential \(\vec{\xi}_t = \curl \vec{\psi}\) (analogous to how the longitudinal displacement was defined in terms of a scalar potential above). However, even with the vector potential, we would still have three components, so let us follow Landau and Lifshitz and simply use the Cartesian components of \(\vec{\xi}_t\),
+The other condition noted above is that \(\divergence \vecxi_t = 0\), which is often utilized to to defined terms of the vector potential \(\vecxi_t = \curl \vec{\psi}\) (analogous to how the longitudinal displacement was defined in terms of a scalar potential above). However, even with the vector potential, we would still have three components, so let us follow Landau and Lifshitz and simply use the Cartesian components of \(\vecxi_t\),
 \begin{align*}
-\vec{\xi}_t = \xi_x\ex + \xi_y\ey + \xi_z\ez\,,
+\vecxi_t = \xi_x\ex + \xi_y\ey + \xi_z\ez\,,
 \end{align*}
 such that Eq. \eqref{vectorwave} becomes
 \begin{align}
@@ -340,7 +343,7 @@ such that Eq. \eqref{vectorwave} becomes
 \Laplacian \xi_y + k_t^2 \xi_y &= 0 \label{Helmers2} \tag{3}\\
 \Laplacian \xi_z + k_t^2 \xi_z &= 0\,.
 \end{align}
-Note that in the equations above, only two components are independent, because the third is related by \(\divergence \vec{\xi}_t = 0\), which in Cartesian coordinates reads
+Note that in the equations above, only two components are independent, because the third is related by \(\divergence \vecxi_t = 0\), which in Cartesian coordinates reads
 \begin{align*}
 \frac{\partial \xi_x}{\partial x} + \frac{\partial \xi_y}{\partial y} + \frac{\partial \xi_z}{\partial z} = 0\,.
 \end{align*}
@@ -353,7 +356,7 @@ Eqs. \eqref{Helmers1} and \eqref{Helmers2} are solved separately using Fourier a
 <h4>Torsional waves</h4>
 In torsional waves, the transverse displacement is given by
 \begin{align*}
-\vec{\xi}_t(\rho,\phi,z=0) &= \xi_\phi (\rho) \hat{e}_\phi\,,
+\vecxi_t(\rho,\phi,z=0) &= \xi_\phi (\rho) \vec{e}_\phi\,,
 \end{align*}
 where the coordinates and unit vectors are shown below:
 <p align="middle"> <img src="cylindrical_unit_vectors.svg" width="180" height="auto"></p>
@@ -364,9 +367,9 @@ Then
 \xi_z &= 0
 \end{align*}
 and \begin{align*}
-\divergence \vec{\xi}_t &= \frac{1}{\rho} \frac{\partial (\rho \xi_\rho)}{\partial \rho} + \frac{1}{\rho} \frac{\partial \xi_\phi}{\partial \phi} + \frac{\partial \xi_z}{\partial z}
+\divergence \vecxi_t &= \frac{1}{\rho} \frac{\partial (\rho \xi_\rho)}{\partial \rho} + \frac{1}{\rho} \frac{\partial \xi_\phi}{\partial \phi} + \frac{\partial \xi_z}{\partial z}
 \end{align*}
-Since \(\vec{\xi}_t(\rho,\phi,z=0) = \xi_\phi (\rho) \hat{e}_\phi\), the above equation reduces to \(\divergence \vec\psi = 0\). Meanwhile, the Laplacian in cylindrical coordinates is 
+Since \(\vecxi_t(\rho,\phi,z=0) = \xi_\phi (\rho) \vec{e}_\phi\), the above equation reduces to \(\divergence \vec\psi = 0\). Meanwhile, the Laplacian in cylindrical coordinates is 
 \begin{align*}
 \Laplacian &= \frac{\partial^2}{\partial \rho^2} + \frac{1}{\rho} \frac{\partial}{\partial \rho} + \frac{1}{\rho^2}\frac{\partial^2}{\partial \phi^2} + \frac{\partial^2}{\partial z^2}\,.
 \end{align*}
