@@ -18,9 +18,11 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\boldsymbol{#1}',1] ,
-      div: "{\\boldsymbol{\\nabla}\\cdot}",
-      grad: "{\\boldsymbol\\nabla}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
@@ -40,9 +42,9 @@ window.MathJax = {
       tri: "{\\mathrm{\\,tri\\,}}",
       circfn: "{\\mathrm{\\,circ\\,}}",
       sinc: "{\\mathrm{\\,sinc\\,}}",
-      ex: "{\\hat{e}_x}",           
-      ey: "{\\hat{e}_y}",
-      ez: "{\\hat{e}_z}"
+      ex: "{\\vec{e}_x}",           
+      ey: "{\\vec{e}_y}",
+      ez: "{\\vec{e}_z}"
     }
   }
 };
@@ -209,12 +211,12 @@ and if \(f(x,y) = g(x)h(y)\) then \(\mathcal{F}\{f(x,y)\} = G(k_x)H(k_y)\). </p>
 <p>Finally, note that a vectorial form of the 2D spatial Fourier transform is often utilized. Let 
 \begin{align*}
 \rho &= (x,y) = x\hat{e}_x + y\hat{e}_y\\
-\vec{\kappa} &= (k_x,k_y) = k_x\ex + k_y\ey\,,
+\veckappa &= (k_x,k_y) = k_x\ex + k_y\ey\,,
 \end{align*}
-so \(\vec{\rho}\cdot\vec{\kappa} = k_xx + k_yy\). Then the 2D spatial Fourier transform pair reads 
+so \(\vecrho\cdot\veckappa = k_xx + k_yy\). Then the 2D spatial Fourier transform pair reads 
 \begin{align*}
-F(\vec{\kappa}) &= \int f(\vec{\rho})e^{-i\vec{\kappa}\cdot\vec{\rho}} d\vec{\rho}\\
-f(\vec{\rho}) &= \int F(\vec{\kappa})e^{i\vec{\kappa}\cdot\vec{\rho}} d\vec{\kappa}\,.
+F(\veckappa) &= \int f(\vecrho)e^{-i\veckappa\cdot\vecrho} d\vecrho\\
+f(\vecrho) &= \int F(\veckappa)e^{i\veckappa\cdot\vecrho} d\veckappa\,.
 \end{align*}
  </p>
 
@@ -361,7 +363,7 @@ A(k_x,k_y) = P_0(k_x,k_y) \frac{dk_x dk_y}{4\pi^2}\,.
 Each plane wave in the summation is uniquely determined by the pair \((k_x,k_y)\). Now write
 \begin{align*}
 \vec{k} &= k_x\ex + k_y\ey + k_z\ez\\
-&= \vec{\kappa} + k_z \ez\,.
+&= \veckappa + k_z \ez\,.
 \end{align*}
 Now we introduce spherical coordinates, where the meaning of the \(z\) axis is preserved between the Cartesian and spherical coordinates:
 \begin{alignat*}{2}
@@ -372,7 +374,7 @@ k_z &= k\cos \gamma\,,
 where \(\gamma \) is the polar angle <span class="Q">in \(k\)-space</span>, while \(\psi\) is the azimuthal angle <span class="Q">in \(k\)-space</span>. </p>
 <p align="middle"> <img src="spherical.svg" width="150" height="auto"></p>
 
-<span class="Q">I do not know what to label the axes in the figure above. In future sections, you will see that they are labeled \((x,y,z)\), which I abhor, because these are spatial coordinates with dimensions of length, while the vectors \(\vec{k}\) and \(\vec{\kappa}\) have dimensions of inverse length. </span>
+<span class="Q">I do not know what to label the axes in the figure above. In future sections, you will see that they are labeled \((x,y,z)\), which I abhor, because these are spatial coordinates with dimensions of length, while the vectors \(\vec{k}\) and \(\veckappa\) have dimensions of inverse length. </span>
 
 <p>The ordered pair \((k_x,k_y)\) is uniquely defined by \((\psi,\gamma)\), and hence 
 \begin{align*}
@@ -391,12 +393,12 @@ Note that only components for which \(k_x^2 + k_y^2 < k^2\) can propagate. That 
 
 <p>Suppose \(f(x,y) = f(\sqrt{x^2 + y^2}) = f(\rho)\). Then, the 2D spatial Fourier transform becomes 
 \begin{align*}
-\FTr \{f(\rho)\} &= \int_{0}^{2\pi}\!\!\int_{0}^{\infty} f(\rho) e^{-i\vec{\kappa} \cdot \vec{\rho}}\,  \rho \, d\rho \,  d\phi
+\FTr \{f(\rho)\} &= \int_{0}^{2\pi}\!\!\int_{0}^{\infty} f(\rho) e^{-i\veckappa \cdot \vecrho}\,  \rho \, d\rho \,  d\phi
 \end{align*}
-where sometimes the differential area element \(\rho \,  d\rho\,  d\phi\) is denoted  \(d\vec{\rho}\). The relationship between \(\rho\) and \(\kappa\) is shown below: 
+where sometimes the differential area element \(\rho \,  d\rho\,  d\phi\) is denoted  \(d\vecrho\). The relationship between \(\rho\) and \(\kappa\) is shown below: 
 <p align="middle"> <img src="rho_kappa.svg" width="170" height="auto"></p>
-Since \(\vec{\kappa}\) is fixed, we may align \(\vec{\kappa}\) along the \(x\)-axis (i.e., set \(\psi =0\)) for the case that \(f \neq f(\phi)\). Then 
-\[\vec{\kappa}\cdot\vec{\rho} = \kappa \rho \cos \phi\,.\]
+Since \(\veckappa\) is fixed, we may align \(\veckappa\) along the \(x\)-axis (i.e., set \(\psi =0\)) for the case that \(f \neq f(\phi)\). Then 
+\[\veckappa\cdot\vecrho = \kappa \rho \cos \phi\,.\]
 and 
 \begin{align*}
 \FTr \{f(\rho)\}&= \int_{0}^{\infty} f(\rho)\rho d\rho \int_{0}^{2\pi} e^{-ik\rho \cos\phi} d\phi\,,
@@ -419,10 +421,10 @@ which is a critical (and annoying) difference between the Fourier and Hankel tra
 
 <p>Similarly, the inverse 2D spatial  Fourier transform of an axisymmetric function \(k\)-space, \(F(\kappa)\), is
 \begin{align*}
-f(\rho) = \IFTr \{F(\kappa)\} = \frac{1}{4\pi^2} \iint F(\kappa) e^{i\vec{\kappa}\cdot \vec{\rho}}\, \kappa \,d\kappa \,d\psi
+f(\rho) = \IFTr \{F(\kappa)\} = \frac{1}{4\pi^2} \iint F(\kappa) e^{i\veckappa\cdot \vecrho}\, \kappa \,d\kappa \,d\psi
 \end{align*}
-Align \(\vec{\rho}\) with the \(k_x\) axis. Thus in this case
-\[\vec{\kappa} \cdot \vec{\rho} = \kappa \rho \cos \psi.\]
+Align \(\vecrho\) with the \(k_x\) axis. Thus in this case
+\[\veckappa \cdot \vecrho = \kappa \rho \cos \psi.\]
 So 
 \begin{align*}
 f(\rho) &= \frac{1}{2\pi} \int_{0}^{\infty}F(\kappa)J_0(\kappa\rho)\kappa \, d\kappa\\
