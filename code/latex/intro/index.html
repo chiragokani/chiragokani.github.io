@@ -442,35 +442,6 @@ sorting=none,
 	enhanced, colframe=solarizedOrange,
 	colback=solarizedBase3, boxrule=0.75pt, boxsep=-1mm, #1} %sharp corners
 
-%user-defined commands
-\newcommand{\Order}{\mathcal{O}}
-
-%vector algebra and calculus (updated notation a la Muhlestein)
-\newcommand{\T}[1]{^{\mathrm{T}{#1}}} % major transposition, e.g., \T{2}
-\renewcommand{\t}[1]{^{\mathrm{t}{#1}}} % minor transposition
-\newcommand{\trace}{\mathrm{Tr}\,}
-\newcommand{\dyad}[1]{\underline{#1}} 
-\newcommand{\triad}[1]{\boldsymbol{#1}} %\tilde{#1} 
-\newcommand{\quadrad}[1]{\mathsf{#1}}
-%\newcommand{\gradient}{\mathrm{grad}\,} 
-%\newcommand{\divergence}{\mathrm{div}\,}
-%\newcommand{\curl}{\mathrm{curl}\,}
-\newcommand{\gradient}{\vec{\nabla}}
-\newcommand{\divergence}{\vec{\nabla}\cdot}
-\newcommand{\curl}{\vec{\nabla}\times}
-\newcommand{\Laplacian}{\nabla^2}
-\newcommand{\Laplcianperp}{\nabla_{\!\!\perp}^2}
-\newcommand{\Laplacianv}{\vec{\nabla}^2}
-\newcommand{\dAlambertian}{\Box^2}
-\newcommand{\Space}[1]{{\boldsymbol{\mathsf{#1}}}} 
-\newcommand{\Ell}{\mathcal{L}}
-\newcommand{\out}{^\mathrm{out}}
-\newcommand{\inc}{^\mathrm{in}}
-\newcommand{\FTTT}{\mathcal{F}_{3\mathrm{D}}}
-\newcommand{\IFTTT}{\mathcal{F}_{3\mathrm{D}}^{-1}}
-\newcommand{\rect}{\mathrm{rect}}
-\newcommand{\circfn}{\mathrm{circ}}
-
 %fonts
 \usepackage[]{newtx}
 %\renewcommand{\familydefault}{\sfdefault} %uncomment for sans-serif text
@@ -488,6 +459,31 @@ sorting=none,
 %\usepackage{bm}% load after all math to give access to bold math
 \usepackage{aurical} 
 
+%user-defined commands
+\newcommand{\Order}{\mathcal{O}}
+%vector algebra and calculus (updated notation a la Muhlestein)
+\newcommand{\T}[1]{^{\mathrm{T}{#1}}} % major transposition, e.g., \T{2}
+\renewcommand{\t}[1]{^{\mathrm{t}{#1}}} % minor transposition
+\newcommand{\trace}{\mathrm{Tr}\,}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\dyad}[1]{\boldsymbol{\mathsf{{#1}}}} 
+%\newcommand{\triad}[1]{\boldsymbol{#1}} %\tilde{#1} 
+%\newcommand{\quadrad}[1]{\mathsf{#1}}
+%\newcommand{\gradient}{\mathrm{grad}\,} 
+%\newcommand{\divergence}{\mathrm{div}\,}
+%\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\gradient}{\boldsymbol{\nabla}}
+\newcommand{\divergence}{\boldsymbol{\nabla}\cdot}
+\newcommand{\curl}{\boldsymbol{\nabla}\times}
+\newcommand{\Laplacian}{\nabla^2}
+\newcommand{\Laplcianperp}{\nabla_{\!\!\perp}^2}
+\newcommand{\vecLaplacian}{\boldsymbol{\nabla}^2}
+\newcommand{\FTTT}{\mathcal{F}_{3\mathrm{D}}}
+\newcommand{\IFTTT}{\mathcal{F}_{3\mathrm{D}}^{-1}}
+\newcommand{\rect}{\mathrm{rect}}
+\newcommand{\circfn}{\mathrm{circ}}
+
+
 \title{Title}
 \author{Chirag Gokani\footnote{\href{mailto:chiragokani@gmail.com}{\texttt{chiragokani@gmail.com}}}} %can use \Fontlukas or \Fontauri for calligraphic font
 \date{\today}
@@ -496,6 +492,7 @@ sorting=none,
 
 \printbibliography
 \end{document}
+
 
 </code></pre>
 
