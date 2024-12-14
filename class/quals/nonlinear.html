@@ -18,9 +18,9 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      vec: ['\\mathbf{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
-      gradient: "{\\boldsymbol\\nabla}",
+      vec: ['\\boldsymbol{#1}',1] ,
+      div: "{\\boldsymbol{\\nabla}\\cdot}",
+      grad: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times}",
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
@@ -54,6 +54,9 @@ window.MathJax = {
 </ol>	
 
 <p>I mainly refer to the two review guides I wrote for Dr. Hamilton's Nonlinear Acoustics course in spring 2023, linked below. These reviews skip over some applications of nonlinear acoustics (the parametric array, HIFU, phase conjugation, etc.), but they cover the major theoretical developments of the course. I have also included some additional (mostly conceptual) questions.</p>
+
+<p>The textbook used in the course is <i>Nonlinear Acoustics</i>, 3rd ed., edited by M. F. Hamilton and D. T. Blackstock (Springer, 2024). The textbook is open-access and can be downloaded <a href="https://link.springer.com/book/10.1007/978-3-031-58963-8" target="_blank" rel="noopener noreferrer">here</a>.</p>
+
 <p><a href="index.html">&leftarrow; Return to home</a></p>
 </div>
 
@@ -70,7 +73,7 @@ window.MathJax = {
 \begin{equation}\label{first}\tag{1}
 \frac{\partial^2 p}{\partial x^2} - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} = -\frac{\delta}{c_0^4} \frac{\partial^3 p}{\partial t^3}
 \end{equation}
-describe? Qualitatively describe the solutions to this wave equation. 
+describe? Qualitatively describe the solutions of this wave equation. 
 <span class="expandable-toggle" onclick="toggleExpandableContent('1sol0')">[answer]</span>
 <div id="1sol0" class="expandable-content" style="color: #0000A0;">
 <p>  This is the linear wave equation with attenuation, where \(\delta\) is the so-called "diffusivity of sound." In retarded time, this wave equation can be transformed into a diffusion-type equation (except with space and time-flipped from the conventional diffusion equation). This means that in retarded time, the acoustic pressure diffuses in \(\tau\). For example, for a delta function at \(x=0\), the solution is a Gaussian in \(\tau\). <i>Also think about this evolution in terms of the attenuation coefficient \(\alpha = \delta \omega^2/2c_0^3\).</i></p>
@@ -152,7 +155,7 @@ How is this equation qualitatively related to equations (\ref{lossy})-(\ref{nonl
 </div>
 </li>
 
-<li> When nonlinearity dominates absorption, what is the name of the solution to equation (\ref{Burgers}) in the region \(\sigma = x/\bar{x}\gtrsim 3\)? 
+<li> When nonlinearity dominates absorption, what is the name of the solution of equation (\ref{Burgers}) in the region \(\sigma = x/\bar{x}\gtrsim 3\)? 
 <span class="expandable-toggle" onclick="toggleExpandableContent('1sol9')">[answer]</span>
 <div id="1sol9" class="expandable-content" style="color: #0000A0;">
 <p> This is the Fay solution.</p>
@@ -264,7 +267,7 @@ from \((x,y,z,t)\) to \((x,y,z,\tau)\) coordinates, where \(\tau = t-z/c_0\). Th
 \begin{equation}\label{wave}\tag{7}
 	\frac{\partial^2 p}{\partial \tau \partial z} = \frac{c_0}{2}\nabla^2 p\,,
 \end{equation}
-as given by P. V. Yuldashev and V. A. Khokhlova, "Simulation of Three-Dimensional Nonlinear Fields of Ultrasound Therapeutic Arrays," Acoustical Physics, 57, <b>3</b> (334-343) 2011, equation 3.
+as given by P. V. Yuldashev and V. A. Khokhlova, "Simulation of Three-Dimensional Nonlinear Fields of Ultrasound Therapeutic Arrays," Acoustical Physics, <b>57</b>, 334-343, 2011, equation (3).
 <span class="expandable-toggle" onclick="toggleExpandableContent('2sol9')">[answer]</span>
 <div id="2sol9" class="expandable-content" style="color: #0000A0;">
 <p>To facilitate the coordinate transformation, denote the new spatial coordinates with primes, i.e., \((x',y',z',\tau)\). Start by writing the partial derivatives in the old \((x,y,z,t)\) coordinates in terms of the new \((x',y',z',\tau)\) coordinates:
