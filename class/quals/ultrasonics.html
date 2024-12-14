@@ -32,6 +32,17 @@ window.MathJax = {
 </script>	
 <link rel="stylesheet" href="quals.css">
 
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
 </head>
 <body>
   <div class="textbox">
