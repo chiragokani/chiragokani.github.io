@@ -8,42 +8,19 @@
   <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
    </script>
-<script>
-window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-};
-</script>
 <script type="text/javascript">
 window.MathJax = {
   tex: {
+    tags: 'ams',
     macros: {
-      Order: "{\\mathcal O}",
-      dyad: ['\\underline{#1}',1],
-      triad: ['\\boldsymbol{#1}',1],
-      quadrad: ['\\mathsf{#1}',1],
-      divergence: "{\\vec{\\nabla}\\cdot}",
-      gradient: "{\\vec\\nabla}",
-      curl: "{\\vec\\nabla\\times}",
-      Laplacian: "{\\nabla^2}",
-      Laplacianv: "{\\vec\\nabla^2}",
-      dAlambertian: "{\\Box^2}",
-      Order: "{\\mathcal O}",
-      FTt: "{\\mathcal{F}_t}",
-      IFTt: "{\\mathcal{F}_t^{-1}}",
-      FTx: "{\\mathcal{F}_x}",
-      IFTx: "{\\mathcal{F}_x^{-1}}",      
-      FTr: "{\\mathcal{F}_\\rho}",
-      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
-      HT: "{\\mathcal{H}_\\rho}",
-      IHT: "{\\mathcal{H}_\\rho^{-1}}",  
-      FTxy: "{\\mathcal{F}_{xy}}",
-      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
-      rect: "{\\mathrm{\\,rect\\,}}",
-      tri: "{\\mathrm{\\,tri\\,}}",
-      circfn: "{\\mathrm{\\,circ\\,}}",
-      sinc: "{\\mathrm{\\,sinc\\,}}"
+    Order: "{\\mathcal O}",
+    vec: ['\\mathbf{#1}',1],
+    dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+    divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+    gradient: "{\\boldsymbol\\nabla}",
+    curl: "{\\boldsymbol\\nabla\\times\\,}",
+    Laplacian: "{\\nabla^2}",
+    Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
     }
   }
 };
@@ -53,25 +30,43 @@ window.MathJax = {
 <body>
   <h1>Code</h1>
 
-<h2>\(\LaTeX\)</h2> 
+<p> [<a href="#matlab">MATLAB</a>] [<a href="#latex">\(\LaTeX\)</a>] </p>
+
+
+<section id="matlab">
+<h2>MATLAB</h2>   
 <ul>
-<li><p><a href="latex/beamer.zip" target="_blank" rel="noopener noreferrer">beamer template</a>: slides using the "Madrid" theme with biblatex implementation, boxed equations, etc. Includes a simple version for quick slide generation, and a long version to demonstrate capabilities. </p></li>
+<li><p><a href="matlab/gaussvortex.m" target="_blank" rel="noopener noreferrer">Vortex beam radiated by Gaussian vortex source</a>: dimensionless code for Eq. (14) of 
 
+<blockquote>
+C. A. Gokani, M. R. Haberman, M. F. Hamilton. <a href="https://doi.org/10.1121/10.0025688" target="_blank" rel="noopener noreferrer">"Paraxial and ray approximations of acoustic vortex beams,"</a> J. Acoust. Soc. Am., <b>155</b>, 2707-2723 (2024).
+</blockquote>
 
-<li><p><a href="latex/kpfonts.zip" target="_blank" rel="noopener noreferrer">kpfonts with biblatex and more</a>: my go-to template for everyday document preparation; contains short and long versions and an example bibliography built using biblatex. Contains all the features below and more.</p></li>	    	    
-<li><p><a href="latex/euler_beton.tex" target="_blank" rel="noopener noreferrer">euler-beton template</a>: AMS Euler math and Beton text. </p></li>  
-<li><p><a href="latex/WU - Gokani - 2023-MM-DD.zip" target="_blank" rel="noopener noreferrer">helvetica</a>: format for Haberman group weekly update. </p></li>	    	    
-<li><p><a href="latex/intro/index.html">Introduction to LaTeX</a>: a quick introduction to \(\LaTeX\), presented to new graduate students in acoustics at UT Austin. </p></li>	    	    
-</ul>
+The dimensionless form of Eq. (14) is in terms of the parameters \(Q = q/p_0\), \(R = r/a\), \(Z =z/z_R = 2z/ka^2\), and \(G = ka^2/2d\), where \(r\) and \(z\) are the cylindrical coordinates, \(a\) is the characteristic radius of the source, \(k\) is the wavenumber, and \(d\) is the focal length: 
+\begin{align}
+{|Q|(R,Z)} &= \sqrt{2\pi} \frac{Z}{R^2} \big|\chi^{3/2} e^{-\chi} \big[I_{(\ell-1)/2}(\chi) - I_{(\ell+1)/2}(\chi)\big]\big|\,,\label{eq:gauss}\\
+\chi(R,Z) &= \frac{iR^2/2Z}{1+ Z(i-G)} \,. \label{eq:chi}
+\end{align}
+Unfocused Gaussian vortex beams are obtained by setting \(G = 0\) in Eq. \eqref{eq:chi}. Both focused and unfocused cases are handled in the code.
 
-<h2>MATLAB	</h2>   
-<ul>
+</p></li>
+
 <li><p><a href="matlab/oscillator.m" target="_blank" rel="noopener noreferrer">Oscillator with damping:</a> dimensionless code for motion of oscillator with damping. </p></li>
 <li><p><a href="matlab/fig_JASA.m" target="_blank" rel="noopener noreferrer">fig_JASA</a>: figure formatting file to match JASA numbering fonts (Times New Roman).</p></li>
-<li><p><a href="matlab/fourier_transform.m" target="_blank" rel="noopener noreferrer">Fourier transform</a>: using fft in MATLAB.</p></li>
 <li><p><a href="matlab/Laguerre_demo.m" target="_blank" rel="noopener noreferrer">Laguerre polynomials demo in MATLAB</a>: demo of MATLAB functions for Laguerre polynomials and generalized Laguerre polynomials in MATLAB. </p></li>
 <li><p><a href="matlab/legendre_vs_legendreP.m" target="_blank" rel="noopener noreferrer">Legendre Polynomials and Associated Legendre Functions in MATLAB</a>: demo of MATLAB functions for Legendre polynomials and associated Legendre functions.</p></li>
 <li><p><a href="matlab/bessel.zip" target="_blank" rel="noopener noreferrer">Spherical Bessel, Neumann, and Hankel functions in MATLAB</a>: package that includes user-defined functions for the spherical Bessel, Neumann, and Hankel functions, along with a demo.</a></p></li>
+</ul>
+</section>
+
+
+<section id="latex">
+<h2>\(\LaTeX\)</h2> 
+<ul>
+<li><p><a href="latex/intro/index.html">Introduction to LaTeX</a>: a quick introduction presented to new graduate students in acoustics at UT Austin. </p></li>	    	    
+
+<li><p><a href="latex/WU - Gokani - 2024-MM-DD.tex" target="_blank" rel="noopener noreferrer">helvetica</a>: format for Haberman group weekly update <a href="latex/WU - Gokani - 2024-MM-DD.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>. </p></li>	    	    
+
 </ul>
 </section>
 
