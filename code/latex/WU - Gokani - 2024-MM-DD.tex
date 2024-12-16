@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage{lmodern}
+
+\usepackage[figurename=Fig.]{caption}
+\captionsetup[figure]{font=small,labelfont=bf}
+\captionsetup[table]{font=small,labelfont=bf}
+
+\usepackage[
+backend=biber,
+style=phys,
+sorting=none,
+]{biblatex}
+\addbibresource{C:/Users/chira/Documents/research/refs/refs.bib}%path to bib file
+
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!65!black,
+	linkcolor=blue!65!black,
+    filecolor=blue!65!black,    
+    urlcolor=blue!65!black,
+	citecolor=blue!65!black
+    } 
+\urlstyle{same}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tkz-euclide} 
+\usepackage{braket}
+\usepackage{tikzducks}%ducks
+\usepackage{wrapfig}
+\usepackage{halloweenmath}
+\usepackage{epigraph}
+\usepackage{longtable}
+\usepackage{fullpage}
+%update is used to tag anything that needs to be revisited
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{.7\textwidth}
+%\setlength\epigraphrule{0pt} %uncomment for no line and author below epigraph
+
+%boxed equations
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+\newtcolorbox[auto counter,number within=chapter]{graybox}[2][% use 
+    enhanced, 
+%    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colback= gray!20, colframe=gray!20, colbacktitle=gray, fonttitle={\bfseries\small}, arc=0mm,#1, boxrule=0pt, enhanced, title=Box~\thetcbcounter: #2,#1,fontupper=\small, breakable}
+
+\definecolor{solarizedBase3}{RGB}{253,246,227} %adjust
+\definecolor{solarizedOrange}{RGB}{203,75,22} %adjust
+\newtcbox{\eq}[1][]{%
+	nobeforeafter, math upper, tcbox raise base,
+	enhanced, colframe=solarizedOrange,
+	colback=solarizedBase3, boxrule=0.75pt, boxsep=-1mm, #1} %sharp corners
+
+%fonts
+\usepackage[scale=0.98]{newtx}
+\renewcommand{\familydefault}{\sfdefault}
+
+%user-defined commands
+\newcommand{\Order}{\mathcal{O}}
+%vector algebra and calculus (updated notation a la Muhlestein)
+\newcommand{\T}[1]{^{\mathrm{T}{#1}}} % major transposition, e.g., \T{2}
+\renewcommand{\t}[1]{^{\mathrm{t}{#1}}} % minor transposition
+\newcommand{\trace}{\mathrm{Tr}\,}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\dyad}[1]{\boldsymbol{\mathsf{{#1}}}} 
+%\newcommand{\triad}[1]{\boldsymbol{#1}} %\tilde{#1} 
+%\newcommand{\quadrad}[1]{\mathsf{#1}}
+%\newcommand{\gradient}{\mathrm{grad}\,} 
+%\newcommand{\divergence}{\mathrm{div}\,}
+%\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\gradient}{\boldsymbol{\nabla}}
+\newcommand{\divergence}{\boldsymbol{\nabla}\cdot}
+\newcommand{\curl}{\boldsymbol{\nabla}\times}
+\newcommand{\Laplacian}{\nabla^2}
+\newcommand{\Laplcianperp}{\nabla_{\!\!\perp}^2}
+\newcommand{\Laplacianv}{\boldsymbol{\nabla}^2}
+\newcommand{\dAlambertian}{\Box^2}
+\newcommand{\Space}[1]{{\boldsymbol{\mathsf{#1}}}} 
+\newcommand{\Ell}{E}
+\newcommand{\out}{^\mathrm{out}}
+\newcommand{\inc}{^\mathrm{in}}
+\newcommand{\FTTT}{\mathcal{F}_{3\mathrm{D}}}
+\newcommand{\IFTTT}{\mathcal{F}_{3\mathrm{D}}^{-1}}
+\newcommand{\rect}{\mathrm{rect}}
+\newcommand{\circfn}{\mathrm{circ}}
+\usepackage{aurical} 
+
+%specific command for \vecalpha:
+\newcommand{\vecalpha}{\boldsymbol{\alphaup}}
+\newcommand{\Sep}{Sepehrirahnama}
+
+
+
+\begin{document}
+\noindent\textbf{Weekly Progress report}\\
+\textit{Name: Chirag Gokani\\Date: \today}\\
+\vspace{12pt}
+
+\noindent \textbf{RESEARCH STATUS}
+\begin{enumerate}
+\item Before Thanksgiving break, we discussed comparing my results to those of \Sep~et al.~\cite{sepehrirahnama2021acoustic}. 
+\begin{enumerate}[label=(\alph*)]
+\item To do this\dots 
+\end{enumerate}
+\item We discussed\dots
+\end{enumerate}
+
+
+\noindent \textbf{MISCELLANEOUS}
+\begin{enumerate}
+\item blah blah blah
+\end{enumerate}
+
+
+ 
+\noindent \textbf{RESEARCH TASKS}
+\begin{table}[h]
+\centering
+\begin{tabular}{ l | l | l } 
+\textbf{\#} & \textbf{Description} &  \textbf{Status} \\
+\hline\hline
+1 & topic & yap yap yap\\
+2 & another topic & blah 
+\end{tabular}
+\caption{List of current research tasks}\label{variables}
+\end{table}
+
+\printbibliography[heading=bibintoc, title={References}]
+\end{document}

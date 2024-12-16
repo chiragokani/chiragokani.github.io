@@ -1,0 +1,50 @@
+\stackrel{?}{=}
+
+\animategraphics[loop,width=\linewidth]{10}{hyperboloid-}{0}{48} %for beamer
+
+[label=(\alph*)] %abc enumeration
+
+\Fontauri
+\Fontlukas
+
+\begin{empheq}[box=\correct]{equation}\label{text}
+f=g
+\end{empheq}
+
+\pageref{}
+
+
+
+\begin{tikzpicture}[scale=0.8]
+  \duck[body=brown!65!white, squareglasses=blue!70!yellow,recedinghair=black,water=cyan!60!blue,speech={yello},bubblecolour=
+      pink!50!white,laughing,jacket=blue!45!black]
+\end{tikzpicture}
+
+
+
+for RevTeX4.2, compilation in pdflatex
+for my other files, XeLaTeX (kpfonts, baskervald)
+
+
+widetable:
+
+\begin{table*}
+\caption{\label{tab:table3}This is a wide table that spans the full page width in a two-column layout. It is formatted using the \texttt{table*} environment. It also demonstrates the use of \textbackslash\texttt{multicolumn} in rows with entries that span more than one column.}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+ &\multicolumn{2}{c}{$D_{4h}^1$}&\multicolumn{2}{c}{$D_{4h}^5$}\\
+ Ion&1st alternative&2nd alternative&lst alternative
+&2nd alternative\\ \hline
+ K&$(2e)+(2f)$&$(4i)$ &$(2c)+(2d)$&$(4f)$ \\
+ Mn&$(2g)$\footnote{The $z$ parameter of these positions is $z\sim\frac{1}{4}$.}
+ &$(a)+(b)+(c)+(d)$&$(4e)$&$(2a)+(2b)$\\
+ Cl&$(a)+(b)+(c)+(d)$&$(2g)$\footnotemark[1]
+ &$(4e)^{\text{a}}$\\
+ He&$(8r)^{\text{a}}$&$(4j)^{\text{a}}$&$(4g)^{\text{a}}$\\
+ Ag& &$(4k)^{\text{a}}$& &$(4h)^{\text{a}}$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+

@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'WU - Gokani - 2024-MM-DD.blg'
+[87] biber-MSWIN64:340> INFO - === 
+[125] Biber.pm:419> INFO - Reading 'WU - Gokani - 2024-MM-DD.bcf'
+[210] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
+[221] Biber.pm:4419> INFO - Processing section 0
+[235] Biber.pm:4610> INFO - Looking for bibtex file 'C:/Users/chira/Documents/research/refs/refs.bib' for section 0
+[303] bibtex.pm:1713> INFO - LaTeX decoding ...
+[593] bibtex.pm:1519> INFO - Found BibTeX data source 'C:/Users/chira/Documents/research/refs/refs.bib'
+[646] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[646] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[646] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[646] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[647] bbl.pm:660> INFO - Writing 'WU - Gokani - 2024-MM-DD.bbl' with encoding 'UTF-8'
+[648] bbl.pm:763> INFO - Output to WU - Gokani - 2024-MM-DD.bbl

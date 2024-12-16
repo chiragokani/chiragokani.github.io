@@ -1,0 +1,58 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{sepehrirahnama2021acoustic}{article}{}
+      \name{author}{4}{}{%
+        {{hash=3449ce3667962a2d6b37f52efd9b80d1}{%
+           family={S.\bibnamedelimi Sepehrirahnama},
+           familyi={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=070c34bd72f81e2eca7fe22f0c0d8e14}{%
+           family={S.\bibnamedelimi Oberst},
+           familyi={S\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=6b805474a6720abca9f1c0c897e6095b}{%
+           family={Y.\bibnamedelimi K.\bibnamedelimi Chiang},
+           familyi={Y\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=11f2097c9f6b5b0df68abc79f35a1db8}{%
+           family={D.\bibnamedelimi A.\bibnamedelimi Powell},
+           familyi={D\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{9ad873fbd19a7ce8527a219ee45f14b9}
+      \strng{fullhash}{976c854121343c17ac522b32cc9da29c}
+      \strng{bibnamehash}{976c854121343c17ac522b32cc9da29c}
+      \strng{authorbibnamehash}{976c854121343c17ac522b32cc9da29c}
+      \strng{authornamehash}{9ad873fbd19a7ce8527a219ee45f14b9}
+      \strng{authorfullhash}{976c854121343c17ac522b32cc9da29c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys.~Rev.~E}
+      \field{number}{6}
+      \field{title}{Acoustic radiation force and radiation torque beyond particles: Effects of nonspherical shape and Willis coupling}
+      \field{volume}{104}
+      \field{year}{2021}
+      \field{pages}{065003}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

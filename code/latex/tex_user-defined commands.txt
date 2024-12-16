@@ -1,0 +1,141 @@
+\usepackage[figurename=Fig.]{caption}
+\captionsetup[figure]{font=small,labelfont=bf}
+\captionsetup[table]{font=small,labelfont=bf}
+
+\usepackage[
+backend=biber,
+style=phys,
+sorting=none,
+]{biblatex}
+\addbibresource{C:/Users/chira/Documents/research/refs/refs.bib}%path to bib file
+
+\usepackage{amsmath}
+\numberwithin{equation}{chapter}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!65!black,
+	linkcolor=blue!65!black,
+    filecolor=blue!65!black,    
+    urlcolor=blue!65!black,
+	citecolor=blue!65!black
+    } 
+\urlstyle{same}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tkz-euclide} 
+\usepackage{braket}
+\usepackage{tikzducks}%ducks
+\usepackage{wrapfig}
+\usepackage{halloweenmath}
+\usepackage{epigraph}
+\usepackage{longtable}
+%update is used to tag anything that needs to be revisited
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{.7\textwidth}
+%\setlength\epigraphrule{0pt} %uncomment for no line and author below epigraph
+
+%boxed equations
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+\newtcolorbox[auto counter,number within=chapter]{graybox}[2][% use 
+    enhanced, 
+%    breakable,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    ]{colback= gray!20, colframe=gray!20, colbacktitle=gray, fonttitle={\bfseries\small}, arc=0mm,#1, boxrule=0pt, enhanced, title=Box~\thetcbcounter: #2,#1,fontupper=\small, breakable}
+
+\definecolor{myorange}{RGB}{191,87,0} %adjust
+\newtcbox{\eq}[1][]{%
+	nobeforeafter, math upper, tcbox raise base,
+	enhanced, colframe=myorange,
+	colback=yellow!10, boxrule=0.75pt, sharp corners, boxsep=-1mm, #1} %sharp corners
+
+%fonts
+\usepackage{newtx} %\usepackage{txfonts}
+%\usepackage[euler-digits,euler-hat-accent]{eulervm} %beautiful math font for slides
+%\usepackage{beton}
+%\AtBeginDocument
+%{\DeclareFontShape\encodingdefault{ccr}{bx}{n}{<->sub*cmss/sbc/n}{}%
+%\DeclareFontShape\encodingdefault{ccr}{bx}{it}{<->sub*cmss/sbc/it}{}%
+%\DeclareFontShape\encodingdefault{ccr}{bx}{sl}{<->sub*cmss/sbc/sl}{}%
+%\DeclareFontShape\encodingdefault{ccr}{bx}{sc}{<->sub*cmss/sbc/sc}{}}
+
+%user-defined commands
+\newcommand{\Order}{\mathcal{O}}
+\newcommand{\ext}{_\mathrm{ext}} %external field subscript
+\newcommand{\eff}{_\mathrm{eff}} %macroscopic quantity subscript
+\newcommand{\loc}{_\mathrm{loc}} %macroscopic quantity subscript
+\renewcommand{\sc}{_\mathrm{sc}} %macroscopic quantity subscript
+%polarizability subscripts:
+\newcommand{\pp}{_{pp}} 
+\newcommand{\uu}{_{uu}} 
+\newcommand{\EE}{_{EE}} 
+\newcommand{\HH}{_{HH}} 
+\newcommand{\pu}{_{pu}}
+\newcommand{\pE}{_{pE}}
+\newcommand{\pH}{_{pH}}
+\newcommand{\uE}{_{uE}}
+\newcommand{\uH}{_{uH}}
+\newcommand{\EH}{_{EH}}
+%acoustic and electromagnetic subscripts:
+\newcommand{\ac}{_\mathrm{ac}}
+\newcommand{\emag}{_\mathrm{em}}
+%inverses
+\newcommand{\talpha}{\tilde{\alpha}}
+\newcommand{\tLambda}{\tilde{\Lambda}}
+\newcommand{\Deltaden}{\Delta_{\tilde{\Lambda}}}
+%misc.
+\newcommand{\muveff}{\mu_{v,\mathrm{eff}}}
+\newcommand{\vecmuveff}{\vec{\mu}_{v,\mathrm{eff}}}
+%even and odd superscripts
+\newcommand{\even}{^{\mathrm{e}}}
+\newcommand{\odd}{^{\mathrm{o}}}
+
+%vector algebra and calculus (updated notation a la Muhlestein)
+\newcommand{\T}[1]{^{\mathrm{T}{#1}}} % major transposition, e.g., \T{2}
+\renewcommand{\t}[1]{^{\mathrm{t}{#1}}} % minor transposition
+\newcommand{\trace}{\mathrm{Tr}\,}
+\newcommand{\dyad}[1]{\boldsymbol{#1}} 
+\newcommand{\triad}[1]{\tilde{#1}} 
+\newcommand{\quadrad}[1]{\mathsf{#1}}
+%\newcommand{\gradient}{\mathrm{grad}\,} 
+%\newcommand{\divergence}{\mathrm{div}\,}
+%\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\gradient}{\vec{\nabla}}
+\newcommand{\divergence}{\vec{\nabla}\cdot}
+\newcommand{\curl}{\vec{\nabla}\times}
+\newcommand{\Laplacian}{\nabla^2}
+\newcommand{\Laplcianperp}{\nabla_{\!\!\perp}^2}
+\newcommand{\Laplacianv}{\vec{\nabla}^2}
+\newcommand{\dAlambertian}{\Box^2}
+\newcommand{\Space}[1]{{\boldsymbol{\mathsf{#1}}}} 
+\newcommand{\Ell}{\mathcal{L}}
+\newcommand{\out}{^\mathrm{out}}
+\renewcommand{\in}{^\mathrm{in}}
+
+%\renewcommand{\ss}{^{\sigma}} % stress form (deprecated)
+%stress form up-symbols
+\newcommand{\bup}{\mathrm{b}}
+\newcommand{\dup}{\mathrm{d}}
+\renewcommand{\cup}{\mathrm{c}}
+\newcommand{\eup}{\mathrm{e}}
+\newcommand{\nup}{\mathrm{n}}
+\newcommand{\wup}{\mathrm{w}}
+\newcommand{\vup}{\mathrm{v}}
+\newcommand{\mup}{\mathrm{m}}
+
+%temporary notation (Philip's suggestion) (deprecated)
+%\newcommand{\scalar}[1]{{_{0}{#1}}}
+%\renewcommand{\vec}[1]{{_{1}{#1}}}
+%\newcommand{\dyad}[1]{{_{2}{#1}}}
+%\newcommand{\triad}[1]{{_{3}{#1}}}
+%\newcommand{\quadrad}[1]{{_{4}{#1}}}
+%\newcommand{\gradient}{{_{1}{\nabla}}}
+%\newcommand{\divergence}{{_{1}{\nabla}}\cdot}
+%\newcommand{\curl}{{_{1}{\nabla}}\times}
