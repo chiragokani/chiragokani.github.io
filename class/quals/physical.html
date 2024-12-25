@@ -96,7 +96,7 @@ Points (1), (2), and (6) apply to all types of waves. (3) and (4) only apply to 
 </div>
 </li>
 
-<li>Derive the d'Alambert solution of the 1D wave equation.
+<li>Derive the d'Alembert solution of the 1D wave equation.
 <span class="expandable-toggle" onclick="toggleExpandableContent('1sol1')">[answer]</span>
 <div id="1sol1" class="expandable-content" style="color: #0000A0;">
 <p> The general solution to the 1D wave equation is \(\xi(x,t) = f(x-ct)+ g(x+ct)\). Write 
@@ -114,7 +114,7 @@ Replace \(x\mapsto x-ct\) in equation (\ref{df}) and replace \(x\mapsto x+ct\) i
 f(x-ct)&=\frac{1}{2}P(x-ct)- \frac{1}{2c}\int_{x_0}^{x-ct} Q(y)dy \tag{v}\label{df1}\\
 g(x+ct)&=\frac{1}{2}P(x+ct)+ \frac{1}{2c}\int_{x_0}^{x+ct} Q(y)dy\,.\tag{vi}\label{dg1}
 \end{align}
-Finally, add equations (\ref{df1}) and (\ref{dg1}) to obtain the d'Alambert solution,
+Finally, add equations (\ref{df1}) and (\ref{dg1}) to obtain the d'Alembert solution,
 \begin{equation*}
 \xi(x,t) = \frac{1}{2}\big\lbrack P(x-ct)+ P(x+ct) \big\rbrack + \frac{1}{2c}\int_{x-ct}^{x+ct} Q(y)dy\,.
 \end{equation*}
@@ -122,10 +122,10 @@ Finally, add equations (\ref{df1}) and (\ref{dg1}) to obtain the d'Alambert solu
 </div>
 </li>
 
-<li>What does the d'Alambert solution say about the dependence of the wave speed on the energy of the initial impulse?
+<li>What does the d'Alembert solution say about the dependence of the wave speed on the energy of the initial impulse?
 <span class="expandable-toggle" onclick="toggleExpandableContent('1sol2')">[answer]</span>
 <div id="1sol2" class="expandable-content" style="color: #0000A0;">
-<p> The d'Alambert solution says that the wave speed is <i>independent of the energy of the initial impulse</i>, a hallmark of linear wave phenomena.</p>
+<p> The d'Alembert solution says that the wave speed is <i>independent of the energy of the initial impulse</i>, a hallmark of linear wave phenomena.</p>
 </div>
 </li>
 
@@ -133,7 +133,7 @@ Finally, add equations (\ref{df1}) and (\ref{dg1}) to obtain the d'Alambert solu
 <span class="expandable-toggle" onclick="toggleExpandableContent('1sol15')">[answer]</span>
 <div id="1sol15" class="expandable-content" style="color: #0000A0;">
 <p> 
-Note that both problems are <i>forced wave</i> problems, which are <i>boundary-value problems</i> (i.e., "What is the solution to the wave equation given a particular boundary condition?"). Thus the d'Alambert solution derived in question (2) above is not of use here, since that is the solution to the <i>initial-value problem</i> (i.e., "What is the solution to the wave equation given an initial displacement and velocity). <i>The distinction between boundary- and initial-value problems is a good one to keep in mind, since basically all problems in acoustics can be categorized this way.  For example, problems involving waveguides, horns, and diffraction are usually formulated as boundary-value problems. Meanwhile, problems involving modal responses in enclosures are usually formulated as initial-value problems (though rarely explicitly). When finding the eigenfunctions and eigenfrequencies of enclosure, these are the functions and frequencies that would be excited due to an impulse.</i>
+Note that both problems are <i>forced wave</i> problems, which are <i>boundary-value problems</i> (i.e., "What is the solution to the wave equation given a particular boundary condition?"). Thus the d'Alembert solution derived in question (2) above is not of use here, since that is the solution to the <i>initial-value problem</i> (i.e., "What is the solution to the wave equation given an initial displacement and velocity). <i>The distinction between boundary- and initial-value problems is a good one to keep in mind, since basically all problems in acoustics can be categorized this way.  For example, problems involving waveguides, horns, and diffraction are usually formulated as boundary-value problems. Meanwhile, problems involving modal responses in enclosures are usually formulated as initial-value problems (though rarely explicitly). When finding the eigenfunctions and eigenfrequencies of enclosure, these are the functions and frequencies that would be excited due to an impulse.</i>
 </p>
 <p> 
 1B-4 and 1B-5 are homework problems, so I cannot post the solution, but I will outline what should be done: In 1B-4, the function corresponding to waves traveling to the left should be tossed out. The argument of the initial condition, \(t\), should simply be replaced with \(t- x/c_0\). In 1B-5, both functions should be kept; the solution is identical to that of 1B-4 except for the presence of an additional term, which is has the argument \(t+x/c_0\).
