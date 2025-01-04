@@ -64,6 +64,7 @@ The dimensionless form of Eq. (6) is in terms of the same parameters defined abo
 where \(F_\ell(\xi)\) is provided by Eq. (8) of the paper referenced above and is encoded in the user-defined function <a href="matlab/closed_F.m" target="_blank" rel="noopener noreferrer">closed_F.m</a> for integers \(0 \leq \ell \leq 4\). (The <a href="matlab/closed_F.m" target="_blank" rel="noopener noreferrer">closed_F.m</a> function depends on <a href="https://www.mathworks.com/matlabcentral/fileexchange/37302-struve-functions" target="_blank" rel="noopener noreferrer">the Struve functions encoded by Theo2</a>&mdash;download that package and include it in the same directory as <a href="matlab/closed_F.m" target="_blank" rel="noopener noreferrer">closed_F.m</a>.) For all other values of \(\ell\), use the form in terms of the infinite sum given by Eq. (7), calculated by <a href="matlab/sum_F.m" target="_blank" rel="noopener noreferrer">sum_F.m</a>. For a focused source, \(Z\) in Eq. \eqref{eq:uni} is replaced by \(1/G\). 
 </p></li>
 
+<!--
 <li><p><a href="matlab/exact.m" target="_blank" rel="noopener noreferrer">Exact integral solution of the Helmholtz equation for pistons</a>: dimensionless code for magnitude of Eq. (21) of 
 
 <blockquote>
@@ -77,6 +78,7 @@ P%(R,\theta,Z)
 \end{align}
 where \(F_\ell\) is defined above. It is more computationally efficient to use <a href="closed_F.m" target="_blank" rel="noopener noreferrer">closed_F.m</a> than it is to use <a href="sum_F.m" target="_blank" rel="noopener noreferrer">sum_F.m</a>.
 </p></li>
+-->
 
 <li><p><a href="matlab/oscillator.m" target="_blank" rel="noopener noreferrer">Oscillator with damping:</a> dimensionless code for motion of oscillator with damping. </p></li>
 <li><p><a href="matlab/fig_JASA.m" target="_blank" rel="noopener noreferrer">fig_JASA</a>: figure formatting file to match JASA numbering fonts (Times New Roman).</p></li>
