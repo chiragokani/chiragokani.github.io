@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fubini integral limits demystified</title>
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			font-size: medium;
+			margin: 1in;
+		}
+		h1 {
+			text-align: center;
+			font-size: x-large;
+		}
+	</style>
+</head>
+<body>
+	<h1>Fubini integral limits demystified</h1>
+	
+	<p>The Fubini solution solves the lossless nonlinear approxiamte evolution equation (which is accurate to quadtaric order) as a Fourier sine series from 0 &#8804; &sigma; &lt; 1, where &sigma; is distance nondimensionalized by the shock-formation distance. The expansion coefficients <i>B<sub>n</sub></i> involve integrating over &theta; from &theta; = 0 to &theta; = &pi;. The phase &Phi; of the Fubini solution is given by the dimensionless phase of the lossless nonlinear approximate solution, &Phi; = &theta; + &sigma; sin(&Phi;). The question is, "Why does &Phi; take on the same limits as &theta; in the integration?"</p> 
+
+<p>To answer this quesiton, first consider the lower limit, &theta; = 0, of the integral for the expansion coefficients <i>B<sub>n</sub></i>. Then, the transcendental equation being solved is &Phi; = &sigma; sin(&Phi;). In the plot below, &sigma; is being swept from 0 to 1. You can see that for 0 &#8804; &sigma; &lt; 1, the only solution to the transcendental equation is &Phi; = 0. So when &theta; = 0, &Phi; = 0 also.</p>
+	<p align="middle"><iframe src="https://www.desmos.com/calculator/46ffum7kri?embed" width="150" height="150" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+	<p>Next consider the upper limit of the integral for the expansion coefficients <i>B<sub>n</sub></i>, &theta; = &pi;. The transcendental equation now being solved is &Phi; = &pi; + &sigma; sin(&Phi;). As before, &sigma; is being swept from 0 to 1. You can see that for 0 &#8804; &sigma; &lt; 1, the only solution to the transcendental equation is &Phi; = &pi;. So when &theta; = &pi;, &Phi; = &pi; also. </p>
+	<p align="middle"><iframe src="https://www.desmos.com/calculator/hou32zikij?embed" width="150" height="150" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+</body>
+</html>
