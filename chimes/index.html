@@ -20,30 +20,16 @@ window.MathJax = {
   tex: {
     macros: {
       Order: "{\\mathcal O}",
-      dyad: ['\\boldsymbol{#1}',1],
-      triad: ['\\tilde{#1}',1],
-      quadrad: ['\\mathsf{#1}',1],
-      divergence: "{\\vec{\\nabla}\\cdot}",
-      gradient: "{\\vec\\nabla}",
-      curl: "{\\vec\\nabla\\times}",
+      vec: ['\\mathbf{#1}',1],
+      veckappa: "{\\boldsymbol{\\kappa}}",
+      vecrho: "{\\boldsymbol{\\rho}}",   
+      vecxi: "{\\boldsymbol{\\xi}}",   
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
       Laplacian: "{\\nabla^2}",
-      Laplacianv: "{\\vec\\nabla^2}",
       dAlambertian: "{\\Box^2}",
-      Order: "{\\mathcal O}",
-      FTt: "{\\mathcal{F}_t}",
-      IFTt: "{\\mathcal{F}_t^{-1}}",
-      FTx: "{\\mathcal{F}_x}",
-      IFTx: "{\\mathcal{F}_x^{-1}}",      
-      FTr: "{\\mathcal{F}_\\rho}",
-      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
-      HT: "{\\mathcal{H}_\\rho}",
-      IHT: "{\\mathcal{H}_\\rho^{-1}}",  
-      FTxy: "{\\mathcal{F}_{xy}}",
-      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
-      rect: "{\\mathrm{\\,rect\\,}}",
-      tri: "{\\mathrm{\\,tri\\,}}",
-      circfn: "{\\mathrm{\\,circ\\,}}",
-      sinc: "{\\mathrm{\\,sinc\\,}}"
+      Order: "{\\mathcal O}"
     }
   }
 };
@@ -55,10 +41,10 @@ window.MathJax = {
 
 <p>I began handcrafting wind chimes and chime trees around the same time I learned how to solve partial differential equations by separating variables, as a sophomore at the University of Texas at Dallas (UTD) in <a href="https://profiles.utdallas.edu/paul.macalevey" target="_blank" rel="noopener noreferrer">Prof. MacAlevey's</a> class. This helped me take ownership of my education and provided some intuition and appreciation for wave phenomena.</p>
   
-<p><a href="https://youtu.be/vfVXFnSAM14" target="_blank" rel="noopener noreferrer">To assemble a wind chime</a>, I first formulate a tuning and calculate the appropriate lengths of the chimes using the relation \(f \propto \ell^{-2}\), where \(f\) is the frequency and \(\ell\) is the length of the chime. I then procure the metals (6061 aluminium alloy), make the appropriate cuts using a hacksaw, fine-tune the bars with a hand file, and finally string the chimes together. The strikers are made of hematite, and the windcatcher and hanging base are 3D-printed. Below are some of my favorite results.</p>
+<p><a href="https://youtu.be/vfVXFnSAM14" target="_blank" rel="noopener noreferrer">To assemble a wind chime</a>, I first formulate a tuning and calculate the appropriate lengths of the chimes using the relation \(f \propto \ell^{-2}\), where \(f\) is the frequency and \(\ell\) is the length of the chime. I then procure the metals (6061 aluminium alloy), make the appropriate cuts using a hacksaw, fine-tune the bars with a hand file, and string the chimes together. The striker is made of hematite, and the windcatcher and hanging base are 3D-printed. Below are some of my favorite results.</p>
 
 <ul>
-<li>Cadd9 (G \(\otimes\) C \(\otimes\) D \(\otimes\) G): <br> <audio controls><source src="Windchimes 1.mp3" type="audio/mpeg"></audio></li>
+<li>Cadd9: <br> <audio controls><source src="Windchimes 1.mp3" type="audio/mpeg"></audio></li>
 
 <li>E lydian: <br><audio controls><source src="E_lydian_sample.mp3" type="audio/mpeg"></audio> </li> 
 
