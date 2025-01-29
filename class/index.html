@@ -3,25 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Educational resources</title>
+  <title>Resources</title>
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
    </script>
-<script>
-window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-};
-</script>
 <script type="text/javascript">
 window.MathJax = {
   tex: {
+    tags: 'ams',
     macros: {
       Order: "{\\mathcal O}",
-      dyad: ['\\boldsymbol{#1}',1],
-      triad: ['\\tilde{#1}',1],
+      dyad: ['\\underline{#1}',1],
+      triad: ['\\boldsymbol{#1}',1],
       quadrad: ['\\mathsf{#1}',1],
       divergence: "{\\vec{\\nabla}\\cdot}",
       gradient: "{\\vec\\nabla}",
@@ -51,7 +45,7 @@ window.MathJax = {
 <link rel="stylesheet" href="..\chirag.css">
 </head>
 <body>
-<h1>Educational resources</h1>
+<h1>Resources</h1>
 
 <p>[<a href="#websites">Websites</a>] [<a href="#notes">Notes</a>] [<a href="#practice">Practice problems</a>] [<a href="#projects">Projects</a>]</p>
 
