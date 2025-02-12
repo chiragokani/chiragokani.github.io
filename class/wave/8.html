@@ -668,7 +668,7 @@ k|\vec{r} - \vec{r}_0| \simeq kr - \vec{k}_s \cdot \vec{r}_0\,,
 where \(\vec{k}_s = k \vec{e}_r = \vec{k}(k,\theta,\phi)\)  is the wave vector in the direction of the scattering.
 So the Green's function and its gradient become
 \begin{align*}
-g(\vec{r}|\vec{r}_0) \simeq \frac{e^{ikr}}{4\pi r} e^{-i\vec{k}_s \cdot r_0}\,,\quad 
+g(\vec{r}|\vec{r}_0) \simeq \frac{e^{ikr}}{4\pi r} e^{-i\vec{k}_s \cdot \vec{r}_0}\,,\quad 
 \gradient_0 g = -i\vec{k}_sg\,.
 \end{align*}
 The total field is then
@@ -679,7 +679,7 @@ where now the scattered field is
 \begin{align*}
 p_s(\vec{r}) = k^2 \frac{e^{ikr}}{4\pi r} \int  \left[ 
 \gamma_B(\vec{r}_0) p_\omega(\vec{r}_0) - \gamma_\rho(\vec{r}_0) \frac{i\vec{k}_s}{k^2} \cdot \gradient_0 p_\omega (r_0)
-\right] e^{-i\vec{k}_s \cdot r_0}dV_0\,.
+\right] e^{-i\vec{k}_s \cdot \vec{r}_0}dV_0\,.
 \end{align*}
 The above result can be written as a <i>3D</i> Fourier transform:
 \begin{align}\label{field2}\tag{2}
@@ -691,7 +691,7 @@ q_s(\vec{r}) \equiv \gamma_B (\vec{r}) p_\omega(\vec{r}) -\gamma_\rho(\vec{r}) \
 \end{align}
 As such, Eqs. \eqref{field2} can be written using the old notation of Fourier transforms:
 \begin{align*}
-p_s(\vec{r}, \theta,\phi) = k^2 \frac{e^{ikr}}{4\pi r} \mathcal{F}_{3D}\{ q_s(\vec{r}) \}_{\vec{k} = \vec{k}_s}\,.
+p_s(\vec{r}, \theta,\phi) = k^2 \frac{e^{ikr}}{4\pi r} \mathcal{F}_{\mathrm{3D}}\{ q_s(\vec{r}) \}_{\vec{k} = \vec{k}_s}\,.
 \end{align*}
 Note that Eqs. \eqref{field2} and \eqref{field3} are still <i>implicit</i>. That is to say, the scattered field is given in terms of the scattered field.
 </p>
@@ -708,7 +708,7 @@ Thus the solution given by Eq. \eqref{field2} is now explicit.
 <p>
 In this approximation, it is assumed that the scattering is in the far field, satisfies the Born approximation, and is additionally <i>subwavelength</i>, i.e., that \(ka \ll 1\). This allows for \(|\vec{k}_s \cdot \vec{r}_0| \ll 1\) in Eq. \eqref{field2}, resulting in 
 \begin{align}\label{field6} \tag{6}
-p_s(\vec{r}) = k^2 \frac{e^{ikr}}{4\pi r} \int q_s(\vec{r})_0 dV_0 \,.
+p_s(\vec{r}) = k^2 \frac{e^{ikr}}{4\pi r} \int q_s(\vec{r}_0)dV_0 \,.
 \end{align}
 Assuming the incident field is a plane wave \(p_i(\vec{r}) = p_0 e^{i\vec{k}_i \cdot \vec{r}}\), Eq. \eqref{field5} becomes 
 \begin{align*}
