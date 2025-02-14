@@ -13,31 +13,14 @@ window.MathJax = {
   tex: {
     tags: 'ams',
     macros: {
-      Order: "{\\mathcal O}",
-      dyad: ['\\underline{#1}',1],
-      triad: ['\\boldsymbol{#1}',1],
-      quadrad: ['\\mathsf{#1}',1],
-      divergence: "{\\vec{\\nabla}\\cdot}",
-      gradient: "{\\vec\\nabla}",
-      curl: "{\\vec\\nabla\\times}",
-      Laplacian: "{\\nabla^2}",
-      Laplacianv: "{\\vec\\nabla^2}",
-      dAlambertian: "{\\Box^2}",
-      Order: "{\\mathcal O}",
-      FTt: "{\\mathcal{F}_t}",
-      IFTt: "{\\mathcal{F}_t^{-1}}",
-      FTx: "{\\mathcal{F}_x}",
-      IFTx: "{\\mathcal{F}_x^{-1}}",      
-      FTr: "{\\mathcal{F}_\\rho}",
-      IFTr: "{\\mathcal{F}_\\rho^{-1}}",    
-      HT: "{\\mathcal{H}_\\rho}",
-      IHT: "{\\mathcal{H}_\\rho^{-1}}",  
-      FTxy: "{\\mathcal{F}_{xy}}",
-      IFTxy: "{\\mathcal{F}_{xy}^{-1}}",
-      rect: "{\\mathrm{\\,rect\\,}}",
-      tri: "{\\mathrm{\\,tri\\,}}",
-      circfn: "{\\mathrm{\\,circ\\,}}",
-      sinc: "{\\mathrm{\\,sinc\\,}}"
+    Order: "{\\mathcal O}",
+    vec: ['\\mathbf{#1}',1],
+    dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+    divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+    gradient: "{\\boldsymbol\\nabla}",
+    curl: "{\\boldsymbol\\nabla\\times\\,}",
+    Laplacian: "{\\nabla^2}",
+    Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
     }
   }
 };
@@ -76,7 +59,7 @@ window.MathJax = {
 <li><p><a href="acoustics_II/greens_function_1.pdf" target="_blank" rel="noopener noreferrer">Green's functions</a>: working out the approach prescribed in <i>Theoretical Acoustics</i> by Morse and Ingard, I show that \(e^{ikR}/4\pi R\) solves the 3D inhomogeneous Helmholtz equation \((\Laplacian + k^2)f = -\delta(\vec{r}-\vec{r}_0)\). [<a href="acoustics_II/volume-integral-jackson.pdf" target="_blank" rel="noopener noreferrer">How to directly integrate</a> the first integral on the left-hand-side of Eq. (2)]. <a href="acoustics_II/greens_function_2.pdf" target="_blank" rel="noopener noreferrer">Here</a> I re-derive Morse and Ingard's integral equation (7.1.17), which is the Helmholtz-Kirchhoff integral. <a href="acoustics_II/greens_function_3.pdf" target="_blank" rel="noopener noreferrer">This</a> is a derivation of the Sommerfeld radiation condition. For more on Green's functions, see <a href="wave/8.html#green" target="_blank" rel="noopener noreferrer">my notes from Prof. Hamilton's Wave Phenomena course</a>.</p> </li>
 	
 
-<li><p><a href="acoustics_I/linear_gradient.pdf" target="_blank" rel="noopener noreferrer">Linear sound speed gradient</a>: I use the calculus of variations to show that arcs of circles minimize the travel time between two points in a medium where the sound speed varies linearly (i.e., the upper ocean). <i>This recovers the result in "Acoustics: An Introduction to its Physical Principles and Applications" by Allan D. Pierce, section 8-3.</i></p></li>	
+<li><p><a href="acoustics_I/linear_gradient.pdf" target="_blank" rel="noopener noreferrer">Linear sound speed gradient</a>: I use the calculus of variations to show that arcs of circles minimize the travel time between two points in a medium where the sound speed varies linearly (i.e., the upper ocean). This recovers the result in <i>Acoustics: An Introduction to its Physical Principles and Applications</i> by A. D. Pierce, Sec. 8-3.</p></li>	
 
 <li><p><a href="quals/masala_chai-compressed.pdf" target="_blank" rel="noopener noreferrer">Masala chai</a>: traditional Indian tea</p></li>
   
