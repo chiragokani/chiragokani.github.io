@@ -6,7 +6,7 @@ body {
   font-family: 'Times New Roman', Times, serif;/*'Garamond', serif;*/ /*'Tahoma',sans-serif;*/ /*'Verdana',sans-serif;*/
   text-align: justify;
   text-justify: inter-word;
-  background-image: url('whtmarb.gif');
+  background-image: url('background.png');
   }
 
 h1 {
