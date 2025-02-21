@@ -37,13 +37,13 @@ window.MathJax = {
 
 
 <h3 id="linear">As a consequence of linear equations of motion</h3>
-<p>The 1D wave equation is derived by setting the transverse force in the string \(F_y\) equal to \(m \ddot{\xi}= \rho \Delta x \ddot{\xi}\). Denoting the tension in the string \(T\), the transverse force is \(T\sin [\theta(x + \Delta x)] - T\sin[\theta(x)]\), where \(\theta(x,t)\) is the deflection angle of the string. Assuming \(\theta \ll 1\) allows for the transverse force to be written as \(T[\theta(x + \Delta x) -\theta(x)]\), so the equation of motion becomes 
-\[\rho\Delta x \ddot{\xi} = T[\theta(x + \Delta x) -\theta(x)].\] 
+<p>The 1D wave equation is derived by setting the transverse force in the string \(F_y\) equal to \(m \ddot{\xi}= \rho \Delta x \ddot{\xi}\). Denoting the tension in the string \(\mathcal{T}\), the transverse force is \(\mathcal{T}\sin [\theta(x + \Delta x)] - \mathcal{T}\sin[\theta(x)]\), where \(\theta(x,t)\) is the deflection angle of the string. Assuming \(\theta \ll 1\) allows for the transverse force to be written as \(\mathcal{T}[\theta(x + \Delta x) -\theta(x)]\), so the equation of motion becomes 
+\[\rho\Delta x \ddot{\xi} = \mathcal{T}[\theta(x + \Delta x) -\theta(x)].\] 
 Dividing this equation by \(\Delta x\) and taking the limit as \(\Delta x \to 0\) yields
 \[\rho \ddot{\xi} = T\frac{\partial \theta}{\partial x},\]
 Noting that \(\partial \xi /\partial x = \tan \theta \simeq \theta\) results in
 \[\frac{\partial^2\xi}{\partial x^2} - \frac{1}{c_0^2} \frac{\partial^2\xi}{\partial t^2} = 0,\]
-where \(c_0 = \sqrt{T/\rho}\). </p>
+where \(c_0 = \sqrt{\mathcal{T}/\rho}\). </p>
 
 <p>For a fixed-fixed string of length \(l\), the solution of the 1D wave equation above is
 \[\xi(x,t) = \sin(n\pi x/l)[A \sin (2\pi t/\tau_n) + B\cos (2\pi t/\tau_n)]\,,\]
@@ -64,25 +64,25 @@ to discuss the radiation force in this situation. Combining Eqs. \eqref{eq:strin
 <h3 id="nonlinear">As a consequence of nonlinear equations of motion</h3>
 <p>Balancing the forces in the transverse (\(x\)) direction led to the linear wave equation. Balancing the forces in the \(y\) direction yields
 \begin{align}\label{eq:string:force:1}
-F_x = T\cos[\theta(x + \Delta x)] - T\cos[\theta(x)]\,.
+F_x = \mathcal{T}\cos[\theta(x + \Delta x)] - \mathcal{T}\cos[\theta(x)]\,.
 \end{align}
 For small \(\theta\), Eq. \eqref{eq:string:force:1} becomes 
 \begin{align}\label{eq:string:force:2}
-F_x = \frac{T}{2} [-\theta^2(x + \Delta x) + \theta^2(x)]\,.
+F_x = \frac{\mathcal{T}}{2} [-\theta^2(x + \Delta x) + \theta^2(x)]\,.
 \end{align}
 Multiplying and dividing Eq. \eqref{eq:string:force:2} by \(\Delta x\) and taking the limit as \(\Delta x \to 0\) yields
 \begin{align}
-F_x &= -\Delta x \frac{T}{2} \lim_{\Delta x \to 0} \frac{\theta^2(x + \Delta x) - \theta^2(x)}{\Delta x} = -\Delta x \frac{T}{2} \frac{\partial \theta^2}{\partial x} \,. \label{eq:string:force:3}
+F_x &= -\Delta x \frac{\mathcal{T}}{2} \lim_{\Delta x \to 0} \frac{\theta^2(x + \Delta x) - \theta^2(x)}{\Delta x} = -\Delta x \frac{\mathcal{T}}{2} \frac{\partial \theta^2}{\partial x} \,. \label{eq:string:force:3}
 \end{align}
 Since \(\partial \xi/\partial x = \tan\theta \simeq \theta\), \(\theta^2 = (\partial \xi/\partial x)^2\), so Eq. \eqref{eq:string:force:3} becomes
 \begin{align}
 F_x &=
--\Delta x \frac{T}{2} \frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right)^2 \,. \label{eq:string:force:4}
+-\Delta x \frac{\mathcal{T}}{2} \frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right)^2 \,. \label{eq:string:force:4}
 \end{align}
 Taking the time average of Eq. \eqref{eq:string:force:4} yields the radiation force in the \(x\) direction:
 \begin{align}
 \boxed{\langle F_x \rangle =
--\Delta x \frac{T}{2}\left\langle \frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right)^2\right\rangle \,.} \label{eq:string:force}
+-\Delta x \frac{\mathcal{T}}{2}\left\langle \frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right)^2\right\rangle \,.} \label{eq:string:force}
 \end{align}
 It can be seen that Eq. \eqref{eq:string:force} has arisen due to the nonlinear equation of motion given by Eq. \eqref{eq:string:force:3}.
 </p>
