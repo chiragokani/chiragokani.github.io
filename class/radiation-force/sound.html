@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radiation force of sound</title>
+  <title>Radiation force and torque of sound</title>
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -29,14 +29,19 @@ window.MathJax = {
 </head>
 <body>
 
-<h2>Radiation force of sound</h2>
+<h2>Radiation force and torque of sound</h2>
 
   <ul>
   <li><a href="sound.html#energy">Energy densities</a></li>
-  <li><a href="sound.html#poynting">Acoustic Poynting theorem (energy conservation)</a></li>
-  <li><a href="sound.html#stress">Acoustic radiation stress tensor</a></li>
-  <li><a href="sound.html#excess">Mean excess pressure</a></li>  
-  <li><a href="sound.html#force">Acoustic radiation force</a></li>
+  <li><a href="sound.html#poynting">Conservation of energy</a></li>
+  
+  <li><a href="sound.html#momentum">Conservation of momentum</a> </li>  
+  <ul>
+    <li><a href="sound.html#linear">Linear momentum</a></li>
+    <li><a href="sound.html#angular">Angular momentum</a></li>
+    <li><a href="sound.html#reduction">Reduction to time-averaged quantities</a></li>
+  </ul>
+  <li><a href="sound.html#force">Acoustic radiation force and torque</a></li>
   <ul>
     <li><a href="sound.html#traveling">Due to traveling waves</a></li>
     <li><a href="sound.html#standing">Due to standing waves</a></li>
@@ -45,6 +50,7 @@ window.MathJax = {
   <ul>
     <li><a href="sound.html#nonlinear">Arguments as to why radiation force is a nonlinear effect</a></li>
     <li><a href="sound.html#linear">Arguments as to why radiation force is a linear effect</a></li>
+    <li><a href="sound.html#resolution">Resolution</a></li>
   </ul>
   </ul>
 
@@ -53,16 +59,16 @@ window.MathJax = {
 <h3 id="energy">Energy densities</h3>
 <p>The derivation of the potential and kinetic energy densities below are based on my class notes from Prof. Hamilton's Acoustics I course. These energy densities are quadratic quantities calculated by taking the product of two field variables that solve the <i>linear</i> acoustic wave equation. </p>
 
-<p>The exact potential and kinetic energy densities of sound are 
+<p>The exact potential and kinetic energy densities (energy per unit volume) of sound are 
 \begin{align}
-E_T &= \tfrac{1}{2} \rho v^2\,, \label{eq:acoust:ET} \\
-E_V &= -\frac{1}{V_0} \int_{V_0}^{V} p\,dV\,, \label{eq:acoust:EV}
+T &= \tfrac{1}{2} \rho v^2\,, \label{eq:acoust:ET} \\
+U &= -\frac{1}{V_0} \int_{V_0}^{V} p\,dV\,, \label{eq:acoust:EV}
 \end{align}
 where \(p = P-P_0\) is the linear acoustic field variable, and where \(v^2 = \vec{v} \cdot \vec{v} = |\vec{v}|^2\). Equation \eqref{eq:acoust:ET} is linearized by writing \(\rho = \rho_0 + \rho'\), where \(\rho_0\) is a constant and \(\rho'\) is the acoustic (perturbation) quantity that is a function of space and time:
-\[E_T = \tfrac{1}{2} (\rho_0 + \rho')v^2\,.\]
+\[T = \tfrac{1}{2} (\rho_0 + \rho')v^2\,.\]
 Neglecting the cubic term \(\rho'u^2\) yields
 \begin{align}\label{eq:kinetic}
-\boxed{E_T = \tfrac{1}{2}\rho_0v^2\,.}
+\boxed{T = \tfrac{1}{2}\rho_0v^2\,.}
 \end{align}
 
 <p>Linearizing Eq. \eqref{eq:acoust:EV} is more challenging, because \(dV\) is not a convenient differential. It is desired to instead integrate over the acoustic pressure \(p\). First, \(dV\) is written in terms of \(d\rho'\), and then \(\rho'\) is related to the pressure through the linearized equation of state, as is now shown. 
@@ -92,20 +98,22 @@ dV &= -(V_0 + V')(1 - \rho'/\rho_0)\frac{d\rho'}{\rho_0}\notag\\
 \end{align}
 where in Eq. \eqref{eq:acoust:dV:2} only the linear term has been retained. Thus Eq. \eqref{eq:acoust:EV} becomes
 \begin{align}
-E_V = \frac{1}{\rho_0} \int_{0}^{\rho'} p\, d\tilde{\rho}'\,, \label{eq:acoust:EV:1}
+U = \frac{1}{\rho_0} \int_{0}^{\rho'} p\, d\tilde{\rho}'\,, \label{eq:acoust:EV:1}
 \end{align}
 where the integration is over \(\tilde{\rho}'\) so that the upper limit of integration is distinct from the integration variable. Equation \eqref{eq:acoust:EV:1} can be related to the acoustic pressure by appealing to the linearized equation of state
-\[\rho' = \frac{1}{c_0^2}p\,,\quad d\rho' = \frac{1}{c_0^2}dp,\]
+\begin{align}\label{eq:state}
+\rho' = \frac{1}{c_0^2}p\,,\quad d\rho' = \frac{1}{c_0^2}dp,
+\end{align}
 which is derived by Taylor expanding \(P(\rho)\) as \(P_0 + (\partial P/\partial \rho)_0 (\rho-\rho_0)\) and identifying \((\partial P/\partial \rho)_0\) as \(c_0^2\). Equation \eqref{eq:acoust:EV:1} becomes
 \begin{align}\label{eq:potential}
-\boxed{E_V = \frac{1}{\rho_0c_0^2} \int_0^p \tilde{p}\, d\tilde{p} = \frac{p^2}{2\rho_0c_0^2 }}
+\boxed{U = \frac{1}{\rho_0c_0^2} \int_0^p \tilde{p}\, d\tilde{p} = \frac{p^2}{2\rho_0c_0^2 }}
 \end{align}
 </p>
 
-<h3 id="poynting">Acoustic Poynting theorem (energy conservation)</h3>
+<h3 id="poynting">Conservation of energy</h3>
 <p>The following derivation is based on Sec. 1-11 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[5]</a>, in which it is called the "acoustic energy corollary." The theorem is not needed in deriving the radiation force, which follows from the conservation of momentum.</p>
 
-<p>To derive the acoustic Poynting theorem, start with the linearized conservation of momentum,
+<p>To derive the acoustic Poynting theorem, start with the linearized conservation of momentum {See Eq. (1-C-55) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[12]</a>},
 \begin{align}\label{eq:acoust:poynt:mom}
 \gradient p + \rho_0 \frac{\partial \vec{v}}{\partial t} = 0\,.
 \end{align}
@@ -117,33 +125,50 @@ Noting that \(\vec{v} \cdot \partial \vec{v}/\partial t = \tfrac{1}{2} \partial 
 \begin{align}\label{eq:acoust:poynt:mom:3}
 \vec{v} \cdot \gradient p + \tfrac{1}{2} \rho_0\frac{\partial v^2}{\partial t} = 0\,.
 \end{align}
-Noting that \(\divergence(p\vec{v}) = \vec{v} \cdot \gradient p + p \divergence \vec{v}\), and identifying the instantaneous Poynting vector \(\vec{S} = p\vec{v}\), allows for Eq. \eqref{eq:acoust:poynt:mom:3} to be written as
+Noting that \(\divergence(p\vec{v}) = \vec{v} \cdot \gradient p + p \divergence \vec{v}\), and defining the instantaneous Poynting vector \(\vec{S} = p\vec{v}\) (energy per unit time per unit area), allows for Eq. \eqref{eq:acoust:poynt:mom:3} to be written as
 \begin{align}\label{eq:acoust:poynt:mom:4}
-\divergence \vec{S} - p\divergence\vec{v} + \tfrac{1}{2}\rho_0 \frac{\partial v^2}{\partial t} = 0\,.
+\divergence \vec{S} - p\divergence\vec{v} + \frac{\partial T}{\partial t} = 0\,,
 \end{align}
-The third term in Eq. \eqref{eq:acoust:poynt:mom:4} is simply the time derivative of Eq. \eqref{eq:kinetic}, i.e., \(\partial E_T/\partial t\). Meanwhile, the second term of Eq. \eqref{eq:acoust:poynt:mom:4} resembles the quantity that appears in the linearized conservation of mass equation, \({\partial \rho'}/{\partial t} + \rho_0 \divergence \vec{v} = 0\), which when combined with the linearized state equation \(p/c_0^2 = \rho'\), yields
+where the third term follows from identifying \((\rho_0/2){\partial v^2}/{\partial t}\) as the time derivative of Eq. \eqref{eq:kinetic}. Meanwhile, the second term of Eq. \eqref{eq:acoust:poynt:mom:4} resembles the quantity that appears in the linearized conservation of mass equation, \({\partial \rho'}/{\partial t} + \rho_0 \divergence \vec{v} = 0\), which when combined with the linearized state equation \(p/c_0^2 = \rho'\), yields
 \begin{align}\label{eq:acoust:poynt:mass}
 \frac{1}{c_0^2}\frac{\partial p}{\partial t} + \rho_0 \divergence\vec{v} = 0\,.
 \end{align}
 Multiplying Eq. \eqref{eq:acoust:poynt:mass} by \(p/\rho_0\) and rearranging yields
 \begin{align}\label{eq:acoust:poynt:mass:2}
--p\divergence\vec{v} = \frac{p}{\rho_0c_0^2}\frac{\partial p}{\partial t} = \frac{1}{2\rho_0c_0^2}\frac{\partial p^2}{\partial t} = \frac{\partial E_V}{\partial t}\,,
+-p\divergence\vec{v} = \frac{p}{\rho_0c_0^2}\frac{\partial p}{\partial t} = \frac{1}{2\rho_0c_0^2}\frac{\partial p^2}{\partial t} = \frac{\partial U}{\partial t}\,,
 \end{align}
 where the last equality holds by Eq. \eqref{eq:potential}. Inserting Eq. \eqref{eq:acoust:poynt:mass:2} into Eq. \eqref{eq:acoust:poynt:mom:4} yields
 \begin{align}\label{eq:acoust:poynt:thm}
-\boxed{\divergence \vec{S} + \frac{\partial}{\partial t}(E_V + E_T) = 0\,.}
+\boxed{\divergence \vec{S} + \frac{\partial}{\partial t}(T + U) = 0\,,}
 \end{align}
+which is the acoustic Poynting theorem. The integral form of Eq. \eqref{eq:acoust:poynt:thm} is obtained by integrating over free space and applying the divergence theorem to the first term:
+\begin{align}\label{eq:acoust:poynt:thm:int}
+\oint_A \vec{S} \cdot d\vec{A} + \frac{d}{dt}\int(T + U) dV = 0\,.
+\end{align}
+If the volume includes an object whose impedance is other than \(\rho_0c_0\), then the right-hand side of Eq. \eqref{eq:acoust:poynt:thm:int} becomes the rate of work done on that object, \(-{dW}/{dt}\), which equals \(-\mathcal{P}\), the power radiated on the object. If \(p\) and \(\vec{v}\) are time-harmonic, time-averaging that equation over an integral number of half periods and invoking Item 2 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> sets the second term on the left-hand side to zero, yielding  
+\begin{align}\label{eq:acoust:poynt:thm:int:1}
+\oint_A \langle\vec{S}\rangle \cdot d\vec{A} = -\langle \mathcal{P}\rangle \,.
+\end{align}
+<!--Since the power is delivered to the object at the speed of sound \(c_0\), the time-averaged force on the object is   -->
+If the object is a source of sound {See pp. 39-41 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[5]</a>, in particular, Eq. (1-11.14)}, then we speak of the power radiated <i>by</i> the object, which is minus the power radiated <i>on</i> the object. 
 </p>
 
-<h3 id="stress">Acoustic radiation stress tensor</h3>
-<p>This section is based on Sec. 2.1 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. There, the derivation of the acoustic radiation stress tensor is performed in index notation, while it is done symbolically here.</p>
+<h3 id="momentum">Conservation of momentum</h3>
 
-<p>Neglecting terms related to viscocity, the exact conservation of momentum requires that
+<p>This section is partially based on Sec. 2.1 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>, but the discussion here is more general in the following ways:
+<ul>
+<li>The fields here are assumed to be arbitrary, whereas they are assumed to be time-harmonic in the discussion in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. The present treatment allows for a parallel to be drawn to the "continuity of momentum" equation of electrodynamics {See Eq. (30) of Sec. 2.3 of "Conservation Laws" in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[3]</a>}. As expected, the results of this section reduce to those in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a> upon being time-averaged. </li>
+<li>The present derivation is symbolic, while that in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a> uses index notation.</li>
+</ul>
+</p>
 
+<h4 id="linear">Linear momentum</h4>
+<p>
+Neglecting terms related to viscocity, the exact conservation of (linear) momentum requires that
 \begin{align}\label{eq:mom:exact}
-\rho\frac{\partial \vec{v}}{\partial t} + \rho\vec{v} \cdot \gradient \vec{v} = -\gradient P\,.
+\rho\frac{\partial \vec{v}}{\partial t} + \rho\vec{v} \cdot \gradient \vec{v} = -\gradient P\,,
 \end{align}
-Meanwhile, the exact continuity equation states that
+where \(P\) is the total pressure. Meanwhile, the exact conservation of mass requires that
 \begin{align}\label{eq:cont:exact}
 \frac{\partial \rho}{\partial t} + \divergence (\rho \vec{v}) = 0\,.
 \end{align}
@@ -154,56 +179,31 @@ Multiplying Eq. \eqref{eq:cont:exact} by \(\vec{v}\) yields
 Adding Eqs. \eqref{eq:mom:exact} and \eqref{eq:cont:exact:1} yields
 \[\rho\frac{\partial \vec{v}}{\partial t} + \rho\vec{v} \cdot \gradient \vec{v} + \vec{v}\frac{\partial \rho}{\partial t} + \vec{v} \divergence (\rho \vec{v}) = -\gradient P\,.\]
 Rearranging terms yields
-\[\rho\frac{\partial \vec{v}}{\partial t} + \vec{v}\frac{\partial \rho}{\partial t} + \rho\vec{v} \cdot \gradient \vec{v}  + \vec{v} \divergence (\rho \vec{v}) = -\gradient P\,.\]
+\begin{align}\label{eq:pre-take-avg}
+\rho\frac{\partial \vec{v}}{\partial t} + \vec{v}\frac{\partial \rho}{\partial t} + \rho\vec{v} \cdot \gradient \vec{v}  + \vec{v} \divergence (\rho \vec{v}) = -\gradient P\,.
+\end{align}
 Using the product rules \(\rho\partial \vec{v}/\partial t + \vec{v}\partial \rho/\partial t = \partial(\rho\vec{v})/\partial t\) and \(\rho\vec{v} \cdot \gradient \vec{v}  + \vec{v} \divergence (\rho \vec{v}) = \divergence (\rho \vec{v}\otimes \vec{v})\) (see Item 1 of "<a href="ids.html" target="_blank" rel="noopener noreferrer">Useful identities</a>") yields
 \begin{align}\label{eq:take-avg}
-\frac{\partial (\rho\vec{v})}{\partial t} + \divergence (\rho \vec{v}\otimes \vec{v}) = -\gradient P\,.
+\frac{\partial (\rho\vec{v})}{\partial t} + \divergence (\rho \vec{v}\otimes \vec{v}) = -\gradient (P-P_0)\,,
 \end{align}
-It is now assumed that \(\rho\), \(\vec{v}\), and \(P\) in Eq. \eqref{eq:take-avg} are time-harmonic. The time average of Eq. \eqref{eq:take-avg} is taken. By Item 2 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>, \(\langle {\partial (\rho\vec{v})}/{\partial t}\rangle  = 0\), leaving
-\begin{align}\label{eq:mom:2}
-\langle\divergence (\rho \vec{v}\otimes \vec{v})\rangle = -\langle\gradient P\rangle\,.
-\end{align}
-Since the time averages amount to integrals over time, the spatial differential operators can be moved outside the time averages: 
-\begin{align}\label{eq:mom:3}
--\gradient \langle P\rangle -\divergence \left\langle\rho \vec{v}\otimes \vec{v}\right\rangle = \vec{0}\,.
-\end{align} 
-Note by Item 3 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> that \(\dyad{I} \cdot \gradient \langle P\rangle = \divergence(\dyad{I} \langle P\rangle ) - \langle P\rangle \divergence \dyad{I}\), where \(\dyad{I}\) is the identity tensor. Since \(\divergence \dyad{I} = \vec{0}\), one can equivalently write \( \dyad{I} \cdot \gradient \langle P\rangle = \divergence(\dyad{I} \langle P\rangle)\). Equation \eqref{eq:mom:3} then becomes
-\begin{align}\label{eq:mom:4}
-\divergence (-\dyad{I} \langle P\rangle -\left\langle\rho \vec{v}\otimes \vec{v}\right\rangle) = \vec{0}\,.
-\end{align} 
-Noting that \(\langle P\rangle = \langle P-P_0\rangle\) and retaining terms up to quadratic order in Eq. \eqref{eq:mom:4} yields
-\begin{align}\label{eq:mom}
-\divergence (-\dyad{I} \langle P-P_0\rangle - \rho_0\left\langle \vec{v}\otimes \vec{v}\right\rangle) = \vec{0}\,.
-\end{align} 
-The quantity in parentheses is identified as the <i>acoustic radiation stress tensor</i>:
-\begin{align}\label{eq:stress}
-\boxed{\dyad{S} = - \dyad{I} \langle P-P_0 \rangle - \rho_0  \left\langle \vec{v}\otimes \vec{v}\right\rangle\,.}
-\end{align}
-In orthonormal index notation, the \(ij^\mathrm{th}\) component of Eq. \eqref{eq:stress} is
-\begin{align}\label{eq:stress:ind}
-{S_{ij} = - \delta_{ij} \langle P-P_0 \rangle - \rho_0  \left\langle v_i v_j\right\rangle\,,}
-\end{align}
-recovering Eq. (7) of Ch. 6, Sec. 2.1.2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Note the distinction between the stress tensor, "\(\dyad{S}\)" (sans-serif) and the Poynting vector "\(\vec{S}\)" (serif). In terms of the acoustic radiation stress tensor, Eq. \eqref{eq:mom} becomes
-\begin{align}\label{eq:mom:stress}
-\boxed{\divergence \dyad{S} = \vec{0}\,.}
-\end{align} 
-</p>
+where \(\gradient P\) in Eq. \eqref{eq:pre-take-avg} has been replaced by \(\gradient(P-P_0)\), where \(P_0\) is the (constant) ambient pressure,</p>
 
-<h3 id="excess">Mean excess pressure</h3>
-<p>Attention is now turned to the quantity \(\langle P - P_0 \rangle\), referred to as the "mean excess pressure," that appears in Eq. \eqref{eq:stress}. The derivation of this quantity is based on Sec. 2.1.3 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a> (though in a slightly different order, and with the details worked out). </p>
-
-<p>It is desired to calculate the time average of the quantity \(P-P_0\), which is reminiscent of the Taylor expansion of the pressure in the enthalpy per unit mass \(w\), where \(dw = T ds + dP/\rho\), which reduces to
+<p>
+Equation \eqref{eq:take-avg}, which is exact, is now reduced to quadratic order. The right-hand side of Eq. \eqref{eq:take-avg} can be simplified by appealing to the Taylor expansion of the total pressure \(P\) in the enthalpy per unit mass \(w\):
+\begin{align}\label{eq:taylor}
+P = P_0 + \left(\frac{\partial P}{\partial w}\right)_{s,0}w + \frac{1}{2}\left(\frac{\partial^2 P}{\partial w^2 }\right)_{s,0}w^2 + \dots\,.
+\end{align}
+{The choice of \(w\) as the independent variable will be appreciated later, though no justification or motivation is provided in Sec. 2.1.3 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>, on which this portion of the present derivation is based.} From thermodynamics, the <i>differential</i> enthalpy per unit mass is \(dw = T ds + dP/\rho\), which, for an isentropic process (\(ds = 0\)), reduces to
 \begin{align}\label{eq:enthalpy}
-dw = \frac{dP}{\rho}
+dw = \frac{dP}{\rho}\,.
 \end{align}
-for an isentropic process (\(ds = 0\)):
-\[P = P_0 + \left(\frac{\partial P}{\partial w}\right)_{s,0}w + \frac{1}{2}\left(\frac{\partial^2 P}{\partial w^2 }\right)_{s,0}w^2 + \dots\,.\]
-The motivation for expanding in the enthalpy (rather another thermodynamic variable, like density) will be seen presently. Since by Eq. \eqref{eq:enthalpy} \((\partial P/\partial w)_{s,0} = dP/dw = \rho\), the Taylor expansion becomes
+Equation \eqref{eq:enthalpy} shows that the partial derivative \((\partial P/\partial w)_{s,0}\) equals the ordinary derivative \(dP/dw = \rho\) for an isentropic process. Thus \((\partial^2 P/\partial w^2)_{s,0} = (\partial \rho/\partial w)_{s,0}\), and Eq. \eqref{eq:taylor} becomes
 \begin{align}
 P - P_0 &= \rho w + \frac{1}{2}\left(\frac{\partial\rho}{\partial w} \right)_{s,0}w^2 + \dots\,.\label{eq:taylor:simp}
 \end{align}
-Since \[\frac{\partial \rho}{\partial w} = \frac{\partial \rho}{\partial P}\frac{\partial P}{\partial w} = \frac{1}{c^2} \frac{dP}{dw} = \frac{\rho}{c^2}\,,\]
-Eq. \eqref{eq:taylor:simp} becomes 
+Further, since  
+\[\frac{\partial \rho}{\partial w} = \frac{\partial \rho}{\partial P}\frac{\partial P}{\partial w} = \frac{1}{c^2} \frac{dP}{dw} = \frac{\rho}{c^2}\,,\]
+where Eq. \eqref{eq:enthalpy} has been used in the last equality, Eq. \eqref{eq:taylor:simp} becomes 
 \begin{align}
 P - P_0 &= \rho_0 w + \frac{\rho_0}{2c_0^2} w^2 + \dots\,.\label{eq:taylor:simp:2}
 \end{align}
@@ -211,7 +211,7 @@ Next, to evaluate \(w\) and \(w^2\) in Eq. \eqref{eq:taylor:simp:2}, Eq. \eqref{
 \begin{align}\label{eq:enthalpy:2}
 \gradient w = \frac{\gradient P}{\rho}\,.
 \end{align}
-Equation \eqref{eq:enthalpy:2} is equated to the left-hand side of the momentum equation given by Eq. \eqref{eq:mom:exact} divided by \(\rho\): 
+Equation \eqref{eq:enthalpy:2} is equated to the left-hand side of the exact momentum equation given by Eq. \eqref{eq:mom:exact} divided by \(\rho\): 
 \begin{align}\label{eq:ex:mom}
 -\gradient w =  -\frac{\gradient P}{\rho} = \frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \gradient \vec{v}\,.
 \end{align}
@@ -227,49 +227,109 @@ Eq. \eqref{eq:ex:mom:1} becomes
 \begin{align}\label{eq:ex:mom:2}
 \gradient w = -\gradient \left[\frac{\partial \phi}{\partial t} - \tfrac{1}{2} |\gradient \phi|^2 \right]\,.
 \end{align}
-Equation \eqref{eq:ex:mom:2} can be integrated over volume, introducing an arbitrary constant \(C'\):
+Equation \eqref{eq:ex:mom:2} can be integrated over volume, introducing an arbitrary constant \(C'\), which is a quadratic quantity, according to Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>:
 \begin{align}\label{eq:ex:mom:3}
 w = -\frac{\partial \phi}{\partial t} - \tfrac{1}{2} |\gradient \phi|^2  + C'\,.
 \end{align}
-The motivation for expanding \(P\) in \(w\) can now be appreciated: it was possible to use the momentum equation to express \(w\) in terms of \(\phi\), its gradient, and its time derivative. Combining Eq. \eqref{eq:ex:mom:3} with Eq. \eqref{eq:taylor:simp:2} yields
+The motivation for expanding \(P\) in \(w\) can finally be appreciated: it was possible to use the momentum equation to express \(w\) in terms of \(\phi\), its gradient, and its time derivative. Inserting Eq. \eqref{eq:ex:mom:3} into Eq. \eqref{eq:taylor:simp:2} yields Eq. (11) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>:
 \begin{align}
 P - P_0 &= \rho_0\left(-\frac{\partial \phi}{\partial t} - \tfrac{1}{2} |\gradient \phi|^2  + C' \right) + \frac{\rho_0}{2c_0^2} \left( -\frac{\partial \phi}{\partial t} - \tfrac{1}{2} |\gradient \phi|^2  + C'\right)^2 + \dots\,.\label{eq:taylor:simp:3}
 \end{align}
-Equation \eqref{eq:taylor:simp:3} matches Eq. (11) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Taking the time average of Eq. \eqref{eq:taylor:simp:3} eliminates terms that are of odd powers, namely \(\partial \phi/\partial t\). According to Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>, \(C'\) is a quadratic quantity, and thus it has a nonzero time average \(\langle C'\rangle \equiv \rho_0 C\). Eliminating quantities of quartic order and higher yields, for the time average of Eq. \eqref{eq:taylor:simp:3},
-\begin{align}
-\langle P - P_0\rangle &=\frac{\rho_0}{2c_0^2} \left\langle\left(\frac{\partial \phi}{\partial t} \right)^2\right\rangle - \tfrac{1}{2} \rho_0 \langle |\gradient \phi|^2\rangle   + \rho_0C \,.\label{eq:taylor:simp:4}
+
+Equation \eqref{eq:taylor:simp:3} is inserted in the right-hand side of Eq. \eqref{eq:take-avg}. Meanwhile, on the left-hand side of Eq. \eqref{eq:take-avg}, the density is written as \(\rho = \rho_0 + \rho'\), resulting in
+\begin{align}\label{eq:take-avg:1}
+\frac{\partial [(\rho_0 + \rho')\vec{v}]}{\partial t} + \divergence [(\rho_0+\rho') \vec{v}\otimes \vec{v}] = -\rho_0 \gradient \left[ \left(-\frac{\partial \phi}{\partial t} - \tfrac{1}{2} |\gradient \phi|^2  + C' \right) + \frac{1}{2c_0^2} \left( -\frac{\partial \phi}{\partial t} - \tfrac{1}{2} |\gradient \phi|^2  + C'\right)^2 + \dots\right]. 
 \end{align}
-\(\vec{v}\) is now reinstated for \(\gradient \phi\). To relate \(\partial \phi/\partial t\) to the traditional acoustic field variables \(p\) and \(v\), it suffices to consider the linearized version of Eq. \eqref{eq:mom:exact}, since this quantity is squared in Eq. \eqref{eq:taylor:simp:4}:  
-\begin{align*}
+The velocity potential on the right-hand side of Eq. \eqref{eq:take-avg:1} is elliminated by invoking the linearized version of Eq. \eqref{eq:mom:exact} given by Eq. \eqref{eq:acoust:poynt:mom}, which in terms of \(\phi\) reads  
+\begin{align}\label{eq:pot}
 \gradient p = -\rho_0 \frac{\partial \vec{v}}{\partial t} = -\rho_0 \gradient \frac{\partial \phi}{\partial t}\,.
-\end{align*}
-Integrating over volume, noting that the integration constant is arbitrary (since the value of the potential \(\phi\) can be set to \(0\) anywhere without changing the values of \(p\) and \(v\)), and solving for \(\partial \phi/\partial t\) yields the relation \({\partial \phi}/{\partial t}  = -p/ \rho_0\). Thus Eq. \eqref{eq:taylor:simp:4} becomes
-\begin{align}
-\boxed{\langle P - P_0\rangle =\frac{1}{2\rho_0 c_0^2} \langle p^2\rangle - \tfrac{1}{2} \rho_0 \langle v^2\rangle   + \rho_0C \,,} \label{eq:excess}
 \end{align}
-matching Eq. (13) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Combining Eq. \eqref{eq:excess} with Eqs. \eqref{eq:kinetic} and \eqref{eq:potential} allows for the mean excess pressure to be defined in terms of the <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics#Lagrangian" target="_blank" rel="noopener noreferrer">Lagrangian</a> density \(L = E_T - E_V\):
-\begin{align}
-\langle P - P_0\rangle = - \langle L \rangle   + \rho_0C \,. \label{eq:excess:L}
+Equation \eqref{eq:take-avg:1} then becomes 
+\begin{align}\label{eq:take-avg:2}
+\underline{\rho_0\frac{\partial \vec{v}}{\partial t}} + \underline{\underline{\frac{\partial \rho'\vec{v}}{\partial t} }} 
++ \underline{\underline{\rho_0\divergence (\vec{v}\otimes \vec{v})}} 
+= - \underline{\gradient p} + \underline{\underline{\gradient \left( \tfrac{1}{2} \rho_0v^2 -  p^2 /2\rho_0c_0^2 + \rho_0 C'\right)}}\,,
+\end{align}
+where are linear terms have been underlined, quadratic terms have been double-underlined, and higher-order terms have been neglected. By recalling Eqs. \eqref{eq:kinetic} and \eqref{eq:potential}, the quantity \((\rho_0/2)v^2 -  p^2 /2\rho_0c_0^2\) on the right-hand side of Eq. \eqref{eq:take-avg:2} is identified as the <i>Lagrangian density</i> \(L = T-U\). Further, note by Item 3 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> that \(\dyad{I} \cdot \gradient f = \divergence(\dyad{I} f) - f \divergence \dyad{I}\), where \(\dyad{I}\) is the identity tensor. Since \(\divergence \dyad{I} = \vec{0}\), one can equivalently write \(\dyad{I} \cdot \gradient f = \divergence(\dyad{I} f)\). The second term on the right-hand side of Eq. \eqref{eq:take-avg:2} can therefore be written as \(\divergence [\dyad{I} (L + \rho_0 C')]\). Equation \eqref{eq:take-avg:2} becomes  
+\begin{align}\label{eq:take-avg:3}
+\underline{\rho_0\frac{\partial \vec{v}}{\partial t}} + \underline{\underline{\frac{1}{c_0^2}\frac{\partial p\vec{v}}{\partial t} }} 
+= - \underline{\gradient p} + \underline{\underline{\divergence [\dyad{I} (L + \rho_0 C')] - \rho_0\divergence (\vec{v}\otimes \vec{v})}}\,,
+\end{align}
+where the linearized state equation given by Eq. \eqref{eq:state} has been invoked in the second term on the left-hand side. Equating the linear terms in Eq. \eqref{eq:take-avg:3} yields 
+\begin{align}\label{eq:mom:lin}
+\gradient p + \rho_0\frac{\partial \vec{v}}{\partial t} 
+= \vec{0} \,,
+\end{align}
+which recovers the linearized momentum equation given by Eq. \eqref{eq:acoust:poynt:mom}, while equating the quadratic terms in Eq. \eqref{eq:take-avg:3} yields
+\begin{align}\label{eq:mom:quad}
+%\frac{1}{c_0^2}\frac{\partial p\vec{v}}{\partial t} = \divergence (\dyad{I} L ) - \rho_0\divergence (\vec{v}\otimes \vec{v}),
+\boxed{\frac{\partial \vec{g}}{\partial t} = \divergence \dyad{T}\,,}
+\end{align}
+where 
+\begin{align}\label{eq:g}
+\vec{g} \equiv \vec{S}/c_0^2 
+\end{align}
+is the <i>momentum density</i> in the acoustic fields (where \(\vec{S} = p\vec{v}\) is the instantaneous acoustic Poynting vector), and where
+\begin{align}\label{eq:T}
+\dyad{T} \equiv \dyad{I} (L + \rho_0 C') - \rho_0 \vec{v}\otimes \vec{v}
+\end{align}
+is the <i>instantaneous</i> acoustic radiation stress tensor, where \(-\dyad{T}\) is the <i>momentum flux</i> transported by the fields. The acoustic radiation stress tensor is symmetric, as can be seen by noting that \(\dyad{I} = \dyad{I}^\mathrm{T}\) (See the final equation of Items 5 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>) and \((\vec{v}\otimes \vec{v})^\mathrm{T} = \vec{v} \otimes \vec{v}\) (See Item 6 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> for the special case \(\vec{u} = \vec{v}\)). Since the transpose operation is linear, the sum of two symmetric tensors is also symmetric, proving that 
+\begin{align}\label{eq:stress:sym}
+\dyad{T} = \dyad{T}^\mathrm{T}\,.
+\end{align}
+</p>
+
+<p>
+Integrating Eq. \eqref{eq:mom:quad} over free space and invoking the divergence theorem for tensors yields an integral version of Eq. \eqref{eq:mom:quad}
+\begin{align}\label{eq:mom:quad:int}
+%\frac{d\vec{p}_\mathrm{mech}}{dt} = \oint_{A} \dyad{T} \cdot \,d\vec{A} - \frac{d}{dt} \int_V \vec{g} \,dV\,.
+\oint_{A} \dyad{T} \cdot \,d\vec{A} - \frac{d}{dt} \int_V \vec{g} \,dV = \vec{0}\,.
+\end{align}
+The first integral in Eq. \eqref{eq:mom:quad:int} is the "momentum per unit time flowing in through the surface," while the quantity \(\int_V \vec{g} \,dV\) represents the "momentum stored in the fields" <a href="refs.html" target="_blank" rel="noopener noreferrer">[3]</a>. </p>
+
+<p>Since Eq. \eqref{eq:mom:quad:int} was derived by integrating over free space, there is no change of mechanical momentum in the volume \(V\) per unit time. If there <i>is</i> an object in \(V\), then the right-hand side of Eq. \eqref{eq:mom:quad:int} equals \(d\vec{p}_\mathrm{mech}/dt\), which according to Newton's second law is the force \(\vec{F}\) on the object. 
+</p>
+
+
+
+<h4 id="angular">Angular momentum</h4>
+<p>Conserving <i>angular</i> momentum is discussed in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[16]</a> and amounts to crossing the position vector \(\vec{r}\) into Eqs. \eqref{eq:mom:exact} and \eqref{eq:cont:exact}. In view of Eqs. \eqref{eq:take-avg} and \eqref{eq:taylor:simp:3}, the conservation of angular momentum requires that 
+<!--\begin{align}\label{eq:take-avg:r}
+\vec{r} \times \frac{\partial (\rho\vec{v})}{\partial t} + \vec{r}\times \divergence (\rho \vec{v}\otimes \vec{v}) = - \vec{r}\times\gradient P\,.
+\end{align}-->
+\begin{align}\label{eq:ang}
+\boxed{\frac{\partial \boldsymbol{\ell}}{\partial t} = \vec{r}\times \divergence \dyad{T}\,,}
+\end{align}
+where the angular momentum density is
+\begin{align} \label{eq:ell}
+\boldsymbol{\ell} \equiv \vec{r} \times \vec{g} = \vec{r} \times \vec{S}/c_0^{2}\,.
+\end{align}
+</p>
+
+<h4 id="reduction">Reduction to time-averaged quantities</h4>
+<p>
+It is now assumed that \(p\) and \(\vec{v}\) are time-harmonic. The time average of \( C'\) is denoted  \(C\), which is nonzero since \(C'\) is a quadratic quantity. Meanwhile, invoking Item 2 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> shows that \(\langle {\partial \vec{g}}/{\partial t}\rangle  = \vec{0}\) and \(\langle {\partial \vec{\boldsymbol{\ell}}}/{\partial t}\rangle  = \vec{0}\). The time averages of Eqs. \eqref{eq:mom:quad} and \eqref{eq:ang} are therefore
+\begin{align}\label{eq:mom:stress}
+\boxed{\divergence \dyad{S} = \vec{0}\,.}
 \end{align} 
-Equation Eq. \eqref{eq:excess:L} recovers Eq. (4) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a>.
+and 
+\begin{align}\label{eq:mom:stress:r}
+\boxed{\vec{r}\times \divergence \dyad{S} = \vec{0}\,,}
+\end{align}
+respectively, where \(\dyad{S} \equiv \langle \dyad{T}\rangle\). Equations \eqref{eq:mom:stress} and \eqref{eq:mom:stress:r} are the partial differential equation that conserve the linear and angular momentum of time-harmonic waves to quadratic order.   
 </p>
 
+<p>As was the case for Eq. \eqref{eq:mom:quad:int}, Eqs. \eqref{eq:mom:stress} and \eqref{eq:mom:stress:r} were derived by integrating over free space, which implies that there is no change of mechanical linear or angular momentum in the volume \(V\) per unit time. If there <i>is</i> an object in \(V\), then the right-hand side of Eq. \eqref{eq:mom:quad:int} equals \(d\vec{p}_\mathrm{mech}/dt\) and \(d(\vec{r}\times \vec{p}_\mathrm{mech})/dt\), which according to Newton's second law is the force \(\vec{F}\) and torque \(\vec{}\)on the object. </p>
+
+
+
+<h3 id="force">Acoustic radiation force and torque</h3>
 <p>
-The term "Lagrangian" above should not be confused with the <a href="https://en.wikipedia.org/wiki/Lagrangian_and_Eulerian_specification_of_the_flow_field" target="_blank" rel="noopener noreferrer">Lagrangian coordinates</a> used in continuum mechanics. Confusingly, there is a way of writing Eq. \eqref{eq:excess} in said Lagrangian coordinates&mdash;see Sec. 2.1.4 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Meanwhile, Eq. \eqref{eq:excess} as written "is Eulerian because it is evaluated at a fixed point in space" <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. As such, \(P\) in Eq. \eqref{eq:excess} is sometimes superscripted with an "\(\mathrm{E}\)" to emphasize that the quantity is Eulerian. In these notes, only the Eulerian quantity is used, so the superscript is suppressed.
-</p>
-
-<!--<p>See Sec. 2.1.5 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a> for more discussion on </p>-->
-
-
-<h3 id="force">Acoustic radiation force</h3>
-<p>
-Equation \eqref{eq:mom:stress} has units of stress per unit length, which equals force per unit volume. Integrating over volume therefore results in quantity with dimensions of <i>force</i>. 
-
-To calculate the <i>radiation force</i>, first consider the spherical surface \(A\) immediately surrounding an object (enclosing a corresponding volume \(V\)), and a much larger spherical surface \(A_0\) (enclosing a corresponding volume \(V_0\) and concentric with \(A\)), as shown below:</p>
+For time-harmonic fields, application of the divergence theorem to Eq. \eqref{eq:mom:stress} shows that \(\oint_A \dyad{S} \cdot d\vec{A}\) is the <i>radiation force</i> \(d\vec{p}_\mathrm{mech}/dt\) on an object. The calculation of radiation force on an object immediately enclosed by a spherical surface \(A\) (enclosing a corresponding volume \(V\)) can be reduced to an integral in the far field, which is described by a much larger spherical surface \(A_0\) (enclosing a corresponding volume \(V_0\) and concentric with \(A\)), as shown below:</p>
 
 <img src="fig/integral.svg" width="280px"> 
 
-<p>The approach to calculate the <i>radiation force</i> on the object enclosed by \(A\) is attributed to Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> (which is in turn based on Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a>). Reference <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a> (Sec. 3.1.2) summarizes the procedure in those works as follows, where the notation has been modified to fit the present conventions: </p>
+<p>The reduction of the calculation of the force to an integral in the far field is attributed to Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> (which is in turn based on Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a>). Reference <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a> (Sec. 3.1.2) summarizes the procedure in those works as follows, where the notation has been modified to fit the present conventions: </p>
 
 <blockquote>
 By integrating \(\divergence \dyad{S} = 0\) over the space between [the surface] \(A\) and a much larger spherical surface \(A_0\) concentric with the sphere, and using Gauss's theorem, we obtain a surface integral of \(\dyad{S}\cdot \vec{e}_n\) over \(A' = A + A_0\), equated to zero, where \(\vec{e}_n\) is the normal unit vector on the surface \(A'\) pointing away from the enclosed space... [T]he integral over \(-\dyad{S} \cdot \vec{e}_n\) over \(A\) is the force acting on the sphere... 
@@ -278,38 +338,78 @@ By integrating \(\divergence \dyad{S} = 0\) over the space between [the surface]
 <p>
 Equation \eqref{eq:mom:stress} is integrated over the volume within surface \(A_0\) but outside  surface \(A\): 
 \begin{equation}\label{eq:mom:stress:int:1}
-\int_{V_0} \divergence \dyad{S}\,dV_0 - \int_V \divergence \dyad{S}\,dV = \vec{0}\,.
+\int_{V_0} \gradient_0 \cdot \dyad{S}(\vec{r}_0)\,dV_0 - \int_V \divergence \dyad{S}(\vec{r})\,dV = \vec{0}\,.
 \end{equation}
-Upon invoking the divergence theorem, the first term in Eq. \eqref{eq:mom:stress:int:1} becomes \(\oint_{A_0} \dyad{S}\cdot \vec{e}_r\, dA_0\), while the second term becomes \(-\oint_A \dyad{S}\cdot \vec{e}_r\, dA\), where \(\vec{e}_r\) is the radial unit vector in spherical coordinates:
+Upon invoking the divergence theorem, the first term in Eq. \eqref{eq:mom:stress:int:1} becomes \(\oint_{A_0} \dyad{S}(\vec{r}_0)\cdot \vec{e}_r\, dA_0\), while the second term becomes \(-\oint_A \dyad{S}\cdot \vec{e}_r\, dA\), where \(\vec{e}_r\) is the radial unit vector:
 \begin{equation}\label{eq:mom:stress:int:2}
-\oint_{A_0} \dyad{S}\cdot \vec{e}_r\,dA_0  -\oint_A \dyad{S}\cdot \vec{e}_r\, dA  =\vec{0}\,.
+\oint_{A_0} \dyad{S}(\vec{r}_0)\cdot \vec{e}_r\,dA_0  -\oint_A \dyad{S}(\vec{r}) \cdot \vec{e}_r\, dA  =\vec{0}\,.
 \end{equation}
 Since it is desired for the <i>radiation force</i> on the object enclosed by \(A\) to be defined with respect to the <i>inward</i> normal, \(\vec{e}_n\) is identified as \(-\vec{e}_r\) on \(A\), while it \(\vec{e}_n\) is identified as \(\vec{e}_r\) on \(A_0\), as shown in the figure above:
 \begin{equation}\label{eq:mom:stress:int:3}
-\oint_{A_0} \dyad{S}\cdot \vec{e}_n\,dA_0  + \oint_A \dyad{S}\cdot \vec{e}_n\, dA  =\vec{0}\,.
+\oint_{A_0} \dyad{S}(\vec{r}_0)\cdot \vec{e}_n\,dA_0  + \oint_A \dyad{S}(\vec{r}) \cdot \vec{e}_n\, dA  =\vec{0}\,.
 \end{equation}
 Solving Eq. \eqref{eq:mom:stress:int:3} for \(-\oint_A \dyad{S}\cdot \vec{e}_n\, dA\) results in the radiation force on the object enclosed by \(A\):
 \begin{equation}\label{eq:mom:stress:int}
-{\vec{F} = -\oint_A \dyad{S}\cdot \vec{e}_n\, dA = \oint_{A_0} \dyad{S}\cdot \vec{e}_n\,dA_0 \,.}
+{\vec{F} = -\oint_A \dyad{S}(\vec{r}) \cdot \vec{e}_n\, dA = \oint_{A_0} \dyad{S}(\vec{r}_0)\cdot \vec{e}_n\,dA_0 \,.}
 \end{equation}
-The first equality of Eq. \eqref{eq:mom:stress:int}, when expressed in index notation, recovers the first equation (not numbered) in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>. When expressed in terms of Eq. \eqref{eq:stress:ind} (the indicial form of the acoustic radiation stress tensor), Eq. \eqref{eq:mom:stress:int} recovers Eq. (82) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>:
+The first equality of Eq. \eqref{eq:mom:stress:int}, when expressed in index notation, recovers the first equation (not numbered) in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>. When expressed in terms of the indicial form of the acoustic radiation stress tensor, Eq. \eqref{eq:mom:stress:int} recovers Eq. (82) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>:
 \begin{equation}\label{eq:mom:stress:int:ind}
 F_i = \oint_A [\delta_{ij} \langle P-P_0 \rangle + \rho_0  \left\langle v_i v_j\right\rangle] \, {n}_j\, dA = -\oint_{A_0} [\delta_{ij} \langle P-P_0 \rangle + \rho_0  \left\langle v_i v_j\right\rangle]\, {n}_j\,dA_0 \,.
 \end{equation}
-[Note that typo in Eq. (82) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>: "\(F_z\)" should read "\(F_i\)." The force becomes \(F_z\) in Eq. (84), in which azimuthal symmetry has been assumed in Eq. (83).] Symbolically, Eq. \eqref{eq:mom:stress:int:ind} reads
+[Note the typo in Eq. (82) of the second edition of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>: "\(F_z\)" should read "\(F_i\)." The force becomes \(F_z\) in Eq. (84), in which azimuthal symmetry has been assumed in Eq. (83). This typo has been corrected in the third edition.] Symbolically, Eq. \eqref{eq:mom:stress:int:ind} reads
 \begin{align}
-\vec{F} = -\oint_{A_0} \left(\dyad{I} \langle P-P_0 \rangle + \rho_0  \left\langle \vec{v}\otimes \vec{v}\right\rangle \right)\cdot \vec{e}_n\,dA_0 \,, \label{eq:mom:stress:int:symb}
+\boxed{\vec{F} = \oint_{A_0} \left[\dyad{I} \langle L\rangle - \rho_0  \left\langle \vec{v}\otimes \vec{v}\right\rangle\right]\cdot \vec{e}_n\,dA_0\,,}\label{eq:int:F:L}
 \end{align}
-where Eq. \eqref{eq:stress} has been used. Equation \eqref{eq:mom:stress:int:symb} can be written in terms of the acoustic fields \(p\) and \(\vec{v}\) by using Eq. \eqref{eq:excess}, resulting in 
-\begin{align}
-\boxed{\vec{F} = -\oint_{A_0} \left[\dyad{I} \left(\frac{1}{2\rho_0 c_0^2} \langle p^2\rangle - \tfrac{1}{2} \rho_0 \langle v^2\rangle  \right) + \rho_0  \left\langle \vec{v}\otimes \vec{v}\right\rangle \right]\cdot \vec{e}_n\,dA_0\,,}\label{eq:int:F:acous}
-\end{align}
-where \(C\) has been set to zero to ensure "zero perturbation at infinity" {See Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>, p. 182}. When reduced to index notation and expressed in terms of velocity potential, Eq. \eqref{eq:int:F:acous} recovers the equation at the top of the second column on the first page of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>. Equation \eqref{eq:int:F:acous} reveals the utility of the surface integral over \(A_0\) in the second equality of Eq. \eqref{eq:mom:stress:int}: since the surface \(A_0\) can be arbitrarily large, the calculation of the radiation force \(\vec{F}\) amounts to solving the far-field linear scattering problem (which provides \(p\) and \(\vec{v}\)), taking time averages of \(p^2\), \(v^2\), and \(\vec{v} \otimes \vec{v}\), and integrating the results over \(A_0\). Indeed, Gor'kov writes <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>,</p>
+where the constant \(C\) has been set to zero to ensure "zero perturbation at infinity" {See Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>, p. 182}. Equation \eqref{eq:int:F:L} is equivalent to Eq. (4) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>.  When reduced to index notation and expressed in terms of velocity potential \(\phi\), Eq. \eqref{eq:int:F:L} recovers the equation at the top of the second column on the first page of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>. Equation \eqref{eq:int:F:L} reveals the utility of the surface integral over \(A_0\) in the second equality of Eq. \eqref{eq:mom:stress:int}: since the surface \(A_0\) can be arbitrarily large, the calculation of the radiation force \(\vec{F}\) amounts to solving the far-field linear scattering problem (which provides \(p\) and \(\vec{v}\)), taking time averages of \(p^2\), \(v^2\), and \(\vec{v} \otimes \vec{v}\), and integrating the results over \(A_0\). Indeed, Gor'kov writes <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>,</p>
 
 <blockquote>
 [F]or the calculation of the average force correct up to terms of the second order in the velocity, it is sufficient to find the solution of the linear scattering problem.
 </blockquote>
-Equation \eqref{eq:int:F:acous} will be evaluated for (1) traveling wave fields and (2) standing wave fields.
+
+<p>To calculate radiation <i>torque</i>, Eq. \eqref{eq:mom:stress:r} is integrated over the volume within surface \(A_0\) but outside surface \(A\), as was done for Eq. \eqref{eq:mom:stress} above: 
+\begin{equation}\label{eq:mom:stress:int:r:1}
+\int_{V_0} \vec{r}_0 \times \gradient_0 \cdot \dyad{S} (\vec{r}_0)\,dV_0 - \int_V \vec{r} \times\divergence \dyad{S}(\vec{r})\,dV = \vec{0}\,.
+\end{equation}
+Item 5 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> allows for the acoustic radiation stress tensor to be expressed as 
+\begin{equation}\label{eq:stress:sym:1}
+\dyad{S} = \dyad{S}\cdot \dyad{I} = \dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}}\,.
+\end{equation}
+Equation \eqref{eq:stress:sym:1} can equivalently be written as
+\begin{equation}\label{eq:stress:sym:2}
+\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}} = (\gradient \vec{r})^{\mathrm{T}} \cdot \dyad{S} =  (\gradient \vec{r}) \cdot \dyad{S}^\mathrm{T} = [\dyad{S} \cdot (\gradient \vec{r})^{\mathrm{T}}]^\mathrm{T}\,,
+\end{equation}
+where the first equality holds because \(\dyad{S} \cdot \dyad{I} = \dyad{I} \cdot \dyad{S}\), where the second equality holds by Item 5 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>, and where the third equality holds by Item 7 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>. Comparing the far left-hand and right-hand sides of Eq. \eqref{eq:stress:sym:2} shows that 
+\[\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}} - [\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}}]^\mathrm{T} = \dyad{0}\,,\]
+a condition that can be characterized in terms of the <i>axial vector</i> defined in Item 9 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>:
+\begin{equation}\label{eq:stress:sym:3}
+2\mathrm{ax} [\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}}] = \mathrm{ax} \left\{\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}}  - [\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}}]^\mathrm{T} \right\} = \vec{0}\,.
+\end{equation}
+Adding Eq. \eqref{eq:stress:sym:3} to the integrands of Eq. \eqref{eq:mom:stress:int:r:1} therefore leaves  Eq. \eqref{eq:mom:stress:int:r:1} unchanged: 
+\begin{align}\label{eq:stress:sym:2:2}
+\int_{V_0} \left\{ 2\mathrm{ax}[\dyad{S}(\vec{r}_0)\cdot (\gradient \vec{r}_0)^{\mathrm{T}}] + \vec{r}_0 \times \gradient_0 \cdot \dyad{S} (\vec{r}_0)  \right\} -
+\int_V     \left\{2\mathrm{ax} [\dyad{S}\cdot (\gradient \vec{r})^{\mathrm{T}}] + \vec{r} \times\divergence \dyad{S}(\vec{r}) \right\}\,dV = \vec{0}\,.
+\end{align}
+Invoking Item 8 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> allows for Eq. \eqref{eq:stress:sym:2:2} to be written as
+<!--
+\begin{align}\label{eq:mom:stress:r:div}
+\int_{V_0} \{2 \,\mathrm{ax} [\dyad{S}(\vec{r}_0) \cdot (\gradient \vec{r}_0)^\mathrm{T}] + \vec{r}_0 \times \divergence \dyad{S}(\vec{r}_0) \} \,dV_0 & = \int_{A_0} \vec{r}_0 \times [\dyad{S}(\vec{r}_0) \cdot \vec{e}_n] \,dA_0 \,,\\
+\int_{V} \{2 \,\mathrm{ax} [\dyad{S}(\vec{r}) \cdot (\gradient \vec{r})^\mathrm{T}] + \vec{r} \times \divergence \dyad{S}(\vec{r}) \} \,dV & = \int_{A} \vec{r} \times [\dyad{S}(\vec{r}) \cdot \vec{e}_n] \,dA \,.
+\end{align}
+-->
+\begin{align}\label{eq:mom:stress:r:div}
+\int_{A_0} \vec{r}_0 \times [\dyad{S}(\vec{r}_0) \cdot \vec{e}_r] \,dA_0 -
+ \int_{A} \vec{r} \times [\dyad{S}(\vec{r}) \cdot \vec{e}_r] \,dA  = \vec{0}\,.
+\end{align}
+
+
+<!--Equation \eqref{eq:mom:stress:r:div} is analogous to 
+</p>
+
+<p>Noting from Item 9 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> that \(\vec{w} \times (\vec{a} \otimes \vec{b}) = \vec{a} \otimes (\vec{w} \times \vec{b})\)-->
+<img src="../../under-construction.gif" width="500px">
+</p>
+
+Equation \eqref{eq:int:F:L} will be evaluated for (1) traveling wave fields and (2) standing wave fields.
 </p>
 
 
@@ -317,11 +417,7 @@ Equation \eqref{eq:int:F:acous} will be evaluated for (1) traveling wave fields 
 <p>The following approach to calculating radiation force on objects subjected to planar traveling waves is credited to Westervelt <a href="refs.html" target="_blank" rel="noopener noreferrer">[9, 10]</a>.</p>
 
 <p>
-It is convenient to write the mean excess pressure in Eq. \eqref{eq:int:F:acous} (which is the quantity in parentheses) in terms of the Lagrangian density \(L = E_T - E_V\), as in Eq. \eqref{eq:excess:L}:
-\begin{align}
-\vec{F} = \oint_{A_0} \left[\dyad{I} \langle L\rangle - \rho_0  \left\langle \vec{v}\otimes \vec{v}\right\rangle\right]\cdot \vec{e}_n\,dA_0\,.\label{eq:int:F:L}
-\end{align}
-Equation \eqref{eq:int:F:L} is equivalent to Eq. (4) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. For both traveling and standing wave configurations, the pressure and particle velocity fields are written in terms of the incident fields (subscripted "\(i\)") and scattered fields (subscripted "\(s\)"),
+For both traveling and standing wave configurations, the pressure and particle velocity fields are written in terms of the incident fields (subscripted "\(i\)") and scattered fields (subscripted "\(s\)"),
 \begin{align}
 p &= p_i + p_s \label{eq:scat:total:p}\\
 \vec{v} &= \vec{v}_i + \vec{v}_s\,, \label{eq:scat:total:v}
@@ -369,15 +465,15 @@ Using Eqs. and \eqref{eq:outer:simp:1}-\eqref{eq:L:is:2}, along with the fact th
 \end{align*}
 where the  subscript "\(0\)" has been included on \(\psi\) to indicate that it is an integration variable corresponding to the differential \(dA_0\). The first and last terms in the integrand cancel, resulting in 
 \begin{align}
-\boxed{\vec{F} = -\frac{1}{c_0}\oint_{A_0} \left\langle p_s \vec{v}_i  +  p_i v_s \vec{e}_r + p_s v_s \vec{e}_r \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt}}
+{\vec{F} = -\frac{1}{c_0}\oint_{A_0} \left\langle p_s \vec{v}_i  +  p_i v_s \vec{e}_r + p_s v_s \vec{e}_r \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt}}
 \end{align}
-where the terms in Eq. \eqref{eq:int:F:Westervelt} have been rearranged to match the ordering of terms in Eq. (12) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. 
+where the terms in Eq. \eqref{eq:int:F:Westervelt} have been rearranged to match the ordering of terms in Eq. (12) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. Equation \eqref{eq:int:F:Westervelt} is the force <i>vector</i> exerted on a scatterer due to an incident traveling wave \(p_i\) in terms of the scattered far field pressure \(p_s\). 
 </p>
 
-<p>Equation \eqref{eq:int:F:Westervelt} can be dotted into \(\vec{e}_i = \vec{k}_i/k\) to determine the component of the force in the direction of the incident wave. Noting that \(\vec{v}_i \cdot \vec{e}_i = v_i\) and \(\vec{e}_r \cdot \vec{e}_i = \cos\psi\), this component is \(F_\parallel = -c_0^{-1}\oint_{A_0} \left\langle p_s v_i   +  p_i v_s\cos\psi_0  + p_s v_s \cos\psi_0\right\rangle    \, dA_0\). Westervelt prefers an alternate form, however. Since the scattered and incident fields are considered to be planar, one can write \(p_i \vec{e}_i = \vec{v}_i \rho_0c_0\) and \(p_s \vec{e}_r = \vec{v}_s \rho_0c_0\). Thus 
+<p>Equation \eqref{eq:int:F:Westervelt} can be dotted into \(\vec{e}_i = \vec{k}_i/k\) to determine the component of the force in the direction of the incident wave. Noting that \(\vec{v}_i \cdot \vec{e}_i = v_i\) and \(\vec{e}_r \cdot \vec{e}_i = \cos\psi\), this component is \(F_\parallel = -c_0^{-1}\oint_{A_0} \left\langle p_s v_i   +  p_i v_s\cos\psi_0  + p_s v_s \cos\psi_0\right\rangle    \, dA_0\). Westervelt prefers an alternative form, however. Since the scattered and incident fields are considered to be planar, one can write \(p_i \vec{e}_i = \vec{v}_i \rho_0c_0\) and \(p_s \vec{e}_r = \vec{v}_s \rho_0c_0\). Thus 
 \begin{align}
-p_s\vec{v}_i = v_s \rho_0c_0 p_i\vec{e}_i/\rho_0c_0 = p_iv_s \vec{e}_i \label{eq:squares:switch:1}\\
-p_i \vec{v}_s = v_i\rho_0c_0 p_s \vec{e}_r/\rho_0c_0 = p_s v_i\vec{e}_r \label{eq:squares:switch:2}
+p_s\vec{v}_i &= v_s \rho_0c_0 p_i\vec{e}_i/\rho_0c_0 = p_iv_s \vec{e}_i \,, \label{eq:squares:switch:1}\\
+p_i \vec{v}_s &= v_i\rho_0c_0 p_s \vec{e}_r/\rho_0c_0 = p_s v_i\vec{e}_r \label{eq:squares:switch:2}
 \end{align}
 Inserting Eqs. \eqref{eq:squares:switch:1} and \eqref{eq:squares:switch:2} into Eq. \eqref{eq:int:F:Westervelt} yields
 \begin{align}
@@ -385,14 +481,30 @@ Inserting Eqs. \eqref{eq:squares:switch:1} and \eqref{eq:squares:switch:2} into 
 \end{align}
 Dotting Eq. \eqref{eq:int:F:Westervelt:switch} into the incident wave unit vector \(\vec{e}_i\) gives the force in the direction of the incident wave,
 \begin{align}
-\boxed{F_\parallel = -\frac{1}{c_0}\oint_{A_0} \left\langle p_i v_s   +  p_s v_i \cos\psi_0 \right\rangle  \, dA_0  -\frac{1}{c_0}\oint_{A_0} \left\langle p_s v_s \right\rangle \cos\psi_0   \, dA_0 \,,}\label{eq:int:F:Westervelt:parallel}
+{F_\parallel = -\frac{1}{c_0}\oint_{A_0} \left\langle p_i v_s   +  p_s v_i \cos\psi_0 \right\rangle  \, dA_0  -\frac{1}{c_0}\oint_{A_0} \left\langle p_s v_s \right\rangle \cos\psi_0   \, dA_0 \,,}\label{eq:int:F:Westervelt:parallel}
 \end{align}
 recovering Eq. (13) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. </p>
 
-<p>The quantity \(\langle p_s v_s\rangle\) in the second integral of Eq. \eqref{eq:int:F:Westervelt:parallel} is identified as the time-averaged Poynting vector of the scattered wave. Since \(v_s = p_s/\rho_0c_0\), this quantity equals \(\langle p_s^2 \rangle/\rho_0c_0\), which can be recast in terms of energy density by noting that this quantity equals \(2c_0 \langle E_{s,V}\rangle\) from Eq. \eqref{eq:potential}. Since \(\langle E_{V}\rangle = \langle E_{T}\rangle = \langle E\rangle/2\) in plane progressive waves, \(\langle p_s v_s\rangle = c_0 \langle E_s\rangle\). Normalizing \(\langle E_s\rangle\) to \(\langle E_i\rangle = \langle p_i^2 \rangle/ \rho_0c_0^2 = p_0^2/2\rho_0c_0^2\), where \(p_0\) is the pressure amplitude of the incident plane wave, the second integral of Eq. \eqref{eq:int:F:Westervelt:parallel} can be written as \(-\langle E_i\rangle \oint \gamma \cos\psi_0\, dA_0\), where \(\gamma \equiv \langle E_s\rangle/\langle E_i\rangle\) is the "the magnitude of the mean asymptotic scattered intensity per unit incident intensity" <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>.</p>
+<p>The quantity \(\langle p_s v_s\rangle\) in the second integral of Eq. \eqref{eq:int:F:Westervelt:parallel} is identified as the magnitude of the time-averaged Poynting vector of the scattered wave. Since \(v_s = p_s/\rho_0c_0\), this quantity equals \(\langle p_s^2 \rangle/\rho_0c_0\), which can be recast in terms of energy density by noting that this quantity equals \(2c_0 \langle E_{s,V}\rangle\) from Eq. \eqref{eq:potential}. Since \(\langle E_{V}\rangle = \langle E_{T}\rangle = \langle E\rangle/2\) in plane progressive waves, \(\langle p_s v_s\rangle = c_0 \langle E_s\rangle\). Normalizing \(\langle E_s\rangle\) to \(\langle E_i\rangle = \langle p_i^2 \rangle/ \rho_0c_0^2 = p_0^2/2\rho_0c_0^2\), where \(p_0\) is the pressure amplitude of the incident plane wave, the second integral of Eq. \eqref{eq:int:F:Westervelt:parallel} can be written as \(-\langle E_i\rangle \oint \gamma \cos\psi_0\, dA_0\), where \(\gamma \equiv \langle E_s\rangle/\langle E_i\rangle\) is the "the magnitude of the mean asymptotic scattered intensity per unit incident intensity" <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>.</p>
 
-<p>Meanwhile, Westervelt identifies \(-c_0^{-1} \oint \langle p_i u_s + p_s u_i \cos\psi_0 \rangle dA_0 \) as \(\langle E_i\rangle (\pi_s + \pi_a)\) {See Eq. (14) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>}, where \(\pi_a\) and \(\pi_s\) are "the cross sections for absorption and scattering respectively" <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. The argument for this identification is based on Lamb's discussion of cross terms in the product \((p_i + p_s)(\vec{v}_i + \vec{v}_s)\). Lamb writes that the surface integral over the time average of these cross terms in the far field equals "the total rate at which energy is withdrawn from the primary waves, in consequence of the presence of the obstacle" <a href="refs.html" target="_blank" rel="noopener noreferrer">[14]</a>.
+<p>Meanwhile, Westervelt identifies \(-c_0^{-1} \oint \langle p_i v_s + p_s v_i \cos\psi_0 \rangle dA_0 \) appearing in Eq. \eqref{eq:int:F:Westervelt:parallel} as \(\langle E_i\rangle (\pi_s + \pi_a)\) {See Eq. (14) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>}, where \(\pi_a\) and \(\pi_s\) are "the cross sections for absorption and scattering respectively" <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. The argument for this identification is based on Lamb's discussion of cross terms in the product \((p_i + p_s)(\vec{v}_i + \vec{v}_s)\). Lamb writes that the surface integral over the time average of these cross terms in the far field equals "the total rate at which energy is withdrawn from the primary waves, in consequence of the presence of the obstacle" <a href="refs.html" target="_blank" rel="noopener noreferrer">[14]</a>.</p> 
 
+<p>In summary, Eq. \eqref{eq:int:F:Westervelt:parallel} reduces to
+\begin{align}\label{eq:int:F:parallel:1}
+F_\parallel = \langle E_i\rangle \left[ \pi_s + \pi_a  - \oint \gamma \cos\psi_0\, dA_0 \right],
+%\boxed{}
+\end{align}
+{See Eq. (2) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>} which can equivalently be written as  
+\begin{align}
+\boxed{F_\parallel = c_0^{-1} \left[\mathcal{P}_s + \mathcal{P}_a - \oint \langle p_s v_s\rangle \cos \psi_0 \, dA_0 \right],} \label{eq:int:F:parallel}
+\end{align}
+where \(\mathcal{P}_s\) is the power scattered, \(\mathcal{P}_a\) is the power absorbed, and \( \langle p_s v_s\rangle\) is the time-averaged scattered intensity. Equation \eqref{eq:int:F:parallel} is the equation that appears in the abstract of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. <i>Note: I obtain the same result (without the absorption term) in a way that avoids the qualitative arguments made by Westervelt and Lamb. I will include my approach in my dissertation.</i> 
+
+<!--Factoring out from Eq. \eqref{eq:int:F:parallel:1} \(\langle E_i\rangle  = \langle I \rangle / c_0\), where \(\langle I \rangle\) is the time-averaged intensity \(p_0^2/2\rho_0c_0\) of the incident wave,  and identifying \(\gamma \, dA_0\) as \(|\Phi_s|^2 d\Omega\), where \(\Phi_s\) is the far-field directivity of the scattered wave (such that \(p_s = p_0 e^{ikr} \Phi_s/r\)) and \(\Omega\) is the solid angle, yields 
+\begin{align}\label{eq:int:F:parallel}
+F_\parallel = \frac{\langle I\rangle}{c_0} \oint |\Phi_s|^2 (1- \cos\psi_0)\, d\Omega_0\,.
+%\boxed{}
+\end{align} -->
 </p>
 
 
@@ -417,7 +529,7 @@ F_\perp = -c_0^{-1} \oint_{A_0} \langle p_s v_s\rangle   \vec{e}_r\cdot \vec{e}_
 <p>
 Meanwhile, Westervelt regards \(\vec{e}_r \cdot \vec{e}_m\) as \(\cos\beta\), where <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a></p>
 <blockquote>
-\(beta\) is the angle formed by \(\vec{e}_m\) and...the mean scattered intensity vector. Should the object scatter but a single beam at the angle \(\theta\) with respect to the incident wave, \(\cos\beta = \sin\psi\) in the direction of [the mean scattered intensity vector], and the expression given in 1951 <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a> yields the correct answer.
+\(\beta\) is the angle formed by \(\vec{e}_m\) and...the mean scattered intensity vector. Should the object scatter but a single beam at the angle \(\theta\) with respect to the incident wave, \(\cos\beta = \sin\psi\) in the direction of [the mean scattered intensity vector], and the expression given in 1951 <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a> yields the correct answer.
 </blockquote>
 <p>By "the expression given in 1951," I think Westervelt is referring to the imaginary part of Eq. (13) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[9]</a>, but he does not point to which specific equation of the 1951 paper he is referring to. Westervelt elaborates <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>,</p>
 
@@ -434,71 +546,8 @@ Meanwhile, if \(\vec{e}_m = \vec{e}_x\) (which is also perpendicular to \(\vec{e
 Is an argument like this along the lines of what Westervelt means?
 </p>
 
-<!--
-<p>It might be desired to write Eqs. \eqref{eq:int:F:Westervelt}, \eqref{eq:int:F:Westervelt:parallel}, and \eqref{eq:int:F:Westervelt:perp} in terms of \(p_s^2\), because linear scattering theory usually expresses the scattered field in terms of \(p_s\), as will be seen in the <a href="sound.html#traveling-my" target="_blank" rel="noopener noreferrer">following section</a>. Using the relations \(\vec{v}_i = v_i \vec{e}_i = p_i \vec{e}_i/\rho_0c_0\) and \(v_s = p_s/\rho_0c_0\), Eq. \eqref{eq:int:F:Westervelt} becomes 
-\begin{align}
-{\vec{F} = -\frac{1}{\rho_0c_0^2}\oint_{A_0} \left\langle p_i p_s (\vec{e}_i + \vec{e}_r) + p_s^2 \vec{e}_r \right\rangle  \, dA_0\,,} \label{eq:int:F}
-\end{align}
-while its parallel and perpendicular components given by Eqs. \eqref{eq:int:F:Westervelt:parallel} and \eqref{eq:int:F:Westervelt:perp} respectively become
-\begin{align}
-{F_\parallel = -\frac{1}{\rho_0c_0^2}\oint_{A_0} \left\langle p_ip_s(1+\cos\psi)  + p_s^2  \cos\psi  \right\rangle \, dA_0}\label{eq:int:F:parallel}
-\end{align}
-and
-\begin{align}
-{F_\perp = -\frac{1}{\rho_0c_0^2} \oint_{A_0} \langle p_s^2\rangle   \vec{e}_r\cdot \vec{e}_m \, dA_0\,.} \label{eq:int:F:perp}
-\end{align}
-</p>
--->
-
-<!--
-<p>For convenience, complex numbers are used to describe wave fields, where the physical wave field corresponds to the real part of the complex values. As such, \(p\) and \(\vec{v}\) in the formalism to follow will be given by 
-\begin{align*}
-p \equiv \Re(\tilde{p}) %\equiv \Re(\tilde{p}_\omega e^{-i\omega t})
- \,,\quad \vec{v} \equiv \Re(\tilde{\vec{v}}) \,,%\equiv \Re (\tilde{\vec{v}}_\omega e^{-i\omega t})\,, 
-\end{align*}
-respectively, where \(\tilde{p}\) and \(\tilde{\vec{v}}\) are the compex-valued quantities. Note from Item 4 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> that
-\begin{align}
-\langle p^2\rangle &= \langle \Re(\tilde{p})^2\rangle = \tfrac{1}{2} |\tilde{p}_\omega|^2 \label{eq:avg:p:square}\\
-\langle v^2\rangle &= \langle \vec{v} \cdot \vec{v}\rangle = \langle \Re(\tilde{\vec{v}}) \cdot \Re(\tilde{\vec{v}})\rangle = \tfrac{1}{2} |\tilde{\vec{v}}_\omega|^2\,, \label{eq:avg:v:square}\\
-\langle \vec{v} \otimes \vec{v}\rangle &= \langle \Re(\tilde{\vec{v}}) \otimes \Re(\tilde{\vec{v}})\rangle = \tfrac{1}{2} \Re(\tilde{\vec{v}}_\omega \otimes \tilde{\vec{v}}^*_\omega)\,, \label{eq:avg:v:otimes}
-\end{align}
-where \(\tilde{p} = \tilde{p}_\omega e^{-i\omega t}\) and \(\tilde{\vec{v}} = \tilde{\vec{v}}_\omega e^{-i\omega t}\).
-</p> 
-
-<p>The benefit of introducing \(\tilde{p}_\omega\) and \(\tilde{\vec{v}}_\omega\) is that in the far field \(r \gg a\), the pressure and particle velocity fields due to the scattering of a plane wave with pressure amplitude \(p_0\) can be represented by
-\begin{align}
-\tilde{p}_\omega &= p_0 \left[e^{i\vec{k}_i \cdot \vec{r}} + \frac{e^{ikr}}{r} \varphi_s(\vec{k}_s)\right]\label{eq:scat:p}\\
-\tilde{\vec{v}}_\omega &= \frac{p_0}{\rho_0c_0} \left[\vec{e}_i e^{i\vec{k}_i \cdot \vec{r}} + \vec{e}_r \frac{e^{ikr}}{r} \varphi_s(\vec{k}_s)\right]\,,\label{eq:scat:v}
-\end{align}
-where \(\vec{e}_i = \vec{k}_i/k\) is the incident wave unit vector, \(\vec{e}_r = \vec{k}_s/k = \vec{r}/r = \vec{e}_r\) is the scattered wave unit vector, and \(\varphi_s\) is the angle-distribution factor {See Eq. (8.1.14) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[11]</a>}. The relation \(p = \rho_0c_0 \vec{v}\cdot \hat{k}\) has been used to arrive at Eq. \eqref{eq:scat:v}, which holds for \(r \gg a\). {To show this, take the \(kr \gg 1\) limit of Eq. (1-D-19) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[12]</a>}.
-</p>
-
-<p>Inserting Eqs. \eqref{eq:scat:p} and \eqref{eq:scat:v} in Eqs. \eqref{eq:avg:p:square}-\eqref{eq:avg:v:otimes} yields
-\begin{align}
-\langle p^2\rangle &= \tfrac{1}{2} p_0^2 \left\{ 1 + \frac{1}{r}\left[e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{c. c.}\right] + \frac{1}{r^2}|\varphi_s(\vec{k}_s)|^2\right\} \label{eq:avg:p:square:scat}\\
-\langle v^2\rangle &= \frac{p_0^2}{2\rho_0^2c_0^2} \left\{1 + \frac{\cos\psi}{r}\left[e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{c. c.}\right] + \frac{1}{r^2}|\varphi_s(\vec{k}_s)|^2\right\} \,, \label{eq:avg:v:square:scat}\\
-\langle \vec{v} \otimes \vec{v}\rangle &= \frac{p_0^2}{2\rho_0^2c_0^2} \left\{\vec{e}_i \otimes \vec{e}_i + \frac{1}{r}\left[\vec{e}_r \otimes \vec{e}_i \, e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{h. c.}\right] + \frac{1}{r^2} \vec{e}_r \otimes \vec{e}_r\, |\varphi_s(\vec{k}_s)|^2\right\}\,, \label{eq:avg:v:otimes:scat}
-\end{align}
-where \(\vec{e}_i \cdot \vec{e}_r = \cos\psi\), where \(\text{c. c.}\) stands for "complex conjugate," and where \(\text{h. c.}\) stands for "Hermitian conjugate." Inserting Eqs. \eqref{eq:avg:p:square:scat}-\eqref{eq:avg:v:otimes:scat} into Eq. \eqref{eq:int:F:Westervelt} yields
-\begin{align}
-\vec{F} =  - \frac{p_0^2}{2\rho_0 c_0^2} \oint_{A_0}& \Bigg\{ \frac{1-\cos\psi}{2r}\left[e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{c. c.}\right]\dyad{I}  \notag\\
-&  + \frac{1}{r}\left[\vec{e}_r \otimes \vec{e}_i \, e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{h. c.}\right] + \frac{1}{r^2} \vec{e}_r \otimes \vec{e}_r\, |\varphi_s(\vec{k}_s)|^2 \Bigg\}\cdot \vec{e}_n\,dA_0\,,\label{eq:int:F:trav:1}
-\end{align}
-where the prescription \(C = 0\) in Eq. \eqref{eq:int:F:Westervelt} is consistent with the assumption made about fields given by Eqs. \eqref{eq:scat:p} and \eqref{eq:scat:v}, namely that they are solutions of Eq. (8.1.12) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[11]</a> in an unbounded medium. It is noted that the terms in Eqs. \eqref{eq:avg:p:square:scat} and \eqref{eq:avg:v:square:scat} corresponing to \(L_i\) and \(L_s\) do not appear in Eq. \eqref{eq:int:F:trav:1}, because the kinetic and potential energy densities are equal in plane progressive waves. The quantity \(\vec{e}_i \otimes \vec{e}_i\) also does not appear in the integral by virtue of Eq. \eqref{eq:no-force}. 
-
-
-<p>Equation \eqref{eq:int:F:trav:1} is evaluated in spherical coordinates, for which \(dA = r^2 \sin\theta \, d\theta \, d\phi\), where \(\theta\) is the polar angle and \(\phi\) is the azimuthal angle. Assuming that the incident wave propagates in the \(z\) direction sets \(\vec{e}_i = \vec{e}_z\) and \(\psi = \theta\). Noting that \(\vec{e}_n = \vec{e}_r = \vec{e}_r\) and that 
-\[(\vec{e}_r \otimes \vec{e}_i) \cdot \vec{e}_n = (\vec{e}_i \cdot \vec{e}_n) \vec{e}_r = \vec{e}_r \cos\theta\,,\quad (\vec{e}_r \otimes \vec{e}_r)\cdot \vec{e}_n = (\vec{e}_r \cdot \vec{e}_n)\vec{e}_r = \vec{e}_r\]
-leads to
-\begin{align}
-\vec{F} =  - \frac{p_0^2}{2\rho_0 c_0^2} \vec{e}_r \int_{0}^{2\pi}\int_{0}^{\pi}& \Bigg\{ \frac{1-\cos\psi}{2r}\left[e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{c. c.}\right]  \notag\\
-&  + \frac{1}{r}\left[\cos\theta \, e^{i(1-\cos\psi)kr}\varphi_s(\vec{k}_s) + \text{h. c.}\right] + \frac{1}{r^2}\, |\varphi_s(\vec{k}_s)|^2 \Bigg\}\,r^2 \sin\theta\,d\theta\,d\phi\,,\label{eq:int:F:trav:2}
-\end{align}
-Assuming the form \(\)</p>
--->
-
 <h4 id="standing">Due to standing waves</h4>
-<p>Under construction </p>
+<img src="../../under-construction.gif" width="500px">
 
 
 <h3 id="discussion">Is radiation force a linear or nonlinear effect?</h3>
@@ -510,11 +559,11 @@ In the <a href="sound.html#stress">derivation of the acoustic radiation stress t
 
 <p>Another argument utilizes the superposition principle, <a href="https://en.wikipedia.org/wiki/Linear_function#As_a_linear_map" target="_blank" rel="noopener noreferrer">one of the two mathematical criteria of a linear function</a>:
 \[f(a+b) = f(a) + f(b)\,.\]
-Radiation forces do not superpose, as can be seen by considering two plane waves with pressure amplitudes \(p_1\) and \(p_2\). If \(p_2 = 0\), the force on the object can be calculated by Eq. \eqref{eq:mom:stress:int} to be \(F_1\), and if \(p_1 = 0\), the force on the object can similarly be calculated to be \(F_2\). The radiation force \(F_{12}\) on an object insonified by <i>both</i> \(p_1\) and \(p_2\) is <i>not</i> \(F_1 + F_2\). Instead, the radiation stress tensor given by Eq. \eqref{eq:stress} must be re-calculated, and it will contain cross terms proportional to \(p_1p_2\) (and \(v_1v_2\), the corresponding velocity fields). Radiation force is a nonlinear effect because the superposition principle, a hallmark of linear phenomena, does not apply.
+Radiation forces do not superpose, as can be seen by considering two plane waves with pressure amplitudes \(p_1\) and \(p_2\). If \(p_2 = 0\), the force on the object can be calculated by Eq. \eqref{eq:mom:stress:int} to be \(F_1\), and if \(p_1 = 0\), the force on the object can similarly be calculated to be \(F_2\). The radiation force \(F_{12}\) on an object insonified by <i>both</i> \(p_1\) and \(p_2\) is <i>not</i> \(F_1 + F_2\). Instead, the radiation stress tensor given by Eq. \eqref{eq:T} must be re-calculated, and it will contain cross terms proportional to \(p_1p_2\) (and \(v_1v_2\), the corresponding velocity fields). Radiation force is a nonlinear effect because the superposition principle, a hallmark of linear phenomena, does not apply.
 </p>
 
 <h4 id="linear">Arguments as to why radiation force is a linear effect</h4>
-<p>While admitting the above arguments, one might still hesitate to categorize radiation force as "nonlinear acoustics," a term that <i>implies that the governing wave equation is nonlinear</i> (For example, see the introduction of the Wikipedia entry for "<a href="https://en.wikipedia.org/wiki/Nonlinear_acoustics" target="_blank" rel="noopener noreferrer">Nonlinear Acoustics</a>"). The acoustic radiation stress tensor \eqref{eq:stress} and mean excess pressure \eqref{eq:excess} are formed by the squares of quantities that are solutions of the linear wave equation, and thus the calculation of radiation force does not involve solving any nonlinear wave equations. </p>
+<p>While admitting the above arguments, one might still hesitate to categorize radiation force as "nonlinear acoustics," a term that <i>implies that the governing wave equation is nonlinear</i> (For example, see the introduction of the Wikipedia entry for "<a href="https://en.wikipedia.org/wiki/Nonlinear_acoustics" target="_blank" rel="noopener noreferrer">Nonlinear Acoustics</a>"). The acoustic radiation stress tensor \eqref{eq:T} is formed by the squares of quantities that are solutions of the linear wave equation, and thus the calculation of radiation force does not involve solving any nonlinear wave equations. </p>
 
 <p>One might argue that linear quantities are squared when solving nonlinear wave equations by the perturbation techniques&mdash;see Sec. 2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[15]</a>. But these squares are then substituted into the nonlinear wave equations, which are in turn solved for higher-order solutions. Radiation force, in contrast, involves no "higher-order solutions" for the acoustic fields.</p>
 
@@ -528,7 +577,20 @@ Radiation forces do not superpose, as can be seen by considering two plane waves
 [A]lthough the phenomenon is primarily one of nonlinear acoustics, it can be observed down to the lowest sound intensities under certain conditions. Thus, the Rayleigh radiation pressure vanishes for the linear case, but the usually measured Langevin pressure does not. 
 </blockquote>
 
+<h4 id="resolution">Resolution</h4>
+<p>Resolution of the differing views above can be found in the distinction between "cumulative" and "local" nonlinear effects. From Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[17]</a>:</p>
+<blockquote>
+Cumulative effects are those due to variation of propagation speed over the waveform, which causes distortion that accumulates with distance. Other effects leading to deviation from small-signal behavior, such as the difference between spatial and material coordinates, the finite displacement of a vibrating source, and nonlinearity of the pressure-particle velocity (impedance) relation, are termed local because the distortion they produce does not increase with propagation distance. 
+</blockquote>
+<p>Acoustic radiation force may be regarded as a <i>locally</i> nonlinear effect because: 
+<ol>
+<li>the governing wave equation is linear (hence waveforms do not distort over distance),</li>
+<li>the difference between spatial (Eulerian) and material (Lagrangian) coordinates is nonzero in the study of acoustic radiation pressure <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>, and</li>
+<li>a nonlinear pressure-particle velocity relation must be considered when developing the acoustic radiation stress tensor.</li>
+</ol>
+</p>
 
+<!--<p>A note about notation: The term "Lagrangian" above should not be confused with the <a href="https://en.wikipedia.org/wiki/Lagrangian_and_Eulerian_specification_of_the_flow_field" target="_blank" rel="noopener noreferrer">Lagrangian coordinates</a> used in continuum mechanics. Confusingly, there is a way of writing the excess pressure in said Lagrangian coordinates&mdash;see Sec. 2.1.4 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Meanwhile, Eq. \eqref{eq:taylor:simp:3} as written "is Eulerian because it is evaluated at a fixed point in space" <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. As such, \(P\) in Eq. \eqref{eq:taylor:simp:3} is sometimes superscripted with an "\(\mathrm{E}\)" to emphasize that the quantity is Eulerian. In these notes, only the Eulerian quantity is used, so the superscript is suppressed.</p>-->
 
 <p><a href="index.html">&leftarrow; Return to radiation force homepage</a></p>
 
