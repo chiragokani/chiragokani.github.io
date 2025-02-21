@@ -39,7 +39,7 @@ window.MathJax = {
 
 <img src="fig/pendulum.svg" width="250px"> 
 
-<p>The tension in the string is \(T = mg\). For small deflection angles \(\theta \ll 1\), \(\sin\theta \simeq \theta\), and \(\vec{F} = m\vec{a}\) reduces to a linear second-order ordinary differential equation in \(-\pi/2 \leq \theta\leq \pi/2\), which is the angle measured from the downward direction:
+<p>The tension in the string is \( mg\). For small deflection angles \(\theta \ll 1\), \(\sin\theta \simeq \theta\), and \(\vec{F} = m\vec{a}\) reduces to a linear second-order ordinary differential equation in \(-\pi/2 \leq \theta\leq \pi/2\), which is the angle measured from the downward direction:
 \begin{equation}\label{eq:pend}
 mg \theta \simeq  - ml \frac{d^2 \theta}{dt^2}\,.
 \end{equation}
@@ -66,7 +66,7 @@ Philos. Mag. <b>10</b>, 364-374 (1905).
 
 <p>The potential energy of the bob is 
 \begin{align}\label{eq:pend:V}
-\mathcal{E}_V = mgl (1-\cos\theta) \simeq mgl \theta^2/2
+U = mgl (1-\cos\theta) \simeq mgl \theta^2/2
 \end{align}
 such that \(V = 0\) in the equilibrium position \(\theta =0\). The force <i>exerted by the bob on the hinge</i> (which Beyer labels a "ring that can only move vertically" that constrains the length of the pendulum) equals 
 \begin{align}\label{eq:pend:F}
@@ -78,35 +78,35 @@ where \(\vec{e}_l\) is the radial unit vector. Taking the time average of Eq. \e
 \end{align}
 since the pendulum spends equal time at angles \(\theta > 0\) and \(\theta < 0\). Combining Eqs. \eqref{eq:pend:V} and \eqref{eq:pend:F:av} yields
 \begin{align}\label{eq:pend:Frad:1}
-{F} = \langle \mathcal{E}_V\rangle/l \,.
+{F} = \langle U\rangle/l \,.
 \end{align}
-Since in a simple harmonic oscillator \(\langle \mathcal{E}_V \rangle = \langle \mathcal{E}_T\rangle = \langle \mathcal{E}\rangle/2\) (by the virial theorem, see Sec. 7.13 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[2]</a>), Eq. \eqref{eq:pend:Frad:1} can be written as 
+Since in a simple harmonic oscillator \(\langle U \rangle = \langle T\rangle = \langle E\rangle/2\) (by the virial theorem, see Sec. 7.13 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[2]</a>), Eq. \eqref{eq:pend:Frad:1} can be written as 
 \begin{align}\label{eq:pend:Frad}
-\boxed{{F} = \langle \mathcal{E}\rangle/2l \,.}
+\boxed{{F} = \langle E\rangle/2l \,.}
 \end{align}
 </p>
 
 <h3 id="adiabat">By adiabatic invariance</h3>
 <p>
-Equivalently, by the principle of adiabatic invariance, "under a very slow and continuous change of a constraint parameter, the product of the period \(\tau\) and the mean value of the kinetic energy \(\langle \mathcal{E}_T\rangle \) remains a constant":
+Equivalently, by the principle of adiabatic invariance, "under a very slow and continuous change of a constraint parameter, the product of the period \(\tau\) and the mean value of the kinetic energy \(\langle T\rangle \) remains a constant":
 \begin{align}\label{eq:pend:adiabat}
-\delta(\tau \mathcal{E}_T) = \tau d\mathcal{E}_T + \mathcal{E}_T d\tau = 0\,.
+\delta(\tau T) = \tau dT + T d\tau = 0\,.
 \end{align}
 Dividing Eq. \eqref{eq:pend:adiabat} by \(\tau T\) yields
 \begin{align}\label{eq:pend:adiabat:dt}
-\frac{d\mathcal{E}_T}{\mathcal{E}_T} + \frac{d\tau}{\tau} = 0\,.
+\frac{dT}{T} + \frac{d\tau}{\tau} = 0\,.
 \end{align}
-The time-averaged work done by the bob on the string is \(dW = F\,dl\), which by the work-energy theorem is \(-d\mathcal{E}_T = -d\mathcal{E}\) {See Sec. 2.5 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[2]</a>}. Thus Eq. \eqref{eq:pend:adiabat:dt} becomes
+The time-averaged work done by the bob on the string is \(dW = F\,dl\), which by the work-energy theorem is \(-dT = -dE\) {See Sec. 2.5 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[2]</a>}. Thus Eq. \eqref{eq:pend:adiabat:dt} becomes
 \begin{align}\label{eq:pend:adiabat:dt:2}
--\frac{F\,dl}{\langle \mathcal{E}\rangle} + \frac{d\tau}{\tau} = 0\,.
+-\frac{F\,dl}{\langle E\rangle} + \frac{d\tau}{\tau} = 0\,.
 \end{align}
 Combining Eq. \eqref{eq:pend:adiabat:dt:2} with Eq. \eqref{eq:pend:tau} yields
 \begin{align}\label{eq:pend:adiabat:dt:3}
--\frac{F\,dl}{\langle \mathcal{E}\rangle} + \frac{d\tau}{2\pi \sqrt{l/g}} = 0\,.
+-\frac{F\,dl}{\langle E\rangle} + \frac{d\tau}{2\pi \sqrt{l/g}} = 0\,.
 \end{align}
 Solving Eq. \eqref{eq:pend:adiabat:dt:3} for \(F\) gives
 \begin{align}\label{eq:pend:adiabat:dt:4}
-F = \frac{d\tau}{dl} \frac{\langle \mathcal{E}\rangle}{2\pi\sqrt{l/g}}\,.
+F = \frac{d\tau}{dl} \frac{\langle E\rangle}{2\pi\sqrt{l/g}}\,.
 \end{align}
 Noting that 
 \begin{align*}
@@ -114,7 +114,7 @@ Noting that
 \end{align*}
 yields the force from Eq. \eqref{eq:pend:adiabat:dt:4} 
 \begin{align}\label{eq:pend:adiabat:F}
-{F = \frac{\langle \mathcal{E}\rangle \pi/g}{2\pi l/g} = \langle \mathcal{E}\rangle/2l\,,}
+{F = \frac{\langle E\rangle \pi/g}{2\pi l/g} = \langle E\rangle/2l\,,}
 \end{align}
 recovering Eq. \eqref{eq:pend:Frad}.
 </p>
