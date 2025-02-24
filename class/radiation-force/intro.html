@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiation force</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    tags: 'ams',
+    macros: {
+    Order: "{\\mathcal O}",
+    vec: ['\\mathbf{#1}',1],
+    dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+    divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+    gradient: "{\\boldsymbol\\nabla}",
+    curl: "{\\boldsymbol\\nabla\\times\\,}",
+    Laplacian: "{\\nabla^2}",
+    Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
+    }
+  }
+};
+</script>	
+<link rel="stylesheet" href="..\..\chirag.css">
+</head>
+<body>
+<h2>Introduction</h2>
+
+<blockquote>
+ It might be said that radiation pressure is a 
+phenomenon that the observer thinks he understands&mdash;for short intervals, and only every now and then. 
+</blockquote>
+<p align="right">R. T. Beyer <a href="refs.html" target="_blank" rel="noopener noreferrer">[1]</a></p>
+
+
+<p>These notes were inspired by a lunch discussion with Profs. G. W. Swift, R. Waxler, L. Zhang, A. A. Atchley, J. Mobley, J. D. Maynard, and M. F. Hamilton at the <a href="fig/pass.jpeg" target="_blank" rel="noopener noreferrer">2024 Physical Acoustics Summer School (PASS)</a>.</p> 
+
+<p>For real-world examples of radiation force, see:</p>
+
+<ul>
+<li><a href="https://youtube.com/shorts/-w83EIJGa-k?feature=share" target="_blank" rel="noopener noreferrer">Acoustic fountain</a>: an ultrasonic transducer in water exerts a time-averaged force on the surface of the water, causing a jet to form. Thanks to Prof. P. S. Wilson for this demo.</li>
+<li>In 1619, <a href="https://archive.org/embed/decometislibelli00kepl" target="_blank" rel="noopener noreferrer">Johannes Kepler</a> posited the existence of radiation force to explain why the tails of comets point away from the sun. Below are images from the <a href="https://apod.nasa.gov/apod/archivepixFull.html" target="_blank" rel="noopener noreferrer">Astronomy Picture of the Day archive</a> of two of the <a href="https://en.wikipedia.org/wiki/Great_comet#List_of_great_comets" target="_blank" rel="noopener noreferrer">"great comets"</a> of our era:
+
+<ul>
+<li>Comet Hale-Bopp (1997)</li>
+<ul>
+<li><a href="https://apod.nasa.gov/apod/ap950820.html" target="_blank" rel="noopener noreferrer">Announcing Comet Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap951030.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Update</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap960723.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp, Jupiter, and the Milky Way</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap960725.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp on Schedule</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap960729.html" target="_blank" rel="noopener noreferrer"> A Dust Jet From Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap960917.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Fades</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap961112.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Passes M14</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap961113.html" target="_blank" rel="noopener noreferrer"> Seven Jets from Comet Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap961219.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Inbound</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970206.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Returns</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970212.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Develops a Tail</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970213.html" target="_blank" rel="noopener noreferrer"> More Jets From Comet Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970220.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp and the Dumbbell Nebula</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970227.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp is <i>That</i> Bright</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970307.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Enters the Evening Sky</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970313.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp Brighest Comet This Decade</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970314.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp's Developing Tails</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970317.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Over Val Parola Pass</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970325.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp Brightest Comet This Century</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970401.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp and Andromeda</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970404.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp In Stereo</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970408.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Over New York City</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970415.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp and Plateau de Bure Interferometer</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970416.html" target="_blank" rel="noopener noreferrer"> A Star Cluster Through Hale-Bopp's Tail</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970425.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp Polarized</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970429.html" target="_blank" rel="noopener noreferrer"> Hale Bopp and Orion</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970505.html" target="_blank" rel="noopener noreferrer"> Sunset with Hale-Bopp at Keck</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970508.html" target="_blank" rel="noopener noreferrer"> Detailing Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970514.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp's Fickle Ion Tail</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970515.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp: Climbing Into Southern Skies</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970526.html" target="_blank" rel="noopener noreferrer"> Old Faithful Meets Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970610.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp Above the Cinqui Torri Mountains</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970723.html" target="_blank" rel="noopener noreferrer"> A Hale-Bopp Triple Crown</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970806.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp from Indian Cove</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970825.html" target="_blank" rel="noopener noreferrer"> A Fisheye View of Comet Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970910.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Outbound</a></li>
+</ul> 
+
+
+<li>Comet NEOWISE (2020)</li> 
+<ul>
+<li><a href="https://apod.nasa.gov/apod/ap200707.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE over Lebanon</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200709.html" target="_blank" rel="noopener noreferrer"> Noctilucent Clouds and Comet NEOWISE </a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200710.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE from the ISS</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200711.html" target="_blank" rel="noopener noreferrer"> The Tails of Comet NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200713.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE Rising over the Adriatic Sea</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200714.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE over Stonehenge</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200715.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE over the Swiss Alps</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200716.html" target="_blank" rel="noopener noreferrer"> The Long Tails of Comet NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200717.html" target="_blank" rel="noopener noreferrer"> NEOWISE of the North</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200718.html" target="_blank" rel="noopener noreferrer"> Finding NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200720.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE and Nebulae</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200722.html" target="_blank" rel="noopener noreferrer"> The Structured Tails of Comet NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200723.html" target="_blank" rel="noopener noreferrer"> Fairytale NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200724.html" target="_blank" rel="noopener noreferrer"> MAGIC NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200803.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE over Vikos Gorge</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap200812.html" target="_blank" rel="noopener noreferrer"> The Shifting Tails of Comet NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap210731.html" target="_blank" rel="noopener noreferrer"> Remembering NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap210308.html" target="_blank" rel="noopener noreferrer"> Three Tails of Comet NEOWISE</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap220726.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE Rising over the Adriatic Sea</a></li>
+</ul>
+</ul>
+</ul>
+
+<p>For not-so-real (but very illustrative) examples of radiation force, see:
+<ul>
+<li><a href="https://www.youtube.com/embed/Zk71h2CQ_xM?si=q8LNgf1OHT9qukCR" target="_blank" rel="noopener noreferrer">Maxell Hi-Fidelity advertisement (1983)</a></li>
+<li><a href="https://www.youtube.com/embed/axXrs55X9kE?si=ES1NawklygXtM0P9" target="_blank" rel="noopener noreferrer">Opening scene from <i>Back to the Future</i> (1985)</a> </li>
+
+</ul>
+</p>
+
+<p>I am grateful to Prof. L. A. Ostrovsky for our email discussions about acoustic radiation force.</p>
+
+
+<p><a href="index.html">&leftarrow; Return to radiation force homepage</a></p>
+</body>
+</html>
