@@ -36,17 +36,20 @@ phenomenon that the observer thinks he understands&mdash;for short intervals, an
 </blockquote>
 <p align="right">R. T. Beyer <a href="refs.html" target="_blank" rel="noopener noreferrer">[1]</a></p>
 
+<p><i>Radiation force</i> refers to the time-averaged force exerted by waves on objects they encounter. "Time-averaged" refers to integration over a cycle and division by the corresponding period. "Waves" can refer to many kinds of oscillations in space and time, including oscillations of a pendulum, waves on a string, surface waves in water, acoustic waves, and electromagnetic waves. </p>
 
-<p>These notes were inspired by a lunch discussion with Profs. G. W. Swift, R. Waxler, L. Zhang, A. A. Atchley, J. Mobley, J. D. Maynard, and M. F. Hamilton at the <a href="fig/pass.jpeg" target="_blank" rel="noopener noreferrer">2024 Physical Acoustics Summer School (PASS)</a>.</p> 
+<p>The incident wave fields can be traveling, standing, or any combination of the two, but radiation forces are generated only by <i>propagating</i> waves (as opposed to <i>evanescent</i> waves), the reason for which will be explained later in these notes. The taxonomy of waves is displayed below:</p>
+
+<img src="fig/taxonomy.svg" width="261px"> 
 
 <p>For real-world examples of radiation force, see:</p>
 
 <ul>
-<li><a href="https://youtube.com/shorts/-w83EIJGa-k?feature=share" target="_blank" rel="noopener noreferrer">Acoustic fountain</a>: an ultrasonic transducer in water exerts a time-averaged force on the surface of the water, causing a jet to form. Thanks to Prof. P. S. Wilson for this demo.</li>
-<li>In 1619, <a href="https://archive.org/embed/decometislibelli00kepl" target="_blank" rel="noopener noreferrer">Johannes Kepler</a> posited the existence of radiation force to explain why the tails of comets point away from the sun. Below are images from the <a href="https://apod.nasa.gov/apod/archivepixFull.html" target="_blank" rel="noopener noreferrer">Astronomy Picture of the Day archive</a> of two of the <a href="https://en.wikipedia.org/wiki/Great_comet#List_of_great_comets" target="_blank" rel="noopener noreferrer">"great comets"</a> of our era:
+<li>In 1619, <a href="https://archive.org/embed/decometislibelli00kepl" target="_blank" rel="noopener noreferrer">Johannes Kepler</a> posited the existence of radiation force to explain why the tails of comets point away from the sun. <a href="https://apod.nasa.gov/apod/ap970401.html" target="_blank" rel="noopener noreferrer">Comet Hale-Bopp</a> (1997) and <a href="https://apod.nasa.gov/apod/ap200716.html" target="_blank" rel="noopener noreferrer">Comet Neowise</a> (2020) are two of the iconic "<a href="https://en.wikipedia.org/wiki/Great_comet#List_of_great_comets" target="_blank" rel="noopener noreferrer">great comets</a>" of our era that nicely demonstrated this effect. See <a href="https://apod.nasa.gov/apod/ap200812.html" target="_blank" rel="noopener noreferrer"> The Shifting Tails of Comet NEOWISE</a> for an image of Comet NEOWISE's changing appearance over the course of a week in July 2020, and note how the tail points away from the Sun, rather opposite to the direction of its motion. Also seen in these images is the (fainter) ion tail, which generally does not coincide with the dust tail. The ion tail is subject not only to the radiation force of the Sun but also to the Lorentz force associated with the Sun's magnetic field. For a stunning example of how misaligned the dust and ion tails can be, see <a href="https://apod.nasa.gov/apod/ap970514.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp's Fickle Ion Tail</a>. <!--<a href="https://apod.nasa.gov/apod/archivepixFull.html" target="_blank" rel="noopener noreferrer">Astronomy Picture of the Day archive</a>-->
 
+<!--
 <ul>
-<li>Comet Hale-Bopp (1997)</li>
+<li>Comet Hale-Bopp (1997)</li> 
 <ul>
 <li><a href="https://apod.nasa.gov/apod/ap950820.html" target="_blank" rel="noopener noreferrer">Announcing Comet Hale-Bopp</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap951030.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Update</a></li>
@@ -54,14 +57,14 @@ phenomenon that the observer thinks he understands&mdash;for short intervals, an
 <li><a href="https://apod.nasa.gov/apod/ap960725.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp on Schedule</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap960729.html" target="_blank" rel="noopener noreferrer"> A Dust Jet From Hale-Bopp</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap960917.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Fades</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap961112.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Passes M14</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap961113.html" target="_blank" rel="noopener noreferrer"> Seven Jets from Comet Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap961112.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Passes M14</a></li>-->
+<!--<li><a href="https://apod.nasa.gov/apod/ap961113.html" target="_blank" rel="noopener noreferrer"> Seven Jets from Comet Hale-Bopp</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap961219.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Inbound</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap970206.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Returns</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap970212.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Develops a Tail</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap970213.html" target="_blank" rel="noopener noreferrer"> More Jets From Comet Hale-Bopp</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap970220.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp and the Dumbbell Nebula</a></li>
-<li><a href="https://apod.nasa.gov/apod/ap970227.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp is <i>That</i> Bright</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970206.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Returns</a></li>-->
+<!--<li><a href="https://apod.nasa.gov/apod/ap970212.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Develops a Tail</a></li>-->
+<!--<li><a href="https://apod.nasa.gov/apod/ap970213.html" target="_blank" rel="noopener noreferrer"> More Jets From Comet Hale-Bopp</a></li>
+<li><a href="https://apod.nasa.gov/apod/ap970220.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp and the Dumbbell Nebula</a></li>-->
+<!--<li><a href="https://apod.nasa.gov/apod/ap970227.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp is <i>That</i> Bright</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap970307.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Enters the Evening Sky</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap970313.html" target="_blank" rel="noopener noreferrer"> Hale-Bopp Brighest Comet This Decade</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap970314.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp's Developing Tails</a></li>
@@ -85,8 +88,9 @@ phenomenon that the observer thinks he understands&mdash;for short intervals, an
 <li><a href="https://apod.nasa.gov/apod/ap970825.html" target="_blank" rel="noopener noreferrer"> A Fisheye View of Comet Hale-Bopp</a></li>
 <li><a href="https://apod.nasa.gov/apod/ap970910.html" target="_blank" rel="noopener noreferrer"> Comet Hale-Bopp Outbound</a></li>
 </ul> 
+-->
 
-
+<!--
 <li>Comet NEOWISE (2020)</li> 
 <ul>
 <li><a href="https://apod.nasa.gov/apod/ap200707.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE over Lebanon</a></li>
@@ -110,17 +114,24 @@ phenomenon that the observer thinks he understands&mdash;for short intervals, an
 <li><a href="https://apod.nasa.gov/apod/ap220726.html" target="_blank" rel="noopener noreferrer"> Comet NEOWISE Rising over the Adriatic Sea</a></li>
 </ul>
 </ul>
+-->
+
+<li><a href="https://en.wikipedia.org/wiki/Laser_cooling" target="_blank" rel="noopener noreferrer">Laser cooling</a> refers to the cooling of systems using the radiation force of light.</li>
+
+<li><a href="https://en.wikipedia.org/wiki/Optical_tweezers" target="_blank" rel="noopener noreferrer">Optical tweezers</a> are beams of light used to trap and manipulate particles. </li>
+
+<li><a href="https://youtube.com/shorts/-w83EIJGa-k?feature=share" target="_blank" rel="noopener noreferrer">Acoustic fountain</a>: an ultrasonic transducer in water exerts a time-averaged force on the surface of the water, causing a jet to form. Because the transducer is often made of a piezoelectric crystal, these fountains are sometimes referred to as "crystal fountains." Thanks to Prof. P. S. Wilson for this demo.</li>
 </ul>
 
 <p>For not-so-real (but very illustrative) examples of radiation force, see:
+
 <ul>
 <li><a href="https://www.youtube.com/embed/Zk71h2CQ_xM?si=q8LNgf1OHT9qukCR" target="_blank" rel="noopener noreferrer">Maxell Hi-Fidelity advertisement (1983)</a></li>
 <li><a href="https://www.youtube.com/embed/axXrs55X9kE?si=ES1NawklygXtM0P9" target="_blank" rel="noopener noreferrer">Opening scene from <i>Back to the Future</i> (1985)</a> </li>
-
 </ul>
 </p>
 
-<p>I am grateful to Prof. L. A. Ostrovsky for our email discussions about acoustic radiation force.</p>
+<p>These notes were inspired by a lunch discussion with Profs. G. W. Swift, R. Waxler, L. Zhang, A. A. Atchley, J. Mobley, J. D. Maynard, and M. F. Hamilton at the <a href="fig/pass.jpeg" target="_blank" rel="noopener noreferrer">2024 Physical Acoustics Summer School (PASS)</a>. I am grateful to Prof. L. A. Ostrovsky for our email discussions about acoustic radiation force.</p>
 
 
 <p><a href="index.html">&leftarrow; Return to radiation force homepage</a></p>
