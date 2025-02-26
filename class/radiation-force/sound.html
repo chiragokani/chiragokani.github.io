@@ -54,7 +54,7 @@ window.MathJax = {
   </ul>
   </ul>
 
-<p>Kinetic and potential energy densities of fields predicted by linear acoustics are first derived from exact nonlinear expressions of the energies. Energy conservation yields a differential equation known as the acoustic Poynting theorem, which is written in terms of the energy densities of the linear acoustic fields. A differential equation for momentum conservation at quadratic order is then derived in terms of the acoustic radiation stress tensor. Diagonal elements of the matrix representation of this tensor are related to the <i>mean excess pressure</i>, which can be written in terms of energy densities. The acoustic radiation force equals the integral of the inhomogeneous momentum conservation equation. </p> 
+<p>Kinetic and potential energy densities of fields predicted by linear acoustics are first derived from exact nonlinear expressions of the energies. Energy conservation yields a differential equation known as the acoustic Poynting theorem, which is written in terms of the energy densities of the linear acoustic fields. A differential equation for momentum conservation at quadratic order is then derived in terms of a new parameter called the "acoustic radiation stress tensor." Diagonal elements of the matrix representation of this tensor are related to the "mean excess pressure," which can be written in terms of energy densities. The acoustic radiation force equals the integral of the inhomogeneous momentum conservation equation. This integral is simplified for cases in which the incident wave is traveling and standing. The section concludes with a discussion of whether acoustic radiation force should be regarded as a linear or nonlinear effect. </p> 
 
 <h3 id="energy">Energy densities</h3>
 <p>The derivation of the potential and kinetic energy densities below are based on my class notes from Prof. Hamilton's Acoustics I course. These energy densities are quadratic quantities calculated by taking the product of two field variables that solve the <i>linear</i> acoustic wave equation. </p>
@@ -319,7 +319,7 @@ and
 respectively, where \(\dyad{S} \equiv \langle \dyad{T}\rangle\). Equations \eqref{eq:mom:stress} and \eqref{eq:mom:stress:r} are the partial differential equation that conserve the linear and angular momentum of time-harmonic waves to quadratic order.   
 </p>
 
-<p>As was the case for Eq. \eqref{eq:mom:quad:int}, Eqs. \eqref{eq:mom:stress} and \eqref{eq:mom:stress:r} were derived by integrating over free space, which implies that there is no change of mechanical linear or angular momentum in the volume \(V\) per unit time. If there <i>is</i> an object in \(V\), then the right-hand side of Eq. \eqref{eq:mom:quad:int} equals \(d\vec{p}_\mathrm{mech}/dt\) and \(d(\vec{r}\times \vec{p}_\mathrm{mech})/dt\), which according to Newton's second law is the force \(\vec{F}\) and torque \(\vec{}\)on the object. </p>
+<p>As was the case for Eq. \eqref{eq:mom:quad:int}, Eqs. \eqref{eq:mom:stress} and \eqref{eq:mom:stress:r} were derived by integrating over free space, which implies that there is no change of mechanical linear or angular momentum in the volume \(V\) per unit time. If there <i>is</i> an object in \(V\), then the right-hand side of Eq. \eqref{eq:mom:quad:int} equals \(d\vec{p}_\mathrm{mech}/dt\) and \(d(\vec{r}\times \vec{p}_\mathrm{mech})/dt\), which according to Newton's second law is the force \(\vec{F}\) and torque \(\boldsymbol{\tau}\) on the object. </p>
 
 
 
@@ -498,34 +498,53 @@ F_\parallel = \langle E_i\rangle \left[ \pi_s + \pi_a  - \oint \gamma \cos\psi_0
 \begin{align}
 \boxed{F_\parallel = c_0^{-1} \left[\mathcal{P}_s + \mathcal{P}_a - \oint \langle p_s v_s\rangle \cos \psi_0 \, dA_0 \right],} \label{eq:int:F:parallel}
 \end{align}
-where \(\mathcal{P}_s\) is the power scattered, \(\mathcal{P}_a\) is the power absorbed, and \( \langle p_s v_s\rangle\) is the time-averaged scattered intensity. Equation \eqref{eq:int:F:parallel} is the equation that appears in the abstract of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. <i>Note: I obtain the same result (without the absorption term) in a way that avoids the qualitative arguments made by Westervelt and Lamb. I will include my approach in my dissertation.</i> 
+where \(\mathcal{P}_s\) is the power scattered, \(\mathcal{P}_a\) is the power absorbed, and \( \langle p_s v_s\rangle\) is the time-averaged scattered intensity. Equation \eqref{eq:int:F:parallel} is the equation that appears in the abstract of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>. </p>
 
-<!--Factoring out from Eq. \eqref{eq:int:F:parallel:1} \(\langle E_i\rangle  = \langle I \rangle / c_0\), where \(\langle I \rangle\) is the time-averaged intensity \(p_0^2/2\rho_0c_0\) of the incident wave,  and identifying \(\gamma \, dA_0\) as \(|\Phi_s|^2 d\Omega\), where \(\Phi_s\) is the far-field directivity of the scattered wave (such that \(p_s = p_0 e^{ikr} \Phi_s/r\)) and \(\Omega\) is the solid angle, yields 
-\begin{align}\label{eq:int:F:parallel}
-F_\parallel = \frac{\langle I\rangle}{c_0} \oint |\Phi_s|^2 (1- \cos\psi_0)\, d\Omega_0\,.
-%\boxed{}
-\end{align} -->
+
+<p>The same result (without the absorption term) can be obtained in a more clear way that avoids the qualitative arguments made by Westervelt and Lamb. In view of Eqs. \eqref{eq:scat:total:p} and \eqref{eq:scat:total:v}, the total instantaneous intensity is
+\begin{align}
+\vec{I} = (p_i + p_s)(\vec{v}_i + \vec{v}_s) = p_i\vec{v}_i + p_s\vec{v}_s + p_s\vec{v}_i + p_i\vec{v}_s\,. \label{eq:intensity:total}
+\end{align}
+In the absence of the scattering object, the intensity is 
+\begin{align}
+\vec{I} = p_i\vec{v}_i \,. \label{eq:intensity:incident}
+\end{align}
+Equations \eqref{eq:intensity:total} and \eqref{eq:intensity:incident} are equal by the conservation of energy, which is to say that adding the scattering object in free space does not add energy to the system. Combining Eqs. \eqref{eq:intensity:total} and \eqref{eq:intensity:incident} shows that the last three terms of Eq. \eqref{eq:intensity:total} sum to zero. Taking the surface integral of those terms in the far field yields
+\begin{align}
+\oint_{A_0} \langle  p_i \vec{v}_s +  p_s \vec{v}_i + p_s \vec{v}_s\rangle \cdot d\vec{A}_0 = 0\,. \label{eq:power}
+\end{align}  
+Noting that \(d\vec{A}_0 = \vec{e}_r dA_0\), \(\vec{v}_s = v_s \vec{e}_r\), and \(\vec{v}_i = v_i \vec{e}_i\) allows for Eq. \eqref{eq:power} to be written as 
+\begin{align}
+\oint_{A_0} \langle p_i v_s +  p_s v_i\cos\psi_0  + p_s v_s\rangle dA_0 = 0 \,.\label{eq:power:1}
+\end{align}  
+Subtracting both sides of Eq. \eqref{eq:power:1} by \(\oint_{A_0} \langle p_s v_s \rangle (1- \cos\psi_0 ) dA_0\) and dividing through by \(-c_0\) yields 
+\begin{align}
+\frac{1}{c_0}\oint_{A_0} \langle p_s v_s \rangle (1- \cos\psi_0) dA_0 =  
+-\frac{1}{c_0}\oint_{A_0} \langle p_i v_s + p_s v_i\cos\psi_0  +  p_s v_s\cos\psi_0\rangle dA_0\,.\label{eq:power:3}
+\end{align}  
+Comparing Eqs. \eqref{eq:int:F:Westervelt:parallel} and \eqref{eq:power:3} reveals that 
+\begin{align}\label{eq:F:parallel}
+F_\parallel = c_0^{-1}\oint_{A_0} \langle p_s v_s \rangle (1- \cos\psi_0) dA_0 \,,
+\end{align}
+recovering Eq. \eqref{eq:int:F:parallel} for \(\mathcal{P}_a = 0\). Equation \eqref{eq:F:parallel} also recovers Gor'kov's Eq. (8') <a href="refs.html" target="_blank" rel="noopener noreferrer">[7]</a>.  
 </p>
 
-
-<p>
-</p>
-
-<p>Similarly, the force in the direction perpendicular to \(\vec{v}_i\) can be calculated by dotting Eq. \eqref{eq:int:F:Westervelt} into a unit vector \(\vec{e}_m\) that is perpendicular to \(\vec{v}_i\). Since \(\vec{v}_i \cdot \vec{e}_m = 0\), the first term in Eq. \eqref{eq:int:F:Westervelt} is zero, leaving
+<p>The force in the direction <i>perpendicular</i> to \(\vec{v}_i\) can be calculated by dotting Eq. \eqref{eq:int:F:Westervelt} into a unit vector \(\vec{e}_m\) that is perpendicular to \(\vec{v}_i\). Since \(\vec{v}_i \cdot \vec{e}_m = 0\), the first term in Eq. \eqref{eq:int:F:Westervelt} is zero, leaving
 \begin{align}
 F_\perp
 &= -\frac{1}{c_0}\oint_{A_0} \left\langle p_i v_s \vec{e}_r\cdot \vec{e}_m + p_s v_s \vec{e}_r\cdot \vec{e}_m \right\rangle  \, dA_0 \,,\label{eq:int:F:Westervelt:perp}
 \end{align}
-Westervelt claims in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> that the surface integral over the first term in the integrand of Eq. \eqref{eq:int:F:Westervelt:perp} evaluates to zero. His argument is based on replacing the scattering object with a simple sources with source strength \(q\). Westervelt writes (The notation has been adjusted to match that of the present discussion) <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>, </p>
+Westervelt argues in Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a> that the surface integral over the first term in the integrand of Eq. \eqref{eq:int:F:Westervelt:perp} evaluates to zero. His argument is based on replacing the scattering object with a simple sources with source strength \(q\). Westervelt writes (The notation has been adjusted to match that of the present discussion) <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a>, </p>
 <blockquote>
 <p>Consider the scattering object to be replaced by a volume distribution of simple sources. Choose the phase and amplitude of these sources in such a way that the field radiated by the sources is identical (this identity need only occur asymptotically at a large distance from the source distribution) with the scattered field of the object. This is equivalent to replacing the scattering object by a suitable collection of multipoles[,] although there is here no restriction that all the multipoles be located at the same point. </p>
 
 <p>The force on the scattering object will be equal to the force on the source distribution by virtue of the identity of the far field in each case. The force on the sources is equal to the force arising from their radiation (equal to \(-\rho_0 \oint d\vec{A}_0\cdot \langle \vec{v}_s \otimes \vec{v}_s\rangle\)) plus the force arising from the interaction of the unperturbed incident wave with the sources. The latter force is the volume integral, over the source distribution, of an interaction force density equal to \(\rho_0 \langle q \vec{v}_i\rangle\), where \(\rho_0\) is the density of the medium, \(q\) is the instantaneous source strength density (that is, the volume of fluid generated per unit time per unit volume), and \(\vec{v}_i\) is the particle velocity of the incident wave. It is clear that, since the interaction force density is in the direction of the incident wave, the total interaction force can have no component at right angles to the incident wave. This proves that \(c_0^{-1} \vec{e}_m \cdot \oint \langle p_i v_s \rangle \vec{e}_rdA_0\) vanishes and that the perpendicular force is given simply by 
 \begin{align}
-F_\perp = -c_0^{-1} \oint_{A_0} \langle p_s v_s\rangle   \vec{e}_r\cdot \vec{e}_m \, dA_0\,.
+\boxed{F_\perp = -c_0^{-1} \oint_{A_0} \langle p_s v_s\rangle   \vec{e}_r\cdot \vec{e}_m \, dA_0\,.}
 \end{align}</p>
 </blockquote>
 
+<!--
 <p>
 Meanwhile, Westervelt regards \(\vec{e}_r \cdot \vec{e}_m\) as \(\cos\beta\), where <a href="refs.html" target="_blank" rel="noopener noreferrer">[10]</a></p>
 <blockquote>
@@ -545,6 +564,9 @@ Meanwhile, if \(\vec{e}_m = \vec{e}_x\) (which is also perpendicular to \(\vec{e
 \[\vec{e}_r\cdot \vec{e}_x = \sin\theta \cos^2\phi \neq \sin\theta\,.\]
 Is an argument like this along the lines of what Westervelt means?
 </p>
+-->
+
+<p>The discussion on acoustic radiation force due to traveling waves concludes with the canonical problem of <a href="rigid-sphere.html" onClick="MyWindow=window.open('rigid-sphere.html','MyWindow','width=800,height=500'); return false;">radiation force on a rigid sphere</a>.</p>
 
 <h4 id="standing">Due to standing waves</h4>
 <img src="../../under-construction.gif" width="500px">
