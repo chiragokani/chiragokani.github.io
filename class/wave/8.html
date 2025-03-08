@@ -602,8 +602,8 @@ I_\infty(\vec{r}) = p_i(\vec{r}),
 which is to say that the pressure field infinitely far away from the scatterer is simply the field due to the incident wave, not the scattered wave. Therefore, the total field becomes 
 \begin{align}
 p_\omega(\vec{r}) &= p_i(\vec{r}) + \int_{V_0} \left\{ 
-k^2 \gamma_B (\vec{r}) p_\omega(\vec{r}_0) 
-- \gradient_0 \cdot \left[\gamma_\rho(\vec{r}) \gradient_0 p_\omega(\vec{r}_0)\right] 
+k^2 \gamma_B (\vec{r}_0) p_\omega(\vec{r}_0) 
+- \gradient_0 \cdot \left[\gamma_\rho(\vec{r}_0) \gradient_0 p_\omega(\vec{r}_0)\right] 
 \right\}g(\vec{r}|\vec{r}_0) dV_0 \label{scat4}\tag{4}
 \end{align}
 By the vector calculus identity \(\divergence(a\vec{b}) = a \divergence \vec{b} + \vec{b} \cdot \gradient a\), the second term in Eq. \eqref{scat4} can be written as (identifying \(\vec{b} \equiv \gamma_\rho\gradient p\) and \(a \equiv g\) in the identity),
@@ -691,7 +691,7 @@ q_s(\vec{r}) \equiv \gamma_B (\vec{r}) p_\omega(\vec{r}) -\gamma_\rho(\vec{r}) \
 \end{align}
 As such, Eqs. \eqref{field2} can be written using the old notation of Fourier transforms:
 \begin{align*}
-p_s(\vec{r}, \theta,\phi) = k^2 \frac{e^{ikr}}{4\pi r} \mathcal{F}_{\mathrm{3D}}\{ q_s(\vec{r}) \}_{\vec{k} = \vec{k}_s}\,.
+p_s(\vec{r}) = k^2 \frac{e^{ikr}}{4\pi r} \mathcal{F}_{\mathrm{3D}}\{ q_s(\vec{r}) \}_{\vec{k} = \vec{k}_s}\,.
 \end{align*}
 Note that Eqs. \eqref{field2} and \eqref{field3} are still <i>implicit</i>. That is to say, the scattered field is given in terms of the scattered field.
 </p>
