@@ -53,3 +53,13 @@ text-align: center;
   font: italic small-caps 12px/25px Times New Roman, serif;
   color: #0000A0;
 }
+
+#contact-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+    }
+    
+#contact-info img {
+  margin-right: 10px;
+    }
