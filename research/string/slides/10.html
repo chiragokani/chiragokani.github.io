@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Initial conditions</h1>
+
+<ul>
+<li><p>The thumb, finger, and pick are described by
+\begin{align}\label{eq:source:g}
+g(x) = \begin{cases}
+\operatorname{thmb}(x)  &\!\!\!\! \equiv s_0 + s_1(x/\ell) + s_2(x/\ell)^2 + s_3(x/\ell)^3\\ 
+\operatorname{fing}(x) &\!\!\!\! \equiv 
+(1-u_1/u_0)\cos[\pi (x-d)/w] + u_1/u_0\\
+\operatorname{pick}(x) &\!\!\!\! \equiv 1 - 2(1-u_1/u_0) |x - d|/w  %\label{eq:pick}\\
+\end{cases}
+\end{align}
+</p></li>
+<li><p>The coefficients \(s\) are determined from
+<span class="medium">
+\begin{align}\label{eq:constraints}
+\operatorname{thmb}(d\pm \tfrac{w}{2}) &= u_1/u_0 \,,\\
+\operatorname{thmb}'(d - \tfrac{w}{2}) &= \frac{u_1/u_0}{d - w/2},\\ 
+\operatorname{thmb}'(d + \tfrac{w}{2}) &= -\frac{u_1/u_0}{\ell - d - w/2}
+\end{align}
+</span>
+</p></li>
+</ul>
+
+
+<span class="slideinfo"> 
+[<a href="9.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 10]
+&ensp; 
+[<a href="11.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>

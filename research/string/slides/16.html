@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Solution of wave equation</h1>
+
+<ul>
+<li><p>Introduce dimensionless displacement, position, time, loss, and attack parameters, respectively given by
+\begin{align}\label{eq:dim}
+U &\equiv \frac{u}{u_0}\,,\quad 
+X \equiv \frac{x}{\ell}\,,\quad 
+\Omega \equiv  \frac{\pi ct}{\ell} \,,\quad
+\Gamma_n \equiv \frac{\gamma_n \ell}{\pi c}\,,\quad 
+\Theta \equiv \frac{\pi c\tau}{\ell}
+\end{align}
+</p></li>
+<li><p>Then the expansion coefficients become
+\begin{align}\label{eq:coeff:dim}
+a_n &= 2 e^{-\Delta^2} \Delta \! \int_{0}^{1} \!\! f(X) \sin(n\pi X) \,dX\, ,\\
+b_n &= 2 e^{-\Delta^2} \frac{1 - 2\Delta^2}{\Theta n'}\int_{0}^{1} \!\! f(X) \sin(n\pi X) \,dX  
+%I_n = \int_{0}^{1} \!\! f(X) \sin(n\pi X) \,dX
+\end{align}
+</p></li>
+
+</ul>
+
+<!--<sup>*</sup>
+<hr><span class="small">
+<p><sup>*</sup>Pavlidou and Richardson 1997,
+Derveaux et al. 2003, Chadefaux et al. 2012</p>
+</span>
+-->
+
+<span class="slideinfo"> 
+[<a href="15.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 16]
+&ensp; 
+[<a href="17.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>

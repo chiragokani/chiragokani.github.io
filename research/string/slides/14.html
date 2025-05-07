@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Solution of wave equation</h1>
+
+<ul>
+<li><p>Insert \(u(x,t) = u_0 e^{i(k x -\tilde{\omega} t)}\) in wave equation
+</p></li>
+<li><p>Consider boundary conditions 
+\begin{align}
+u(0,t) &= u(\ell,t) = 0\,,\qquad
+u_{xx}(0,t) = u_{xx}(\ell,t)=0
+\end{align}
+yielding the dispersion relation
+\begin{align}\label{eq:freq}
+\omega_n &= \sqrt{(n \pi c/\ell)^2 + (EI/\rho)(n\pi/\ell)^4 -\gamma_n^2}\,,
+\end{align}
+where \(\gamma_n(\tilde{\omega}_n) = R(\tilde{\omega}_n)/2\rho\) and \(c = \sqrt{T/\rho}\)
+</p></li>
+</ul>
+
+<!--<sup>*</sup>
+<hr><span class="small">
+<p><sup>*</sup>Pavlidou and Richardson 1997,
+Derveaux et al. 2003, Chadefaux et al. 2012</p>
+</span>
+-->
+
+<span class="slideinfo"> 
+[<a href="13.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 14]
+&ensp; 
+[<a href="15.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>

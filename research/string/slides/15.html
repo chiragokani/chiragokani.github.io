@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Solution of wave equation</h1>
+
+<ul>
+<li><p>General solution of wave equation is
+\begin{align}\label{eq:sol}
+u(x,t) = u_0\sum_{n=1}^{\infty} \sin(n\pi x/\ell)  (a_n \cos \omega_n t + b_n \sin \omega_n t ) e^{-\gamma_n t}
+\end{align}
+</p></li>
+<li><p>The expansion coefficients are
+\begin{align}\label{eq:coeff}
+a_n &= \frac{2h(0)}{\ell} \!\!\int_{0}^{\ell} \!\! f(x) \sin(n\pi x/\ell) \,dx\,,\quad 
+h(0) = e^{-\delta^2/\tau^2} \delta/\tau\\ 
+b_n &= \frac{2\dot{h}(0)}{\ell\omega_n} \!\! \int_{0}^{\ell}\!\! f(x) \sin(n\pi x/\ell) \,dx\,, \quad
+\dot{h}(0) = e^{-\delta^2/\tau^2}\frac{1 - 2\delta^2/\tau^{2}}{\tau}
+\end{align}
+</p></li>
+
+</ul>
+
+<!--<sup>*</sup>
+<hr><span class="small">
+<p><sup>*</sup>Pavlidou and Richardson 1997,
+Derveaux et al. 2003, Chadefaux et al. 2012</p>
+</span>
+-->
+
+<span class="slideinfo"> 
+[<a href="14.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 15]
+&ensp; 
+[<a href="16.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>
