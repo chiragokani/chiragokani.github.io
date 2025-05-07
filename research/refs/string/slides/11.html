@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Initial conditions</h1>
+
+<ul>
+<li><p>In terms of the dimensionless parameters
+\begin{align}\label{eq:dim:1}
+U_1 \equiv u_1/u_0\,,\qquad
+D \equiv d/\ell\,,\qquad
+W \equiv w/\ell\,,
+\end{align}
+the constraints on the thumb function are
+<span class="medium">
+\begin{align}\label{eq:matrix}
+\begin{bmatrix}
+1& D+\tfrac{W}{2} &(D+\tfrac{W}{2})^2& (D+\tfrac{W}{2})^3\\
+1& D-\tfrac{W}{2} &(D-\tfrac{W}{2})^2& (D-\tfrac{W}{2})^3\\
+0 & 1 & 2(D+\tfrac{W}{2}) & 3(D+\tfrac{W}{2})^2 \\
+0 & 1 & 2(D-\tfrac{W}{2}) & 3(D-\tfrac{W}{2})^2 \\
+\end{bmatrix}
+\begin{bmatrix}
+s_0\\
+s_1\\
+s_2\\
+s_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+U_1\\
+U_1\\
+-\frac{U_1}{1 - D-{W}/{2}}\\
+\frac{U_1}{D-{W}/{2}}
+\end{bmatrix}.
+\end{align}
+</span>
+</p></li>
+<li><p>Inversion of this \(4\times4\) system yields \(s\).</p></li>
+</ul>
+
+
+
+
+<span class="slideinfo"> 
+[<a href="10.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 11]
+&ensp; 
+[<a href="12.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>

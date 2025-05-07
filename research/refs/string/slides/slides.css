@@ -1,0 +1,52 @@
+body {
+  margin: 0 auto;
+  padding: 10px;
+  line-height: 1.2;
+  max-width: 1300px; /* Adjust this value as needed */
+  font-family: Arial, Helvetica, sans-serif;  
+  font-size: 28pt;
+  background-color:rgba(173, 216, 230, 0.9);
+  }
+
+h1 {
+  text-align: left;
+  font-size: 44px;
+  }
+
+h2 {
+  font-size: 34px;
+  }  
+
+h3 {
+  font-size: 28px;
+  }  
+      
+    
+audio { width: 300px; height: 30px; }
+
+.sf {
+  font-family: Courier New, monospace;
+}
+
+.small {
+  font-size: 20pt;
+}
+
+.medium {
+  font-size: 24pt;
+}
+
+.slideinfo {
+position: fixed;
+bottom:0;
+width: 100%;
+font-size: 20pt;
+}
+
+.zoom img {
+transition: transform 0.3s ease;
+}
+
+.zoom img:hover {
+transform: scale(1.75);
+}

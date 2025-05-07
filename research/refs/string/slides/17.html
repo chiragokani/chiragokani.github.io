@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Solution of wave equation</h1>
+
+<ul>
+<li><p>The dimensionless solution is
+\begin{align}\label{eq:sol:dim}
+\boxed{U(X,\Omega) = \sum_{n=1}^{\infty} \sin(n\pi X) (a_n \cos n'\Omega + b_n \sin n'\Omega) e^{-\Gamma_n \Omega}} 
+\end{align}
+where \(n' \equiv \omega_n \ell/\pi c\) is
+\begin{alignat}{2}
+n'  &= n\sqrt{1 + Bn^2 -\Gamma_n^2/n^2} \,,\hspace{3ex} B&& \equiv EI \pi^2/T\ell^2 \,, \label{eq:freq:dim}\\
+&\simeq n + ({B}/{2})n^3 - {\Gamma_n^2}/{2n}\,,\quad n&& \ll 1/\sqrt{B}, \quad n \gg \Gamma_n\,, \label{eq:freq:dim:low}\\
+&\simeq \sqrt{B} n^2 \,,\hspace{14ex}\quad\,\,\,\, n &&\gg 1/\sqrt{B}, \quad n \gg \Gamma_n\,.\label{eq:freq:dim:high}
+\end{alignat}
+</p></li>
+
+</ul>
+
+<!--<sup>*</sup>
+<hr><span class="small">
+<p><sup>*</sup>Pavlidou and Richardson 1997,
+Derveaux et al. 2003, Chadefaux et al. 2012</p>
+</span>
+-->
+
+<span class="slideinfo"> 
+[<a href="16.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 17]
+&ensp; 
+[<a href="18.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>
