@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides for ASA talk</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    macros: {
+    Order: "{\\mathcal O}",
+    } 
+  }
+};
+</script>	
+
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<h1>Simulations and discussion</h1>
+
+<img src="fig/result-tr.png" width="930px" usemap="#betarms" border="0"/>
+<map name="betarms">
+<span title="thmb11"><area shape="rect" coords="75,55,123,100" target="_blank" href="fig/sounds/thmb11.mp3" onclick="window.open('fig/sounds/thmb11.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb21"><area shape="rect" coords="75,100,123,140" target="_blank" href="fig/sounds/thmb21.mp3" onclick="window.open('fig/sounds/thmb21.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb31"><area shape="rect" coords="75,140,123,180" target="_blank" href="fig/sounds/thmb31.mp3" onclick="window.open('fig/sounds/thmb31.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb41"><area shape="rect" coords="75,180,123,220" target="_blank" href="fig/sounds/thmb41.mp3" onclick="window.open('fig/sounds/thmb41.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb51"><area shape="rect" coords="75,220,123,260" target="_blank" href="fig/sounds/thmb51.mp3" onclick="window.open('fig/sounds/thmb51.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb61"><area shape="rect" coords="75,260,123,300" target="_blank" href="fig/sounds/thmb61.mp3" onclick="window.open('fig/sounds/thmb61.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="thmb12"><area shape="rect" coords="125,55,160,95" target="_blank" href="fig/sounds/thmb12.mp3" onclick="window.open('fig/sounds/thmb12.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb22"><area shape="rect" coords="125,100,160,140" target="_blank" href="fig/sounds/thmb22.mp3" onclick="window.open('fig/sounds/thmb22.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb32"><area shape="rect" coords="125,140,160,180" target="_blank" href="fig/sounds/thmb32.mp3" onclick="window.open('fig/sounds/thmb32.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb42"><area shape="rect" coords="125,180,160,220" target="_blank" href="fig/sounds/thmb42.mp3" onclick="window.open('fig/sounds/thmb42.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb52"><area shape="rect" coords="125,220,160,260" target="_blank" href="fig/sounds/thmb52.mp3" onclick="window.open('fig/sounds/thmb52.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb62"><area shape="rect" coords="125,260,160,300" target="_blank" href="fig/sounds/thmb62.mp3" onclick="window.open('fig/sounds/thmb62.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="thmb13"><area shape="rect" coords="161,55,204,95" target="_blank" href="fig/sounds/thmb13.mp3" onclick="window.open('fig/sounds/thmb13.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb23"><area shape="rect" coords="161,100,204,140" target="_blank" href="fig/sounds/thmb23.mp3" onclick="window.open('fig/sounds/thmb23.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb33"><area shape="rect" coords="161,140,204,180" target="_blank" href="fig/sounds/thmb33.mp3" onclick="window.open('fig/sounds/thmb33.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb43"><area shape="rect" coords="161,180,204,220" target="_blank" href="fig/sounds/thmb43.mp3" onclick="window.open('fig/sounds/thmb43.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb53"><area shape="rect" coords="161,220,204,260" target="_blank" href="fig/sounds/thmb53.mp3" onclick="window.open('fig/sounds/thmb53.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb63"><area shape="rect" coords="161,260,204,300" target="_blank" href="fig/sounds/thmb63.mp3" onclick="window.open('fig/sounds/thmb63.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="thmb14"><area shape="rect" coords="205,55,245,95" target="_blank" href="fig/sounds/thmb14.mp3" onclick="window.open('fig/sounds/thmb14.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb24"><area shape="rect" coords="205,100,245,140" target="_blank" href="fig/sounds/thmb24.mp3" onclick="window.open('fig/sounds/thmb24.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb34"><area shape="rect" coords="205,140,245,180" target="_blank" href="fig/sounds/thmb34.mp3" onclick="window.open('fig/sounds/thmb34.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb44"><area shape="rect" coords="205,180,245,220" target="_blank" href="fig/sounds/thmb44.mp3" onclick="window.open('fig/sounds/thmb44.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb54"><area shape="rect" coords="205,220,245,260" target="_blank" href="fig/sounds/thmb54.mp3" onclick="window.open('fig/sounds/thmb54.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb64"><area shape="rect" coords="205,260,245,300" target="_blank" href="fig/sounds/thmb64.mp3" onclick="window.open('fig/sounds/thmb64.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+
+<span title="thmb15"><area shape="rect" coords="246,55,285,95" target="_blank" href="fig/sounds/thmb51.mp3" onclick="window.open('fig/sounds/thmb51.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb25"><area shape="rect" coords="246,100,285,140" target="_blank" href="fig/sounds/thmb25.mp3" onclick="window.open('fig/sounds/thmb25.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb35"><area shape="rect" coords="246,140,285,180" target="_blank" href="fig/sounds/thmb35.mp3" onclick="window.open('fig/sounds/thmb35.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb45"><area shape="rect" coords="246,180,285,220" target="_blank" href="fig/sounds/thmb45.mp3" onclick="window.open('fig/sounds/thmb45.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb55"><area shape="rect" coords="246,220,285,260" target="_blank" href="fig/sounds/thmb55.mp3" onclick="window.open('fig/sounds/thmb55.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb65"><area shape="rect" coords="246,260,285,300" target="_blank" href="fig/sounds/thmb65.mp3" onclick="window.open('fig/sounds/thmb65.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="thmb16"><area shape="rect" coords="286,55,325,95" target="_blank" href="fig/sounds/thmb16.mp3" onclick="window.open('fig/sounds/thmb16.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb26"><area shape="rect" coords="286,100,325,140" target="_blank" href="fig/sounds/thmb26.mp3" onclick="window.open('fig/sounds/thmb26.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb36"><area shape="rect" coords="286,140,325,180" target="_blank" href="fig/sounds/thmb36.mp3" onclick="window.open('fig/sounds/thmb36.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb46"><area shape="rect" coords="286,180,325,220" target="_blank" href="fig/sounds/thmb46.mp3" onclick="window.open('fig/sounds/thmb46.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb56"><area shape="rect" coords="286,220,325,260" target="_blank" href="fig/sounds/thmb56.mp3" onclick="window.open('fig/sounds/thmb56.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="thmb66"><area shape="rect" coords="286,260,325,300" target="_blank" href="fig/sounds/thmb66.mp3" onclick="window.open('fig/sounds/thmb66.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+
+
+<span title="fing11"><area shape="rect" coords="346,55,385,100" target="_blank" href="fig/sounds/fing11.mp3" onclick="window.open('fig/sounds/fing11.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing21"><area shape="rect" coords="346,100,385,140" target="_blank" href="fig/sounds/fing21.mp3" onclick="window.open('fig/sounds/fing21.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing31"><area shape="rect" coords="346,140,385,180" target="_blank" href="fig/sounds/fing31.mp3" onclick="window.open('fig/sounds/fing31.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing41"><area shape="rect" coords="346,180,385,220" target="_blank" href="fig/sounds/fing41.mp3" onclick="window.open('fig/sounds/fing41.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing51"><area shape="rect" coords="346,220,385,260" target="_blank" href="fig/sounds/fing51.mp3" onclick="window.open('fig/sounds/fing51.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing61"><area shape="rect" coords="346,260,385,300" target="_blank" href="fig/sounds/fing61.mp3" onclick="window.open('fig/sounds/fing61.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="fing12"><area shape="rect" coords="386,55,425,95" target="_blank" href="fig/sounds/fing12.mp3" onclick="window.open('fig/sounds/fing12.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing22"><area shape="rect" coords="386,100,425,140" target="_blank" href="fig/sounds/fing22.mp3" onclick="window.open('fig/sounds/fing22.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing32"><area shape="rect" coords="386,140,425,180" target="_blank" href="fig/sounds/fing32.mp3" onclick="window.open('fig/sounds/fing32.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing42"><area shape="rect" coords="386,180,425,220" target="_blank" href="fig/sounds/fing42.mp3" onclick="window.open('fig/sounds/fing42.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing52"><area shape="rect" coords="386,220,425,260" target="_blank" href="fig/sounds/fing52.mp3" onclick="window.open('fig/sounds/fing52.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing62"><area shape="rect" coords="386,260,425,300" target="_blank" href="fig/sounds/fing62.mp3" onclick="window.open('fig/sounds/fing62.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="fing13"><area shape="rect" coords="426,55,465,95" target="_blank" href="fig/sounds/fing13.mp3" onclick="window.open('fig/sounds/fing13.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing23"><area shape="rect" coords="426,100,465,140" target="_blank" href="fig/sounds/fing23.mp3" onclick="window.open('fig/sounds/fing23.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing33"><area shape="rect" coords="426,140,465,180" target="_blank" href="fig/sounds/fing33.mp3" onclick="window.open('fig/sounds/fing33.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing43"><area shape="rect" coords="426,180,465,220" target="_blank" href="fig/sounds/fing43.mp3" onclick="window.open('fig/sounds/fing43.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing53"><area shape="rect" coords="426,220,465,260" target="_blank" href="fig/sounds/fing53.mp3" onclick="window.open('fig/sounds/fing53.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing63"><area shape="rect" coords="426,260,465,300" target="_blank" href="fig/sounds/fing63.mp3" onclick="window.open('fig/sounds/fing63.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="fing14"><area shape="rect" coords="466,55,504,95" target="_blank" href="fig/sounds/fing14.mp3" onclick="window.open('fig/sounds/fing14.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing24"><area shape="rect" coords="466,100,504,140" target="_blank" href="fig/sounds/fing24.mp3" onclick="window.open('fig/sounds/fing24.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing34"><area shape="rect" coords="466,140,504,180" target="_blank" href="fig/sounds/fing34.mp3" onclick="window.open('fig/sounds/fing34.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing44"><area shape="rect" coords="466,180,504,220" target="_blank" href="fig/sounds/fing44.mp3" onclick="window.open('fig/sounds/fing44.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing54"><area shape="rect" coords="466,220,504,260" target="_blank" href="fig/sounds/fing54.mp3" onclick="window.open('fig/sounds/fing54.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing64"><area shape="rect" coords="466,260,504,300" target="_blank" href="fig/sounds/fing64.mp3" onclick="window.open('fig/sounds/fing64.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+
+<span title="fing15"><area shape="rect" coords="505,55,545,95" target="_blank" href="fig/sounds/fing15.mp3" onclick="window.open('fig/sounds/fing15.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing25"><area shape="rect" coords="505,100,545,140" target="_blank" href="fig/sounds/fing25.mp3" onclick="window.open('fig/sounds/fing25.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing35"><area shape="rect" coords="505,140,545,180" target="_blank" href="fig/sounds/fing35.mp3" onclick="window.open('fig/sounds/fing35.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing45"><area shape="rect" coords="505,180,545,220" target="_blank" href="fig/sounds/fing45.mp3" onclick="window.open('fig/sounds/fing45.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing55"><area shape="rect" coords="505,220,545,260" target="_blank" href="fig/sounds/fing55.mp3" onclick="window.open('fig/sounds/fing55.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing65"><area shape="rect" coords="505,260,545,300" target="_blank" href="fig/sounds/fing65.mp3" onclick="window.open('fig/sounds/fing65.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="fing16"><area shape="rect" coords="546,55,585,95" target="_blank" href="fig/sounds/fing16.mp3" onclick="window.open('fig/sounds/fing16.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing26"><area shape="rect" coords="546,100,585,140" target="_blank" href="fig/sounds/fing26.mp3" onclick="window.open('fig/sounds/fing26.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing36"><area shape="rect" coords="546,140,585,180" target="_blank" href="fig/sounds/fing36.mp3" onclick="window.open('fig/sounds/fing36.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing46"><area shape="rect" coords="546,180,585,220" target="_blank" href="fig/sounds/fing46.mp3" onclick="window.open('fig/sounds/fing46.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing56"><area shape="rect" coords="546,220,585,260" target="_blank" href="fig/sounds/fing56.mp3" onclick="window.open('fig/sounds/fing56.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="fing66"><area shape="rect" coords="546,260,585,300" target="_blank" href="fig/sounds/fing66.mp3" onclick="window.open('fig/sounds/fing66.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+
+
+
+<span title="pick11"><area shape="rect" coords="608,55,648,100" target="_blank" href="fig/sounds/pick11.mp3" onclick="window.open('fig/sounds/pick11.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick21"><area shape="rect" coords="608,100,648,140" target="_blank" href="fig/sounds/pick21.mp3" onclick="window.open('fig/sounds/pick21.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick31"><area shape="rect" coords="608,140,648,180" target="_blank" href="fig/sounds/pick31.mp3" onclick="window.open('fig/sounds/pick31.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick41"><area shape="rect" coords="608,180,648,220" target="_blank" href="fig/sounds/pick41.mp3" onclick="window.open('fig/sounds/pick41.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick51"><area shape="rect" coords="608,220,648,260" target="_blank" href="fig/sounds/pick51.mp3" onclick="window.open('fig/sounds/pick51.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick61"><area shape="rect" coords="608,260,648,300" target="_blank" href="fig/sounds/pick61.mp3" onclick="window.open('fig/sounds/pick61.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="pick12"><area shape="rect" coords="649,55,689,95" target="_blank" href="fig/sounds/pick12.mp3" onclick="window.open('fig/sounds/pick12.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick22"><area shape="rect" coords="649,100,689,140" target="_blank" href="fig/sounds/pick22.mp3" onclick="window.open('fig/sounds/pick22.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick32"><area shape="rect" coords="649,140,689,180" target="_blank" href="fig/sounds/pick32.mp3" onclick="window.open('fig/sounds/pick32.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick42"><area shape="rect" coords="649,180,689,220" target="_blank" href="fig/sounds/pick42.mp3" onclick="window.open('fig/sounds/pick42.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick52"><area shape="rect" coords="649,220,689,260" target="_blank" href="fig/sounds/pick52.mp3" onclick="window.open('fig/sounds/pick52.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick62"><area shape="rect" coords="649,260,689,300" target="_blank" href="fig/sounds/pick62.mp3" onclick="window.open('fig/sounds/pick62.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="pick13"><area shape="rect" coords="690,55,728,95" target="_blank" href="fig/sounds/pick13.mp3" onclick="window.open('fig/sounds/pick13.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick23"><area shape="rect" coords="690,100,728,140" target="_blank" href="fig/sounds/pick23.mp3" onclick="window.open('fig/sounds/pick23.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick33"><area shape="rect" coords="690,140,728,180" target="_blank" href="fig/sounds/pick33.mp3" onclick="window.open('fig/sounds/pick33.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick43"><area shape="rect" coords="690,180,728,220" target="_blank" href="fig/sounds/pick43.mp3" onclick="window.open('fig/sounds/pick43.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick53"><area shape="rect" coords="690,220,728,260" target="_blank" href="fig/sounds/pick53.mp3" onclick="window.open('fig/sounds/pick53.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick63"><area shape="rect" coords="690,260,728,300" target="_blank" href="fig/sounds/pick63.mp3" onclick="window.open('fig/sounds/pick63.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="pick14"><area shape="rect" coords="729,55,769,95" target="_blank" href="fig/sounds/pick14.mp3" onclick="window.open('fig/sounds/pick14.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick24"><area shape="rect" coords="729,100,769,140" target="_blank" href="fig/sounds/pick24.mp3" onclick="window.open('fig/sounds/pick24.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick34"><area shape="rect" coords="729,140,769,180" target="_blank" href="fig/sounds/pick34.mp3" onclick="window.open('fig/sounds/pick34.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick44"><area shape="rect" coords="729,180,769,220" target="_blank" href="fig/sounds/pick44.mp3" onclick="window.open('fig/sounds/pick44.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick54"><area shape="rect" coords="729,220,769,260" target="_blank" href="fig/sounds/pick54.mp3" onclick="window.open('fig/sounds/pick54.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick64"><area shape="rect" coords="729,260,769,300" target="_blank" href="fig/sounds/pick64.mp3" onclick="window.open('fig/sounds/pick64.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+
+<span title="pick15"><area shape="rect" coords="770,55,810,95" target="_blank" href="fig/sounds/pick15.mp3" onclick="window.open('fig/sounds/pick15.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick25"><area shape="rect" coords="770,100,810,140" target="_blank" href="fig/sounds/pick25.mp3" onclick="window.open('fig/sounds/pick25.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick35"><area shape="rect" coords="770,140,810,180" target="_blank" href="fig/sounds/pick35.mp3" onclick="window.open('fig/sounds/pick35.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick45"><area shape="rect" coords="770,180,810,220" target="_blank" href="fig/sounds/pick45.mp3" onclick="window.open('fig/sounds/pick45.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick55"><area shape="rect" coords="770,220,810,260" target="_blank" href="fig/sounds/pick55.mp3" onclick="window.open('fig/sounds/pick55.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick65"><area shape="rect" coords="770,260,810,300" target="_blank" href="fig/sounds/pick65.mp3" onclick="window.open('fig/sounds/pick65.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+<span title="pick16"><area shape="rect" coords="811,55,845,95" target="_blank" href="fig/sounds/pick16.mp3" onclick="window.open('fig/sounds/pick16.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick26"><area shape="rect" coords="811,100,845,140" target="_blank" href="fig/sounds/pick26.mp3" onclick="window.open('fig/sounds/pick26.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick36"><area shape="rect" coords="811,140,845,180" target="_blank" href="fig/sounds/pick36.mp3" onclick="window.open('fig/sounds/pick36.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick46"><area shape="rect" coords="811,180,845,220" target="_blank" href="fig/sounds/pick46.mp3" onclick="window.open('fig/sounds/pick46.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick56"><area shape="rect" coords="811,220,845,260" target="_blank" href="fig/sounds/pick56.mp3" onclick="window.open('fig/sounds/pick56.mp3','newwindow','width=300, height=50'); return false;"></span>
+<span title="pick66"><area shape="rect" coords="811,260,845,300" target="_blank" href="fig/sounds/pick66.mp3" onclick="window.open('fig/sounds/pick66.mp3','newwindow','width=300, height=50'); return false;"></span>
+
+</map>
+
+<ul>
+<li><p>Thumb and pick generally yield the darkest and brightest timbres, respectively</p></li>
+<li><p>Boxed parameters correspond to touch of Montgomery and Pass, which are within \(0.9\) bands of one another</p></li>
+<li><p>Slipping (\(\Delta\)) contributes more to \(\beta_\mathrm{rms}\) than excitation position (\(D\))</p></li>
+</ul>
+
+
+<span class="slideinfo"> 
+[<a href="24.html">&leftarrow; previous</a>] 
+&ensp; 
+[Slide 25]
+&ensp; 
+[<a href="26a.html">next &rightarrow;</a>]
+</span>
+</body>
+</html>
