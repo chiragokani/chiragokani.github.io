@@ -17,6 +17,7 @@ h1 {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  text-align: left;
     }
     
 #contact-info img {
