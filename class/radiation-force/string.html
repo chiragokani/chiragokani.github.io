@@ -71,7 +71,7 @@ c_0 = \sqrt{\mathcal{T}/\rho_0}\,.
 <h3 id="densities">Energy densities</h3>
 
 <p>
- For an arbitrary tranverse motion of the string, the associated kinetic energy density is 
+ For an arbitrary transverse motion of the string, the associated kinetic energy density is 
 \begin{align}\label{eq:kinetic}
 \boxed{E_T = \tfrac{1}{2}\rho_0 (\partial y/\partial t)^2 .}
 \end{align}
@@ -83,12 +83,7 @@ Obtaining the potential energy density of the string requires more effort. Displ
 \begin{align}\label{eq:ds}
 \delta s = \frac{\partial s}{\partial x}dx = \frac{dx}{\cos\theta}\,,
 \end{align}
-as shown below. [Partial derivatives are used because \(s = s(x,t)\) and \(y = y(x,t)\).]
-</p>
-
-
-
-<p>Since \(1/\cos\theta = \sqrt{1+ \tan^2\theta}\), and since \(\tan\theta = \partial y/\partial x\), Eq. \eqref{eq:ds} becomes
+as can be seen in the figure above. [Partial derivatives are used because \(s = s(x,t)\) and \(y = y(x,t)\).]  Since \(1/\cos\theta = \sqrt{1+ \tan^2\theta}\), and since \(\tan\theta = \partial y/\partial x\), Eq. \eqref{eq:ds} becomes
 \begin{align}\label{eq:ds:2}
 \delta s = \sqrt{1 + (\partial y/\partial x)^2} \, dx \simeq  \big[1 + \tfrac{1}{2}(\partial y/\partial x)^2\big] dx\,,
 \end{align}
@@ -120,7 +115,7 @@ Multiplying Eq. \eqref{eq:wave:1} by \(\partial y/\partial t\) yields
 where it has been noted in the second term of Eq. \eqref{eq:wave:2} that 
 \[\frac{\partial y}{\partial t} \frac{\partial^2 y}{\partial t^2} = \frac{1}{2}\frac{\partial\dot{y}^2}{\partial t}\,.\]
 In view of Eq. \eqref{eq:kinetic}, the third term of Eq. \eqref{eq:wave:2} is the time rate of change of the kinetic energy \(E_T\). Since 
-\[\frac{\partial y}{\partial t}\frac{\partial^2 y}{\partial x^2} = \frac{\partial }{\partial x}\left( \frac{\partial y}{\partial x}\frac{\partial y}{\partial t} \right) - \frac{\partial^2 y}{\partial x\partial t} \frac{\partial y}{\partial x}\]
+\[\frac{\partial y}{\partial t}\frac{\partial^2 y}{\partial x^2} = \frac{\partial }{\partial x}\left( \frac{\partial y}{\partial x}\frac{\partial y}{\partial t} \right) - \frac{\partial^2 y}{\partial x\partial t} \frac{\partial y}{\partial x}\,,\]
 Eq. \eqref{eq:wave:2} becomes
 \begin{align}\label{eq:wave:3}
 \frac{\partial}{\partial x} \left( -\mathcal{T} \frac{\partial y}{\partial x} \frac{\partial y}{\partial t}\right) + \mathcal{T}\frac{\partial^2 y}{\partial x \partial t}\frac{\partial y}{\partial x} + \frac{\partial E_T}{\partial t}  = 0\,,
@@ -146,7 +141,7 @@ By analogy to acoustics and electrodynamics, Eq. \eqref{eq:energy} might also be
 \begin{align}\label{eq:wave:4}
 \frac{\mathcal{T}}{c_0^2} \frac{\partial}{\partial t}\left( \frac{\partial y}{\partial x} \frac{\partial y}{\partial t}\right) = \rho_0 \frac{\partial^2 y}{\partial t\partial x} \frac{\partial y}{\partial t} + \mathcal{T} \frac{\partial^2 y}{\partial x^2} \frac{\partial y}{\partial x}\,,
 \end{align}
-where Eq. \eqref{eq:c} has been invoked, and where it has been noted thet
+where Eq. \eqref{eq:c} has been invoked, and where it has been noted that
 \begin{align*}
 \frac{\partial}{\partial t}\left(\frac{\partial y}{\partial x} \frac{\partial y}{\partial t}\right)
 - \frac{\partial^2 y}{\partial t \partial x} \frac{\partial y}{\partial t} = \frac{\partial y}{\partial x}\frac{\partial^2 y}{\partial t^2}\,.
@@ -172,7 +167,7 @@ By Eqs. \eqref{eq:kinetic} and \eqref{eq:potential}, Eq. \eqref{eq:wave:6} becom
 \begin{align}\label{eq:wave:7}
 \frac{\partial g}{\partial t} = \frac{\partial}{\partial x} (-E_T - E_U)\,.
 \end{align}
-The quantity \(-E_T - E_U\) can be as \(L - 2E_T = L - \rho_0(\partial y/\partial t)^2\), where \(L\) is the Lagrangian density \(L = E_T - E_U\). Equation \eqref{eq:wave:7} then becomes
+The quantity \(-E_T - E_U\) can be written as \(L - 2E_T = L - \rho_0(\partial y/\partial t)^2\), where \(L\) is the Lagrangian density \(L = E_T - E_U\). Equation \eqref{eq:wave:7} then becomes
 \begin{align}\label{eq:momentum}
 \boxed{\frac{\partial g}{\partial t} = \frac{\partial T}{\partial x}\,,}
 \end{align}
@@ -202,7 +197,7 @@ where the first two terms follow from the fundamental theorem of calculus.
 \end{align}
 In view of Eqs. \eqref{eq:total:x} and \eqref{eq:total:t}, the radiation stress tensor reads 
 \begin{align}
-T = L_i + L_s + L_{is} - \rho_0 (\partial y_i/\partial t)^2 - \rho_0 (\partial y_s/\partial t)^2 -2\rho_0(\partial y_i/\partial t)(\partial y_s/\partial x)\,,
+T = L_i + L_s + L_{is} - \rho_0 (\partial y_i/\partial t)^2 - \rho_0 (\partial y_s/\partial t)^2 -2\rho_0(\partial y_i/\partial t)(\partial y_s/\partial t)\,,
 \end{align}
 where 
 \begin{align}
