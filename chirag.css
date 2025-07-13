@@ -24,14 +24,34 @@ h1 {
   margin-right: 10px;
     }
 
-audio { width: 300px; height: 30px; }
+audio { width: 304px; height: 30px; }
 
 .sf {
   font-family: Courier New, monospace;
 }
 
 .Q {
-  color:  #09008a ;
+  color:  #d80000 ;
+}
+
+.graybox {
+  background-color: rgb(230, 230, 230);
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.whitebox {
+  border: black;
+  border-style: solid;
+  border-width: thin;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
 /*
