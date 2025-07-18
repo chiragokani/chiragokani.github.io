@@ -122,7 +122,7 @@ Eq. \eqref{eq:wave:2} becomes
 \end{align}
 At this juncture, it is noted from the figure above that the force exerted by an element of the string on the left on an element to its right is \(-\mathcal{T}\partial y/\partial x\). The associated power is the force times the velocity \(\partial y/\partial t\) of this motion. The quantity appearing in the spatial derivative in the first term of Eq. \eqref{eq:wave:3} is therefore the energy flux of the string,
 \begin{align}\label{eq:poynting}
-S \equiv -\mathcal{T} \frac{\partial y}{\partial x} \frac{\partial y}{\partial t}\,,
+I \equiv -\mathcal{T} \frac{\partial y}{\partial x} \frac{\partial y}{\partial t}\,,
 \end{align}
 which can be thought of as the "Poynting scalar" (analogous to the Poynting vector of acoustics and electrodynamics). Meanwhile, the second term of Eq. \eqref{eq:wave:3} is simplified by noting that 
 \begin{align}\label{eq:potential:2}
@@ -130,7 +130,7 @@ which can be thought of as the "Poynting scalar" (analogous to the Poynting vect
 \end{align}
 where the last equality holds by Eq. \eqref{eq:potential}. In view of Eqs. \eqref{eq:poynting} and \eqref{eq:potential:2}, Eq. \eqref{eq:wave:3} becomes the energy conservation equation,
 \begin{align}\label{eq:energy}
-\boxed{\frac{\partial S}{\partial x} + \frac{\partial}{\partial t}(E_U + E_T) = 0\,.}
+\boxed{\frac{\partial I}{\partial x} + \frac{\partial}{\partial t}(E_U + E_T) = 0\,.}
 \end{align}
 By analogy to acoustics and electrodynamics, Eq. \eqref{eq:energy} might also be regarded as the Poynting theorem for waves on a string. Equation \eqref{eq:energy} recovers Eq. (4.1.11) of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[18]</a>, though the mathematical development leading to Eq. \eqref{eq:energy} makes it more rigorous than what is presented in  Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[18]</a>.
 </p>
@@ -150,9 +150,9 @@ Multiplying Eq. \eqref{eq:wave:4} through by \(-1\) and rearranging terms yields
 \begin{align}\label{eq:wave:5}
 \frac{1}{c_0^2} \frac{\partial}{\partial t}\left(-\mathcal{T} \frac{\partial y}{\partial x} \frac{\partial y}{\partial t}\right) = - \mathcal{T} \frac{\partial^2 y}{\partial x^2} \frac{\partial y}{\partial x} -\rho_0 \frac{\partial^2 y}{\partial t\partial x} \frac{\partial y}{\partial t}\,,
 \end{align}
-The quantity in the time derivative on the left-hand side of Eq. \eqref{eq:wave:5} is identified from Eq. \eqref{eq:poynting} to be the Poynting scalar \(S\). Dividing \(S\) by \(c_0^2\) yields a <i>momentum density</i>, 
+The quantity in the time derivative on the left-hand side of Eq. \eqref{eq:wave:5} is identified from Eq. \eqref{eq:poynting} to be the Poynting scalar \(I\). Dividing \(I\) by \(c_0^2\) yields a <i>momentum density</i>, 
 \begin{align}\label{eq:g}
-g \equiv S/c_0^2\,.
+g \equiv I/c_0^2\,.
 \end{align}
 <p>Attention is now turned to the right-hand side of Eq. \eqref{eq:wave:5}. Since
 \begin{align*}
@@ -169,15 +169,15 @@ By Eqs. \eqref{eq:kinetic} and \eqref{eq:potential}, Eq. \eqref{eq:wave:6} becom
 \end{align}
 The quantity \(-E_T - E_U\) can be written as \(L - 2E_T = L - \rho_0(\partial y/\partial t)^2\), where \(L\) is the Lagrangian density \(L = E_T - E_U\). Equation \eqref{eq:wave:7} then becomes
 \begin{align}\label{eq:momentum}
-\boxed{\frac{\partial g}{\partial t} = \frac{\partial T}{\partial x}\,,}
+\boxed{\frac{\partial g}{\partial t} = \frac{\partial S}{\partial x}\,,}
 \end{align}
 where
 \begin{align}\label{eq:stress}
-T \equiv L - \rho_0 ({\partial y}/{\partial t})^2.
+S \equiv L - \rho_0 ({\partial y}/{\partial t})^2.
 \end{align}
 is the <i>radiation stress</i>. The integral form of Eq. \eqref{eq:momentum} is
 \begin{align}\label{eq:momentum:int}
-T(b)-T(a) - \frac{d }{dt}\int_a^b g\, dx =0 \,,
+S(b)-S(a) - \frac{d }{dt}\int_a^b g\, dx =0 \,,
 \end{align}
 where the first two terms follow from the fundamental theorem of calculus.
 </p>
@@ -186,7 +186,7 @@ where the first two terms follow from the fundamental theorem of calculus.
 
 <p>Equation \eqref{eq:momentum:int} was derived by integrating over free space, which implies that there is no change of mechanical momentum from points \(a\) to \(b\) per unit time. If there <i>is</i> an object between points \(a\) and \(b\), then the right-hand side of Eq. \eqref{eq:momentum} equals \(d{p}_\mathrm{mech}/dt\), which according to Newton's second law is the force \(F\) on the object. In particular, if attention is confined to time-harmonic solutions \(y\), time-averaging Eq. \eqref{eq:momentum:int} results in \(\frac{d }{dt}\int_a^b g\, dx\) vanishing by virtue of Item 2 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a>. The radiation force is therefore 
 \begin{align}\label{eq:F}
-\boxed{F = \langle T(b)\rangle - \langle T(a) \rangle\,.}
+\boxed{F = \langle S(b)\rangle - \langle S(a) \rangle\,.}
 \end{align}
 </p>
 
@@ -197,7 +197,7 @@ where the first two terms follow from the fundamental theorem of calculus.
 \end{align}
 In view of Eqs. \eqref{eq:total:x} and \eqref{eq:total:t}, the radiation stress tensor reads 
 \begin{align}
-T = L_i + L_s + L_{is} - \rho_0 (\partial y_i/\partial t)^2 - \rho_0 (\partial y_s/\partial t)^2 -2\rho_0(\partial y_i/\partial t)(\partial y_s/\partial t)\,,
+S = L_i + L_s + L_{is} - \rho_0 (\partial y_i/\partial t)^2 - \rho_0 (\partial y_s/\partial t)^2 -2\rho_0(\partial y_i/\partial t)(\partial y_s/\partial t)\,,
 \end{align}
 where 
 \begin{align}
