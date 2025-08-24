@@ -19,11 +19,8 @@ window.MathJax = {
     macros: {
       Order: "{\\mathcal O}",
       vec: ['\\mathbf{#1}',1] ,
-      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
-      gradient: "{\\boldsymbol\\nabla}",
-      curl: "{\\boldsymbol\\nabla\\times}",
-      Laplacian: "{\\nabla^2}",
-      dAlambertian: "{\\Box^2}",
+      dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+      nablav: "{\\boldsymbol\\nabla}",
       Order: "{\\mathcal O}",
       T: "{^\\mathsf{T}}",
       vecell: "{\\boldsymbol\\ell}",
@@ -48,7 +45,6 @@ window.MathJax = {
 <body>
 <div class="textbox">
 <h1>Math</h1>
-
 <p>This page covers the list of math topics provided <a href="https://www.me.utexas.edu/academics/graduate-program/qualifying-exams/acoustics-qualifying-exam" target="_blank" rel="noopener noreferrer">here</a>:</p>
 <blockquote>
 solutions of ordinary and partial differential equations, power series solutions, linear independence, elementary linear algebra, determinants, Taylor series, eigenvalue problems, orthogonality, Fourier series and integrals, integration by parts, vector algebra, complex numbers, special functions (e.g., Bessel functions and Legendre polynomials).
@@ -606,10 +602,16 @@ for \(a_1,a_2,a_3,\dots,a_n = 0\).
 </li>
 
 
-<li>Determine whether the vectors \(\vec{v}_1 = (1,1)\) and \(\vec{v}_2 = (-3,2)\) are linearly independent. 
+<li>Determine whether the vectors \(\vec{v}_1 = \vec{e}_x + \vec{e}_y\) and \(\vec{v}_2 = -3\vec{e}_x + 2 \vec{e}_y\) are linearly independent, where \(\vec{e}_x\) and \(\vec{e}_y\) are the Cartesian basis vectors.
 <span class="expandable-toggle" onclick="toggleExpandableContent('0lin1a')">[answer]</span>
 <div id="0lin1a" class="expandable-content" style="color: #0000A0;">
-<p> Apply the definition of linear independence, 
+<p> The matrix representation of \(\vec{v}_1\),
+\(\begin{pmatrix}
+1 \\ 1 
+\end{pmatrix} \),  and the matrix representation of \(\vec{v}_2\) is
+\(\begin{pmatrix}
+-3 \\ 2 
+\end{pmatrix}. \) Then, by the definition of linear independence, 
 
 \begin{align*}
 a_1 \begin{pmatrix}
@@ -622,7 +624,7 @@ a_1 \begin{pmatrix}
 0 \\0 
 \end{pmatrix}
 \end{align*}
-This can be recast as 
+This can be written as 
 \begin{align*}
 \begin{pmatrix}
 1 & - 3\\ 1  & 2
@@ -635,19 +637,19 @@ a_1 \\a_2
 0\\0 
 \end{pmatrix}
 \end{align*}
-Performing row reduction gives the identity matrix. Therefore the columns are linearly independent. 
+Performing row reduction yields the identity matrix. Therefore the columns are linearly independent. 
 </p>
 </div>
 </li>
 
-<li>Taking  \(\vec{v}_1 = (1,1)\) and \(\vec{v}_2 = (-3,2)\) as basis vectors, what linear combination of \(\vec{v}_1\) and \(\vec{v}_2\) gives the vector \(\vec{v}_3 = (2,1)\)?
+<li>Taking  \(\vec{v}_1 = \vec{e}_x + \vec{e}_y\) and \(\vec{v}_2 = -3\vec{e}_x + 2\vec{e}_y\) as basis vectors, what linear combination of \(\vec{v}_1\) and \(\vec{v}_2\) gives the vector \(\vec{v}_3 = 2\vec{e}_x + \vec{e}_y\)?
 <span class="expandable-toggle" onclick="toggleExpandableContent('0lin1ac')">[answer]</span>
 <div id="0lin1ac" class="expandable-content" style="color: #0000A0;">
 <p> The question at hand is to explore 
 \begin{align*}
 a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 = \vec{0}.
 \end{align*}
-Perform row operations on 
+Perform row operations on the matrix representation of this equation,
 \begin{align*}
 \begin{pmatrix}
 1 & -3 & 2\\
@@ -659,7 +661,7 @@ a_1 \\ a_2 \\a_3
 =
 \begin{pmatrix}
 0 \\ 0
-\end{pmatrix} 
+\end{pmatrix} ,
 \end{align*}
 gives
 \begin{align*}
@@ -675,7 +677,7 @@ a_1 \\ a_2 \\a_3
 0 \\ 0
 \end{pmatrix} 
 \end{align*}
-Thus \(a_1 = -\frac{7}{5} a_3\) and \(a_2 = \frac{1}{5}a_3\). To answer the question at hand, set \(a_3 = -1\) to find that \(a_1 = \frac{7}{5}\) and \(a_2 = -\frac{1}{5}\). That is, \(\frac{7}{5} \vec{v}_1 - \frac{1}{5}\vec{v}_2 = v_3\).
+Thus \(a_1 = -\frac{7}{5} a_3\) and \(a_2 = \frac{1}{5}a_3\). To answer the question at hand, set \(a_3 = -1\) to find that \(a_1 = \frac{7}{5}\) and \(a_2 = -\frac{1}{5}\). That is, \(\frac{7}{5} \vec{v}_1 - \frac{1}{5}\vec{v}_2 = \vec{v}_3\).
 </p>
 </div>
 </li>
@@ -689,7 +691,7 @@ Thus \(a_1 = -\frac{7}{5} a_3\) and \(a_2 = \frac{1}{5}a_3\). To answer the ques
 2 & 1 & 0
 \end{pmatrix}
 \end{align*}
-using row operations. Check the result by using Cramer's rule for the inverse, \({A}^{-1} = \frac{1}{\det{A}} {C}^\mathsf{T}\), where \({C}\) is the matrix of cofactors, which is \((-1)^{i + j}\) times the determinant of \({A}\) when the \(i\)th row and \(j\)th column are crossed out.
+using row operations. Check the result by using Cramer's rule for the inverse, \({A}^{-1} = \frac{1}{\det{A}} {C}^\mathrm{T}\), where \({C}\) is the matrix of cofactors, which is \((-1)^{i + j}\) times the determinant of \({A}\) when the \(i\)th row and \(j\)th column are crossed out.
 <span class="expandable-toggle" onclick="toggleExpandableContent('0lin1ae')">[answer]</span>
 <div id="0lin1ae" class="expandable-content" style="color: #0000A0;">
 <p> See <a href="inverse_1.pdf" target="_blank" rel="noopener noreferrer">here</a> for the inverse taken using row operations. 
@@ -706,7 +708,7 @@ A = \begin{pmatrix}
 0 & 1 & 0
 \end{pmatrix}
 \end{align*}
-using row operations. Check the result by using \({A}^{-1} = \frac{1}{\det{A}} {C}^\mathsf{T}\). 
+using row operations. Check the result by using \({A}^{-1} = \frac{1}{\det{A}} {C}^\mathrm{T}\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('0lin1af')">[answer]</span>
 <div id="0lin1af" class="expandable-content" style="color: #0000A0;">
 <p> See <a href="inverse_2.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution.
@@ -772,8 +774,8 @@ from which it can be seen that the third column is \(-2\vec{v}_1 + \vec{v}_2\), 
 <ol>
 <li>The column space is the vector space spanned by the the linearly independent columns of \(A\). That is to say, the linearly independent columns \(A\) form the basis of the column space.</li>
 <li>The nullspace is the vector space spanned by all the vectors \(\vec{x}\) that satisfy \(A\vec{x} =\vec{0}\).</li>
-<li>The row space is just the column space of \(A^\mathsf{T}\).</li>
-<li>The left nullspace is just the nullspace of \(A^\mathsf{T}\).</li>
+<li>The row space is just the column space of \(A^\mathrm{T}\).</li>
+<li>The left nullspace is just the nullspace of \(A^\mathrm{T}\).</li>
 </ol>
 </p>
 
@@ -915,7 +917,7 @@ Invoking the eigenvalue equation \(S \vec{x} = \lambda^* \vec{x}^*\) gives
 \end{align*}
 By the definition of the transpose,
 \begin{align*}
-\lambda \vec{x}^* \cdot \vec{x} &= S^\mathsf{T}\vec{x}^* \cdot \vec{x}\\
+\lambda \vec{x}^* \cdot \vec{x} &= S^\mathrm{T}\vec{x}^* \cdot \vec{x}\\
 &=S\vec{x}^* \cdot \vec{x}\\
 &=(S^*\vec{x}^*) \cdot \vec{x}
 \end{align*}
@@ -934,7 +936,7 @@ S\vec{x} = \lambda \vec{x},\qquad S\vec{y} = \mu \vec{y}
 \end{align*}
 Then consider the quantity \(S \vec{x} \cdot \vec{y}\). Using the definition of the transpose and the fact that \(S\) is symmetric gives
 \begin{align*}
-S \vec{x} \cdot \vec{y} &= \vec{x}\cdot S^\mathsf{T}\vec{y}\\
+S \vec{x} \cdot \vec{y} &= \vec{x}\cdot S^\mathrm{T}\vec{y}\\
 &=\vec{x}\cdot S \vec{y}\\
 \lambda \vec{x} \cdot \vec{y} &=\vec{x}\cdot \mu \vec{y},
 \end{align*}
@@ -1045,7 +1047,7 @@ Since the matrix is symmetric, it makes sense that the eigenvalues are real and 
 The right hand side can be written as \(\Lambda X = I\lambda X  =  IX \lambda =  XI\lambda =  X \Lambda\):
 \[AX = X\Lambda .\]
 Multiplying both sides by \(X^{-1}\) on the right solves for \(A\):
-\[A = X \Lambda X^{-1}.\] For a symmetric matrix, \(A = A^{\mathsf{T}}\), so \(A = (X\Lambda X^{-1})^T =(X^{-1})^\mathsf{T} \Lambda^{\mathsf{T}} X^{\mathsf{T}} \). Since \(X\) consists of orthonormal eigenvectors (remember, the eigenvectors of a symmetric matrix are orthonormal), the matrix itself is orthogonal, i.e., \(X^\mathsf{T} = X^{-1}\). Thus \(A = X\Lambda X^{\mathsf{T}} \) for a symmetric matrix \(A\).  This is called <i>spectral decomposition</i>, and the fact that any symmetric matrix can be written this way is called the <i>spectral theorem</i>.
+\[A = X \Lambda X^{-1}.\] For a symmetric matrix, \(A = A^{\mathsf{T}}\), so \(A = (X\Lambda X^{-1})^T =(X^{-1})^\mathrm{T} \Lambda^{\mathsf{T}} X^{\mathsf{T}} \). Since \(X\) consists of orthonormal eigenvectors (remember, the eigenvectors of a symmetric matrix are orthonormal), the matrix itself is orthogonal, i.e., \(X^\mathrm{T} = X^{-1}\). Thus \(A = X\Lambda X^{\mathsf{T}} \) for a symmetric matrix \(A\).  This is called <i>spectral decomposition</i>, and the fact that any symmetric matrix can be written this way is called the <i>spectral theorem</i>.
 </p>
 </div>
 </li>
@@ -1084,14 +1086,14 @@ The eigenvectors span the space, because a matrix whose columns consist of these
 \begin{align*}
 X = \begin{pmatrix}1 & 2 & 0\\ 0 & 1-i & 1\\ 1& 1 &0\end{pmatrix},
 \end{align*}
-the inverse of which is \(C^\mathsf{T}/|X|\), where \(C\) is the cofactor matrix:
+the inverse of which is \(C^\mathrm{T}/|X|\), where \(C\) is the cofactor matrix:
 \begin{align*}
 X^{-1} = 
 \frac{1}{|X|}\begin{pmatrix}
 -1 & 1& i-1\\
 0 & 0& 1\\
 2 &-1 &1-i 
-\end{pmatrix}^\mathsf{T} = \begin{pmatrix}
+\end{pmatrix}^\mathrm{T} = \begin{pmatrix}
 -1 & 0& 2\\
 1 & 0& -1\\
 i-1 &1 &1-i 
@@ -1197,25 +1199,25 @@ I verified these calculations in MATLAB.
 <li>&#9784; Qualitatively, what is the difference between \(\mathsf{A}\) (sans-serif) and \(A\) (italicized)? Similarly, what is the difference between \(\mathsf{v}\) and \(\vec{v}\)?  
 <span class="expandable-toggle" onclick="toggleExpandableContent('qual')">[answer]</span>
 <div id="qual" class="expandable-content" style="color: #0000A0;">
-<p>  \(\mathsf{A}\) is a tensor, while \(A\) is a matrix. \(A\) is a representation of \(\mathsf{A}\) in a chosen basis. The difference between \(\mathsf{A}\) and \(A\) is analogous to the difference between a quantum mechanical operator \(\mathcal{H}\) and its matrix representation in a particular basis \(\hat{H}\).</p> 
+<p>  \(\mathsf{A}\) is a tensor, while \(A\) is a matrix. \(A\) is a representation of \(\mathsf{A}\) in a chosen basis.</p> 
 
-<p>Similarly, \(\mathsf{v}\) is a vector, while \(\vec{v}\) is that vector evaluated in a particular basis. The difference between \(\mathsf{v}\) and \(\vec{v}\) is analogous to the difference between the ket \(|\psi\rangle\) and the wave function \(\psi(x)\) in quantum mechanics: the latter is a representation of the former in the basis of Euclidean 3-space. It is also analogous to the difference between the operator \(\text{curl }\) and its vector representation in Cartesian coordinates \(\gradient \times\) (or any of the vector calculus operators, like divergence, gradient, and the Laplacian). 
+<p>Similarly, \(\mathsf{v}\) is a vector, while \(\vec{v}\) is that vector expressed in a particular basis.
 </p>
 </div>
 </li>
 
 
-<li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two dyadic tensors (dyads). Show that \((\mathsf{A}\mathsf{B})^\mathsf{T} = \mathsf{B}^\mathsf{T} \mathsf{A}^\mathsf{T}\). Hint: introduce two auxiliary vectors \(\mathsf{u}\) and \(\mathsf{v}\) and use the definition of transpose, \((\mathsf{A}^\mathsf{T} \mathsf{u})\cdot \mathsf{v} = (\mathsf{A} \mathsf{v})\cdot \mathsf{u}\) twice.
+<li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two dyadic tensors (dyads). Show that \((\mathsf{A}\mathsf{B})^\mathrm{T} = \mathsf{B}^\mathrm{T} \mathsf{A}^\mathrm{T}\). Hint: introduce two auxiliary vectors \(\mathsf{u}\) and \(\mathsf{v}\) and use the definition of transpose, \((\mathsf{A}^\mathrm{T} \mathsf{u})\cdot \mathsf{v} = (\mathsf{A} \mathsf{v})\cdot \mathsf{u}\) twice.
 <span class="expandable-toggle" onclick="toggleExpandableContent('lin9')">[answer]</span>
 <div id="lin9" class="expandable-content" style="color: #0000A0;">
 <p>  Multiply \(\mathsf{u}\) on the right-hand side by the identity matrix \(\mathsf{I}\) twice:
 \begin{align*}
-[(\mathsf{A}\mathsf{B})^\mathsf{T} \mathsf{u}]\cdot \mathsf{v} &= [(\mathsf{A}\mathsf{B}) \mathsf{v}]\cdot \mathsf{u}\\
+[(\mathsf{A}\mathsf{B})^\mathrm{T} \mathsf{u}]\cdot \mathsf{v} &= [(\mathsf{A}\mathsf{B}) \mathsf{v}]\cdot \mathsf{u}\\
 &=\mathsf{A}[\mathsf{B} \mathsf{v}]\cdot \mathsf{u}\\
-&=(\mathsf{A}^\mathsf{T}\mathsf{u})\cdot[\mathsf{B} \mathsf{v}]\\
-&=\mathsf{B} \mathsf{v}\cdot \mathsf{A}^\mathsf{T}\mathsf{u}\\
-&=\mathsf{B}^\mathsf{T} (\mathsf{A}^\mathsf{T} \mathsf{u}) \cdot \mathsf{v}\\
-&=\mathsf{B}^\mathsf{T} \mathsf{A}^\mathsf{T} \mathsf{u} \cdot \mathsf{v}
+&=(\mathsf{A}^\mathrm{T}\mathsf{u})\cdot[\mathsf{B} \mathsf{v}]\\
+&=\mathsf{B} \mathsf{v}\cdot \mathsf{A}^\mathrm{T}\mathsf{u}\\
+&=\mathsf{B}^\mathrm{T} (\mathsf{A}^\mathrm{T} \mathsf{u}) \cdot \mathsf{v}\\
+&=\mathsf{B}^\mathrm{T} \mathsf{A}^\mathrm{T} \mathsf{u} \cdot \mathsf{v}
 \end{align*}
 Since \(\mathsf{u}\) and \(\mathsf{v}\)  are arbitrary, the proof is complete.
 </p>
@@ -1245,8 +1247,8 @@ Since \(\mathsf{u}\) is arbitrary, the proof is complete.
 
 <p> Note that a symmetric matrix is constructed by adding \(\mathsf{T}\) and its transpose, while an asymmetric matrix is constructed by subtracting the transpose from \(\mathsf{T}\). 
 \begin{align*}
-\mathsf{S} &= \frac{1}{2}(\mathsf{T} + \mathsf{T}^\mathsf{T}) \\
-\mathsf{A} &= \frac{1}{2}(\mathsf{T} - \mathsf{T}^\mathsf{T}) \\
+\mathsf{S} &= \frac{1}{2}(\mathsf{T} + \mathsf{T}^\mathrm{T}) \\
+\mathsf{A} &= \frac{1}{2}(\mathsf{T} - \mathsf{T}^\mathrm{T}) \\
 \end{align*}
 Adding the above equations shows that \(\mathsf{T} = \mathsf{S} + \mathsf{A}\).</p>
 
@@ -2535,9 +2537,9 @@ The integrands must be equal, which gives the desired result:
 
 <div class="textbox">
 <h2 id="vector">Vector algebra & vector calculus</h2>
-<p>Vector calculus (for whatever reason) is not listed as a topic on the math section. However, as essentially all of acoustics is formulated in terms of the calculus of vector fields, I think it is very worthy of my review.</p>
+<p>Vector calculus is not listed as a topic on the math section, but it is worth reviewing.</p>
 
-<p>An orthonormal vector basis may be assumed; no need to work out the proofs below in general curvilinear coordinates. Therefore, one can write \(\mathsf{v} = \vec{v}\). </p>
+<p>In the section on <a href="#linear">linear algebra</a>, different symbols were used for vectors and their representation in a particular bases. In this section, we deal only with the vectors themselves. When vectors need to be expressed in a basis, \(3\times 1\) matrices are used. It is therefore not necessary to distinguish between \(\vec{v}\) and \(\mathsf{v}\) (and between \(A\) and \(\mathsf{A}\)).</p>
 
 <p>Some of the problems below come from chapter 1 of <i>Introduction to Electrodynamics</i> by D. J. Griffiths.</p>
 <ol>
@@ -2617,29 +2619,29 @@ The scalar triple product transforms as \(-\vec{w}\cdot(-\vec{u} \times -\vec{v}
 </div>
 </li>
 
-<li> &#9784; Prove that \(\gradient (\vec{a} \cdot \vec{b}) = \vec{a}\times(\gradient \times \vec{b}) + \vec{b}\times(\gradient\times \vec{a}) + (\vec{a}\cdot\gradient)\vec{b} + (\vec{b} \cdot \gradient)\vec{a}\).
+<li> &#9784; Prove that \(\nablav (\vec{a} \cdot \vec{b}) = \vec{a}\times(\nablav \times \vec{b}) + \vec{b}\times(\nablav\times \vec{a}) + (\vec{a}\cdot\nablav)\vec{b} + (\vec{b} \cdot \nablav)\vec{a}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol3')">[answer]</span>
 <div id="9sol3" class="expandable-content" style="color: #0000A0;">
 <p>  It is much easier to go from the right-hand side to the left-hand side.
 \begin{align*}
-[\vec{a}\times(\gradient \times \vec{b}) &+ \vec{b}\times(\gradient\times \vec{a}) + (\vec{a}\cdot\gradient)\vec{b} + (\vec{b} \cdot \gradient)\vec{a}]_i\\
+[\vec{a}\times(\nablav \times \vec{b}) &+ \vec{b}\times(\nablav\times \vec{a}) + (\vec{a}\cdot\nablav)\vec{b} + (\vec{b} \cdot \nablav)\vec{a}]_i\\
 &=\epsilon_{ijk}a_j (\epsilon_{klm}\partial_l b_m) + \epsilon_{ijk}b_j (\epsilon_{klm}\partial_l a_m) + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= \epsilon_{kij}\epsilon_{klm}a_j \partial_l b_m + \epsilon_{kij}\epsilon_{klm} b_j \partial_l a_m + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{lj})a_j \partial_l b_m + (\delta_{il}\delta_{jm}-\delta_{im}\delta_{lj}) b_j \partial_l a_m + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= a_m \partial_i b_m - a_l \partial_l b_i  + b_j \partial_i a_j- b_l \partial_l a_i  + (a_j \partial_j)b_i + (b_j\partial_j)a_i\\
 &= a_j \partial_i b_j  + b_j \partial_i a_j\\
 &=  \partial_i (a_j b_j)\\
-&= [\gradient (\vec{a} \cdot \vec{b})]_i  
+&= [\nablav (\vec{a} \cdot \vec{b})]_i  
 \end{align*}</p>
 Since this holds for all three components, the proof is complete.
 </div>
 </li>
 
-<li> Prove that \(\gradient\times(\vec{a}\times \vec{b}) = (\vec{b}\cdot \gradient)\vec{a} - (\vec{a}\cdot\gradient)\vec{b} + \vec{a}(\gradient\cdot\vec{b}) -\vec{b}(\gradient\cdot\vec{a})\).
+<li> Prove that \(\nablav\times(\vec{a}\times \vec{b}) = (\vec{b}\cdot \nablav)\vec{a} - (\vec{a}\cdot\nablav)\vec{b} + \vec{a}(\nablav\cdot\vec{b}) -\vec{b}(\nablav\cdot\vec{a})\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol4')">[answer]</span>
 <div id="9sol4" class="expandable-content" style="color: #0000A0;">
 <p> \begin{align*}
-\gradient\times(\vec{a}\times \vec{b}) &= \epsilon_{ijk}\partial_j (\epsilon_{klm}a_l b_m)\\
+\nablav\times(\vec{a}\times \vec{b}) &= \epsilon_{ijk}\partial_j (\epsilon_{klm}a_l b_m)\\
 &=\epsilon_{ijk}\epsilon_{klm} \partial_j a_l b_m\\
 &=\epsilon_{kij}\epsilon_{klm} \partial_j a_l b_m\\
 &= (\delta_{il}\delta_{jm}- \delta_{im}\delta_{jl})\partial_j a_l b_m\\
@@ -2648,7 +2650,7 @@ Since this holds for all three components, the proof is complete.
 &= b_j \partial_j a_i  + a_i \partial_j b_j - a_i \partial_j  b_j -  b_j \partial_j a_i\\
 &= \partial_j (a_i b_j)- \partial_j (a_i b_j)\\
 &= b_j \partial_j a_i  - a_i \partial_j  b_j + a_i \partial_j b_j -  b_j \partial_j a_i\\
-&= (\vec{b}\cdot \gradient)\vec{a} - (\vec{a}\cdot\gradient)\vec{b} + \vec{a}(\gradient\cdot\vec{b}) -\vec{b}(\gradient\cdot\vec{a})  
+&= (\vec{b}\cdot \nablav)\vec{a} - (\vec{a}\cdot\nablav)\vec{b} + \vec{a}(\nablav\cdot\vec{b}) -\vec{b}(\nablav\cdot\vec{a})  
 \end{align*}</p>
 </div>
 </li>  
@@ -2657,13 +2659,13 @@ Since this holds for all three components, the proof is complete.
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol5')">[answer]</span>
 <div id="9sol5" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align}
-\gradient \cdot (\gradient\times\vec{u}) &= \partial_i (\epsilon_{ijk}\partial_j u_k)\notag\\
+\nablav \cdot (\nablav\times\vec{u}) &= \partial_i (\epsilon_{ijk}\partial_j u_k)\notag\\
 &= -\partial_i (\epsilon_{jik}\partial_j u_k) \tag{permute}\\
 &= -\partial_j (\epsilon_{ijk}\partial_i u_k)\tag{relabel}\\
 &= -\partial_i (\epsilon_{ijk}\partial_j u_k)\tag{equality of mixed pt'ls}
 \end{align}
 \(-\partial_i (\epsilon_{ijk}\partial_j u_k) = \partial_i (\epsilon_{ijk}\partial_j u_k)\) is of the form \(a = -a\), which means that \(a=0\), i.e., \(-\partial_i (\epsilon_{jik}\partial_j u_k) = 0\), which completes the proof:
-\(\gradient \cdot (\gradient\times\vec{u})  = 0\).</p>
+\(\nablav \cdot (\nablav\times\vec{u})  = 0\).</p>
 </div>
 </li>  
 
@@ -2671,40 +2673,40 @@ Since this holds for all three components, the proof is complete.
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol6')">[answer]</span>
 <div id="9sol6" class="expandable-content" style="color: #0000A0;">
 <p> \begin{align}
-\gradient \times (\gradient f) &= \epsilon_{ijk}\partial_j (\gradient f)_k\notag\\
+\nablav \times (\nablav f) &= \epsilon_{ijk}\partial_j (\nablav f)_k\notag\\
 &=\epsilon_{ijk}\partial_j \partial_k f\notag\\
 &=-\epsilon_{ikj}\partial_j \partial_k f\tag{permute}\\
 &=-\epsilon_{ijk}\partial_k \partial_j f\tag{relabel}\\
 &=-\epsilon_{ijk}\partial_j \partial_k f\tag{equality of mixed pt'ls}\\
 \end{align}
-Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \partial_k f\), \(\epsilon_{ijk}\partial_j \partial_k f=0\), which completes the proof: \(\gradient \times (\gradient f)  = 0\).
+Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \partial_k f\), \(\epsilon_{ijk}\partial_j \partial_k f=0\), which completes the proof: \(\nablav \times (\nablav f)  = 0\).
 </p>
 </div>
 </li> 
 
-<li> Show that \(\gradient\times(\gradient\times \vec{a}) = \gradient(\gradient \cdot\vec{a})-\nabla^2 \vec{a}\).
+<li> Show that \(\nablav\times(\nablav\times \vec{a}) = \nablav(\nablav \cdot\vec{a})-\nabla^2 \vec{a}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol7')">[answer]</span>
 <div id="9sol7" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-[\gradient\times(\gradient\times \vec{a})]_i &= \epsilon_{ijk} \partial_j (\gradient\times \vec{a})_k \\
+[\nablav\times(\nablav\times \vec{a})]_i &= \epsilon_{ijk} \partial_j (\nablav\times \vec{a})_k \\
 &=\epsilon_{ijk} \partial_j \epsilon_{klm} \partial_l a_m \\
 &=\epsilon_{ijk} \epsilon_{klm} \partial_j  \partial_l a_m \\
 &=\epsilon_{kij} \epsilon_{klm} \partial_j  \partial_l a_m \\
 &=(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}) \partial_j \partial_l a_m \\
 &=\delta_{il}\delta_{jm}\partial_j \partial_l a_m -\delta_{im}\delta_{jl}\partial_j \partial_l a_m  \\
 &= \partial_i\partial_j  a_j -\partial_l \partial_l a_i  \\
-&= \partial_i(\gradient\cdot \vec{a}) -[\nabla^2 \vec{a}]_i  \\
-&=[\gradient(\gradient \cdot\vec{a})-\nabla^2 \vec{a}]_i
+&= \partial_i(\nablav\cdot \vec{a}) -[\nabla^2 \vec{a}]_i  \\
+&=[\nablav(\nablav \cdot\vec{a})-\nabla^2 \vec{a}]_i
 \end{align*}</p>
 </div>
 </li> 
 
 
-<li> In Cartesian coordinates, \(\vec{r} = x\vec{e}_x + y\vec{e}_x + z\vec{e}_x\) and thus \(r = \sqrt{x^2 + y^2 + z^2}\). Find \(\gradient r \).
+<li> In Cartesian coordinates, \(\vec{r} = x\vec{e}_x + y\vec{e}_x + z\vec{e}_x\) and thus \(r = \sqrt{x^2 + y^2 + z^2}\). Find \(\nablav r \).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol8')">[answer]</span>
 <div id="9sol8" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-\gradient r &= \gradient (x^2 + y^2 +z^2)^{1/2} \\
+\nablav r &= \nablav (x^2 + y^2 +z^2)^{1/2} \\
 &= \frac{1}{r}(x\vec{e}_x + y\vec{e}_x + z\vec{e}_x)\\
 &= \frac{\vec{r}}{r}
 \end{align*} </p>
@@ -2712,20 +2714,20 @@ Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \parti
 </li> 
 
 
-<li> Let \(\vec{R} = \vec{r}- \vec{r}'\) be the position vector. Thus in Cartesian coordinates, \(R = \sqrt{(x-x')^2+(y-y')^2+(z-z')^2}\). Find \(\gradient R^2\).
+<li> Let \(\vec{R} = \vec{r}- \vec{r}'\) be the position vector. Thus in Cartesian coordinates, \(R = \sqrt{(x-x')^2+(y-y')^2+(z-z')^2}\). Find \(\nablav R^2\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('9sol9')">[answer]</span>
 <div id="9sol9" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-\gradient R^2 = 2\vec{R}
+\nablav R^2 = 2\vec{R}
 \end{align*}</p>
 </div>
 </li> 
 
-<li> Find \(\gradient R^{-1}\).
+<li> Find \(\nablav R^{-1}\).
 <span class="expandable-toggle" onclick="toggleExpandableContent('Rinverse')">[answer]</span>
 <div id="Rinverse" class="expandable-content" style="color: #0000A0;">
 <p>  \begin{align*}
-\gradient 1/R = -\vec{R}/R^3 = -\vec{e}_r/R^2
+\nablav 1/R = -\vec{R}/R^3 = -\vec{e}_r/R^2
 \end{align*}</p>
 </div>
 </li> 
@@ -2734,7 +2736,7 @@ Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \parti
 <span class="expandable-toggle" onclick="toggleExpandableContent('9stokersa')">[answer]</span>
 <div id="9stokersa" class="expandable-content" style="color: #0000A0;">
 <p> 
-\[\gradient \cdot \vec{F} = \lim_{V\to 0}\frac{1}{V}\oint_S \vec{F}\cdot d\vec{a}\,.\]
+\[\nablav \cdot \vec{F} = \lim_{V\to 0}\frac{1}{V}\oint_S \vec{F}\cdot d\vec{a}\,.\]
 </p>
 </div>
 </li> 
@@ -2745,9 +2747,9 @@ Since \(-\epsilon_{ijk}\partial_j \partial_k f = \epsilon_{ijk}\partial_j \parti
 <p> 
 In cartesian coordinates,
 \begin{align*}
-\gradient \cdot \frac{\vec{e}_r}{r^2}&= \gradient \cdot\frac{\vec{r}}{r^3} \\ 
-&=\gradient \cdot \frac{x\vec{e}_x + y\vec{e}_y + z\vec{e}_z}{(x^2+y^2+z^2)^{3/2}}\\
-&=\gradient \cdot ({x\vec{e}_x + y\vec{e}_y + z\vec{e}_z})(x^2+y^2+z^2)^{-3/2}\\
+\nablav \cdot \frac{\vec{e}_r}{r^2}&= \nablav \cdot\frac{\vec{r}}{r^3} \\ 
+&=\nablav \cdot \frac{x\vec{e}_x + y\vec{e}_y + z\vec{e}_z}{(x^2+y^2+z^2)^{3/2}}\\
+&=\nablav \cdot ({x\vec{e}_x + y\vec{e}_y + z\vec{e}_z})(x^2+y^2+z^2)^{-3/2}\\
 &=\frac{\partial}{\partial x} [x(x^2+y^2+z^2)^{-3/2}] +\frac{\partial}{\partial y} [y(x^2+y^2+z^2)^{-3/2}] +\frac{\partial}{\partial z} [z(x^2+y^2+z^2)^{-3/2}] \\
 &= -\frac{3}{2}(x^2 + y^2 + z^2)^{-5/2}2x^2 + (x^2 + y^2 +z^2)^{-3/2} + \dots\\
 &= \frac{3}{r^3} - \frac{3\cdot 2(x^2+y^2+z^2)}{2r^5}\\
@@ -2755,7 +2757,7 @@ In cartesian coordinates,
 \end{align*}
 In spherical coordinates,
 \begin{align*}
-\gradient \cdot \frac{\vec{e}_r}{r^2}&= \frac{1}{r^2}
+\nablav \cdot \frac{\vec{e}_r}{r^2}&= \frac{1}{r^2}
  \frac{\partial}{\partial r} \bigg(r^2 \frac{1}{r^2}\bigg)\\
 &= \frac{1}{r^2}
  \frac{\partial}{\partial r} (1) = 0\,.\\
@@ -2770,7 +2772,7 @@ It is a paradoxical result, because \(\vec{e}_r/r^2\) is a function that points 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9stokersb')">[answer]</span>
 <div id="9stokersb" class="expandable-content" style="color: #0000A0;">
 <p> 
-\[\gradient \times \vec{F} = \lim_{S\to 0}\frac{1}{S}\oint_C \vec{F}\cdot d\vecell\,.\]
+\[\nablav \times \vec{F} = \lim_{S\to 0}\frac{1}{S}\oint_C \vec{F}\cdot d\vecell\,.\]
 </p>
 </div>
 </li> 
@@ -2813,10 +2815,10 @@ The integral over the closed loop is easy to calculate, now that the individual 
 <li>Calculate the surface integral of \(\vec{v} = 2xz \vec{e}_x + (x+2)\vec{e}_y + y(z^2-3)\vec{e}_z\) over five sides (excluding the bottom) of a cubical box whose bottom edge extends from \(x = 0\) to \(x = 2\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9surfers1')">[answer]</span>
 <div id="9surfers1" class="expandable-content" style="color: #0000A0;">
-<p> The surface integral \(\int_S \vec{v} \cdot d\vec{a}\) is to be calculated. It will be given by the sum of five integrals: at \(x=2\) and \(x=0\) (for which \(d\vec{a} = dydz\vec{e}_x\)), at \(z = 2\) and \(z=0\) (for which \(d\vec{a}= dxdy\vec{e}_z\)), and at \(y=0\) (for which \(d\vec{a} = dxdz\vec{e}_y\)). 
+<p> The surface integral \(\int_S \vec{v} \cdot d\vec{a}\) is to be calculated. It will be given by the sum of five integrals: at \(x=2\) and \(x=0\) (for which \(d\vec{a} = dy\,dz\,\vec{e}_x\)), at \(z = 2\) and \(z=0\) (for which \(d\vec{a}= dx\,dy\,\vec{e}_z\)), and at \(y=0\) (for which \(d\vec{a} = dx\,dz\,\vec{e}_y\)). 
 \begin{align*}
 \int_S \vec{v} \cdot d\vec{a}&= \int_S [2xz \vec{e}_x + (x+2)\vec{e}_y + y(z^2-3)\vec{e}_z] \cdot d\vec{a}\\
-&=\int_{0}^{2}\int_{0}^{2} 4z dy dz + \int_{0}^{2}\int_{0}^{2} 0 dy dz\\&\quad + \int_{0}^{2}\int_{0}^{2} y(4-3) dx dy +  \int_{0}^{2}\int_{0}^{2} -3y dx dy + \int_{0}^{2}\int_{0}^{2} (x+2) dx dz\\
+&=\int_{0}^{2}\int_{0}^{2} 4z \,dy \,dz + \int_{0}^{2}\int_{0}^{2} 0 \,dy\, dz\\&\quad + \int_{0}^{2}\int_{0}^{2} y(4-3) dx \,dy +  \int_{0}^{2}\int_{0}^{2} -3y \,dx \,dy + \int_{0}^{2}\int_{0}^{2} (x+2) \,dx\, dz\\
 &=16+ 0 + 4 -12 + 12 = 20  
 \end{align*}
 </p>
@@ -2847,20 +2849,20 @@ The volume integral \(\int_{V'} T dV\) is to be calculated:
 <p> 
 The gradient theorem states that
 \begin{align*}
-\int_{\vec{a}}^{\vec{b}} \gradient V \cdot d\vecell &= V(b) - V(a)
+\int_{\vec{a}}^{\vec{b}} \nablav V \cdot d\vecell &= V(b) - V(a)
 \end{align*}
-A conservative field is one that is given by a scalar potential function. For example, \(\gradient V \) above is a conservative field. The gradient theorem says that the line integral over a conservative field is independent of the path. Examples of conservative fields are the gravitational and electric fields, given by minus the gradient of the gravitational and electrical potential respectively. Meanwhile, the magnetic field is given by the curl of a vector potential, and is therefore not a conservative field. 
+A conservative field is one that is given by a scalar potential function. For example, \(\nablav V \) above is a conservative field. The gradient theorem says that the line integral over a conservative field is independent of the path. Examples of conservative fields are the gravitational and electric fields, given by minus the gradient of the gravitational and electrical potential respectively. Meanwhile, the magnetic field is given by the curl of a vector potential, and is therefore not a conservative field. 
 </p>
 </div>
 </li> 
 
-<li> Calculate the line integral \(\int_{\vec{a}}^{\vec{b}} \gradient T \cdot d\vecell\) for \(T = x^2 + 4xy + 2yz^3\) where \(\vec{a} = (0,0,0)\) and \(b = (1,1,1)\) for the path \((0,0,0)\to (1,0,0)\to (1,1,0)\to (1,1,1)\). Then calculate the integral for the path  \((0,0,0)\to (0,0,1)\to (0,1,1)\to (1,1,1)\). Next, calculate the integral for the parabolic path \(z=x^2,\, y=x\). Finally, check the result with the gradient theorem. 
+<li> Calculate the line integral \(\int_{\vec{a}}^{\vec{b}} \nablav T \cdot d\vecell\) for \(T = x^2 + 4xy + 2yz^3\) where \(\vec{a} = (0,0,0)\) and \(\vec{b} = (1,1,1)\) for the path \((0,0,0)\to (1,0,0)\to (1,1,0)\to (1,1,1)\). Then calculate the integral for the path  \((0,0,0)\to (0,0,1)\to (0,1,1)\to (1,1,1)\). Next, calculate the integral for the parabolic path \(z=x^2,\, y=x\). Finally, check the result with the gradient theorem. 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9grad2')">[answer]</span>
 <div id="9grad2" class="expandable-content" style="color: #0000A0;">
 <p> 
 For the first path from \((0,0,0)\to (1,0,0)\to (1,1,0)\to (1,1,1)\),
 \begin{align*}
-\int_{\vec{a}}^{\vec{b}} \gradient T \cdot d\vecell&= \int_{\vec{a}}^{\vec{b}} \gradient (x^2 + 4xy + 2yz^3)  \cdot (dx\vec{e}_x + dy\vec{e}_y + dz\vec{e}_z)\\
+\int_{\vec{a}}^{\vec{b}} \nablav T \cdot d\vecell&= \int_{\vec{a}}^{\vec{b}} \nablav (x^2 + 4xy + 2yz^3)  \cdot (dx\vec{e}_x + dy\vec{e}_y + dz\vec{e}_z)\\
 &=\int_{\vec{a}}^{\vec{b}} [(2x + 4y)\vec{e}_x + (4x +2z^3)\vec{e}_y + (6yz^2)\vec{e}_z] \cdot (dx\vec{e}_x + dy\vec{e}_y + dz\vec{e}_z)\\
 &=\int_{\vec{a}}^{\vec{b}} [(2x + 4y)dx + (4x +2z^3)dy + (6yz^2)dz]
 \end{align*}
@@ -2900,41 +2902,197 @@ T(\vec{b}) - T(\vec{a}) &= x^2 +4xy +2yz^3\bigg\rvert_{(0,0,0)}^{(1,1,1)}\notag\
 <span class="expandable-toggle" onclick="toggleExpandableContent('9stokers')">[answer]</span>
 <div id="9stokers" class="expandable-content" style="color: #0000A0;">
 <p> The divergence theorem is 
-\[\oint \vec{F}\cdot d\vec{a} = \int \gradient\cdot\vec{F}\, dV\,,\]
+\[\oint \vec{F}\cdot d\vec{a} = \int \nablav\cdot\vec{F}\, dV\,,\]
 and Stokes's theorem is
-\[\oint \vec{F}\cdot d\vecell = \int (\gradient\times\vec{F}) \cdot d\vec{a}\,.\]
+\[\oint \vec{F}\cdot d\vecell = \int (\nablav\times\vec{F}) \cdot d\vec{a}\,.\]
 They are immediate from the definitions of divergence and curl above, but to see what motivates these definitions, see <a href="vector_calc_thms.pdf" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div>
 </li> 
 
 
-<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing curl, i.e., \(\gradient\times \vec{F} = 0\). 
+<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing curl, i.e., \(\nablav\times \vec{F} = 0\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9final1')">[answer]</span>
 <div id="9final1" class="expandable-content" style="color: #0000A0;">
 <p> 
 <ul>
 <li>The line integral \(\int_{\vec{a}}^{\vec{b}} \vec{F}\cdot d\vecell\) is independent of the path. 
 <li> The line integral over any closed loop is zero, i.e., \(\oint_{\vec{a}}^{\vec{a}} \vec{F}\cdot d\vecell = 0\).
-<li> \(\vec{F}\) is given by the gradient of a scalar potential, i.e., \(\vec{F} = -\gradient V\). 
+<li> \(\vec{F}\) is given by the gradient of a scalar potential, i.e., \(\vec{F} = -\nablav V\). 
 </ul>
 </p>
 
 
-<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing divergence, i.e., \(\gradient\cdot \vec{F} = 0\). 
+<li> List everything that can be concluded about a vector field \(\vec{F}\) that has a vanishing divergence, i.e., \(\nablav\cdot \vec{F} = 0\). 
 <span class="expandable-toggle" onclick="toggleExpandableContent('9final2')">[answer]</span>
 <div id="9final2" class="expandable-content" style="color: #0000A0;">
 <p> 
 <ul>
 <li>The surface integral \(\int_{S} \vec{F}\cdot d\vec{a}\) is indepndent of the surface (but the line integral \(\int_{\vec{a}}^{\vec{b}} \vec{F}\cdot d\vecell\) <i>depends</i> on the path.) 
 <li> The integral over any closed surface is zero, i.e., \(\oint_{S}\vec{F}\cdot d\vec{a} = 0\).
-<li> \(\vec{F}\) is given by the curl of a vector potential, i.e., \(\vec{F} = \gradient \times \vec{A}\).
+<li> \(\vec{F}\) is given by the curl of a vector potential, i.e., \(\vec{F} = \nablav \times \vec{A}\).
 </ul>
 </p>
 
+<li> Calculate the line integral \(\oint \vec{F}\cdot d\vecell\) for the vector field \(\vec{F} = x^2 y \vec{e}_x + xy^3\vec{e}_y\), where the closed path of integration is a square whose corners are given by the ordered pairs \((x,y) = (1,1)\), \((-1,1)\), \((-1,-1)\), and \((1,-1)\). Then, use Stokes's theorem to show that the same result is obtained by \(\int (\nablav \times \vec{F}) \cdot d\vec{A}\).    
+<span class="expandable-toggle" onclick="toggleExpandableContent('stokesthm')">[answer]</span>
+<div id="stokesthm" class="expandable-content" style="color: #0000A0;">
+<p> 
+The line integral consists of four sub-paths:
+<ol>
+<li>From \((x,y)= (1,-1)\to(1,1)\), the integral is \(\int_{-1}^1 y^3 dy = 0\).</li>
+<li>From \((x,y)= (1,1)\to(-1,1)\), the integral is \(\int_{-1}^1 x^2 dx = -2/3\).</li>
+<li>From \((x,y)= (-1,1)\to(-1,-1)\), the integral is \(-\int_{1}^{-1} y^3 dy = 0\).</li>
+<li>From \((x,y)= (-1,-1)\to(1,-1)\), the integral is \(-\int_{-1}^{-1} x^2 dx = -2/3\).</li>
+</ol>
+Apparently, only sub-paths (2) and (4) contribute to \(\oint \vec{F}\cdot d\vecell\); their sum is
+\begin{align}
+\oint \vec{F}\cdot d\vecell = -\tfrac{2}{3} - \tfrac{2}{3} = -\tfrac{4}{3}.
+\end{align}
+Meanwhile, according to Stokes's theorem, \(\int (\nablav \times \vec{F}) \cdot d\vec{A} \), where
+\begin{align}
+\nablav \times \vec{F} &= \begin{vmatrix} 
+\vec{e}_x & \vec{e}_y & \vec{e}_z \\
+\partial/\partial x & \partial/\partial y& \partial/\partial z \\
+x^2 y & xy^3 & 0
+\end{vmatrix}
+= (y^3 - x^2)\vec{e}_z. 
+\end{align}
+Since \(d\vec{A} = \vec{e}_z dA\) (which is consistent, according to the right-hand rule, with the counter-clockwise manner in which the line integral was evaluated), the surface integral evaluates to 
+\begin{align*}
+\int_{-1}^1\int_{-1}^1  (y^3 - x^2) dx\,dy &= \int_{-1}^1\left[xy^3 - \tfrac{1}{3}x^3 \right]\big\rvert_{x=-1}^{x=1} dy\\
+&=\int_{-1}^1 ({y^3} - \tfrac{1}{3} - y^3 - \tfrac{1}{3}) dy \\
+&= -\tfrac{2}{3}y\big\rvert_{y=-1}^{y=1} = -\tfrac{4}{3},
+\end{align*}
+which is consistent with the evaluation of the line integral.
+</p>
 </div>
 </li> 
 
+<p>The remaining problems of this section build on one another and should be attempted in order:</p> 
+<li> Calculate the line integral \(\oint \vec{G}\cdot d\vecell\) for the vector field \(\vec{G} = -y\vec{e}_x + (x+y^2)\vec{e}_y\), where the closed path of integration is a square whose corners are given by the ordered pairs \((x,y) = (1,1)\), \((-1,1)\), \((-1,-1)\), and \((1,-1)\). Then, use Stokes's theorem to show that the same result is obtained by \(\int (\nablav \times \vec{G}) \cdot d\vec{A}\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('stokesthm-2')">[answer]</span>
+<div id="stokesthm-2" class="expandable-content" style="color: #0000A0;">
+<p> 
+The vector field is shown below.
+<img src="vector-field.svg" width="200" style = "display: block; margin-left: auto; margin-right: auto;"/>
+Like in the previous problem, the line integral consists of four sub-paths. This time, the integrals are combined before they are evaluated:
+<ol>
+<li>From \((x,y)= (1,-1)\to(1,1)\), the integral is \(\int_{-1}^1 (1+y^2) dy\).</li>
+<li>From \((x,y)= (1,1)\to(-1,1)\), the integral is \(\int_{-1}^1 dx\).</li>
+<li>From \((x,y)= (-1,1)\to(-1,-1)\), the integral is \(\int_{-1}^{1} (1-y^2) dy\), where it has been noted that \(\int_{1}^{-1} = -\int_{-1}^{1}\).</li>
+<li>From \((x,y)= (-1,-1)\to(1,-1)\), the integral is \(\int_{-1}^{1} dx\).</li>
+</ol>
+The integrals add to 
+\begin{align}
+\oint \vec{G}\cdot d\vecell = 2\int_{-1}^1 dy + 2\int_{-1}^1 dx = 8.
+\end{align}
+Meanwhile, according to Stokes's theorem, \(\int (\nablav \times \vec{G}) \cdot d\vec{A} \), where
+\begin{align}
+\nablav \times \vec{G} &= \begin{vmatrix} 
+\vec{e}_x & \vec{e}_y & \vec{e}_z \\
+\partial/\partial x & \partial/\partial y& \partial/\partial z \\
+-y & x+y^2 & 0
+\end{vmatrix}
+= (1 + 1)\vec{e}_z = 2\vec{e}_z. 
+\end{align}
+Since \(d\vec{A} = \vec{e}_z dA\), the surface integral evaluates to 
+\begin{align*}
+2\int_{-1}^1\int_{-1}^1  dx\,dy &= 2x\rvert_{-1}^1 y\rvert_{-1}^1 = 2^3 = 8,
+\end{align*}
+which is consistent with the evaluation of the line integral.
+</p>
+</div>
+</li>
 
+<li> Show in Cartesian coordinates \((x,y)\) that 
+\begin{align}
+\int [\nablav \times (G_x\vec{e}_x + G_y\vec{e}_y)]\cdot \vec{e}_z \,d{A} =
+\int [\nablav \cdot (F_x\vec{e}_x + F_y\vec{e}_y)] \,dA \,,
+\end{align}
+where \(F_x = G_y\) and \(F_y = -G_x\). Then, verify the result by using \(\vec{G}\) from the previous problem, i.e., \(G_x = -y\) and \(G_y = x+y^2\) for the same path of integration.  
+<span class="expandable-toggle" onclick="toggleExpandableContent('stokes-gauss')">[answer]</span>
+<div id="stokes-gauss" class="expandable-content" style="color: #0000A0;">
+<p> 
+The desired identity is easily shown by noting that 
+\begin{align}
+\nablav \times (G_x\vec{e}_x + G_y\vec{e}_y) &= \begin{vmatrix} 
+\vec{e}_x & \vec{e}_y & \vec{e}_z \\
+\partial/\partial x & \partial/\partial y& \partial/\partial z \\
+G_x & G_y & 0
+\end{vmatrix}
+= \left(\frac{\partial G_y}{\partial x} - \frac{\partial G_x}{\partial y}\right)\vec{e}_z. 
+\end{align}
+Thus 
+\[[\nablav \times (G_x\vec{e}_x + G_y\vec{e}_y)]\cdot \vec{e}_z = \frac{\partial G_y}{\partial x} - \frac{\partial G_x}{\partial y}.\]
+Replacing \(G_y\) with \(F_x\) and \(G_x\) with \(-F_y\) shows that 
+\begin{align}
+[\nablav \times (G_x\vec{e}_x + G_y\vec{e}_y)]\cdot \vec{e}_z &= 
+\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} = \nablav \cdot (F_x\vec{e}_x + F_y\vec{e}_y), 
+\end{align}
+completing the proof.
+</p>
+<p>The result is now verified for \(G_x = -y\) and \(G_y = x+y^2\), for which \(F_x = x+y^2\) and \(F_y = y\). The divergence of \(\vec{F}\) is
+\begin{align}
+\nablav \cdot \vec{F} = 
+1 + 1 = 2. 
+\end{align}
+Thus 
+\begin{align}
+\int \nablav \cdot \vec{F} \,dA = 2\int_{-1}^1 \int_{-1}^1 dx\,dy = 8,
+\end{align}
+recovering the result of the previous problem.
+</p>
+</div>
+</li>
+
+<li> The mapping \(F_x = G_y\) and \(F_y = -G_x\) and can be written as a <i>rotation</i> of the vector field \(\vec{F}\). The rotation in Cartesian coordinates reads
+\begin{align}
+\begin{pmatrix}F_x \\ F_y \end{pmatrix} = 
+\begin{pmatrix}0 & 1\\ -1 &0\end{pmatrix}
+\begin{pmatrix}G_x \\ G_y \end{pmatrix}\,.
+\end{align}
+In words, the equation above says that \(\vec{F}\) equals a <a href="https://en.wikipedia.org/wiki/Rotation_matrix" target="_blank" rel="noopener noreferrer"><i>clockwise rotation</i></a> by \(90^\circ\) of \(\vec{G}\). Given that \(\oint \vec{G}\cdot d\vecell = \int (\nablav \times \vec{G}) \cdot d\vec{A}\) (Stokes's theorem) and the identity proved in the previous problem [written symbolically as \(\int( \nablav \times \vec{G})\cdot d\vec{A} = \int \nablav\cdot \vec{F} dA\)], show that 
+\[\int \nablav\cdot \vec{F} \,dA = \oint \vec{F}\cdot \vec{e}_n\, d\ell,\] 
+where the <i>unit normal vector</i> to the boundary is \(\vec{e}_n\), which equals \({R}\cdot d\vecell\), where \(R\) is the rotation matrix for the clockwise rotation.
+Note that the rotation matrix is orthogonal, i.e., \({R}^{-1} = R^\mathrm{T}\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('stokes-gauss-2')">[answer]</span>
+<div id="stokes-gauss-2" class="expandable-content" style="color: #0000A0;">
+<p> 
+In terms of \(R\), the equation of rotation is  
+\begin{align}
+\vec{F} = R \cdot \vec{G}.
+\end{align}
+Invoking the fact that \(R\) is an orthogonal matrix allows the equation of rotation to be written as \(\vec{G} = R^\mathrm{T} \cdot  \vec{F}\), insertion of which into Stokes's theorem yields 
+\begin{align}
+\oint (R^\mathrm{T}\cdot \vec{F})\cdot d\vecell = \int (\nablav \times \vec{G}) \cdot d\vec{A} = \int \nablav \cdot \vec{F}\, dA\,,
+\end{align}
+where the second equality holds from the previous problem. By the definition of the transpose operation, \((R^\mathrm{T}\cdot \vec{F})\cdot d\vecell = \vec{F} \cdot (R \cdot d\vecell)\). Noting that \(R \cdot d\vecell = \vec{e}_n d\ell\) yields the desired equality,
+\begin{align}
+\oint \vec{F}\cdot \vec{e}_n d\ell = \int \nablav \cdot \vec{F}\, dA \,.
+\end{align}
+The above result is surprisingly hard to find in books, but it can be found on <a href="https://en.wikipedia.org/wiki/Green%27s_theorem#Relationship_to_the_divergence_theorem" target="_blank" rel="noopener noreferrer">this</a> Wikipedia page (where it is discussed slightly differently). </p>
+<p>The above exercise shows that for two-dimensional vector fields, the divergence theorem for the vector field \(\vec{F}\) is equivalent to Stokes's theorem for the vector field \(\vec{G}\), where \(\vec{F} = R\cdot \vec{G}\). See <a href="https://math.stackexchange.com/questions/2301324/the-2-d-divergence-theorem-and-greens-theorem" target="_blank" rel="noopener noreferrer">this discussion</a> for more. 
+</p>
+</div>
+</li> 
+
+<li> Calculate \(\oint \vec{F}\cdot \vec{e}_n\, d\ell\), where \(\vec{F} = (x+y^2)\vec{e}_x + y\vec{e}_y\), and where the domain of integration is the same as in problems 29 and 30. Check to see that the result is equivalent to that of  problem 30, i.e., \(\oint \vec{F}\cdot \vec{e}_n\, d\ell = \int \nablav\cdot \vec{F} \,dA = 8\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('stokes-gauss-2-ex')">[answer]</span>
+<div id="stokes-gauss-2-ex" class="expandable-content" style="color: #0000A0;">
+<p> 
+The integral \(\oint \vec{F}\cdot \vec{e}_n\, d\ell\) consists of four contributions. For \(F_x = x+y^2\) and \(F_y = y\), the contributions are
+<ol>
+<li>\(\int_{-1}^1 F_x\rvert_{x=1}\, dy = \int_{-1}^1 (1 + y^2)dy = 2 + \tfrac{2}{3}\) </li>
+<li>\(\int_{-1}^1 F_y\rvert_{y=1}\, dx = \int_{-1}^1 dx = 2\)</li>
+<li>\(-\int_{-1}^1 F_x\rvert_{x=-1}\, dy = -\int_{-1}^1 (-1+y^2)dy = 2-\tfrac{2}{3}\)</li>
+<li>\(-\int_{-1}^1 F_y\rvert_{y=-1}\, dx = \int_{-1}^1 dx = 2 \)</li>
+</ol>
+The minus sign arise for contribution (3) because \(\vec{e}_x\cdot \vec{e}_n = -1 \). Similarly, for contribution (4), \(\vec{e}_y\cdot \vec{e}_n = -1 \).</p> 
+<p>
+Adding up the contributions yields \(\oint \vec{F}\cdot \vec{e}_n\, d\ell = 2 + 2 + 2+ 2 = 8\), matching the results of problems 29 and 30.
+</p>
+</div>
+</li> 
 
 
 
