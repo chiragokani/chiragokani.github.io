@@ -136,7 +136,7 @@ where \(\vec{n}\) is the outward unit normal vector to the surface. Since the wa
 \begin{align}\label{eq:ray:alg}
 (P^2 \gradient \tau \cdot \vec{n})\big\rvert_{\vec{x}} \, A(\vec{x}) - (P^2 \gradient \tau \cdot \vec{n})\big\rvert_{\vec{x}_0} \, A(\vec{x}_0) = 0 \,.
 \end{align}
-Pierce notes that \(\gradient \tau\cdot \vec{n} = 1/c\), which is deemed to be the same at points \(\vec{x}_0\) and \(\vec{x}\). <span class="Q">What warrants the assumption that \(c\) is the same at points \(\vec{x}_0\) and \(\vec{x}\)? If \(c\) were indeed the same value at all points in space, then rays would all travel in straight lines, and the ray tube depicted above (adapted from Pierce's Fig. 8.17) would have no curvature.</span> Thus Eq. \eqref{eq:ray:alg} becomes \(P^2(\vec{x}) A(\vec{x}) = P^2(\vec{x}_0) A(\vec{x}_0)\), which, upon taking the square root of both sides and solving for \(x_0\), gives
+Pierce notes that \(\gradient \tau\cdot \vec{n} = 1/c\), which is deemed to be the same at points \(\vec{x}_0\) and \(\vec{x}\). <span class="Q">Apparently, the result to follow is based on the  assumption that \(c\) is the same at points \(\vec{x}_0\) and \(\vec{x}\). But if \(c\) were indeed the same value at all points in space, then rays would all travel in straight lines, and the ray tube depicted above (adapted from Pierce's Fig. 8.17) would have no curvature. It is unclear why Pierce's Fig. 8.17 has curvature.</span> Thus Eq. \eqref{eq:ray:alg} becomes \(P^2(\vec{x}) A(\vec{x}) = P^2(\vec{x}_0) A(\vec{x}_0)\), which, upon taking the square root of both sides and solving for \(x_0\), gives
 \begin{align}\label{eq:amp}
 \boxed{P(\vec{x}) = P(\vec{x}_0) \sqrt{\frac{A(\vec{x}_0)}{A(\vec{x})}}\,.}
 \end{align}
@@ -395,7 +395,7 @@ p_x &= \frac{\partial L}{\partial {x}'} =  n(x,y,z)\frac{\partial}{\partial x'} 
 p_y &= \frac{\partial L}{\partial {y}'} = n(x,y,z)\frac{\partial}{\partial y'} \sqrt{1 + x'^2 + y'^2}
 = \frac{n(x,y,z)y'}{\sqrt{1 + x'^2 + y'^2}}\,.\label{eq:momentumy}
 \end{align}
-The Hamiltonian defined by Eq. \eqref{eq:hamiltonian} can be simplified by solving Eqs. \eqref{eq:momentumx} and \eqref{eq:momentumy} for \(x'\) and \(y'\) Both Eqs. \eqref{eq:momentumx} and \eqref{eq:momentumy} are squared, and the first is solved for \(y'^2\) while the second is solved for \(x'^2\): 
+The Hamiltonian defined by Eq. \eqref{eq:hamiltonian} can be simplified by solving Eqs. \eqref{eq:momentumx} and \eqref{eq:momentumy} for \(x'\) and \(y'\) Both Eqs. \eqref{eq:momentumx} and \eqref{eq:momentumy} are squared, and the first is solved for \(y'^2\) while the second is solved for \(x'^2\) [see algebra <a href="alg-1.pdf" target="_blank" rel="noopener noreferrer">here</a>]: 
 \begin{equation*}
 y'^2 = x'^2[(n/p_x)^2 - 1] -1\,,\quad x'^2 = y'^2[(n/p_y)^2 - 1] -1\,.
 \end{equation*}
@@ -409,7 +409,7 @@ The algebra is made more manageable by denoting \(\gamma_x \equiv (n/p_x)^2 -1\)
 y'^2 = \frac{1+\gamma_x}{\gamma_x\gamma_y - 1}\,,\quad 
 x'^2 = \frac{1+\gamma_y}{\gamma_x\gamma_y - 1}\,.
 \end{equation}
-After some algebra, Eqs. \eqref{eq:x':alg} are reduced to
+After some <a href="alg-2.pdf" target="_blank" rel="noopener noreferrer">algebra</a>, Eqs. \eqref{eq:x':alg} are reduced to
 \begin{equation}\label{eq:x'}
 x' = \frac{p_x}{\sqrt{n^2-p_x^2-p_y^2}}\,,\quad 
 y' = \frac{p_y}{\sqrt{n^2-p_x^2-p_y^2}}\,.
