@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Least-action derivations of wave equations</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    tags: 'ams',
+    macros: {
+    Order: "{\\mathcal O}",
+    vec: ['\\mathbf{#1}',1],
+    dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+    nablav: "{\\boldsymbol\\nabla}"
+    }
+  }
+};
+</script>	
+<link rel="stylesheet" href="..\..\chirag.css">
+</head>
+<body>
+
+<h2>Least-action derivations of wave equations</h2>
+
+<ul>
+<li><a href="lagrange.html#string-densities">Waves on a string</a></li>
+    <ul>
+    <li><a href="lagrange.html#string-densities">Energy densities</a></li>
+    <li><a href="lagrange.html#string-EL">Euler-Lagrange equation</a></li>
+    <li><a href="lagrange.html#string-wave">Wave equation</a></li>
+    </ul>
+<li><a href="lagrange.html#water">Shallow water waves</a></li>
+    <ul>
+    <li><a href="lagrange.html#water-densities">Energy densities</a></li>
+    <li><a href="lagrange.html#water-EL">Euler-Lagrange equation</a></li>
+    <li><a href="lagrange.html#water-wave">Wave equation</a></li>
+    </ul>
+<li><a href="lagrange.html#acoustic">Acoustic waves</a></li>
+<li><a href="lagrange.html#refs">References</a></li>
+</ul>
+
+Newton's law is often used to obtain the wave equation for a string, shallow water waves, and acoustic waves <a href="lagrange.html#refs">[1, 2]</a>. It can sometimes be more convenient to derive the wave equation from the least-action principle, especially if expressions for the kinetic and potential energy densities are available. 
+
+<h3 id="string-densities">Waves on a string</h3>
+Let \(\xi = \xi(x,t)\) denote the tranverse displacement of a string of mass density \(\rho_0\) and constant tension \(\mathcal{T}\), as shown below:
+
+<img src="string.png" width="250px"> 
+
+<h4 id="string-densities">Energy densities</h4>
+<p>
+For an arbitrary transverse motion of the string, the associated kinetic energy density is, by definition,
+\begin{align}\label{eq:string:kinetic}
+T = \tfrac{1}{2}\rho_0 (\partial \xi/\partial t)^2 .
+\end{align}
+To calculate the kinetic energy of the motion of a string of length \(\ell\), Eq. \eqref{eq:string:kinetic} is integrated, i.e., the kinetic energy is \(\tfrac{1}{2}\rho_0 \int_0^\ell (\partial \xi/\partial t)^2 dx\). 
+</p>
+
+<p>
+Obtaining the potential energy density of the string requires more effort, as will also be the case for shallow water and acoustic waves. Displacing the string by \(\delta \xi\) corresponds to a differential length change of 
+\begin{align}\label{eq:ds}
+\delta s = \frac{\partial s}{\partial x}dx = \frac{dx}{\cos\theta}\,,
+\end{align}
+as can be seen in the figure above. [Partial derivatives are used because \(s = s(x,t)\) and \(\xi = \xi(x,t)\).]  Since \(1/\cos\theta = \sqrt{1+ \tan^2\theta}\), and since \(\tan\theta = \partial \xi/\partial x\), Eq. \eqref{eq:ds} becomes
+\begin{align}\label{eq:ds:2}
+\delta s = \sqrt{1 + (\partial \xi/\partial x)^2} \, dx \simeq  \big[1 + \tfrac{1}{2}(\partial \xi/\partial x)^2\big] dx\,,
+\end{align}
+where the approximation neglects terms cubic in \(\partial \xi/\partial x\). Deforming the string from having an original length of \(\ell\) to a new length \(\ell + \delta s\) amounts to a total length change of 
+\begin{align}\label{eq:length}
+\int_0^\ell \sqrt{1 + (\partial \xi/\partial x)^2} \, dx - \ell \simeq \int_0^\ell \big[1 + \tfrac{1}{2}(\partial \xi/\partial x)^2\big] dx - \ell = \tfrac{1}{2} \int_0^\ell (\partial \xi/\partial x)^2 dx\,.
+\end{align}
+The work done in deforming the string equals the force times the displacement. Since \(\mathcal{T}\) is a constant, the work done is simply \(\mathcal{T}\) times Eq. \eqref{eq:length}: 
+\begin{align}\label{eq:W}
+W = \tfrac{1}{2} \mathcal{T} \int_0^\ell (\partial \xi/\partial x)^2 dx\,.
+\end{align}
+The quantity 
+\begin{equation}\label{eq:string:potential}
+U = \tfrac{1}{2} \mathcal{T} (\partial \xi/\partial x)^2
+\end{equation}
+is identified to be the potential energy density of the string. {See p. 101 of Ref. <a href="lagrange.html#refs">[3]</a> for a discussion on the limitations of this interpretation.} 
+</p>
+
+<p>From Eqs. \eqref{eq:string:kinetic} and \eqref{eq:string:potential}, the Lagrangian is
+\begin{align}\label{eq:string:L}
+L = T-U = \tfrac{1}{2}\rho_0 (\partial \xi/\partial t)^2 - \tfrac{1}{2} \mathcal{T} (\partial \xi/\partial x)^2.
+\end{align}
+</p>
+
+<h4 id="string-EL">Euler-Lagrange equation</h4>
+<p>The following derivation is mostly based on what is presented in Ref. <a href="lagrange.html#refs">[3]</a>. Hamilton's principle is stated explicitly in these notes through the variation of the parameter \(\alpha\), while the principle is discussed qualitatively in Ref. <a href="lagrange.html#refs">[3]</a>.</p>
+
+<p>For convenience, the partial derivatives of \(\xi\) with respect to \(x\) and \(t\) are denoted by subscripts, i.e., \(\xi_x = \partial \xi/\partial x\) and \(\xi_t = \partial \xi/\partial t\). Thus Eq. \eqref{eq:string:L} becomes
+\begin{align}\label{eq:string:L:1}
+L = L[\xi(x,t), \xi_x(x,t),\xi_t(x,t),x,t] = \tfrac{1}{2}\rho_0 \xi_t^2 - \tfrac{1}{2} \mathcal{T} \xi_x^2.
+\end{align}
+Begin by forming a functional \(J\) of the independent variables \(x\) and \(t\):
+\begin{align}\label{eq:string:J}
+J = \int_{t_1}^{t_2}\int_{x_1}^{x_2} L[\xi(x,t), \xi_x(x,t),\xi_t(x,t),x,t] dx\,dt \,.
+\end{align}
+According to the least-action principle, nature behaves in a way such that \(\xi(x,t)\) extremizes the functional \(J\). To determine the \(\xi(x,t)\) that extremizes \(J\), consider a function of \(x\) and \(t\) that is a neighbor to \(\xi(x,t)\),
+\begin{align}\label{eq:string:neighbor}
+\xi(\alpha,x,t) = \xi(0,x,t) + \alpha\zeta(x,t)\,,
+\end{align}
+where \(\zeta(x,t)\) is continuous and vanishes at \(x_1\), \(x_2\), \(t_1\) and \(t_2\), i.e., 
+\begin{align}\label{eq:zeta:end}
+\zeta(x_1,t) = \zeta(x_2,t) = \zeta(x,t_1)= \zeta(x,t_2)=0\,,
+\end{align}
+so that \(\xi(\alpha,x,t)\) shares the endpoints of \(\xi(x,t)\). Inserting the neighboring function given by Eq. \eqref{eq:string:neighbor} into Eq. \eqref{eq:string:J} yields
+\begin{align}\label{eq:string:J:alpha}
+J(\alpha) = \int_{t_1}^{t_2}\int_{x_1}^{x_2} L[\xi(x,t,\alpha), \xi_x(x,t,\alpha),\xi_t(x,t,\alpha),x,t] dx\,dt \,.
+\end{align}
+The functional \(J\) is now extremized with respect to the paramater \(\alpha\):
+\begin{align}
+\frac{\partial J}{\partial \alpha}\bigg\rvert_{\alpha=0} = 0\,.
+\end{align}
+The partial derivative of Eq. \eqref{eq:string:J:alpha} with respect to \(\alpha\) is set to zero,
+\begin{align}
+\frac{\partial J}{\partial \alpha}\bigg\rvert_{\alpha = 0} &= \left\{\frac{\partial}{\partial \alpha}\int_{t_1}^{t_2}\int_{x_1}^{x_2} L[\xi(x,t,\alpha), \xi_x(x,t,\alpha),\xi_t(x,t,\alpha),x,t] dx\,dt\right\}\bigg\rvert_{\alpha = 0} \notag\\
+&= \int_{t_1}^{t_2}\int_{x_1}^{x_2} \left[  
+\frac{\partial L}{\partial \xi} \left(\frac{\partial \xi}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} +
+\frac{\partial L}{\partial \xi_x} \left(\frac{\partial \xi_x}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} +
+\frac{\partial L}{\partial \xi_t} \left(\frac{\partial \xi_t}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} \right] dx\,dt = 0\,,\label{eq:string:J:alpha:1}
+\end{align}
+where the chain rule has been used to arrive at the second line. Since from Eq. \eqref{eq:string:neighbor} 
+\begin{align*}
+\frac{\partial \xi}{\partial \alpha} = \zeta(x,t)\,,\quad
+\frac{\partial \xi_x}{\partial \alpha} = \frac{\partial \zeta}{\partial x}\,,\quad
+\frac{\partial \xi_t}{\partial \alpha} = \frac{\partial \zeta}{\partial t}\,,
+\end{align*}
+Eq. \eqref{eq:string:J:alpha:1} becomes
+\begin{align}\label{eq:string:J:alpha:2}
+\int_{t_1}^{t_2}\int_{x_1}^{x_2} \left(  
+\frac{\partial L}{\partial \xi} \zeta +
+\frac{\partial L}{\partial \xi_x} \frac{\partial \zeta}{\partial x} +
+\frac{\partial L}{\partial \xi_t} \frac{\partial \zeta}{\partial t} \right) dx\,dt &= 0\,.
+\end{align}
+The integral over \(x\) of the second term of Eq. \eqref{eq:string:J:alpha:2} is integrated by parts, i.e., \(\int u\, dv = uv- \int v\, du\). Setting \(u = \partial L/\partial \xi_x\) and \(dv = d\zeta\) yields
+\begin{align}\label{eq:string:parts:1}
+\int_{x_1}^{x_2} \frac{\partial L}{\partial \xi_x} \frac{\partial \zeta}{\partial x}dx = 
+\frac{\partial L}{\partial \xi_x} \zeta(x,t)\bigg\rvert_{x_1}^{x_2}  - \int_{x_1}^{x_2} \frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \xi_x}\bigg)\zeta(x,t) dx
+\,.
+\end{align}
+The first term on the right-hand side of Eq. \eqref{eq:string:parts:1} vanishes because \(\zeta(x_1,t) = \zeta(x_2,t) = 0\) [see Eq. \eqref{eq:zeta:end}]. Equation \eqref{eq:string:parts:1} thus reduces to
+\begin{equation}\label{eq:string:parts:1:1}
+\int_{x_1}^{x_2} \frac{\partial L}{\partial \xi_x} \frac{\partial \zeta}{\partial x}dx = - \int_{x_1}^{x_2} \frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \xi_x}\bigg)\zeta(x,t)\, dx
+\end{equation}
+Similarly, the integral over \(t\) of the third term of Eq. \eqref{eq:string:J:alpha:2} is integrated by parts by setting \(u = \partial L/\partial \xi_t\) and \(dv = d\zeta\):
+\begin{align}\label{eq:string:parts:2}
+\int_{t_1}^{t_2} \frac{\partial L}{\partial \xi_t} \frac{\partial \zeta}{\partial t}dt = 
+\frac{\partial L}{\partial \xi_t} \zeta(x,t)\bigg\rvert_{t_1}^{t_2}  - \int_{t_1}^{t_2} \frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \xi_t}\bigg)\zeta(x,t)\, dt\,.
+\end{align}
+The first term on the right-hand side of Eq. \eqref{eq:string:parts:2} vanishes because \(\zeta(x,t_1) = \zeta(x,t_2) = 0\). Equation \eqref{eq:string:parts:2} thus reduces to
+\begin{equation}\label{eq:string:parts:2:1}
+\int_{t_1}^{t_2} \frac{\partial L}{\partial \xi_t} \frac{\partial \zeta}{\partial t}dt = - \int_{t_1}^{t_2} \frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \xi_t}\bigg)\zeta(x,t)\, dt
+\end{equation}
+In terms of Eqs. \eqref{eq:string:parts:1:1} and \eqref{eq:string:parts:2:1}, Eq. \eqref{eq:string:J:alpha:2} becomes
+\begin{align}\label{eq:string:J:alpha:3}
+\int_{t_1}^{t_2}\int_{x_1}^{x_2} \left[
+\frac{\partial L}{\partial \xi} 
+- \frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \xi_x}\bigg)
+-  \frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \xi_t}\bigg)
+\right] \zeta(x,t) \,  dx\, dt &= 0\,.
+\end{align}
+Since the points \(x_1\) and \(x_2\) can be brought as close together as desired (and similarly for \(t_1\) and \(t_2\)), the integrand of Eq. \eqref{eq:string:J:alpha:3} must vanishes for the equality to be satisfied, i.e., 
+\begin{align}\label{eq:string:EL}
+\frac{\partial L}{\partial \xi} 
+- \frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \xi_x}\bigg)
+-  \frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \xi_t}\bigg) = 0\,.
+\end{align}
+</p>
+<h4 id="string-wave">Wave equation</h4>
+<p>The wave equation is obtained by inserting Eq. \eqref{eq:string:L:1} into Eq. \eqref{eq:string:EL}. Since the Lagrangian does not depend explicitly on \(\xi\) (i.e., \(\partial L/\partial \xi = 0\)), and since
+\[\frac{\partial}{\partial x}\left(\frac{\partial L}{\partial \xi_x}\right) = \mathcal{T}\frac{\partial}{\partial x} \left(\frac{\partial \xi}{\partial x}\right) = \mathcal{T}\frac{\partial^2 \xi}{\partial x^2}\]
+and 
+\[\frac{\partial}{\partial t}\left(\frac{\partial L}{\partial \xi_t}\right) = \rho_0 \frac{\partial}{\partial t}\left(\frac{\partial \xi}{\partial t}\right) = \rho_0\frac{\partial^2 \xi}{\partial t^2}\]
+Eq. \eqref{eq:string:EL} reduces to \(\mathcal{T} \partial^2\xi/\partial x^2 - \rho_0\partial^2\xi/\partial t^2 = 0\), or, upon identifying \(c_0^2 = \mathcal{T}/\rho_0\),
+\begin{align}
+\frac{\partial^2 \xi}{\partial x^2} - \frac{1}{c_0^2}\frac{\partial^2\xi}{\partial t^2} =0 \,.
+\end{align}
+</p>
+
+
+<h3 id="water-densities">Shallow water waves</h3>
+<p>Consider surface water waves in which the height of the water equals 
+\begin{align}\label{eq:h}
+h(\vec{r},t) = h_0 + \eta(\vec{r},t)\,.
+\end{align} 
+where \(h_0\) is the depth as measured from the surface at rest to the bottom, and where \(\eta\) is the wave variable, as shown below. </p>
+<img src="shallow-water.png" width="450px"> 
+<p>The position vector \(\vec{r}\) is represented by two coordinates in the plane perpendicular to the direction of the displacement, which is identified as the \(z\) direction, e.g., \(\vec{r} = x\vec{e}_x + y\vec{e}_y\), where \(\vec{e}_x\) and \(\vec{e}_y\) are the Cartesian rectangular unit vectors. The \(z\) axis is zero at the bottom, and \(z = h_0\) at the surface at rest. Two assumptions are now made:
+<ol>
+<li> Let the analysis be confined to shallow waves: \(h_0 \ll \lambda\), where \(\lambda\) is the wavelength. Then </li> 
+<ol type="a">
+<li>the fluid velocity \(\vec{v}\) of the water is not a function of the depth, i.e., \(\vec{v} = \vec{v}(\vec{r}) \neq \vec{v}(z)\), and</li> 
+<li> \(\vec{v}\) lies in the plane perpendicular to \(z\), i.e., \(\vec{v}\) has no component in the \(z\) direction.</li>
+</ol>
+<li> Let the fluid density \(\rho\) be a constant \(\rho_0\), and consider the fluid to be incompressible.</li>
+</ol>
+Also, if \(P_0\) is the atmospheric pressure, then the pressure in the water at height \(z\) is
+\begin{align}\label{eq:P}
+P(\vec{r},z,t) = P_0 + \rho_0g[\eta(\vec{r},t) -z]\,.
+\end{align} 
+ </p>
+
+<h4 id="water-densities">Energy densities</h4>
+<p>
+The kinetic energy density is, by definition, 
+\begin{align}\label{eq:water:T}
+T = \tfrac{1}{2}\rho_0 v^2\,,
+\end{align}
+where \(v^2 = \vec{v}\cdot\vec{v}\), while the potential energy is obtained from the gravitational potential energy density the water in a fluid column:
+\begin{align}
+U &= \frac{1}{\Delta x \Delta y h_0} \int_{0}^{\eta} \rho_0 g z \Delta x\Delta y \,dz \notag\\
+&=\frac{\rho_0 g}{h_0} \int_{0}^{\eta} z \,dz\,.\label{eq:water:U:1}
+\end{align}
+Evaluating Eq. \eqref{eq:water:U:1} yields the potential energy density 
+\begin{align}\label{eq:water:U}
+U = \tfrac{1}{2} \frac{\rho_0 g}{h_0} \eta^2\,.
+\end{align}
+A Lagrangian density is formed by subtracting Eq. \eqref{eq:water:U} from Eq. \eqref{eq:water:T},
+\begin{align}\label{eq:water:L}
+L = T-U = \tfrac{1}{2}\rho_0 v^2 - \tfrac{1}{2} \frac{\rho_0 g}{h_0} \eta^2.
+\end{align}
+</p>
+
+<h4 id="water-EL">Euler-Lagrange equation</h4>
+<p>
+In order to use Hamilton's principle, the Lagrangian must be expressed in terms of a single function, i.e., \(\eta\) and \(\vec{v}\) should be written in terms of a common variable. The appropriate variable (taking inspiration from acoustics) is the velocity potential \(\psi\), defined by
+\begin{align}\label{eq:psi}
+\vec{v} = -\nablav \psi\,.
+\end{align}
+It is noted that \(\psi\) has units of length squared per unit time, and that the introduction of Eq. \eqref{eq:psi} implies that \(\nablav \times \vec{v} = 0\). </p>
+
+<p>
+To relate \(\eta\) to \(\psi\), the linearized momentum conservation equation \(g\nablav \eta + \partial \vec{v}/\partial t = 0\) must be introduced <a href="lagrange.html#refs">[2]</a>. Thus, up to the addition of a constant, 
+\begin{align}\label{eq:psi:v}
+\eta = \frac{1}{g}\frac{\partial \psi}{\partial t}\,.
+\end{align}
+In terms of Eqs. \eqref{eq:psi} and \eqref{eq:psi:v}, the kinetic and potential energies become \(T = \tfrac{1}{2}\rho_0 (\nablav \psi)^2\) and \(U = \tfrac{1}{2}(\rho_0/gh_0)(\partial\psi/\partial t)^2\), respectively. The Lagrangian is therefore 
+\begin{align}\label{eq:water:L:1}
+L &= L[\psi(x,y,t), \psi_x(x,y,t), \psi_y(x,y,t), \psi_t(x,y,t), x,y, t] \\
+&=  \tfrac{1}{2}\rho_0[({\partial\psi}/{\partial x})^2 + ({\partial\psi}/{\partial y})^2] -
+\tfrac{1}{2}\frac{\rho_0}{gh_0}({\partial\psi}/{\partial t})^2\,.
+\end{align}
+</p>
+
+<p>
+A functional \(J\) is formed of the independent variables \(x\), \(y\), and \(t\):
+\begin{align}\label{eq:water:J}
+J = \int_{t_1}^{t_2}\int_{y_1}^{y_2}\int_{x_1}^{x_2} L[\psi(x,y,t), \psi_x(x,y,t), \psi_y(x,y,t),\psi_t(x,y,t),x,y,t] dx\,dy\,dt \,.
+\end{align}
+To find the \(\psi\) that extremizes \(J\), consider the neighboring function 
+\begin{align}\label{eq:water:neighbor}
+\psi(\alpha,x,y,t) = \psi(0,x,y,t) + \alpha\zeta(x,y,t)\,,
+\end{align}
+where \(\zeta(x,y,t)\) vanishes at the endpoints of \(x_1\), \(x_2\), \(y_1\), \(y_2\), \(t_1\), and \(t_2\). Inserting Eq. \eqref{eq:water:neighbor} into Eq. \eqref{eq:water:J} yields
+\begin{align}\label{eq:wave:J:alpha}
+J(\alpha) = \int_{t_1}^{t_2}\int_{y_1}^{y_2}\int_{x_1}^{x_2} L[\psi(x,y,t,\alpha), \psi_x(x,y,t,\alpha), \psi_y(x,y,t,\alpha),\psi_t(x,y,t,\alpha),x,y,t] dx\,dy\,dt \,.
+\end{align}
+Extremizing Eq. \eqref{eq:wave:J:alpha} with respect to \(\alpha\) yields
+\begin{align}
+\frac{\partial J}{\partial \alpha}\bigg\rvert_{\alpha = 0} &= \left\{\frac{\partial}{\partial \alpha}\int_{t_1}^{t_2}\int_{y_1}^{y_2}\int_{x_1}^{x_2} L[\psi(x,y,t,\alpha), \psi_x(x,y,t,\alpha), \psi_y(x,y,t,\alpha),\psi_t(x,y,t,\alpha),x,y,t] dx\,dy\,dt\right\}\bigg\rvert_{\alpha = 0} \notag\\
+&= \int_{t_1}^{t_2}\int_{y_1}^{y_2}\int_{x_1}^{x_2} \left[  
+\frac{\partial L}{\partial \psi} \left(\frac{\partial \psi}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} +
+\frac{\partial L}{\partial \psi_x} \left(\frac{\partial \psi_x}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} +
+\frac{\partial L}{\partial \psi_y} \left(\frac{\partial \psi_y}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} +
+\frac{\partial L}{\partial \psi_t} \left(\frac{\partial \psi_t}{\partial \alpha}\right)\bigg\rvert_{\alpha = 0} \right] dx\,dy\,dt = 0\,,\label{eq:water:J:alpha:1}
+\end{align}
+where the chain rule has been used to arrive at the second line. Since from Eq. \eqref{eq:water:neighbor}
+\begin{align*}
+\frac{\partial \psi}{\partial \alpha} = \zeta(x,y,t)\,,\quad
+\frac{\partial \psi_x}{\partial \alpha} = \frac{\partial \zeta}{\partial x}\,,\quad
+\frac{\partial \psi_y}{\partial \alpha} = \frac{\partial \zeta}{\partial y}\,,\quad
+\frac{\partial \psi_t}{\partial \alpha} = \frac{\partial \zeta}{\partial t}\,,
+\end{align*}
+Eq. \eqref{eq:water:J:alpha:1} becomes
+\begin{align}\label{eq:water:J:alpha:2}
+\int_{t_1}^{t_2}\int_{y_1}^{y_2}\int_{x_1}^{x_2} \left(  
+\frac{\partial L}{\partial \psi} \zeta +
+\frac{\partial L}{\partial \psi_x} \frac{\partial \zeta}{\partial x} +
+\frac{\partial L}{\partial \psi_y} \frac{\partial \zeta}{\partial y} +
+\frac{\partial L}{\partial \psi_t} \frac{\partial \zeta}{\partial t} 
+\right) dx\,dy\,dt &= 0\,.
+\end{align}
+The integral over \(t\) of the last term of Eq. \eqref{eq:water:J:alpha:2} is integrated by parts: 
+\begin{align}\label{eq:water:parts:3}
+\int_{t_1}^{t_2} \frac{\partial L}{\partial \psi_t} \frac{\partial \zeta}{\partial t}dt = 
+\frac{\partial L}{\partial \psi_t} \zeta(x,t)\bigg\rvert_{t_1}^{t_2}  - \int_{t_1}^{t_2} \frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \psi_t}\bigg)\zeta(x,t)\, dt\,.
+\end{align}
+The first term on the right-hand side vanishes because \(\zeta(x,y,t_1) = \zeta(x,y,t_2) = 0\). Equation \eqref{eq:water:parts:3} thus reduces to
+\begin{align}\label{eq:water:parts:3:1}
+\int_{t_1}^{t_2} \frac{\partial L}{\partial \psi_t} \frac{\partial \zeta}{\partial t}dt = 
+ - \int_{t_1}^{t_2} \frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \psi_t}\bigg)\zeta(x,t)\, dt\,.
+\end{align}
+Similarly, the third term of Eq. \eqref{eq:water:J:alpha:2} becomes
+\begin{align}\label{eq:water:parts:1}
+\int_{y_1}^{y_2} \frac{\partial L}{\partial \psi_y} \frac{\partial \zeta}{\partial y}dy = 
+ - \int_{y_1}^{y_2} \frac{\partial}{\partial y}\bigg(\frac{\partial L}{\partial \psi_y}\bigg)\zeta(x,t)\, dy\,.
+\end{align}
+and the second term of Eq. \eqref{eq:water:J:alpha:2} becomes
+\begin{align}\label{eq:water:parts:2}
+\int_{x_1}^{x_2} \frac{\partial L}{\partial \psi_x} \frac{\partial \zeta}{\partial x}dx = 
+ - \int_{x_1}^{x_2} \frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \psi_x}\bigg)\zeta(x,t)\, dx\,.
+\end{align}
+In terms of Eqs. \eqref{eq:water:parts:3:1}&ndash;\eqref{eq:water:parts:2}, Eq. \eqref{eq:water:J:alpha:2} becomes
+\begin{align}\label{eq:water:J:alpha:final}
+\int_{t_1}^{t_2}\int_{y_1}^{y_2}\int_{x_1}^{x_2} \left[  
+\frac{\partial L}{\partial \psi}  -
+\frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \psi_x}\bigg) -
+\frac{\partial}{\partial y}\bigg(\frac{\partial L}{\partial \psi_y}\bigg) -
+\frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \psi_t}\bigg)
+\right] \zeta\, dx\,dy\,dt &= 0\,.
+\end{align}
+Since the endpoints of the integrals can be brought arbitrarily close together, the equality is satisfied only when the integrand vanishes, i.e., 
+\begin{align}\label{eq:water:J:alpha:final:integrand}
+\frac{\partial L}{\partial \psi}  -
+\frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \psi_x}\bigg) -
+\frac{\partial}{\partial y}\bigg(\frac{\partial L}{\partial \psi_y}\bigg) -
+\frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \psi_t}\bigg) = 0
+\end{align}
+</p>
+
+<h4 id="water-wave">Wave equation</h4>
+Noting from Eq. \eqref{eq:water:L:1} that 
+\begin{align}\label{eq:water:L:derivatives}
+\frac{\partial L}{\partial \psi} = 0\,,\quad
+\frac{\partial L}{\partial \psi_x} = \rho_0 \frac{\partial\psi}{\partial x}\,,\quad
+\frac{\partial L}{\partial \psi_y} = \rho_0 \frac{\partial\psi}{\partial y}\,,\quad
+\frac{\partial L}{\partial \psi_t} = -\frac{\rho_0}{gh_0}\frac{\partial\psi}{\partial t}\,,
+\end{align}
+Eq. \eqref{eq:water:J:alpha:final:integrand} reduces to  
+\begin{align}
+\rho_0 \nabla^2 \psi - \frac{\rho_0}{gh_0}\frac{\partial^2 \psi}{\partial t^2} = 0\,, 
+\end{align}
+or, dividing by \(\rho_0\) and identifying \(c_0^2 = gh_0\), 
+\begin{align}\label{eq:water:wave}
+\nabla^2 \psi - \frac{1}{c_0^2}\frac{\partial^2 \psi}{\partial t^2} = 0\,.
+\end{align}
+The more familiar wave equation for \(\zeta\) is obtained by taking the time derivative of Eq. \eqref{eq:water:wave} and dividing by \(g\).
+</p>
+
+<h3 id="acoustic">Acoustic waves</h3>
+<img src="../../under-construction.gif" width="500px">
+
+<p>For another perspective on describing wave motion using the calculus of variations, see <a href="../ray/index.html#ray" target="_blank" rel="noopener noreferrer">these notes on ray theory</a>. There, it is assumed that the frequency is infinite. in which a single independent variable \(x\) used. </p>
+
+<h2 id="refs">References</h2>
+<ol>
+<li>D. T. Blackstock, <a href="https://www.wiley.com/en-us/Fundamentals+of+Physical+Acoustics-p-9780471319795" target="_blank" rel="noopener noreferrer"><i>Fundamentals of Physical Acoustics</i></a> (Wiley, 2000), pp. 22&ndash;24, 30&ndash;32, 36&ndash;38.</li>
+
+<li>M. F. Hamilton, lecture notes from <i>Acoustics I</i>, an introductory graduate-level acoustics course in the Walker Department of Mechanical Engineering at the University of Texas at Austin, 2021. The exact momentum conservation equation is \(\nablav P + \rho_0(\vec{v}\nablav\cdot \vec{v} + \partial \vec{v}/\partial t) = 0\). Substitution of Eq. \eqref{eq:P} into this eqution yields \(g\nablav \eta + \vec{v}\nablav\cdot \vec{v} + \partial \vec{v}/\partial t = 0\), the linearized form of which is \(g\nablav \eta + \partial \vec{v}/\partial t = 0\). </li>
+
+<li>P. M. Morse and K. U. Ingard, <i>Theoretical Acoustics</i> (McGraw-Hill, 1968), pp. 104&ndash;105, 196&ndash;198. These notes are based on the discussion preceding Eq. (5.2.6).</li>
+
+<!--
+<li>A. D. Pierce, <a href="https://link.springer.com/book/10.1007/978-3-030-11214-1" target="_blank" rel="noopener noreferrer"><i>Acoustics: An Introduction to its Physical Principles and Applications</i>,</a> 2nd edition, Acoustical Society of America (1989). </li>
+
+<li>J. H. Ginsberg, <a href="https://link.springer.com/book/10.1007/978-3-030-11214-1" target="_blank" rel="noopener noreferrer"><i>Acoustics&mdash;A Textbook for Engineers and Physicists</i>,</a> Springer, Acoustical Society of America (2018). </li>
+
+<li>S. T. Thornton and J. B. Marion, <a href="https://www.google.com/books/edition/Classical_Dynamics_of_Particles_and_Syst/Ss43BQAAQBAJ?hl=en&gbpv=0" target="_blank" rel="noopener noreferrer"><i>Classical Dynamics of Particles and Systems</i>,</a> 5th edition, Brooks/Cole (2008). </li>
+
+<li><a href="https://en.wikipedia.org/wiki/Fermat%27s_principle#Modern_version" target="_blank" rel="noopener noreferrer">"Fermat's principle,"</a> Wikipedia. </li>
+
+<li>D. Marcuse, <a href="https://archive.org/details/lighttransmissio0000diet/page/90/mode/2up" target="_blank" rel="noopener noreferrer"><i>Light Transmission Optics</i>,</a> Bell Laboratories Series, Van Nostrand Reinhold Company (1972).</li>
+
+<li>D. J. Griffiths, <a href="https://www.google.com/books/edition/Introduction_to_Electrodynamics/I9jbEAAAQBAJ?hl=en&gbpv=0" target="_blank" rel="noopener noreferrer"><i>Introduction to Electrodynamics</i>,</a> 3rd edition, Pearson (1999). </li>
+
+<li>J. D. Jackson, <a href="https://www.google.com/books/edition/Classical_Electrodynamics/6VV-EAAAQBAJ?hl=en&gbpv=1&dq=J.+D.+Jackson,+%22Classical+Electrodynamics&pg=PP1&printsec=frontcover" target="_blank" rel="noopener noreferrer"><i>Classical Electrodynamics</i></a>, 3rd edition, Wiley (1999). </li>
+-->
+</ol>
+
+
+
+<p><a href="..\index.html">&uparrow; Return to educational resources page</a></p>
+</body>
+</html>
