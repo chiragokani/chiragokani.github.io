@@ -1,0 +1,101 @@
+%\documentclass[10pt]{beamer} %use for final version with animations
+\documentclass[10pt, handout]{beamer} %,aspectratio=169 %adjust font size here. I think 12pt is too clunky. handout eliminates animations
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty %hide useless buttons
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tkz-euclide} %mathcha.io for figure generation
+
+\usecolortheme{dove} %fly, dove, seahorse
+\definecolor{utcolor}{RGB}{191,87,0}
+\setbeamercolor{frametitle}{fg=utcolor}
+\setbeamercolor{title}{fg=utcolor}
+
+%footer
+\makeatother
+\setbeamertemplate{footline}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,leftskip=2pt]{bgcolor,author in head/foot}%
+\usebeamerfont{author in head/foot}\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{bgcolor, title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%\hfill%\hspace*{3em}
+\end{beamercolorbox}
+\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{bgcolor, title in head/foot}%
+%    \usebeamerfont{title in head/foot}\insertshorttitle\hfill%\hspace*{3em}
+\hfill\insertframenumber{}/\inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+\makeatletter
+
+%biblatex bibliography management:
+\usepackage[
+backend=biber, %change build settings from BibTeX to biber 
+style=verbose-ibid, %authoryear
+sorting=none,
+maxcitenames=4,
+maxbibnames=4
+]{biblatex}
+\addbibresource{refs.bib}
+
+\usepackage[]{newtx} %sans serif default in txfonts = helvetica (matches my notes)
+\usefonttheme[onlymath]{serif} % Use serif font for math equations, sans serif for everything else
+
+%user-defined commands
+\renewcommand{\vec}[1]{\boldsymbol{\mathrm{{#1}}}} % vector
+\newcommand\dyad[1]{\underline{\boldsymbol{\mathrm{#1}}}}
+\newcommand{\nablav}{\vec{\nabla}}
+
+\title[Short title]{Long title}
+\subtitle{Optional subtitle} %\Fontlukas
+\author[\href{mailto:chiragokani@utexas.edu}{chiragokani@utexas.edu}]{
+Chirag~A.~Gokani%\inst{1} 
+%\and M.~F.~Hamilton%\inst{1}
+}
+\institute[ARL:UT] % abbreviation for footbar
+{
+  \inst{}%1 
+Applied Research Laboratories \& Walker Department of Mechanical Engineering\\University of Texas at Austin
+% \and
+% \inst{2}% 
+% Faculty of Chemistry\\
+% Very Famous University
+}
+\date[\today]{Meeting info}
+
+\titlegraphic{\includegraphics[width=0.7\linewidth]{arl-ut}}
+
+\begin{document}
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{Frame Title}
+\begin{itemize}
+\item<1->Bats
+\item<2->The fluid velocity is \(\vec{u}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sample slide}
+\begin{example}This is a block.\end{example}
+
+\begin{itemize}
+\item<1->This appears first.\footcite[p.~1]{blackstock2000fundamentals}
+\item<2->This appears next.
+\item<3->This appears third.
+\end{itemize}
+\end{frame}
+
+\appendix
+\section*{Additional Content}
+
+\subsection*{References}
+\begin{frame}[allowframebreaks]{References}
+\printbibliography
+\end{frame}
+\end{document}

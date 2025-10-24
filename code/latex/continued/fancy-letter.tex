@@ -1,0 +1,69 @@
+\documentclass[17pt]{extarticle} 
+\usepackage{tikz}
+\usepackage{aurical}
+\usepackage[ebgaramond]{newtx} 
+\usepackage{amsmath}
+%\numberwithin{equation}{section}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!65!black,
+	linkcolor=blue!65!black,
+    filecolor=blue!65!black,    
+    urlcolor=blue!65!black,
+	citecolor=blue!65!black
+    } 
+\urlstyle{same}
+\usepackage{tkz-euclide} 
+\usepackage{halloweenmath}
+\pagenumbering{gobble}
+%\setlength{\parindent}{0pt}
+
+\usepackage[many]{tcolorbox}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shadows}
+\definecolor{paper}{RGB}{253,246,227} %lightest solarized background
+%\definecolor{paper}{RGB}{238,232,213} %second lightest solarized 
+\usepackage{lipsum}
+\newtcolorbox{tornpage}{%
+    enhanced jigsaw, breakable, % allow page breaks
+    frame hidden, % hide the default frame
+    overlay={%
+        \draw [
+            fill=paper, % fill paper
+            draw=paper!50!black, % boundary colour
+            decorate, % decoration
+            decoration={random steps,segment length=2pt,amplitude=1pt},
+            drop shadow, % shadow
+        ]
+        % top line
+        (frame.north west)--(frame.north east)--
+        % right line
+        (frame.north east)--(frame.south east)--
+        % bottom line
+        (frame.south east)--(frame.south west)--
+        % left line
+        (frame.south west)--(frame.north west);
+    },
+    % paragraph skips obeyed within tcolorbox
+    parbox=false,
+}
+
+\begin{document}
+\Fontskrivan
+
+\begin{tornpage}
+\noindent My dear friend, \hfill \today
+
+How do you like the look of this letter? The paraxial equation is 
+\begin{align}
+2ik\frac{\partial q}{\partial z} + \nabla_\perp^2 q = 0
+\end{align}
+\lipsum[1]
+
+\hfill Your signature
+\end{tornpage}
+
+\end{document}
