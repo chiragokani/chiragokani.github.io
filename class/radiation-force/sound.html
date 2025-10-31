@@ -46,12 +46,6 @@ window.MathJax = {
     <li><a href="sound.html#traveling">Due to traveling waves</a></li>
     <li><a href="sound.html#standing">Due to standing waves</a></li>
   </ul>
-<li><a href="sound.html#discussion">Is radiation force a linear or nonlinear effect?</a></li>
-  <ul>
-    <li><a href="sound.html#nonlinear">Arguments as to why radiation force is a nonlinear effect</a></li>
-    <li><a href="sound.html#linear">Arguments as to why radiation force is a linear effect</a></li>
-    <li><a href="sound.html#resolution">Resolution</a></li>
-  </ul>
   </ul>
 
 <p>Kinetic and potential energy densities of fields predicted by linear acoustics are first derived from exact nonlinear expressions of the energies. Energy conservation yields a differential equation known as the acoustic Poynting theorem, which is written in terms of the energy densities of the linear acoustic fields. A differential equation for momentum conservation at quadratic order is then derived in terms of a new parameter called the "acoustic radiation stress tensor." Diagonal elements of the matrix representation of this tensor are related to the "mean excess pressure," which can be written in terms of energy densities. The acoustic radiation force equals the integral of the inhomogeneous momentum conservation equation. This integral is simplified for cases in which the incident wave is traveling and standing. The section concludes with a discussion of whether acoustic radiation force should be regarded as a linear or nonlinear effect. </p> 
@@ -61,14 +55,14 @@ window.MathJax = {
 
 <p>The exact potential and kinetic energy densities (energy per unit volume) of sound are 
 \begin{align}
-E_T &= \tfrac{1}{2} \rho v^2\,, \label{eq:acoust:ET} \\
-E_U &= -\frac{1}{V_0} \int_{V_0}^{V} p\,dV\,, \label{eq:acoust:EV}
+{T} &= \tfrac{1}{2} \rho v^2\,, \label{eq:acoust:ET} \\
+{U} &= -\frac{1}{V_0} \int_{V_0}^{V} p\,dV\,, \label{eq:acoust:EV}
 \end{align}
 where \(p = P-P_0\) is the linear acoustic field variable, and where \(v^2 = \vec{v} \cdot \vec{v} = |\vec{v}|^2\). Equation \eqref{eq:acoust:ET} is linearized by writing \(\rho = \rho_0 + \rho'\), where \(\rho_0\) is a constant and \(\rho'\) is the acoustic (perturbation) quantity that is a function of space and time:
-\[E_T = \tfrac{1}{2} (\rho_0 + \rho')v^2\,.\]
+\[{T} = \tfrac{1}{2} (\rho_0 + \rho')v^2\,.\]
 Neglecting the cubic term \(\rho'u^2\) yields
 \begin{align}\label{eq:kinetic}
-\boxed{E_T = \tfrac{1}{2}\rho_0v^2\,.}
+\boxed{{T} = \tfrac{1}{2}\rho_0v^2\,.}
 \end{align}
 
 <p>Linearizing Eq. \eqref{eq:acoust:EV} is more challenging, because \(dV\) is not a convenient differential. It is desired to instead integrate over the acoustic pressure \(p\). First, \(dV\) is written in terms of \(d\rho'\), and then \(\rho'\) is related to the pressure through the linearized equation of state, as is now shown. 
@@ -98,7 +92,7 @@ dV &= -(V_0 + V')(1 - \rho'/\rho_0)\frac{d\rho'}{\rho_0}\notag\\
 \end{align}
 where in Eq. \eqref{eq:acoust:dV:2} only the linear term has been retained. Thus Eq. \eqref{eq:acoust:EV} becomes
 \begin{align}
-E_U = \frac{1}{\rho_0} \int_{0}^{\rho'} p\, d\tilde{\rho}'\,, \label{eq:acoust:EV:1}
+{U} = \frac{1}{\rho_0} \int_{0}^{\rho'} p\, d\tilde{\rho}'\,, \label{eq:acoust:EV:1}
 \end{align}
 where the integration is over \(\tilde{\rho}'\) so that the upper limit of integration is distinct from the integration variable. Equation \eqref{eq:acoust:EV:1} can be related to the acoustic pressure by appealing to the linearized equation of state
 \begin{align}\label{eq:state}
@@ -106,7 +100,7 @@ where the integration is over \(\tilde{\rho}'\) so that the upper limit of integ
 \end{align}
 which is derived by Taylor expanding \(P(\rho)\) as \(P_0 + (\partial P/\partial \rho)_0 (\rho-\rho_0)\) and identifying \((\partial P/\partial \rho)_0\) as \(c_0^2\). Equation \eqref{eq:acoust:EV:1} becomes
 \begin{align}\label{eq:potential}
-\boxed{E_U = \frac{1}{\rho_0c_0^2} \int_0^p \tilde{p}\, d\tilde{p} = \frac{p^2}{2\rho_0c_0^2 }}
+\boxed{{U} = \frac{1}{\rho_0c_0^2} \int_0^p \tilde{p}\, d\tilde{p} = \frac{p^2}{2\rho_0c_0^2 }}
 \end{align}
 </p>
 
@@ -127,7 +121,7 @@ Noting that \(\vec{v} \cdot \partial \vec{v}/\partial t = \tfrac{1}{2} \partial 
 \end{align}
 Noting that \(\divergence(p\vec{v}) = \vec{v} \cdot \gradient p + p \divergence \vec{v}\), and defining the instantaneous Poynting vector \(\vec{I} = p\vec{v}\) (energy per unit time per unit area), allows for Eq. \eqref{eq:acoust:poynt:mom:3} to be written as
 \begin{align}\label{eq:acoust:poynt:mom:4}
-\divergence \vec{I} - p\divergence\vec{v} + \frac{\partial E_T}{\partial t} = 0\,,
+\divergence \vec{I} - p\divergence\vec{v} + \frac{\partial {T}}{\partial t} = 0\,,
 \end{align}
 where the third term follows from identifying \((\rho_0/2){\partial v^2}/{\partial t}\) as the time derivative of Eq. \eqref{eq:kinetic}. Meanwhile, the second term of Eq. \eqref{eq:acoust:poynt:mom:4} resembles the quantity that appears in the linearized conservation of mass equation, \({\partial \rho'}/{\partial t} + \rho_0 \divergence \vec{v} = 0\), which when combined with the linearized state equation \(p/c_0^2 = \rho'\), yields
 \begin{align}\label{eq:acoust:poynt:mass}
@@ -135,15 +129,15 @@ where the third term follows from identifying \((\rho_0/2){\partial v^2}/{\parti
 \end{align}
 Multiplying Eq. \eqref{eq:acoust:poynt:mass} by \(p/\rho_0\) and rearranging yields
 \begin{align}\label{eq:acoust:poynt:mass:2}
--p\divergence\vec{v} = \frac{p}{\rho_0c_0^2}\frac{\partial p}{\partial t} = \frac{1}{2\rho_0c_0^2}\frac{\partial p^2}{\partial t} = \frac{\partial E_U}{\partial t}\,,
+-p\divergence\vec{v} = \frac{p}{\rho_0c_0^2}\frac{\partial p}{\partial t} = \frac{1}{2\rho_0c_0^2}\frac{\partial p^2}{\partial t} = \frac{\partial {U}}{\partial t}\,,
 \end{align}
 where the last equality holds by Eq. \eqref{eq:potential}. Inserting Eq. \eqref{eq:acoust:poynt:mass:2} into Eq. \eqref{eq:acoust:poynt:mom:4} yields
 \begin{align}\label{eq:acoust:poynt:thm}
-\boxed{\divergence \vec{I} + \frac{\partial}{\partial t}(E_T + E_U) = 0\,,}
+\boxed{\divergence \vec{I} + \frac{\partial}{\partial t}({T} + {U}) = 0\,,}
 \end{align}
 which is the acoustic Poynting theorem. The integral form of Eq. \eqref{eq:acoust:poynt:thm} is obtained by integrating over free space and applying the divergence theorem to the first term:
 \begin{align}\label{eq:acoust:poynt:thm:int}
-\oint_A \vec{I} \cdot d\vec{A} + \frac{d}{dt}\int(E_T + E_U) dV = 0\,.
+\oint_A \vec{I} \cdot d\vec{A} + \frac{d}{dt}\int({T} + {U}) dV = 0\,.
 \end{align}
 If the volume includes an object whose impedance is other than \(\rho_0c_0\), then the right-hand side of Eq. \eqref{eq:acoust:poynt:thm:int} becomes the rate of work done on that object, \(-{dW}/{dt}\), which equals \(-\mathcal{P}\), the power radiated on the object. If \(p\) and \(\vec{v}\) are time-harmonic, time-averaging that equation over an integral number of half periods and invoking Item 2 of the <a href="ids.html" target="_blank" rel="noopener noreferrer">useful identities</a> sets the second term on the left-hand side to zero, yielding  
 \begin{align}\label{eq:acoust:poynt:thm:int:1}
@@ -572,47 +566,6 @@ Is an argument like this along the lines of what Westervelt means?
 <img src="../../under-construction.gif" width="500px">
 
 
-<h3 id="discussion">Is radiation force a linear or nonlinear effect?</h3>
-<!--<p>Thanks to J. S. Hallveld, M. R. Haberman, P. S. Wilson, G. W. Swift, M. F. Hamilton, A. A. Atchley, and J. D. Maynard for conversations on this topic.</p>-->
-
-<h4 id="nonlinear">Arguments as to why radiation force is a nonlinear effect</h4>
-<p>
-In the <a href="sound.html#stress">derivation of the acoustic radiation stress tensor</a>, nonlinear terms in the momentum \eqref{eq:mom:exact} and continuity \eqref{eq:cont:exact} equations must be retained to obtain a nonzero stress tensor. Since radiation force is given by the surface integral of the acoustic radiation stress tensor [See Eq. \eqref{eq:mom:stress:int}], the radiation force is \(0\) if only linear terms in the momentum equation are retained. Thus radiation force is a nonlinear effect. </p>
-
-<p>Another argument utilizes the superposition principle, <a href="https://en.wikipedia.org/wiki/Linear_function#As_a_linear_map" target="_blank" rel="noopener noreferrer">one of the two mathematical criteria of a linear function</a>:
-\[f(a+b) = f(a) + f(b)\,.\]
-Radiation forces do not superpose, as can be seen by considering two plane waves with pressure amplitudes \(p_1\) and \(p_2\). If \(p_2 = 0\), the force on the object can be calculated by Eq. \eqref{eq:mom:stress:int} to be \(F_1\), and if \(p_1 = 0\), the force on the object can similarly be calculated to be \(F_2\). The radiation force \(F_{12}\) on an object insonified by <i>both</i> \(p_1\) and \(p_2\) is <i>not</i> \(F_1 + F_2\). Instead, the radiation stress tensor given by Eq. \eqref{eq:T} must be re-calculated, and it will contain cross terms proportional to \(p_1p_2\) (and \(v_1v_2\), the corresponding velocity fields). Radiation force is a nonlinear effect because the superposition principle, a hallmark of linear phenomena, does not apply.
-</p>
-
-<h4 id="linear">Arguments as to why radiation force is a linear effect</h4>
-<p>While admitting the above arguments, one might still hesitate to categorize radiation force as "nonlinear acoustics," a term that <i>implies that the governing wave equation is nonlinear</i> (For example, see the introduction of the Wikipedia entry for "<a href="https://en.wikipedia.org/wiki/Nonlinear_acoustics" target="_blank" rel="noopener noreferrer">Nonlinear Acoustics</a>"). The acoustic radiation stress tensor \eqref{eq:T} is formed by the squares of quantities that are solutions of the linear wave equation, and thus the calculation of radiation force does not involve solving any nonlinear wave equations. </p>
-
-<p>One might argue that linear quantities are squared when solving nonlinear wave equations by the perturbation techniques&mdash;see Sec. 2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[15]</a>. But these squares are then substituted into the nonlinear wave equations, which are in turn solved for higher-order solutions. Radiation force, in contrast, involves no "higher-order solutions" for the acoustic fields.</p>
-
-<p>For another perspective, recall from linear acoustics that the linear wave equation (which admits that the field variable \(p\) is much smaller than the ambient pressure \(p_0\)) yields solutions that can be characterized by a nonzero energy, intensity, and power {See Sec. 1-E-3 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[12]</a>}. These quantities are all proportional to \(p^2\) and are therefore of the same order as the mean excess pressure, suggesting that radiation pressure/force is non-zero in linear acoustics. For radiation force to vanish in linear acoustics, \(p\) must be sufficiently small such that \(p^2 = \Order(0)\), in which case the energy, intensity, and power would also vanish. So, if one admits the solutions of the linear acoustic wave equation carry energy, then one must also admit radiation force. </p>
-
-<p>The same is true about the small angular deflection \(\theta\) of a pendulum, considered by Rayleigh [Philos. Mag. <b>3</b>, 338-346 (1902)]. If we admit that the pendulum possesses potential and kinetic energy (which are proportional to \(\theta^2\)), then we must also admit the existence of radiation force, because all of these quantities are of the same order. When we make the small-angle approximation \(\theta \ll 1\), we mean to say that \(\theta\) is sufficiently small such that \(\sin\theta \simeq \theta\) (leading to a linear equation of motion), but that \(\theta^2 \neq 0\), such that the pendulum can have a nonzero energy. Note that \(\sin\theta \simeq \theta\) is consistent with \(\theta^2 \neq 0\), because the next-highest order term in \(\sin\theta\) is \(-\theta^3/6\), which <i>is</i> neglected. </p>
-
-
-<p>On another (possibly related, but confusing) note, Beyer writes <a href="refs.html" target="_blank" rel="noopener noreferrer">[1]</a>,</p>
-<blockquote>
-[A]lthough the phenomenon is primarily one of nonlinear acoustics, it can be observed down to the lowest sound intensities under certain conditions. Thus, the Rayleigh radiation pressure vanishes for the linear case, but the usually measured Langevin pressure does not. 
-</blockquote>
-
-<h4 id="resolution">Resolution</h4>
-<p>Resolution of the differing views above can be found in the distinction between "cumulative" and "local" nonlinear effects. From Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[17]</a>:</p>
-<blockquote>
-Cumulative effects are those due to variation of propagation speed over the waveform, which causes distortion that accumulates with distance. Other effects leading to deviation from small-signal behavior, such as the difference between spatial and material coordinates, the finite displacement of a vibrating source, and nonlinearity of the pressure-particle velocity (impedance) relation, are termed local because the distortion they produce does not increase with propagation distance. 
-</blockquote>
-<p>Acoustic radiation force may be regarded as a <i>locally</i> nonlinear effect because: 
-<ol>
-<li>the governing wave equation is linear (hence waveforms do not distort over distance),</li>
-<li>the difference between spatial (Eulerian) and material (Lagrangian) coordinates is nonzero in the study of acoustic radiation pressure [<a href="refs.html" target="_blank" rel="noopener noreferrer">6</a>&mdash;see Ch. 6, Secs. 2.1.3 and 2.1.4], and</li>
-<li>a nonlinear pressure-particle velocity relation must be considered when developing the acoustic radiation stress tensor.</li>
-</ol>
-</p>
-
-<!--<p>A note about notation: The term "Lagrangian" above should not be confused with the <a href="https://en.wikipedia.org/wiki/Lagrangian_and_Eulerian_specification_of_the_flow_field" target="_blank" rel="noopener noreferrer">Lagrangian coordinates</a> used in continuum mechanics. Confusingly, there is a way of writing the excess pressure in said Lagrangian coordinates&mdash;see Sec. 2.1.4 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Meanwhile, Eq. \eqref{eq:taylor:simp:3} as written "is Eulerian because it is evaluated at a fixed point in space" <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. As such, \(P\) in Eq. \eqref{eq:taylor:simp:3} is sometimes superscripted with an "\(\mathrm{E}\)" to emphasize that the quantity is Eulerian. In these notes, only the Eulerian quantity is used, so the superscript is suppressed.</p>-->
 
 <p><a href="index.html">&leftarrow; Return to radiation force homepage</a></p>
 
