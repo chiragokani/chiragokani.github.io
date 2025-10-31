@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiation force and torque of sound</title>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    tags: 'ams',
+    macros: {
+    Order: "{\\mathcal O}",
+    vec: ['\\mathbf{#1}',1],
+    dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+    divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+    gradient: "{\\boldsymbol\\nabla}",
+    curl: "{\\boldsymbol\\nabla\\times\\,}",
+    Laplacian: "{\\nabla^2}",
+    Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
+    }
+  }
+};
+</script>	
+<link rel="stylesheet" href="..\..\chirag.css">
+</head>
+<body>
+
+<h2>Is radiation force a linear or nonlinear effect?</h2>
+
+  <ul>
+    <li><a href="#nonlinear">Arguments as to why radiation force is a nonlinear effect</a></li>
+    <li><a href="#linear">Arguments as to why radiation force is a linear effect</a></li>
+    <li><a href="#resolution">Resolution</a></li>
+</ul>
+
+
+<h3 id="nonlinear">Arguments as to why radiation force is a nonlinear effect</h3>
+<p>
+In the <a href="sound.html#stress">derivation of the acoustic radiation stress tensor</a>, nonlinear terms in the momentum and continuity equations must be retained to obtain a nonzero stress tensor. Since radiation force is given by the surface integral of the acoustic radiation stress tensor, the radiation force is \(0\) if only linear terms in the momentum equation are retained. Thus radiation force is a nonlinear effect. </p>
+
+<p>Another argument utilizes the superposition principle \(f(a+b) = f(a) + f(b)\), which is <a href="https://en.wikipedia.org/wiki/Linear_function#As_a_linear_map" target="_blank" rel="noopener noreferrer">one of the two criteria of a linear function</a>. Radiation forces do not superpose, as can be seen by considering two plane waves with pressure amplitudes \(p_1\) and \(p_2\). If \(p_2 = 0\), the force on the object can be calculated to be \(F_1\), and if \(p_1 = 0\), the force on the object can similarly be calculated to be \(F_2\). The radiation force \(F_{12}\) on an object insonified by <i>both</i> \(p_1\) and \(p_2\) is <i>not</i> \(F_1 + F_2\). Instead, the radiation stress tensor for the total field must be re-calculated, and it will contain cross terms proportional to \(p_1p_2\) (and \(v_1v_2\), the corresponding velocity fields). Radiation force is a nonlinear effect because the superposition principle, a hallmark of linear phenomena, does not apply.
+</p>
+
+<h3 id="linear">Arguments as to why radiation force is a linear effect</h3>
+<p>While admitting the above arguments, one might still hesitate to categorize radiation force as "nonlinear acoustics," a term that <i>implies that the governing wave equation is nonlinear</i> (For example, see the introduction of the Wikipedia entry for "<a href="https://en.wikipedia.org/wiki/Nonlinear_acoustics" target="_blank" rel="noopener noreferrer">Nonlinear Acoustics</a>"). The acoustic radiation stress tensor is formed by the squares of quantities that are solutions of the linear wave equation, and thus the calculation of radiation force does not involve solving any nonlinear wave equations. </p>
+
+<p>One might argue that linear quantities are squared when solving nonlinear wave equations by the perturbation techniques&mdash;see Sec. 2 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[15]</a>. But these squares are then substituted into the nonlinear wave equations, which are in turn solved for higher-order solutions. Radiation force, in contrast, involves no "higher-order solutions" for the acoustic fields.</p>
+
+<p>For another perspective, recall from linear acoustics that the linear wave equation (which admits that the field variable \(p\) is much smaller than the ambient pressure \(p_0\)) yields solutions that can be characterized by a nonzero energy, intensity, and power {See Sec. 1-E-3 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[12]</a>}. These quantities are all proportional to \(p^2\) and are therefore of the same order as the mean excess pressure, suggesting that radiation pressure/force is non-zero in linear acoustics. For radiation force to vanish in linear acoustics, \(p\) must be sufficiently small such that \(p^2 = \Order(0)\), in which case the energy, intensity, and power would also vanish. So, if one admits the solutions of the linear acoustic wave equation carry energy, then one must also admit radiation force. </p>
+
+<p>The same is true about the small angular deflection \(\theta\) of a pendulum, considered by Rayleigh [Philos. Mag. <b>3</b>, 338-346 (1902)]. If we admit that the pendulum possesses potential and kinetic energy (which are proportional to \(\theta^2\)), then we must also admit the existence of radiation force, because all of these quantities are of the same order. When we make the small-angle approximation \(\theta \ll 1\), we mean to say that \(\theta\) is sufficiently small such that \(\sin\theta \simeq \theta\) (leading to a linear equation of motion), but that \(\theta^2 \neq 0\), such that the pendulum can have a nonzero energy. Note that \(\sin\theta \simeq \theta\) is consistent with \(\theta^2 \neq 0\), because the next-highest order term in \(\sin\theta\) is \(-\theta^3/6\), which <i>is</i> neglected. </p>
+
+
+<p>On another (possibly related, but confusing) note, Beyer writes <a href="refs.html" target="_blank" rel="noopener noreferrer">[1]</a>,</p>
+<blockquote>
+[A]lthough the phenomenon is primarily one of nonlinear acoustics, it can be observed down to the lowest sound intensities under certain conditions. Thus, the Rayleigh radiation pressure vanishes for the linear case, but the usually measured Langevin pressure does not. 
+</blockquote>
+
+<h3 id="resolution">Resolution</h3>
+<p>Resolution of the differing views above can be found in the distinction between "cumulative" and "local" nonlinear effects. From Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[17]</a>:</p>
+<blockquote>
+Cumulative effects are those due to variation of propagation speed over the waveform, which causes distortion that accumulates with distance. Other effects leading to deviation from small-signal behavior, such as the difference between spatial and material coordinates, the finite displacement of a vibrating source, and nonlinearity of the pressure-particle velocity (impedance) relation, are termed local because the distortion they produce does not increase with propagation distance. 
+</blockquote>
+<p>Acoustic radiation force may be regarded as a <i>locally</i> nonlinear effect because: 
+<ol>
+<li>the governing wave equation is linear (hence waveforms do not distort over distance),</li>
+<li>the difference between spatial (Eulerian) and material (Lagrangian) coordinates is nonzero in the study of acoustic radiation pressure [<a href="refs.html" target="_blank" rel="noopener noreferrer">6</a>&mdash;see Ch. 6, Secs. 2.1.3 and 2.1.4], and</li>
+<li>a nonlinear pressure-particle velocity relation must be considered when developing the acoustic radiation stress tensor.</li>
+</ol>
+</p>
+
+<!--<p>A note about notation: The term "Lagrangian" above should not be confused with the <a href="https://en.wikipedia.org/wiki/Lagrangian_and_Eulerian_specification_of_the_flow_field" target="_blank" rel="noopener noreferrer">Lagrangian coordinates</a> used in continuum mechanics. Confusingly, there is a way of writing the excess pressure in said Lagrangian coordinates&mdash;see Sec. 2.1.4 of Ref. <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. Meanwhile, Eq. \eqref{eq:taylor:simp:3} as written "is Eulerian because it is evaluated at a fixed point in space" <a href="refs.html" target="_blank" rel="noopener noreferrer">[6]</a>. As such, \(P\) in Eq. \eqref{eq:taylor:simp:3} is sometimes superscripted with an "\(\mathrm{E}\)" to emphasize that the quantity is Eulerian. In these notes, only the Eulerian quantity is used, so the superscript is suppressed.</p>-->
+
+<p><a href="index.html">&leftarrow; Return to radiation force homepage</a></p>
+
+</body>
+</html>
