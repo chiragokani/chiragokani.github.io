@@ -1,0 +1,68 @@
+%compile with xelatex
+\documentclass[12pt]{article}
+\usepackage{amsmath} %a widely used math package
+\usepackage{hyperref} %for hyperlinks
+\usepackage{enumitem} %for (a) (b) (c) enumeration
+\usepackage{fullpage} %sets the margins to 1 inch. Turn off for the more
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+\usepackage{halloweenmath}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+%fonts
+\setmainfont{Calibri} %main text font
+\setmathfont{Cambria Math}[Scale=0.97] %base math font: operators, Greek letters, integrals, etc.
+
+%%upright Latin letters (constants)
+%\setmathfont[
+%  range=up/{latin,Latin,latin-num}
+%]{Calibri}
+%
+%%bold upright Latin
+%\setmathfont[
+%  range=bfup/{latin,Latin,latin-num}
+%]{Calibri Bold}
+%
+%%italic Latin letters (variables)
+%\setmathfont[
+%  range=it/{latin,Latin}
+%]{Calibri Italic}
+%
+%%bold italic Latin letters
+%\setmathfont[
+%  range=bfit/{latin,Latin}
+%]{Calibri Bold Italic}
+
+%user-defined macros
+\renewcommand{\boldsymbol}[1]{\symbf{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}  
+\newcommand\dyad[1]{\underline{\boldsymbol{#1}}}
+\newcommand{\nablav}{\boldsymbol{\nabla}}
+\renewcommand{\Re}{\operatorname{Re}}  
+\renewcommand{\Im}{\operatorname{Im}}  
+
+
+\begin{document}
+
+\section*{Using \LaTeX\space to set Calibri and {\fontspec{Cambria}Cambria Math}}
+\LaTeX\space was used to make this document appear as if it were created using Microsoft Word. It uses Calibri for text and {\fontspec{Cambria}Cambria Math} for math. For example, the acoustic wave equation is
+\begin{align}
+\nabla^2 p - \frac{1}{c_0^2}\frac{\partial^2p}{\partial t^2} = 0\,,
+\end{align}
+while two of Maxwell's equations are
+\begin{align}
+  \nablav \cdot \vec{E} = \frac{\rho}{\varepsilon_0}, \qquad
+  \nablav \times \vec{B} =
+  \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t}
+\end{align}
+Here's the continuity equation:
+\begin{align}
+\frac{\partial \rho}{\partial t} + \nablav \cdot (\rho \vec{u}) = 0.
+\end{align}
+Having come come full circle stylistically, I fall silent.\\
+
+\hfill{\(\mathbat\)}
+\end{document}
