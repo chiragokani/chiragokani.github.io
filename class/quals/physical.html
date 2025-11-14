@@ -25,7 +25,9 @@ window.MathJax = {
       Laplacian: "{\\nabla^2}",
       dAlambertian: "{\\Box^2}",
       Order: "{\\mathcal O}",
-      T: "{^\\mathsf{T}}"
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
     }
   }
 };
@@ -447,8 +449,8 @@ where the root-mean-square of the pressure is defined as
 <p> The time-avereraged intensity is given by 
 \begin{align*}
 \langle I \rangle &= \langle pu \rangle\\
-&= \frac{1}{2}\Re(pu^*)\\
-&=\frac{1}{2\rho_0c_0}\Re(pp^*(1+1/jkr))\\
+&= \frac{1}{2}\Re(pu^*) \tag{See problem 28}\\
+&=\frac{1}{2\rho_0c_0}\Re(pp^*(1+1/jkr)) \\
 &=\frac{1}{\rho_0c_0}\frac{|p|^2}{2}\\
 &=\frac{p_\text{rms}^2}{\rho_0 c_0}
 \end{align*}
@@ -528,10 +530,39 @@ It turns out that </i>in air at STP</i> the term \(10\log_{10}\frac{p^2_{\text{r
 </div>
 </li>
 
-<li>&#9784; Consider two time-harmonic functions \(f(t) = Fe^{j(\omega t + \phi_F)} = \tilde{F} e^{j\omega t}\) and \(g(t) = Ge^{j(\omega t + \phi_G)} = \tilde{G} e^{j\omega t}\) (where \(\tilde{F} = Fe^{j\phi_F}\) and \(\tilde{G} = Ge^{j\phi_G}\)). Show that \(\langle \Re (f) \,\,\Re (g) \rangle = \frac{1}{2} \Re (\tilde{F}\tilde{G}^*) = \frac{1}{2} \Re (\tilde{F}^*\tilde{G})\), where "\(\Re\)" denotes "real part". Therefore show that \(\langle \vec{I}\rangle  = \langle p \vec{u} \rangle = \frac{1}{2} \Re(p\vec{u}^*) = \frac{1}{2} \Re(p^*\vec{u})\).
+<li>&#9784; For two time-harmonic functions \(f\) and \(g\) represented by the real parts of the complex-valued functions \(\tilde{f}(t) = f_0 e^{j(\omega t + \phi_f)} = \tilde{f}_\omega e^{j\omega t}\) and \(\tilde{g}(t) = g_0 e^{j(\omega t + \phi_g)} = \tilde{g}_\omega e^{j\omega t}\) (where \(\tilde{f}_\omega = f_0e^{j\phi_F}\) and \(\tilde{g}_\omega = g_0 e^{j\phi_G}\)), show that the time average of their product, \(\langle fg\rangle\), is given by \(\langle \Re (\tilde{f}) \,\,\Re (\tilde{g}) \rangle = \frac{1}{2} \Re (\tilde{f}_\omega \, \tilde{g}^*_\omega) = \frac{1}{2} \Re (\tilde{f}_\omega^*\, \tilde{g}_\omega)\), where "\(\Re\)" denotes "real part."
 <span class="expandable-toggle" onclick="toggleExpandableContent('1solinterine')">[answer]</span>
 <div id="1solinterine" class="expandable-content" style="color: #0000A0;">
-<p>See <a href="intensity_calculation.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. Letting \(\Re{f} = p\) and \(\Re(\vec{g})= \vec{u}\) immediately leads to \(\langle I\rangle = \frac{1}{2} \Re(p\vec{u}^*) = \frac{1}{2} \Re(p^*\vec{u})\).</p>
+<p>
+Note that \(\Re(\tilde{f}) = f_0 \cos(\omega t + \phi_f)\) and \(\Re(\tilde{g}) = g_0 \cos(\omega t + \phi_g)\). Thus
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &= \langle f_0 \cos(\omega t + \phi_f) \, g_0 \cos(\omega t + \phi_g)\rangle  \notag\\
+&= f_0 g_0 \langle\cos(\omega t + \phi_f) \,  \cos(\omega t + \phi_g)\rangle\,. \label{eq:id:avg:simplify:1} \tag{i}
+\end{align}
+Since \(\cos A \cos B = \cos(A+B) + \sin A\sin B\), Eq. \eqref{eq:id:avg:simplify:1} becomes (by letting \(A = \omega t + \phi_f\) and \(B= \omega t + \phi_g\))
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &= f_0 g_0 \langle \cos(2\omega t + \phi_f + \phi_g) +  \sin(\omega t + \phi_f)\sin(\omega t + \phi_g)\rangle\,.\label{eq:id:avg:simplify:2}\tag{ii}
+\end{align}
+Noting that \(\sin A \sin B = \tfrac{1}{2} [\cos(A-B) - \cos (A+B)]\), Eq. \eqref{eq:id:avg:simplify:2} becomes
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  f_0 g_0 \langle \cos(2\omega t + \phi_f + \phi_g) - \tfrac{1}{2} \cos(2\omega t + \phi_f + \phi_g) + \tfrac{1}{2}\cos(\phi_f - \phi_g)\rangle \notag\\
+&= f_0 g_0 \langle  \tfrac{1}{2} \cos(2\omega t + \phi_f + \phi_g) + \tfrac{1}{2}\cos(\phi_f - \phi_g)\rangle\,.\label{eq:id:avg:simplify:3}\tag{iii}
+\end{align}
+The time-averaging operation amounts to an integral, which is a linear operation. Thus Eq. \eqref{eq:id:avg:simplify:3} becomes
+\begin{align*}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  \tfrac{1}{2} f_0 g_0 \langle  \cos(2\omega t + \phi_f + \phi_g)\rangle + \tfrac{1}{2} f_0 g_0 \langle\cos(\phi_f - \phi_g)\rangle\,.
+\end{align*}
+The first term on the left-hand side is 0. Meanwhile, the second term does not depend on time, and therefore its time average is itself: 
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  \tfrac{1}{2} f_0 g_0 \cos(\phi_f - \phi_g)\,.\label{eq:id:avg:simplify}\tag{iv}
+\end{align}
+Noting that \(f_0 g_0 \cos(\phi_f - \phi_g) \) is \(\Re [f_0  g_0 e^{j(\phi_f - \phi_g)}]\), which by the relations \(\tilde{f}_\omega = f_0e^{j\phi_F}\) and \(\tilde{g}_\omega = g_0 e^{j\phi_G}\) is \(\Re(\tilde{f}_\omega \, \tilde{g}_\omega^*)\), Eq. \eqref{eq:id:avg:simplify} becomes
+\begin{align}
+\langle fg \rangle  = \langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  \tfrac{1}{2} \Re(\tilde{f}_\omega\tilde{g}_\omega^*) =   \tfrac{1}{2} \Re(\tilde{f}_\omega^*\tilde{g}_\omega) \,,\label{eq:id:avg} \tag{v}
+\end{align}
+where the final equality holds by noting that \(\cos (\phi_f - \phi_g) = \cos(\phi_g - \phi_f)\).
+</p>
+<p>Letting \(\Re(f) = p\) and \(\Re(\vec{g})= \vec{u}\) immediately leads to \(\langle I\rangle = \frac{1}{2} \Re(p\vec{u}^*) = \frac{1}{2} \Re(p^*\vec{u})\).</p>
 </div>
 </li>
 
@@ -3925,7 +3956,7 @@ Babinet's principle says that "complementary diffracting objects have complement
 </li>
 
 
-<li>The \(i(kx-\omega t)\) convention is adopted for this problem. Use the 2D Fourier transform pair \(\hat{f}(k_x,k_y) = \iint_{-\infty}^\infty f(x,y) e^{-i(k_xx+ k_yy)\,dxdy}\) and \({f}(x,y) = (2\pi)^{-2}\iint_{-\infty}^\infty \hat{f}(k_x,k_y) e^{i(k_xx+ k_yy)\,dk_xdk_y}\) to solve the Helmholtz equation in terms of the source condition \(p(x,y,z=0)\).  <i>Hint: note that the Fourier transform of the \(n^\mathrm{th}\) derivative of \(f\) with respect to \(x\) is \((ik_x)^n \hat{f}(k_x,k_y)\) (Prove this!), and that the \(n^\mathrm{th}\) derivative of \(f\) with respect to \(y\) is \((ik_y)^n \hat{f}(k_x,k_y)\). Use these relations to reduce the Helmholtz equation to an second-order ordinary differential equation in \(z\).</i> How does the solution change for a velocity source? 
+<li>The \(i(kx-\omega t)\) convention is adopted for this problem. Use the 2D Fourier transform pair \(\hat{f}(k_x,k_y) = \iint_{-\infty}^\infty f(x,y) e^{-i(k_xx+ k_yy)\,dxdy}\) and \({f}(x,y) = (2\pi)^{-2}\iint_{-\infty}^\infty \hat{f}(k_x,k_y) e^{i(k_xx+ k_yy)\,dk_xdk_y}\) to solve the Helmholtz equation in terms of the source condition \(p(x,y,z=0)\).  <i>Hint: note that the Fourier transform of the \(n^\mathrm{th}\) derivative of \(f\) with respect to \(x\) is \((ik_x)^n \hat{f}(k_x,k_y)\), and that the \(n^\mathrm{th}\) derivative of \(f\) with respect to \(y\) is \((ik_y)^n \hat{f}(k_x,k_y)\). Use these relations to reduce the Helmholtz equation to an second-order ordinary differential equation in \(z\).</i> How does the solution change for a velocity source? 
 <span class="expandable-toggle" onclick="toggleExpandableContent('fourier-acoust')">[answer]</span>
 <div id="fourier-acoust" class="expandable-content" style="color: #0000A0;">
 <p>  
