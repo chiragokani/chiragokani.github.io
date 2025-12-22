@@ -4,14 +4,14 @@ body {
   margin: 0 auto;
   padding: 20px;
   line-height: 1.3;
-  max-width: 900px; /* Adjust this value as needed */
-  font-family: 'Times New Roman', Times, serif;/*Garamond, serif;*/
+  max-width: 800px; /* Adjust this value as needed */
+  font-family: 'Times New Roman', Times, serif; /*Arial, Helvetica, sans-serif;*/ /*'Garamond', serif;*/
   text-align: justify;
   text-justify: inter-word;
 }
 
 .textbox {
-  background-color: rgba(241, 241, 241, 0.986);
+  background-color: rgba(241, 241, 241);
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 20px;
