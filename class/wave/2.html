@@ -2,21 +2,20 @@
 <html>
 <head>
   <title>Fourier acoustics</title>
- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-   </script>
-<script>
-window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-};
-</script>
-<script type="text/javascript">
-window.MathJax = {
-  tex: {
-    macros: {
+  <!-- MathJax 4 configuration --> 
+  <!--mathjax-termes goes well with Times fonts-->
+  <!--mathjax-stix2 goes well with Times fonts-->
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
       Order: "{\\mathcal O}",
       vec: ['\\mathbf{#1}',1],
       veckappa: "{\\boldsymbol{\\kappa}}",
@@ -47,10 +46,19 @@ window.MathJax = {
       ey: "{\\vec{e}_y}",
       ez: "{\\vec{e}_z}",
       ephi: "{\\vec{e}_\\phi}"
-    }
-  }
-};
-</script>	
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
 <link rel="stylesheet" href="wave.css">
 
 </head>
@@ -62,7 +70,7 @@ window.MathJax = {
 <p align="right">&ndash;<a href="https://en.wikiquote.org/wiki/Joseph_Fourier" target="_blank" rel="noopener noreferrer">Joseph Fourier</a></p>
 <p>With the prerequisite mathematics developed, the Helmholtz equation is now solved with remarkable ease using 2D spatial Fourier transforms. These solutions are broadly referred to as <i>Fourier acoustics</i>. These solutions can also be applied to the study of waves in solids.</p>
 
-<p>The first two sections on pressure and velocity sources are also covered <a href="../acoustics_II/fourier_acoustics_notes.pdf" target="_blank" rel="noopener noreferrer">here</a>. The treatment is basically the same, though those notes are slightly more succinctly. (Note that \(\texttt{\hat}\)s are used instead of capital letters for Fourier-transformed quantities in those notes.) </p>
+<p>The first two sections on pressure and velocity sources are also covered <a href="../acoustics_II/fourier_acoustics_notes.pdf" target="_blank" rel="noopener noreferrer">here</a>. The treatment is basically the same, though those notes are slightly more succinctly. (Note that hats are used instead of capital letters for Fourier-transformed quantities in those notes.) </p>
 <p>
   <i>Contents:</i>
 <ul>
