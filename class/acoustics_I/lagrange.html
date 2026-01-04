@@ -4,23 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Least-action derivations of wave equations</title>
-   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-   </script>
-<script type="text/javascript">
-window.MathJax = {
-  tex: {
-    tags: 'ams',
-    macros: {
+  <!-- MathJax 4 configuration --> 
+  <!--mathjax-termes goes well with Times fonts-->
+  <!--mathjax-stix2 goes well with Times fonts-->
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
     Order: "{\\mathcal O}",
     vec: ['\\mathbf{#1}',1],
     dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
     nablav: "{\\boldsymbol\\nabla}"
-    }
-  }
-};
-</script>	
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
 <link rel="stylesheet" href="..\..\chirag.css">
 </head>
 <body>
@@ -378,3 +392,4 @@ The more familiar wave equation for \(\eta\) is obtained by taking the time deri
 <p><a href="..\index.html">&uparrow; Return to educational resources page</a></p>
 </body>
 </html>
+
