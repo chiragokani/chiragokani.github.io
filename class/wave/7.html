@@ -2,21 +2,20 @@
 <html>
 <head>
   <title>Periodic media</title>
- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-   </script>
-<script>
-window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-};
-</script>
-<script type="text/javascript">
-window.MathJax = {
-  tex: {
-    macros: {
+  <!-- MathJax 4 configuration --> 
+  <!--mathjax-termes goes well with Times fonts-->
+  <!--mathjax-stix2 goes well with Times fonts-->
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
       Order: "{\\mathcal O}",
       vec: ['\\mathbf{#1}',1],
       veckappa: "{\\boldsymbol{\\kappa}}",
@@ -52,11 +51,19 @@ window.MathJax = {
       thetaHP: "{\\theta_{\\mathrm{HP}}}",
       erf: "{\\mathrm{\\,erf\\,}}",
       NF: "{_\\mathrm{NF}}",
-      
-    }
-  }
-};
-</script>	
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
 <link rel="stylesheet" href="wave.css">
 </head>
 <body>
