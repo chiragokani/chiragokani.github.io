@@ -2,21 +2,20 @@
 <html>
 <head>
   <title>Mathematical preliminary</title>
- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-   </script>
-<script>
-window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-};
-</script>
-<script type="text/javascript">
-window.MathJax = {
-  tex: {
-    macros: {
+  <!-- MathJax 4 configuration --> 
+  <!--mathjax-termes goes well with Times fonts-->
+  <!--mathjax-stix2 goes well with Times fonts-->
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
       Order: "{\\mathcal O}",
       vec: ['\\mathbf{#1}',1],
       veckappa: "{\\boldsymbol{\\kappa}}",
@@ -45,10 +44,19 @@ window.MathJax = {
       ex: "{\\vec{e}_x}",           
       ey: "{\\vec{e}_y}",
       ez: "{\\vec{e}_z}"
-    }
-  }
-};
-</script>	
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
 <link rel="stylesheet" href="wave.css">
 
 </head>
@@ -88,7 +96,7 @@ x(t) \xrightarrow{\FTt\{x(t)\}} X(\omega) \xrightarrow{H(\omega) X(\omega)} Y(\o
 \end{align*}
 where \(H(\omega)\) is the so-called transfer function. </p>
 
-<p><span class="Q">I find it helpful to remember that "\(\mathcal{F}\)" (\(\texttt{\mathcal{F}}\) in LaTeX) corresponds to the operator \(\int_{-\infty}^\infty \dots dt\), while an upper case letter corresponds to the transformed lower case function.</span></p> 
+<p><span class="Q">I find it helpful to remember that "\(\mathcal{F}\)" corresponds to the operator \(\int_{-\infty}^\infty \dots dt\), while an upper case letter corresponds to the transformed lower case function.</span></p> 
 
 <div class="example"><h3>Example: wave propagation from position \(x,y,z=z_0\) to \(x,y,z=z_0 + \Delta z\) </h3>
 <p>As a sneak-peek for what is to come, we outline (informally) how use the Fourier transform (both temporal and spatial, discussed further in the following sections) to propagate from position \(x,y,z=z_0\) to a parallel plane \(x,y,z=z_0 + \Delta z\) following <a href="#linear">the general "recipe" provided above</a>.
@@ -210,7 +218,7 @@ and if \(f(x,y) = g(x)h(y)\) then \(\mathcal{F}\{f(x,y)\} = G(k_x)H(k_y)\). </p>
 
 <p>Finally, note that a vectorial form of the 2D spatial Fourier transform is often utilized. Let 
 \begin{align*}
-\rho &= (x,y) = x\hat{e}_x + y\hat{e}_y\\
+\vecrho &= (x,y) = x\ex + y\ey\\
 \veckappa &= (k_x,k_y) = k_x\ex + k_y\ey\,,
 \end{align*}
 so \(\vecrho\cdot\veckappa = k_xx + k_yy\). Then the 2D spatial Fourier transform pair reads 
