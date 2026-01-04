@@ -4,36 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wind chimes</title>
-   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-   </script>
-<script>
-window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-};
-</script>
-<script type="text/javascript">
-window.MathJax = {
-  tex: {
-    macros: {
-      Order: "{\\mathcal O}",
-      vec: ['\\mathbf{#1}',1],
-      veckappa: "{\\boldsymbol{\\kappa}}",
-      vecrho: "{\\boldsymbol{\\rho}}",   
-      vecxi: "{\\boldsymbol{\\xi}}",   
-      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
-      gradient: "{\\boldsymbol\\nabla}",
-      curl: "{\\boldsymbol\\nabla\\times}",
-      Laplacian: "{\\nabla^2}",
-      dAlambertian: "{\\Box^2}",
-      Order: "{\\mathcal O}"
-    }
-  }
-};
-</script>	
+<!-- MathJax 4 configuration --> 
+  <!--mathjax-termes goes well with Times fonts-->
+  <!--mathjax-stix2 goes well with Times fonts-->
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+          Order: "{\\mathcal O}",
+          vec: ['\\boldsymbol{\\mathrm{#1}}', 1],
+          dyad: ['\\boldsymbol{\\mathsf{#1}}', 1],
+          divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+          gradient: "{\\boldsymbol\\nabla}",
+          curl: "{\\boldsymbol\\nabla\\times\\,}",
+          Laplacian: "{\\nabla^2}",
+          Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
 <link rel="stylesheet" href="..\chirag.css">
 </head>
 <body>
