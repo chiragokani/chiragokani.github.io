@@ -3423,7 +3423,7 @@ Therefore, for a given \(n\), as the wavelength is increased, \(\theta_i\) becom
 </div>
 </li>
 
-<li>&#9784; Prove that the free space Green's function \(g = e^{-jkR}/4\pi R\) solves the inhomogeneous Helmholtz equation \((\nabla^2 + k^2)f = -\delta(\vec{r} - \vec{r}_0)\), where \(R = |\vec{r}- \vec{r}_0|\). <i>Hint: Integrate the differential equation over the volume and use the divergence theorem. Let the upper radial integration limit be \(\epsilon\), and take the limit as \(\epsilon \to 0\). Also note that \(\int_0^\epsilon e^{-jkR} R dR \to 0 \text{ as } \epsilon \to 0\).</i>
+<li>&#9784; Prove that the free space Green's function \(g = e^{-jkR}/4\pi R\) solves the inhomogeneous Helmholtz equation \((\nabla^2 + k^2)f = -\delta(\vec{r} - \vec{r}_0)\), where \(R = |\vec{r}- \vec{r}_0|\). <i>Hint: Integrate the differential equation over the volume of a sphere of radius \(\epsilon\) and use the divergence theorem to convert the volume integral into a surface integral. Evaluate the surface integral and then take the limit as \(\epsilon \to 0\). Also note that \(\int_0^\epsilon e^{-jkR} R dR \to 0 \text{ as } \epsilon \to 0\).</i>
 <span class="expandable-toggle" onclick="toggleExpandableContent('13sol1')">[answer]</span>
 <div id="13sol1" class="expandable-content" style="color: #0000A0;">
 <p> Inserting the Green's function into the Helmholtz equation and integrating over space gives
@@ -3433,10 +3433,14 @@ Therefore, for a given \(n\), as the wavelength is increased, \(\theta_i\) becom
 The divergence theorem is applied to the first integral: 
 \begin{align*}
 \int \nabla^2 g dV &= \int \gradient\cdot(\gradient g) dV\\
-&= \oint \gradient g\, dS \\
-&= 4\pi R^2 \frac{d}{dR}\bigg(\frac{e^{-jkR}}{4\pi R}\bigg)\bigg\rvert_{R=0}^{R=\epsilon}\\
-&= 4\pi R^2 \bigg(-\frac{1}{4\pi R^2} - \frac{jk}{4\pi R}\bigg)e^{-jkR}\bigg\rvert_{R=0}^{R=\epsilon}\\
-&= -(1 + jkR)\, e^{-jkR}\big\rvert_{R=0}^{R=\epsilon}\\
+&= \oint \gradient g\, dS.
+\end{align*}
+Since at radius \(R = \epsilon\) the differential area is \(dS = \epsilon^2 d\theta\,d\psi\), the equation above becomes 
+\begin{align*}
+\int \nabla^2 g dV 
+&= \int_0^{2\pi} \int_{0}^\pi \left(\frac{dg}{dR}\right)_{R=\epsilon} \epsilon^2\, d\theta \,d\psi \\
+&= 4\pi \epsilon^2 \left[\frac{d}{dR}\bigg(\frac{e^{-jkR}}{4\pi R}\bigg)\right]_{R=\epsilon}\\
+&= 4\pi \epsilon^2 \left[\bigg(-\frac{1}{4\pi R^2} - \frac{jk}{4\pi R}\bigg)e^{-jkR}\right]_{R=\epsilon}\\
 &= -(1 + jk\epsilon)\, e^{-jk\epsilon}
 \end{align*}
 Now the limit of the above result is taken:
