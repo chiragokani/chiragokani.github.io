@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ray theory</title>
+
+  <!-- MathJax 4 configuration --> 
+  <!--mathjax-termes goes well with Times fonts-->
+  <!--mathjax-stix2 goes well with Times fonts-->
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+          Order: "{\\mathcal O}",
+          vec: ['\\boldsymbol{\\mathrm{#1}}', 1],
+          dyad: ['\\boldsymbol{\\mathsf{#1}}', 1],
+          divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+          gradient: "{\\boldsymbol\\nabla}",
+          curl: "{\\boldsymbol\\nabla\\times\\,}",
+          Laplacian: "{\\nabla^2}",
+          Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+  <link rel="stylesheet" href="..\..\chirag.css">
+</head>
+<body>
+<h1>Ray theory</h1>
+
+<!--These notes are under construction.-->
+<ol>
+<!--<li><a href="intro.html#eikonal">Introduction</a></li>-->
+<li><a href="infinite.html#infinite">Infinite-frequency limit of Helmholtz equation</a></li>
+<ul>
+<li><a href="infinite.html#eikonal">Eikonal equation</a></li>
+<li><a href="infinite.html#amplitude">Amplitude variation along a ray tube</a></li>
+</ul>
+
+<li><a href="fermat.html">Ray theory from Fermat's principle</a></li>
+<ul>
+<li><a href="fermat.html#variations">Calculus of variations</a></li>
+<li><a href="fermat.html#lagrange">Lagrange's equations for ray theory</a></li>
+<li><a href="fermat.html#hamilton">Hamilton's equations for ray theory</a></li>
+<li><a href="fermat.html#equivalence">Equivalence of eikonal equation and Hamilton's equations</a></li>
+</ul>
+
+<li><a href="refs.html">References</a></li>
+</ol>
+
+<p><a href="..\index.html">&uparrow; Return to educational resources page</a></p>
+</body>
+</html>
