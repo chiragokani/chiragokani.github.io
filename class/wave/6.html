@@ -105,7 +105,7 @@
 <p>
 The exact continuity, momentum, and state equations are 
 \begin{align}
-\frac{D\rho}{Dt} + \rho \divergence \vec{v} = 0\,, \quad \rho \frac{D\vec{v}}{Dt} + \gradient P = 0\,,\quad P = P(\rho)\,, \label{eq:exact}\tag{1}
+\frac{D\rho}{Dt} + \rho \divergence \vec{v} = 0\,, \quad \rho \frac{D\vec{v}}{Dt} + \gradient P = \vec{0}\,,\quad P = P(\rho)\,, \label{eq:exact}\tag{1}
 \end{align}
 where \(D/Dt = \partial/\partial t + \vec{v}\cdot \gradient\) is the material derivative. It is to be shown that linearizing these equations, where \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\), leads to 
 \begin{align}
@@ -119,15 +119,15 @@ Begin by writing Eqs. \eqref{eq:exact} in terms of \(\partial/\partial t + \vec{
 \begin{align}\tag{2}\label{eq:exact:d} 
 \begin{split}
 \frac{\partial \rho}{\partial t} + \vec{v} \cdot \gradient \rho + \rho \divergence \vec{v} &= 0\\
-\rho \left(\frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \gradient \vec{v} \right) + \gradient P &= 0\\
+\rho \left(\frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \gradient \vec{v} \right) + \gradient P &= \vec{0}\\
 P(\rho) &= P\,.
 \end{split}
 \end{align}
-Now insert \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\) into Eqs. \eqref{eq:exact:d}, and note that \(\partial \rho_0/\partial t = 0\), \(\gradient \rho_0 = \vec{0}\), \(\divergence \vec{v}_0 = 0\), \(\partial \vec{v}/\partial t = 0\), \(\gradient \vec{v}_0=0\), and \(\gradient P_0 = 0\):
+Now insert \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\) into Eqs. \eqref{eq:exact:d}, and note that \(\partial \rho_0/\partial t = 0\), \(\gradient \rho_0 = \vec{0}\), \(\divergence \vec{v}_0 = 0\), \(\partial \vec{v}_0/\partial t = \vec{0}\), \(\gradient \vec{v}_0=\boldsymbol{\mathsf{0}}\), and \(\gradient P_0 = \vec{0}\):
 \begin{align}\tag{3}\label{eq:exact:alg:1}
 \begin{split}
 \frac{\partial \rho'}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \gradient \rho' + (\rho_0 + \rho') \divergence \vec{u} &= 0\\
-(\rho_0 + \rho')\left[\frac{\partial \vec{u}}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \gradient \vec{u} \right] + \gradient p &= 0\\
+(\rho_0 + \rho')\left[\frac{\partial \vec{u}}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \gradient \vec{u} \right] + \gradient p &= \vec{0}\\
 P(\rho_0 + \rho') &= P\,.
 \end{split}
 \end{align}
@@ -138,7 +138,7 @@ Nonlinear terms in Eqs. \eqref{eq:exact:alg:1} are now neglected. For the state 
 \frac{\partial \rho'}{\partial t} +  \vec{v}_0 \cdot \gradient \rho' + \rho_0 \divergence \vec{u} &= 0\\
 %(\rho_0 + \rho' )\left[\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right] + %gradient p &= 0\\
 %\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right) + \rho' \left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right) + \gradient p &= 0\\
-\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right)  + \gradient p &= 0\\
+\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right)  + \gradient p &= \vec{0}\\
 P_0 + \left(\frac{\partial P}{\partial \rho}\right)_0 (\rho-\rho_0) &= P\,.
 \end{split}
 \end{align}
@@ -147,7 +147,7 @@ In the state equation [the third of Eqs. \eqref{eq:alg:2}], the quantities \(p =
 The perturbation density \(\rho'\) is therefore eliminated from Eqs. \eqref{eq:alg:2}:
 \begin{align}
 \frac{1}{c_0^2}\frac{\partial p}{\partial t} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient p + \rho_0 \divergence \vec{u} &= 0 \label{eq:cont}\tag{5}\\
-\rho_0\frac{\partial \vec{u}}{\partial t} +  \rho_0 \vec{v}_0 \cdot \gradient \vec{u}  + \gradient p &= 0\,.\label{eq:mom}\tag{6}
+\rho_0\frac{\partial \vec{u}}{\partial t} +  \rho_0 \vec{v}_0 \cdot \gradient \vec{u}  + \gradient p &= \vec{0}\,.\label{eq:mom}\tag{6}
 \end{align}
 Taking the time derivative of Eq. \eqref{eq:cont} and the divergence of Eq. \eqref{eq:mom} results in
 \begin{align}
@@ -159,7 +159,7 @@ Subtracting Eq. \eqref{eq:cont:alg:1} from Eq. \eqref{eq:mom:alg:1}, the \(\rho_
 %\Laplacian p - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \rho_0 \vec{v}_0 \cdot (\divergence \gradient \vec{u})  -  \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)    &= 0\notag\\
 \Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \rho_0 \vec{v}_0 \cdot (\divergence \gradient \vec{u}) + \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)    \,.\label{eq:wave:alg:1}\tag{9}
 \end{align}
-The particle velocity needs to be eliminated from Eq. \eqref{eq:wave:alg:1}. This is done by taking the gradient of Eq. \eqref{eq:cont}:
+To obtain a wave equation in terms of single wave variable, the particle velocity needs to be eliminated from Eq. \eqref{eq:wave:alg:1}. This is done by taking the gradient of Eq. \eqref{eq:cont}:
 \begin{align*}
 \frac{1}{c_0^2}\gradient \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p + \rho_0 \gradient(\divergence \vec{u}) &= 0\,.
 \end{align*}
@@ -396,7 +396,7 @@ where \begin{align*}
 \end{align*}
 which is the cutoff frequency for \(v_0 = 0\). Meanwhile, the right-hand side of Eq. \eqref{1duct} becomes,
 \begin{align*}
-- (\omega/c_0 + iM \partial/\partial z)^2 p_\omega = -(\omega/c_0 - M/k_z)^2 p_\omega\,.
+- (\omega/c_0 + iM \partial/\partial z)^2 p_\omega = -(\omega/c_0 - M k_z)^2 p_\omega\,.
 \end{align*}
 Thus one obtains from the Helmholtz equation a dispersion relation:
 \begin{align*}
