@@ -400,11 +400,11 @@ T &= \tfrac{1}{2}\rho_0 |\nablav \psi|^2 .
 <p>
 Meanwhile, the potential energy is obtained by considering the thermodynamic definition of work, \(-p\,dV\). Compressing a fluid from volume \(V_0\) (for which the perturbation pressure is 0) to \(V\) (for which the pressure is \(p\)) corresponds to a finite amount of energy stored, namely \(-\int_{V_0}^{V}p\,dV\), or per unit volume,
 \begin{align}\label{eq:U:1}
-U = -\frac{1}{V_0}\int_{V_0}^{V}p\,dV
+U = -\frac{1}{V_0}\int_{V_0}^{V}p\,dV.
 \end{align}
 To integrate Eq. \eqref{eq:U:1}, the acoustic pressure \(p\) and the the differential volume \(dV\) are related to the perturbation density \(\rho'\). The acoustic pressure \(p\) is related to \(\rho'\) through Eq. \eqref{eq:state}. Meanwhile, \(dV\) is related to \(\rho'\) by noting that as the fluid is compressed, mass is conserved, i.e., \(M = \rho V\). Therefore,
 \begin{align}\label{eq:dVdrho}
-\frac{dV}{d\rho} &= -\frac{M}{\rho^2} = -\frac{V}{\rho} = -\frac{V}{\rho_0 + \rho'} 
+\frac{dV}{d\rho} &= -\frac{M}{\rho^2} = -\frac{V}{\rho} = -\frac{V}{\rho_0 + \rho'} .
 \end{align}
 Multiplying both sides of Eq. \eqref{eq:dVdrho} by \(d\rho\) yields
 \begin{align} \label{eq:dV}
@@ -413,7 +413,7 @@ dV = -\frac{V}{\rho_0}(1+ \rho'/\rho_0)^{-1} d\rho' \simeq -\frac{V_0}{\rho_0}(1
 It is noted that \(d\rho\) was replaced by \(d\rho'\) in Eq. \eqref{eq:dV}. The replacement holds because the differential of \(\rho = \rho_0 + \rho'\) is \(d\rho = d\rho'\) <a href="refs.html" target="_blank" rel="noopener noreferrer">[4]</a>. 
 Substituting Eqs. \eqref{eq:state} and \eqref{eq:dV} into Eq. \eqref{eq:U:1} yields
 \begin{align}
-U &= \frac{c_0^2}{\rho_0}\int_{0}^{\rho'} \rho'' d\rho'' = \rho'^2c_0^2/2\rho_0  \label{eq:acoustic:U:p}
+U &= \frac{c_0^2}{\rho_0}\int_{0}^{\rho'} \rho'' d\rho'' = \rho'^2c_0^2/2\rho_0  .\label{eq:acoustic:U:p}
 \end{align}
 In terms of Eq. \eqref{eq:mom:state}, Eq. \eqref{eq:acoustic:U:p} equals
 \begin{align}\label{eq:acoustic:U}
