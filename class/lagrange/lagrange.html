@@ -55,6 +55,11 @@
     <li><a href="lagrange.html#water-wave">Wave equation</a></li>
     </ul>
 <li><a href="lagrange.html#acoustic">Acoustic waves</a></li>
+    <ul>
+    <li><a href="lagrange.html#acoustic-densities">Energy densities</a></li>
+    <li><a href="lagrange.html#acoustic-EL">Euler-Lagrange equation</a></li>
+    <li><a href="lagrange.html#acoustic-wave">Wave equation</a></li>
+    </ul>
 <li><a href="lagrange.html#refs">References</a></li>
 </ul>
 
@@ -358,7 +363,115 @@ The more familiar wave equation for \(\eta\) is obtained by taking the time deri
 </p>
 
 <h3 id="acoustic">Acoustic waves</h3>
-<img src="../../under-construction.gif" width="500px">
+
+<h4 id="acoustic-densities">Energy densities</h4>
+<p>The kinetic energy density is, by definition,
+\begin{align}\label{eq:T:exact}
+T = \tfrac{1}{2}\rho v^2 \simeq \tfrac{1}{2}\rho_0 v^2 \,,
+\end{align}
+where the nonlinear term \(\tfrac{1}{2}\rho' v^2\) has been neglected in the second equality. As was the case for water waves, the application of Hamilton's principle requires the kinetic and potential energy densities to be expressed in terms of a single wave variable. That variable is again the velocity potential,
+\begin{align}\label{eq:acoustic:psi}
+\vec{v} = -\nablav \psi\,.
+\end{align}
+The potential \(\psi\) has dimensions of length squared per unit time. To relate \(\rho'\) to \(\psi\), two additional equations are necessary. The first is the linearized momentum equation \(\nablav p + \rho_0 \partial \vec{v}/\partial t = 0\), which can be expressed in terms of Eq. \eqref{eq:acoustic:psi} as
+\begin{align}\label{eq:acoustic:momentum}
+p  = \rho_0\frac{\partial \psi}{\partial t}\,.
+\end{align}
+Equation \eqref{eq:acoustic:momentum} is accurate up to the addition of a constant. 
+The second equation is the equation of state,
+\begin{align}
+p = P(\rho)-P_0 &\simeq \frac{\partial P}{\partial \rho}\bigg\rvert_0\rho' 
+= c_0^2\rho' \,,\label{eq:state}
+\end{align}
+where only the linear term has been retained. Equation \eqref{eq:state} therefore yields  
+\begin{align}\label{eq:state:linear}
+\rho' = p /c_0^{2}\,,
+\end{align}
+where \(c_0^2 = (\partial P/\partial\rho)|_0\). Combining Eqs. \eqref{eq:acoustic:momentum} and \eqref{eq:state:linear} yields
+\begin{align}\label{eq:mom:state}
+\rho' = \frac{\rho_0}{c_0^2} \frac{\partial \psi}{\partial t}.
+\end{align}
+In terms of Eq. \eqref{eq:acoustic:psi}, Eq. \eqref{eq:T:exact} becomes
+\begin{align}\label{eq:acoustic:T}
+T &= \tfrac{1}{2}\rho_0 |\nablav \psi|^2 .
+\end{align}
+</p>
+
+<p>
+Meanwhile, the potential energy is obtained by considering the thermodynamic definition of work, \(-p\,dV\). Compressing a fluid from volume \(V_0\) (for which the perturbation pressure is 0) to \(V\) (for which the pressure is \(p\)) corresponds to a finite amount of energy stored, namely \(-\int_{V_0}^{V}p\,dV\), or per unit volume,
+\begin{align}\label{eq:U:1}
+U = -\frac{1}{V_0}\int_{V_0}^{V}p\,dV
+\end{align}
+To integrate Eq. \eqref{eq:U:1}, the acoustic pressure \(p\) and the the differential volume \(dV\) are related to the perturbation density \(\rho'\). The acoustic pressure \(p\) is related to \(\rho'\) through Eq. \eqref{eq:state}. Meanwhile, \(dV\) is related to \(\rho'\) by noting that as the fluid is compressed, mass is conserved, i.e., \(M = \rho V\). Therefore,
+\begin{align}\label{eq:dVdrho}
+\frac{dV}{d\rho} &= -\frac{M}{\rho^2} = -\frac{V}{\rho} = -\frac{V}{\rho_0 + \rho'} 
+\end{align}
+Multiplying both sides of Eq. \eqref{eq:dVdrho} by \(d\rho\) yields
+\begin{align} \label{eq:dV}
+dV = -\frac{V}{\rho_0}(1+ \rho'/\rho_0)^{-1} d\rho' \simeq -\frac{V_0}{\rho_0}(1 - \rho'/\rho_0) d\rho'\,.
+\end{align}
+It is noted that \(d\rho\) was replaced by \(d\rho'\) in Eq. \eqref{eq:dV}. The replacement holds because the differential of \(\rho = \rho_0 + \rho'\) is \(d\rho = d\rho'\) <a href="refs.html" target="_blank" rel="noopener noreferrer">[4]</a>. 
+Substituting Eqs. \eqref{eq:state} and \eqref{eq:dV} into Eq. \eqref{eq:U:1} yields
+\begin{align}
+U &= \frac{c_0^2}{\rho_0}\int_{0}^{\rho'} \rho'' d\rho'' = \rho'^2c_0^2/2\rho_0  \label{eq:acoustic:U:p}
+\end{align}
+In terms of Eq. \eqref{eq:mom:state}, Eq. \eqref{eq:acoustic:U:p} equals
+\begin{align}\label{eq:acoustic:U}
+U &= \tfrac{1}{2}\rho_0c_0^{-2}(\partial\psi/\partial t)^2.
+\end{align}
+
+</p>
+<h4 id="acoustic-EL">Euler-Lagrange equation</h4>
+<p>
+The Lagrangian density in terms of \(\psi\) is given by the difference between Eqs. \eqref{eq:acoustic:T} and \eqref{eq:acoustic:U}:
+\begin{align}
+L &= L[\psi, \psi_x, \psi_y, \psi_z, \psi_t, x, y, z, t] \notag\\
+%&=  \frac{\rho_0}{2} \left[\left(\frac{\partial \psi}{\partial x}\right)^2 + 
+%\left(\frac{\partial \psi}{\partial y}\right)^2 + 
+%\left(\frac{\partial \psi}{\partial z}\right)^2 
+%\right] \left(1 - \frac{1}{c_0^2}\frac{\partial \psi}{\partial t} \right) %\notag\\
+%&\quad - \tfrac{1}{2}\rho_0c_0^{-2}(\partial\psi/\partial t)^2 - \frac{1}{3}\frac{\rho_0}{c_0^4} (\partial\psi/\partial t)^3 \\
+&=  \tfrac{1}{2}\rho_0 (\psi_x^2 + \psi_y^2 + \psi_z^2 ) - \tfrac{1}{2}\rho_0c_0^{-2}\psi_t^2 \label{eq:acoustic:L:1}
+\end{align}
+where \(\psi\), \(\psi_x\), \(\psi_y\), \(\psi_z\), and \(\psi_t\) are functions of \(x,y,z\), and \(t\).
+The Euler-Lagrange equation is similar to Eq. \eqref{eq:water:J:alpha:final}, except that an additional term accounting for the \(z\) dependence is included:
+\begin{align}\label{eq:acoustic:EL}
+\frac{\partial L}{\partial \psi}  -
+\frac{\partial}{\partial x}\bigg(\frac{\partial L}{\partial \psi_x}\bigg) -
+\frac{\partial}{\partial y}\bigg(\frac{\partial L}{\partial \psi_y}\bigg) -
+\frac{\partial}{\partial z}\bigg(\frac{\partial L}{\partial \psi_z}\bigg) -
+\frac{\partial}{\partial t}\bigg(\frac{\partial L}{\partial \psi_t}\bigg) = 0\,.
+\end{align}
+</p>
+
+<h4 id="acoustic-wave">Linear acoustic wave equation</h4>
+<p>
+Inserting Eq. \eqref{eq:acoustic:L:1} into Eq. \eqref{eq:acoustic:EL} involves taking the following partial derivatives:
+\begin{align*}
+\frac{\partial L}{\partial \psi} &= 0\,,\\  
+\frac{\partial L}{\partial \psi_x} &= \rho_0\psi_x \,,  \quad
+\frac{\partial L}{\partial \psi_y} = \rho_0\psi_y \,,  \quad
+\frac{\partial L}{\partial \psi_z} = \rho_0\psi_z \,,  \\
+\frac{\partial L}{\partial \psi_t} &= -\rho_0c_0^{-2}\psi_t 
+\end{align*}
+The relevant second derivatives are
+\begin{align*}
+\frac{\partial}{\partial x}\frac{\partial L}{\partial \psi_x} &= \rho_0\psi_{xx} \,,  \\
+\frac{\partial}{\partial y}\frac{\partial L}{\partial \psi_y} &= \rho_0\psi_{yy} \,, \\
+\frac{\partial }{\partial z}\frac{\partial L}{\partial \psi_z} &= \rho_0\psi_{zz} \,,  \\
+\frac{\partial}{\partial t}\frac{\partial L}{\partial \psi_t} &= -\rho_0c_0^{-2}\psi_{tt} 
+\end{align*}
+Equation \eqref{eq:acoustic:EL} is the sum of the four quantities above equated to zero: 
+\begin{align}
+\rho_0 \nabla^2 \psi  - \rho_0c_0^{-2}\psi_{tt} = 0 \,.\label{eq:acoustic:wave:pre}
+\end{align}
+Division of Eq. \eqref{eq:acoustic:wave:pre} by \(\rho_0\) yields the wave equation in terms velocity potential, \(\nabla^2 \psi - c_0^{-2}\partial^2\psi/\partial t^2\). Taking the time derivative of \eqref{eq:acoustic:wave:pre} yields \(\rho_0 \nabla^2 \psi_t  - \rho_0c_0^{-2}\psi_{ttt} = 0\), which by Eq. \eqref{eq:acoustic:momentum} equals the familiar linear acoustic wave equation:
+\begin{align}\label{eq:acoustic:wave}
+\nabla^2p - \frac{1}{c_0^{2}}\frac{\partial^2 p}{\partial t^2} = 0
+\end{align}
+</p>
+
+<!--<img src="../../under-construction.gif" width="500px">-->
 
 <p>For another perspective on describing wave motion using the calculus of variations, see <a href="../ray/index.html#ray" target="_blank" rel="noopener noreferrer">these notes on ray theory</a>. </p>
 
@@ -392,6 +505,7 @@ The more familiar wave equation for \(\eta\) is obtained by taking the time deri
 <p><a href="..\index.html">&uparrow; Return to educational resources page</a></p>
 </body>
 </html>
+
 
 
 
