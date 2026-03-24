@@ -51,7 +51,7 @@
 <li><a href="infinite.html#amplitude">Amplitude variation along a ray tube</a></li>
 </ul>
 
-<p>Ray theory is the infinite-frequency approximation of time-harmonic wave theory. The partial differential equation governing ray theory is called the <i>eikonal equation</i>, which is obtained by taking the high-frequency limit of the Helmholtz equation
+<p>Ray theory is the infinite-frequency approximation of time-harmonic wave theory. The partial differential equation governing ray theory is the <i>eikonal equation</i>, which is obtained by taking the high-frequency limit of the Helmholtz equation
 \begin{align}\label{eq:helmholtz}
 \nabla^2 p + k^2 p =0\,,
 \end{align}
@@ -75,7 +75,7 @@ has been used. Evaluating the gradient of the quantity in square brackets in the
 &i\omega \gradient \tau(\vec{x}) \cdot \gradient P(\vec{x},\omega) + \Laplacian P(\vec{x},\omega) \notag\\
 &\quad +  i\omega\gradient P(\vec{x},\omega)\cdot \gradient\tau(\vec{x}) - \omega^2 P(\vec{x},\omega) \gradient \tau(\vec{x}) \cdot \gradient\tau(\vec{x}) + i\omega P(\vec{x},\omega)\Laplacian\tau(\vec{x}) + k^2 P(\vec{x},\omega) = 0\,.
 \end{align}
-Grouping common terms, writing \(k = \omega/c\), and suppressing the functional dependencies yields <a href="refs.html" target="_blank" rel="noopener noreferrer">[1, Eq. (8.5.1)]</a>
+Grouping common terms, writing \(k^2 = \omega^2/c^2\), and suppressing the functional dependencies on position and frequency yields <a href="refs.html" target="_blank" rel="noopener noreferrer">[1, Eq. (8.5.1)]</a>
 \begin{align}\label{1}
 \Laplacian P + i\omega  (2 \gradient P\cdot \gradient \tau + P\Laplacian\tau) - \omega^2 P\left[(\gradient \tau)^2 - \tfrac{1}{c^2}\right] &= 0\,.
 \end{align}
@@ -96,11 +96,11 @@ In the \(\omega \to \infty\) limit, Eq. \eqref{eq:1:sub:lim} separates into thre
 2 \gradient P_0 \cdot \gradient \tau + P_0 \Laplacian \tau &=0\,, \qquad && O(\omega^1) \,, \label{eq:omega:1}\\
 P_0\left[(\gradient \tau)^2 - \tfrac{1}{c^2}\right] &=0\,, \qquad && O(\omega^2)\,. \label{eq:omega:2}
 \end{alignat}
-The emergence of Eq. \eqref{eq:omega:0} is somewhat surprising, since the the Laplace equation is associated with the <i>low-frequency approximation</i> \((k \to 0)\) of Eq. \eqref{eq:helmholtz} <a href="refs.html" target="_blank" rel="noopener noreferrer">[2, p. 492]</a>. <span class=Q>Equation \eqref{eq:omega:0} is therefore superfluous to the present discussion. Do you agree?</span></p>
+The emergence of Eq. \eqref{eq:omega:0} is somewhat surprising, since the the Laplace equation is associated with the <i>low-frequency approximation</i> \((k \to 0)\) of Eq. \eqref{eq:helmholtz} <a href="refs.html" target="_blank" rel="noopener noreferrer">[2, p. 492]</a>. Although Eq. \eqref{eq:omega:0} is superfluous to the present discussion, the mathematical connection between zero- and infinite-frequency wave phenomena is interesting [and I do not think Pierce discusses Eq. \eqref{eq:omega:0} in this context].</p>
 
 <h3 id="eikonal">Eikonal equation</h2>
 <p>
-The \(\omega^1\) and \(\omega^2\) equations, in contrast, describe wave propagation at high frequencies. The \(\omega^2\) equation <a href="refs.html" target="_blank" rel="noopener noreferrer">[1, Eq. (8.5.3a)]</a>
+The \(\omega^1\) and \(\omega^2\) equations, in contrast, describe wave propagation at infinite frequencies. The \(\omega^2\) equation <a href="refs.html" target="_blank" rel="noopener noreferrer">[1, Eq. (8.5.3a)]</a>
 \begin{align}
 \boxed{(\gradient \tau)^2 = \frac{1}{c^2}}\label{eq:eikonal}
 \end{align}
@@ -136,7 +136,7 @@ where \(\vec{n}\) is the outward unit normal vector to the surface. Since the wa
 \begin{align}\label{eq:ray:alg}
 (P^2 \gradient \tau \cdot \vec{n})\big\rvert_{\vec{x}} \, A(\vec{x}) - (P^2 \gradient \tau \cdot \vec{n})\big\rvert_{\vec{x}_0} \, A(\vec{x}_0) = 0 \,.
 \end{align}
-Pierce notes that \(\gradient \tau\cdot \vec{n} = 1/c\), which is deemed to be the same at points \(\vec{x}_0\) and \(\vec{x}\). <span class="Q">Apparently, the result to follow is based on the  assumption that \(c\) is the same at points \(\vec{x}_0\) and \(\vec{x}\). But if \(c\) were indeed the same value at all points in space, then rays would all travel in straight lines, and the ray tube depicted above (adapted from Pierce's Fig. 8.17) would have no curvature. It is unclear why Pierce's Fig. 8.17 has curvature.</span> Thus Eq. \eqref{eq:ray:alg} becomes \(P^2(\vec{x}) A(\vec{x}) = P^2(\vec{x}_0) A(\vec{x}_0)\), which, upon taking the square root of both sides and solving for \(x_0\), gives
+Pierce notes that \(\gradient \tau\cdot \vec{n} = 1/c\), which is now assumed to be the same at points \(\vec{x}_0\) and \(\vec{x}\). The assumption that \(c\) is the same at points \(\vec{x}_0\) and \(\vec{x}\) implies that the medium is homogeneous, and that the rays travel in straight lines [The ray tube depicted above (adapted from Pierce's Fig. 8.17) therefore has no curvature for the following result to hold]. Thus Eq. \eqref{eq:ray:alg} becomes \(P^2(\vec{x}) A(\vec{x}) = P^2(\vec{x}_0) A(\vec{x}_0)\), which, upon taking the square root of both sides and solving for \(x_0\), gives
 \begin{align}\label{eq:amp}
 \boxed{P(\vec{x}) = P(\vec{x}_0) \sqrt{\frac{A(\vec{x}_0)}{A(\vec{x})}}\,.}
 \end{align}
