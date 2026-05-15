@@ -13,15 +13,17 @@ body {
 
 h1 {
   text-align: left;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 h2 {
-  font-size: 13pt;
+  font-size: 12pt;
+  font-weight: normal;
 }
 
 h3 {
   font-size: 12pt;
+  font-weight: normal;
 }
 
 #contact-info {
