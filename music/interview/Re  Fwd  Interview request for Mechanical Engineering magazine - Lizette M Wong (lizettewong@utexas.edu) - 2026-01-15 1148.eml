@@ -1,0 +1,345 @@
+Delivered-To: chiragokani@utmail.utexas.edu
+Received: by 2002:a05:6124:b89:b0:42c:c396:35e4 with SMTP id b9csp1199126vlj;
+        Thu, 15 Jan 2026 09:48:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXOYwOXVcBRT1JfLrDBRpqybVhLteDErzMhRJ/1rG4XT1lXir+PHTCHy5wOxpTK2E4Ni+hGFZPH6dO0bA==@utmail.utexas.edu
+X-Received: by 2002:a05:7022:6191:b0:11b:9386:826c with SMTP id a92af1059eb24-1244a745aeemr524619c88.41.1768499328429;
+        Thu, 15 Jan 2026 09:48:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768499328; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GFJcxyL5FXhcueyFCyxxaESMDSQrjQcTAHyL7eyF62xMH3FreYfZqbU38eWEtZRpYx
+         AyP+aHsfoOaMnHMdmICidfryxb3wHV29T1AHRNWUod0SpKhE5CnzuTyvhc+dR+eqqJaL
+         jYj8QAzDU2UoMNLs9WUJXXZaXWtrdVDYkRD8h0xiqrRpa2m4UYFFIIsehdgZHQkuHN6K
+         M3v0/NANgfukfKgmV+KkERZVH1wabhOQeffr6mCql2Qv+gdB/Wk7rA1dX2t44GXCnEmy
+         wNDMtFQ9WiKXFUriDlFQNiqL2HT5eB4Ic063BSSl9bmnTayRkGfUUp3zV/Vz1ODpqkxI
+         9p1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature:ironport-sdr;
+        bh=J0LBb5lH0n7Xk6KmGssjdpNbXbvpan4ayjxis0SKKnU=;
+        fh=GCxP+t5900ef1AgZdm9eoTwlpf1aZWSlFfIkZLzg9pQ=;
+        b=Mj01KXumifl/siVhwvAKgVLlVWIqJ0Uq/vkXiBgFgsX+BdkQwGWPhoQ4EaxSaijOhd
+         g8jD5+menn4LYODn9ianDfQ7FPZzrZGXIAl7HcqcWMUtIuVF5M5+qoWEJpaP+L27c4/B
+         dsxsylQ+bjpbHqNz2OXjgU5jrXnwOoKBrRzyZGY1GYVYrk/RFvER1ULdlWrFS6epHth4
+         Ge/QjdQWI+9Y2hq/ZwN/1m9RD8A4Tsw51pxkPufbBvBqhNtRFFKDHdpTLD1hTCKv/qzf
+         7Sw0zShclGw2I6ZkuE7jbCerqi+DtxueHrAIpxevBWTAuRn/IerKlOaOdtMOBYI4DmzM
+         qazA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@utexas.edu header.s=google header.b=vmY9o6OY;
+       spf=pass (google.com: domain of lizettewong@utexas.edu designates 74.125.82.50 as permitted sender) smtp.mailfrom=lizettewong@utexas.edu;
+       dara=neutral header.i=@utmail.utexas.edu
+Return-Path: <lizettewong@utexas.edu>
+Received: from esa2.utexas.iphmx.com (esa2.utexas.iphmx.com. [68.232.147.89])
+        by mx.google.com with ESMTPS id a92af1059eb24-1244af540b9si642193c88.69.2026.01.15.09.48.48
+        for <chiragokani@utmail.utexas.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Jan 2026 09:48:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of lizettewong@utexas.edu designates 74.125.82.50 as permitted sender) client-ip=74.125.82.50;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@utexas.edu header.s=google header.b=vmY9o6OY;
+       spf=pass (google.com: domain of lizettewong@utexas.edu designates 74.125.82.50 as permitted sender) smtp.mailfrom=lizettewong@utexas.edu;
+       dara=neutral header.i=@utmail.utexas.edu
+X-CSE-ConnectionGUID: 0oruZJPcQF+TlvlJaeslZA==
+X-CSE-MsgGUID: ZrsoLXshRgGa6FidFn6JSg==
+Received-SPF: Pass (esa2.utexas.iphmx.com: domain of
+  lizettewong@utexas.edu designates 74.125.82.50 as permitted
+  sender) identity=mailfrom; client-ip=74.125.82.50;
+  receiver=esa2.utexas.iphmx.com;
+  envelope-from="lizettewong@utexas.edu";
+  x-sender="lizettewong@utexas.edu"; x-conformance=spf_only;
+  x-record-type="v=spf1"; x-record-text="v=spf1
+  ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4000::/36
+  ip6:2404:6800:4000::/36 ip6:2607:f8b0:4000::/36
+  ip6:2800:3f0:4000::/36 ip6:2a00:1450:4000::/36
+  ip6:2c0f:fb50:4000::/36 ~all"
+Received-SPF: None (esa2.utexas.iphmx.com: no sender authenticity
+  information available from domain of
+  postmaster@mail-dl1-f50.google.com) identity=helo;
+  client-ip=74.125.82.50; receiver=esa2.utexas.iphmx.com;
+  envelope-from="lizettewong@utexas.edu";
+  x-sender="postmaster@mail-dl1-f50.google.com";
+  x-conformance=spf_only
+Authentication-Results: esa2.utexas.iphmx.com; spf=Pass smtp.mailfrom=lizettewong@utexas.edu; spf=None smtp.helo=postmaster@mail-dl1-f50.google.com; dkim=pass (signature verified) header.i=@utexas.edu; dmarc=pass (p=none dis=none) d=utexas.edu
+IronPort-SDR: 6969287e_WelCDc9mMURV2EdsTg2rVHRMzgLcW9ecxdyycldcvun8hrx
+ Js0exl7juKed3HRWXdkiHAs/3wAYZe/M7hujjyQ==
+X-Utexas-Sender-Group: GMAIL
+X-IronPort-MID: 205416935
+X-SBRS: 2.9
+X-Utexas-Seen-Inbound: true
+X-Utexas-Inbound-MID: 205416935
+X-Utexas-From-UTmail: true
+Received: from mail-dl1-f50.google.com ([74.125.82.50])
+  by esa2.utexas.iphmx.com with ESMTP/TLS/TLS_AES_256_GCM_SHA384; 15 Jan 2026 11:48:46 -0600
+Received: by mail-dl1-f50.google.com with SMTP id a92af1059eb24-1233b172f02so1466495c88.0
+        for <chiragokani@utexas.edu>; Thu, 15 Jan 2026 09:48:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=utexas.edu; s=google; t=1768499327; x=1769104127; darn=utexas.edu;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=J0LBb5lH0n7Xk6KmGssjdpNbXbvpan4ayjxis0SKKnU=;
+        b=vmY9o6OYs2Z9969qu8MBprKilGQa0EsVf+H6fJloNByhNBTbyWXV1c1OOI0/VbxRn6
+         zN5RcrTh8jgbXQJ5w/s+BTUn6MDV9+p1ByoLgJV0PqOCTPVIHWFZTQhEJ0ethSge5Ad2
+         b0gFGrZCNmKFeySYeLyGbzdjWRYskSktRczEzfRaV+2+SDaYZ18Txkwgma0gKNzFb5kt
+         xtbLbXQ/OvZAeqmD8ajzjiX9/2VdEXbMx3mZhHdmacLOELAmA9zPhasLEltjYymr6M8G
+         ftusYTcHLBo/XZgSkrhkMXgyBp1c0L79l1pCsyB37jnmUZND0LIxmuF5n5IwP5lFxFQl
+         cSZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768499327; x=1769104127;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=J0LBb5lH0n7Xk6KmGssjdpNbXbvpan4ayjxis0SKKnU=;
+        b=f6UL2FXIunFblSBWMYtz34vB8N42EK/xrVMwjsCy7hwqfK3Mrd/fSDToXahh/EkMOp
+         IjdmmwY86XPxYIfs/QGzN1Q2YBw/HLoC2dUAaNalQj5lw10mtjZ1e+2N9A6Vs/tCk7tW
+         hngptZ53AohfYKDWq1mglPEQpenNLoX10lbdi5FzZ68iPYEHNYZw31SjqxE9ELIcKALQ
+         39WRct3fyTJkqXdZV+T5nEfQt0pdBpMAv9b3+MiTNwQzSl1dwQtLSs0/En8enz+liJ8z
+         e+PwksKyP2uQhfswTxW4/nc1DtiEGk/IZtv3cEMzdluun8cZrLpe7aO2Zf+PAWZda7Xv
+         ipyQ==
+X-Gm-Message-State: AOJu0Yzh7D085XutH19aTmXpOcR7cteRk+Ie/nMJDkFEh/czxKnsjc+R
+	I7PKJYhjA9MjReQjB/OjM+wClW+RV4Zhhlm0kCI+w6vUowSGSY56aO9rJ5Y39Mir4z6hW+h89hY
+	HizivnfqrTL/2GC4ogDvD0pzo3QwmZ2pSKg7eMygraivro7JsKuPgp3w=
+X-Gm-Gg: AY/fxX5FV8f+aPWgOPfyLAZ0NgVSuQUlM+mwX6RNLnItIHRezGAyhXDb7O647fFo6Xf
+	+Kedkdl/z68a1pxRat+3qhWUcQZQx0BDPTRBojUn1IpKB8VLFGhSQNGBKe4/hsoHpIGfJuDRgC6
+	nFkJ9CrjhBaJ+lMJKA7IB3NRVOtb7Is4nwJnFI2OlI854VOdrnbB9gP6mliF2ydE7YcMZAI1cIx
+	WJcuN72ot1EAtoNM8HQs02s65h46pnsp21CpRUpr01tHmubLiPuPJOcUW/M7FbB+Yi5lTzSH7Fd
+	jEiwDlW9rSfICVGqkIqD8P8Tw0VC
+X-Received: by 2002:a05:7022:608a:b0:119:e56b:98ab with SMTP id
+ a92af1059eb24-1244a6e3574mr465681c88.18.1768499326967; Thu, 15 Jan 2026
+ 09:48:46 -0800 (PST)
+MIME-Version: 1.0
+References: <SN6PR06MB4447FFBC5D90BED260FDBCE2C48FA@SN6PR06MB4447.namprd06.prod.outlook.com>
+ <CAPNj1Om1TyXy_xqbNePReuv8mjOAYY1Ei+AVjqrK1m7Uq1nYbA@mail.gmail.com> <a6fd1ada-914c-4ed5-9719-878185672294@utexas.edu>
+In-Reply-To: <a6fd1ada-914c-4ed5-9719-878185672294@utexas.edu>
+From: Lizette M Wong <lizettewong@utexas.edu>
+Date: Thu, 15 Jan 2026 11:48:36 -0600
+X-Gm-Features: AZwV_QjHzo5URus3ansGW6zRoqr6YerlMhmMzFrUygjHLMtEdmBhl6Yqj-KbITg
+Message-ID: <CAPNj1OmXtrqsDNcGc-ebE+KqaAK7eY0vV5sWNpS-Mu+gY6VKJA@mail.gmail.com>
+Subject: Re: Fwd: Interview request for Mechanical Engineering magazine
+To: Chirag Gokani <chiragokani@utexas.edu>
+Content-Type: multipart/alternative; boundary="0000000000002b724c064870d653"
+
+--0000000000002b724c064870d653
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thank you! I'll cross-correlate with my own availability and send her a few
+times.
+
+I also think it's so sweet of them to feature us! We are going to need to
+brainstorm a name for our duo soon =F0=9F=98=86
+
+On Thu, Jan 15, 2026 at 11:43=E2=80=AFAM Chirag Gokani <chiragokani@utexas.=
+edu>
+wrote:
+
+> Hi Lizette,
+>
+> Wow, that's very sweet! I would be happy to do a Zoom call. Here is my
+> availability this week and next:
+>
+> Today (1/15) after 2:00pm
+> Tomorrow (1/16) from 2:00--3:00pm
+> Monday (1/19) and Tuesday (3/20) anytime
+> Wednesday (1/21) anytime except 12:30--2:30pm
+> Thursday (1/22) anytime except from 1:00--2:00pm
+> Friday (1/23) from 2:00--3:00pm
+>
+> Chirag
+>
+> On 1/15/2026 11:30 AM, Lizette M Wong wrote:
+>
+> Hi Chirag,
+>
+> Katherine is interested in interviewing us for the ME magazine! Would you
+> be interested in meeting with her? If so, what times would work best for
+> you? Thanks!
+>
+> ---------- Forwarded message ---------
+> From: Spiering, Katherine <katherine.spiering@austin.utexas.edu>
+> Date: Wed, Jan 14, 2026 at 4:37=E2=80=AFPM
+> Subject: Interview request for Mechanical Engineering magazine
+> To: lizettewong@utexas.edu <lizettewong@utexas.edu>
+>
+>
+> Hi Lizette,
+>
+> I am the Communications Coordinator for mechanical engineering, we met at
+> our departmental holiday party in December. I wanted to see if you and
+> Chirag would be interested in participating in a short article for our
+> upcoming ME magazine. We are always looking to highlight students' pursui=
+ts
+> outside the classroom and I=E2=80=99d like to hear more about your intere=
+st in
+> music and how that intersects with your research within the field of
+> acoustics.
+>
+> If you=E2=80=99re up for it, could we find a time to do a quick zoom inte=
+rview
+> sometime this week or next? Please forward this on to Chirag as well!
+>
+> Best,
+>
+>
+> *KATHERINE SPIERING, *Senior Communications Coordinator
+>
+> The University of Texas at Austin | Walker Department of Mechanical
+> Engineering | 512-232-7121 | *www.me.utexas.edu
+> <https://www.me.utexas.edu/>*
+>
+> 9:00am-5:30pm | Remote: Thurs-Fri
+>
+>
+>
+>
+>
+
+--0000000000002b724c064870d653
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thank=C2=A0you! I&#39;ll cross-correlate with my own avail=
+ability and send her a few times.=C2=A0<div><br></div><div>I also think it&=
+#39;s so sweet of them to feature us! We are going to need to brainstorm a =
+name for our duo soon=C2=A0=F0=9F=98=86<br></div></div><br><div class=3D"gm=
+ail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On T=
+hu, Jan 15, 2026 at 11:43=E2=80=AFAM Chirag Gokani &lt;<a href=3D"mailto:ch=
+iragokani@utexas.edu">chiragokani@utexas.edu</a>&gt; wrote:<br></div><block=
+quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
+px solid rgb(204,204,204);padding-left:1ex"><u></u>
+
+ =20
+   =20
+ =20
+  <div>
+    Hi Lizette,<br>
+    <br>
+    Wow, that&#39;s very sweet! I would be happy to do a Zoom call. Here is
+    my availability this week and next:<br>
+    <br>
+    Today (1/15) after 2:00pm=C2=A0<br>
+    Tomorrow (1/16) from 2:00--3:00pm=C2=A0<br>
+    Monday (1/19) and Tuesday (3/20) anytime<br>
+    Wednesday (1/21) anytime except 12:30--2:30pm=C2=A0<br>
+    Thursday (1/22) anytime except from 1:00--2:00pm<br>
+    Friday (1/23) from 2:00--3:00pm<br>
+    <br>
+    Chirag<br>
+    <br>
+    <div>On 1/15/2026 11:30 AM, Lizette M Wong
+      wrote:<br>
+    </div>
+    <blockquote type=3D"cite">
+     =20
+      <div dir=3D"ltr">Hi Chirag,
+        <div><br>
+        </div>
+        <div>Katherine is interested in interviewing us for the ME
+          magazine! Would you be interested in meeting with her? If so,
+          what times would work best=C2=A0for you? Thanks!<br>
+          <br>
+          <div class=3D"gmail_quote">
+            <div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded
+              message ---------<br>
+              From: <strong class=3D"gmail_sendername" dir=3D"auto">Spierin=
+g,
+                Katherine</strong> <span dir=3D"auto">&lt;<a href=3D"mailto=
+:katherine.spiering@austin.utexas.edu" target=3D"_blank">katherine.spiering=
+@austin.utexas.edu</a>&gt;</span><br>
+              Date: Wed, Jan 14, 2026 at 4:37=E2=80=AFPM<br>
+              Subject: Interview request for Mechanical Engineering
+              magazine<br>
+              To: <a href=3D"mailto:lizettewong@utexas.edu" target=3D"_blan=
+k">lizettewong@utexas.edu</a>
+              &lt;<a href=3D"mailto:lizettewong@utexas.edu" target=3D"_blan=
+k">lizettewong@utexas.edu</a>&gt;<br>
+            </div>
+            <br>
+            <br>
+            <div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                Hi Lizette,=C2=A0</div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                <br>
+              </div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                I am the Communications Coordinator for mechanical
+                engineering, we met at our departmental holiday party in
+                December. I wanted to see if you and Chirag would be
+                interested in participating in a short article for our
+                upcoming ME magazine. We are always looking to highlight
+                students&#39; pursuits outside the classroom and I=E2=80=99=
+d like to
+                hear more about your interest in music and how that
+                intersects with your research within the field of
+                acoustics.=C2=A0</div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                <br>
+              </div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                If you=E2=80=99re up for it, could we find a time to do a q=
+uick
+                zoom interview sometime this week or next? Please
+                forward this on to Chirag as well!=C2=A0</div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                <br>
+              </div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                Best,</div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                <br>
+              </div>
+              <div dir=3D"ltr" style=3D"font-family:Aptos,Arial,Helvetica,s=
+ans-serif;font-size:12pt;color:rgb(0,0,0)">
+                <br>
+              </div>
+              <div id=3D"m_-3917782089762414817m_5707656910670955133ms-outl=
+ook-mobile-signature">
+                <p style=3D"margin:0in;font-family:Calibri,sans-serif;font-=
+size:11pt"><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color=
+:rgb(51,63,72)"><b>KATHERINE
+                      SPIERING,
+                    </b>Senior Communications Coordinator</span></p>
+                <p style=3D"margin:0in;font-family:Calibri,sans-serif;font-=
+size:11pt"><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color=
+:rgb(204,107,0)">The
+                    University of Texas at Austin</span><span style=3D"font=
+-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=C2=A0|
+                    Walker Department of Mechanical Engineering |
+                    512-232-7121 |</span><span style=3D"font-family:Arial,s=
+ans-serif;font-size:10pt;color:rgb(204,107,0)">
+                  </span><span style=3D"font-family:Arial,sans-serif;font-s=
+ize:10pt;color:rgb(0,0,0)"><u><a href=3D"https://www.me.utexas.edu/" title=
+=3D"https://www.me.utexas.edu/" style=3D"margin-top:0px;margin-bottom:0px" =
+target=3D"_blank">www.me.utexas.edu</a></u></span></p>
+                <p style=3D"margin:0in;font-family:Calibri,sans-serif;font-=
+size:11pt"><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color=
+:rgb(51,63,72)">9:00am-5:30pm
+                    | Remote: Thurs-Fri=C2=A0</span></p>
+                <p style=3D"margin:0in;font-family:Calibri,sans-serif;font-=
+size:11pt"><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color=
+:rgb(51,63,72)"><br>
+                  </span></p>
+                <p style=3D"margin:0in;font-family:Calibri,sans-serif;font-=
+size:11pt"><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color=
+:rgb(51,63,72)"><br>
+                  </span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </blockquote>
+    <br>
+  </div>
+
+</blockquote></div>
+
+--0000000000002b724c064870d653--

@@ -1,0 +1,580 @@
+Delivered-To: chiragokani@utmail.utexas.edu
+Received: by 2002:ab4:11d9:0:b0:42c:c396:35e4 with SMTP id f25csp1870905vll;
+        Mon, 26 Jan 2026 19:27:49 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWgWM4zc1QPymZk8z9jq7PPY1EycSsSAUj5Ug7zCtEQgnFHjQyhqr29sBbGIGrnoHwtR9kvPbiKwpmWHg==@utmail.utexas.edu
+X-Received: by 2002:a05:620a:1905:b0:8c6:e8f5:ab2c with SMTP id af79cd13be357-8c70b927283mr44761885a.85.1769484469530;
+        Mon, 26 Jan 2026 19:27:49 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1769484469; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=QuOhVvKAogdpVpPiIcqDyaZPQuDurXkPhWD66Ayn0ysUpfZ+GSGfSHbamRRmAsWO+x
+         63t/sMghpfNN37iu+7ByWzS6S5tOzonsDdp0nPf+T55DHFoJmvvQbzjIFi9f0LgSRFI0
+         66uOYdUVFZxDelVZizNn0VqsYvSXPwBmJuv1cx/Sf3xW3Zmm1JBRXs2w4/lYYzT1MHbW
+         284WVGGqgzF+2QcGWngihFeCRSiqdyf58oJMS68/nU0RocWGiIL1FON05r/nL3nfE3wy
+         KpQB8b+eK3yhlM1SdudyTLVu2eC9rFDDtY3E5OrOgN9g5Ran8GpOQNVGpMDbhjAeOcaF
+         rKrQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature:ironport-sdr;
+        bh=nmsE7osBg2Dar7F4YDGtkJNwbEIryw54mMjElPd7QcM=;
+        fh=R/3pk97f7gd7XfkCz6NDIUYumesQLNDSVayxFET99sI=;
+        b=jV+zQ/CUJSS7M6cI9+OarzvajON1RHV7JyWfEV6J5E/uXWlvGm4139cBUhfyy1MgcJ
+         DY4gqztq6nDXkwhLBcH/A1Jxw57xPw86ln0+XfS9fAF/elf5GQOmZkaprERxFlA2zu+h
+         jQud2T3aH/iVzO7bkJFz/FTcIytT6YuCEvQL27vLGlZkEo4m9DcYg8q5qkRfBzM4LI8r
+         vVnBcBSpCHP0EseUHOFXOEgChIzIuXgsAYkS7PcoEkbg2VrU2orJqQjFBRu/pi0nRfz4
+         sjuuzv7W+RWfVa352Viy1skGZOmiucDxYJLKj8xgHNBiwmKi+4q9XQmyLQVc8GYi6/fr
+         JPkQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@utexas.edu header.s=google header.b=MZYGyIl5;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of lizettewong@utexas.edu designates 74.125.82.53 as permitted sender) smtp.mailfrom=lizettewong@utexas.edu;
+       dara=fail header.i=@utmail.utexas.edu
+Return-Path: <lizettewong@utexas.edu>
+Received: from esa16.utexas.iphmx.com (esa16.utexas.iphmx.com. [139.138.32.253])
+        by mx.google.com with ESMTPS id 6a1803df08f44-8949192724csi114457066d6.391.2026.01.26.19.27.49
+        for <chiragokani@utmail.utexas.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Jan 2026 19:27:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of lizettewong@utexas.edu designates 74.125.82.53 as permitted sender) client-ip=74.125.82.53;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@utexas.edu header.s=google header.b=MZYGyIl5;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of lizettewong@utexas.edu designates 74.125.82.53 as permitted sender) smtp.mailfrom=lizettewong@utexas.edu;
+       dara=fail header.i=@utmail.utexas.edu
+X-CSE-ConnectionGUID: Z545AuQgRkeiHQASqoB1Ug==
+X-CSE-MsgGUID: JWkt59BfSPOoMyMN43x7eA==
+Received-SPF: Pass (esa16.utexas.iphmx.com: domain of
+  lizettewong@utexas.edu designates 74.125.82.53 as permitted
+  sender) identity=mailfrom; client-ip=74.125.82.53;
+  receiver=esa16.utexas.iphmx.com;
+  envelope-from="lizettewong@utexas.edu";
+  x-sender="lizettewong@utexas.edu"; x-conformance=spf_only;
+  x-record-type="v=spf1"; x-record-text="v=spf1
+  ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4000::/36
+  ip6:2404:6800:4000::/36 ip6:2607:f8b0:4000::/36
+  ip6:2800:3f0:4000::/36 ip6:2a00:1450:4000::/36
+  ip6:2c0f:fb50:4000::/36 ~all"
+Received-SPF: None (esa16.utexas.iphmx.com: no sender
+  authenticity information available from domain of
+  postmaster@mail-dl1-f53.google.com) identity=helo;
+  client-ip=74.125.82.53; receiver=esa16.utexas.iphmx.com;
+  envelope-from="lizettewong@utexas.edu";
+  x-sender="postmaster@mail-dl1-f53.google.com";
+  x-conformance=spf_only
+Authentication-Results: esa16.utexas.iphmx.com; spf=Pass smtp.mailfrom=lizettewong@utexas.edu; spf=None smtp.helo=postmaster@mail-dl1-f53.google.com; dkim=pass (signature verified) header.i=@utexas.edu; dmarc=pass (p=none dis=none) d=utexas.edu
+IronPort-SDR: 697830b4_90h09g9guH/GnIM489AP90a/wtlnGs1Qg1X/HCyuS4q1NWW
+ U+rmi+EhjPsWD6rIza/1m9jFnpXGAv3XKzdNewA==
+X-Utexas-Sender-Group: GMAIL
+X-IronPort-MID: 722128197
+X-SBRS: 2.9
+X-Utexas-Seen-Inbound: true
+X-Utexas-Inbound-MID: 722128197
+X-Utexas-From-UTmail: true
+Received: from mail-dl1-f53.google.com ([74.125.82.53])
+  by esa16.utexas.iphmx.com with ESMTP/TLS/TLS_AES_256_GCM_SHA384; 26 Jan 2026 21:27:48 -0600
+Received: by mail-dl1-f53.google.com with SMTP id a92af1059eb24-12460a7caa2so7432719c88.1
+        for <chiragokani@utexas.edu>; Mon, 26 Jan 2026 19:27:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769484468; cv=none;
+        d=google.com; s=arc-20240605;
+        b=igti05LGD4Tw63/jmhLSXpyAO0xlPo0qkpAWdrscJy//pPVQjwlmisupxolkzyjhGa
+         l3W2ZAuuYCJIZnGmOt0uDJRZhLu1jUPlNYGqMvAdds0zfbL1DIJlb2wWTOPomgZVCUk4
+         KhMlWml7roxV22Xl9MKQUZyUQvZnAYtA48ZKxn5E/kfC9yTIsup0xQR2QxazZEhFDQ3R
+         pgzTyvTu6SetrJzmN7U8emi4LZ6UNQuZL0+xBWUoB3w2oZqJmWRmK/YmyukdCMo7CrY8
+         kl09JxzapjmHwoYJ3eyIcQSOcEktDlW0d/RVqeLOJiCD6KLKdRJItzoDiF/fQ4Jdq1PO
+         BqsQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=nmsE7osBg2Dar7F4YDGtkJNwbEIryw54mMjElPd7QcM=;
+        fh=R/3pk97f7gd7XfkCz6NDIUYumesQLNDSVayxFET99sI=;
+        b=U0N42kDhRWg8R5AqHCak5XCPXT/VYdXVHLWHjoqoYx+OtEgE8zTsKIB1fcu/jRZeDG
+         oK+wu/9kQkiVLg7WgfRwn2FTsOq174A4mEHukz9EY4Ozfn9CUvyZKWUCY4nAPysN73i+
+         BF24ITeNGzXKZee21YALD47SvfjYNlU2i3ITcMsPmMtbCrFFH1qkrDtgnlHkE9sXcH5B
+         3sz+kdkK0bmFTRJn7w2913n0y0hUWT+8gxprtuS1jrlSk0PeJ/Th8/rGcsNqCJm7YKLX
+         tiy8uLqKmN8axjhxHoBeM0v3J2+wYJqayN+pqKbOHj6HBP68/iN3bJFaQlwMR6b7BWfs
+         XllA==;
+        darn=utexas.edu
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=utexas.edu; s=google; t=1769484468; x=1770089268; darn=utexas.edu;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=nmsE7osBg2Dar7F4YDGtkJNwbEIryw54mMjElPd7QcM=;
+        b=MZYGyIl5YH7tqtbxEJZ1xQhb7RTaLtjmUHMu200I7+bnCR/EUvE4rTj5Bs3BKB524V
+         1H+agQdfYNZEvbVkmLlYF2ZMbR851jI66W9agBSMGdKnLb8dfIYwEyTPnTjaEgQwOYAc
+         xAfLmcpP49Zyh/I3SYmg+aQRaC0BmpOfQYLIB0d8I3FalsNE7eqqUtMNCR/WCwsh/ET5
+         mlc+rXMYVHk31a6v3MGs/46q/hLW9+gk3GAG1W2K7aJ4ofw2d73P8aHRQprh9aHc12+a
+         oOsAFOcNx91HkABKDA2eMJSPlT9zvS7Zih8ua6Q3cH+CTzGcRLmf2GXrHI5GGYBxxWpn
+         Xd5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769484468; x=1770089268;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nmsE7osBg2Dar7F4YDGtkJNwbEIryw54mMjElPd7QcM=;
+        b=b1OQqy2PNGOG43/04lF+A0dYBLSZpCwNDS/5laKW2+lFd9MuJ0T/xaURUe4S4ImgPo
+         gJT0Nvsr3QNHl9eFKzxnPDmuaH6IsLq4cQvAs2VpUFzWjoK7zXUjwJNE20CIFuhGsQcg
+         W9u6mzAFmMJ6dQ5seR1a0nvzIhDlqZFiecN9AV6MsE5BHIlRCrWjc1iJjR8GWcuMU1W5
+         tyKSoVADr2piJi200CfNzm4q33bWDJwq0ztdJDAnO5VF2UK9cEcIxWy9T1PMeiAAL0Xt
+         hbh+G2mAO5y1foRmKAI8rsDUXQ3A2xX759LrOPrI5oM41oLfNuoOFJ/+oXS0YD89dbKV
+         FNWw==
+X-Gm-Message-State: AOJu0YziI6G1e3v/mbOJV2PXdj/xdgVNZXzWRZZ9Z4OgBuvWjHae3Xik
+	UVTZ0HGTb16tTK83TqVoESgtJWszRkEZaL/yMBCITGcnMREWbcrONWoi1fpnhDmLwSm/jz34uwX
+	+HtPsycSCZOg8+MKmQkyFH9/Il4uXnHYTS91gnxEcPmGTDwPfr86CXkQ=
+X-Gm-Gg: AZuq6aIE/Kmix2hWjK0b29pFTY6mwruqh9EZvg8iiD8KXR+lmebUrisMbMTKWZnJqah
+	JWXjgATy0BRYe1Udh16t6mtvWv1DMhkYj+hdoUsDn50J3qYzr4bdMU74t85v45+V6Rcuhh72blD
+	Glgyps/KK5U/Pr56cn/G4yJGTbtAhEr5fchod7pAwgFnoEueH+9QE8inwDZpLYMdCY7XyaKG9FY
+	NJgpb0U0z5QSToEErHNYt8exR2tWySs7FduhBBPic1uARznE0uTp+fKCuubza7uumDMIHonvbLq
+	b6Zrs3WnmAqiVsdR6G40XoZbnAWfaHRSWg1doA==
+X-Received: by 2002:a05:7022:e09:b0:122:415:25ed with SMTP id
+ a92af1059eb24-124a00f47d3mr283590c88.49.1769484467440; Mon, 26 Jan 2026
+ 19:27:47 -0800 (PST)
+MIME-Version: 1.0
+References: <CAPNj1O=z3z=FcFKpdE0gsMVTGdUQK9ecroGfscNEmfaC6AZTYw@mail.gmail.com>
+ <SN6PR06MB4447C1D016DB0CCCF8BBD55DC497A@SN6PR06MB4447.namprd06.prod.outlook.com>
+ <CAPNj1Ok-wQFV79-RzvjK8D=XPMJSfbfxdG1YcZgctSNy3pvykw@mail.gmail.com> <SN6PR06MB4447E570F3EE18C92FF6EC55C493A@SN6PR06MB4447.namprd06.prod.outlook.com>
+In-Reply-To: <SN6PR06MB4447E570F3EE18C92FF6EC55C493A@SN6PR06MB4447.namprd06.prod.outlook.com>
+From: Lizette M Wong <lizettewong@utexas.edu>
+Date: Mon, 26 Jan 2026 21:27:34 -0600
+X-Gm-Features: AZwV_QgsMCsS5yLsUtsxdG0DLRHtiEWbVtbMXZKaOFmaoFjpr6UGq4S-xpUOkTk
+Message-ID: <CAPNj1Onnx5nVOxnXRM2XCVsYbnyg-9YyrwwQbd27=9DzuKjBUA@mail.gmail.com>
+Subject: Re: Lizette & Chirag ME Magazine Interview Followup
+To: "Spiering, Katherine" <katherine.spiering@austin.utexas.edu>
+Cc: "chiragokani@utexas.edu" <chiragokani@utexas.edu>
+Content-Type: multipart/alternative; boundary="0000000000001e23d006495635bc"
+
+--0000000000001e23d006495635bc
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Katherine,
+
+I hope this email finds you well, and that you are staying warm through the
+ice storm! Chirag and I looked over your draft of the magazine article and
+we both loved it. I am forwarding the original along with a few of our
+edits to our advisors, Drs. Haberman and Hamilton, for review. Thank you
+again so much for interviewing us and I will follow up soon!
+
+Best,
+Lizette Wong
+
+On Mon, Jan 26, 2026 at 3:28=E2=80=AFPM Spiering, Katherine <
+katherine.spiering@austin.utexas.edu> wrote:
+
+> Hi Lizette and Chirag,
+>
+> Attached is the draft of your magazine article! Please review it for
+> accuracy, anything that is just incorrect or misleading. The overall
+> narrative structure will not be changed but of course we want to fix any
+> errors.
+>
+> Best,
+>
+> *KATHERINE SPIERING, *Senior Communications Coordinator
+>
+> The University of Texas at Austin | Walker Department of Mechanical
+> Engineering | 512-232-7121 | *www.me.utexas.edu
+> <https://www.me.utexas.edu/>*
+>
+> 9:00am-5:30pm | Remote: Thurs-Fri
+>
+>
+>
+> *From: *Lizette M Wong <lizettewong@utexas.edu>
+> *Date: *Thursday, January 22, 2026 at 6:13=E2=80=AFPM
+> *To: *Spiering, Katherine <katherine.spiering@austin.utexas.edu>
+> *Cc: *chiragokani@utexas.edu <chiragokani@utexas.edu>
+> *Subject: *Re: Lizette & Chirag ME Magazine Interview Followup
+>
+> Apologies about the Google Drive permissions! I made a Google Drive folde=
+r
+> and shared the link with your email address, which you can find here
+> <https://drive.google.com/drive/folders/1_uWhDD7gH8hQ-ZiQ3yLtLSRib00n_WSE=
+?usp=3Dsharing>.
+> Thank you again so much!
+>
+> Best,
+> Lizette Wong
+>
+> On Thu, Jan 22, 2026 at 3:40=E2=80=AFPM Spiering, Katherine <
+> katherine.spiering@austin.utexas.edu> wrote:
+>
+> Thanks, Lizette! It=E2=80=99s looking like you need to grant access in Go=
+ogle
+> Drive for me to view these.
+>
+> I appreciate you both for participating and I=E2=80=99m excited to share =
+this
+> story with you soon.
+>
+> Best,
+>
+> *KATHERINE SPIERING, *Senior Communications Coordinator
+>
+> The University of Texas at Austin | Walker Department of Mechanical
+> Engineering | 512-232-7121 | *www.me.utexas.edu
+> <https://www.me.utexas.edu/>*
+>
+> 9:00am-5:30pm | Remote: Thurs-Fri
+>
+>
+>
+> *From: *Lizette M Wong <lizettewong@utexas.edu>
+> *Date: *Thursday, January 22, 2026 at 12:10=E2=80=AFPM
+> *To: *Spiering, Katherine <katherine.spiering@austin.utexas.edu>
+> *Cc: *chiragokani@utexas.edu <chiragokani@utexas.edu>
+> *Subject: *Lizette & Chirag ME Magazine Interview Followup
+>
+> Hi Katherine,
+>
+> Thank you so much for interviewing Chirag and I for the ME magazine! We
+> were very grateful to share our experiences in acoustics and jazz. Chirag
+> and I were able to find a few photos from our live performances, most of
+> which are screenshots from videos. We hope this helps supplement the phot=
+os
+> from last Tuesday. I named the files after the locations of the different
+> performances, which are listed below:
+>
+>    - South Main Arts Festival <https://visit.georgetown.org/arts/smaf.php=
+>,
+>    Georgetown, TX
+>    - Dr. Hamilton's annual acoustics community pool party
+>    - ME department holiday party
+>
+> Please let me know if you have any questions and we look forward to
+> hearing from you soon!
+>
+> Sincerely,
+> Lizette Wong
+>  georgetown1.png
+> <https://drive.google.com/file/d/1cEdBmpUnC6UNqd2eIzWX6j4R8VJoMDVG/view?u=
+sp=3Ddrive_web>
+>  georgetown2.png
+> <https://drive.google.com/file/d/1vOf28ykpjZ9UaCBjAIZ9GQ79lZVpMh38/view?u=
+sp=3Ddrive_web>
+>  holiday1.jpg
+> <https://drive.google.com/file/d/1PSwpSgyAHQjnVKYqwAT6-dk41HRLcZFS/view?u=
+sp=3Ddrive_web>
+>  holiday2.jpg
+> <https://drive.google.com/file/d/1CnJ2daKUv4cwT6LWDE-mjOBljNIWGy_1/view?u=
+sp=3Ddrive_web>
+>  holiday3.jpg
+> <https://drive.google.com/file/d/1uU_qnMZtMlyTMflqnOw43gQBaVLjEN9U/view?u=
+sp=3Ddrive_web>
+>  holiday4.jpg
+> <https://drive.google.com/file/d/1IE5B-XHQzKlpHF3QVcdFXlkyIq4Jg3FA/view?u=
+sp=3Ddrive_web>
+>  poolparty1.jpg
+> <https://drive.google.com/file/d/1WWtuRhdK8Ov-jNM1xizoz9QkGU4K_EUW/view?u=
+sp=3Ddrive_web>
+>  poolparty2.jpg
+> <https://drive.google.com/file/d/1SPu9iI_9GvDGgonFSjoB1nzbr6SyLwhv/view?u=
+sp=3Ddrive_web>
+>
+>
+
+--0000000000001e23d006495635bc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Dear Katherine,<div><br></div><div>I hope this email finds=
+ you well, and that you are staying warm through the ice storm! Chirag and =
+I looked over your draft of the magazine article and we both loved it. I am=
+ forwarding the original along with a few of our edits to our advisors, Drs=
+. Haberman and Hamilton, for review. Thank you again so much for interviewi=
+ng us and I will follow up soon!</div><div><br></div><div>Best,</div><div>L=
+izette Wong=C2=A0</div></div><br><div class=3D"gmail_quote gmail_quote_cont=
+ainer"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jan 26, 2026 at 3:28=
+=E2=80=AFPM Spiering, Katherine &lt;<a href=3D"mailto:katherine.spiering@au=
+stin.utexas.edu">katherine.spiering@austin.utexas.edu</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex">
+
+
+
+<div>
+<div style=3D"direction:ltr;font-family:Aptos,Arial,Helvetica,sans-serif;fo=
+nt-size:12pt;color:rgb(0,0,0)">
+Hi Lizette and Chirag,=C2=A0</div>
+<div style=3D"direction:ltr;font-family:Aptos,Arial,Helvetica,sans-serif;fo=
+nt-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"direction:ltr;font-family:Aptos,Arial,Helvetica,sans-serif;fo=
+nt-size:12pt;color:rgb(0,0,0)">
+Attached is the draft of your magazine article! Please review it for accura=
+cy, anything that is just incorrect or misleading. The overall narrative st=
+ructure will not be changed but of course we want to fix any errors.=C2=A0<=
+/div>
+<div style=3D"direction:ltr;font-family:Aptos,Arial,Helvetica,sans-serif;fo=
+nt-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"direction:ltr;font-family:Aptos,Arial,Helvetica,sans-serif;fo=
+nt-size:12pt;color:rgb(0,0,0)">
+Best,</div>
+<div style=3D"direction:ltr;font-family:Aptos,Arial,Helvetica,sans-serif;fo=
+nt-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div id=3D"m_-7262961985703828729ms-outlook-mobile-signature">
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+<b>KATHERINE SPIERING,
+</b>Senior Communications Coordinator</span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(204,107,0)"=
+>The University of Texas at Austin</span><span style=3D"font-family:Arial,s=
+ans-serif;font-size:10pt;color:rgb(51,63,72)">=C2=A0|
+ Walker Department of Mechanical Engineering | 512-232-7121 |</span><span s=
+tyle=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(204,107,0)">
+</span><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb=
+(0,0,0)"><u><a href=3D"https://www.me.utexas.edu/" title=3D"https://www.me.=
+utexas.edu/" style=3D"margin-top:0px;margin-bottom:0px" target=3D"_blank">w=
+ww.me.utexas.edu</a></u></span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+9:00am-5:30pm | Remote: Thurs-Fri=C2=A0</span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+<br>
+</span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+<br>
+</span></p>
+</div>
+<div id=3D"m_-7262961985703828729mail-editor-reference-message-container">
+<div style=3D"direction:ltr">
+</div>
+<div style=3D"text-align:left;padding:3pt 0in 0in;border-width:1pt medium m=
+edium;border-style:solid none none;border-color:rgb(181,196,223) currentcol=
+or currentcolor;font-family:Aptos;font-size:12pt;color:black">
+<b>From: </b>Lizette M Wong &lt;<a href=3D"mailto:lizettewong@utexas.edu" t=
+arget=3D"_blank">lizettewong@utexas.edu</a>&gt;<br>
+<b>Date: </b>Thursday, January 22, 2026 at 6:13=E2=80=AFPM<br>
+<b>To: </b>Spiering, Katherine &lt;<a href=3D"mailto:katherine.spiering@aus=
+tin.utexas.edu" target=3D"_blank">katherine.spiering@austin.utexas.edu</a>&=
+gt;<br>
+<b>Cc: </b><a href=3D"mailto:chiragokani@utexas.edu" target=3D"_blank">chir=
+agokani@utexas.edu</a> &lt;<a href=3D"mailto:chiragokani@utexas.edu" target=
+=3D"_blank">chiragokani@utexas.edu</a>&gt;<br>
+<b>Subject: </b>Re: Lizette &amp; Chirag ME Magazine Interview Followup<br>
+<br>
+</div>
+<div style=3D"direction:ltr">
+Apologies about the Google Drive permissions! I made a Google Drive folder =
+and shared the link with your email address, which you can find
+<a href=3D"https://drive.google.com/drive/folders/1_uWhDD7gH8hQ-ZiQ3yLtLSRi=
+b00n_WSE?usp=3Dsharing" target=3D"_blank">
+here</a>. Thank you again so much!=C2=A0</div>
+<div style=3D"direction:ltr">
+<br>
+</div>
+<div style=3D"direction:ltr">
+Best,</div>
+<div style=3D"direction:ltr">
+Lizette Wong</div>
+<div style=3D"direction:ltr">
+<br>
+</div>
+<div class=3D"gmail_attr" style=3D"direction:ltr">On Thu, Jan 22, 2026 at 3=
+:40=E2=80=AFPM Spiering, Katherine &lt;<a href=3D"mailto:katherine.spiering=
+@austin.utexas.edu" target=3D"_blank">katherine.spiering@austin.utexas.edu<=
+/a>&gt; wrote:</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;padding-left:1ex;border-left:=
+1px solid rgb(204,204,204)">
+<div class=3D"gmail_quote" style=3D"direction:ltr;font-family:Aptos,Arial,H=
+elvetica,sans-serif;font-size:12pt;color:rgb(0,0,0)">
+Thanks, Lizette! It=E2=80=99s looking like you need to grant access in Goog=
+le Drive for me to view these.</div>
+<div class=3D"gmail_quote" style=3D"direction:ltr;font-family:Aptos,Arial,H=
+elvetica,sans-serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"gmail_quote" style=3D"direction:ltr;font-family:Aptos,Arial,H=
+elvetica,sans-serif;font-size:12pt;color:rgb(0,0,0)">
+I appreciate you both for participating and I=E2=80=99m excited to share th=
+is story with you soon.</div>
+<div class=3D"gmail_quote" style=3D"direction:ltr;font-family:Aptos,Arial,H=
+elvetica,sans-serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"gmail_quote" style=3D"direction:ltr;font-family:Aptos,Arial,H=
+elvetica,sans-serif;font-size:12pt;color:rgb(0,0,0)">
+Best,</div>
+<div class=3D"gmail_quote" style=3D"direction:ltr;font-family:Aptos,Arial,H=
+elvetica,sans-serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div id=3D"m_-7262961985703828729m_2048997308123171843ms-outlook-mobile-sig=
+nature">
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+<b>KATHERINE SPIERING,
+</b>Senior Communications Coordinator</span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(204,107,0)"=
+>The University of Texas at Austin</span><span style=3D"font-family:Arial,s=
+ans-serif;font-size:10pt;color:rgb(51,63,72)">=C2=A0|
+ Walker Department of Mechanical Engineering | 512-232-7121 |</span><span s=
+tyle=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(204,107,0)">
+</span><span style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb=
+(0,0,0)"><u><a href=3D"https://www.me.utexas.edu/" title=3D"https://www.me.=
+utexas.edu/" style=3D"margin-top:0px;margin-bottom:0px" target=3D"_blank">w=
+ww.me.utexas.edu</a></u></span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+9:00am-5:30pm | Remote: Thurs-Fri=C2=A0</span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+<br>
+</span></p>
+<p style=3D"margin:0in;font-family:Calibri,sans-serif;font-size:11pt"><span=
+ style=3D"font-family:Arial,sans-serif;font-size:10pt;color:rgb(51,63,72)">=
+<br>
+</span></p>
+</div>
+<div id=3D"m_-7262961985703828729m_2048997308123171843mail-editor-reference=
+-message-container">
+<div style=3D"text-align:left;padding:3pt 0in 0in;border-width:1pt medium m=
+edium;border-style:solid none none;border-color:rgb(181,196,223) currentcol=
+or currentcolor;font-family:Aptos;font-size:12pt;color:black">
+<b>From: </b>Lizette M Wong &lt;<a href=3D"mailto:lizettewong@utexas.edu" t=
+arget=3D"_blank">lizettewong@utexas.edu</a>&gt;<br>
+<b>Date: </b>Thursday, January 22, 2026 at 12:10=E2=80=AFPM<br>
+<b>To: </b>Spiering, Katherine &lt;<a href=3D"mailto:katherine.spiering@aus=
+tin.utexas.edu" target=3D"_blank">katherine.spiering@austin.utexas.edu</a>&=
+gt;<br>
+<b>Cc: </b><a href=3D"mailto:chiragokani@utexas.edu" target=3D"_blank">chir=
+agokani@utexas.edu</a>=C2=A0&lt;<a href=3D"mailto:chiragokani@utexas.edu" t=
+arget=3D"_blank">chiragokani@utexas.edu</a>&gt;<br>
+<b>Subject: </b>Lizette &amp; Chirag ME Magazine Interview Followup<br>
+<br>
+</div>
+<div style=3D"direction:ltr">Hi Katherine,</div>
+<div style=3D"direction:ltr"><br>
+</div>
+<div style=3D"direction:ltr">Thank=C2=A0you so much for interviewing Chirag=
+ and I for the ME magazine! We were very grateful to share our experiences =
+in acoustics and jazz. Chirag and I were able to find a few photos from our=
+ live performances, most of which are
+ screenshots from videos. We hope this helps supplement the photos from las=
+t Tuesday. I named the files after the locations of the different performan=
+ces, which are listed=C2=A0below:</div>
+<ul style=3D"direction:ltr">
+<li style=3D"direction:ltr"><a href=3D"https://visit.georgetown.org/arts/sm=
+af.php" target=3D"_blank">South Main Arts Festival</a>, Georgetown, TX</li>=
+<li style=3D"direction:ltr">Dr. Hamilton&#39;s annual acoustics community p=
+ool party</li><li style=3D"direction:ltr">ME department holiday party</li><=
+/ul>
+<div style=3D"direction:ltr">Please let me know if you have any questions a=
+nd we look forward to hearing from you soon!</div>
+<div style=3D"direction:ltr"><br>
+</div>
+<div style=3D"direction:ltr">Sincerely,</div>
+<div style=3D"direction:ltr">Lizette Wong</div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1cEdBmpUnC6UNqd2eIzWX6j4R8VJoMDV=
+G/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0georgetown1.png</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1vOf28ykpjZ9UaCBjAIZ9GQ79lZVpMh3=
+8/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0georgetown2.png</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1PSwpSgyAHQjnVKYqwAT6-dk41HRLcZF=
+S/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0holiday1.jpg</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1CnJ2daKUv4cwT6LWDE-mjOBljNIWGy_=
+1/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0holiday2.jpg</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1uU_qnMZtMlyTMflqnOw43gQBaVLjEN9=
+U/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0holiday3.jpg</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1IE5B-XHQzKlpHF3QVcdFXlkyIq4Jg3F=
+A/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0holiday4.jpg</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1WWtuRhdK8Ov-jNM1xizoz9QkGU4K_EU=
+W/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0poolparty1.jpg</a></div>
+<div class=3D"gmail_chip gmail_drive_chip" style=3D"direction:ltr;line-heig=
+ht:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;borde=
+r-width:1px;border-style:solid;border-color:rgb(221,221,221);width:386px;he=
+ight:20px;max-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;fo=
+nt-size:14px;color:rgb(32,33,36)">
+<a href=3D"https://drive.google.com/file/d/1SPu9iI_9GvDGgonFSjoB1nzbr6SyLwh=
+v/view?usp=3Ddrive_web" style=3D"color:rgb(32,33,36);display:inline-block;b=
+order-width:medium;border-style:none;border-color:currentcolor;max-width:35=
+6px" target=3D"_blank"><img src=3D"https://ssl.gstatic.com/docs/doclist/ima=
+ges/icon_10_generic_list.png" height=3D"20" style=3D"height: 20px; padding-=
+right: 10px; border-width: medium; border-style: none; border-color: curren=
+tcolor; vertical-align: top;">=C2=A0poolparty2.jpg</a></div>
+</div>
+</blockquote>
+</div>
+</div>
+
+</blockquote></div>
+
+--0000000000001e23d006495635bc--
