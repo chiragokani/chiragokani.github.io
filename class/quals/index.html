@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Review for the acoustics qualifying exam</title>
- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <title>Quals review</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+          Order: "{\\mathcal O}",
+          vec: ['\\boldsymbol{\\mathrm{#1}}', 1],
+          dyad: ['\\boldsymbol{\\mathsf{#1}}', 1],
+          divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
+          gradient: "{\\boldsymbol\\nabla}",
+          curl: "{\\boldsymbol\\nabla\\times\\,}",
+          Laplacian: "{\\nabla^2}",
+          Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
   </script>
 <link rel="stylesheet" href="quals.css">
 </head>
@@ -18,20 +46,20 @@
 <ol type="I">
 <li><a href="physical.html">Physical acoustics</a></li>
 <ol>
-    <li><a href="physical.html#1">What is a wave?</a></li>
-    <li><a href="physical.html#2">Detailed development of the acoustic wave equation</a></li>
-    <li><a href="physical.html#3">Reflection and transmission for normal incidence</a></li>
-    <li><a href="physical.html#4">Impedance tubes and \(k\ell\ll 1\) impedances</a></li>
-    <li><a href="physical.html#5">\(R\)-\(T\) for oblique incidence</a></li>
-    <li><a href="physical.html#6">Normal modes in Cartesian coordinates</a></li>
-    <li><a href="physical.html#7">Horns</a></li>
-    <li><a href="physical.html#8">Sound in stratified media</a></li>
-    <li><a href="physical.html#9">Absorption and dispersion</a></li>
-    <li><a href="physical.html#10">Spherical waves</a></li>
-    <li><a href="physical.html#11">Cylindrical waves</a></li>
-    <li><a href="physical.html#12">Waveguides</a></li>
-    <li><a href="physical.html#13-14">Diffraction</a></li>
-    <li><a href="physical.html#15">Arrays</a></li>
+    <li><a href="physical-1.html">What is a wave?</a></li>
+    <li><a href="physical-2.html">Detailed development of the acoustic wave equation</a></li>
+    <li><a href="physical-3.html">Reflection and transmission for normal incidence</a></li>
+    <li><a href="physical-4.html">Impedance tubes and \(k\ell\ll 1\) impedances</a></li>
+    <li><a href="physical-5.html">\(R\)-\(T\) for oblique incidence</a></li>
+    <li><a href="physical-6.html">Normal modes in Cartesian coordinates</a></li>
+    <li><a href="physical-7.html">Horns</a></li>
+    <li><a href="physical-8.html">Sound in stratified media</a></li>
+    <li><a href="physical-9.html">Absorption and dispersion</a></li>
+    <li><a href="physical-10.html">Spherical waves</a></li>
+    <li><a href="physical-11.html">Cylindrical waves</a></li>
+    <li><a href="physical-12.html">Waveguides</a></li>
+    <li><a href="physical-13.html">Diffraction</a></li>
+    <li><a href="physical-14.html">Arrays</a></li>
 </ol>	
 
 <li><a href="ultrasonics.html">Ultrasonics</a></li>
@@ -52,14 +80,14 @@
 
 <li><a href="math.html">Math</a></li>
 <ol>
-    <li><a href="math.html#review">Review of basics</a></li>
-    <li><a href="math.html#Taylor">Taylor series</a></li>
-    <li><a href="math.html#Fourier">Fourier series and transforms</a></li>
-    <li><a href="math.html#linear">Linear algebra</a></li>
-    <li><a href="math.html#ODE">Ordinary differential equations</a></li>
-    <li><a href="math.html#orthogonality">Orthogonality and special functions</a></li>
-    <li><a href="math.html#vector">Vector algebra & vector calculus</a></li>
-    <li><a href="math.html#PDE">Partial differential equations</a></li>
+    <li><a href="math-1.html">Review of basics</a></li>
+    <li><a href="math-2.html">Taylor series</a></li>
+    <li><a href="math-3.html">Fourier series and transforms</a></li>
+    <li><a href="math-4.html">Linear algebra</a></li>
+    <li><a href="math-5.html">Ordinary differential equations</a></li>
+    <li><a href="math-6.html">Orthogonality and special functions</a></li>
+    <li><a href="math-7.html">Vector algebra & vector calculus</a></li>
+    <li><a href="math-8.html">Partial differential equations</a></li>
 </ol>	
 </ol>
 </div>
