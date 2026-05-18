@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+      nablav: "{\\boldsymbol\\nabla}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      vecell: "{\\boldsymbol\\ell}",
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="linear">Linear algebra</h2>
+<p>These questions come from <i>Introduction to Linear Algebra</i> by Gilbert Strang and the appendix of <i>Introduction to Quantum Mechanics</i> by D. J. Griffiths. </p>
+
+<p>Towards the end of this section there is some overlap with <i>tensor</i> algebra.</p>
+<ol>
+
+<li>Define linear independence.
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1')">[answer]</span>
+<div id="0lin1" class="expandable-content" style="color: #0000A0;">
+<p> Vectors \(\vec{v}_1,\vec{v}_2,\vec{v}_3,\dots,\vec{v}_n,\) are linearly independent iff 
+\[a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 + \dots + a_n \vec{v}_n = \vec{0}\]
+for \(a_1,a_2,a_3,\dots,a_n = 0\).
+</p>
+</div>
+</li>
+
+
+<li>The columns of an invertable matrix are _______ _______. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1az')">[answer]</span>
+<div id="0lin1az" class="expandable-content" style="color: #0000A0;">
+<p> linearly independent
+</p>
+</div>
+</li>
+
+
+<li>How can one easily check to see that \(n\) vectors, each one \(n\times 1\), are linearly independent?
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1aa')">[answer]</span>
+<div id="0lin1aa" class="expandable-content" style="color: #0000A0;">
+<p> One can assemble a matrix of the \(n\) vectors as \(n\times 1\) columns and see if the determinant is nonzero. If so, the matrix can be inverted, and the columns are linearly indepepdent. If the determinant is \(0\), the columns are not linearly independent.
+</p>
+</div>
+</li>
+
+
+<li>Determine whether the vectors \(\vec{v}_1 = \vec{e}_x + \vec{e}_y\) and \(\vec{v}_2 = -3\vec{e}_x + 2 \vec{e}_y\) are linearly independent, where \(\vec{e}_x\) and \(\vec{e}_y\) are the Cartesian basis vectors.
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1a')">[answer]</span>
+<div id="0lin1a" class="expandable-content" style="color: #0000A0;">
+<p> The matrix representation of \(\vec{v}_1\),
+\(\begin{pmatrix}
+1 \\ 1 
+\end{pmatrix} \),  and the matrix representation of \(\vec{v}_2\) is
+\(\begin{pmatrix}
+-3 \\ 2 
+\end{pmatrix}. \) Then, by the definition of linear independence, 
+
+\begin{align*}
+a_1 \begin{pmatrix}
+1 \\ 1 
+\end{pmatrix} + 
+a_1 \begin{pmatrix}
+-3 \\ 2 
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\0 
+\end{pmatrix}
+\end{align*}
+This can be written as 
+\begin{align*}
+\begin{pmatrix}
+1 & - 3\\ 1  & 2
+\end{pmatrix} 
+\begin{pmatrix}
+a_1 \\a_2 
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\0 
+\end{pmatrix}
+\end{align*}
+Performing row reduction yields the identity matrix. Therefore the columns are linearly independent. 
+</p>
+</div>
+</li>
+
+<li>Taking  \(\vec{v}_1 = \vec{e}_x + \vec{e}_y\) and \(\vec{v}_2 = -3\vec{e}_x + 2\vec{e}_y\) as basis vectors, what linear combination of \(\vec{v}_1\) and \(\vec{v}_2\) gives the vector \(\vec{v}_3 = 2\vec{e}_x + \vec{e}_y\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1ac')">[answer]</span>
+<div id="0lin1ac" class="expandable-content" style="color: #0000A0;">
+<p> The question at hand is to explore 
+\begin{align*}
+a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 = \vec{0}.
+\end{align*}
+Perform row operations on the matrix representation of this equation,
+\begin{align*}
+\begin{pmatrix}
+1 & -3 & 2\\
+1 & 2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+a_1 \\ a_2 \\a_3
+\end{pmatrix} 
+=
+\begin{pmatrix}
+0 \\ 0
+\end{pmatrix} ,
+\end{align*}
+gives
+\begin{align*}
+\begin{pmatrix}
+1 & 0 & 7/5\\
+0 & 1 & -1/5
+\end{pmatrix}
+\begin{pmatrix}
+a_1 \\ a_2 \\a_3
+\end{pmatrix} 
+=
+\begin{pmatrix}
+0 \\ 0
+\end{pmatrix} 
+\end{align*}
+Thus \(a_1 = -\frac{7}{5} a_3\) and \(a_2 = \frac{1}{5}a_3\). To answer the question at hand, set \(a_3 = -1\) to find that \(a_1 = \frac{7}{5}\) and \(a_2 = -\frac{1}{5}\). That is, \(\frac{7}{5} \vec{v}_1 - \frac{1}{5}\vec{v}_2 = \vec{v}_3\).
+</p>
+</div>
+</li>
+
+
+<li>Invert 
+\begin{align*}
+{A} = \begin{pmatrix}
+0 & 1 & 1\\
+0 & 0 & 1\\
+2 & 1 & 0
+\end{pmatrix}
+\end{align*}
+using row operations. Check the result by using Cramer's rule for the inverse, \({A}^{-1} = \frac{1}{\det{A}} {C}^\mathrm{T}\), where \({C}\) is the matrix of cofactors, which is \((-1)^{i + j}\) times the determinant of \({A}\) when the \(i\)th row and \(j\)th column are crossed out.
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1ae')">[answer]</span>
+<div id="0lin1ae" class="expandable-content" style="color: #0000A0;">
+<p> See <a href="inverse_1.pdf" target="_blank" rel="noopener noreferrer">here</a> for the inverse taken using row operations. 
+</p>
+</div>
+</li>
+
+
+<li>Invert 
+\begin{align*}
+A = \begin{pmatrix}
+-2 & 1 & 0\\
+-1 & 0 & 1\\
+0 & 1 & 0
+\end{pmatrix}
+\end{align*}
+using row operations. Check the result by using \({A}^{-1} = \frac{1}{\det{A}} {C}^\mathrm{T}\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin1af')">[answer]</span>
+<div id="0lin1af" class="expandable-content" style="color: #0000A0;">
+<p> See <a href="inverse_2.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution.
+</p>
+</div>
+</li>
+
+<li>What is the rank of a matrix? How does one find the rank of a matrix? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin2')">[answer]</span>
+<div id="0lin2" class="expandable-content" style="color: #0000A0;">
+<p> The rank of a matrix is the dimension of the vector space spanned by its columns (or equivalently, rows).  To find the rank of a matrix, the number of linearly independent columns of the matrix must be determined.
+</p>
+</div>
+</li>
+
+
+<li>Find the rank of 
+\begin{align*}
+\begin{pmatrix}
+1 & 2 & 1 \\
+-2 & -3 & 1 \\
+3 & 5 & 0
+\end{pmatrix}
+\end{align*}
+using row operations.
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin2a')">[answer]</span>
+<div id="0lin2a" class="expandable-content" style="color: #0000A0;">
+<p>The rank is 2. See <a href="rank_1.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+</div>
+</li>
+
+<li>Find the rank of 
+\begin{align*}
+\begin{pmatrix}
+1 & 3 & 1 & 4 \\
+2 & 7 & 3 & 9\\
+1 & 5 & 3 & 1\\
+1 & 2 & 0 & 8
+\end{pmatrix}
+\end{align*}
+What is the rank of the transpose of this matrix?
+<span class="expandable-toggle" onclick="toggleExpandableContent('0lin3')">[answer]</span>
+<div id="0lin3" class="expandable-content" style="color: #0000A0;">
+<p> Using row operations leads to
+\begin{align*}
+\begin{pmatrix}
+1 & 0 & -2 & 1 \\
+0 & 1 & 1 & 1\\
+0 & 0 & 0 & -5\\
+0 & 0 & 0 & 0
+\end{pmatrix}\,,
+\end{align*}
+from which it can be seen that the third column is \(-2\vec{v}_1 + \vec{v}_2\), where \(\vec{v}_1\) and \(\vec{v}_2\) are the column vectors of the original matrix. However, the rest of the column vectors are linearly independent. Thus the rank of the matrix is 3. In general the rank of the transpose of a matrix is rank of its transpose, i.e., the rank of the transpose of this matrix is 3.
+</p>
+</div>
+</li>
+
+<li>&#9784; What are the four fundamental subspaces corresponding to an \(m\times n\) matrix? State the fundamental theorem of linear algebra.
+<span class="expandable-toggle" onclick="toggleExpandableContent('0linrankers')">[answer]</span>
+<div id="0linrankers" class="expandable-content" style="color: #0000A0;">
+<p>The four subspaces of an \(m\times n\) matrix \(A\) are listed below:
+<ol>
+<li>The column space is the vector space spanned by the the linearly independent columns of \(A\). That is to say, the linearly independent columns \(A\) form the basis of the column space.</li>
+<li>The nullspace is the vector space spanned by all the vectors \(\vec{x}\) that satisfy \(A\vec{x} =\vec{0}\).</li>
+<li>The row space is just the column space of \(A^\mathrm{T}\).</li>
+<li>The left nullspace is just the nullspace of \(A^\mathrm{T}\).</li>
+</ol>
+</p>
+
+<p>The fundamental theorem of linear algebra provides the following relations between the four subspaces:
+<ul>
+<li>The column space and row space both have dimension \(r\), which is the rank of the matrix. The nullspace has dimension \(n-r\), and the left nullsapce has dimension \(m-r\). </li>
+<li>The nullspace is orthogonal to the row space, and the column space is orthogonal to the left nullspace.</li>
+</ul>
+</p>
+
+<p>The first statement makes sense because if \(n\) is the rank of \(A\) (i.e., \(r=n\)), then the matrix is full rank, i.e., \(A\) is invertible. Thus its nullspace has dimension \(0\); indeed, \(n-r= n-n = 0\). Now suppose that the rank of \(A\) is less then \(n\), i.e., \(n > r \). Then, there are \(n-r>0\) free variables in the solution to \(A\vec{x} = \vec{0}\). That is to say, \(\vec{x}_1, \vec{x}_2,\dots,\vec{x}_{n-r}\) form a basis of dimension \(n-r\) in the nullspace of \(A\). </p>
+
+<p>The second statement says that if \(\vec{v}\) is in the nullspace of \(A\), and if \(\vec{w}\) is in the row space of \(A\), then \(\vec{v}\cdot \vec{w} = 0\). This makes sense because each row vector \(\vec{w}\) of \(A\), when multiplied by a vector \(\vec{v}\) from the nullspace, gives \(0\) on the right-hand side of the equation \(A\vec{v} = 0\). (A similar argument can be made for the column space and the left nullspace).</p>
+
+</div>
+</li>
+
+
+<li> Prove the triangle inequality, \(|\vec{u} + \vec{v}| \leq |\vec{u}| + |\vec{v}|\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin1')">[answer]</span>
+<div id="lin1" class="expandable-content" style="color: #0000A0;">
+<p> Note that 
+\begin{align}
+|\vec{u} + \vec{v}|^2 &= (\vec{u} + \vec{v})\cdot(\vec{u} + \vec{v})\notag\\
+&=|\vec{u}|^2 + |\vec{v}|^2 + 2|\vec{u}||\vec{v}|\cos\theta\,. \label{triangle1}\tag{i}
+\end{align}
+Meanwhile note that
+\begin{align}
+(|\vec{u}| + |\vec{v}|)^2 &= |\vec{u}|^2 + |\vec{v}|^2 + 2|\vec{u}||\vec{v}|\,. \label{triangle2}\tag{ii}
+\end{align}
+Comparing equations (\ref{triangle1}) and (\ref{triangle2}) and noting that \(|\cos\theta|\leq 1\) results in 
+\begin{align*}
+|\vec{u}|^2 + |\vec{v}|^2 + 2|\vec{u}||\vec{v}|\cos\theta\ \leq |\vec{u}|^2 + |\vec{v}|^2 + 2|\vec{u}||\vec{v}|
+\end{align*}
+which is equivalent to 
+\begin{align}
+|\vec{u} + \vec{v}|^2 \leq (|\vec{u}| + |\vec{v}|)^2\label{triangle3}\tag{iii}
+\end{align}
+Taking the square root of equation (\ref{triangle3}) gives the triangle inequality,
+\begin{align*}
+|\vec{u} + \vec{v}| \leq |\vec{u}| + |\vec{v}|\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>\(a_x\vec{e}_x + a_y\vec{e}_y + a_z\vec{e}_z\) is a Cartesian 3-vector. Does the subset of all vectors with \(a_z = 0\) constitute a vector space? If so, what is its dimension; if not, why not?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin2')">[answer]</span>
+<div id="lin2" class="expandable-content" style="color: #0000A0;">
+<p>  Yes, \(a_x\vec{e}_x + a_y\vec{e}_y\) constitutes a vector space in the \(x\)-\(y\) plane of dimension \(2\). 
+</p>
+</div>
+</li>
+
+<li>Does the subset of all vectors with \(a_z = 1\) constitute a vector space? Explain why or why not.
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin3')">[answer]</span>
+<div id="lin3" class="expandable-content" style="color: #0000A0;">
+<p>  No, the subset of vectors with \(a_z = 1\) does not span the space for two reasons. The first reason is that linear combinations of these vectors result in vectors outside the space. For example, adding two vectors from this subset would result in a vector with \(a_z = 2\), which is not in the subset. The second reason is that this subset does not have a null vector, \((0,0,0)\).
+</p>
+</div>
+</li>
+
+<li>Does the subset of all vectors with \(a_x = a_y = a_z\) constitute a vector space? Explain why or why not.
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin3a')">[answer]</span>
+<div id="lin3a" class="expandable-content" style="color: #0000A0;">
+<p>  Yes, this combination consitutes a vector space with dimension 1. 
+</p>
+</div>
+</li>
+
+<li>Consider the collection of all polynomials in \(x\) with complex coefficients of degree less than \(N\). Does this set constitute a "vector" space? If so, suggest a convenient basis and provide its dimensions.
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin4')">[answer]</span>
+<div id="lin4" class="expandable-content" style="color: #0000A0;">
+<p>  Yes, this combination consitutes a vector space with dimension \(N-1\). A convenient basis is \(1, x, x^2, \dots , x^{N-1}\). 
+</p>
+</div>
+</li>
+  
+
+<li>Do polynomials that are even functions constitute a "vector" space? What about polynomials that are odd functions?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin5')">[answer]</span>
+<div id="lin5" class="expandable-content" style="color: #0000A0;">
+<p>  Yes, even polynomials consitutes a vector space with dimension \((N)/2\). A convenient basis is \(1, x^2, x^4 \dots , x^{N}\). The dimension is \(N/2\). Meanwhile, odd polynomials consitutes a vector space with dimension \((N-1)/2\). A convenient basis is \(x, x^3, x^5 \dots , x^{N-1}\).
+</p>
+</div>
+</li>
+
+
+
+<li>Do polynomials whose leading coefficient is \(1\) constitute a "vector" space?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin6')">[answer]</span>
+<div id="lin6" class="expandable-content" style="color: #0000A0;">
+<p>  No, because the sum of two such polynomials would have a leading coefficient not equal to one, and therefore the sum would not in the space. 
+</p>
+</div>
+</li>
+
+<li>Do polynomials whose value of \(0\) at \(x=1\) constitute a "vector" space?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin7')">[answer]</span>
+<div id="lin7" class="expandable-content" style="color: #0000A0;">
+<p> Yes; \( 1, x-1, (x-1)^2, \dots, (x-1)^{N-1}\). The dimension is \(N-1\).</p>
+</div>
+</li>
+
+<li>Do polynomials whose value of \(1\) at \(x=0\) constitute a "vector" space?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin8')">[answer]</span>
+<div id="lin8" class="expandable-content" style="color: #0000A0;">
+<p>  No, because the sum of two such polynomials would not be \(1\) at \(x=0\), and therefore the sum would not in the space. 
+</p>
+</div>
+</li>
+
+<li>Provide definitions of the following types of matrices:  symmetric, Hermitian, skew-symmetric, skew-Hermitian, orthogonal, unitary.
+<span class="expandable-toggle" onclick="toggleExpandableContent('lindefs')">[answer]</span>
+<div id="lindefs" class="expandable-content" style="color: #0000A0;">
+<p> 
+\begin{align*}
+\text{Symmetric: }\quad A&= A^\mathrm{T}.\\
+\text{Hermitian: }\quad A&= A^\dagger.\\
+\text{Skew-symmetric: }\quad A &= -A^\mathrm{T}.\\
+\text{Skew-Hermitian: }\quad A&= -A^\dagger.\\
+\text{Orthogonal: }\quad A^{-1}&= A^\mathrm{T}.\\
+\text{Unitary: }\quad A^{-1}&= A^\dagger.
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>&#9784; Prove that a real symmetric matrix \(S\) has real eigenvalues and orthogonal eigenvectors.
+<span class="expandable-toggle" onclick="toggleExpandableContent('eigsym')">[answer]</span>
+<div id="eigsym" class="expandable-content" style="color: #0000A0;">
+<p>First the eigenvalues: the eigenvalue equation is \(S \vec{x} =\lambda \vec{x}\), which, upon taking the conjugate and noting that \(S\) is real, gives \(S \vec{x} = \lambda^* \vec{x}^*\). Now consider the quantity
+\begin{align*}
+\lambda \vec{x}^* \cdot \vec{x} &= \vec{x}^* \cdot \lambda \vec{x}
+\end{align*}
+Invoking the eigenvalue equation \(S \vec{x} = \lambda^* \vec{x}^*\) gives
+\begin{align*}
+\lambda \vec{x}^* \cdot \vec{x} &= \vec{x}^* \cdot S \vec{x}
+\end{align*}
+By the definition of the transpose,
+\begin{align*}
+\lambda \vec{x}^* \cdot \vec{x} &= S^\mathrm{T}\vec{x}^* \cdot \vec{x}\\
+&=S\vec{x}^* \cdot \vec{x}\\
+&=(S^*\vec{x}^*) \cdot \vec{x}
+\end{align*}
+where the second two equalities are because \(S\) is symmetric and real, respectively. Again invoking the eigenvalue equation gives
+\begin{align*}
+\lambda \vec{x}^* \cdot \vec{x} &=\lambda^* \vec{x}^* \cdot \vec{x}\\
+\lambda x^2 &= \lambda^* x^2,
+\end{align*}
+or \(\lambda = \lambda^*\) i.e., \(\lambda\) is real.
+</p>
+
+<p>
+Now for the eigenvectors. Consider two distinct eigenvalue-eigenvector pairs of \(S\):
+\begin{align*}
+S\vec{x} = \lambda \vec{x},\qquad S\vec{y} = \mu \vec{y}
+\end{align*}
+Then consider the quantity \(S \vec{x} \cdot \vec{y}\). Using the definition of the transpose and the fact that \(S\) is symmetric gives
+\begin{align*}
+S \vec{x} \cdot \vec{y} &= \vec{x}\cdot S^\mathrm{T}\vec{y}\\
+&=\vec{x}\cdot S \vec{y}\\
+\lambda \vec{x} \cdot \vec{y} &=\vec{x}\cdot \mu \vec{y},
+\end{align*}
+where the eigenvalue equations have been used in the last equality. Rearranging terms gives
+\begin{align*}
+\lambda \vec{x} \cdot \vec{y} &=\mu \vec{x}\cdot  \vec{y}\\
+(\lambda -\mu) \vec{x}\cdot\vec{y} &= 0\,.
+\end{align*}
+By the zero product property, and by noting that \(\lambda \neq \mu\) (i.e., they're distinct), \(\vec{x}\cdot\vec{y}= 0\), which means the eigenvectors are orthogonal.
+</p>
+</div>
+</li>
+
+
+<li>&#9784; When solving \(A\vec{x} = \lambda \vec{x}\) where \(\vec{x} \neq 0\), what is the meaning of setting \(\det (A-I\lambda) = 0\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lineig1')">[answer]</span>
+<div id="lineig1" class="expandable-content" style="color: #0000A0;">
+<p> 
+Note that the equation \(A\vec{x} = \lambda \vec{x}\) can equivalently be written as \((A-I\lambda) \vec{x} = 0\). Call \((A-I\lambda)\equiv B\). The situation \(B\vec{x} = \vec{0}\) needs to be considered.
+</p>
+<p> Recall two theorems:</p>
+<blockquote><i>Thm. 1</i>........ \(B\) is invertible if and only if \(\text{Null}(B) =\{0\}\), i.e., the only solution to \(B\vec{x} = \vec{0}\) is \(x=0\),</blockquote>
+and 
+<blockquote><i>Thm. 2</i>........ \(B\) is invertible if and only if \(\det B = 0\).</blockquote>
+<p> Combining <i>Thm. 1</i> and <i>2</i> to eliminate the statement "\(B\) is invertible" gives </p>
+<blockquote> The only solution to \(B\vec{x} = \vec{0}\) is \(\vec{x}=0\) if and only if \(\det{B} \neq 0\). </blockquote>
+<p> The constrapositive of this statement (which is logically equivalent to any conditional statement) is:</p>
+<blockquote>\(\det{B} = 0\) if and only if \(\vec{x}= 0\) is not the only solution to \(B\vec{x} = \vec{0}\). </blockquote>
+<p> Since the statement is and iff statement, its converse is also true: </p>
+<blockquote> 
+\(\vec{x}= 0\) is not the only solution to \(B\vec{x} = \vec{0}\) if and only if \(\det{B} = 0\).
+</blockquote>
+<p>
+We are interested in cases in which \(\vec{x} =0\) is not the only solution to \((A - I\lambda)\vec{x} = \vec{0}\), and the above statement says that \(\vec{x}\) is not the only solution if and only if \(\det (A - I\lambda) = 0\). Thus we evaluate \(\det (A - I\lambda) = 0\) and solve for the eigenvalues and eigenvectors.
+</p>
+
+</div>
+</li>
+
+<li> Suppose \(A\vec{x} = \lambda \vec{x}\) and \(A\) is not full rank (i.e., it has at least two columns that are linearly dependent. What then must be at least one of its eigenvalues?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lineig2')">[answer]</span>
+<div id="lineig2" class="expandable-content" style="color: #0000A0;">
+<p> 
+At least one of the eigenvalues of must be \(0\) if \(A\) is not full rank. 
+</p>
+</div>
+</li>
+
+
+<li>Find the eigenvalues and eigenvectors of  
+\begin{align*}
+{A} = \begin{pmatrix}
+2 & -1\\
+-1 & 2
+\end{pmatrix}
+\end{align*}
+as well as the eigenvalues and eigenvectors of \({A}^2\), \({A}^{-1}\), and  \({A} + 4{I}\) (without actually computing the eigenvalues and eigenvectors of the latter four matrices).
+<span class="expandable-toggle" onclick="toggleExpandableContent('eig1')">[answer]</span>
+<div id="eig1" class="expandable-content" style="color: #0000A0;">
+<p>  The eigenvalues and eigenvectors of \({A}\) are 
+\begin{align*}
+\lambda &= 1, \quad \vec{x}_1=\begin{pmatrix}
+1 \\1
+\end{pmatrix}\\
+\lambda &= 3, \quad \vec{x}_1=\begin{pmatrix}
+1 \\ -1
+\end{pmatrix}\,.
+\end{align*}
+\({A}^2\), \({A}^{-1}\), and \({A} + 4{I}, \) have the same eigenvectors as \({A}\), but the eigenvalues are respectively squared (\(1, 9\)), inverted (\(1, 1/3\)), and added by four (\(5, 7\)).
+</p>
+</div>
+</li>
+
+
+<li>Find the eigenvalues and eigenvectors of  
+\begin{align*}
+{S} = \begin{pmatrix}
+1 & -1 & 0\\
+-1 & 2 & -1\\
+0 & -1 & 1
+\end{pmatrix}\,.
+\end{align*}
+Does the relative orientation of the eigenvectors make sense?
+<span class="expandable-toggle" onclick="toggleExpandableContent('eig2')">[answer]</span>
+<div id="eig2" class="expandable-content" style="color: #0000A0;">
+<p>  The eigenvalues and eigenvectors of \({S}\) are 
+\begin{align*}
+\lambda &= 0, \quad \vec{x}_1 =\begin{pmatrix}
+1 \\1 \\1
+\end{pmatrix}\\
+\lambda &= 1, \quad \vec{x}_2 = \begin{pmatrix}
+1 \\0\\ -1 
+\end{pmatrix}\\
+\lambda &= 3, \quad \vec{x}_3 = \begin{pmatrix}
+1 \\-2\\ 1
+\end{pmatrix}
+\end{align*}
+Since the matrix is symmetric, it makes sense that the eigenvalues are real and the eigenvectors are orthogonal (see the proof above).
+</p>
+</div>
+</li>
+
+
+<li>&#9784; \(A\vec{x} = \lambda\vec{x}\) is a vector equation because the left- and right-hand sides are both vectorial. Recast \(A\vec{x} = \lambda\vec{x}\) into a matrix form (in which the LHS and RHS are matrices), where \(X\) is a matrix whose columns consist of the eigenvectors \(\vec{x}\), and where \(\Lambda = I\lambda\). Solve the resulting matrix equation for \(A\). How does this equation simplify if \(A\) is a symmetric matrix? What is the result for the symmetric matrix called?
+<span class="expandable-toggle" onclick="toggleExpandableContent('eigherm1')">[answer]</span>
+<div id="eigherm1" class="expandable-content" style="color: #0000A0;">
+<p> Writing the eigenvalue problem  \(A\vec{x} = \lambda\vec{x}\) as a matrix equation gives \[AX = \Lambda X.\]
+The right hand side can be written as \(\Lambda X = I\lambda X  =  IX \lambda =  XI\lambda =  X \Lambda\):
+\[AX = X\Lambda .\]
+Multiplying both sides by \(X^{-1}\) on the right solves for \(A\):
+\[A = X \Lambda X^{-1}.\] For a symmetric matrix, \(A = A^{\mathsf{T}}\), so \(A = (X\Lambda X^{-1})^T =(X^{-1})^\mathrm{T} \Lambda^{\mathsf{T}} X^{\mathsf{T}} \). Since \(X\) consists of orthonormal eigenvectors (remember, the eigenvectors of a symmetric matrix are orthonormal), the matrix itself is orthogonal, i.e., \(X^\mathrm{T} = X^{-1}\). Thus \(A = X\Lambda X^{\mathsf{T}} \) for a symmetric matrix \(A\).  This is called <i>spectral decomposition</i>, and the fact that any symmetric matrix can be written this way is called the <i>spectral theorem</i>.
+</p>
+</div>
+</li>
+
+<li>&#9784; What is the recasting of of a matrix \(A\) as \(\Lambda = X^{-1}AX\) called? For what matrices can this procedure be carried out? What is the significance of the matrix \(X\), and why would someone want to perform this operation? How does this particular operation relate to general changes of basis?
+<span class="expandable-toggle" onclick="toggleExpandableContent('diagers')">[answer]</span>
+<div id="diagers" class="expandable-content" style="color: #0000A0;">
+<p> This is called diagonalization. It can be carried out if \(X^{-1}\) exists. Since the columns of \(X\) are simply the eigenvectors of \(A\), the eigenvectors of \(A\) must be linearly independent for \(X^{-1}\) to exist. In other words, the determinant of \(A\) cannot be \(0\) for \(A\) to be diagonalized. 
+</p>
+<p>The significance of the matrix \(X\) is that it represents the linear transformation from one basis into a better basis. In the first basis, the matrix \(A\) may not be diagonal, but in the better basis, the matrix is diagonalized into \(\Lambda\). This linear transformation, into a basis in which the matrix is diagonal, is a special type of <i>change of basis</i>, which can be thought of as a "change to the best basis." The more general change-of-base operation (to basis that does not necessarily diagonalize a matrix) is considered in the final three problems of this section. The form of the general change-of-basis is still "transformation \(\times\) matrix in old basis \(\times\) inverse transformation."</p>
+
+<p>At this juncture, it is helpful to keep in mind the distinction between the absolute and the relative. \(\mathsf{A}\) is an absolute quantity (for example, a tensor or operator), and it is represented by a relative quantity (a matrix), that changes in different bases. In one basis, it is represented by \(A\), and in the better basis, it is represented by the diagonal matrix \(\Lambda\), where the eigenvalues of \(\mathsf{A}\) lie along the diagonal of \(\Lambda\). To get from the first basis to the better basis, one multiplies vectors by the linear transformation \(X\), and one diagonalizes matrices calculating \(\Lambda = X^{-1} A X \). </p>
+
+</div>
+</li>
+
+
+<li>&#9784; Find the eigenvalues and eigenvectors of  
+\begin{align*}
+{M} = \begin{pmatrix}
+2 & 0 & -2\\
+-2i & i & 2i\\
+1 & 0 & -1
+\end{pmatrix}\,.
+\end{align*}
+Is it possible to diagonalize the matrix, i.e., find the decomposition \(M = X\Lambda X^{-1}\)? Suppose there is a vector represented by \(\vec{v} = (1,0,0)\) in the first basis, calculate the respresentation of this vector in the new (eigen)basis.
+<span class="expandable-toggle" onclick="toggleExpandableContent('eig3')">[answer]</span>
+<div id="eig3" class="expandable-content" style="color: #0000A0;">
+<p>After a <a href="complexeigenvalue.pdf" target="_blank" rel="noopener noreferrer">considerable amount of manipulation</a>, it is found that
+\begin{align*}
+\lambda_1 &= 0,\quad \vec{x}_1 = \begin{pmatrix}1 \\ 0 \\ 1\end{pmatrix}\\
+\lambda_2 &= 1,\quad \vec{x}_2 = \begin{pmatrix}2 \\ 1-i \\ 1\end{pmatrix}\\
+\lambda_3 &= i,\quad \vec{x}_3 = \begin{pmatrix}0 \\ 1 \\ 0\end{pmatrix}
+\end{align*}
+The eigenvectors span the space, because a matrix whose columns consist of these vectors has a nonzero determinant. Therefore it is possible to diagonalize the \(M\). To find the decomposition \(M = XAX^{-1}\), note that \(X\) consists of columns that are the eigenvectors of \(M\),
+\begin{align*}
+X = \begin{pmatrix}1 & 2 & 0\\ 0 & 1-i & 1\\ 1& 1 &0\end{pmatrix},
+\end{align*}
+the inverse of which is \(C^\mathrm{T}/|X|\), where \(C\) is the cofactor matrix:
+\begin{align*}
+X^{-1} = 
+\frac{1}{|X|}\begin{pmatrix}
+-1 & 1& i-1\\
+0 & 0& 1\\
+2 &-1 &1-i 
+\end{pmatrix}^\mathrm{T} = \begin{pmatrix}
+-1 & 0& 2\\
+1 & 0& -1\\
+i-1 &1 &1-i 
+\end{pmatrix}
+\end{align*}
+The decomposition is thus 
+\begin{align*}
+M &= X \Lambda X^{-1}\\
+&= 
+\begin{pmatrix}1 & 2 & 0\\ 0 & 1-i & 1\\ 1& 1 &0\end{pmatrix} 
+\begin{pmatrix}0 & 0 & 0\\ 0 & 1-i & 0\\ 0& 0 &i\end{pmatrix}
+\begin{pmatrix}
+-1 & 0& 2\\
+1 & 0& -1\\
+i-1 &1 &1-i 
+\end{pmatrix}
+\end{align*}
+which, upon multiplying, does indeed recover 
+\begin{align*}
+{M} = \begin{pmatrix}
+2 & 0 & -2\\
+-2i & i & 2i\\
+1 & 0 & -1
+\end{pmatrix}\,.
+\end{align*}
+To rotate \(\vec{v} = (1,0,0)\) into the new basis, multiply \(X^{-1} \vec{v} = (-1,1,i-1)\). Why is the multiplication by \(X^{-1}\) and not \(X\)? See question 36. 
+</p>
+</div>
+</li>
+
+
+<li> Factor \begin{align*}
+A = 
+\begin{pmatrix}
+1 & 2 \\ 0 &3
+\end{pmatrix}
+\end{align*} into \(A = X\Lambda X^{-1}\). Without actually performing the diagonalization again, find the factorization for \(A^3\) and \(A^{-1}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('diag1')">[answer]</span>
+<div id="diag1" class="expandable-content" style="color: #0000A0;">
+<p> 
+The eigenvalues and eigenvectors are found to be 
+\begin{align*}
+\lambda_1 &= 1,\quad \vec{x}_1 = \begin{pmatrix}
+1\\ 0
+\end{pmatrix}\\
+\lambda_2 &= 3,\quad \vec{x}_2 = \begin{pmatrix}
+1\\ 1
+\end{pmatrix}
+\end{align*}
+The eigendecomposition for \(A\) is thus
+\begin{align*}
+A = X\Lambda X^{-1} = \begin{pmatrix}
+1 & 1\\
+0 & 1 
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0\\
+0 & 3 
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1\\
+0 & 1 
+\end{pmatrix}\,.
+\end{align*}
+The eigendecomposition for \(A^3\) is obtained by simply cubing the eigenvalues,
+\begin{align*}
+A^3 = X\Lambda^3 X^{-1} = \begin{pmatrix}
+1 & 1\\
+0 & 1 
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0\\
+0 & 27 
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1\\
+0 & 1 
+\end{pmatrix}\,,
+\end{align*}
+and the eigendecomposition for \(A^{-1}\) is obtained by simply inverting the eigenvalues,
+\begin{align*}
+A^{-1} = X\Lambda^{-1} X^{-1} = \begin{pmatrix}
+1 & 1\\
+0 & 1 
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0\\
+0 & 1/3 
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1\\
+0 & 1 
+\end{pmatrix}\,.
+\end{align*}
+I verified these calculations in MATLAB.
+</p>
+</div>
+</li>
+
+
+
+
+<li>&#9784; What is the difference between a vector \(\mathsf{v}\) and its representation as a list of numbers \(\vec{v}\)? Similarly, what is the difference between a tensor \(\mathsf{A}\) (sans-serif) and a matrix \(A\) (italicized)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('qual')">[answer]</span>
+<div id="qual" class="expandable-content" style="color: #0000A0;">
+<p>\(A\) is a representation of \(\mathsf{A}\) in a chosen basis; similarly, \(\vec{v}\) is the vector \(\mathsf{v}\) expressed in a particular basis. </p>
+
+<p>The distinction between the abstraction and its representation is helpful when the following questions.
+</p>
+</div>
+</li>
+
+
+<li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two dyadic tensors (dyads). Show that \((\mathsf{A}\mathsf{B})^\mathrm{T} = \mathsf{B}^\mathrm{T} \mathsf{A}^\mathrm{T}\). Hint: introduce two auxiliary vectors \(\mathsf{u}\) and \(\mathsf{v}\) and use the definition of transpose, \((\mathsf{A}^\mathrm{T} \mathsf{u})\cdot \mathsf{v} = (\mathsf{A} \mathsf{v})\cdot \mathsf{u}\) twice.
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin9')">[answer]</span>
+<div id="lin9" class="expandable-content" style="color: #0000A0;">
+<p>  Multiply \(\mathsf{u}\) on the right-hand side by the identity matrix \(\mathsf{I}\) twice:
+\begin{align*}
+[(\mathsf{A}\mathsf{B})^\mathrm{T} \mathsf{u}]\cdot \mathsf{v} &= [(\mathsf{A}\mathsf{B}) \mathsf{v}]\cdot \mathsf{u}\\
+&=\mathsf{A}[\mathsf{B} \mathsf{v}]\cdot \mathsf{u}\\
+&=(\mathsf{A}^\mathrm{T}\mathsf{u})\cdot[\mathsf{B} \mathsf{v}]\\
+&=\mathsf{B} \mathsf{v}\cdot \mathsf{A}^\mathrm{T}\mathsf{u}\\
+&=\mathsf{B}^\mathrm{T} (\mathsf{A}^\mathrm{T} \mathsf{u}) \cdot \mathsf{v}\\
+&=\mathsf{B}^\mathrm{T} \mathsf{A}^\mathrm{T} \mathsf{u} \cdot \mathsf{v}
+\end{align*}
+Since \(\mathsf{u}\) and \(\mathsf{v}\)  are arbitrary, the proof is complete.
+</p>
+</div>
+</li>
+
+
+<li>Let \(\mathsf{A}\) and \(\mathsf{B}\) be two invertible dyads. Show that \((\mathsf{A}\mathsf{B})^{-1} = \mathsf{B}^{-1} \mathsf{A}^{-1}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin10')">[answer]</span>
+<div id="lin10" class="expandable-content" style="color: #0000A0;">
+<p>  Multiply \(\mathsf{u}\) on the right-hand side by the identity tensor \(\mathsf{I}\) twice:
+\begin{align*}
+(\mathsf{A}\mathsf{B})^{-1} \mathsf{u} &= (\mathsf{A}\mathsf{B})^{-1} \mathsf{I}\mathsf{I}\mathsf{u}\\
+&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{I}\mathsf{A}\mathsf{A}^{-1}\mathsf{u}\\
+&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{A}\mathsf{I}\mathsf{A}^{-1}\mathsf{u}\\
+&=(\mathsf{A}\mathsf{B})^{-1} \mathsf{A}\mathsf{B}\mathsf{B}^{-1}\mathsf{A}^{-1}\mathsf{u}\\
+&= \mathsf{B}^{-1}\mathsf{A}^{-1}\mathsf{u}
+\end{align*}
+Since \(\mathsf{u}\) is arbitrary, the proof is complete. 
+</p>
+</div>
+</li>
+
+<li>Prove that any tensor \(\mathsf{T}\) can be written as the sum of a symmetric tensor \(\mathsf{S}\) and an antisymmetric tensor \(\mathsf{A}\). Similarly prove that any tensor can be written as the sum of a real tensor \(\mathsf{R}\) and an imaginary tensor \(\mathsf{M}\). Finally prove that any tensor can be written as the sum of a symmetric tensor \(\mathsf{H}\) and an antisymmetric tensor \(\mathsf{K}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin11')">[answer]</span>
+<div id="lin11" class="expandable-content" style="color: #0000A0;">
+
+<p> Note that a symmetric matrix is constructed by adding \(\mathsf{T}\) and its transpose, while an asymmetric matrix is constructed by subtracting the transpose from \(\mathsf{T}\). 
+\begin{align*}
+\mathsf{S} &= \frac{1}{2}(\mathsf{T} + \mathsf{T}^\mathrm{T}) \\
+\mathsf{A} &= \frac{1}{2}(\mathsf{T} - \mathsf{T}^\mathrm{T}) \\
+\end{align*}
+Adding the above equations shows that \(\mathsf{T} = \mathsf{S} + \mathsf{A}\).</p>
+
+<p>Next, note that a real matrix is constructed by adding \(\mathsf{T}\) and its conjugate, while an imaginary matrix is constructed by subtracting the conjugate from \(\mathsf{T}\). 
+\begin{align*}
+\mathsf{R} &= \frac{1}{2}(\mathsf{T} + \mathsf{T}^*) \\
+\mathsf{M} &= \frac{1}{2}(\mathsf{T} - \mathsf{T}^*) \\
+\end{align*}
+Adding the above equations shows that \(\mathsf{T} = \mathsf{R} + \mathsf{M}\).</p>
+
+<p>Finally, note that a Hermitian matrix is constructed by adding \(\mathsf{T}\) and its Hermitian conjugate, while an skew-Hermitian matrix is constructed by subtracting the Hermitian conjugate from \(\mathsf{T}\). 
+\begin{align*}
+\mathsf{H} &= \frac{1}{2}(\mathsf{T} + \mathsf{T}^\dagger) \\
+\mathsf{K} &= \frac{1}{2}(\mathsf{T} - \mathsf{T}^\dagger) \\
+\end{align*}
+Adding the above equations shows that \(\mathsf{T} = \mathsf{H} + \mathsf{K}\). 
+</p>
+</div>
+</li>
+
+
+
+
+<li>How does one test to see if \(\mathsf{A}\) and \(\mathsf{B}\) share the same independent eigenvectors? Provide examples in physics of two linear operators that share eigenvectors, and two linear operators that do not. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin13')">[answer]</span>
+<div id="lin13" class="expandable-content" style="color: #0000A0;">
+<p>  They share the same independent eigenvectors iff \(\mathsf{AB}= \mathsf{BA}\), i.e., they commute.  An example of linear operators that commute and therefore share eigenvectors are \(L^2\) and \(L_z\); an example of matrices that do not commute and therefore do not share eigenvectors are \(L_x\) and \(L_z\), where \(L \) is the orbital angular momentum operator of quantum mechanics, and \(L_n\) is its projection on the \(n\) Cartesian axis..
+</p>
+</div>
+</li>
+
+<li>&#9784; For some tensorial linear equation \(\mathsf{A}\mathsf{x}= \mathsf{b}\), suppose there is one representation of this equation in the primed basis \('\),
+\[A'\vec{x}' = \vec{b}'\]
+and another representation in the unprimed basis,
+\[A \vec{x} = \vec{b}.\]
+Given the unprimed basis is a linear transformation of the primed basis, i.e., \(S\vec{v}' = \vec{v}\), find the matrix representation of \(\mathsf{A}\) in the unprimed basis in terms of \(A'\) and \(S\). What is the relationship between the eigenvalues of \(\mathsf{A}\), \(A\) and \(A'\)? What are  \(A\) and \(A'\) called with respect to one another? How does this change of basis relate to <i>diagonalization</i>?
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin14')">[answer]</span>
+<div id="lin14" class="expandable-content" style="color: #0000A0;">
+<p> See <a href="changeofbasis.pdf" target="_blank" rel="noopener noreferrer">here</a> for the manipulations that lead to \(A = SA'S^{-1}\). The relationship between the eigenvalues of \(\mathsf{A}\), \(A\) and \(A'\), is that they are all equal. The eigenvalues are independent of the basis, and the eigenvalues of \(\mathsf{A}\) can be calculated using the so-called principle invariants (see Stern's nonlinear continuum mechanics notes, ch. 1). Matrices \(A= SA'S^{-1}\) and \(A'\) are called <i>similar</i>. 
+</p>
+<p>Compare the change-of-basis, \(A = S A' S^{-1}\), to diagonalization, \(\Lambda = X^{-1} A' X\). Usually the diagonal matrix \(\Lambda\) is the representation in the <i>new</i> basis. Thus \(S\) is analogous to \(X^{-1}\), i.e., when the columns of \(S^{-1}\) are composed of the eigenvectors of \(A'\), the change of basis recovers the eigendecomposition. Since vectors transform from the old basis to the new basis as \(S\vec{v}' = \vec{v}\), the transformation from the old (primed) basis \('\) to the new (unprimed) basis in which the representation of \(\mathsf{A}\) is diagonal is \(X^{-1}\vec{v}' = \vec{v}\).</p>
+</div>
+</li>
+
+<li>&#9784; Show that the eigenvalues \(\lambda\) satisfying \(A\vec{x} = \lambda \vec{x}\) (unprimed basis) are invariant under the transformation to the primed \('\) basis, where the linear transformation between unprimed and primed bases is \(\vec{v} = S\vec{v}'\). In other words, show that \(A'\vec{x}' =\lambda \vec{x}'\)
+<span class="expandable-toggle" onclick="toggleExpandableContent('diag2')">[answer]</span>
+<div id="diag2" class="expandable-content" style="color: #0000A0;">
+<p> 
+Start with the eigenvalue problem in the unprimed basis. Invoke the linear transformation between unprimed and primed bases is \(\vec{x} = S\vec{x}'\). Multiply both sides by the inverse of the linear transformation, and identify \(S^{-1}A S  = A'\) (see previous problem). Note that the equation is an eigenvalue problem now in the primed basis, with the same eigenvalue \(\lambda\).
+\begin{align*}
+A\vec{x} &= \lambda\vec{x}\\
+AS \vec{x}' &= \lambda S \vec{x}'\\
+S^{-1}A S \vec{x}' &= \lambda \vec{x}' \\
+A' \vec{x}' &= \lambda \vec{x}'
+\end{align*}
+Thus the eigenvalues are invariant under linear transformations of matrices.  
+</p>
+</div>
+</li>
+
+
+
+<li>Do the trace and detemrinant of a tensor depend on the basis? Provide expressions for the trace and determinant of a tensor \(\mathsf{A}\) (with an \(n\times n\) matrix representation) terms of the eigenvalues of \(\mathsf{A}\).  
+<span class="expandable-toggle" onclick="toggleExpandableContent('lin12')">[answer]</span>
+<div id="lin12" class="expandable-content" style="color: #0000A0;">
+<p>  Like the eigenvalues themselves, the trace and the determinant are independent of basis. \(\text{Tr } \mathsf{A} = \sum_n \lambda_n \) and \(\text{det } {\mathsf{A}} = \prod_n \lambda_n \).  
+</p>
+</div>
+</li>
+
+<li>&#9784; Find the eigenvalues and eigenvectors of 
+\begin{equation*}
+\begin{pmatrix}
+1 & 1& 1\\
+1 & 1& 1\\
+1 & 1& 1
+\end{pmatrix}\,.
+\end{equation*}
+Comment on the orientation of the eigenvectors. Are they orthogonal? Why or why not? If not, does this contradict the earlier claim that the eigenvectors of a real symmetric matrix (problem 22) are orthogonal? And if the eigenvectors are not orthogonal, can one make them orthogonal? If so, do this. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('lingram')">[answer]</span>
+<div id="lingram" class="expandable-content" style="color: #0000A0;">
+<p>  
+See <a href="Gram-schmidt.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. In summary, two of the eigenvalues \(\lambda_1\) and \(\lambda_2\) are <i>degenerate</i>, and their corresponding eigenvectors \(\vec{v}_1\) and \(\vec{v}_2\) are found to not be orthogonal. Meanwhile, both \(\vec{v}_1\) and \(\vec{v}_2\) <i>are</i> orthogonal to \(\vec{v}_3\). This is consistent with the claim made in problem 22, since that statement was restricted to non-degenerate eigenvalues. To orthogonalize the eigenvectors \(\vec{v}_1\) and \(\vec{v}_2\), the so-called Gram-Schmidt procedure is used. Griffiths notes that this procedure rarely needs to be carried out in practice, but that it can be done in principle. 
+</p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="math.html">&uparrow; Return to math index</a></span>
+<span><a href="math-3.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="math-5.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

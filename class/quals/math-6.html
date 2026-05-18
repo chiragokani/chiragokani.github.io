@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+      nablav: "{\\boldsymbol\\nabla}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      vecell: "{\\boldsymbol\\ell}",
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="orthogonality">Orthogonality and special functions</h2>
+This section naturaly picks up where the previous section on ODEs left off. Also included are problems involving Dirac delta functions. 
+
+
+<ol>
+<li>Derive the recursion relation for the power expansion coefficients that solve Bessel's equation
+\[x^2 y'' + xy' + (x^2-\nu^2)y = 0\] for <i>arbitrary</i> \(\nu\). What choice gives the power expansion coefficients for \(J_n\)? What choice gives the power expansion coefficients for \(N_n\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('bess1')">[answer]</span>
+<div id="bess1" class="expandable-content" style="color: #0000A0;">
+<p>  
+One can easily show that \(x=0\) is a regular singular point. Thus the method of Frobenius is taken up: 
+\begin{align*}
+y &= \sum_{n=0}^{\infty} a_n x^{n+r}\\
+y' &= \sum_{n=0}^{\infty} a_n (n+r) x^{n+r - 1}\\
+y'' &= \sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r-2}
+\end{align*}
+Insertion into Bessel's equation gives
+\begin{align*}
+x^2 \sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r-2} + x\sum_{n=0}^{\infty} a_n (n+r) x^{n+r - 1} + (x^2-\nu^2)\sum_{n=0}^{\infty} a_n x^{n+r} &= 0\\
+\sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} + \sum_{n=0}^{\infty} a_n (n+r) x^{n+r} - \nu^2\sum_{n=0}^{\infty} a_n x^{n+r} + \sum_{n=0}^{\infty} a_n x^{n+r+2}&= 0\,.
+\end{align*}
+It is desired for all the summations to be combined into one, and thus for all powers of \(x\) to match. For this, final summation above is rewritten starting from \(n=2\):
+\begin{align*}
+\sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} + \sum_{n=0}^{\infty} a_n (n+r) x^{n+r} - \nu^2\sum_{n=0}^{\infty} a_n x^{n+r} + \sum_{n=2}^{\infty} a_{n-2} x^{n+r}&= 0\,.
+\end{align*}
+Now, the \(n=0\) and \(n=1\) terms of the first three summations are written explicitly, and the remaining \(\sum_{2}^{\infty}\) is written as a single summation:
+\begin{align*}
+&[r(r-1)  + r - \nu^2]a_0 x^{r} + [r(r+1)  + r+1 - \nu^2]a_1 x^{r+1}\\
+&\quad + \sum_{n=2}^{\infty}\big[a_n (n+r)(n+r-1) +a_n (n+r) -\nu^2 a_n + a_{n-2} \big]x^{n+r} = 0\,.
+\end{align*}
+Each term above must vanish, because the right-hand side is \(0\). Specifically, the coefficient of \(x^r\) gives the indicial equation and the values of \(r\):
+\[r = \pm \nu.\] Meanwhile, the setting the summand above to \(0\) gives the recurrence relation: 
+\begin{align*}
+a_n = -\frac{a_{n-2}}{(n+r)^2 -\nu^2}
+\end{align*}
+It turns out the choice \(r=\nu\) gives Bessel functions \(J_\nu(x)\), while the choice \(r=-\nu\) gives Neumann functions:
+\begin{align*}
+a_n &= -\frac{a_{n-2}}{n^2 +  2n\nu} \tag*{Bessel}\\
+a_n &= -\frac{a_{n-2}}{n^2 -  2n\nu} \tag*{Neumann}\\
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> The singular points \(x=\pm 1\) of Legendre's equation
+\[(1-x^2)y'' -2xy' + \lambda y = 0 \]
+were already found to be to regular singular. Thus derive the recursion relation for the power expansion coefficients that solve Legendre's equation for arbitrary \(\lambda\). Why is there never much discussion about the second solution of Legendre's equation \(Q_n\)? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('special1')">[answer]</span>
+<div id="special1" class="expandable-content" style="color: #0000A0;">
+<p>\begin{align*}
+y &= \sum_{n=0}^{\infty} a_n x^{n+r}\\
+y' &= \sum_{n=0}^{\infty} a_n (n+r) x^{n+r - 1}\\
+y'' &= \sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r-2}
+\end{align*}
+Insertion into Legendre's equation gives
+\begin{align*}
+%(1-x^2)\sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r-2} -2x\sum_{n=0}^{\infty} a_n (n+r) x^{n+r - 1} +n(n+1) \sum_{n=0}^{\infty} a_n x^{n+r} &= 0\\
+&\sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r-2} - \sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} \\&\quad- 2\sum_{n=0}^{\infty} a_n (n+r) x^{n+r} +\lambda \sum_{n=0}^{\infty} a_n x^{n+r} = 0
+\end{align*}
+The crucial step that was at first throwing me off is to write the first two terms of the first summation explicitly. (This is different from the other Frobenius method problems I have done, where it is the last summation that has terms pulled out so as to match the index of the rest of the summations; this time, it is the first summation, because of the \(1-x^2\) coefficient of \(y''\) in Legendre's equation).
+\begin{align*}
+&a_0r(r-1)x^{r-2} + a_1r(r+1)x^{r-1} + \sum_{n=2}^{\infty} a_{n} (n+r)(n+r-1) x^{n+r-2} - \sum_{n=0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} \\&\quad- 2\sum_{n=0}^{\infty} a_n (n+r) x^{n+r} + \lambda \sum_{n=0}^{\infty} a_n x^{n+r} = 0
+\end{align*}
+In order to write all the summations as a single sum, the first summation is now shifted down by two:
+\begin{align*}
+&a_0r(r-1)x^{r-2} + a_1r(r+1)x^{r-1}\\&\quad + \sum_{n=0}^{\infty} [a_{n+2} (n+r+2)(n+r+1) - a_n (n+r)(n+r-1)- 2 a_n (n+r)  + \lambda  a_n] x^{n+r} = 0
+\end{align*}
+The indicial equation is found by setting the coefficient of the lowest power of \(x\) to zero, giving
+\begin{align*}
+r = 0, \quad r=1\,.
+\end{align*}
+Meanwhile, setting the summand above equal to \(0\) gives the recursion relation:
+\begin{align*}
+a_{n+2}  &=   \frac{ (n+r)(n+r-1) + 2  (n+r)  - \lambda }{(n+r+2)(n+r+1)} a_n\\
+&=   \frac{ (n+r)^2 +n + r - \lambda }{(n+r+2)(n+r+1)} a_n
+\end{align*}
+For \(r=0\), the above recursion relation gives the Legendre polynomials (\(P_l\) once we pick \(\lambda = l(l+1)\)), but for \(r=1\), the recursion relation gives a dependent solution of the Legendre polynomials. This is a reflection of Fuchs's theorem (See section 21 of Boas's <i>Methods</i>). To find the second independent solution of Legendre's equation, one can use reduction of order (see derivation of reduction of order in the ODE section; also See Boas's ch. 12 section 2 problem 4 for the outline of how to find \(Q\)). It turns out that \(Q\) diverges at the poles, \(x=\pm1\), or \(\theta = 0^\circ\) and \(\theta = 180^\circ\) if the argument is \(x= \cos\theta\). Thus this second solution is not included in problems that include the poles (for the same reason that the Neumann functions are not included in spherical wave problems that include the origin, because the Neumann functions diverge at the origin. </p>
+
+<p>An example that requires \(Q\) is modeling a torroidal bubble in spherical coordinates. The domain of the sound inside such a bubble does not include the poles. Whales and dolphins create these bubbles when they exhale.</p>
+</div>
+</li>
+
+<li> Given the recurrence relation for Legendre polynomials, \[(n+1)P_{n+1}(x) = (2n+1)xP_{n}(x)-nP_{n-1}(x),\] and the integral result \[\int_{-1}^1 P_n(x)P_m(x)dx = \frac{2}{2n+1}\delta_{nm},\] show that \[\int_{-1}^{1} x^2 P_{n+1}(x) P_{n-1}(x) dx = \frac{2n(n+1)}{(4n^2-1)(2n+3)}\,.\]
+<span class="expandable-toggle" onclick="toggleExpandableContent('Legendre1')">[answer]</span>
+<div id="Legendre1" class="expandable-content" style="color: #0000A0;">
+<p> Solve the first equation for \((2n+1)x P_n(x)\):
+\begin{align}\label{shifters}\tag{i}
+(2n+1)x P_n(x) = (n+1)P_{n+1}(x) +  nP_{n-1}(x)  
+\end{align}
+Shift the indices on the LHS of equation (\ref{shifters}) to \(n+1\) and to \(n-1\):
+\begin{align}
+(2n+3)x P_{n+1}(x) &= (n+2)P_{n+2}(x) +  (n+1)P_{n}(x) \tag{ii}\label{his}\\
+(2n-1)x P_n(x) &= nP_{n}(x) +  (n-1)P_{n-2}(x) \tag{iii}\label{hers}
+\end{align}
+Multiply equations (\ref{his}) and (\ref{hers}):
+\begin{align*}
+(2n-1)(2n+3)x^2 P_{n-1}(x)P_{n+1}(x) &= n(n+2)P_n(x)P_{n+2}(x) + n(n+1)P_n(x)P_n(x) \\&\quad+ (n-1)(n+2)P_{n+2}(x)P_{n-2}(x) + (n-1)(n+1)P_{n-2}(x)P_n(x)
+\end{align*}
+Integrate the above over \(x\) from \(0\) to \(1\), and employ the orthogonality relation
+\begin{align*}
+\int_{-1}^{1}P_n(x)P_m(x)dx = \frac{2}{2n +1}\delta_{nm}\,.
+\end{align*}
+This results in 
+\begin{align*}
+(2n-1)(2n+3) \int_{-1}^{1} P_{n-1}(x)P_{n+1}(x)x^2\, dx &= \frac{2n(n+1)}{2n+1}
+\end{align*}
+Dividing by \((2n-1)(2n+3)\) on both sides and noting that \((2n-1)(2n+1) = 4n^2-1\) gives the desired result,
+\begin{align*}
+\int_{-1}^{1} P_{n-1}(x)P_{n+1}(x)x^2\, dx = \frac{2n(n+1)}{(4n^2-1)(2n+3)}
+\end{align*}</p>
+</div>
+</li>
+
+
+<li> Given \(J_{p-1}(x)-J_{p+1} = 2J_p'\), the integral relation \(J_0(x) = \frac{2}{\pi}\int_0^{\pi/2}\cos(x\sin\theta)d\theta\), show that (part a) \[J_1 = \frac{2}{\pi}\int_0^{\pi/2}\sin(x\sin\theta)\sin\theta d\theta.\] Then (part b) obtain \[x^{-1}J_1(x)= \frac{2}{\pi}\int_0^{\pi/2}\cos(x\sin\theta)\cos^2\theta d\theta\] by integrating the right-hand side of the first result by parts.
+<span class="expandable-toggle" onclick="toggleExpandableContent('Bessel1')">[answer]</span>
+<div id="Bessel1" class="expandable-content" style="color: #0000A0;">
+<p>
+Setting \(p=0\) and invoking the first identity gives \(J_{-1}(x) - J_{1}(x) = 2J'_0(x)\). Noting that \(J_{-1}(x) = -J_1(x)\) gives
+\(-2J_1(x) = 2J'_0(x),\) or 
+\begin{equation}\label{integrateher}\tag{i}
+-J_1(x) = J'_0(x)\,.
+\end{equation}
+Attention is now turned to the integral relationship,
+\begin{equation}\label{defers}\tag{ii}
+J_0(x) = \frac{2}{\pi}\int_0^{\pi/2}\cos(x\sin\theta)d\theta\,.
+\end{equation}
+The derivative with respect to \(x\) of equation (\ref{defers}) is taken, giving
+\begin{align*}
+J_0' = \frac{d}{dx}J_0(x) &= \frac{d}{dx}\frac{2}{\pi}\int_0^{\pi/2}\cos(x\sin\theta)d\theta
+\end{align*}
+Invoking equation (\ref{integrateher}) gives 
+\begin{align*}
+-J_1(x)&=\frac{2}{\pi}\int_0^{\pi/2}\frac{d}{dx}\cos(x\sin\theta)d\theta\\
+-J_1(x)&=-\frac{2}{\pi}\int_0^{\pi/2}\sin(x\sin\theta)\sin\theta d\theta\,,
+\end{align*}
+or 
+\begin{align*}
+J_1(x)=\frac{2}{\pi}\int_0^{\pi/2}\sin(x\sin\theta)\sin\theta d\theta\,.
+\end{align*}
+</p>
+<p>
+Part (b): To integrate
+\begin{align}\label{inters2}\tag{iii}
+J_1(x)&=\frac{2}{\pi}\int_0^{\pi/2}\sin(x\sin\theta)\sin\theta d\theta\,,
+\end{align}
+by parts, set
+\begin{align*}
+u &= \sin (x\sin \theta), \qquad &&du=\cos(x\sin\theta)x\cos\theta d\theta\\
+v &= -\cos\theta,\qquad  &&dv=\sin \theta d\theta\,.
+\end{align*}
+Equation (\ref{inters2}) integral becomes
+\begin{align*}
+J_1(x)&= -\sin (x\sin \theta)\cos\theta \bigg\rvert_{0}^{\pi/2}+ \frac{2}{\pi}\int_0^{\pi/2}x\cos\theta\cos(x\sin\theta)\cos\theta d\theta\\
+&=\frac{2}{\pi}\int_0^{\pi/2}\cos(x\sin\theta)x\cos^2\theta d\theta
+\end{align*}
+\(x\) is not an integration variable and can thus be divided through on both sides of the equation, giving the desired result,
+\begin{align*}
+x^{-1} J_1(x)=\frac{2}{\pi}\int_0^{\pi/2}\cos(x\sin\theta)\cos^2\theta d\theta\,.
+\end{align*}
+Sometimes when integrating by parts it is helpful to recall the trick "ILATE,'' (Inverse trig, Logarithmic, Algebraic, Trig, Exponential) which gives the priority of which function to set equal to \(u\) when integrating by parts. For this problem, I just guessed, first trying \(u = \sin\theta\) and then trying \(u = \sin(x\sin\theta)\). The second choice worked out.
+</p>
+</div>
+</li>
+
+<li> Prove that \[\delta(kx) = \frac{1}{|k|}\delta(x)\] where \(k\) is any nonzero constant. <i>Hint: let \(y = kx\), and integrate a test function \(f(x) = f(y/k)\) times the Dirac delta function of \(y\) from \(-\infty\) to \(\infty\).</i> 
+<span class="expandable-toggle" onclick="toggleExpandableContent('special1sdjkfff')">[answer]</span>
+<div id="special1sdjkfff" class="expandable-content" style="color: #0000A0;">
+<p> 
+\begin{align*}
+\int_{-\infty}^{\infty} f(x)\delta(kx) dx &= \frac{1}{|k|}\int_{-\infty}^{\infty} f(y/k)\delta(y) dy\\
+&= \frac{1}{|k|}f(0) \\
+&= \int_{-\infty}^{\infty} f(x)\frac{1}{|k|}\delta(x) dx
+\end{align*}
+where the absolute value has been included to account for the fact that the limits of integration are reversed if \(k < 0\). Comparing the first and last lines above gives the desired equality,
+\begin{align*}
+\delta(kx) = \frac{1}{|k|} \delta(x)\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li> \(\int_{2}^{6} (3x^2 - 2x -1)\delta(x-3)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special1sdjkf')">[answer]</span>
+<div id="special1sdjkf" class="expandable-content" style="color: #0000A0;">
+<p>  \(3(3)^2 - 2(3) - 1 = 20\)
+</p>
+</div>
+</li>
+
+<li> \(\int_{0}^{5} \cos x \delta(x-\pi)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special2')">[answer]</span>
+<div id="special2" class="expandable-content" style="color: #0000A0;">
+<p>  \(\cos \pi = -1\)</p>
+</div>
+</li>
+
+<li> \(\int_{0}^{3} x^3\delta(x+1)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special3')">[answer]</span>
+<div id="special3" class="expandable-content" style="color: #0000A0;">
+<p>  \(0 \) (because the limits do not include \(-1\)).</p>
+</div>
+</li>
+
+<li> \(\int_{-\infty}^{\infty} \ln(x+3)\delta(x+2)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special4')">[answer]</span>
+<div id="special4" class="expandable-content" style="color: #0000A0;">
+<p>  \(\ln (-2 + 3) = 0\)</p>
+</div>
+</li>
+
+<li> \(\int_{-2}^{2} (2x+3)\delta(3x)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special5')">[answer]</span>
+<div id="special5" class="expandable-content" style="color: #0000A0;">
+<p>  Here it should be noted that \(\delta(kx) = \delta(x)/|k|\). Therefore the integral evaluates to \(\frac{1}{3}[2(0) + 3] = 1\)</p>
+</div>
+</li>
+
+<li> \(\int_{0}^{2} (x^3 + 3x +2)\delta(1-x)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special6')">[answer]</span>
+<div id="special6" class="expandable-content" style="color: #0000A0;">
+<p>  Since \(\delta(kx) = \delta(x)/|k|\), it follows that \(\delta(-x) = \delta(x)\). Thus \(\delta(1-x) = \delta[-(x-1)] = \delta(x-1)\). Thus the integral evaluates to  \(1 + 3 +2 = 6\).</p>
+</div>
+</li>
+
+<li> \(\int_{-1}^{1} 9x^2\delta(3x+1)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special7')">[answer]</span>
+<div id="special7" class="expandable-content" style="color: #0000A0;">
+<p> The delta function can be written as \(\delta[3(x+1/3)] = \frac{1}{3}\delta{(x+1/3)}\). Thus the integral becomes \(\int_{-1}^{1} 3x^2\delta{(x+1/3)}dx = \frac{1}{3}\).</p>
+</div>
+</li>
+
+<li> \(\int_{-\infty}^{a} \delta(x-b)dx = \)
+<span class="expandable-toggle" onclick="toggleExpandableContent('special8')">[answer]</span>
+<div id="special8" class="expandable-content" style="color: #0000A0;">
+<p>  \(1\) for \(a\geq b\) and \(0\) for \(a\) less than \(b\) (I can't type the less than symbol in HTML!).</p>
+</div>
+</li>
+
+
+<li> &#9784; Prove that \[x\frac{d}{dx}[\delta(x)] = -\delta(x).\]
+Hint: Integrate \(\int_{-\infty}^{\infty} f(x) x \frac{d}{dx}[\delta(x)] dx \) by parts.
+<span class="expandable-toggle" onclick="toggleExpandableContent('special9')">[answer]</span>
+<div id="special9" class="expandable-content" style="color: #0000A0;">
+<p>  
+Following the hint, the following definitions are made,
+\begin{alignat*}{2}
+u&= f(x)x \quad   &&v= \delta(x) \\
+du&= \frac{d}{dx}[f(x)x]dx \quad   &&dv= \frac{d}{dx}[\delta(x)]dx \,,
+\end{alignat*}
+and the integral is taken by parts. 
+\begin{align}
+\int_{-\infty}^{\infty} f(x) x \frac{d}{dx}[\delta(x)] dx &= f(x)x\delta(x)\bigg\rvert_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \delta(x) \frac{d}{dx}[f(x) x]dx\label{inters}\tag{i}
+\end{align}
+The first term on the right-hand side above is zero because \(\delta(\infty) = 0= \delta(-\infty)\), so equation (\ref{inters}) becomes
+\begin{align}
+\int_{-\infty}^{\infty} f(x) x \frac{d}{dx}[\delta(x)] dx &= - \int_{-\infty}^{\infty} \delta(x) \frac{d}{dx}[f(x) x]dx\label{int}\tag{ii}
+\end{align}
+Applying the product rule to the integral on the right-hand side of equation (\ref{int}) gives
+\begin{align}
+\int_{-\infty}^{\infty} f(x) x \frac{d}{dx}[\delta(x)] dx &= - \int_{-\infty}^{\infty} \delta(x) [f'(x) x + f(x)]dx\notag\\
+&= - [-0 f'(0) + f(0)]\notag\\
+&=  -\int_{-\infty}^{\infty} \delta(x)f(x)dx  \label{interss}\tag{iii}
+\end{align}
+where the definition of the delta function has been used in the second and third equalities above. Comparing the integrands of the left- and right-hand sides of equation (\ref{interss})  gives the desired equality, 
+\[x\frac{d}{dx}[\delta(x)] = -\delta(x).\]
+</p>
+</div>
+</li>
+  
+<li> &#9784; Prove that \[\frac{d\theta}{dx} = \delta(x),\]
+where \(\theta\) is the Heaviside step function. <i>Hint: Integrate \(\int_{-\infty}^{\infty} f(x) \frac{d\theta}{dx} dx \) by parts.</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('special10')">[answer]</span>
+<div id="special10" class="expandable-content" style="color: #0000A0;">
+<p>  
+Following the hint, the following definitions are made,
+\begin{alignat*}{2}
+u&= f \quad   &&v= \theta \\
+du&= \frac{df}{dx}dx \quad   &&dv= \frac{d\theta}{dx}dx \,,
+\end{alignat*}
+and the integral is taken by parts. 
+\begin{align}
+\int_{-\infty}^{\infty} f \frac{d\theta}{dx} dx &= f\theta\bigg\rvert_{-\infty}^\infty - \int_{-\infty}^{\infty}\theta \frac{df}{dx}dx \label{inty}\tag{i}\\
+&=f(\infty)\theta(\infty) - f(-\infty)\theta(-\infty) - \int_{-\infty}^{0}0 \frac{df}{dx}dx - \int_{0}^{\infty} 1 \frac{df}{dx}dx \notag\\
+&=f(\infty) - \int_{0}^{\infty} \frac{df}{dx}dx \notag\\
+&=f(\infty) - f(\infty) + f(0)\\
+&= \int_{-\infty}^{\infty} \delta(x) f(x)dx \label{inters1}\tag{ii}
+\end{align}
+where the definition of the delta function has been used in the last line to write \(f(0)\). Lines (\ref{inty}) and (\ref{inters1}) give
+\begin{align*}
+\int_{-\infty}^{\infty} f(x) \frac{d\theta}{dx} dx = \int_{-\infty}^{\infty} \delta(x) f(x)dx \,.
+\end{align*}
+The integrands must be equal, which gives the desired result:
+\[\frac{d\theta}{dx} =\delta(x). \]
+</p>
+</div>
+</li>
+  
+
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="math.html">&uparrow; Return to math index</a></span>
+<span><a href="math-5.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="math-7.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>
+
+

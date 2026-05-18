@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+      nablav: "{\\boldsymbol\\nabla}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      vecell: "{\\boldsymbol\\ell}",
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="Fourier">Fourier series and transforms</h2>
+
+<ol>
+<li> The sine-cosine form of the Fourier series is
+\[f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \big[a_n \cos(nx) + b_n\sin(nx) \big]\,. \]
+Why is \(a_0\) not included in the sum? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol1')">[answer]</span>
+<div id="5sol1" class="expandable-content" style="color: #0000A0;">
+<p>\(a_0\) is not included in the sum to preserve a symmetric form of the definitions of \(a_n\) and \(b_n\). </p>
+</div>
+</li>
+
+<li> Use orthogonality to determine \(a_0\), \(a_n\), and \(b_n\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol2')">[answer]</span>
+<div id="5sol2" class="expandable-content" style="color: #0000A0;">
+<p>  First multiply both sides of the form above by \(\cos(mx)dx\) on both sides and integrate from \(-\pi\) to \(\pi\). Do the same for \(\sin(mx)dx\). Use the relations 
+\begin{align*}
+\int_{-\pi}^\pi \sin mx \sin nx dx &= \delta_{nm}\pi\\
+\int_{-\pi}^\pi \cos mx \cos nx dx &= \delta_{nm}\pi\quad (2\pi \text{ for } m=n=0)\\
+\int_{-\pi}^\pi \sin mx \cos nx dx &=0
+\end{align*}
+and obtain
+\begin{align*}
+a_0&=\frac{1}{\pi}\int_{-\pi}^\pi f(x) dx\\
+a_n&=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos nx dx\\
+b_n&=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin nx dx
+\end{align*}
+ </p>
+</div>
+</li>
+
+<li> If \(f(x)\) is periodic in \(2\pi\), has a finite number of maxima,  minima, and discontinuities, and if \(\int_{-\pi}^\pi |f(x)|dx \) is finite, what is the relationship between \(f(x)\) and its Fourier series? What are these conditions called?
+<span class="expandable-toggle" onclick="toggleExpandableContent('5Dir')">[answer]</span>
+<div id="5Dir" class="expandable-content" style="color: #0000A0;">
+<p> 
+The Fourier series of \(f(x)\) will converge to \(f(x)\) at all points where \(f(x)\) is continuous. For points at which \(f(x)\) is discontinuous (i.e., has a jump), the Fourier series converges to the midpoint of the jump.  
+</p>
+<p>These are the Dirichlet conditions.</p>
+</div>
+</li>
+ 
+<li> Obtain the Fourier series expansion coefficients of a periodic square wave, which is \(1\) for \(-\pi \leq x\leq 0 \) and \(-1\) for \(0 < x \leq \pi \).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol3')">[answer]</span>
+<div id="5sol3" class="expandable-content" style="color: #0000A0;">
+<p>  Using the definitions above, \(a_0=0\), \(a_n=0\), and \(b_n = -4/n\pi\) for odd \(n\) and \(0\) for even \(n\).</p>
+</div>
+</li>
+
+<li> Obtain the Fourier series expansion coefficients of a periodic sawtooth wave, which is \(x/\pi\) for \(-\pi \leq x\leq \pi \).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol4')">[answer]</span>
+<div id="5sol4" class="expandable-content" style="color: #0000A0;">
+<p>  Using the definitions above, \(a_0=0\), \(a_n=0\), and \(b_n = -(-1)^n 2/n\pi\). </p>
+</div>
+</li>
+
+<li> Obtain the Fourier series expansion coefficients for some of the periodic functions listed <a href="https://en.wikipedia.org/wiki/Fourier_series#Table_of_common_Fourier_series" target="_blank" rel="noopener noreferrer">here</a>.
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5')">[answer]</span>
+<div id="5sol5" class="expandable-content" style="color: #0000A0;">
+<p>  The expansion coefficients are listed on that page. The half-wave rectified sine appears in the Penn State math packet.</p>
+</div>
+</li>
+
+<li> The complex-exponential form of the Fourier series is 
+\[f(x) = \sum_{n = -\infty}^{\infty} c_n e^{inx}\]
+Use orthogonality to determine \(c_n\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5a')">[answer]</span>
+<div id="5sol5a" class="expandable-content" style="color: #0000A0;">
+<p>  
+The orthogonality relation is \[\int_{-\pi}^{\pi} e^{inx}e^{-imx}dx = 2\pi \delta_{nm} \,.\]
+Multiplying both sides by \(e^{-imx}\) and integrating from \(-\pi\) to \(\pi\) gives
+\[c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x)e^{-inx}dx.\]
+</p>
+</div>
+</li>
+
+<li><a href="fs.pdf" target="_blank" rel="noopener noreferrer">Attempt some of these problems</a> from Boas's <i>Methods</i> book, using the sine-cosine and complex exponential Fourier series.
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5fs')">[answer]</span>
+<div id="5sol5fs" class="expandable-content" style="color: #0000A0;">
+<p>  
+The answers are provided in that document.</p>
+</div>
+</li>
+
+<li> State Parseval's theorem.
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5b')">[answer]</span>
+<div id="5sol5b" class="expandable-content" style="color: #0000A0;">
+<p>  
+Parseval's theorem says that the average value of \(|f(x)|^2\) over a period is the sum of the magnitude-squared of the expansion coefficients. This is most straightforwardly written in terms of the complex exponential Fourier series (because there's only one expansion coefficient):
+\[|f(x)|^2 = \sum_{-\infty}^{\infty} |c_n|^2 \,.\]
+Parseval's theorem is sometimes referred to as the "completeness relation," because if any one of the harmonics were left out, then \(|f(x)|^2 > \sum_{-\infty}^{\infty} |c_n|^2 \,.\), which is known as Bessel's inequality.
+</p>
+</div>
+</li>
+
+
+<li> In what sense is the Fourier transform a generalization of the Fourier series? What are the conditions for the convergence of the Fourier transform?
+<span class="expandable-toggle" onclick="toggleExpandableContent('5solFS1')">[answer]</span>
+<div id="5solFS1" class="expandable-content" style="color: #0000A0;">
+<p>  
+The Fourier transform is the "continuum limit" of the Fourier series, expressing a function as the integral of a continuous spectrum of waves, rather than as just the sum of a discrete spectrum of waves. The Fourier transform applies to arbitrary functions (not necessarily periodic). 
+</p>
+<p>  
+The form of the Fourier transform can readily be derived by considering the complex-exponential form of the Fourier series, given above. In the limit that \(n\) is a continuous index \(k\), the series becomes an integral,
+\[f(x) = \int_{-\infty}^\infty c(k) e^{ikx}dk,\]
+and the coefficients \(c(k)\) are
+\[c(k) = \frac{1}{2\pi}\int_{-\infty}^\infty f(x) e^{-ikx}dx.\]
+Note that the appearance of \(1/2\pi\) in the expression for \(c(k)\) is merely a convention.
+</p>
+<p>The conditions for the convergence of the Fourier transform are the same as those for the Fourier series (the Dirichlet conditions).</p>
+</div>
+</li>
+
+
+<li> Given the function
+\begin{align*}
+f(x) = \begin{cases}
+1,\quad &x \in [-1,1]\\
+0,\quad & |x| \in (1,\infty) 
+\end{cases}\,.
+\end{align*}
+calculate its Fourier transform \(c(k)\). Write the integral representation of \(f(k)\) in terms of the calculated \(c(k)\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5solFS')">[answer]</span>
+<div id="5solFS" class="expandable-content" style="color: #0000A0;">
+<p>  
+Calculating the Fourier transform in this case is straightforward:
+\begin{align*}
+c(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx &= \frac{1}{2\pi}\int_{-1}^{1} e^{-ikx} dx\\
+&= \frac{i}{2\pi k} (e^{-ik}-e^{ik})\\
+&= -\frac{i}{2\pi k} (e^{ik}-e^{-ik})\\
+&= -\frac{i}{2\pi k} 2i \sin{k}\\
+&= \frac{\sin{k}}{\pi k}
+\end{align*}
+So the integral representation of the given function is \(f(x) = \int_{-\infty}^{\infty} \frac{\sin k}{\pi k} e^{ikx}dk\).
+</p>
+</div>
+</li>
+
+
+<li> Given the function
+\begin{align*}
+f(x) = \begin{cases}
+x,\quad &x \in [0,1]\\
+0,\quad & \text{otherwise}
+\end{cases}\,.
+\end{align*}
+calculate its Fourier transform \(c(k)\).  Write the integral representation of \(f(k)\) in terms of the calculated \(c(k)\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5solFSS')">[answer]</span>
+<div id="5solFSS" class="expandable-content" style="color: #0000A0;">
+<p>  
+\begin{align*}
+c(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx &= \frac{1}{2\pi}\int_{0}^{1} xe^{-ikx} dx\\
+&= \frac{ixe^{-ikx}}{2\pi k}  + \frac{e^{-ikx}}{2\pi k^2}  \bigg\rvert_{x=0}^{1}\\
+&=\frac{ie^{-ik}}{2\pi k}  + \frac{e^{-ik}-1}{2\pi k^2} 
+\end{align*}
+So the integral representation of the given function is \[f(x) = \int_{-\infty}^{\infty} \bigg( \frac{ie^{-ik}}{2\pi k}  + \frac{e^{-ik}-1}{2\pi k^2} \bigg) e^{ikx}dk\,.\]
+</p>
+</div>
+</li>
+
+
+<li>What does a Gaussian pulse in the time domain i.e., \(\exp (-t^2/T^2)\) look like in the frequency domain?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol13')">[answer]</span>
+<div id="6sol13" class="expandable-content" style="color: #0000A0;">
+<p> 
+Since the Fourier transform of a Gaussian is a Gaussian, the signal in the frequency domain is a Gaussian. 
+</p>
+</div>
+</li>
+
+<li>&#9784; Now consider a sine wave modulated by a Gaussian envelope in the time domain, i.e., \(\exp(j\omega_0 t) \exp (-t^2/T^2)\). What does this signal look like in the frequency domain?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol14')">[answer]</span>
+<div id="6sol14" class="expandable-content" style="color: #0000A0;">
+<p> 
+The Fourier transform of this signal is also a pure Gaussian. I confirmed this analytically and numerically. 
+</p>
+<p> 
+At first, it was not intuitively clear to me why this signal is a pure Gaussian in the frequency domain, rather than a combination of a Gaussian and a delta function in the frequency domain. I was expecting a \(\delta\)- function to appear at the frequency \(\omega_0\). This can be rationalized by making use of the convolution theorem, which states that the Fourier transform of the product of two functions is equal to the convolution of their individual Fourier transforms. We wish to find the Fourier transform of a sinusoid \(\times\) a Gaussian, and we know that the Fourier transform of a sinuosoid is a delta function, while that of a Gaussian is a Gaussian. By the convolution theorem, the Fourier transform of the product is the convolution of the delta function and the Gaussian, which is a pure Gaussian. 
+</p>
+</div>
+</li>
+
+ 
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="math.html">&uparrow; Return to math index</a></span>
+<span><a href="math-2.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="math-4.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>
