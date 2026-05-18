@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What is a wave?</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+  <div class="textbox">
+    <h2 id="1">Chapter 1: What is a wave?</h2>
+  
+<ol>
+<li>What is a wave?
+<span class="expandable-toggle" onclick="toggleExpandableContent('11111')">[answer]</span>
+<div id="11111" class="expandable-content" style="color: #0000A0;">
+<p> 
+Rather than providing a direct definition, Blackstock provides six qualities that broadly characterize waves.
+<ol>
+<li>Waves are disturbances from a pre-existing condition. </li>
+<li>Waves involve time evolution and travel at finite speeds.</li>
+<li>For mechanical waves, there exists a medium.</li>
+<li>Waves are distinct from gross movement of matter.</li>
+<li>Waves can be idealized by a wave equation. </li>
+<li>Waves need not be oscillatory.</li>
+</ol>
+</p>
+<p>
+Points (1), (2), and (6) apply to all types of waves. (3) and (4) only apply to mechanical waves in the continuum approximation and could therefore be excluded for a more general perspective. (5) is debatable.
+</p>
+<p>See also: <a href="What_is_a_Wave_Nature_1999.pdf" target="_blank" rel="noopener noreferrer"><i>What is a Wave?</i> by Scales and Snieder</a>. </p>
+</div>
+</li>
+
+<li>Derive the d'Alembert solution of the 1D wave equation.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol1')">[answer]</span>
+<div id="1sol1" class="expandable-content" style="color: #0000A0;">
+<p> The general solution to the 1D wave equation is \(\xi(x,t) = f(x-ct)+ g(x+ct)\). Write 
+\begin{align}
+ P(x)&=\xi(x,0)= f(x) + g(x)\label{Pd}\tag{i}\\
+ Q(x)&=\xi'(x,0)= -cf'(x) + cg'(x)\,.\label{Qd}\tag{ii}
+\end{align}
+Integrate equation (\ref{Qd}) and combine with equation (\ref{Pd}) to obtain
+\begin{align}
+f(x)&=\frac{1}{2}P(x)- \frac{1}{2c}\int Q(y)dy \tag{iii}\label{df}\\
+g(x)&=\frac{1}{2}P(x)+ \frac{1}{2c}\int Q(y)dy\,.\tag{iv}\label{dg}
+\end{align}
+Replace \(x\mapsto x-ct\) in equation (\ref{df}) and replace \(x\mapsto x+ct\) in equation (\ref{dg}) and let the lower limit of the integrals be \(x_0\): 
+\begin{align}
+f(x-ct)&=\frac{1}{2}P(x-ct)- \frac{1}{2c}\int_{x_0}^{x-ct} Q(y)dy \tag{v}\label{df1}\\
+g(x+ct)&=\frac{1}{2}P(x+ct)+ \frac{1}{2c}\int_{x_0}^{x+ct} Q(y)dy\,.\tag{vi}\label{dg1}
+\end{align}
+Finally, add equations (\ref{df1}) and (\ref{dg1}) to obtain the d'Alembert solution,
+\begin{equation*}
+\xi(x,t) = \frac{1}{2}\big\lbrack P(x-ct)+ P(x+ct) \big\rbrack + \frac{1}{2c}\int_{x-ct}^{x+ct} Q(y)dy\,.
+\end{equation*}
+</p>
+</div>
+</li>
+
+<li>What does the d'Alembert solution say about the dependence of the wave speed on the energy of the initial impulse?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol2')">[answer]</span>
+<div id="1sol2" class="expandable-content" style="color: #0000A0;">
+<p> The d'Alembert solution says that the wave speed is <i>independent of the energy of the initial impulse</i>, a hallmark of linear wave phenomena.</p>
+</div>
+</li>
+
+<li>Do Blackstock problems 1B-4 and 1B-5. Are these boundary- or initial-value problems?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol15')">[answer]</span>
+<div id="1sol15" class="expandable-content" style="color: #0000A0;">
+<p> 
+Note that both problems are <i>forced wave</i> problems, which are <i>boundary-value problems</i> (i.e., "What is the solution to the wave equation given a particular boundary condition?"). Thus the d'Alembert solution derived in question (2) above is not of use here, since that is the solution to the <i>initial-value problem</i> (i.e., "What is the solution to the wave equation given an initial displacement and velocity). <i>The distinction between boundary- and initial-value problems is a good one to keep in mind, since basically all problems in acoustics can be categorized this way.  For example, problems involving waveguides, horns, and diffraction are usually formulated as boundary-value problems. Meanwhile, problems involving modal responses in enclosures are usually formulated as initial-value problems (though rarely explicitly). When finding the eigenfunctions and eigenfrequencies of enclosure, these are the functions and frequencies that would be excited due to an impulse.</i>
+</p>
+<p> 
+1B-4 and 1B-5 are homework problems, so I cannot post the solution, but I will outline what should be done: In 1B-4, the function corresponding to waves traveling to the left should be tossed out. The argument of the initial condition, \(t\), should simply be replaced with \(t- x/c_0\). In 1B-5, both functions should be kept; the solution is identical to that of 1B-4 except for the presence of an additional term, which is has the argument \(t+x/c_0\).
+</p>
+</div> 
+</li>
+
+
+
+<li>In an RLC circuit, which of the following is complex-valued: the impedance, the characterstic impedance, or both? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol3')">[answer]</span>
+<div id="1sol3" class="expandable-content" style="color: #0000A0;">
+<p>  For lossy lines, \(e\) and \(i\) are no longer in phase, and thus the <i>impedance</i> is complex. However, the characteristic impedance is still \(\sqrt{L/C}\).</p>
+</div>
+</li>
+
+<li>In all plane progressive waves, what is the relationship between kinetic and potential energy densities? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol3a')">[answer]</span>
+<div id="1sol3a" class="expandable-content" style="color: #0000A0;">
+<p> The kinetic and potential energy densities are equal.</p> 
+
+<p>For arbitrary waves (standing, progressive, or any combination of the two), a more general relation between the <i>total</i> kinetic and potential energies is provided by the virial theorem. See <a href="../acoustics_I/Virial_theorem_and_strings.pdf" target="_blank" rel="noopener noreferrer">here</a> for the virial theorem worked out for waves on a string </p>
+</div>
+</li>
+
+<li>In what sense are tsunamis shallow-water waves? What does this assumption imply about the particle velocity \(\vec{u}\)? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol4')">[answer]</span>
+<div id="1sol4" class="expandable-content" style="color: #0000A0;">
+<p>  Tsunamis are shallow-water waves in the sense that the wavelength \(\lambda\) is much greater than the depth of the ocean \(h_0\), i.e., \(h_0\ll\lambda\). This means that the particle velocity is purely in the \(x\)-direction, i.e., \(\vec{u} = u\vec{e}_x\).</p>
+</div>
+</li>
+
+
+<li>Assuming no losses, the power of a shallow-water wave is conserved and is given by \(\mathcal{W} = \rho_0 g^{3/2}h_0^{1/2}\xi_\text{rms}^2\), where \(\rho_0\) is the ambient water density, \(g\) is the acceleration due to gravity, \(h_0\) is the ocean depth, and \(\xi\) is the wave variable. What does this mean about the dependence of \(\xi\) on \(h_0\)? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol4a')">[answer]</span>
+<div id="1sol4a" class="expandable-content" style="color: #0000A0;">
+<p>  Since \(\mathcal{W}\) is conserved, and since \(\rho_0 g^{3/2}\) is a constant, \(\xi \propto h_0^{-1/4}\). Thus a large amplification \((h_{0,\text{deep}}/h_{0,\text{shallow}})^{1/4}\) of the wave height is acheived when a tsunami wave approaches the shore.</p>
+</div>
+</li>
+
+<li>&#9784; Derive the wave equation for finite deformations of a string.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol5')">[answer]</span>
+<div id="1sol5" class="expandable-content" style="color: #0000A0;">
+<p> This is a tough derivation. It is worked out <a href="../acoustics_I/waves_on_string_Blackstock.pdf" target="_blank" rel="noopener noreferrer">here</a>. </p> 
+</li>
+
+<li>&#9784; Do Blackstock problem 1-C5, which is to derive the wave equation for a string with variable density per unit length, \(\rho=\rho(x)\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol5a')">[answer]</span>
+<div id="1sol5a" class="expandable-content" style="color: #0000A0;">
+<p> This is another homework problem, so I cannot post the solution here. However, note the error of the sign of the second term in the answer provided in <i>Fundamentals</i>. The correct answer is \[\xi_{xx}+ \frac{\mathcal{T}_x}{\mathcal{T}}\xi_x - \frac{1}{c^2}\xi_{tt}=0\,.\]</p> 
+</li>
+
+
+<li>Derive the continuity equation in 1D.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol6')">[answer]</span>
+<div id="1sol6" class="expandable-content" style="color: #0000A0;">
+<p> The mass of fluid inside a tube of cross-sectional area \(S\) and length \(\Delta x\) is \(\rho S\Delta x\), and the time derivative of this mass must equal the mass inflow \(+\) the mass outflow, which is \(\rho u S\rvert_{x} -\rho u S\rvert_{x+\Delta x} \). That is,
+\begin{align*}
+\frac{\partial}{\partial t}(S\Delta x \rho) &= \rho u S\rvert_{x} -\rho u S\rvert_{x+\Delta x} \\
+\frac{\partial  \rho}{\partial t} &= -\frac{\partial \rho u}{\partial x} \\\frac{\partial  \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x}&=0\,.
+\end{align*}
+</p> 
+</li>
+
+<li>Derive the momentum equation in 1D.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol7')">[answer]</span>
+<div id="1sol7" class="expandable-content" style="color: #0000A0;">
+<p> The momentum of fluid inside a tube of cross-sectional area \(S\) and length \(\Delta x\) is \(\rho u S\Delta x\), and the time derivative of this momentum must equal the momentum inflow \(+\) the momentum outflow \(+\) the force on the boundaries, which is \(\rho u^2 S\rvert_{x} -\rho u^2 S\rvert_{x+\Delta x} + PS\rvert_{x} - PS\rvert_{x+\Delta x}\). That is,
+\begin{align*}
+\frac{\partial}{\partial t}(S\Delta x u \rho) &= \rho u^2 S\rvert_{x} -\rho u^2 S\rvert_{x+\Delta x} + PS\rvert_{x} - PS\rvert_{x+\Delta x} \\
+\frac{\partial (\rho u)}{\partial t} &= -\frac{\partial \rho u^2}{\partial x}-\frac{\partial P}{\partial x} \\
+\frac{\partial (\rho u)}{\partial t} + \frac{\partial (\rho u^2)}{\partial x} + \frac{\partial P}{\partial x}&=0\,.
+\end{align*}
+</p> 
+</li>
+
+<li>What is the equation of state as a Taylor expansion of \(P(\rho)\)? What assumption lets us write \(P(\rho)\) in the first place? What is the definition of the speed of sound \(c\)? What distinguishes \(c\) from \(c_0\)? What are the parameters \(A\) and \(B\), and what is the significance of the parameter \(B/A\) in nonlinear acoustics?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol8')">[answer]</span>
+<div id="1sol8" class="expandable-content" style="color: #0000A0;">
+<p>Generally, the pressure is given by two other state variables, like density and entropy, i.e., \(P = P(\rho,s)\). But in acoustics, we can get by
+by assuming that even mildly lossy wave propagation is isentropic, according to Dr. Hamilton:
+<blockquote>The lossy linear progressive wave equation does indeed describe isentropic wave propagation under the assumed conditions.  Until the attenuation is so strong that one is in the gray area of wave propagation versus diffusion (i.e., for an absorption length on the order of the wavelength), the attenuation is a minor perturbation and it introduces a negligible change in the phase speed relative to that in an ideal fluid.</blockquote>
+Therefore, for much of acoustics, the isentropic condition lets us assume pressure is only a function of density, i.e., \(P(\rho)\). Just as for any function of one variable, the Taylor expansion of \(P(\rho)= P(\rho_0+\rho')\) about \(\rho_0\) is 
+\begin{align}
+P(\rho_0 + \rho') &= p_0 + \frac{dP}{d\rho}\bigg\rvert_{\rho=\rho_0}(\rho-\rho_0) + \frac{1}{2!} \frac{d^2P}{d\rho^2}\bigg\rvert_{\rho=\rho_0}(\rho-\rho_0)^2 + \dots \notag\tag{i}\label{TaylorP}
+\end{align}
+where \(P = p_0 + p\), \(P(\rho_0)=p_0\), and \(\rho = \rho_0 + \rho'\). Equation (\ref{TaylorP}) can be written as 
+\begin{align}
+P(\rho_0 + \rho') &= p_0 + \bigg(\rho_0\frac{dP}{d\rho}\bigg)\bigg\rvert_{\rho=\rho_0}\bigg(\frac{\rho-\rho_0}{\rho_0}\bigg) + \bigg(\rho_0^2\frac{1}{2!} \frac{d^2P}{d\rho^2}\bigg)\bigg\rvert_{\rho=\rho_0}\bigg(\frac{\rho-\rho_0}{\rho_0}\bigg)^2 + \dots \notag\\
+&= p_0 + A\frac{\rho-\rho_0}{\rho_0} + \frac{B}{2!}\bigg(\frac{\rho-\rho_0}{\rho_0}\bigg)^2 + \dots \tag{ii}\label{TaylorP2}
+\end{align}
+where
+\begin{align*}
+A&= \rho_0\frac{dP}{d\rho}\bigg\rvert_{\rho=\rho_0} = \rho_0 c_0^2\\ 
+B&=\rho_0^2 \frac{d^2P}{d\rho^2}\bigg\rvert_{\rho=\rho_0}\,,
+\end{align*}
+where the definition of the linear speed of sound \(c_0 \equiv (dP/d\rho)\rvert_{\rho=\rho_0}\) has been used. (On the other hand \(c = dP/d\rho\) i.e., not evaluated at at equilibrium density, is the nonlinear speed of sound).
+Equation (\ref{TaylorP2}) can be rearranged by writing \(P = p_0 + p\) and \(\rho-\rho_0 = \rho'\), and by factoring out \(A\), resulting in Blackstock's equation (C-44):
+\begin{equation*}
+p = c_0^2\rho'\bigg( 1 + \frac{B}{2!A}\frac{\rho'}{\rho_0} + \dots\bigg)
+\end{equation*}
+</p> 
+Thus the ratio \(B/A\) is seen to be the coefficient of the first nonlinear term of the isentropic equation of state.  
+</li>
+
+<li>Derive the adiabatic and isothermal sound speeds. For the adiabatic sound speed, use the ideal gas law \(P = \rho R T\) to write the sound speed in terms of the temperature. Who first calculated calculated the adiabatic sound speed?  Who first calculated calculated the isothermal sound speed? Which came first? <i>Bonus: Show that \(c_0 = (\gamma/3)^{1/2} v_\text{rms}\), where \(v_{rms}\) is the square root of the mean square velocity of the molecules in the gas. To do so, use the ideal gas law in terms of the Boltzmann constant \(k\) and number of molecules \(N\), \(PV= NkT\) to write the adiabatic sound speed. Note that \(\rho V\) is the mass of the gas, which is equal to \(Nm\), where \(m\) is the molecular weight. Use the equipartition theorem \(kT = \frac{1}{3} m \langle v^2\rangle\) to relate the speed of sound to the average speed of the molecules.</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol9')">[answer]</span>
+<div id="1sol9" class="expandable-content" style="color: #0000A0;">
+<p> Recall the adiabatic gas law, \(P = p_0(\rho/\rho_0)^\gamma\). By the definition of linear sound speed, 
+\begin{align*}
+c_0^2 &=\frac{dP}{d\rho}\bigg\rvert_{\rho=\rho_0}\\
+&=\gamma \frac{p_0}{\rho_0} \bigg(\frac{\rho}{\rho_0}\bigg)^{\gamma-1}\bigg\rvert_{\rho=\rho_0}\\
+&= \frac{\gamma p_0}{\rho_0}\\
+\implies c_0 &= \sqrt{\frac{\gamma p_0}{\rho_0}} = \sqrt{\gamma R T_0}\,,
+\end{align*}
+where the second equality in the last line follows from the ideal gas law. This was shown by Laplace.</p>
+<p>
+Next recall the isothermal gas law, \(p/p_0 = \rho/\rho_0\) and repeat the procedure above, giving \[c_0 = \sqrt{p_0/\rho_0}\,.\] One could equivalently set \(\gamma = 1\) in the adiabatic sound speed to recover the isothermal sound speed. Newton had calculated the isothermal sound speed more than a century prior to Laplace's calculation of the adiabatic sound speed.
+</p>
+<p>
+<i>Bonus: Use the alternate form of the ideal gas law, in terms of number of molecules and the Boltzmann constant:
+\begin{align*}
+c_0^2&= \frac{\gamma P_0}{\rho_0}\\
+&= \frac{\gamma P_0 V_0}{\rho_0 V_0}\\
+&= \frac{\gamma NkT_0}{Nm}
+\end{align*}
+Noting that \(kT = \frac{1}{3}m\langle v^2\rangle\), the above becomes
+\begin{align*}
+c_0^2 &= \frac{\gamma N m \langle v^2\rangle}{3Nm}\\
+&= \frac{\gamma}{3}\langle v^2\rangle 
+\end{align*}
+Take the square root and note that \(v_\text{rms} = \sqrt{\langle v^2\rangle}\). Thus
+\begin{align*}
+c_0 &= (\gamma/3)^{1/2} v_\text{rms}
+\end{align*}
+Where does \(kT = \frac{1}{3}m\langle v^2\rangle\) come from? It comes from the equipartition theorem, which says that each quadratic degree of freedom contributes \(kT/2\) to the energy. There are three degrees of freedom for a monatomic gas. Thus \(3kT/2 = \frac{1}{2}m\langle v^2\rangle \), which gives the result. From R. P. Feynman's lecture on the topic,
+<blockquote>
+The speed of sound is of the same order of magnitude as the speed of the molecules, and is actually somewhat less than this average speed. Of course we could expect such a result, because a disturbance like a change in pressure is, after all, propagated by the motion of the molecules. 
+</blockquote>
+</i>
+</p>
+</div>
+</li>
+
+
+
+<li>Derive the linear wave equation in 1D for an isentropic fluid. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol10a')">[answer]</span>
+<div id="1sol10a" class="expandable-content" style="color: #0000A0;">
+<p> The continuity and momentum equations are linearized, and the linearized state relation \(\rho' = p/c_0^2\) is invoked to eliminate density, resulting in
+\begin{align}
+\frac{1}{c_0^2}\frac{\partial p}{\partial t} + \rho_0 \frac{\partial u}{\partial x} = 0\tag{i}\label{linc}\\
+\frac{\partial p}{\partial x} + \rho_0 \frac{\partial u}{\partial t} = 0\,.\tag{ii}\label{linm}
+\end{align}
+The time derivative of equation (\ref{linc}) and the spatial derivative of equation (\ref{linm}) are taken, and the resulting equations are subtracted, giving the wave equation,
+\[\frac{\partial^2 p}{\partial x^2} - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2}=0\,.\]  
+</p>
+</div>
+</li>
+
+<li>Derive the plane wave impedance relation for linear 1D sound waves. How does the answer change as the direction of the sound reverses?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol11')">[answer]</span>
+<div id="1sol11" class="expandable-content" style="color: #0000A0;">
+<p> Let \(p = f(x-c_0t)\). Then by the momentum equation \(\rho_0 \partial u/\partial t= -\partial p/\partial x\),
+\begin{align*}
+u &= -\frac{1}{\rho_0}\int f'(x-c_0t)dt\\
+&= -\frac{1}{\rho_0}\bigg(-\frac{1}{c_0}\bigg) f\\
+&= \frac{1}{\rho_0 c_0}p\\
+\implies \frac{p}{u}&= \rho_0 c_0
+\end{align*} 
+If the direction of the sound is reversed, \(p = f(x+c_0t)\), which results in \(p/u= -\rho_0 c_0\).
+</p>
+</div> 
+</li>
+
+<li>Derive the spherical wave impedance relation for linear outgoing spherical sound. Write the impedance in polar and rectangular form. How does this impedance change for converging spherical waves?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol12')">[answer]</span>
+<div id="1sol12" class="expandable-content" style="color: #0000A0;">
+<p> Consider the imaginary part of a solution of the spherically symmetric wave equation,
+\begin{equation}\label{impart}
+p = \frac{\Im e^{j(\omega t-kr)}}{r}\,.\tag{i}
+\end{equation}
+Equation (\ref{impart}) is inserted into the radial component of the momentum equation, where \(\partial u/\partial t =j\omega u\)
+\begin{align}
+j\omega \rho_0 u &= -\frac{\partial p}{\partial r}\notag\\
+u&= \frac{1}{j\omega \rho_0}\bigg(jk + \frac{1}{r}\bigg) p\notag\\
+\implies \frac{p}{u} &= \frac{j\omega \rho_0}{jk + 1/r}\notag\\
+\frac{p}{u} &= \frac{j\omega \rho_0/jk}{1 + 1/jkr}\notag\\
+Z= \frac{p}{u} &= \frac{\rho_0 c_0}{1 + 1/jkr}\tag{ii}\label{impers}\,.
+\end{align}
+The rectangular and polar forms of equation (\ref{impers}) are 
+\begin{align*}
+Z &= \frac{\rho_0 c_0}{1+1/k^2 r^2} + j\frac{\rho_0c_0/kr}{1+1/k^2 r^2}\\
+&= \rho_0 c_0 \frac{kr}{\sqrt{1+k^2r^2}} e^{j\text{arccot} kr}\,.
+\end{align*}
+For incoming spherical waves \(p = \frac{\Im e^{j(\omega t+kr)}}{r}\), equation (\ref{impers}) obtains two additional negative signs:
+\begin{align*}
+j\omega \rho_0 u &= -\frac{\partial p}{\partial r}\notag\\
+u&= \frac{1}{j\omega \rho_0}\bigg(-jk + \frac{1}{r}\bigg) p\notag\\
+\implies \frac{p}{u} &= \frac{j\omega \rho_0}{-jk + 1/r}\notag\\
+\frac{p}{u} &= \frac{-j\omega \rho_0/jk}{1 - 1/jkr}\notag\\
+\frac{p}{u} &= -\frac{\rho_0 c_0}{1 - 1/jkr}\,.
+\end{align*}
+</p>
+</div> 
+</li>
+
+<li> Interpret the \(kr\ll 1\) and  \(kr\gg 1\) limits of the spherical wave impedance relation. What limit represents efficient radiation?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol13')">[answer]</span>
+<div id="1sol13" class="expandable-content" style="color: #0000A0;">
+<p> 
+From the above problem, the rectangular form of equation (\ref{impers}) is 
+\begin{align*}
+Z = \frac{\rho_0 c_0}{1+1/k^2 r^2} + j\frac{\rho_0c_0/kr}{1+1/k^2 r^2}\,,
+\end{align*}
+from which it can be seen that for 
+\begin{align*} Z =
+\begin{cases}
+\rho_0 c_0 &\text{for}\quad kr\gg 1\\
+j\omega\rho_0 r &\text{for}\quad kr\ll 1
+\end{cases}
+\end{align*}
+The \(kr \gg 1\) limit represents efficient radiation, as the impedance is purely real and recovers the plane wave impedance relation. Meanwhile the \(kr \ll 1\) limit is purely reactive, representing poor radiation. 
+</p>
+</div>
+</li>
+
+<li>Calculate the pressure field due to a pulsating sphere of radius \(a\), where the particle velocity is \(u_0 e^{j\omega t}\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol14')">[answer]</span>
+<div id="1sol14" class="expandable-content" style="color: #0000A0;">
+<p> We know the solution must have the form 
+\begin{equation}\label{formofsol}\tag{i}
+p(r,t) = \frac{A}{r}\exp{j(\omega t - kr)}\,.
+\end{equation}
+To determine the constant \(A\), recall the spherical wave impedance relation,
+\begin{align*}
+Z(r=a) = \frac{p(r=a)}{u(r=a)}=\frac{\rho_0 c_0}{1+1/jka}\,,
+\end{align*}
+and match the boundary condition \(u_0 e^{j\omega t}\) at the radius \(a\) to the pressure at \(r=a\): 
+\begin{align}\label{ata}\tag{ii}
+p(r=a,t) = u_0 e^{j\omega t}\frac{\rho_0 c_0}{1+1/jka}
+\end{align}
+Setting equations (\ref{formofsol}) and (\ref{ata}) equal gives
+\begin{align}
+\frac{A}{a}\exp{j(\omega t - ka)} &= u_0 e^{j\omega t}\frac{\rho_0 c_0}{1+1/jka}\notag\\
+\implies A&= \frac{\rho_0 c_0 u_0 a}{1+1/jka}\exp{jka}\label{Aeq}\tag{iii}
+\end{align}
+The pressure field is therefore given by combining equations (\ref{formofsol}) and (\ref{Aeq}):
+\begin{align*}
+p(r,t) = \frac{\rho_0 c_0 u_0}{1+1/jka}\frac{a}{r}\exp{j[\omega t- k(r-a)]}\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>Derive the expression for the instantaneous intensity \(\vec{I}\) of a linear sound wave.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol16')">[answer]</span>
+<div id="1sol16" class="expandable-content" style="color: #0000A0;">
+<p> 
+Two approaches are provided, the second being more formal than the first. </p>
+<p>
+<b>Informal approach.</b> Denoting \(W =\) power = \(dw/dt\), where \(w\) is work, the magnitude of the instantaneous intensity \(I\) is equal to the power \(W\) divided by the surface area \(S\)
+\begin{align*}
+I&=  {W}/{S} \\
+&= \frac{dw}{dt}\frac{1}{S}\\
+&= \frac{F\,dx}{S}\frac{1}{dt}\\
+&= \frac{F}{S}\frac{dx}{dt}\\
+& =  p u 
+\end{align*}
+This quick approach does not retain the vectorial nature of the intensity vector. The formal approach below is therefore preferred.
+</p>
+<p>
+<b>Formal approach.</b>
+Define the power \(W\) to be the time derivative of the work \(w\) done by the sound wave: 
+\[W = \frac{dw}{dt}\,.\]
+Note that the differential work done is \(dw = \vec{F}\cdot d\vec{s}\). Thus \[W = \frac{d}{dt}(\vec{F}\cdot d\vec{s}) = \frac{d\vec{F}}{dt} \cdot d\vec{s} + \vec{F} \cdot \frac{d\vec{s}}{dt}\]
+The first term, \( \frac{d\vec{F}}{dt} \cdot d\vec{s}\), is infinitesimally small. And \(\frac{d\vec{s}}{dt} = \vec{u}\). Thus 
+\[W = \vec{F} \cdot \vec{u}\]
+Next consider an area \(S\) with inward unit normal \(\vec{n}\), and suppose that \(\vec{F} = F\vec{n}\). Then, the power can be written as 
+\[W = F\vec{n} \cdot \vec{u} \frac{1}{S} \oint dS\]
+Assuming \(F\) and \(u\) are constant along the surface, they can be moved inside the integral:
+\[W =  \frac{1}{S} \oint F\vec{n} \cdot \vec{u} dS =  \oint (F\vec{n}/S) \cdot \vec{u} dS\]
+Then identifying \(F\vec{n}/S\) to be the acoustic pressure times the normal vector \(p\vec{n}\) yields 
+\[W = \oint p \vec{u}\cdot \vec{n} dS\]
+The integrand \(p \vec{u}\) is therefore identified to be the instantaneous intensity vector:
+\[\vec{I} = p \vec{u}\] 
+</p>
+</div>
+</li>
+
+<li>Show that the time-averaged magnitude of the intensity of a plane wave is \(\langle I \rangle = p_\text{rms}^2/\rho_0 c_0 \).
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol17')">[answer]</span>
+<div id="1sol17" class="expandable-content" style="color: #0000A0;">
+<p> From the previous problem, the time-averaged intensity is given by 
+\begin{align*}
+\langle I\rangle  &= \langle pu \rangle\\
+&= \frac{1}{\rho_0 c_0}\langle p^2 \rangle\\
+&=\frac{1}{\rho_0 c_0}\int_{0}^{t_\text{av}}p^2 dt\\
+&=\frac{p_\text{rms}^2}{\rho_0 c_0}
+\end{align*}
+where the root-mean-square of the pressure is defined as
+\[p_\text{rms} = \sqrt{\int_{0}^{t_\text{av}}p^2 dt}\]
+</p>
+
+</div>
+</li>
+
+<li>Calculate the time-averaged intensity due to a spherically symemtric outgoing wave, \(p = \frac{A}{r}\exp{j(\omega t - kr)}\). What about this result is often misquoted?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol18')">[answer]</span>
+<div id="1sol18" class="expandable-content" style="color: #0000A0;">
+<p> The time-avereraged intensity is given by 
+\begin{align*}
+\langle I \rangle &= \langle pu \rangle\\
+&= \frac{1}{2}\Re(pu^*) \tag{See problem 28}\\
+&=\frac{1}{2\rho_0c_0}\Re(pp^*(1+1/jkr)) \\
+&=\frac{1}{\rho_0c_0}\frac{|p|^2}{2}\\
+&=\frac{p_\text{rms}^2}{\rho_0 c_0}
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>Find \(p_\text{rms}\) for a sinusoidal wave and for an N-wave, both of amplitude \(A\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol19')">[answer]</span>
+<div id="1sol19" class="expandable-content" style="color: #0000A0;">
+<p> 
+By taking the integral \(p_\text{rms}^2 = \frac{1}{t_\text{av}}\int_0^{t_\text{av}} p^2 dt\), one finds that \(p_\text{rms} = A/\sqrt 2\) for a sinusoidal wave
+and \(p_\text{rms} = A/\sqrt 3\) for N-waves.
+</p>
+</div>
+</li>
+
+<li>State the definitions of the sound pressure level (\(\text{SPL}\)), intensity level (\(\text{IL}\)), and sound power level (\(\text{PWL}\)). What is the \(\text{IL}\) in a purely standing wave field?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol20')">[answer]</span>
+<div id="1sol20" class="expandable-content" style="color: #0000A0;">
+<p>The definitions are 
+\begin{align*}
+\text{SPL}&=20 \log_{10} (p_\text{rms}/p_\text{ref})\\
+\text{IL}&=10 \log_{10} (\langle I\rangle/I_\text{ref})\\
+\text{PWL}&=10 \log_{10} (W/W_\text{ref})\,,
+\end{align*}
+where Blackstock writes "\(I\)" for the time-averaged intensity vector instead of \(\langle I \rangle\). SPL and IL are functions of distance from a sound source (because, e.g., sound pressure is proportional to \(1/r\) and intensity is proportional to \(1/r^2\) in a spherical wave) whereas PWL is the total power radiated by a sound source, wherever it goes and however it diverges. The \(\text{IL}\) in a purely standing wave field is \(-\infty\), because \(I = 0\). 
+</p>
+<p>
+It is a good thing to be able to show that \(\langle I\rangle = 0\) in a standing wave field. Consider the standing wave \(p(x) = A\cos(kx)\). Then by the momentum equation, \[u = \frac{jka}{\rho_0}\int \cos kx dt = \frac{jkA}{\rho_0}(t-\phi)\cos{kx},\] where \(\phi\) is a phase. Then the time-averaged intensity is given by (see problem 28 for the derivation of the first line below)
+\begin{align*}
+\langle I \rangle &= \frac{1}{2} \Re (pu^*)\\
+&= \frac{1}{2}\Re{\bigg(j\frac{kA^2}{\rho}(t-\phi)\cos^2{kx} \bigg)}\\
+&=0\,.
+\end{align*}
+</p>
+</div>
+
+</li>
+
+<li>&#9784; Calculate the energy density of linear sound. What is the relationship between kinetic and potential energy densities in a progressive plane wave? State and derive the acoustic energy corollary.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol21')">[answer]</span>
+<div id="1sol21" class="expandable-content" style="color: #0000A0;">
+<p> This is another hard one. See <a href="../acoustics_I/energy_density.pdf" target="_blank" rel="noopener noreferrer">here</a>. I doubt we are responsible for these kinds of clever manipulations, but it's good to know the main result, that the kinetic and potentitial energy densities are equal in a progressive plane wave. The potential and kinetic energies being equal for progressive waves recovers a special case of the virial theorem.</p>
+</p>
+</div>
+</li>
+
+<li>What is the difference between acoustic, specific acoustic, and mechanical impedance?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol22')">[answer]</span>
+<div id="1sol22" class="expandable-content" style="color: #0000A0;">
+<p> The definitions are
+\begin{align*}
+Z_\text{sp ac} &= \frac{p}{u}\\
+Z_\text{ac} &= \frac{p}{q} = \frac{p}{Su} = Z_\text{sp ac}/S\\
+Z_\text{mech} &= \frac{F}{u} = \frac{Sp}{u} = Z_\text{sp ac}S\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li>For plane progressive waves in air, why is the intensity level (\(\text{IL}\)) roughly numerically equal to the sound pressure level (\(\text{SPL}\))?
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol23')">[answer]</span>
+<div id="1sol23" class="expandable-content" style="color: #0000A0;">
+<p> The intensity level can be expressed as
+\begin{align*}
+\text{IL} &= 10 \log_{10} \frac{\langle I \rangle}{I_\text{ref}}\\
+&= 10 \log_{10} \frac{p^2_{\text{rms}}/\rho_0c_0}{I_\text{ref}}\\
+&= 10 \log_{10} \frac{p^2_{\text{rms}}}{p^2_{\text{ref}}}\frac{p^2_{\text{ref}}}{\rho_0c_0I_\text{ref}}\\
+&= 10 \log_{10} \frac{p^2_{\text{rms}}}{p^2_{\text{ref}}} + 10\log_{10}\frac{p^2_{\text{ref}}}{\rho_0c_0I_\text{ref}}\\
+&= 20 \log_{10} \frac{p_{\text{rms}}}{p_{\text{ref}}} + 10\log_{10}\frac{p^2_{\text{ref}}}{\rho_0c_0I_\text{ref}}\\
+&\simeq \text{SPL}\, 
+\end{align*}
+</p>
+It turns out that </i>in air at STP</i> the term \(10\log_{10}\frac{p^2_{\text{ref}}}{\rho_0c_0I_\text{ref}}\) is small, like \(-0.16 \)
+</div>
+</li>
+
+<li>&#9784; For two time-harmonic functions \(f\) and \(g\) represented by the real parts of the complex-valued functions \(\tilde{f}(t) = f_0 e^{j(\omega t + \phi_f)} = \tilde{f}_\omega e^{j\omega t}\) and \(\tilde{g}(t) = g_0 e^{j(\omega t + \phi_g)} = \tilde{g}_\omega e^{j\omega t}\) (where \(\tilde{f}_\omega = f_0e^{j\phi_F}\) and \(\tilde{g}_\omega = g_0 e^{j\phi_G}\)), show that the time average of their product, \(\langle fg\rangle\), is given by \(\langle \Re (\tilde{f}) \,\,\Re (\tilde{g}) \rangle = \frac{1}{2} \Re (\tilde{f}_\omega \, \tilde{g}^*_\omega) = \frac{1}{2} \Re (\tilde{f}_\omega^*\, \tilde{g}_\omega)\), where "\(\Re\)" denotes "real part."
+<span class="expandable-toggle" onclick="toggleExpandableContent('1solinterine')">[answer]</span>
+<div id="1solinterine" class="expandable-content" style="color: #0000A0;">
+<p>
+Note that \(\Re(\tilde{f}) = f_0 \cos(\omega t + \phi_f)\) and \(\Re(\tilde{g}) = g_0 \cos(\omega t + \phi_g)\). Thus
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &= \langle f_0 \cos(\omega t + \phi_f) \, g_0 \cos(\omega t + \phi_g)\rangle  \notag\\
+&= f_0 g_0 \langle\cos(\omega t + \phi_f) \,  \cos(\omega t + \phi_g)\rangle\,. \label{eq:id:avg:simplify:1} \tag{i}
+\end{align}
+Since \(\cos A \cos B = \cos(A+B) + \sin A\sin B\), Eq. \eqref{eq:id:avg:simplify:1} becomes (by letting \(A = \omega t + \phi_f\) and \(B= \omega t + \phi_g\))
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &= f_0 g_0 \langle \cos(2\omega t + \phi_f + \phi_g) +  \sin(\omega t + \phi_f)\sin(\omega t + \phi_g)\rangle\,.\label{eq:id:avg:simplify:2}\tag{ii}
+\end{align}
+Noting that \(\sin A \sin B = \tfrac{1}{2} [\cos(A-B) - \cos (A+B)]\), Eq. \eqref{eq:id:avg:simplify:2} becomes
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  f_0 g_0 \langle \cos(2\omega t + \phi_f + \phi_g) - \tfrac{1}{2} \cos(2\omega t + \phi_f + \phi_g) + \tfrac{1}{2}\cos(\phi_f - \phi_g)\rangle \notag\\
+&= f_0 g_0 \langle  \tfrac{1}{2} \cos(2\omega t + \phi_f + \phi_g) + \tfrac{1}{2}\cos(\phi_f - \phi_g)\rangle\,.\label{eq:id:avg:simplify:3}\tag{iii}
+\end{align}
+The time-averaging operation amounts to an integral, which is a linear operation. Thus Eq. \eqref{eq:id:avg:simplify:3} becomes
+\begin{align*}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  \tfrac{1}{2} f_0 g_0 \langle  \cos(2\omega t + \phi_f + \phi_g)\rangle + \tfrac{1}{2} f_0 g_0 \langle\cos(\phi_f - \phi_g)\rangle\,.
+\end{align*}
+The first term on the left-hand side is 0. Meanwhile, the second term does not depend on time, and therefore its time average is itself: 
+\begin{align}
+\langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  \tfrac{1}{2} f_0 g_0 \cos(\phi_f - \phi_g)\,.\label{eq:id:avg:simplify}\tag{iv}
+\end{align}
+Noting that \(f_0 g_0 \cos(\phi_f - \phi_g) \) is \(\Re [f_0  g_0 e^{j(\phi_f - \phi_g)}]\), which by the relations \(\tilde{f}_\omega = f_0e^{j\phi_F}\) and \(\tilde{g}_\omega = g_0 e^{j\phi_G}\) is \(\Re(\tilde{f}_\omega \, \tilde{g}_\omega^*)\), Eq. \eqref{eq:id:avg:simplify} becomes
+\begin{align}
+\langle fg \rangle  = \langle \Re (\tilde{f}) \, \Re (\tilde{g}) \rangle &=  \tfrac{1}{2} \Re(\tilde{f}_\omega\tilde{g}_\omega^*) =   \tfrac{1}{2} \Re(\tilde{f}_\omega^*\tilde{g}_\omega) \,,\label{eq:id:avg} \tag{v}
+\end{align}
+where the final equality holds by noting that \(\cos (\phi_f - \phi_g) = \cos(\phi_g - \phi_f)\).
+</p>
+<p>Letting \(\Re(f) = p\) and \(\Re(\vec{g})= \vec{u}\) immediately leads to \(\langle I\rangle = \frac{1}{2} \Re(p\vec{u}^*) = \frac{1}{2} \Re(p^*\vec{u})\).</p>
+</div>
+</li>
+
+<li>Evaluate the integral for time-averaged intensity in <i>Fundamentals of Physical Acoustics</i>, Sec. 1E-3 (page 50), and thereby recover the result above.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1stockintegral')">[answer]</span>
+<div id="1stockintegral" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="../acoustics_I/blackstock_p_50.pdf" target="_blank" rel="noopener noreferrer">here</a> for the evaluation, noting that Blackstock suppresses the angle brackets to denote time average, i.e., his \(\vec{I}\) is our \(\langle\vec{I}\rangle\).</p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-2.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

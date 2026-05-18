@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Normal modes in Cartesian coordinates</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="6">Chapter 6: Normal modes in Cartesian coordinates</h2>
+<ol>
+<li> Solve \(\xi_{xx}- \frac{1}{c^2}\xi_{tt} = 0\) for a fixed-fixed string for an arbitrary initial displacement \(\xi(x,0)\). How does the answer change for an initial velocity condition \(\dot{\xi}(x,0)\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol1')">[answer]</span>
+<div id="6sol1" class="expandable-content" style="color: #0000A0;">
+<p>
+Separation of variables and application of the fixed-fixed boundary condition leads to
+\begin{align}\tag{i}\label{xiexpanders}
+\xi(x,t) = \sum_{n=1}^{\infty} \sin(n\pi x/L)(a_n \cos\omega t + b_n\sin \omega t)
+\end{align}
+To find the expansion coefficients for the initial condition \(\xi(x,0)\), first note that \(b_n = 0\) in equation (\ref{xiexpanders}):
+\begin{align*}
+\xi(x,0) &= \sum_{n=1}^{\infty} a_n\sin(n\pi x/L)
+\end{align*}
+ Invoking the orthogonality of sines gives
+\begin{align*}
+\int_0^L \xi(x,0)\sin(m\pi x/L) dx &= \sum_{n=1}^{\infty} a_n \int_0^L \sin(n\pi x/L)\sin(m\pi x/L)dx \\
+\int_0^L \xi(x,0)\sin(m\pi x/L) dx &= \frac{L}{2}\sum_{n=1}^{\infty} a_n \delta_{nm}\\
+\implies a_n &= \frac{2}{L}\int_0^L \xi(x,0) \sin(n\pi x/L) dx 
+\end{align*}  
+Thus the solution is \(\xi(x,t) = \sum_{n=1}^{\infty} a_n\sin(n\pi x/L)\), where \(a_n\) is given above.
+</p>
+
+<p>
+To find the expansion coefficients for the initial condition \(\dot{\xi}(x,0)\), first note that the time derivative of equation (\ref{xiexpanders}) must be taken,
+\[\dot{\xi}(x,t) = \sum_{n=1}^{\infty} \sin(n\pi x/L)(-a_n \omega\sin\omega t + \omega b_n\cos \omega t)\,,\]
+from which evaluation at \(t=0\) shows that \(a_n = 0\):
+\[\dot{\xi}(x,0) = \omega  \sum_{n=1}^{\infty} b_n\sin(n\pi x/L)\,.\]
+Invoking the orthogonality of sines gives
+\begin{align*}
+\int_0^L \dot{\xi}(x,0)\sin(m\pi x/L) dx &= \omega \sum_{n=1}^{\infty} b_n \int_0^L \sin(n\pi x/L)\sin(m\pi x/L)dx \\
+\int_0^L \dot{\xi}(x,0)\sin(m\pi x/L) dx &= \frac{L\omega}{2}\sum_{n=1}^{\infty} b_n \delta_{nm}\\
+\implies b_n &= \frac{2}{L\omega}\int_0^L \dot{\xi}(x,0) \sin(n\pi x/L) dx 
+\end{align*}  
+Thus the solution is \(\xi(x,t) = \sum_{n=1}^{\infty} b_n\sin(n\pi x/L)\), where \(b_n\) is given above.
+</p>
+</div>
+</li>
+
+<li>&#9784; Without performing a calculation, which eigenmode(s) of a 1D string will contribute to the solution if the initial velocity condition is \(-u_0\) for  \(0< x \leq L/2\) and \(u_0\) for  \(L/2< x< L\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol1b')">[answer]</span>
+<div id="6sol1b" class="expandable-content" style="color: #0000A0;">
+<p>First of all, the \(n = 1, 3, 5\dots\) modes will not contribute because they violate the symmetry of the initial condition: these modes are even about \(L/2\), while the initial condition is odd about \(L/2\). Of the remaining \(n = 2, 4, 6\dots\) modes, only \(n=2,6,10\dots\) contribute. While the \(n=4,8,12\dots\) modes are odd about \(L/2\), their derivative is positive at \(x=L/2\), while the derivative of the initial condition is \(-\infty\) at \(x=L/2 \). This can be seen in the plots of the normalized standing waves vs. \(x/L\) below, where the red curve is the \(n = 4\) mode.</p>
+<p align="middle"><iframe src="https://www.desmos.com/calculator/puctlipsry?embed" width="200" height="200" style="border: 1px solid #ccc" frameborder=0 ></iframe></p>
+</div>
+</li>
+
+
+<li>Given the expression for \(b_n\) from the first problem, calculate the expansion coefficients for a string that has an initial velicty of \(-u_0\) for  \(0< x \leq L/2\) and \(u_0\) for  \( L/2< x < L \) and thereby verify the result above.
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol1c')">[answer]</span>
+<div id="6sol1c" class="expandable-content" style="color: #0000A0;">
+<p>The equation for \(b_n\) is 
+\[b_n = \frac{2}{L\omega_n} \int_{0}^{L} \dot{\xi}(x,0)\sin \frac{n\pi x}{L}dx\]
+so for the initial velocity condition one obtains
+\begin{align*}
+b_n &= -\frac{2}{L\omega_n} \int_{0}^{L/2} \sin \frac{n\pi x}{L}dx + \frac{2}{L\omega_n} \int_{L/2}^{L} \sin \frac{n\pi x}{L}dx\\
+&=\frac{2Lu_0}{(n\pi)^2 c}\big(2\cos\frac{n\pi}{2} -\cos n\pi - 1\big)\\
+&=\begin{cases}
+0\quad & n =\text{ odd}\\
+0\quad & n =4,8,12\dots\\
+-4\quad& n = 2,6,10,14\dots
+\end{cases}
+\end{align*}  </p>
+</div>
+</li>
+
+
+<li> &#9784; What is the boundary condition at a free end of a string? Provide some rationale. Of which boundary condition of acoustics is the free-end boundary condition of a string reminiscent? And of which boundary condition in acoustics is the fixed-end boundary condition of a string reminiscent?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol2')">[answer]</span>
+<div id="6sol2" class="expandable-content" style="color: #0000A0;">
+<p>  The boundary condition at a free end of a string is \(\partial \xi/\partial x = 0\). The reason is that the restoring force on the string is \(f= -\mathcal{T}\sin\theta \simeq -\mathcal{T}\theta\). At the free end of the string, \(x=\ell\), there is no element at \(\ell + \Delta x\) to pull the string up or down. Thus \(\theta = 0 \simeq\tan{\theta}\simeq\partial \xi/\partial x\). This condition is reminiscent of a rigid surface in acoustics because the derivative of the wave variable vanishes at that location.</p>
+
+<p>The fixed-end boundary condition is \(\xi = 0\), which is reminiscent of a pressure-release boundary in acoustics.</p>
+</div>
+</li>
+  
+<li> &#9784; Solve \(\partial^2 p/\partial x^2 + k^2 p = 0\) for the boundary conditions \(dp/dx = 0\) and \(j\omega \rho_0 p + Z_n dp/dx = 0\) where \(Z_n = j\omega m\) for \(x=L\). \(dp/dx = 0\) is a rigid boundary condition, but what is \(j\omega \rho_0 p + Z_n dp/dx = 0\) called? Would this tube with a mass at one end sound good?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol3')">[answer]</span>
+<div id="6sol3" class="expandable-content" style="color: #0000A0;">
+<p>The general solution to the Helmholtz equation is \begin{align*}
+p = \sum_n (a_n\cos kx + b_n \sin kx)\,,
+\end{align*}
+the gradient of which is 
+\begin{align*}
+\frac{dp}{dx} = \sum_n k(-a_n\sin kx + b_n \cos kx)\,.
+\end{align*}
+Since \(\frac{dp}{dx}\rvert_{x=0}= 0\), \(b_n = 0\), leaving 
+\begin{align}\tag{i}\label{impyp}
+p = \sum_n a_n\cos kx \,.
+\end{align}
+Substituting equation (\ref{impyp}) into the boundary condition at \(x=L\), \(\rho_0 p +m\frac{dp}{dx} = 0\), gives
+\begin{align}
+\rho_0 p\big\rvert_{x=L} +m\frac{dp}{dx}\bigg\rvert_{x=L} &= 0\notag\\
+\rho_0 \sum_n a_n\cos kL - m\sum_n k a_n \sin kL &= 0\label{sdlfkj}\tag{ii}
+\end{align}
+Each term in the summation of equation (\ref{sdlfkj}) must hold, giving
+\begin{align*}
+\rho_0  \cos kL - m k  \sin kL &= 0\,,
+\end{align*} 
+which in turn gives the transcendental equation \(kL\),
+\[\cot kL = \frac{mk}{\rho_0}\,.\]
+This tube with a mass at one end would not sound "good," in the sense that its eigenfrequencies are not evenly spaced, i.e., anharmonic, like the gamelan.</p>
+<p>\(j\omega \rho_0 p + Z_n\partial p/\partial x = 0\) at \(x=L\) is called an <i>impedance boundary condition</i>. This boundary condition is a linear combination of the field variable and its gradient vanishing at the boundary.
+</p>
+</div>
+</li>
+  
+
+<li> What types of boundary conditions usually give rise to harmonic eigenfrequencies? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol4')">[answer]</span>
+<div id="6sol4" class="expandable-content" style="color: #0000A0;">
+<p> Boundary conditions in which either the field variable or its gradient vanishes generally give rise to harmonic eigenfrequencies. The previous example showed that anharmonic eigenfrequencies arise due to impedance boundary conditions.
+</p>
+</div>
+</li>
+
+<li> What is the difference between resonance frequencies, eigenfrequencies, and natural frequencies? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol5')">[answer]</span>
+<div id="6sol5" class="expandable-content" style="color: #0000A0;">
+<p> Resonance is the infinite response (assuming no loss) of a system due to an external excitation. The frequency of that external excitation is called the resonance frequency. In contrast, eigenfrequencies are the frequencies at which a system vibrates, and they are found by solving the wave equation using orthogonal eigenfunctions. Eigenfrequencies depend on the shape, stiffness, and density of a system. Natural frequencies are synonymous with "eigenfrequencies." 
+</p>
+<p>In practice, eigenfrequencies coincide with resonance frequencies, and hence the three terms are often used interchangeably. But technically, resonance frequency refers to a driving frequency that coincides with an eigenfrequency, while the eigenfrequency is more closely related to the system.</p>
+</div>
+</li>
+
+<li>Solve the wave equation for the transverse displacement \(\xi(x,t)\)
+\[\frac{\partial^2 \xi}{\partial x^2} - \frac{1}{c_0^2}\frac{\partial^2 \xi}{\partial t^2} = 0\]
+for
+\begin{align*}
+\xi(0,t)= 0\quad \text{and}\quad \xi(L,t) = \xi_0e^{j\omega_0 t}\,,
+\end{align*}
+the fixed-driven boundary conditions of a string.
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol6')">[answer]</span>
+<div id="6sol6" class="expandable-content" style="color: #0000A0;">
+<p> See <a href="https://physics.stackexchange.com/questions/734976/wave-equation-for-a-driven-string-and-standing-waves" target="_blank" rel="noopener noreferrer">here</a> for the solution, as well as some animations.
+</p>
+</div>
+</li>
+
+
+<li>Derive an expression for the phase speed \(c_\text{ph}\), which is the speed of a point of constant phase. Write the phase as \(\Phi = \omega t - kx\) and set a differential element \(d\Phi\) equal to \(0\).  
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol7')">[answer]</span>
+<div id="6sol7" class="expandable-content" style="color: #0000A0;">
+<p> Since the phase speed is the speed of a point of constant phase, a differential element of phase \(d\Phi\) is constant:
+\[d\Phi = \frac{\partial\Phi}{\partial t}dt  +  \frac{\partial\Phi}{\partial x}dx =0\,.\]
+Solving for \(dx/dt\) and taking the derivatives of \(\Phi\) with respect to \(x\) and \(t\) gives the phase speed:
+\begin{align*}
+c_\text{ph} &= -\frac{\partial \Phi/\partial t}{\partial \Phi/\partial x} = \frac{\omega}{k}
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>&#9784; Derive an expression for the group speed. Write a signal in terms of its Fourier components, i.e., \( p(x,t)= \int_{-\infty}^{\infty} P(k)e^{j(\omega t-kx)}dk\). Take the first-order Taylor expansion of \(\omega(k)\) about \(k_0\), and denote \(\omega(k_0) = \omega_0\). Factor out from the integral \(e^{j(\omega_0 t-k_0x)}\), which represents a monochromatic wave with points of constant phase moving at \(\omega_0/k_0\). The remaining integral is the envelope of the wave packet. What is the speed of the wave packet?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol9')">[answer]</span>
+<div id="6sol9" class="expandable-content" style="color: #0000A0;">
+<p> 
+The procedure above is followed:
+\begin{align*}
+p(x,t)&= \int_{-\infty}^{\infty} P(k)e^{j(\omega t-kx)}dk\\
+&=\int_{-\infty}^{\infty} P(k)e^{j\{[\omega_0 + \frac{\partial \omega}{\partial k}\big\rvert_{k_0}(k-k_0)]t-kx\}}dk\\
+&=e^{j(\omega_0t-k_0x)}\int_{-\infty}^{\infty} P(k)e^{j[\frac{\partial \omega}{\partial k}\big\rvert_{k_0}(k-k_0)t-(k-k_0)x]}dk\\
+&=e^{j(\omega_0t-k_0x)}\int_{-\infty}^{\infty} P(k)e^{j[(k-k_0)\frac{\partial \omega}{\partial k}\big\rvert_{k_0}t-(k-k_0)x]}dk\\
+&=e^{j(\omega_0t-k_0x)}\int_{-\infty}^{\infty} P(k)e^{j(k-k_0)\big(\frac{\partial \omega}{\partial k}\big\rvert_{k_0}t - x\big)}dk\\
+\end{align*}
+The first factor outside the integral is a monochromatic wave with points of constant phase moving at \(\omega_0/k_0\). Meanwhile, the remaining integral is the envelope of the wave packet, traveling at group speed 
+\[c_\text{gr} = \frac{\partial \omega}{\partial k}\bigg\rvert_{k_0}.\]
+The only assumption made in this derivation is that the wave packet is fairly narrowband, such that the first-order Taylor expansion of \(\omega(k)\) suffices.
+</p>
+</div>
+</li>
+
+
+<li> At what speed does energy in a wave travel: the phase speed or the group speed?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol10')">[answer]</span>
+<div id="6sol10" class="expandable-content" style="color: #0000A0;">
+<p> 
+Wave energy travels at the group speed. Thus the phase speed can be infinite, while the group speed is bounded by the speed of light.
+</p>
+</div>
+</li>
+
+
+<li> On a plot of \(\omega\) vs \(k\), the slope of what line gives the phase speed? The slope of what line gives the group speed?
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol11')">[answer]</span>
+<div id="6sol11" class="expandable-content" style="color: #0000A0;">
+<p> 
+The slope of the secant line connecting the origin \((0,0)\) to a point \((k, \omega)\) is the phase speed. The slope of the tangent line at \((k, \omega)\) is the group speed.
+</p>
+</div>
+</li>
+
+
+
+<li> The illustration below shows ocean waves traveling at various angles from the \(y\)-axis, which is parallel to the beach.
+<img src="beach.png" width="438" style = "display: block; margin-left: auto; margin-right: auto;"/>
+For wave propagation toward the beach, i.e., in the \(x\)-direction, qualitatively describe what the phase speed and group speed correspond to. Without performing calculations, rank the group and phase speeds of the three sets of ocean waves. Then quantitatively provide expressions for the phase speed and group speed in the \(x\)-direction in terms of the ambient wave speed \(c\) and the angle \(\theta\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('6sol12')">[answer]</span>
+<div id="6sol12" class="expandable-content" style="color: #0000A0;">
+<p><i>Qualitatively:</i> The phase speed is the apparent speed with which one wavefront sweeps along the \(x\)-axis, while the group speed is the component of the velocity \(c\) along the \(x\)-axis. For example, the phase speed of the ocean waves traveling at \(90^\circ\) with respect to the \(y\)-axis is the ambient wave speed \(c\) because its wavefronts sweep along the the \(x\)-axis at the speed at which the wave travels, and the group speed is also \(c\) because the wave motion is purely in the \(x\)-direciton. Meanwhile, the phase speed of the ocean waves traveling at \(0^\circ\) with respect to the \(y\)-axis is infinite because its wavefronts sweep along the the \(x\)-axis infinitely fast, while the group speed is also \(0\) because the wave motion has no component in the \(x\)-direction. The waves traveling at \(45^\circ\) have a phase speed larger than \(c\) but less than \(\infty\), and a group speed less than \(c\) but greater than \(0\). In summary, \(c = c^{90^\circ}_\text{ph} < c^{45^\circ}_\text{ph} < c^{0^\circ}_\text{ph} = \infty\), and \(0 = c^{0^\circ}_\text{gr} < c^{45^\circ}_\text{gr} < c^{90^\circ}_\text{gr} = c\).
+</p>
+
+<p><i>Quantitatively:</i> The phase speed is the trace velocity, which the trace wavelength times the frequency, \[c_\text{ph} = \frac{c}{\sin\theta}\,,\]
+while the group speed is the component of the velocity along the \(x\)-axis,
+\[c_{\text{gr}} = c\sin\theta\,.\]
+</p>
+</div>
+</li>
+
+
+</ol>
+<p>More questions on phase speed and group speed follow in <a href="physical-12.html">section 12</a>.<p>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-5.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-7.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

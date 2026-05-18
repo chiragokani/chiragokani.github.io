@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sound in stratified media</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="8">Chapter 8: Sound in stratified media</h2>
+<ol>
+<li> What is primarily responsible for the stratification of the atmosphere? In which governing equation does this manifest?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol1')">[answer]</span>
+<div id="8sol1" class="expandable-content" style="color: #0000A0;">
+<p>Gravity is primarily responsible for the stratification of the atmosphere. It appears on the right-hand side of the momentum equation, as seen in the following problem.</p>
+</div>
+</li>
+
+<li> Simplify the 1D momentum equation with a body force \(\rho (u_t + uu_z)+ P_z = -\rho g\) for a motionless fluid, i.e., \(u=0, P=p_0, \rho=\rho_0\), to obtain
+\begin{equation}\label{gravity}
+\frac{dp_0}{dz} = -\rho_0 g\,. \tag{8}
+\end{equation}
+What are two different assumptions on \(\rho_0\) that allow for simple solutions of equation (\ref{gravity})?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol2')">[answer]</span>
+<div id="8sol2" class="expandable-content" style="color: #0000A0;">
+<p>Setting \(u=0, P=p_0, \rho=\rho_0\) in the 1D momentum equation with a body force gives
+\begin{align*}
+\rho_0 (0) + (p_0)_z &= -\rho_0 g\\
+\implies \frac{dp_0}{dz} &= -\rho_0 g\,.
+\end{align*} </p>
+One simple way to solve equation (\ref{gravity}) is to assume \(\rho_0 = \) constant (see problem 3). The next simplest approach is to consider an atmosphere in which \(T_0\) is constant, and thus by the ideal gas law \(\rho_0 \propto p_0\) (see problem 4).
+</div>
+</li>
+
+<li> Assume that the density is constant i.e., \(\rho_0 \neq \rho_0(z)\), and thus integrate equation (\ref{gravity}). Let \(\bar{p}_0 = p_0(z=0)\) be the sea-level pressure. What is the scale height of the atmosphere? Use the adiabatic relation \(c_0^2 = \gamma \bar{p}_0/\rho_0\) to eliminate density from the final expression.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol2b')">[answer]</span>
+<div id="8sol2b" class="expandable-content" style="color: #0000A0;">
+Integrating \(dp_0/dz = -\rho_0 g\) over \(z\) gives
+\begin{align*}
+p_0 &= \bar{p}_0-\rho_0 g z\,.
+\end{align*}
+The scale height is the height \(H\) at which the atmosphere terminates: \(p_0=0 =\bar{p}_0-\rho_0 g H \), which gives
+\[H = \frac{\bar{p}_0}{\rho_0 g} = \frac{c_0^2}{\gamma g}\]</p>
+</div>
+</li>
+
+
+<li> Next assume that the temperature is \(T_0\) at all heights. Why is "isothermal" not the best word choice for such an atmosphere? Combine the ideal gas law \(\rho_0 = p_0/RT_0 = \gamma p_0/c_0^2\) with the definition of the scale height \(c_0^2 = H\gamma g\) and eliminate \(\rho_0\) in equation (\ref{gravity}), and thus obtain 
+\begin{equation}\label{integrateher}
+\frac{dp_0}{dz} = -\frac{p_0}{H}\,. \tag{9}
+\end{equation}
+Solve equation (\ref{integrateher}) for \(p_0\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol3')">[answer]</span>
+<div id="8sol3" class="expandable-content" style="color: #0000A0;">
+<p>"Isothermal" is poor word choice because the sound propagation is still adiabatic in this model. Combining \(\rho_0 = \gamma p_0/c_0^2\) with the definition of the scale height \(c_0^2 = H\gamma g\) gives
+\begin{equation}\label{rho0}\tag{i} 
+\rho_0 = \frac{p_0}{gH}.
+\end{equation}
+Using the above to eliminate \(\rho_0\) in equation (\ref{gravity}) gives
+\[\frac{dp_0}{dz} = -\frac{p_0}{H},\]
+the solution of which is \(p_0 = \bar{p}_0e^{-z/H}\). Combination with equation (\ref{rho0}) gives the same profile for the ambient density, \(\rho_0 = \bar{\rho}_0e^{-z/H}\).</p>
+</div>
+</li>
+
+ 
+<li> Linearize the 1D continuity equation, \(\partial\rho/\partial t + (\rho u)_z = 0\), for the case of a variable ambient density \(\rho_0= \rho_0(z)\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol4')">[answer]</span>
+<div id="8sol4" class="expandable-content" style="color: #0000A0;">
+<p>Writing \(\rho = \rho_0(z) + \rho'\) gives
+\begin{align}
+\frac{\partial}{\partial t}[\rho_0(z) + \rho'] + \frac{\partial}{\partial z}[(\rho_0(z) + \rho')u] &= 0\notag\\
+\frac{\partial \rho'}{\partial t} + u\frac{\partial \rho_0(z)}{\partial z} + \rho_0(z)\frac{\partial u}{\partial z} &= 0\tag{ii}\label{conters}
+\end{align}
+</p>
+</div>
+</li>
+
+<li> Linearize the 1D momentum equation with a body force, \(\rho(\partial u /\partial t + u\partial u/\partial z) + \partial P/\partial z = -\rho g\), where \(\rho_0= \rho_0(z)\). Simplify the result by invoking equation (\ref{gravity})
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol5')">[answer]</span>
+<div id="8sol5" class="expandable-content" style="color: #0000A0;">
+<p>
+Writing \(P = p_0(z) + p\) gives
+\begin{align*}
+[\rho_0(z) + \rho']\bigg[\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial z}\bigg] + \frac{\partial }{\partial z}[p_0(z) + p] &= -[\rho_0(z)+\rho']g\\
+[\rho_0(z) + \rho']\bigg[\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial z}\bigg] + \frac{\partial p_0(z)}{\partial z} + \frac{\partial p}{\partial z} &= -\rho_0(z)g - \rho'g
+\end{align*}
+Since by equation (\ref{gravity}) \(dp_0/dz = - \rho_0(z) g\), the above reduces to
+\begin{align*}
+[\rho_0(z) + \rho']\bigg[\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial z}\bigg] + \frac{\partial p}{\partial z} &=  - \rho'g
+\end{align*}
+Linearization gives
+\begin{align}
+\rho_0(z)\frac{\partial u}{\partial t}  + \frac{\partial p}{\partial z} &=  - \rho'g\,.\label{momers}\tag{iii}
+\end{align}
+</p>
+</div>
+</li>
+ 
+
+<li> In a stratified medium, what assumption is made about the local entropy? Use this assumption to simplify the state equation \[\frac{DP}{Dt} = \bigg(\frac{\partial P}{\partial \rho}\bigg)_s \frac{D\rho}{Dt} + \bigg(\frac{\partial P}{\partial s}\bigg)_\rho \frac{Ds}{Dt}\,,\]
+and recall that \(Df/Dt = \partial f/\partial t + u\partial f/\partial z\) for an arbitrary quantity \(f\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol6')">[answer]</span>
+<div id="8sol6" class="expandable-content" style="color: #0000A0;">
+<p>
+In a stratified medium, the entropy of a given particle is assumed to remain constant even though the entropy may vary from particle to particle, i.e., \(Ds/Dt =0\). The state equation becomes 
+\begin{align}
+\frac{DP}{Dt} &= c^2 \frac{D\rho}{Dt}\notag\\
+\frac{\partial P}{\partial t} + u\frac{\partial P}{\partial z} &= c^2 \frac{\partial\rho}{\partial t} + c^2u\frac{\partial p}{\partial z}\notag\\
+\frac{\partial }{\partial t}[p_0(z) + p] + u\frac{\partial }{\partial z}[p_0(z) + p] &= c_0^2 \frac{\partial}{\partial t}[\rho_0(z) + \rho'] + c_0^2u\frac{\partial }{\partial z}[\rho_0(z) + \rho']\notag\\
+\frac{\partial p}{\partial t} + u \frac{\partial p_0(z) }{\partial z} &= c_0^2 \frac{\partial \rho'}{\partial t} + c_0^2 u\frac{\partial \rho_0(z)}{\partial z}\label{staters}\tag{iv}
+\end{align}
+</p>
+</div>
+</li>
+ 
+<li> Equation (\ref{conters}) is used to eliminate density from the right-hand side of equation (\ref{staters}), giving \(\partial p/\partial t + u\partial p_0/\partial z = -c_0^2\rho_0 \partial u/\partial z\). Using equation (\ref{gravity}) to eliminate the static pressure gradient on the left-hand side gives \(\partial p/\partial t - g\rho_0 u = -c_0^2\rho_0 \partial u/\partial z\). Taking the \(z\) derivative with respect to this result gives 
+\begin{equation}\label{combiners}\tag{v}
+\frac{\partial^2 p}{\partial z\partial t} - g\frac{\partial}{\partial z}\bigg[\rho_0 \frac{\partial u}{\partial z}\bigg] = -\frac{\partial}{\partial z}\bigg[c_0^2\rho_0 \frac{\partial u}{\partial z}\bigg]\,.
+\end{equation}
+Meanwhile, rearranging equation (\ref{momers}) and taking the time derivative gives \(\partial^2 p/\partial z\partial t + g\partial\rho'/\partial t = -\rho_0 \partial^2 u/\partial t^2\). Combining this equation with equation (\ref{conters}) to eliminate \(\partial\rho'/\partial t\) gives
+\begin{equation}\label{combiners2}\tag{vi}
+\frac{\partial^2 p}{\partial z\partial t} - g\frac{\partial}{\partial z}(\rho_0 u) = -\rho_0\frac{\partial^2 u}{\partial t^2}\,.
+\end{equation}
+Subtract equation (\ref{combiners}) from equation (\ref{combiners2}) to obtain
+\begin{equation}\label{horny}\tag{10}
+\frac{\partial^2 u}{\partial z^2} + \frac{\partial (\rho_0c_0^2)/\partial z}{\rho_0c_0^2}\frac{\partial u}{\partial z} - \frac{1}{c_0^2}\frac{\partial^2 u }{\partial t^2} = 0,
+\end{equation}
+the wave equation for plane waves in an inhomogeneous medium.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol9')">[answer]</span>
+<div id="8sol9" class="expandable-content" style="color: #0000A0;">
+<p>Using subscripts to denote partial derivatives, the subtraction yeilds
+\begin{align*}
+ -\rho_0 u_{tt} + \rho_0 c_0^2 u_{zz} - (\rho_0 c_0^2)_z u_z &=0\,.
+\end{align*}
+Rearranging and dividing by \(\rho_0c_0^2\) gives 
+\begin{align*}
+ u_{zz} + \frac{(\rho_0 c_0^2)_z}{\rho_0 c_0^2} u_z -c_0^{-2} u_{tt} &=0
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> In what limit does equation (\ref{horny}) recover \(\frac{\partial^2 u}{\partial z^2} - \frac{1}{c_0}\frac{\partial^2 u }{\partial t^2}\)? How is \(\frac{\partial^2 u}{\partial z^2} - \frac{1}{c_0}\frac{\partial^2 u }{\partial t^2}\) different from the "normal" 1D wave equation?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol10a')">[answer]</span>
+<div id="8sol10a" class="expandable-content" style="color: #0000A0;">
+<p>The correct limit is the slowly varying or quasistatic limit \(\lambda \ll L\), i.e., the wave doesn't care about the variation in ambient density of characteristic length \(L\) over one wavelength \(\lambda\).</p>
+<p>It is good to be able to show this. The following sort of argument is emphasized by Dr. Hamilton in all his classes. Let \(u\) be spatially and temporally harmonic. Then the orders of the quantities in equation (\ref{horny}) are 
+\begin{align*}
+\frac{\partial u}{\partial z} &\sim -jku = \mathcal{O}(ku) = \mathcal{O}(u/\lambda)\\
+\frac{1}{c_0^2}\frac{\partial^2 u}{\partial t^2} &\sim \frac{\omega^2}{c_0^2}u = \mathcal{O}(k^2u) = \mathcal{O}(u/\lambda^2)\\
+\frac{d(\rho_0c_0^2)}{dz} &= \mathcal{O}(\rho_0c_0^2/L) 
+\end{align*}
+So in terms of orders, equation (\ref{horny}) is
+\begin{align*}
+\mathcal{O}(u/\lambda^2) + \mathcal{O}(u/\lambda L) - \mathcal{O}(u/\lambda^2) =0 
+\end{align*}
+Dividing through by \(\mathcal{O}(u/\lambda^2)\) gives
+\begin{align*}
+\mathcal{O}(1) + \mathcal{O}(\lambda/L) - \mathcal{O}(1) =0 
+\end{align*}
+But \(\mathcal{O}(\lambda/L) = 0\), so the middle term of equation (\ref{horny}) is much smaller than the first and third terms, resulting in  \[\frac{\partial^2 u}{\partial z^2} - \frac{1}{c_0}\frac{\partial^2 u }{\partial t^2}\,.\]
+In the above equation, note that \(c_0=c_0(z)\), whereas in the "normal" 1D wave equation for isotropic medium, \(c_0\) is a constant. 
+</p>
+</div>
+</li>
+
+<li> What is striking about equation (\ref{horny})?  
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol10')">[answer]</span>
+<div id="8sol10" class="expandable-content" style="color: #0000A0;">
+<p>Equation (\ref{horny}) is of the same form as the Webster horn equation, in which the bulk modulus \(\rho_0c_0^2\) plays the role of the cross-sectional area \(S\) of the horn. However, note that \(c_0\) is not necessarily a independent of \(z\), unlike for the case of the horn. </p>
+</div>
+</li>
+
+<li> What kind of atmosphere renders equation (\ref{horny}) identical in form to the Webster horn equation for an exponential horn? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol11')">[answer]</span>
+<div id="8sol11" class="expandable-content" style="color: #0000A0;">
+<p>In question 4 above, it was found that for a constant temperature \(T_0\) at all heights, \(c_0\) is constant and \(\rho_0(z) = \bar{\rho}_0e^{-z/H}\). In that case, equation (\ref{horny}) becomes
+\begin{align*}
+u_{zz} + \frac{1}{H} u_z - \frac{1}{c_0^2} u_{tt} &=0
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> Insert the trial solution \(u = \bar{u}_0 \exp[j(\omega t - kz)]\) into \(u_{zz} + \frac{1}{H} u_z - \frac{1}{c_0^2} u_{tt} =0\) to obtain \(|u(z)|\), where \(\bar{u}_0\) is the particle velocity amplitude at sea level. What is remarkable about this result? Derive this result directly from the conservation of energy.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol12')">[answer]</span>
+<div id="8sol12" class="expandable-content" style="color: #0000A0;">
+<p>Inserting \(u = u_0 \exp[j(\omega t - kz)]\) into
+\begin{align*}
+u_{zz} + \frac{1}{H} u_z - \frac{1}{c_0^2} u_{tt} &=0
+\end{align*}
+gives 
+\begin{align*}
+-k^2 + \frac{jk}{H}  + k_0^2 &=0\,.
+\end{align*}
+Solving for \(k\) gives \[k = \frac{j}{2H} \mp \frac{1}{2H}\sqrt{1-(2kH)^2}\,,\] and the magnitude of the trial solution becomes
+\[|u| = \bar{u}_0\exp{(z/2H)}\,.\]
+What is remarkable about this result is that it predicts the <i>exponential growth of sound without violating the conservation of energy</i>. 
+</p>
+<p>To derive this result directly from the conservation of energy, note that the intensity is constant, so 
+\begin{align*}
+\langle I \rangle = \text{constant} &= \rho_0 c_0 u_\text{rms}^2 \\
+&=\bar{\rho}_0 e^{-z/H} c_0 u_\text{rms}^2 \,.
+\end{align*}
+Since \(c_0\) and \(\bar{\rho}_0\) are constants, \(u_\text{rms}^2\propto e^{z/H} \) so \(u_\text{rms} \propto e^{z/2H}\).
+</p>
+</div>
+</li>
+
+<li> Water is most dense at \(4^\circ \text{ C}\). What is the temperature of the deep ocean?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol13aa')">[answer]</span>
+<div id="8sol13aa" class="expandable-content" style="color: #0000A0;">
+<p>\(4^\circ \text{ C}\), which is not at all an intuitive result to me.</p>
+<p>In fact this reminds me of questions like, "Mary has three apples and John has two oranges. What is the mass of the sun?"</p>
+</div>
+</li>
+
+<li> Explain the various features in the ocean sound speed profile. 
+
+<img src="sofar.png" width="374" height="193" style = "display: block; margin-left: auto; margin-right: auto;"/>
+<p align="middle">Adapted from figure 8.2(b) from <i>Fundamentals of Physical Acoustics</i> by David T. Blackstock</p> List any names for the features labeled in the figure.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol13a')">[answer]</span>
+<div id="8sol13a" class="expandable-content" style="color: #0000A0;">
+<p>Starting at the surface, the sound speed profile is fairly constant. This is because the surface layer of the ocean is fairly mixed; thus the temperature is constant throughout that layer. The slight positive slope in this layer is due to the increasing depth.</p>
+<p>Below the surface layer is the so-called "thermocline." In this layer, the sound speed gradient is negative due to the drop in temperature, which is due to the attenuation of sunlight (which warms the water) in the \(z\) direction. However, the sound speed's dependence on temperature weakens as depth increases, and its dependence on depth begins to be felt.</p>
+<p>At 1 km, the effect of dropping temperature and increasing depth strike a balance (which depends on salinity), and the sound speed attains a minimum. This minimum establishes the SOFAR channel. </p>
+<p>As found in the previous question, water is \(4^\circ \text{ C}\) for the deep ocean, i.e., temperature is constant. Therefore, going deeper than this minimum, the sound speed profile is dominated by increasing depth.</p>
+</div>
+</li>
+
+<li> For what frequencies is ray theory a good approximation? What are some other assumptions made when treating sound as rays? How does the amplitude of sound in a ray depend on the cross-sectional area of a ray?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol13')">[answer]</span>
+<div id="8sol13" class="expandable-content" style="color: #0000A0;">
+<p>Ray theory works for \(ka \to \infty\). The main assumption (really, the same thing as \(ka \to \infty\)), is that diffraction is neglected. Also, since the acoustic power in a ray is assumed to be constant, caustics (the intersection of rays) cannot be handled.  </p>
+<p>Rays are assumed to conserve power as they propagate. That is, \(W = IS \propto p_\text{rms}^2S = \text{ constant}\). Thus \(p_\text{rms} \propto |p| \propto 1/\sqrt{S}\), as is the case for horns.</p>
+</div>
+</li>
+ 
+
+<li>How are angles defined in ray theory? Write Snell's law in this convention.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol14')">[answer]</span>
+<div id="8sol14" class="expandable-content" style="color: #0000A0;">
+<p>Angles are measured from grazing incidence, i.e., \(\theta = 0^\circ\) for grazing incidence and \(\theta = 90^\circ\) for normal incidence. Snell's law therefore reads \[\frac{\cos\theta_1}{c_1} = \frac{\cos \theta_2}{c_2}\,.\]</p>
+</div>
+</li>
+
+
+<li>Since Snell's law applies everywhere in a stratified medium, \(\cos(\theta)/c(\theta)\) is a constant. Find an expression for \(dc/d\theta\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol15')">[answer]</span>
+<div id="8sol15" class="expandable-content" style="color: #0000A0;">
+<p>Differentiating \(\cos(\theta)/c(\theta) = \text{ constant}\) gives
+\begin{align*}
+\frac{d}{d\theta}\frac{\cos\theta}{c(\theta)}&= 0\\
+-\frac{\sin\theta}{c(\theta)} - \frac{\cos\theta}{c^2(\theta)}\frac{dc}{d\theta} &= 0\\
+\implies \frac{dc}{d\theta}&=- \frac{\sin\theta}{c(\theta)}\frac{c^2(\theta)}{\cos\theta}\\
+&=-\frac{c\sin(\theta)}{\cos\theta}
+ \end{align*}
+</p>
+</div>
+</li>
+
+
+<li>&#9784; Define the sound speed gradient to be \(g\equiv dc/dz\). Define the radius of curvature \(R_c \equiv ds/d\theta\). Use the chain rule, the definition of the sound speed gradient, and the differential form of Snell's law \(dc/d\theta\) from the previous problem, to express \(R_c \) in terms of \(\theta\), \(g\), and \(c\). Note that \(dz/ds = \sin(\theta)\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol17')">[answer]</span>
+<div id="8sol17" class="expandable-content" style="color: #0000A0;">
+<p>\begin{align*}
+R_c&= \frac{ds}{d\theta} = \frac{ds}{dz}\frac{dz}{dc}\frac{dc}{d\theta}\\
+&=-\frac{1}{\sin\theta}\frac{1}{dc/dz}\frac{c\sin(\theta)}{\cos\theta}\\
+&=-\frac{1}{g}\frac{c}{\cos\theta}\\
+\end{align*} </p>
+</div>
+</li>
+
+
+<li>If \(g<0\), what is the sign of \(R_c\)? In that case, does the ray bend toward or away from the surface? What about for \(g>0\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol18')">[answer]</span>
+<div id="8sol18" class="expandable-content" style="color: #0000A0;">
+<p>If \(g<0\), \(R_c\) is positive, so the ray bends away from the surface. The opposite behaviour occurs for \(g>0\). The way I remember this is by noting that sound bends in the direction of the slower medium (see chapter 5, problem 6 above).</p>
+</div>
+</li>
+
+
+<li> The figure below is adapted from Blackstock's figure 8.8. It shows that a ray in a linear sound speed profile traverses a depth and range of
+\begin{align}
+\Delta z &= R_c(\cos\theta_i - \cos\theta)\label{skippy} \tag{11}\\
+\Delta r &= R_c(\sin\theta - \sin\theta_i)\,. \label{skippy2} \tag{12}
+\end{align}
+<img src="stocker.png" width="640" height="293" style = "display: block; margin-left: auto; margin-right: auto;"/>
+Find the distance from the source to the vertex by setting \(\theta=0\) and using the expression for \(R_c\) found in problem 18.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol19')">[answer]</span>
+<div id="8sol19" class="expandable-content" style="color: #0000A0;">
+<p>
+\begin{align*}
+\Delta z_v &= R_c(\cos\theta_i - 1)= -\frac{1}{g}\frac{c}{\cos\theta_i}(\cos\theta_i - 1) = \frac{c}{g}\frac{1-\cos\theta_i}{\cos\theta_i} \\
+\Delta r_v &= -R_c\sin\theta_i = \frac{c}{g}\frac{\sin\theta_i}{\cos\theta_i} = \frac{c}{g}\tan\theta_i
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li> For \(dc/dz = g>0\), it is possible for the sound rays to bounce (or "skip", hence \(\theta_s\)) off the the surface, as shown in the figure below adapted from Blackstock's figure 8.10: 
+<br>
+<img src="whalers.png" width="635" height="228" style = "display: block; margin-left: auto; margin-right: auto;"/>
+In this case, setting \(\theta_i=0\) and using equations (\ref{skippy})
+and (\ref{skippy2}),
+\begin{align*}
+-d &= R_c(1 - \cos\theta_s)\\
+r_0 &= R_c \sin\theta_s\,.
+\end{align*}
+Solve for \(r_0\), which is called the cycle distance.
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol20')">[answer]</span>
+<div id="8sol20" class="expandable-content" style="color: #0000A0;">
+<p>
+First solve for \(\cos\theta_s\) and \(\sin\theta_s\):
+\begin{align*}
+1+\frac{d}{R_c} &= \cos\theta_s\\
+-\frac{r_0}{R_c} &=  \sin\theta_s\,.
+\end{align*}
+Square the above equations and add:
+\begin{align*}
+(1+ d/R_c)^2 + (r_0/R_c)^2 &= 1\\
+1+ 2d/R_c + (d/R_c)^2 +  (r_0/R_c)^2 &=1\\
+2d/R_c + (d/R_c)^2 +  (r_0/R_c)^2 &=0
+\end{align*}
+Solve for \(r_0\):
+\begin{align*}
+r_0 &= R_c \sqrt{-2d/R_c - (d/R_c)^2}\\
+&= \sqrt{-2dR_c  - d^2}
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li> Is it possible for a ray to execute a closed trajectory, i.e., make a loop? Why are or why not?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol21')">[answer]</span>
+<div id="8sol21" class="expandable-content" style="color: #0000A0;">
+<p>
+It is not possible for a ray to execute a closed trajectory. While mathematically a ray follows a circular trajectory in a constant sound speed gradient, the model falls apart by the time the ray is traveling vertically (in the \(z\) direction, for the examples considered in the above problems). This is because Snell's law for normal incidence results in refraction at normal incidence. Therefore, once the ray is headed in the \(z\) direction, it will go down until it hits the ocean floor.
+</p>
+</div>
+</li>
+
+<li> Obtain the phase speed and group speed given the dispersion relation \(k = \omega n(\omega)/c_0\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol2')">[answer]</span>
+<div id="9sol2" class="expandable-content" style="color: #0000A0;">
+<p>The phase speed is simply 
+\[c_\text{ph} = \frac{\omega}{k} = \frac{c_0}{n(\omega)}\,.\] 
+To find the group speed, take \(dk/d\omega\)
+\begin{align*}
+\frac{dk}{d\omega} = \frac{1}{c_0} [n(\omega) + \omega n'(\omega) ]
+\end{align*}
+and invert for \(d\omega/dk\):
+\begin{align*}
+\frac{d\omega}{dk} =  \frac{c_0}{n(\omega) + \omega n'(\omega)}\,.
+\end{align*} </p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-7.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-9.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

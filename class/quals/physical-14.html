@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arrays</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+
+<div class="textbox">
+<h2 id="15">Chapter 15: Arrays</h2>
+<ol>
+<li> Provide the definition of the directivity function \(D(\theta,\psi)\), directivity factor \(D_i\), and directivity index \(\text{DI}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol1')">[answer]</span>
+<div id="15sol1" class="expandable-content" style="color: #0000A0;">
+<p>  
+The directivity is defined as 
+\[D(\theta,\psi)  = \frac{p(r,\theta,\psi)}{p(r,\theta_m,\psi_m)} = \frac{\hat{u}(k\alpha,k\beta)}{\hat{u}(0,0)},\]
+where \(\theta_m\) and \(\psi_m\) are the polar and azimuthal angles corresponding the direction of the beam's maximum. Note that \(\alpha = \sin \theta \cos\psi\) and \(\beta = \sin\theta\sin\psi\). The \(z\) axis is aligned such that \(\theta_m =0\).
+</p>
+<p>  
+The directivity factor is
+\[D_i  = \frac{\langle I_\text{max} \rangle }{\langle  I_\text{mono} \rangle},\]
+where \(\langle I_\text{max} \rangle \) is the maximum intensity in the beam (along the \(z\) axis) and \(\langle I_\text{mono} \rangle \) is the intensity at the same distance due to a monopole radiating the same power \(W\). 
+</p>
+<p>  
+The directivity index is simply \(\text{DI} = 10 \log_{10} D_i\) (dB).
+</p>
+</div>
+</li>
+
+<li>&#9784;  Derive an expression for the directivity factor \(D_i\) in terms of the directivity function \(D(\theta, \psi)\). Note from the definition of directivity in the previous problem that \[|D(\theta,\psi)|^2 = \frac{\langle I(\theta,\psi) \rangle }{\langle I_\text{max} \rangle }.\] Combine \(\langle I_\text{mono} \rangle  = W/4\pi r^2\) and \(W = \oint \langle I(\theta,\psi) \rangle  dS\) to eliminate \(W\) and invoke \(\langle I_\text{max} \rangle  |D(\theta,\psi)|^2 = \langle I(\theta,\psi) \rangle \).
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol2')">[answer]</span>
+<div id="15sol2" class="expandable-content" style="color: #0000A0;">
+<p>  
+Eliminate \(W\):
+\begin{align*}
+\langle I_\text{mono} \rangle  &= \frac{1}{4\pi r^2} \oint \langle I(\theta,\psi) \rangle \, dS\\
+&= \frac{1}{4\pi r^2} \oint \langle I(\theta,\psi) \rangle \, r^2 \,d\Omega\\
+&= \frac{1}{4\pi} \oint \langle I(\theta,\psi) \rangle \, d\Omega
+\end{align*}
+Invoke \(\langle I(\theta,\psi) \rangle   = \langle I_\text{max} \rangle |D(\theta,\psi)|^2\):
+\begin{align*}
+\langle I_\text{mono} \rangle  &= \frac{1}{4\pi} \oint \langle I_\text{max} \rangle |D(\theta,\psi)|^2 \, d\Omega\\
+\langle I_\text{mono} \rangle  &= \frac{\langle I_\text{max} \rangle }{4\pi} \oint |D(\theta,\psi)|^2 \, d\Omega
+\end{align*}
+Therefore, the directivity factor is 
+\begin{align*}
+D_i  &=  \frac{\langle I_\text{max} \rangle }{\langle I_\text{mono} \rangle  } = \frac{4\pi}{\oint |D(\theta,\psi)|^2 \, d\Omega}
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> Calculate the directivity \(D(\theta,\psi)\) due to 
+\[u_0(x,y) = Q_0 [\delta(x-d/2) + \delta(x+d/2)]\delta(y)\]
+i.e., two in-phase monopoles separated by distance \(d\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol3')">[answer]</span>
+<div id="15sol3" class="expandable-content" style="color: #0000A0;">
+<p>  
+The directivity is simply given by 
+\begin{align*}
+D(\theta,\psi) &= \frac{\hat{u}_0(k_x,k_y)}{\hat{u}_0(0,0)}
+\end{align*}
+The numerator is evaluated using the sifting property of the \(\delta\) function:
+\begin{align*}
+\hat{u}_0(k_x,k_y) &= Q_0 \iint_{-\infty}^\infty [\delta(x-d/2) + \delta(x+d/2)]\delta(y) e^{j(k_xx + k_yy)} dx dy\\
+&= Q_0 \int_{-\infty}^{\infty} [\delta(x-d/2) + \delta(x+d/2)] e^{jk_xx} dx \int_{-\infty}^{\infty} \delta(y) e^{jk_yy}dy\\
+&= Q_0 (e^{jk_xd/2} + e^{-jk_xd/2}) e^0\\
+&=2Q_0 \cos (k_x d/2)
+\end{align*}
+Recalling that \(k_x = k\sin\theta\cos\psi\), the numerator is
+\begin{align*}
+\hat{u}_0(k_x,k_y) &=2Q_0 \cos [(kd/2)\sin\theta\cos\psi]\,.
+\end{align*}
+Meanwhile, the denominator is simply \(\hat{u}_0(k_x,k_y) = 2Q_0\). Thus the directivity is 
+\begin{align*}
+D(\theta,\psi) &= \cos [(kd/2)\sin\theta\cos\psi]\,. 
+\end{align*}
+The directivity is plotted below for \(kd\in [0,35]\).
+</p>
+<p align="middle">
+<iframe src="https://www.desmos.com/calculator/mcgljmh72w?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+</p>
+
+</div>
+</li>
+
+
+<li> A line array of \(N\) point sources radiates a pressure field given by 
+\[p(r,\theta) = A \frac{e^{-jkr}}{r} \sum_{n=0}^{N-1} e^{jnkd\sin\theta},\]
+where \(\theta = 0\) points in the direction perpendicular to the line of sources. Given that \[\sum_{n=0}^{N-1} e^{j2n\phi} = \frac{1-e^{j2N\phi}}{1-e^{j2\phi}},\] show that the directivity of the line array is \[D(\theta) = \frac{\sin N\phi}{N \sin\phi},\]
+where \(\phi = \frac{kd}{2}\sin(\theta) \). Evaluate the result for \(\theta= 0^\circ\). What is this type of radiation called? What is the type of radiation for \(\theta =90^\circ\) called?  
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol4')">[answer]</span>
+<div id="15sol4" class="expandable-content" style="color: #0000A0;">
+<p>  
+The right-hand side of the given identity is manipulated into the desired form.
+\begin{align*}
+\sum_{n=0}^{N-1} e^{jnkd\sin\theta} &= \frac{1-e^{j2N\phi}}{1-e^{j2\phi}}\\
+&= \frac{e^{jN\phi}}{e^{j\phi}} \bigg(\frac{e^{-jN\phi}-e^{jN\phi}}{e^{-j\phi}-e^{j\phi}}\bigg)\\
+&= \frac{e^{jN\phi}}{e^{j\phi}} \bigg(\frac{e^{jN\phi}-e^{-jN\phi}}{e^{j\phi}-e^{-j\phi}}\bigg)\\
+&= e^{j(N-1)\phi} \frac{\sin (N\phi)}{\sin \phi}\\
+&= e^{j(N-1)kd\sin(\theta)/2} \frac{\sin [Nkd\sin(\theta)/2]}{\sin [kd\sin(\theta)/2]}
+\end{align*}
+The pressure field is therefore 
+\begin{align*}
+p(r,\theta)= A \frac{e^{-jkr}}{r} e^{j(N-1)kd\sin(\theta)/2} \frac{\sin [Nkd\sin(\theta)/2]}{\sin [kd\sin(\theta)/2]}
+\end{align*}
+Meanwhile, plotting reveals that the maximum occurs at \(\theta_m=0\), for which the pressure is 
+\begin{align*}
+p(r,\theta_m)= A \frac{e^{-jkr}}{r} N
+\end{align*}
+The directivity is therefore
+\begin{align*}
+D(\theta) = \frac{p(r,\theta)}{p(r,\theta_m)} = \frac{\sin [Nkd\sin(\theta)/2]}{N\sin [kd\sin(\theta)/2]}\,.
+\end{align*}
+For \(\theta = 0\), \(D(0) = 1\). This is referred to as ''broadside radiation.'' For \(\theta = 90^\circ\), the radiation is called ''end-fire.''
+</p>
+</div>
+</li>
+  
+
+
+<li> Obtain the directivity \(D(\theta,\psi)\) for a continuous line array whose source condition is \(u_0(x,y) = u_0 w\delta(y)\) from \(-L/2 \leq x \leq L/2\) and \(0\) otherwise. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol5')">[answer]</span>
+<div id="15sol5" class="expandable-content" style="color: #0000A0;">
+<p>  
+The directivity is calculated using Fourier transforms:
+\begin{align*}
+D(\theta,\psi) &= \frac{\hat{u}_0 (k_x,k_y)}{\hat{u}_0 (0,0)}\,.
+\end{align*}
+The numerator is given by 
+\begin{align*}
+\hat{u}_0 (k_x,k_y) &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} u_0 w\delta(y) e^{jk_xx}e^{jk_yy} dxdy\\
+&=u_0 w \int_{-L/2}^{L/2} e^{jk_xx} dx\\
+&=\frac{u_0 w }{jk_x} e^{jk_xx} \bigg\rvert_{-L/2}^{L/2}\\
+&=\frac{u_0 w }{jk_x}[e^{jk_xL/2} - e^{-jk_xL/2}]\\
+&=\frac{2 u_0 w }{k_x}\sin{k_xL/2}\\
+&={u_0 L w }\frac{\sin{k_xL/2}}{k_x L/2}
+\end{align*}
+Meanwhile, the denominator is 
+\begin{align*}
+\hat{u}_0 (0,0) &= u_0 L w\,.
+\end{align*}
+Recall that \(k_x = k\sin\theta \cos \psi\). Thus the directivity is 
+\begin{align*}
+D(\theta,\psi) &= \frac{\hat{u}_0 (k_x,k_y)}{\hat{u}_0 (0,0)}\\
+&= \frac{\sin{[(kL/2) \sin\theta \cos \psi]}}{(kL/2) \sin\theta \cos \psi}\,.
+\end{align*}
+
+</p>
+</div>
+</li>
+
+
+
+<li> Consider a circular piston, whose directivity is given by the jinc fuction, \(D(\theta) = 2J_1(\kappa a)/\kappa a\). The wavenumber is 
+\begin{align*}
+\kappa &= \sqrt{k_x^2 + k_y^2}\\
+k_x &= k\sin\theta \cos\psi\\
+k_y &= k\sin\theta \cos\psi
+\end{align*}
+Suppose the beam is now steered with \(k_x\) with \(k(\sin \theta \cos\psi - \sin\theta_0)\). What will the new directivity be?
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol6')">[answer]</span>
+<div id="15sol6" class="expandable-content" style="color: #0000A0;">
+<p>  
+ \[D(\theta) = \frac{2J_1[ka(\sin\theta -\sin\theta_0)]}{ka(\sin\theta -\sin\theta_0)}\].
+</p>
+</div>
+</li>
+
+
+
+<li>&#9784; A distribution of \(N\) velocity sources, each with a source condition of \(u_1(x-x_n,y-y_n)\), has a total source condition of 
+\[u_0(x,y) = \sum_{n=1}^N u_1(x-x_n, y-y_n)\,.\]
+Prove that the directivity of the distribution is the product of the directivity of each source and the directivity of the array, where the array is treated as a collection of point sources. <i>Hint: write the above source condition in terms of \(\delta\)-function,
+\[u_0(x,y) = \sum_{n=1}^N \iint_{-\infty}^\infty u_1(x-x_n, y-y_n) \delta(x-x_n)\delta(y-y_n)\, dx\, dy\,,\]
+and take the 2D Fourier transform. 
+</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol7a')">[answer]</span>
+<div id="15sol7a" class="expandable-content" style="color: #0000A0;">
+<p>  
+The Fourier transform of the velocity source condition 
+\[u_0(x,y) = \sum_{n=1}^N \iint_{-\infty}^\infty u_1(x-x_n, y-y_n) \delta(x-x_n)\delta(y-y_n)\, dx\, dy\]
+is taken by noting that the Fourier transform of \(\delta(x-x_n)\) is \(e^{jk_xx_n}\), and similarly the Fourier transform of \(\delta(y-y_n)\) is \(e^{jk_yy_n}\):
+\[\hat{u}_0(k_x,k_y) = \hat{u}_1(k_x,k_y) \sum_{n} e^{j(k_xx_n +k_yy_n)}\,.\]
+Dividing by \(\hat{u}_0(0,0) = \hat{u}_1(0,0) \sum_n e^{j(0x_n + 0y_n)} = \hat{u}_1(0,0)\) gives the directivity (see problem 1 of this section), 
+\[D(\theta,\psi) = D_1(\theta,\psi)D_A(\theta,\psi)\,.\]
+</p>
+</div>
+</li>
+
+
+
+<li> Suppose there are two circular pistons of radius \(a\) separated by a distance \(d\) from each other (center-to-center). What is the directivity of the two pistons? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('15sol7')">[answer]</span>
+<div id="15sol7" class="expandable-content" style="color: #0000A0;">
+<p>  
+The product theorem makes the problem easy. The directivity of each piston is 
+\[D_1(\theta) = \frac{2J_1(ka\sin\theta)}{ka\sin\theta}\]
+while the directivity for the \(N=2\) line array is 
+\[D_A(\theta, \psi) = \cos[(kd/2) \sin\theta\cos\psi]\,.\]
+The directivity of the two circular pistons of radius \(a\) separated by a distance \(d\) is thus 
+\[D(\theta,\psi) = \frac{2J_1(ka\sin\theta)}{ka\sin\theta}\cos[(kd/2) \sin\theta\cos\psi]\,. \]
+</p>
+</div>
+</li>
+
+
+
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-13.html">&leftarrow; Return to previous topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

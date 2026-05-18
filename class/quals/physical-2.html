@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detailed development of the acoustic wave equation</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="2">Chapter 2: Detailed development of the acoustic wave equation</h2>
+See <i>An Introduction to Thermal Physics</i> by Daniel Schroeder for more on thermodyanmics. 
+<ol>
+
+<li> To what particle does the "particle velocity" \(\vec{u}\) refer? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol1aa')">[answer]</span>
+<div id="2sol1aa" class="expandable-content" style="color: #0000A0;">
+<p>  
+"Particle velocity" does not refer to a single molecule. Rather, it refers to a "fluid particle" within the continuum approximation, "a large enough collection of molecules that the average of their random motions is zero," as Blackstock writes (see page 27-28). 
+</p>
+</div>
+</li>
+
+
+<li> Write the exact mass and momentum equations in integral form. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol1')">[answer]</span>
+<div id="2sol1" class="expandable-content" style="color: #0000A0;">
+<p> The conservation of mass in integral form is 
+\[\frac{\partial}{\partial t} \int_\mathcal{V} \rho\, dV + \oint_\mathcal{S} \rho \vec{u} \cdot dS \,= 0\,,\]
+while the conservation of momentum in integral form is
+\[\frac{\partial}{\partial t} \int_\mathcal{V} \rho \vec{u}\, dV = \int_\mathcal{V} \vec{B} \rho \,dV -   \oint_\mathcal{S} P d\vec{S} -  \oint_\mathcal{S} (\rho \vec{u})\vec{u} \cdot d\vec{S} \,.\]
+</p>
+</div>
+</li>
+
+
+<li> State the 0th, 1st, 2nd, and 3rd laws of thermodynamics.
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol1as')">[answer]</span>
+<div id="2sol1as" class="expandable-content" style="color: #0000A0;">
+<p>  
+<b>Zeroth law: </b> the transitive property. If A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C. 
+</p>
+
+<p>  
+<b>First law: </b> the conservation of energy. The change in internal energy is the heat plus the work done on the system: \(\Delta U = Q +W\).
+</p>
+
+<p>  
+<b>Second law: </b> entropy. The entropy of the universe tends towards a maximum, i.e., \(dS \geq \delta Q/T\), where the equality is fulfilled by quasistatic processes.  
+</p>
+
+
+<p>  
+<b>Third law:</b> absolute zero. The entropy approaches a constant in the limit that the temperature goes to absolute zero.
+</p>
+</div>
+</li>
+
+
+<li> How many quadratic degrees of freedom \(f\) does helium have? Oxygen? Nitrogen? <i>Bonus: What are the seven diatomic gases? </i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol1assss')">[answer]</span>
+<div id="2sol1assss" class="expandable-content" style="color: #0000A0;">
+<p> 
+Note that quadratic degrees of freedom include translational, rotational, and vibrational types of energies, which are quadratic in velocity, angular velocity, and displacement respectively. Helium is monotomic and therefore has only three translational degrees of freedom: \(f=3\). Oxygen and nitrogen are both diatomic and thus have three translational degrees of freedom and two rotational degrees of freedom: \(f=5\).
+ </p>
+
+<p> 
+The seven diatomic gases can be remembered with the expression, "BrINClHOF!", which indicates that bromine, iodine, nitrogen, chlorine, hyrogen, oxygen, and fluorine are diatomic gases.  
+ </p>
+</div>
+</li>
+
+
+
+<li> State the equipartition theorem.
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol1asss')">[answer]</span>
+<div id="2sol1asss" class="expandable-content" style="color: #0000A0;">
+<p> The equipartition theorem states that the average energy of any quadratic degree of freedom is \(\frac{1}{2} kT\), where \(k\) is the Boltzmann constant. For example, a system of \(N\) molecules, each with \(f\) degrees of freedom, has a total thermal energy of \(U = N f kT/2\). 
+ </p>
+
+<p>Note that for three dimensional motion for a monotomic gas, \(U = 3kT/2\) by the equipartition theorem. As all the energy is kinetic, \(U = m\langle v^2\rangle/2\), where \(\langle v^2\rangle\) is the average of the square of the velocities. Therefore, \(\sqrt{\langle v^2\rangle} = 3kT/m = v_\text{rms}\).</p>
+</div>
+</li>
+
+
+<li> Derive the adiabatic gas law.
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol1ass')">[answer]</span>
+<div id="2sol1ass" class="expandable-content" style="color: #0000A0;">
+<p> 
+Start with the first law of thermodynamics, and note that the no heat is flows into or out of the gas in an adiabatic process: \[\Delta U = Q+W = W.\] By the equipartition theorem, 
+\begin{align*}
+U &= \frac{f}{2}NkT\\
+\implies dU &= \frac{f}{2}Nk\, dT\,.
+\end{align*}
+Setting the above relation equal to the infinitesimal work done by the gas during a compression (because \(dU =dW\)) results in 
+\begin{align*}
+\frac{f}{2}Nk\, dT  &= -P dV \,.
+\end{align*}
+Substitution of the ideal gas law \(P = NkT/V\) on the right-hand side and rearrangement gives
+\begin{align*}
+\frac{f}{2}\frac{dT}{T} &=  -\frac{dV}{V} \,.
+\end{align*}
+Integration gives
+\begin{align*}
+\frac{f}{2} \ln T/T_0 &= -\ln V/V_0\\
+\ln [(T/T_0)^{f/2}]  &= -\ln V/V_0
+\end{align*}
+Exponentiation and rearrangement gives
+\begin{align*}
+V T^{f/2}  &= V_0 T_0^{f/2} \,.
+\end{align*}
+Invoking the ideal gas law to eliminate temperature gives
+\begin{align*}
+P^{f/2}  V^{\frac{f+2}{2}}  &= P^{f/2}_0 V^{\frac{f+2}{2}}_0 \,.
+\end{align*}
+Raising both sides to the power of \(2/f\) gives
+\begin{align*}
+ P V^{\frac{f+2}{f}} &=  P_0 V^{\frac{f+2}{2}}_0\,.
+\end{align*}
+Identifying \(\gamma \equiv (f+2)/f\), and noting that \(V \propto 1/\rho\), gives the desired result:
+\begin{align*}
+P \rho_0^{\gamma} &=  P^{f/2}_0 \rho^{\gamma}\\
+P/P_0 &= (\rho/\rho_0)^{\gamma}
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> Calculate the work done in an adiabatic compression.
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol2ad')">[answer]</span>
+<div id="2sol2ad" class="expandable-content" style="color: #0000A0;">
+<p> 
+For an adiabatic compression, \(P = P_0 (V_0/V)^\gamma\), as derived above. The work done on the gas is 
+\begin{align*}
+W &= -\int_{V_0}^{V_1} P dV\\
+&= -\int_{V_0}^{V_1}  P_0 (V_0/V)^\gamma dV \\
+&= -P_0 V_0^\gamma \int_{V_0}^{V_1} V^{-\gamma} dV\\
+&= -\frac{P_0 V_0^\gamma}{1-\gamma}V^{1-\gamma}\bigg\rvert_{V_0}^{V_1} \\
+&= -\frac{P_0 V_0^\gamma}{1-\gamma}(V_0^{1-\gamma}-V_1^{1-\gamma})\\
+&= \frac{P_0 V_0}{\gamma-1}[(V_1/V_0)^{1-\gamma} - 1]\\
+&= \frac{P_0 V_0}{\gamma-1}[(V_0/V_1)^{\gamma-1} - 1]
+\end{align*}
+ </p>
+</div>
+</li>
+
+
+
+<li> Is every adiabatic process isentropic? Is every isentropic process adiabatic?
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol2adc')">[answer]</span>
+<div id="2sol2adc" class="expandable-content" style="color: #0000A0;">
+<p> 
+Every adiabatic process is <i>not</i> isentropic, but every isentropic process <i>is</i> adiabatic. This is because an isentropic process is defined to be a reversible adiabatic process. 
+ </p>
+<p> 
+Also note that every reversible process is quasistatic, but not every quasistatic process is reversible "if there is also heat flowing in or out or if entropy is being created in some other way" (Schroeder).
+</p>
+</div>
+</li>
+
+<li>Use the entropy equation [see Blackstock equation (2-A-43), or the beginning of <i>Nonlinear Acoustics</i> by Hamilton and Blackstock, or <i>Fluid Mechanics</i> by Lifshitz and Landau], 
+\begin{equation}\label{entropers}\tag{1}
+\rho T \frac{\partial s}{\partial t}= \kappa \nabla^2 T + \text{miscellaneous terms}\,,
+\end{equation}
+to show that low-frequency sound is isentropic, while high-frequency sound is isothermal.
+<span class="expandable-toggle" onclick="toggleExpandableContent('1sol10')">[answer]</span>
+<div id="1sol10" class="expandable-content" style="color: #0000A0;">
+<p>The thermodynamic quantities in equation (\ref{entropers}) are first expressed as ambient \(+\) perturbation quantities, i.e.,
+\begin{align*}
+T &= T_0 + T'\\
+s &= s_0 + s,.
+\end{align*}
+Thus equation (\ref{entropers}) becomes
+\[\rho_0 T_0 \frac{\partial s'}{\partial t} \sim \kappa \nabla^2 T'\,, \]
+or, assuming time-harmonic solutions (i.e.,\(\partial/\partial t \mapsto j\omega \) and \(\nabla^2 \mapsto k^2 = \omega^2/c^2\)), 
+\[j\omega\rho_0 T_0 s' \sim \kappa \frac{\omega^2}{c_0^2} T'\,. \]
+Rearranging this result gives
+\[\rho_0 c_0^2 \frac{T_0}{\kappa} \frac{s'}{T'} \sim  \omega \,,\]
+from which it can be seen that 
+\begin{align*}
+s'&\to 0 \quad \text{ as } \quad \omega \to 0,\quad \text{(Isentropic)}\\
+T'&\to 0 \quad\text{ as }\quad \omega \to \infty,\quad \text{(Isothermal)}\,.
+\end{align*}
+Feynman provides some insightful commentary:
+<blockquote>
+Newton was the first to calculate the rate of change of pressure with density, and he supposed that the temperature remained unchanged. He argued that the heat was conducted from one region to the other so rapidly that the temperature could not rise or fall. This argument gives the isothermal speed of sound, and it is wrong. The correct deduction was given later by Laplace, who put forward the opposite idea—that the pressure and temperature change adiabatically in a sound wave. The heat flow from the compressed region to the rarefied region is negligible so long as the wavelength is long compared with the mean free path. Under this condition the slight amount of heat flow in a sound wave does not affect the speed, although it gives a small absorption of the sound energy. We can expect correctly that this absorption increases as the wavelength approaches the mean free path, but these wavelengths are smaller by factors of about a million than the wavelengths of audible sound.
+</blockquote>
+</p>
+</div>
+</li>
+
+<li>What is the meaning of \(D/Dt\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol2')">[answer]</span>
+<div id="2sol2" class="expandable-content" style="color: #0000A0;">
+<p>  This is the material derivative, defined by \[\frac{\partial}{\partial t} + \vec{u}\cdot \gradient\,.\]</p>
+</div>
+</li>
+  
+
+<li>&#9784; Explain the meaning of each term in 
+\begin{align}
+\frac{D\rho}{Dt} + \rho \gradient\cdot \vec{u} &=0 \label{blacksters1}\tag{i}\\
+\rho \frac{D\vec{u}}{Dt} + \gradient P &= (\lambda + 2\mu) \gradient(\gradient\cdot \vec{u}) - \mu \gradient \times \gradient \times \vec{u}\label{blacksters2}\tag{ii}\\ 
+\rho C_v \frac{DT}{Dt} + P \gradient\cdot \vec{u} &= \Phi^{\text{(visc)}} + \kappa \nabla^2 T \label{blacksters3}\tag{iii}\\ 
+P &= R\rho T\,, \label{blacksters4}\tag{iv}
+\end{align}
+which correspond to Blackstock's eqs. A-47&ndash;A-49.  
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol2f')">[answer]</span>
+<div id="2sol2f" class="expandable-content" style="color: #0000A0;">
+<p>  
+All four of the equations above are exact, i.e., \(\rho\), \(P\), and \(T\) are the exact density, pressure, and temperature. Equation (\ref{blacksters1}) is the continuity equation. Abandoning the material derivative, it is written \[\frac{\partial \rho}{\partial t} + \gradient\cdot (\rho \vec{u}) = 0\,.\]
+
+Equation (\ref{blacksters2}) is the momentum equation. \(\lambda \) is the dilatational viscosity coefficient, and \(\mu\) is the shear viscosity coefficient. (Sometimes the two are combined as \(\nabla  + 2\mu = \tilde{V}\), where \(\tilde{V}\) is the viscosity number). Abandoning the material derivative, this equation becomes
+\[\rho \frac{\partial\vec{u}}{\partial t} + \rho (\vec{u}\cdot \gradient) \vec{u} + \gradient P = (\lambda + 2\mu) \gradient(\gradient\cdot \vec{u}) - \mu \gradient \times \gradient \times \vec{u} \]
+
+Equation (\ref{blacksters3}) is the energy equation. \(C_v\) is the heat capacity at constant volume. \(\Phi^{\text{(visc)}}\) is the nonlinear viscous dissipation function, and \(\kappa\) is the thermal conduction coefficient. 
+
+Equation (\ref{blacksters4}) is the ideal gas law. \(R\) is the gas constant, given by \(C_p-C_v\). Since \(\gamma = C_p/C_v\), the gas constant can also be written as \[R = (\gamma-1)C_v.\] 
+</p>
+</div>
+</li>
+  
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-1.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-3.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

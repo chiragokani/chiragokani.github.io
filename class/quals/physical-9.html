@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Absorption and dispersion</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="9">Chapter 9: Absorption and dispersion</h2>
+<ol>
+<li> Acoustics is the continuum approximation of sound in fluid media, which in reality consists of the compressions and rarefactions of vast ensembles of molecules. What must the mean free path of these molecules be for sound to propagate? Note that the mean free path is the average distance traveled by a molecule before hitting another molecule. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol1')">[answer]</span>
+<div id="9sol1" class="expandable-content" style="color: #0000A0;">
+<p>  This is a point made by R. P. Feynman in his lecture "Sound and the Wave Equation." For sound to exist, the mean free path must be much less than a wavelength. Otherwise, the molecular behaviour is diffusive. </p>
+</div>
+</li>
+
+
+<li> What are the units of the absorption coefficient \(\alpha\)? How does one convert between \(\text{SPL}\) and \(\alpha\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol3')">[answer]</span>
+<div id="9sol3" class="expandable-content" style="color: #0000A0;">
+<p>  
+\(\alpha\) has units of \(\text{neper } \text{meters}^{-1}\). In fact, nepers are dimensionless! (How ridiculous). To convert from \(\text{SPL}\) to \(\alpha\), consider the form of an attenuating wave, \(|p| = A e^{-\alpha x}\). Then,
+\begin{align*}
+\text{SPL} &= 20 \log_{10} \frac{A/\sqrt{2}}{p_\text{ref}}\\
+&=  20 \log_{10} \frac{A\,e^{-\alpha x}/\sqrt{2}}{p_\text{ref}}\\
+&=  20 \log_{10} \frac{A/\sqrt{2}}{p_\text{ref}} + 20\log_{10} e^{-\alpha x}\\
+&= \text{SPL}_0 + 20\log_{10} e^{-\alpha x}\\
+&=  \text{SPL}_0 - 8.686 \alpha x\,,
+\end{align*}
+where \(\text{SPL}_0\) is the sound pressure level at the source \(x=0\).
+</p>
+</div>
+</li>
+
+  
+<li>The linearized viscous wave equation in 1D is found by combining the linearized continuity, momentum, and state equations (the momentum equation being the only one with modification from the "classic" wave equation). It is given by
+\[\frac{\nu \tilde{V}}{c_0^2} u_{xxt} + u_{xx} - \frac{1}{c_0^2} u_{tt} = 0,\]
+where \(\nu\) is the kinematic viscosity coefficient and \(\tilde{V}\) is the viscosity number. Derive the attenuation coefficient, defining \(\delta_v = \omega \nu/c_0^2 \ll 1\). Is the medium dispersive?
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol4')">[answer]</span>
+<div id="9sol4" class="expandable-content" style="color: #0000A0;">
+<p>  
+Let \(u\, \propto \, e^{j(\omega t - k(\omega)x)}\). Substitution into the viscous wave equation gives
+\begin{align*}
+-j\omega k^2 \frac{\nu \tilde{V}}{c_0^2} -k^2 + \frac{\omega^2}{c_0^2} &= 0
+\end{align*}
+Solve for \(k\):
+\begin{align*}
+ k^2 (1 + j\omega{\nu \tilde{V}}/{c_0^2})   &= {\omega^2}/{c_0^2}\\
+ k^2   &= \frac{{\omega^2}/{c_0^2}}{1 + j\omega{\nu \tilde{V}}/{c_0^2}}\\
+k &= \frac{\omega}{c_0} (1 + j\omega{\nu \tilde{V}}/{c_0^2})^{-1/2}\\
+k &= \frac{\omega}{c_0} (1 + j \delta_v \tilde{V})^{-1/2}
+\end{align*}
+Since \(\delta_v \ll 1\), the binomial expansion is used, giving
+\begin{align*}
+k &= \frac{\omega}{c_0} (1 - j \delta_v \tilde{V}/2)\\
+&= \frac{\omega}{c_0} - \frac{j\omega \delta_v\tilde{V}}{2}
+\end{align*}
+The attenuation coefficient is identified as \(\alpha = -\Im\, (k) = \omega \delta_v \tilde{V}/2c_0\), or reinstating \(\delta_v = \omega \nu/c_0^2\), 
+\[\alpha_\text{v} = \frac{\omega^2 \nu \tilde{V}}{2c_0^3} \,.\]
+Meanwhile, note that the phase speed is \(c^{\text{ph}} = \omega/\Re\, (k) = c_0\). Thus the medium is non-dispersive (because \(\delta_v\ll 1\)).
+</p>
+</div>
+</li>
+
+
+<li> The linearized wave equation for a thermally conducting fluid is found by combining the linearized continuity, momentum, and state equations (the state equation this time being the one with modifications). It is given by 
+\[\frac{\kappa}{\rho_0 C_p} \bigg[u_{xx} -\frac{\gamma}{c_0^2}u_{tt}\bigg]_{xx} - \bigg[u_{xx} - \frac{1}{c_0^2}u_{tt}\bigg]_t = 0\,,\]
+where \(\kappa \) is the heat conduction coefficient and \(C_p\) is the specific heat at constant pressure. As a zeroth-order approximation, show that this equation reduces to the ''ordinary wave equation'' when the thermal conduction of the fluid is negligible. Then as a first-order approximation, approximate \(u_{xx}\) in the first term as \(-u_{tt}/c_0^2\) and integrate over time. Compare the above approximation of the thermally conducting wave equation to the viscous wave equation and read off the attenuation coefficient. 
+
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol5')">[answer]</span>
+<div id="9sol5" class="expandable-content" style="color: #0000A0;"> 
+<p><b>Zeroth order approximation.</b> For \(\kappa/C_p\to 0\), the given equation (upon integration over \(t\)) gives the ''ordinary wave equation.'' </p>
+
+<p><b>First order approximation.</b> Replacing \(u_{xx}\) in the first term as \(-u_{tt}/c_0^2\) gives
+\begin{align*}
+\frac{\kappa}{\rho_0 C_p} \bigg[-\frac{u_{tt}}{c_0^2} -\frac{\gamma}{c_0^2}u_{tt}\bigg]_{xx} - \bigg[u_{xx} - \frac{1}{c_0^2}u_{tt}\bigg]_t = 0
+\end{align*}
+Integrating over time gives
+\begin{align*}
+\frac{(\gamma-1)\kappa}{\rho_0c_0^2C_p} u_{xxt}  + u_{xx} - \frac{1}{c_0^2}u_{tt} = 0\,.
+\end{align*}
+This has the same form as the viscous wave equation which had the attenuation coefficient of \(\alpha = \frac{\omega^2 \nu \tilde{V}}{2c_0^3}\). Thus the attenuation coefficient for the thermally conducting wave equation is 
+\begin{align*}
+\alpha_\text{th} = \frac{\omega^2 (\gamma-1)\kappa}{2\rho_0 c_0^3 C_p}\,.
+\end{align*}
+Similarly, it can be concluded that the thermally conducting wave equation describes non-dispersive wave motion. 
+</p>
+<p> See Blackstock's chapter 9, section B for a much more detailed derivation. 
+</p>
+</div>
+</li>
+
+
+
+<li> Having derived the attenuation coefficient for viscous fluids and thermally conducting fluids, derive the attenuation coefficient for thermoviscous fluids. What allows for the simple addition of these attenuation coefficients?  
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol6')">[answer]</span>
+<div id="9sol6" class="expandable-content" style="color: #0000A0;">
+<p>  
+From Blackstock, footnote of page 300:
+<blockquote>The validity of superposing the various contributions, e.g., putting \(\alpha_\text{total} = \alpha_1 + \alpha_2 + \alpha_3 + \dots\), is rarely discussed. In fact, superposition is in general not justified because although the various absorption mechanisms act mainly separately, they do have interactions with each other; see, for example, Sec. B.3. In practice, however ,the effect of each mechanism is normally so small that the interactions may be neglected, in which case superposition is justified.
+</blockquote>
+Simply adding the previously found attenuation coefficients together gives
+\begin{align*}
+\alpha_\text{tv}&= \alpha_\text{v}  + \alpha_\text{th}\\
+&=  \frac{\omega^2 \nu \tilde{V}}{2c_0^3} + \frac{\omega^2 (\gamma-1)\kappa}{2\rho_0 c_0^3 C_p}\\
+&= \frac{\omega^2}{2c_0^3}\bigg[\nu \tilde{V} + \frac{(\gamma-1)\kappa}{\rho_0 C_p}\bigg]
+\end{align*}
+The above result can be rewritten in a number of ways (see Blackstock page 314); the main result, however, is that the thermoviscous absorption is quadratic in frequency. 
+</p>
+</div>
+</li>
+
+
+
+<li> Derive the 1D linearized wave equation for a relaxing medium, for which the equation of state is \(\tau (p- c_\infty^2 \rho')_t + (p -c_0^2 \rho') = 0,\) where \(\rho'\) is the perturbation density. Assess the behaviour for when the sound's period is much smaller than than the relaxation time (\(\omega\tau \to 0\)) and for when the sound's period is much larger than the relaxation time (\(\omega\tau \to \infty\)). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol7')">[answer]</span>
+<div id="9sol7" class="expandable-content" style="color: #0000A0;">
+<p>  
+The linearized 1D continuity equation is
+\begin{align}\label{isldfkjsdf}\tag{i}
+\rho'_t + \rho_0 u_x=  0,
+\end{align}
+and the linearized 1D momentum equation is
+\begin{align}\label{iisldkfjsdlkfjasdlfj}\tag{ii}
+p_x + \rho_0 u_t = 0\,.
+\end{align}
+The particle velocity is eliminated by taking the time derivative of equation (\ref{isldfkjsdf}) and subtracting from the space derivative of equation (\ref{iisldkfjsdlkfjasdlfj}): 
+\begin{align*}
+\rho'_{tt} =  p_{xx}.
+\end{align*} 
+Meanwhile the equation of state is differentiated twice w.r.t. \(t\):
+\begin{align*}
+\tau p_{ttt}- \tau  c_\infty^2 \rho'_{ttt} + p_{tt} -c_0^2 \rho'_{tt} &= 0\,.
+\end{align*}
+The density is eliminated between \(\rho'_{tt} =  p_{xx}\) and the above equation of state, giving the wave equation for a relaxing fluid:
+\begin{align*}
+\tau p_{ttt}- \tau  c_\infty^2 p_{xxt} + (p_{tt} -c_0^2 p_{xx}) &= 0\,.
+\end{align*}
+The term in parentheses is simply the ''ordinary linear wave equation.'' 
+</p>
+<p>
+To assess the low- and high-frequency limits, insert a harmonic test solution i.e., \(p \,\propto \,e^{j\omega t - jkx}\):
+\begin{align*}
+-j\omega^3\tau +  j\omega \tau k^2 c_\infty^2  + (-\omega^2  +  k^2 c_0^2 ) &= 0\\
+j\omega\tau (-\omega^2 + k^2 c_\infty^2) + (-\omega^2  +  k^2 c_0^2 ) &= 0
+\end{align*}
+In the limit that \(\omega\tau \to 0\) (the sound's period is much larger than the relaxation time), the first term vanishes, resulting in wave propagation at \(c_0\). In this limit, the change in pressure and density is so slow that ''equilibrium is reestablished after each infinitesimal pressure change in the acoustical cycle'' (Blackstock page 318). That is to say, the relaxation mechanism happens basically instantaneously compared to the period of the wave, and thus the wave propagates oblivious to the reaction mechanism, and the sound travels at the ambient speed of sound propagation, \(c_0\), with the molecules relaxed for almost the entire time.</p>
+
+<p>In the limit that \(\omega \tau \to \infty\) (the sound's period is much shorter than relaxation time) the first term dominates, resulting in wave propagation at \(c_\infty\). In this limit, the frequency of the sound wave is so high that the pressure and density much faster than the relaxation mechanism. Thus, over one period of sound, the molecules don't get the slightest chance to relax. They stay frozen in their ''anxious'' state.</p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-8.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-10.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

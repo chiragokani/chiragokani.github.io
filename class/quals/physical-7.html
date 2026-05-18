@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Horns</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+<div class="textbox">
+<h2 id="7">Chapter 7: Horns</h2>
+<ol>
+<li> Of the continuity, momentum, and mass equations, which is/are adjusted to account for the changing cross-sectional area of a horn?
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol1')">[answer]</span>
+<div id="7sol1" class="expandable-content" style="color: #0000A0;">
+<p> The momentum equation remains the same (though it takes several lines of algebra and the insertion of the continuity equation to show this). The state equation more obviously remains the same. The continuity is the only equation that ends up requiring an extra term. Repeating the derivation for the 1D continuity equation presented in chapter 1 while letting \(S=S(x)\) gives 
+\[\frac{\partial \rho}{\partial t} + \frac{S'}{S}\rho u + \frac{\partial (\rho u)}{\partial x}= 0\,.\]
+Linearizing and combining the equations of continuity, momentum, and state results in the Webster horn equation,
+\begin{align*}
+\frac{\partial^2 p }{\partial x^2} + \frac{dS/dx}{S}\frac{\partial p}{\partial x} = \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2}\,.
+\end{align*}  </p>
+</div>
+</li>
+
+<li> Obtain the phase speed for the exponential horn, in which \(S = S_0e^{mx}\). Identify the cutoff frequency. How does the magnitude of the solution grow? How could this growth be alternatively predicted from the conservation of energy?
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol2')">[answer]</span>
+<div id="7sol2" class="expandable-content" style="color: #0000A0;">
+<p>  
+Inserting \(S=S_0e^{mx}\) into the Webster horn equation gives
+\begin{align*}
+\frac{\partial^2 p }{\partial x^2} + m \frac{\partial p}{\partial x} = \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2}\,.
+\end{align*}  
+A solution proportional to \(e^{j(\omega t-kx)}\) is sought, giving
+\begin{align*}
+-k^2 - jkm &= -\frac{\omega^2}{c_0^2}\\
+k^2 + jkm -k_0^2 &=0\\
+\implies k &= -j\frac{m}{2} \pm \frac{\omega}{c_0}\sqrt{1-(m/2k_0)^2}
+\end{align*} 
+The phase speed is found by taking the real part of the above and solving for \(\omega/k\):
+\begin{align*}
+c_\text{ph} = \frac{\omega}{k} = \frac{c_0}{\sqrt{1-(m/2k_0)^2}}
+\end{align*}
+Writing \(k_0 = \omega/c_0\) gives \(c_\text{ph} = \frac{c_0}{\sqrt{1-(mc_0/2\omega)^2}} = \frac{c_0}{\sqrt{1-(mc_0/4\pi f)^2}}\). The cutoff frequency is identified to be \(f^{(c)}= mc_0/4\pi\), and the phase speed can therefore be written as 
+\begin{align*}
+c_\text{ph} = \frac{c_0}{\sqrt{1-(f^{(c)}/f)^2}}\,.
+\end{align*}
+</p>
+<p> By substituting the expression for \(k\) into the form of solution \(e^{j(\omega t-kx)}\), it is seen that the magnitude of the solution grows as
+\[|p| \propto e^{-mx/2}.\] 
+This result could be derived by noting that the power,  remains constant as the wave propagates through the horn:
+\begin{align*}
+W = IS\propto p_\text{rms}^2 S &= \text{constant}\\
+\implies p_\text{rms} &\propto 1/\sqrt{S}\\
+&\propto 1/\sqrt{e^{mx}}\\
+|p|&\propto e^{-mx/2}
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li> Using the expression for \(k\) found above, find the impedance \(Z = p/u = \omega\rho_0/k\) of the exponential horn. <i>Where does \(p/u = \omega\rho_0/k\) come from?</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol3')">[answer]</span>
+<div id="7sol3" class="expandable-content" style="color: #0000A0;">
+<p> Inserting \(k = -j\frac{m}{2} \pm \frac{\omega}{c_0}\sqrt{1-(m/2k_0)^2}\) into this expression for the impedance gives
+\begin{align*}
+Z &= \frac{\omega\rho_0}{-j\frac{m}{2} \pm \frac{\omega}{c_0}\sqrt{1-(mc_0/4\pi f)^2}}\\
+&=\frac{2\pi f\rho_0}{-j\frac{m}{2} \pm \frac{\omega}{c_0}\sqrt{1-(f^{(c)}/f)^2}}\\
+&=\frac{\rho_0}{-j\frac{m}{4\pi f} \pm \frac{1}{c_0}\sqrt{1-(f^{(c)}/f)^2}}\\
+&=\frac{\rho_0c_0}{-j\frac{mc_0}{4\pi f} \pm \sqrt{1-(f^{(c)}/f)^2}}\\
+&=\frac{\rho_0c_0}{-jf^{(c)}/f \pm \sqrt{1-(f^{(c)}/f)^2}}\\
+\end{align*}
+The rectangular form of the impedance is
+\begin{align*}
+Z &= \frac{\rho_0c_0}{-jf^{(c)}/f \pm \sqrt{1-(f^{(c)}/f)^2}}\frac{jf^{(c)}/f \pm \sqrt{1-(f^{(c)}/f)^2}}{jf^{(c)}/f \pm \sqrt{1-(f^{(c)}/f)^2}}\\
+&=\rho_0c_0 \bigg[jf^{(c)}/f \pm \sqrt{1-(f^{(c)}/f)^2}\bigg]
+\end{align*}
+ </p>
+</div>
+</li>
+
+
+<li>&#9784; Calculate the input power \(W_\text{in} = S_0 I=S_0\langle pu \rangle = \frac{1}{2}S_0 \Re (pu^*)\) from a velocity source of an exponential horn, and write the result in terms of the power in a plane waveguide of constant cross section \(W_0 = \frac{1}{2}\rho_0c_0 S_0 u_0^2\). How does this result change for a <i>pressure</i> source?
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol4')">[answer]</span>
+<div id="7sol4" class="expandable-content" style="color: #0000A0;">
+<p> The power for the velocity source is 
+\begin{align*}
+W_\text{in}&= \frac{1}{2}S_0 \Re (pu^*)\\
+&=\frac{1}{2}S_0 |u|^2\Re (Z_\text{in})\\
+&= \frac{W_0}{\rho_0c_0}\Re (Z_\text{in})\\
+&= W_0 \sqrt{1-(f^{(c)}/f)^2}
+\end{align*}
+where \(|u|^2=u_0^2\).
+ </p>
+<p> Meanwhile, for a pressure source, \(W_0 = \frac{1}{2\rho_0c_0} S_0 p_0^2\). The power for the pressure source is
+\begin{align*}
+W_\text{in}&= \frac{1}{2}S_0 \Re (pu^*)\\
+&=\frac{1}{2}S_0 |p|^2\Re (1/Z_\text{in})\\
+&= W_0\rho_0c_0\Re (1/Z_\text{in})\\
+&= W_0 \sqrt{1-(f^{(c)}/f)^2}
+\end{align*}
+where \(|p|^2=p_0^2\). It is rather remarkable that the power exerted by an exponential horn driven by a pressure source equals the power exerted by the horn driven by a velocity source. This invariance is unique to exponential horns. 
+ </p>
+</div>
+</li>
+
+<li> What is the definition of the transmission factor \(\text{TF}\)? Calculate \(\text{TF}\) for the exponential horn for a velocity source and a pressure source.
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol5')">[answer]</span>
+<div id="7sol5" class="expandable-content" style="color: #0000A0;">
+<p> The transmission factor is defined as 
+\begin{align*}
+\text{TF}&= \frac{W_\text{in}}{W_0}
+\end{align*}
+For the exponential horn, the previous result is used, giving \(\text{TF} = \sqrt{1-(f^{(c)}/f)^2}\) for above the cutoff frequency, and \(0\) for below the cutoff frequency. This is the transmission factor for both the pressure source and the velocity source.
+ </p>
+</div>
+</li>
+
+<li> For a conical horn, the horn height grows linearly with distance, i.e., \(y = mx\). Write the Webster horn equation for the conical horn. Read off the solution to this partial differential equation. What is the impedance of this horn in rectangular form? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol6')">[answer]</span>
+<div id="7sol6" class="expandable-content" style="color: #0000A0;">
+<p> The cross-sectional area is \(S(x) = \pi x^2\), and thus \(d S/dx = 2\pi x\). Thus the Webster horn equation
+\begin{align*}
+\frac{\partial^2 p}{\partial x^2} + \frac{2}{x}\frac{\partial p}{\partial x} = \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2}\,.
+\end{align*}
+The solution to this PDE is immediately read off as spherical waves in \(x\). </p>
+
+<p>The input impedance of this horn is given by the spherical wave impedance in rectangular form found in chapter 1, where \(x=x_0\) corresponds to the location of the mouth: 
+\[Z_\text{in}/\rho_0 c_0 = \frac{jk_0x_0 + (k_0x_0)^2}{1 +( k_0x_0)^2}\]
+</p>
+</div>
+</li>
+
+<li> Find the input power \(W_\text{in}\) from a velocity source of a conical horn, and write the result in terms of the power in a plane waveguide of constant cross section \(W_0 = \frac{1}{2}\rho_0c_0 S_0 u_0^2\). How does this result change for a <i>pressure</i> source? Also find the transmission factor for both velocity and pressure sources. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol7')">[answer]</span>
+<div id="7sol7" class="expandable-content" style="color: #0000A0;">
+<p> The power for the velocity source is 
+\begin{align*}
+W_\text{in}&= \frac{W_0}{\rho_0c_0}\Re (Z_\text{in})\\
+&= W_0 \frac{(k_0x_0)^2}{1 +( k_0x_0)^2}\\
+\implies \text{TF} &=  \frac{(k_0x_0)^2}{1 +( k_0x_0)^2}
+\end{align*}
+Meanwhile, the power for the pressure source is
+\begin{align*}
+W_\text{in}&= W_0\rho_0c_0\Re (1/Z_\text{in})\\
+&= W_0 \\
+\implies \text{TF} &=  1
+\end{align*}
+ </p>
+</div>
+</li>
+
+<li> Does the conical horn give rise to dispersion? For what frequencies can the conical horn be used? At low frequencies, is it better to use a conical horn driven by a pressure source or a velocity source?
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol8')">[answer]</span>
+<div id="7sol8" class="expandable-content" style="color: #0000A0;">
+<p> The conical horn does not give rise to dispersion, because \(d\omega/dk =1\) for spherical waves. The conical horn can be used for all frequencies. At low frequencies, it is better to use a conical horn driven by a pressure source, because \(\text{TF} =  1\) for all frequencies.
+</p>
+</div>
+</li>
+
+<li> What is an advantage and a disadvantage of the catenoidal horn, which has the height profile \(y(x)= y_0\cosh \frac{x}{h}\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('7sol9')">[answer]</span>
+<div id="7sol9" class="expandable-content" style="color: #0000A0;">
+<p>The catenoidal horn, which must be treated using the WKB method (not covered in class)  has the advantage of having vanishing slope at \(x=0\), which allows for it to be joined smoothly to a tube of radius \(y_0\). This eliminates reflections from the junction of the tube to the horn. A disadvantage is that the horn, like an exponential horn, has a cutoff frequency, below which the horn does not propagate waves. 
+</p>
+</div>
+</li>
+
+  
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-6.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-8.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

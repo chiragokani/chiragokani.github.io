@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Impedance tubes and subwavelength impedances</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="4">Chapter 4: Impedance tubes and \(k\ell \ll 1 \) impedances</h2>
+<ol>
+
+<li>&#9784; How is the impedance \(Z_n\) of an unknown material measured in an impedance tube, where the impedance of the medium (e.g., air) is \(Z_0\)?  
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol1')">[answer]</span>
+<div id="4sol1" class="expandable-content" style="color: #0000A0;">
+<p> Start with the general solution \(P(x)\) and  \(U(x)\) of the 1D Helmholtz equation for plane traveling waves. The general solution for pressure is
+\[P = Ae^{-jkx} + Be^{jkx},\]
+and division by \(Z_0\), the impedance of the medium, gives the particle velocity:
+\[U = \frac{A}{Z_0} e^{-jkx} - \frac{B}{Z_0}e^{jkx}\,.\]
+Define \(x=l-d\), where \(x=0\) corresponds to the location of the source, and \(d=0\) corresponds to the location of the load, i.e., \(d\) is a coordinate pointing in the opposite direction as \(x\) and offset by a distance \(l\). The pressure and particle velocity become
+\begin{align*}
+P &= Ae^{-jkl} e^{jkd} + Be^{jkl} e^{-jkd}\\
+U &= \frac{A}{Z_0} e^{-jkl}e^{jkd} - \frac{B}{Z_0}e^{jkl}e^{-jkd}
+\end{align*}
+Call \(P_i \equiv A e^{-jkl}\) and \(P_r \equiv B e^{jkl}\). Then the above becomes
+\begin{align*}
+P &= P_i e^{jkd} + P_r e^{-jkd}\\
+&= P_i e^{jkd} (1 + R\, e^{-2jkd})\,.\\
+U&= \frac{P_i}{Z_0} e^{jkd} - \frac{P_r}{Z_0} e^{-jkd}\\
+&= \frac{P_i}{Z_0}e^{jkd} (1 - Re^{-2jkd}) 
+\end{align*}
+Note from the above that \(P(d=0) \,=\, P_i (1 + R)\), and that \(U(d=0) \,=\, \frac{P_i}{Z_0} (1 - R)\). Calculate \(P(d=0)/U(d=0)\) to find \(Z_n\), the impedance of the load, in terms of the reflection coefficient \(R\):
+\begin{align*}
+Z_n = Z_0 \frac{1+R}{1-R}
+\end{align*}
+If \(R\) (both magnitude and phase) can be found, then the complex impedance \(Z_n\) of the unknown load can be found. </p>
+</div>
+</li>
+
+<li> How is the <i>magnitude</i> \(|R|\) of the reflection coefficient \(R\) found? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol2')">[answer]</span>
+<div id="4sol2" class="expandable-content" style="color: #0000A0;">
+<p>\(|R|\) is found by measuring the "standing wave ratio," or \(\text{SWR}\). The standing wave ratio is the ratio \(|P_\text{max}|/|P_\text{min}|\), where \(P_\text{max} = P_i(1+R)\) is the maximum pressure magnitude and where \(P_\text{min} = P_i(1-R)\) the minimum pressure magnitude. Therefore, \[\text{SWR} = \frac{1+|R|}{1-|R|}.\] This relation is inverted for \(|R|\):
+\[|R| = \frac{\text{SWR} - 1}{\text{SWR}+ 1}\,.\]
+</p>
+</div>
+</li>
+
+<li> How is the <i>phase</i> \(\psi\) of \(R = |R|e^{j\psi}\) determined? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol2b')">[answer]</span>
+<div id="4sol2b" class="expandable-content" style="color: #0000A0;">
+<p> Take the magnitude of \(P=P_ie^{jkd}(1-R e^{-2jkd})\) by writing \(R = \rho e^{j\psi}\):
+\begin{align*}
+|P| &= P_i\sqrt{(1+ \rho e^{j(\psi - 2kd)})(1+ \rho e^{-j(\psi - 2kd)})} \\
+&= P_i\sqrt{1 + \rho^2 + \rho [e^{-j({\psi - 2kd})} + e^{j(\psi - 2kd)}]}\\
+&= P_i\sqrt{1 + \rho^2 + 2\rho \cos (\psi - 2kd) }\,.
+\end{align*}
+Apparently, \(|P|\) attains a maximum for \(\cos (\psi - 2kd) = 1\), or 
+\[(kd)_\text{max} = \frac{\psi}{2},\]
+and a minimum for \(\cos (\psi - 2kd) = 0\), or 
+\[(kd)_\text{min} = \frac{\psi}{2}  \pm \frac{\pi}{2}\,. \]
+Thus the phase of reflection coefficient is found by finding the distance \(d\) to either the maximum or the minimum in the pressure field. 
+
+</p>
+</div>
+</li>
+
+
+<li> How is the attenuation coefficient \(\alpha\) measured?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol2c')">[answer]</span>
+<div id="4sol2c" class="expandable-content" style="color: #0000A0;">
+<p>  
+By definition, \(\alpha\) is the ratio of absorbed to incident power. Note that by energy conservation, the incident power is the sum of reflected power and the absorbed power. Thus,
+\[\alpha = \frac{W_\text{absorbed}}{W_\text{incident}} = \frac{W_\text{incident}-W_\text{reflected}}{W_\text{incident}} = 1- \frac{W_\text{reflected}}{W_\text{incident}} = 1 - |R|^2\,.\]
+</p>
+</div>
+</li>
+
+<li> What is the relationship between impedance, reactance, resistance, inductance, and capacitance?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol3')">[answer]</span>
+<div id="4sol3" class="expandable-content" style="color: #0000A0;">
+<img src="impedance.png" width="720" height="519" style = "display: block; margin-left: auto; margin-right: auto;"/>
+</div>
+</li>
+
+<li> For a pressure source, the impedance at the resonance frequency goes to what quantity? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol4')">[answer]</span>
+<div id="4sol4" class="expandable-content" style="color: #0000A0;">
+<p>  
+For a pressure source, the impedance goes to \(0\) for resonance. A small amount of effort causes a huge flow, and impedance is effort/flow. 
+</p>
+</div>
+</li>
+
+<li> For a velocity source, the impedance at the resonance frequency goes to what quantity?  
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol5')">[answer]</span>
+<div id="4sol5" class="expandable-content" style="color: #0000A0;">
+<p>  
+For a velocity source, the impedance goes to \(\infty\) for resonance. A small amount of flow at the source results in a huge pressure field. 
+</p>
+</div>
+</li>
+
+<li> Derive \(Z_\text{ac}\) for mass-like and spring-like behaviours, appealing to Newton's law of motion and Hooke's constitutive relation.
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol6')">[answer]</span>
+<div id="4sol6" class="expandable-content" style="color: #0000A0;">
+<p>  
+Recall that the acoustic impedance is \(Z_\text{ac} = p/q\), where \(q = Su\) is the volume velocity. Therefore, for mass-like behaviour,
+\[Z_\text{ac} = \frac{p}{Su} = \frac{f/S}{Su} = \frac{M \dot{u}}{S^2 u} = \frac{j\omega M}{S^2} = j\omega M_\text{ac}\,.\]
+Meanwhile, for spring-like behaviour,
+\[Z_\text{ac} = \frac{p}{Su} = \frac{f/S}{S\dot{x}} = \frac{K x}{S^2 j\omega x} = \frac{K }{S^2 j\omega } = \frac{K_\text{ac} }{j\omega } =1/j\omega C_\text{ac}\,,\]
+where \(M_\text{ac}\) is the acoustic mass, \(K_\text{ac}\) is the acoustic stiffness, and \(C_\text{ac}\) is the acoustic compliance.
+</p>
+</div>
+</li>
+
+<li> In question (1) of this section, \(Z_n\) was calculated by evaluating \(P/U\) at \(d=0\) (or \(x = L\) which corresponds to the location of the load). Now calculate the input impedance \(Z_\text{in}\), which is \(P/U\) at \(d=L\) (or \(x=0\)) in terms of \(Z_n\), the impedance of the load. Let \(P(x) = A \cos{kx} + B\sin{kx}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol3a')">[answer]</span>
+<div id="4sol3a" class="expandable-content" style="color: #0000A0;">
+<p>  
+Using the momentum equation, the particle velocity is found:
+ \[U(x) = -\frac{1}{j\omega \rho_0} \frac{dP}{dx} = \frac{A}{j\rho_0 c_0} \sin kx - \frac{B}{j\rho_0 c_0} \cos kx\,.\]
+<i>Why must the momentum equation must be used here, while the impedance relation could be used in problem (1)? It's because these are standing waves (left-going and right-going components are already baked in), while those were traveling waves (which superpose to give standing waves). The impedance relation \(p/u  = Z\) applies to what type of wave: standing or traveling?</i>
+</p>
+<p>
+The coefficients \(A\) and \(B\) are found by applying the boundary conditions. At \(x=L\),
+\begin{align*}
+    Z_n = \frac{P(L)}{U(L)} &= j\rho_0 c_0 \frac{A\cos kL + B\sin kL}{A\sin kL - B\cos kL}\\
+    &= j\rho_0 c_0 \frac{A/B + \tan kL}{A/B \tan kL - 1}\\
+    \implies \frac{A}{B} &= j \frac{Z_n/\rho_0 c_0 + j\tan kL}{1 + j(Z_n/\rho_0 c_0) \tan kL}\,.
+\end{align*}
+Meanwhile, at \(x=0\),
+\begin{align*}
+    Z_\text{in} = \frac{P(0)}{U(0)} &= -j\rho_0 c_0 \frac{A}{B}\\
+    \implies \frac{A}{B} &= j \frac{Z_\text{in}}{\rho_0c_0}
+\end{align*}
+Setting the above two equations for \(\frac{A}{B}\) equal and solving for \(\frac{Z_\text{in}}{\rho_0 c_0}\) gives the input impedance in dimensionless form:
+\[\frac{Z_\text{in}}{\rho_0 c_0} = \frac{Z_n/\rho_0 c_0 + j\tan kL}{1 + j(Z_n/\rho_0 c_0) \tan kL}  \,.  \]
+</p>
+</div>
+</li>
+
+
+<li> In the previous problem it was found that the input impedance in terms of the impedance of the load is 
+\begin{equation}\label{Input impedance}\tag{2}
+\frac{Z_\text{in}}{\rho_0 c_0} = \frac{Z_n/\rho_0 c_0 + j\tan kL}{1 + j(Z_n/\rho_0 c_0) \tan kL}   \,. 
+\end{equation}
+What are the three special cases that follow from equation (\ref{Input impedance})?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol7as')">[answer]</span>
+<div id="4sol7as" class="expandable-content" style="color: #0000A0;">
+<p>  
+<ol>
+<li>For \(Z_n = 0\) (i.e., pressure release), \[Z_\text{in} = j \rho_0 c_0 \tan kL\,. \]</li>
+<li>For \(|Z_n| \to \infty\) (i.e., rigid) \[Z_\text{in} = -j \rho_0 c_0 \cot kL\,.\]</li>
+<li> For \(Z_n = \rho_0 c_0\) (i.e., impedance matching), \[Z_\text{in} = 1\]</li>
+<ol>
+</p>
+</div>
+</li>
+
+
+<li> Use equation (\ref{Input impedance}) to derive \(Z_\text{in}\) for a short closed cavity. "Short" means \(kL \ll 1\) and "closed" means \(Z_n \to \infty\). Find the <i>acoustic impedance</i> also.
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol7')">[answer]</span>
+<div id="4sol7" class="expandable-content" style="color: #0000A0;">
+<p>  
+Note that \(\tan kL \simeq kL \) for small \(kL\) and equation (\ref{Input impedance}) becomes \(Z_\text{in} = -j\rho_0c_0\cot{kL}\) for \(Z_n \to \infty\). Then, \(Z_\text{in} = \frac{\rho_0c_0}{jkL}\), or \[Z_\text{in} = \frac{\rho_0 c_0^2}{j\omega L}\,.\]
+However, the quantity that should be memorized for acoustic circuit analysis is the <i>acoustic impedance</i>, \[Z_\text{ac} = Z_\text{sp ac}/S = \rho_0 c_0^2/{j\omega L S^2} = \rho_0 c_0^2/{j\omega V}\,.\] See question (5) for the impedances that should be memorized.
+</p>
+</div>
+</li>
+
+<li> What is the end correction for a flanged tube? Qualitatively describe the origin of the end correction. What about the end correction for an unflanged tube?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol8')">[answer]</span>
+<div id="4sol8" class="expandable-content" style="color: #0000A0;">
+<p>  
+For a flanged tube, the end correction is \(\Delta L = 8a/3\pi\). That is to say, the effective length of a flanged tube is \(L + \Delta L\), and the effective length of an orifice is \(2\Delta L\). This end correction originate from the fact that the impedance due to a circular piston contains resistive (real) and reactive (imaginary) parts, of which the reactance dominates. Therefore, when sound arrives at the open end of a tube, "it sees, not zero load, but rather a load consisting mainly of a short continuation of the tube, \(\Delta L = 8a/3\pi\)" (Blackstock, pg. 151-152). 
+</p>
+<p>  
+The unflanged tube has an end correction of \(\Delta L = 0.6133a\). This is a 20th-century result (Schwinger).
+</p>
+</div>
+</li>
+
+<li>Use equation (\ref{Input impedance}) to find the input impedance \(Z_\text{in}\) for short open cavity, where "short" means \(kL \ll 1\) and "open" means \(Z_n \to 0\). Also find the <i>acoustic impedance</i>.
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol9')">[answer]</span>
+<div id="4sol9" class="expandable-content" style="color: #0000A0;">
+<p>  
+Equation (\ref{Input impedance}) in these limits reads \[Z_\text{in} = j\rho_0 c_0 kL',\] where \(L' = L + \Delta L\) (the end correction). The version that should be memorized, though, is the <i>acoustic impedance</i>, which is
+\[Z_\text{ac} = j\rho_0 c_0 kL/S\,.\]
+</p>
+</div>
+</li>
+
+<li> Calculate the acoustic impedance of a Helmholtz resonator. What is the resonance frequency for a pressure source?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol10')">[answer]</span>
+<div id="4sol10" class="expandable-content" style="color: #0000A0;">
+<p>  
+The Helmholtz resonator consists of capacitave (from the chamber), inductive (from the mass in the neck), and resistive (from the opening) elements. The three corresponding impedances should be added in series since the components appear in series in the resonator (bad reasoning, I know):
+\begin{align*}
+Z_\text{ac} &= Z_\text{ac}^{\text{cap}} +  Z_\text{ac}^{\text{ind}} +   Z_\text{ac}^{\text{res}}\\
+&= \frac{\rho_0c_0^2}{j\omega V} + \frac{j\omega \rho_0 L'}{S} + \frac{\rho_0 c_0 k^2}{2\pi}\,.
+\end{align*}
+For a pressure source, the resonance frequency is found by setting the impedance (neglecting resistance) to \(0\): 
+\begin{align*}
+\frac{\rho_0c_0^2}{j\omega V} + \frac{j\omega \rho_0 L'}{S} &= 0\\
+\omega_0 &= c_0 \sqrt{S/L'V}\,.
+\end{align*}
+</p>
+<p><i>How would you find the resonance frequency for a velocity source, for which \(Z_\text{in} = \infty\)?</i> </p>
+</div>
+</li>
+
+<li> Provide a few definitions of the quality factor \(Q\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol10a')">[answer]</span>
+<div id="4sol10a" class="expandable-content" style="color: #0000A0;">
+<p> One common definition is
+\[Q = \frac{\omega}{\Delta \omega}\]
+where \(\Delta \omega\) is the bandwidth. </p>
+
+<p>Another definition is 
+\[Q = \frac{P_\text{max}}{P_\text{min}}\,,\]
+which is subtly different from the definition of \(\text{SWR}\). (But how? I actually don't know. Is it that Q is a complex quantity here, while the SWR is real?)</p>
+
+<p>Yet another definition (Dr. Wilson's favourite), is 
+\[Q = \text{ number of oscillations required to return to steady state }\]
+</p>
+</div>
+</li>
+
+<li> Write the impedance of a bubble using the low-\(ka\) approximation of the spherical wave impedance and find the resonance frequency in terms of the ratio of specific heats, \(\gamma\). <i>Note from the definition of adiabatic sound speed that \(\rho_0 c_0^2 = \gamma p_0\). </i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('4solbubble')">[answer]</span>
+<div id="4solbubble" class="expandable-content" style="color: #0000A0;">
+<p>  
+The spherical wave impedance is 
+\begin{align*}
+Z &= \frac{\rho_0 c_0 }{1 + 1/jka}\\
+&\to jka\rho_0c_0, \quad ka \ll 1\,.
+\end{align*}
+This is a specific acoustic impedance. To obtain an acoustic impedance, divide by \(S = 4\pi a^2\):
+\begin{align}\label{bubbblers}\tag{i}
+Z_\text{ac}^\text{ind} = \frac{j\omega a\rho_0}{4 \pi a^2} = \frac{j\omega \rho_0}{4\pi a}
+\end{align}
+Noting that this in the form of a mass-like impedance, a compliance-like impedance is sought to set up a resonance phenomenon: 
+\begin{align}
+Z_\text{ac}^\text{cap} &= \frac{\rho_0 c_0^2}{j\omega V} = \frac{3\rho_0 c_0^2}{4j\omega \pi a^3}\,.\label{bubbbblers}\tag{ii}
+\end{align}
+The resonance frequency is found by combining equations (\ref{bubbblers}) and (\ref{bubbbblers}) and setting the total impedance equal to \(0\). At this juncture, also note that \(\rho_0c_0^2 = \gamma p_0\), since an expression involving this quantity is requested in the problem:
+\begin{align*}
+Z_\text{ac}^\text{tot} =  \frac{3\gamma p_0}{4j\omega \pi a^3} + \frac{j\omega \rho_0}{4\pi a} = 0
+\end{align*}
+Solving for \(\omega\) gives
+\begin{align*}
+\omega &= \frac{1}{a} \sqrt{\frac{3\gamma p_0}{\rho_0}}\\
+f&= \frac{1}{2\pi a} \sqrt{\frac{3\gamma p_0}{\rho_0}}\,.
+\end{align*}
+This is a decent approximation because \(ka = 0.014\) for an air-water bubble. </p>
+</div>
+</li>
+
+<li> What is the acoustic impedance of an orifice (a hole in a plate)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol11')">[answer]</span>
+<div id="4sol11" class="expandable-content" style="color: #0000A0;">
+<p>  
+The orifice has a resistive part due to the opening on both ends, as well as an inductive part:
+\begin{align*}
+Z_{\text{ac}} = \frac{2\rho_0c_0k^2}{2\pi} +  \frac{j\omega\rho_0 L'}{S}\,,
+\end{align*}
+where the effective length of the orifice is \(L' = 2\Delta L\) (because the orifice has no length of its own), where \(\Delta L = 8a/3\pi\). 
+</p>
+</div>
+</li>
+
+
+<li>  Derive the \(R\), \(T_2\), and \(T_3\) for a side branch, where each pipe has a different cross-sectional area and contains a different medium. Let the incident wave originate from a region with cross-sectional area \(S_1\), and let where the two branches have cross-sectional area of \(S_2\) and \(S_3\) respectively.
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol13')">[answer]</span>
+<div id="4sol13" class="expandable-content" style="color: #0000A0;">
+<p>  
+Chris has an nice way of doing this using circuit analysis. Here is how to find the reflection and transmission coefficients using the force-free boundary condition and continuity of volume velocity:
+</p>
+
+<p>
+At the junction, there are two conditions, as in the case with a single change of cross-sectional surface area. The first condition is that there is no force at the junction, and the second condition is that volume velocity at the junction is continuous:
+\begin{align*}
+p_i + p_r = p_{t2} = p_{t3}\\
+q_i + q_r = q_{t2} + q_{t3}
+\end{align*}
+Divide the first equation by \(p_i\) and call \(p_{t2}/p_i = p_{t3}/p_i \equiv T\):
+\begin{align*}
+1 + R = T\,.
+\end{align*}
+Meanwhile, the second equation is written as
+\[S_1 u_i  + S_1u_r = S_2 u_{t2} + S_3 u_{t3}\]
+Noting that \(Z = p/u\), gives
+\begin{align*}
+S_1 \frac{p_i}{Z_1}  - S_1\frac{p_r}{Z_1} = S_2 \frac{p_{t2}}{Z_2} + S_3 \frac{p_{t3}}{Z_3}\,.
+\end{align*}
+Dividing by \(p_i\) results in
+\begin{align*}
+\frac{S_1}{Z_1}(1  - R) = T \frac{S_2}{Z_2} +  T \frac{S_3}{Z_3}\,.
+\end{align*}
+The above quantities are written in terms of their <i>acoustic impedances</i>.
+\begin{align*}
+1  - R &= Z_\text{ac,1} T ( Z_\text{ac,2}^{-1} +  Z_\text{ac,3}^{-1})
+\end{align*}
+The above equation is added to \(1+R = T\):
+\begin{align*}
+2 & = Z_\text{ac,1} T ( Z_\text{ac,2}^{-1} +  Z_\text{ac,3}^{-1}) + T\\
+2&= T  [1 + Z_\text{ac,1}  ( Z_\text{ac,2}^{-1} +  Z_\text{ac,3}^{-1})] 
+\end{align*}
+Solving for \(T\) gives
+\begin{align*}
+T &= \frac{2Z_\text{ac,1}^{-1}}{Z_\text{ac,1}^{-1} +  Z_\text{ac,2}^{-1} +  Z_\text{ac,3}^{-1}} 
+\end{align*}
+Thus the reflection coefficient is 
+\begin{align*}
+R &= T -1 = \frac{2Z_\text{ac,1}^{-1}}{Z_\text{ac,1}^{-1} +  Z_\text{ac,2}^{-1} +  Z_\text{ac,3}^{-1}} - 1\\
+&=\frac{Z_\text{ac,1}^{-1} -  Z_\text{ac,2}^{-1} -  Z_\text{ac,3}^{-1}}{Z_\text{ac,1}^{-1} +  Z_\text{ac,2}^{-1} +  Z_\text{ac,3}^{-1}}\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>  How can a Helmholtz resonator be used as a filter?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol14')">[answer]</span>
+<div id="4sol14" class="expandable-content" style="color: #0000A0;">
+<p>  
+Let a Helmholtz resonator be attached a side branch to a pipe, and let the medium be uniform. Thus \(Z_\text{ac,1} = Z_\text{ac,3}\) the reflection coefficient is 
+\begin{align*}
+R &=-\frac{Z_\text{ac,2}^{-1}}{2Z_\text{ac,1}^{-1} +  Z_\text{ac,2}^{-1}}\\
+&= -\frac{Z_\text{ac,2}^{-1} Z_\text{ac,2}} {2Z_\text{ac,1}^{-1}Z_\text{ac,2} +  Z_\text{ac,2}^{-1} Z_\text{ac,2}}\\
+&= -\frac{1}{2Z_\text{ac,1}^{-1}Z_\text{ac,2} +  1}
+\end{align*}
+The impedance of the Helmholtz resonator goes to \(0\) at resonance. Thus the reflection coefficient becomes \(R = -1\). Therefore, at the resonance frequency of the Helmholtz resonator, all of the sound is sent back down the pipe from which it originated. 
+</p>
+</div>
+</li>
+
+<li> The reflection and transmission coefficients for the three-medium problem are
+\begin{align}
+R &= \frac{(1-Z_1/Z_3)\cos k_2\ell + j(Z_2/Z_3-Z_1/Z_2)\sin k_2\ell}{(1+Z_1/Z_3)\cos k_2\ell + j(Z_2/Z_3+Z_1/Z_2)\sin k_2\ell}\label{3R} \tag{3}\\
+T &= \frac{2}{(1+Z_1/Z_3)\cos k_2\ell + j(Z_2/Z_3+Z_1/Z_2)\sin k_2\ell}\label{3T} \tag{4}
+\end{align}
+Find \(R\) and \(T\) for the special cases of \(k_2 \ell = n\pi\) and \(k_2 \ell = (2n-1)\pi/2\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol15')">[answer]</span>
+<div id="4sol15" class="expandable-content" style="color: #0000A0;">
+<p>For \(k_2 \ell = n\pi\), equations (\ref{3R}) and (\ref{3T}) become  
+\begin{align*}
+R &= \frac{(1-Z_1/Z_3)}{(1+Z_1/Z_3)}\\
+T &= (-1)^n\frac{2}{(1+Z_1/Z_3)}\,.
+\end{align*}
+For \(k_2 \ell = (2n-1)\pi/2\):
+\begin{align*}
+R &= \frac{Z_2/Z_3-Z_1/Z_2}{Z_2/Z_3+Z_1/Z_2}\\
+T &= j(-1)^n\frac{2}{Z_2/Z_3+Z_1/Z_2}\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> How do equations (\ref{3R}) and (\ref{3T}) change for a homogeneous medium of three different cross-sectional areas \(S_1\), \(S_2\), and \(S_3\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol15a')">[answer]</span>
+<div id="4sol15a" class="expandable-content" style="color: #0000A0;">
+<p> The reflection and transmission coefficients become 
+\begin{align*}
+R &= \frac{(1-S_3/S_1)\cos k\ell + j(S_3/S_2-S_2/S_1)\sin k\ell}{(1+S_3/S_1)\cos k\ell + j(S_3/S_2+S_2/S_1)\sin k\ell}\\
+T &= \frac{2}{(1+S_3/S_1)\cos k\ell + j(S_3/S_2+S_2/S_1)\sin k\ell}
+\end{align*}
+
+</p>
+</div>
+</li>
+
+
+
+<li>Use equation (\ref{3T}) to find \(T\) and \(\text{TL}\) for the case that \(k_2 \ell \ll 1\) and \(Z_2 \gg Z_1 = Z_3\). What might these conditions represent physically? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol16')">[answer]</span>
+<div id="4sol16" class="expandable-content" style="color: #0000A0;">
+For \(k_2 \ell \ll 1\), equation (\ref{3T}) becomes
+\begin{align*}
+T &= \frac{2}{(1+1) + j(Z_2/Z_1)k_2\ell}\\
+&=\frac{2}{2 + jk_2\ell\rho_2c_2/\rho_0c_0}\\
+&=\frac{2}{2 + j\omega\ell\rho_2/\rho_0c_0}\\
+&=\frac{1}{1 + j\omega m/2\rho_0c_0}
+\end{align*}
+where \(\ell\rho_2\) has been identified as the mass of medium \(2\). The transmission loss is therefore
+\[\text{TL} = -10 \log_{10}\tau = 10 \log_{10} \bigg\lbrack 1 + \bigg(\frac{\omega m}{2\rho_0 c_0} \bigg)^2\bigg\rbrack \]
+These conditions represent a thin wall or barrier of \(m = \text{mass}/\text{unit area}\) in air.
+  </p>
+</div>
+</li>
+
+
+<li>Take the high-frequency limit of the \(\text{TL}\) obtained in the previous quesiton. How many \(\text{SPL dB}/\text{octave}\) does this correspond to? What is this "law" referred to as? Which frequencies therefore tend to pass through a wall? How much more massive must the wall be to make the sound passing through a wall half as loud?
+<span class="expandable-toggle" onclick="toggleExpandableContent('4sol17')">[answer]</span>
+<div id="4sol17" class="expandable-content" style="color: #0000A0;">
+For \(\omega m/2\rho_0c_0 \gg 1\), equation the transmission loss becomes
+\begin{align*}
+\text{TL} &\simeq  10 \log_{10} \bigg\lbrack \bigg(\frac{\omega m}{2\rho_0 c_0} \bigg)^2\bigg\rbrack\\
+&= 10 \log_{10} \bigg(\frac{\pi f m}{\rho_0 c_0} \bigg)^2\\
+&= 20 \log_{10} \frac{\pi f m}{\rho_0 c_0}
+\end{align*}
+Thus the transmission loss is \(20\log_{10} 2 = 6 \text{ dB}/\text{octave}\). This is the so-called <i>mass law</i> for normal incidence. So the bass frequencies are heard through the wall. The criterion "half as loud" roughly corresponds to \(12 \text{ dB} \simeq 20 \log_{10} 4\), which would require the wall to be four times as massive.
+  </p>
+</div>
+</li>
+
+
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-3.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-5.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

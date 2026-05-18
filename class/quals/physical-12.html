@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Waveguides</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+
+<div class="textbox">
+<h2 id="12">Chapter 12: Waveguides</h2>
+<ol>
+
+
+<li> Find the eigenmodes, cutoff frequency, phase speed, and group speed for an infinite rectangular duct of length \(a\) and height \(b\), where \(\partial p/\partial x = 0\) from \(x \in [0,a]\) and \(\partial p/\partial y = 0\) from \(y \in [0,b]\). For what drive frequencies \(\omega\) does the sound propagate? Why does the drive frequency \(\omega\) not bear the indices of the modes?
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol1')">[answer]</span>
+<div id="12sol1" class="expandable-content" style="color: #0000A0;">
+<p>
+The general solution is 
+\begin{align*}
+p(x,y,z,t) = \begin{Bmatrix}
+\cos k_xx \\ \sin k_xx
+\end{Bmatrix}
+\begin{Bmatrix}
+\cos k_yy \\ \sin k_yy
+\end{Bmatrix}
+e^{j(\omega t -k_zz)}\,.
+\end{align*}
+where the relationship between wavenumbers is 
+\begin{align*}
+k_z = \sqrt{k^2 - k_x^2 - k_y^2}\,.
+\end{align*}
+Applying the boundary conditions at \(x =0\) and \(y=0\) eliminates the \(\sin k_xx\) and \(\sin k_yy\) terms, and applying the boundary conditions at \(x = a\) and \(y=b\) gives
+\begin{alignat*}{2}
+\sin k_x a &= 0 \quad &&\implies\quad  k_x = \frac{m\pi}{a}\\
+\sin k_y b &= 0 \quad &&\implies\quad  k_y = \frac{n\pi}{b}
+\end{alignat*}
+Thus the projection of the wavenumber in the \(z\)-direction is 
+\begin{align}\tag{i}\label{beasdfsd}
+\beta_{mn} = \sqrt{(\omega/c_0)^2 - (m\pi/a)^2 - (n\pi/b)^2}\,.
+\end{align}
+\(\omega\) above does not bear the modal indices \(m\) and \(n\) because it is the frequency at which the system is <i>driven</i>. In other words, \(\omega\) is not an <i>eigenfrequency</i>. The cutoff frequency, however, <i>does</i> bear the indices \(m\) and \(n\) because it is depends purely on the system, i.e., it is independent of the nature of the excitation. The cutoff frequency is the frequency below which \(\beta_{mn}\) is evanescent. It is found by setting the radicand (''the thing under the square root'') equal to 0 and solving for \(\omega^{(c)}\):
+\begin{align*}
+0&= {[\omega^{(c)}/c_0]^2 - (m\pi/a)^2 - (n\pi/b)^2}\\
+\omega^{(c)}_{mn} &= c_0 \sqrt{(m\pi/a)^2 + (n\pi/b)^2}\\
+f^{(c)}_{mn} &= \frac{c_0}{2} \sqrt{(m/a)^2 + (n/b)^2}\,.
+\end{align*}
+Thus, since \([\omega^{(c)}_{mn}]^2/c_0^2 =  (m\pi/a)^2 + (n\pi/b)^2\), equation (\ref{beasdfsd}) can be written as 
+\begin{align*}
+\beta_{mn} &= \frac{1}{c_0}\sqrt{\omega^2 - [\omega^{(c)}_{mn}]^2}\\
+&=  \frac{\omega}{c_0}\sqrt{1 - [\omega^{(c)}_{mn}/\omega]^2}
+\end{align*}
+From the expression above, it can be seen that \(\beta_{mn}\) is real and positive if the drive frequency \(\omega\) is greater than the cutoff frequency \(\omega^{(c)}_{mn}\), i.e., <i>the \(m\, n^\text{th}\) mode cannot propagate below the \(m\, n^\text{th}\) cutoff frequency.</i> </p>
+
+<p>
+Meanwhile, the phase speed is \(c_\text{ph} = \omega/k_z = \omega/\beta_{mn}\):
+\begin{align*}
+c_\text{ph} = \frac{c_0 }{\sqrt{1 - [\omega^{(c)}_{mn}/\omega]^2}}\,.
+\end{align*}
+The group speed is \(c_\text{gr} = {d\omega}/{d\beta_{mn}}\): 
+\begin{align*}
+c_\text{gr} &= \bigg[\frac{d\beta_{mn}}{d\omega}\bigg]^{-1} \\
+&= \bigg[\frac{1}{c_0 \sqrt{1-(\omega^{c}_{mn}/\omega)^2}}\bigg]^{-1}\\
+&= c_0 \sqrt{1-(\omega^{c}_{mn}/\omega)^2}
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> Find the eigenmodes, cutoff frequency, phase speed, and group speed for an infinite cylindrical duct of radius \(a\), where \(\partial p/\partial r = 0\) at \(r=a\). For what drive frequencies \(\omega\) does the sound propagate? Why does the drive frequency \(\omega\) not bear the indices of the modes?
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol2')">[answer]</span>
+<div id="12sol2" class="expandable-content" style="color: #0000A0;">
+<p>
+The general solution is 
+\begin{align*}
+p(r,\theta,z,t) = J_m(k_rr) \begin{Bmatrix}
+\cos m\theta\\\sin m\theta
+\end{Bmatrix}
+e^{j(\omega t -k_zz)}\,.
+\end{align*}
+where the relationship between wavenumbers is 
+\begin{align*}
+k_z = \sqrt{k^2 - k_r^2}\,.
+\end{align*}
+Applying the boundary condition at \(x =a\)  gives
+\begin{align*}
+J'_m(k_ra) = 0 \quad \implies \quad k_r = \frac{\alpha'_{mn}}{a}
+\end{align*}
+Thus the projection of the wavenumber in the \(z\)-direction is 
+\begin{align}\tag{i}\label{betassldfkjl}
+\beta_{mn} = \sqrt{(\omega/c_0)^2 - ({\alpha'_{mn}}/{a})^2}\,.
+\end{align}
+The cutoff frequency is found by setting 
+\begin{align*}
+0&= {[\omega^{(c)}/c_0]^2 - ({\alpha'_{mn}}/{a})^2}\\
+\omega^{(c)}_{mn} &= c_0 {\alpha'_{mn}}/{a}\\
+f^{(c)}_{mn} &= c_0 {\alpha'_{mn}}/{2\pi a}\,. 
+\end{align*}
+Thus, equation (\ref{betassldfkjl}) can be written as 
+\begin{align*}
+\beta_{mn} &= \frac{1}{c_0}\sqrt{\omega^2 - [\omega^{(c)}_{mn}]^2}\\
+&=  \frac{\omega}{c_0}\sqrt{1 - [\omega^{(c)}_{mn}/\omega]^2}
+\end{align*}
+As is the case for the rectangular duct, the \(m\, n^\text{th}\) mode cannot propagate below the \(m\, n^\text{th}\) cutoff frequency. </p>
+<p>
+The phase and group speeds have the same functional form as for the rectangular waveguide; the expression for the cutoff frequency is the only difference. 
+</p>
+</div>
+</li>
+  
+
+<li>&#9784; Calculate the pressure field due to a baffled circular piston of radius \(b\) positioned with its center on the axis of a cylindrical tube  of radius \(a\). 
+
+<img src="piston_in_tube.png" width="562" height="180" style = "display: block; margin-left: auto; margin-right: auto;"/>
+
+The boundary conditions at \(z=0\) are
+\begin{alignat*}{2}
+u_z &= u_0 e^{j\omega t},\quad &&r\in [0,b]\\
+u_z &= 0,\quad &&r\in (b,a]
+\end{alignat*}
+and \(\partial p/\partial r = 0\) at \(r=a\) for all \(z\). Note that \[\int_0^1 J_m(\alpha'_{mn} x )J_m(\alpha'_{mn'} x) \,x\, dx = \frac{1}{2}[1-(m/\alpha'_{mn})^2] J^2_m(\alpha'_{mn'}) \delta_{nn'}\]
+is the orthogonality integral.  
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol3')">[answer]</span>
+<div id="12sol3" class="expandable-content" style="color: #0000A0;">
+<p> 
+First of all, there should be no dependence on \(\theta\), because the piston is positioned on-axis. Thus \(m=0\), and the general solution is
+\begin{align*}
+p(r,z,t) &= \sum_{n}  A_n J_0(k_rr) e^{j(\omega t - k_zz)}
+\end{align*}
+Since \(\partial p/\partial r = 0\) at \(r=a\), 
+\begin{align*}
+J'_0(k_r a) = 0 \quad \implies \quad k_r = \alpha'_{0n}/a\,.
+\end{align*}
+Thus, \(k_z = \beta_n = \sqrt{(\omega/c_0)^2- (\alpha'_{0n}/a)^2}\). Meanwhile, to satisfy the boundary condition at \(z = 0\), the momentum equation is invoked and set equal to the boundary condition:
+\begin{align}
+u^{(z)} &= -\frac{1}{j\omega \rho_0} \frac{\partial p}{\partial z}\notag\\
+&= \frac{1}{\rho_0 c_0 k} \sum_{n} A_n \beta_n J_0(\alpha'_{0n} r/a) e^{j{\omega t}}= \begin{cases}
+u_0 e^{j\omega t},\quad &r\in [0,b]\\
+0,\quad & r\in (b,a]
+\end{cases}\,.\tag{i}\label{sldfkjlkjkljlk}
+\end{align}
+The orthogonality of the Bessel functions is used to find the expansion coefficient \(A_n\). Letting \(x = r/a\) and thus \(dx = dr/a\), the orthogonality integral becomes
+\[\int_0^a J_m(\alpha'_{mn} r/a)J_m(\alpha'_{mn'} r/a) r\, dr = \frac{a^2}{2}[1-(m/\alpha'_{mn})^2] J^2_m(\alpha'_{mn'}x) \delta_{nn'}\,,\]
+which for \(m=0\) reads
+\[\int_0^a J_0(\alpha'_{0n} r/a)J_0(\alpha'_{0n'} r/a) r\, dr = \frac{a^2}{2} J^2_0(\alpha'_{0n'}) \delta_{nn'} \,.\]
+Multiplying both sides of equation (\ref{sldfkjlkjkljlk}) by \(J_0(\alpha'_{0n'} r/a) r dr\) gives
+\begin{align*}
+\frac{1}{\rho_0 c_0 k}\sum_{n} \beta_n A_n J_0(\alpha'_{0n} r/a)J_0(\alpha'_{0n'} r/a) r dr  = \begin{cases}
+u_0 J_0(\alpha'_{0n'} r/a) r dr,\quad &r\in [0,b]\\
+0,\quad & r\in (b,a]
+\end{cases}
+\end{align*}
+Integrate from \(0\) to \(a\):
+\begin{align*}
+\frac{1}{\rho_0 c_0 k}\sum_{n} \beta_n A_n \int_{0}^{a} J_0(\alpha'_{0n} r/a)J_0(\alpha'_{0n'} r/a) r dr  &= \begin{cases}
+u_0 \int_{0}^{a} J_0(\alpha'_{0n'} r/a) r dr,\quad &r\in [0,b]\\
+0,\quad & r\in (b,a]
+\end{cases}\\
+\frac{1}{\rho_0 c_0 k}\sum_{n} \beta_n A_n \int_{0}^{a} J_0(\alpha'_{0n} r/a)J_0(\alpha'_{0n'} r/a) r dr  &= 
+u_0 \int_{0}^{b} J_0(\alpha'_{0n'} r/a) r dr\end{align*}
+The orthogonality relation above for \(m=0\) is used to integrate the left-hand side, and the recursion relation given by equation (11-A-24c) in Blackstock's book is used to integrate the right-hand side:
+\begin{align*}
+\frac{a^2}{\rho_0 c_0 k}\sum_{n} \beta_n A_n \frac{1}{2} J_0^2(\alpha'_{0n'}) \delta_{nn'}  &= u_0 ({a}/{\alpha'_{0n'}})^2  v J_1(v)\bigg\rvert_{v=0}^{v=\alpha'_{0n'}b/a}\\
+\frac{a^2}{2\rho_0 c_0} \frac{\beta_n}{k} A_n J_0^2(\alpha'_{0n})  &=u_0 ab \frac{1}{\alpha_{0n}'} J_1(\alpha'_{0n}b/a)\,
+\end{align*}
+Solve for \(A_n\):
+\begin{align*}
+A_n  = \rho_0 c_0 u_0 \, \frac{b}{a}\,  \frac{2k}{\beta_n\alpha_{0n}'}\,   \frac{J_1(\alpha'_{0n}b/a)}{[J_0(\alpha'_{0n})]^2 }\,.
+\end{align*}
+</p>
+<p>For more on this problem, see <a href="piston_in_tube.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
+</div>
+</li>
+ 
+
+<li>&#9784; Write the <i>spinning mode</i> eigenfunction of the wave equation that has a spiral wavefront. What is the relationship between a spinning mode and a vortex beam? What is the equation for surfaces of constant phase? What is the angular velocity of each mode? What is \(m\) called?
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol4')">[answer]</span>
+<div id="12sol4" class="expandable-content" style="color: #0000A0;">
+<p> This is an unlikely question because it has to do with my research. The spinning mode eigenfunctions are 
+\[p_{mn} = A_{mn} J_m(\alpha'_{mn}r/a) e^{j(\omega t - \beta_{mn} z \pm m\theta)}\,.\]
+In general, a <i>beam</i> refers to the radiation of sound in free space subject to diffraction (see the next section). However, it is possible (theoretically, at least) to consider a beam in free space that does not diffract (although its source condition spans the entire source plane, and although it requires an infinite amount of energy to produce. Such a non-diffracting beam simply consists of an eigenmode of the wave equation, i.e., products of Bessel functions in \(r\) and harmonic functions in \(\theta\) and \(z\). As such, these beams are called <i>Bessel</i> beams. They are attractive to researchers because they remove diffraction from problems and greatly simplify analysis, given the fact that Bessel functions have been studied extensively. 
+</p>
+<p>The relationship between a spinning mode in a waveguide and a Bessel vortex beam is that they have identical mathematical descriptions, though the spinning mode in a waveguide is subject to radial boundary conditions while a vortex beam is unconstrained in \(r\).</p>
+<p>The surface of constant phase is given by \[\omega t - \beta_{mn} z \pm m\theta = \text
+const.\] At a given \(z\), the differential expression is \(\omega dt \pm m d\theta\), and thus the angular velocity of the \(m^\text{th}\) mode is \[\frac{d\theta}{dt} = -\omega/m.\]</p>
+</div>
+</li>
+
+
+
+<li>&#9784; Provide a physical interpretation for the phase speed, cutoff frequency, and group speed in a waveguide. <i>Hint: It is easiest to think of a two-dimensional waveguide for this discussion.</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol6')">[answer]</span>
+<div id="12sol6" class="expandable-content" style="color: #0000A0;">
+<p> Think of rectangular drumhead that is clamped at \(y=0\) and \(y=d\), and that is infinite in the \(x\) direction. Let \(\theta_i\) be the angle of an incident ray, and let the wavelength of the incident ray be \(\lambda_i\), as in Blackstock's figure 6.14:</p>
+<img src="waveguiders_b.png" width="591" height="391" style = "display: block; margin-left: auto; margin-right: auto;"/>
+
+
+<p> Then, the component of this wavelength on the \(x\) axis is \(\lambda_\text{trace} = \lambda_i/\sin\theta_i\). The speed at which this projection travels is \[c_n^\text{ph} = f\lambda_\text{trace} = \frac{f\lambda}{\sin\theta_i} = \frac{c}{\sin\theta_i}  = \frac{c}{\sqrt{1-\cos^2\theta_i}}.\]
+The superposition of the incident and refleted wave creates a vertical standing wave pattern that has \(n\) loops. From geometry, the \(n\) loops have a projection of \(n\lambda/2\) wavelengths on the incident ray. That is, \(\cos\theta_i = n\lambda/2d = nc/2fd.\) Thus the phase velocity is
+\[c_n^\text{ph} = \frac{c}{\sqrt{1-(nc/2fd)^2}}.\] 
+</p>
+<p>
+Therefore, for a given \(n\), as the wavelength is increased, \(\theta_i\) becomes smaller and smaller so as to maintain that \(n\) loops are fit about the \(y\) axis. (Think about that limit by making the distance between crests larger. Then the fact that \(\theta_i\) decreases to maintain the location of the nodes will be clear).</p> 
+
+<p>As \(\theta_i\) approaches \(0\), lines of constant phase sweep the entire \(x\) axis, and thus the phase speed goes to \(\infty\). (Qualitatively, this makes sense, because lines of constant phase will reach \(x = \pm \infty\) instantaneously; quantitatively this can be seen from the fact that \(c_n^\text{ph} = {c}/{\sin\theta_i}\)). The wavelength for which \(\theta_i = 0\) corresponds to the cutoff frequency. Below this frequency, the sound cannot fit the same \(n\) loops in the vertical direction. Therefore, the sound just cannot live with itself. It kills itself off as an evanescent wave.
+</p>
+
+<p>Meanwhile, the physical meaning of the group speed is the projection of the wave velocity along the principal axis of the waveguide: \(c^\text{ph}_n = c\sin\theta_i\).</p>
+</div>
+</li>
+ 
+<li>In what frequency limit does the phase speed \(c_\text{ph}\) in a waveguide appoach the speed of sound in free space, \(c\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol5')">[answer]</span>
+<div id="12sol5" class="expandable-content" style="color: #0000A0;">
+<p> In the high-frequency limit, the phase speed approaches the free-space sound speed. This is because at high frequencies, a standing wave of very high spatial frequency (large \(k\), small \(\lambda\)) exists in the direction perpendicular to the primary axis of the waveguide. To create this interference pattern, the difference between the trace wavelength and the incident wavelength must be small, and thus \(\theta_i\) must be close to \(90^\circ\) (see figure 6.14 from Blackstock in the answer to the previous question). For \(\theta_i \sim 90^\circ\), the incident sound must be predominantly <i>traveling</i> (as opposed to <i>standing</i>). In the limit that the incident wave is purely traveling, the lines of constant phase travel at the speed of the wavefronts along the axis of the waveguide, and thus \(c_\text{ph} = c\).
+</p>
+</div>
+</li>
+
+<li>What is the phase speed at a cutoff frequency? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('12sol1aaa')">[answer]</span>
+<div id="12sol1aaa" class="expandable-content" style="color: #0000A0;">
+<p> At a cutoff frequency, the phase speed is infinite. This is because at cutoff, the sound has no traveling wave component; rather, the sound is purely a standing wave perpendicular to the waveguide's primary axis. In this standing wave, the lines of constant phase extend infinitely along the waveguide's primary axis. The speed at which lines (in 2D, or surfaces in 3D) of constant phase travel is the phase speed. Since these lines travel an infinite distance in zero time, the phase speed is infinite at a cutoff frequency. 
+</p>
+</div>
+</li>
+
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-11.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-13.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

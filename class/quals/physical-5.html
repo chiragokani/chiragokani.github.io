@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oblique incidence</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="5">Chapter 5: \(R\)-\(T\) for oblique incidence</h2>
+<ol>
+<li> Consider wave propagation at the interface of two media, where the medium on the left is denoted "1" and has impedance \(Z_1\), and the medium on the right is denoted "2" and has impedance \(Z_2\), as shown below. The the horizontal direction is the rectangular \(x\)-coordinate and the vertical direction is the rectangular \(y\)-coordinate.
+<img src="obliquers.png" width="183" height="186" style = "display: block; margin-left: auto; margin-right: auto;"/>
+\begin{align}
+p_i &= A_i \exp{(-jk_1x\cos\theta_i - jk_1y\sin\theta_i)}\label{pi} \tag{5}\\
+p_r &= A_r \exp{(jk_1x\cos\theta_r - jk_1y\sin\theta_r)}\label{pr} \tag{6}\\
+p_t &= A_t \exp{(-jk_2x\cos\theta_t - jk_2y\sin\theta_t)}\label{pt} \tag{7}\\
+\end{align}
+What is the condition on the pressure at the boundary? Use this condition to derive the law of reflection and Snell's law.
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol1')">[answer]</span>
+<div id="5sol1" class="expandable-content" style="color: #0000A0;">
+<p> At \(x=0\), there is no force on the boundary; thus \(p_i(x=0) + p_r(x=0) = p_t(x=0)\\\), or
+\begin{align*}
+A_i \exp{(- jk_1y\sin\theta_i)}+ A_r \exp{(- jk_1y\sin\theta_r)}&=A_t \exp{(- jk_2y\sin\theta_t)}
+\end{align*}
+For the above equation to hold, the phases must match, i.e., \(A_i + A_r = A_t\) or \(1 + R = T\):
+\[ k_1\sin\theta_i = k_1\sin\theta_r = k_2\sin\theta_t\]
+The first equality reveals the law of reflection, \[\theta_i = \theta_r\,,\] and the second equality reveals Snell's law, \[\frac{\sin\theta_i}{c_1} = \frac{\sin\theta_t}{c_2}\,.\]
+</p>
+</div>
+</li>
+
+<li> There is another condition at the interface. What is it? Use it to derive the reflection and transmission coefficients \(R\) and \(T\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol2')">[answer]</span>
+<div id="5sol2" class="expandable-content" style="color: #0000A0;">
+<p>  The other condition is that the normal part of the particle velocity, namely the \(x\)-component of \(u\), is continuous across the boundary. Using equations (\ref{pi})-(\ref{pt}) in conjunction with the momentum equation \(-\frac{1}{j\omega \rho_0}\frac{\partial p}{\partial x}\) and the results of the previous question yields
+\begin{align*}
+\frac{1}{\omega \rho_1}\frac{\partial }{\partial x}(A_i e^{-jk_1x\cos\theta_i}) + \frac{1}{\omega \rho_1}\frac{\partial }{\partial x}(A_r e^{jk_1x\cos\theta_r}) = \frac{1}{\omega \rho_2}\frac{\partial }{\partial x}(A_t e^{-jk_2x\cos\theta_t})  
+\end{align*}
+Taking the derivatives above and matching the phases gives
+\begin{align*}
+\frac{-k_1}{\rho_1\omega}A_i\cos\theta_i + \frac{k_1}{\rho_1\omega}A_r\cos\theta_r &= -\frac{k_2}{\rho_2 \omega}A_t \cos\theta_t\\
+\frac{-1}{\rho_1c_1}A_i\cos\theta_i + \frac{1}{\rho_1c_1}A_r\cos\theta_r &= -\frac{1}{\rho_2 c_2}A_t \cos\theta_t\\
+\end{align*}
+Noting the law of reflection (\(\theta_i = \theta_r\)), multiplying through by \(-1\), and dividing by \(A_i\) results in
+\begin{align}
+1-R = \frac{Z_1}{Z_2}\frac{\cos\theta_t}{\cos\theta_i}T\tag{i}\label{secondone}
+\end{align}
+Combining equation (\ref{secondone}) with \(1+R= T\) results in
+\begin{align*}
+R &= \frac{Z_2\cos\theta_i - Z_1\cos\theta_t}{Z_2\cos\theta_i + Z_1\cos\theta_t}\\
+T &= \frac{2Z_2\cos\theta_i}{Z_2\cos\theta_i + Z_1\cos\theta_t}
+\end{align*}
+</p>
+</div>
+</li>
+  
+
+<li> Derive the power reflection and transmission coefficients \(r\) and \(\tau\). What is the cheap way of deriving \(\tau\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol3')">[answer]</span>
+<div id="5sol3" class="expandable-content" style="color: #0000A0;">
+<p> The power reflection coefficient is 
+\begin{align*}
+r = \frac{W_r}{W_i} = \frac{S_rI_r}{S_iI_i}= \frac{I_r}{I_i} = \frac{|A_i|^2}{|A_r|^2} = |R|^2
+\end{align*}
+where \(S_i\) is the cross-sectional area of the incident ray, and \(S_r\) is the cross-sectional area of the reflected ray. The areas of the same by the law of reflection. 
+</p>
+<p>Meanwhile, the cheap way to get \(\tau\) is to invoke the conservation of energy: \(\tau = 1-r\). The rigorous way accounts for the fact that the cross sectional area of the transmitted beam \(S_t\) is not the same as \(S_i\) due to Snell's law. In this approach, it is noted that \(S_t/S_i = \cos\theta_t/\cos\theta_i\) (see Blackstock's figure 5.5 on page 192), giving
+\begin{align*}
+\tau = \frac{W_t}{W_i} = \frac{S_tI_t}{S_iI_i}= \frac{S_t|A_t|^2/Z_2}{S_i|A_i|^2/Z_1} = \frac{Z_1\cos\theta_t}{Z_2\cos\theta_i}|T|^2\,.
+\end{align*} 
+</p>
+</div>
+</li>
+
+
+<li> What is the fancy name for the angle at which sound transmits perfectly from one medium to the next? Derive an expression for this angle.
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol4')">[answer]</span>
+<div id="5sol4" class="expandable-content" style="color: #0000A0;">
+<p> It is called the angle of intromission. See <a href="../acoustics_I/intromission.pdf" target="_blank" rel="noopener noreferrer">here</a> for the derivation, which was not rigorously derived in class, nor in Blackstock's text. Its derivation is straightforward, and I have shown the steps that lead to Blackstock's Eq. (B-14) in Sec. 5.B.2.a of <i>Fundamentals of Physical Acoustics</i>. Set \(T=1\), which corresponds to perfect transmission. Solve for \(\cos\theta_t\) and square the result. Meanwhile, solve Snell's law for \(\sin\theta_t\) and square it. Add these two equations and solve for \(\sin^2\theta_i\).
+</p>
+</div>
+</li>
+
+
+
+<li> What is the condition for total internal reflection? What is name of the minimum angle \(\theta_i\) at which total internal reflection occurs? Find that angle.
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5')">[answer]</span>
+<div id="5sol5" class="expandable-content" style="color: #0000A0;">
+<p>The condition for total internal reflection is that the transmitted angle is \(\theta_t = 90^\circ\), and the angle \(\theta_i\) at which this occurs is called the <i>critical angle</i>, \(\theta_\text{crit}\). \(\theta_\text{crit}\) is given by Snell's law:
+\[\theta_\text{crit} = \arcsin \frac{c_1}{c_2}\]
+</p>
+</div>
+</li>
+
+
+<li> Based on the figure below, which is larger: \(c_1\) or \(c_2\)?
+<img src="reflectors.png" width="174" height="152" style = "display: block; margin-left: auto; margin-right: auto;"/>
+And from which direction of wave propagation does there exist a critical angle: \(c_1\) to \(c_2\), or \(c_2\) to \(c_1\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5b')">[answer]</span>
+<div id="5sol5b" class="expandable-content" style="color: #0000A0;">
+<p>Sound (and light) traveling from a medium of higher wave speed into lower wave speed bend <i>toward</i> the normal. Thus \(c_1 > c_2\). There can exist a critical angle for wave propagation from \(c_2\) to \(c_1\). 
+</p>
+</div>
+</li>
+
+
+<li> In optics, a converging lens generally has a convex shape \(()\), while a diverging lens generally has a concave shape \()(\). But in acoustics, a converging lens generally has a <i>concave</i> shape \()(\), while a diverging lens generally has a <i>convex</i>  shape  \(()\). Why is this?  
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol5c')">[answer]</span>
+<div id="5sol5c" class="expandable-content" style="color: #0000A0;">
+<p>This is because in optics, light travels faster in air than in the material of the lens (e.g., a glass lens in air), while in acoustics, sound travels <i>slower</i> in air than the material of the lens (e.g., a water lens in air). For example, a converging lens bends light towards the local normal in the lens, so a convex shape is used in optics, while a concave shape is used in acoustics:
+</p>
+<img src="lensers.png" width="577" height="288" style = "display: block; margin-left: auto; margin-right: auto;"/>
+</div>
+</li>
+
+
+<li> For \(\theta_i >\theta_\text{crit}\), what happens to equation (\ref{pt})? What is the term for the transmitted waves in the \(x\)-direction?
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol6')">[answer]</span>
+<div id="5sol6" class="expandable-content" style="color: #0000A0;">
+<p>For \(\theta_i >\theta_\text{crit}\), \(\cos\theta_t\) is negative, because for \(\pi/2 < \psi <3\pi/2\), \(-1<\cos \psi <0\). Therefore, equation (\ref{pt}) becomes
+\begin{align*}
+p_t &= A_t \exp(\mp jk_2x \sqrt{1-\sin^2\theta_t}-jk_2y\sin\theta_t)\\
+&= A_t \exp\bigg(\mp jk_2x \sqrt{1-(c_1/c_2)^2\sin^2\theta_i}-jk_2y\sin\theta_t\bigg)\\
+&= A_t \exp\bigg(\pm k_2x \sqrt{(c_1/c_2)^2\sin^2(\theta_i) - 1}-jk_2y\sin\theta_t\bigg)\\
+&= A_t \exp\bigg(- k_2x \sqrt{(c_1/c_2)^2\sin^2(\theta_i) - 1}-jk_2y\sin\theta_t\bigg)\,.
+\end{align*}
+Thus \(p_t\) decays exponentially in the \(x\) direction. Note that in the last line above, the \(-\) sign in the exponential is chosen because it is physical, i.e., exponential growth is not physical. These are called <i>evanescent waves</i>. The attenuation coefficient as identified as \[\alpha = k_2 \sqrt{(c_2/c_1)^2\sin^2\theta_i - 1}.\] For convenience, Dr. Blackstock also denotes the dimensionless quantity \(\sqrt{(c_2/c_1)^2\sin^2\theta_i - 1}\equiv b\).
+</div>
+</li>
+
+
+<li>&#9784; For \(\theta_i >\theta_\text{crit}\), what happens to the reflection coefficient 
+\[R = \frac{Z_2\cos\theta_i - Z_1\cos\theta_t}{Z_2\cos\theta_i + Z_1\cos\theta_t}?\]
+Use the force-free boundary condition on the interface \(1+R=T\) to also determine what happens to the transmission coefficient for \(\theta_i >\theta_\text{crit}\). Find \(|T|\) as well. Use Dr. Blackstock's notation \(b\equiv\sqrt{(c_2/c_1)^2\sin^2\theta_i - 1}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol6a')">[answer]</span>
+<div id="5sol6a" class="expandable-content" style="color: #0000A0;">
+<p> As seen in the previous part, the quantity \(\cos\theta_t\) can be written as \(-j\sqrt{(c_2/c_1)^2\sin^2\theta_i - 1} = -jb\). Therefore, the reflection coefficient becomes
+\begin{align*}
+R &= \frac{Z_2\cos\theta_i + jb Z_1}{Z_2\cos\theta_i - jb Z_1}\\
+&= \frac{\sqrt{Z_2^2\cos^2\theta_i + b^2Z_1^2}e^{j\arctan{bZ_1/Z_2\cos\theta_i}}}{\sqrt{Z_2^2\cos^2\theta_i + b^2Z_1^2}e^{-j\arctan{bZ_1/Z_2\cos\theta_i}}}\\
+&= \exp\bigg[{2j\arctan\bigg({\frac{b}{\cos\theta_i}\frac{Z_1}{Z_2}}\bigg)}\bigg]\\
+&= \exp(2j\psi)
+\end{align*}
+where \(\psi = \arctan\big({\frac{b}{\cos\theta_i}\frac{Z_1}{Z_2}}\big)\).
+The transmission coefficient \(T\) is therefore
+\[T = 1+\exp(2j\psi)\,,\]
+and \[|T| = \sqrt{2+2\cos2\psi}\,. \]
+</p>
+</div>
+</li>
+
+<li> The mass law for oblique incidence was covered in class by considering the wall in two different ways. Qualitatively describe the boundary conditions at the wall and how one would obtain the reflection and transmission coefficients in both cases. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol7')">[answer]</span>
+<div id="5sol7" class="expandable-content" style="color: #0000A0;">
+<p>The first way was by considering the wall to be mass-like (i.e., only compliance, no stiffness). In that case, the pressure at the boundary is given by Newton's second law, i.e., \(p_i + p_r -p_t = m\partial u_x/\partial t\), where \(u_x\) is the normal component of the velocity. The other boundary condition is that the normal component of the velocities must match on either side of the boundary, i.e., \(u_i\cos\theta + u_r\cos\theta = u_t\cos\theta\) which gives \(1-R=T\) upon division by \(u_i\cos(\theta)\times\) the impedance of the propagation medium. These relations can be combined to get \(T\),
+\[T = \frac{1}{1+j\omega m \cos(\theta)/2\rho_0 c_0}\,,\]
+which recovers the special case of the three-medium problem considered in chapter 4. What is remarkable about \(T\) is that it equals \(1\) for \(\theta= 90^\circ\).</p>
+
+<p>The second way is more refined, in which the wall's <i>stiffness</i> is incorporated. See <a href="../acoustics_I/oblique_non_rigid.pdf" target="_blank" rel="noopener noreferrer">here</a> for the derivation. In short, the compliance of the wall makes the right-hand side of Newton's second law differ from the rigid case, but the normal component of the particle velocity condition is identical to that in the rigid case. The result is
+\[T = \frac{1}{1+(j\omega m \cos(\theta)/2\rho_0 c_0)[1-(f/f_0)^2\sin^4\theta]}\,.\]
+For a given angle, the coincidence frequency is the frequency at which \(T = 1\). Physically, coincidence is the matching of the trace speed to the natural flexural wave speed of the panel. Coincidence takes a massive hit to the transmission loss of a panel.
+</p>
+</div>
+</li>
+
+
+<li> How does one calculate the power transmission coefficient \(\bar{\tau}\) for a composite wall, i.e., a wall with windows, doors, etc. How does one then calculate the composite transmission loss \(\text{TL}_\text{comp}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('5sol8')">[answer]</span>
+<div id="5sol8" class="expandable-content" style="color: #0000A0;">
+<p> For composite walls, the power transmission coefficients are averaged by the area they occupy: \[\bar{\tau} = \frac{\sum_n S_n\tau_n}{\sum_n S_n}.\] Note that \(S\) can be in any unit of area. The composite transmission loss is
+\[\text{TL}_\text{comp} = -10 \log_{10}\bar{\tau}\,.\]
+</p>
+</div>
+</li>
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-4.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-6.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

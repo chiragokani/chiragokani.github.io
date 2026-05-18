@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Physical acoustics</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+<div class="textbox">
+<h1>Physical acoustics</h1>
+
+<p>This review follows the chapter-by-chapter organization of <i>Fundamentals of Physical Acoustics</i> by D. T. Blackstock. Chapters 13 and 14 are combined into a collective section on diffraction, for which M. F. Hamilton's lecture notes are the primary reference. Some content comes from the <a href="https://www.feynmanlectures.caltech.edu" target="_blank" rel="noopener noreferrer">Feynman Lectures</a> (Volume I, chapters 47-52) and A. D. Pierce's <a href="https://link.springer.com/book/10.1007/978-3-030-11214-1" target="_blank" rel="noopener noreferrer"><i>Acoustics:
+An Introduction to Its Physical Principles and Applications</i></a>. Concepts and problems I find challenging are denoted by the "&#9784;" symbol. <i>Note to self: when studying, resist the urge to view the answer before working out the problem yourself!</i></p>
+<ol>
+    <li><a href="physical-1.html">What is a wave?</a></li>
+    <li><a href="physical-2.html">Detailed development of the acoustic wave equation</a></li>
+    <li><a href="physical-3.html">Reflection and transmission for normal incidence</a></li>
+    <li><a href="physical-4.html">Impedance tubes and \(k\ell\ll 1\) impedances</a></li>
+    <li><a href="physical-5.html">\(R\)-\(T\) for oblique incidence</a></li>
+    <li><a href="physical-6.html">Normal modes in Cartesian coordinates</a></li>
+    <li><a href="physical-7.html">Horns</a></li>
+    <li><a href="physical-8.html">Sound in stratified media</a></li>
+    <li><a href="physical-9.html">Absorption and dispersion</a></li>
+    <li><a href="physical-10.html">Spherical waves</a></li>
+    <li><a href="physical-11.html">Cylindrical waves</a></li>
+    <li><a href="physical-12.html">Waveguides</a></li>
+    <li><a href="physical-13.html">Diffraction</a></li>
+    <li><a href="physical-14.html">Arrays</a></li>
+</ol>	
+<p><a href="index.html">&leftarrow; Return to home</a></p>
+  </div>
+</body>
+</html>

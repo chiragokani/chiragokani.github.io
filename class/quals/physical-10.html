@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spherical waves</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="10">Chapter 10: Spherical waves</h2>
+<ol>
+<li> Obtain the general solution to the wave equation in spherical coordinates.
+<span class="expandable-toggle" onclick="toggleExpandableContent('10so0')">[answer]</span>
+<div id="10so0" class="expandable-content" style="color: #0000A0;">
+<p>  
+See the first section of Chap. 10 of Blackstock for the general solution of the wave equation in spherical coordinates.
+ </p>
+</div>
+</li>
+
+
+<li> Every second-order ordinary differential equation has two linearly independent solutions. For example, \(y'' + k^2y=0\) has solutions \(\cos kx\) and \(\sin kx\). \(y'' - k^2y=0\) has solutions \(e^{kx}\) and \(e^{-kx}\). Bessel's equation has solutions \(j_n(kr)\) and \(n_n(kr)\). Why, then, does the solution of the spherical wave equation only contain <i>one</i> solution to Legendre's equation, \(P_n(\cos\theta)\) (or \(P^m_n(\cos\theta)\) in the most general case)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol1')">[answer]</span>
+<div id="10sol1" class="expandable-content" style="color: #0000A0;">
+<p>  This was discussed in the "Orthogonality and Special Functions" section of the math page: see problem 2. \(Q_n\) diverges at the poles and is therefore neglected in the solution to the Helmholtz equation, because most problems in acoustics involve \(\theta =0\) and \(\theta = \pi\). </p>
+</div>
+</li>
+
+
+
+<li>Is it possible for multiple eigenfunctions to map to the same eigenfrequency? Is it possible for multiple eigenfrequencies to map to the same eigenfunction? Why or why not? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol3')">[answer]</span>
+<div id="10sol3" class="expandable-content" style="color: #0000A0;">
+<p> It is possible for multiple eigenfunctions to map to the same eigenfrequency. This is called degeneracy, as a student of quantum mechanics would know. For example, take the eigenfrequencies of sound in a cube is proportional to \(\sqrt{n^2 + m^2 + l^2}\), where \(n\), \(m\), and \(l\) are non-negative integers. The eigenfrequency corresponding to \(n= 1, m = 0, l=0\) equals that corresponding to \(n= 0, m = 1, l=0\), which in turn equals that corresponding to \(n= 0, m = 0, l=1\). The degeneracy for this lowest energy is thus \(3\). For the degeneracy of the next highest energy would be \(6\). 
+</p>
+
+<p>However, it is not possible for multiple eigenfrequencies to map to the same eigenfunction. In other words, it is not possible for one eigenfunction to correspond to multiple eigenfrequencies. One can employ a simple proof by contradiction. Suppose for a nontrivial \(\vec{x}\) that \(A\vec{x} = \lambda \vec{x}\) and \(A\vec{x} = \mu \vec{x}\), where \(\lambda \neq \mu\). Then by subtraction,
+\[0 = (\lambda-\mu)\vec{x}.\]
+Since \(\vec{x} \neq 0\), by the zero product property, \(\lambda-\mu = 0 \implies \lambda = \mu\). But this contradicts the assumption that \(\lambda \neq \mu\). Since the assumption led to a contradiction, the assumption must be false. 
+</p>
+
+<p>While the argument above has been written in the form of an eigenvalue problem of eigenvectors, eigenvalues, and matrices, it is identitical to the argument that would be made for eigenfunctions, eigenfrequencies, and linear differential operators. Simply replace \(\vec{x}\) above with \(p(\vec{r})\), \(\lambda\) and \(\mu\) with \(\omega_1\) and \(\omega_2\), and \(A\) with \(\nabla^2\). The argument then shows that one eigenfunction of the Helmholtz equation cannot map to multiple eigenfrequencies.</p>
+</div>
+</li>
+
+
+<li>Let \(n\) be either \(r,\theta,\) or \(\psi\). How does one satisfy the boundary conditions if the \(n\)th surface is pressure-release? How does one satisfy the boundary conditions if the \(n\)th surface is rigid?
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol4aa')">[answer]</span>
+<div id="10sol4aa" class="expandable-content" style="color: #0000A0;">
+<p><b>Pressure-release:</b> The condition is simply that \(p\) evaluated at the surface \(n\) vanishes. That is, if the pressure-release surface is specified at a particular radius, \(p(r=a) = 0\); if the pressure-release surface is specified at a particular polar angle \(\theta_0\), \(p(\theta = \theta_0) = 0\); if the pressure-release surface is specified at a particular azimuthal angle \(\psi_0\), \(p(\psi = \psi_0) = 0\).  </p>
+
+<p><b>Rigid:</b> The condition is that \(\partial p^{(n)}/\partial n = 0\). For example, if the rigid surface is specified at a particular radius, the condition is \(\partial p^{(r)}/\partial r = 0\); if the rigid surface is specified at a particular polar angle, the condition is \(\partial p^{(\theta)}/\partial \theta = 0\); if the rigid surface is specified at a particular azimuthal angle, the condition is \(\partial p^{(\psi)}/\partial \psi = 0\). </p>
+</div>
+</li>
+
+
+
+<li>&#9784; For a boundary condition on a Cartesian coordinate, show that the particle velocity attains an extremum at a pressure-release surface. Also show that the particle velocity is zero at a rigid surface. For a boundary condition on a spherical coordinate, does the particle velocity attain an extremum at a pressure-release surface? Is the particle velocity zero at a rigid surface?
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol4afa')">[answer]</span>
+<div id="10sol4afa" class="expandable-content" style="color: #0000A0;">
+<p><b>Boundary condition on Cartesian coordinate.</b> The boundary condition at a pressure-release surface is that \(p= 0\). Therefore, when the continuity equation \(\gradient \cdot (\rho \vec{u}) + \partial \rho/\partial t = 0\) is linearized and applied to a time-harmonic pressure, one obtains the condition 
+\begin{align}\tag{i}\label{contersslkfsdlkjf}
+j\omega p + \rho_0 c_0^2 \gradient\cdot \vec{u} = 0,
+\end{align}
+where the linear relation \(\rho' c_0^2= p\) has been used to eliminate density. 
+In Cartesian coordinates, equation (\ref{contersslkfsdlkjf}) applied at the \(n\)th surface reads
+\[j\omega p + \rho_0 c_0^2 \frac{\partial u^{(n)}}{\partial n} = 0,\]
+from which it can be seen that at the pressure release surface, \(\frac{\partial u^{(n)}}{\partial n} = 0\), i.e., the particle velocity is extremized.
+</p>
+
+<p>Meanwhile the boundary condition at the \(n\)th rigid surface is that \(\partial p/\partial n = 0\). Therefore, by the the linearized momentum equation for a time-harmonic particle velocity, 
+\begin{align}\tag{i}\label{sdkjjlsdflkjafsamsdfm}
+\gradient p + j\omega \rho_0 \vec{u} &= 0\,,
+\end{align}
+from which it can be see that at the rigid surface defined along coordinate \(n\), \(u^{(n)} = 0\), i.e., the particle velocity vanishes.   </p>
+
+
+<p><b>Boundary condition on a spherical coordinate.</b> The story is different for a boundary condition on a spherical coordinate. For example, at a pressure release surface defined at a particular radius, equation (\ref{contersslkfsdlkjf}) reads 
+\[j\omega p + \rho_0 c_0^2 \bigg[u^{(r)}_r + \frac{2}{r}u^{(r)} \bigg] = 0,\] from which it can be seen that the radial component of the particle velocity does not go to zero when \(p=0\) (Only in the limit \(r\to \infty\) does the particle velocity go to \(0\)). This is a distinction between Cartesian boundary conditions and spherical boundary conditions.</p>
+
+<p>However, for rigid surfaces defined along a spherical coordinate, equation (\ref{sdkjjlsdflkjafsamsdfm}) guarantees that the particle velocity vanishes at the boundary. </p>
+</div>
+</li>
+
+
+<li>&#9784; Do Blackstock problem 10-13 two different ways, first in the "conventional" orientation with spherical coordinates defined as the original figure is drawn, and second in a \(90^\circ\)-rotated coordinate system in which the flat part of the hemisphere is in the plane defined by \(\psi = 0\) and \(\psi = \pi\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol5')">[answer]</span>
+<div id="10sol5" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="10-13.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. Note that Blackstock's associated Legendre functions \(P^1_1, P^1_2, P^1_3\), and \(P^3_3\) on page 348 follow a different convention than what is listed on Wikipedia, Wolfram, and most other references. These polynomials (and in general, those with odd \(m\), are off by a factor of \(-1\) from the "normal" convention).</p>
+</div>
+</li>
+
+
+<li>What is the degeneracy of modes in a spherical enclosure? <i>Bonus: how does this compare to the degeneracy in the hydrogen atom? Careful! I am using Blackstock's convention in which \(l\), the orbital angular momentum number of quantum mechanics, is interchanged with \(m\).</i> 	
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol4')">[answer]</span>
+<div id="10sol4" class="expandable-content" style="color: #0000A0;">
+<p>Note that the eigenfrequencies are independent of \(m\). They only depend on \(n\) (the principal quantum number, if you will) and \(l\), the index of the root of the Bessel function. Therefore, all the eigenfunctions with the same \(n\) and \(l\) indices but different values of \(m\) correspond to the same eigenfrequency. Recall that \(n = 0,1,2,\dots\) and \(m = 0, 1, 2, \dots n\). There are \(n+1\) values of \(m\) for every \(n\). The degeneracy is therefore \(n +1\). (If negative values of \(m\) were included, the degeneracy would be \(2m + 1\)). </p>
+
+<p>In the hydrogen atom, the degeneracy is \(n^2\), and if spin is included, \(2n^2\). </p>
+
+<p>For more on parallels between acoustics and quantum mechanics related to spherical coordinates, see <a href="../acoustics_II/Thoughts-on-spherical-coords.pdf" target="_blank" rel="noopener noreferrer">these notes</a>. </p>
+</div>
+</li>
+
+<li> Solve the wave equation for the air trapped between two concentric pressure-release spheres, where the inner radius is \(a\) and the outer radius is \(b\). Numerically obtain the eigenfrequencies. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('10solconc')">[answer]</span>
+<div id="10solconc" class="expandable-content" style="color: #0000A0;">
+<p>
+This is Blackstock's problem 10-10 of <i>Fundamentals of Physical Acoustics</i>, so I cannot post the full solution, but <a href="../acoustics_II/10-10.html" target="_blank" rel="noopener noreferrer">displayed here</a> are numerically determined combinations of \(ka\) and \(kb\) that correspond to the eigenfrequencies for sound enclosed between two concentric pressure-release spheres. Bright spots on the surface plots correspond to eigenfrequencies.
+</p>
+</div>
+</li>
+
+<li> Solve the wave equation in an axisymmetric spherical enclosure of radius \(a\) and angular distribution \(f(\theta)\), such that the field at \(r=a\) is \(p(a,\theta,t) = p_0 f(\theta) e^{j\omega t}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('10solenclose')">[answer]</span>
+<div id="10solenclose" class="expandable-content" style="color: #0000A0;">
+<p>
+See <a href="../acoustics_II/general_axisymmetric_enclosure.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution.
+</p>
+</div>
+</li>
+
+<li>&#9784; Why do eigenfrequencies of sound spherical coordinates not depend on the azimuthal index \(m\)?</a> How do the eigenfrequencies of acoustic wave equation relate to the eigenfrequencies of the quantum mechanical equation? <i>Note: the letters conventionally used for the indices corresponding to spherical harmonics in acoustics are flipped from those used in quantum mechanics!</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('10solquanters')">[answer]</span>
+<div id="10solquanters" class="expandable-content" style="color: #0000A0;">
+<p>
+See <a href="../acoustics_II/Thoughts-on-spherical-coords.pdf" target="_blank" rel="noopener noreferrer">here</a> for a discussion. Thanks to J. S. Hallveld for his insights.
+</p>
+</div>
+</li>
+
+
+
+<li>Attention is now turned to radiation problems. What limit on the dimensionless parameter \(kr\) of spherical radiation corresponds to far field radiation? What limit corresponds to near field radiation?
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol6')">[answer]</span>
+<div id="10sol6" class="expandable-content" style="color: #0000A0;">
+<p>\(kr \gg 1\) corresponds to far-field radiation, and \(kr \ll 1\) corresponds to near-field radiation. </p>
+</div>
+</li>
+
+<li>What does the combination of limits \(kr \gg 1\) and \(ka \ll 1\) correspond to physically? What kind of directivity does this limit reduce to? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol7')">[answer]</span>
+<div id="10sol7" class="expandable-content" style="color: #0000A0;">
+<p>This is the subwavelength limit of the far field. The radiation is governed purely by diffraction and is in the form of a monopole, which is proportional to the volume velocity \(Q_0\). The directivity of a monopole is \(1\). </p>
+</div>
+</li>
+
+
+<li>And what does the combination of limits \(kr \gg 1\) and \(ka \gg 1\) correspond to? What kind of directivity does this limit reduce to? <i>Bonus: How do these limits relate to the structure of the cosmic microwave background radiation, and hence the distribution of galaxies in the universe today?</i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol7a')">[answer]</span>
+<div id="10sol7a" class="expandable-content" style="color: #0000A0;">
+<p>This is the geometric acoustics limit of the far field. The radiation is non-diffractive, and is simply a projection of the original source condition of rays to \(r = \infty\). </p>
+
+<p>The early universe was a plasma in which there existed an outward pressure due to photon-matter interactions, as well as an inward force due to gravity. This balance of attractive and repulsive force created a harmonic potential, giving rise to acoustic waves. The acoustic waves were spherical traveling waves propagating outward over vast distances. Thus the far field limit \(kr\gg 1\) appropriately describes these spherical waves (i.e., The propagation distance was much greater than the wavelength). Further, the sources of sound were much larger than a wavelength, i.e., \(ka \gg 1\), and thus the structure of the initial conditions was projected into the far field. When the universe cooled sufficiently such that the protons and neutrons combined to form hydrogen atoms, these atoms were arranged in the structure of the far-field geometric acoustic limit of the spherical acoustic oscillations. This so-called recombination (the formation of hydrogen) released photons that have redshifted (due to the expansion of the universe) into the microwave spectrum: this is the cosmic microwave background radiation. This initial distribution of matter, preserved as microwave radiation, explains the structure of the universe today, with denser regions giving rise to galaxies. See <a href="https://svs.gsfc.nasa.gov/13768" target="_blank" rel="noopener noreferrer">this video</a> for a nice animation of these oscillations.</p>
+
+<p><i>Note that before recombination, photons could not travel freely; thus acoustic waves could propagate while electromagnetic waves could not. The old joke that sound came before light because "God <b>said</b>, 'Let there be light'" is actually true!</i></p>
+
+</div>
+</li>
+
+
+<li> Obtain the field radiated by a general axisymmetric spherical velocity source of radius \(a\). Suppose the field at \(r=a\) has the form \(u_r (a,\theta,t) = u_0 f(\theta) e^{j\omega t}\). Take the limit \(kr \to \infty\). Then further apply the limits \(ka \ll 1\) and \(ka \gg 1\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('10generalaxisym')">[answer]</span>
+<div id="10generalaxisym" class="expandable-content" style="color: #0000A0;">
+<p>
+See <a href="../acoustics_II/Radiation-axisymmetric.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution.
+</p>
+</div>
+</li>
+
+
+<li> Solve the spherical radiation problem for the boundary conditions 
+\begin{align*}
+u^{(r)}(a,\theta,t) &= \begin{cases}
+u_0e^{j\omega t}, \quad \text{ for } \theta \in [0,\pi/2)\\
+-u_0e^{j\omega t}, \quad \text{ for } \theta\in [\pi/2, \pi]\,,
+\end{cases}
+\end{align*}
+i.e., the bipolar pulsating sphere. Once the solution is obtained, take the limit as \(kr\gg 1\) and \(ka\ll 1\). It will be helpful to note that \(h_n^{(2)}(kr) \to e^{j(\omega t - kr)}/r\) as \(kr \to \infty\), and that \(1/h_n'(ka) \to j(ka)^3/2\) as \(ka \to 0\). Also note that in this limit, the leading term corresponds to \(n=1\) (because the \(n=0\) term is \(0\)). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol2')">[answer]</span>
+<div id="10sol2" class="expandable-content" style="color: #0000A0;">
+<p>  
+Noting that the solution must be time harmonic, suppress the linear combination 
+\begin{align*}
+\begin{Bmatrix}
+e^{j\omega t}\\e^{-j\omega t}
+\end{Bmatrix}
+\end{align*}
+i.e., solve the Helmholtz equation. Note that there is no dependence on \(\psi\), the azimuthal angle. Therefore \(m=0\). Also, the Hankel functions of the first kind are tossed since waves are outgoing. Let \(h^{(2)}_n \equiv h_n\). Then general solution reads
+\begin{align}\label{sldkfjsdlkfjalsdfjmdkl}
+p(r,\theta) = \sum_{n=0}^{\infty} A_n h_n{(kr)} P_n(\cos\theta) \,.\tag{i}
+\end{align}
+To satisfy the velocity boundary conditions, the linearized momentum equation must be invoked for a time harmonic velocity:
+\begin{align*}
+u^{(r)} &= -\frac{1}{j\omega \rho_0}\frac{\partial p}{\partial r}\\
+&= -\frac{A_nk}{j\omega \rho_0} h_n'(kr) P_n(\cos\theta)\\
+&=-\frac{1}{j\rho_0c_0} h_n'(kr)P_n(\cos\theta)
+\end{align*}
+Therefore, at \(r=a\), 
+\begin{align*}
+-\frac{A_n}{j\rho_0c_0} h_n'(ka)P_n(\cos\theta) &= \begin{cases}
+u_0, \quad \text{ for } \theta \in [0,\pi/2)\\
+-u_0, \quad \text{ for } \theta \in [\pi/2, \pi]\\
+\end{cases}
+\end{align*}
+Thus
+\begin{align*}
+A_nP_n(\cos\theta) &= -\frac{j\rho_0c_0}{h_n'(ka)} \begin{cases}
+u_0, \quad \text{ for } \theta \in [0,\pi/2)\\
+-u_0, \quad \text{ for } \theta \in [\pi/2, \pi]\\
+\end{cases}
+\end{align*}
+To solve for the expansion coefficients \(A_n\), multiply both sides by \(P_m(\cos\theta)\sin\theta d\theta\) and integrate:
+\begin{align*}
+\int_{0}^{\pi} A_nP_n(\cos\theta)P_m(\cos\theta)\sin\theta d\theta &= -\frac{j\rho_0c_0 u_0}{h_n'(ka)} \bigg[ \int_{0}^{\pi/2} P_m(\cos\theta) \sin\theta d\theta 
+- \int_{\pi/2}^{\pi} P_m(\cos\theta)\sin\theta d\theta
+\bigg]\\
+A_n \frac{2}{2n+1}&= \frac{j\rho_0c_0 u_0}{h_n'(ka)} \bigg[ \int_{0}^{1} P_n(z) dz
+- \int_{-1}^{0} P_n(z) dz\bigg]
+\end{align*}
+\(P_n(z) = P_n(-z)\) is for even \(n\), so the term in the square brackets is \(0\) in that case. Meanwhile, \(P_n(-z) = -P_n(z)\) for odd \(n\), so 
+\begin{align}\label{sldkfjsdlkafjlsdk}
+A_n &= (2n+1)\frac{j\rho_0c_0 u_0}{h_n'(ka)} \int_{0}^{1} P_n(z) dz \tag{ii}
+\end{align}
+To evaluate the integral, use the property \((2n+1)P_n(z) = P_{n+1}'(z) - P_{n-1}'(z)\), which is integrated trivially using the fundamental theorem of calculus:
+\begin{align*}
+\int_{0}^{1}P_n(z)dz &= \frac{1}{2n+1} \int_{0}^{1} \big[P_{n+1}'(z) - P_{n-1}'(z)\big]dz\\
+&= \frac{1}{2n+1}[P_{n+1}(1) - P_{n-1}(1) - P_{n+1}(0) + P_{n-1}(0)]\,.
+\end{align*}
+Since the Legendre polynomials are normalized such that \(P_n(1) = 1\), the first two terms above cancel, giving 
+\begin{align*}
+\int_{0}^{1}P_n(z)dz &= \frac{1}{2n+1} [- P_{n+1}(0) + P_{n-1}(0)].
+\end{align*}
+The two Legendre polynomials above can be combined into one by noting that \((2n+1)zP_n(z) = (n+1)P_{n+1}(z) + nP_{n-1}(z)\), or for \(z=0\), \[-P_{n+1}(0) = \frac{n}{n+1}P_{n-1}(0)\]
+Thus the integral becomes
+\begin{align*}
+\int_{0}^{1}P_n(z)dz &= \frac{1}{2n+1}\bigg[\frac{2n+1}{n+1} P_{n-1}(0)\bigg] = (n+1)^{-1}P_{n-1}(0)\,.
+\end{align*}
+and equation (\ref{sldkfjsdlkafjlsdk}) becomes
+\begin{align*}
+A_n &= \frac{2n+1}{n+1}\frac{j\rho_0c_0 u_0}{h_n'(ka)}P_{n-1}(0) 
+\end{align*}
+The problem is solved by inserting the coefficients above into equation (\ref{sldkfjsdlkfjalsdfjmdkl}):
+\begin{align}\tag{iii}\label{lksjdaflkj}
+p(r,\theta) = j\rho_0c_0 u_0 \sum_{n=0}^{\infty} \frac{2n+1}{n+1}\frac{h_n{(kr)}}{h_n'(ka)}P_{n-1}(0) P_n(\cos\theta) 
+\end{align}
+</p>
+<p>Taking the limits of equation (\ref{lksjdaflkj}) for \(n =1\) (the leading order term) gives 
+\[p = -\frac{3}{4} \rho_0c_0 u_0 (ka)^3 \frac{e^{j(\omega t - kr)}}{r} \cos\theta\,,\]
+i.e., the dipole directivity pattern.
+</p>
+</div>
+</li>
+
+
+
+
+
+
+<li> Write the pressure field due to a pair of antiphase monopole separated by distance \(2 h\) in the far field limit, \(r\gg h\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol8')">[answer]</span>
+<div id="10sol8" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="paiofmonopoles.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. </p>
+</div>
+</li>
+
+
+<li> Calculate the pressure field due to a translating sphere, for which the boundary condition is 
+\[u^{(r)}(r= a) = u_0 e^{j\omega t} \cos\theta.\]
+Note that \(h_1(kr) = e^{-jkr}(1+1/jkr)/ kr\). Evaluate the pressure field in the subwavelength limit, noting that  
+\(h_1'(ka) \to 2/jka^3\) for \(ka \ll 1\). Identify the directivity in this limit.
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol9')">[answer]</span>
+<div id="10sol9" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="translatingsphere.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. Writing \(h_1(kr) = e^{-jkr}(1+1/jkr)/ kr\) and evaluating the solution in the limit that \(ka \ll 1\), the solution becomes
+\[p = \frac{1}{2} k^2 a^3\rho_0 c_0 u_0 \cos \theta (1+ 1/jkr) e^{j(\omega t - kr)}/r\,.\]
+The directivity in this limit is that of a dipole: \(\cos\theta\).
+ </p>
+</div>
+</li>
+
+<li> An acoustic monopole is a ________ ________ source, while an acoustic dipole is a ________ source. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol10')">[answer]</span>
+<div id="10sol10" class="expandable-content" style="color: #0000A0;">
+<p>volume velocity (or mass); force. Note that the force exerted by the dipole is proportional to the so-called "entrained mass" of the fluid.</p>
+
+</div>
+</li>
+
+<li> Create a dipole by positioning two out-of-phase monopoles a distance \(2h\) apart along the line \(\theta = 0\). Take the \(r\gg h\) limit and thus derive the dipole directivity pattern. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol11a')">[answer]</span>
+<div id="10sol11a" class="expandable-content" style="color: #0000A0;">
+<p>
+The sum of the monopoles is given (exactly) by 
+\begin{align*}
+p = \frac{A}{r_1} e^{j(\omega t - kr_1)} -\frac{A}{r_2} e^{j(\omega t - kr_2)}\,.
+\end{align*}
+In the far field, the denominators of the amplitudes are approximated \(r\), and the phases are approximated by \(r_1 \simeq r - h\cos\theta\) and \(r_2 \simeq r + h\cos\theta\). 
+This leads to
+\begin{align}\label{slkdfjsdlkfjsldkfaj}\tag*{pair of monopoles}
+p = \frac{2Aj}{r} e^{j(\omega t - kr)}\sin (kh \cos\theta)\,.
+\end{align} 
+We know that this result is in the far field because the angular and radial dependence is separated. Now letting \(kh \ll 1\), the pressure approaches that of a point dipole:
+\begin{align*}
+p = \frac{2Aj}{r} kh \cos\theta e^{j(\omega t - kr)} \,.
+\end{align*} 
+</p>
+</div>
+</li>
+
+
+<li> Calculate the power \(W\) radiated by a pair of out-of-phase monopoles. Using the expression for the \ref{slkdfjsdlkfjsldkfaj}
+derived in the previous problem, note that \(p/p_\text{free} = 2j\sin (kh \cos\theta)\), since \(p_\text{free} = A e^{j(\omega t - kr)}/r\).  
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol12')">[answer]</span>
+<div id="10sol12" class="expandable-content" style="color: #0000A0;">
+<p>
+The power is given by the surface integral of the intensity. The intensity is calculated by noting that \(\langle I \rangle/\langle I_\text{free}\rangle = |p/p_\text{free}|^2 = 4\sin^2(kh\cos\theta)\). Thus \(\langle I\rangle = \langle I_\text{free}\rangle 4\sin^2(kh\cos\theta)\).
+\begin{align*}
+W&= 4 \langle I_\text{free} \rangle \, \oint \sin^2 (kh \cos\theta) \vec{e}_r \cdot d\vec{A}\\
+&= 4 \langle  I_\text{free} \rangle \,\int_0^{\pi/2} \int_{0}^{2\pi} \sin^2 (kh \cos\theta)r^2\sin\theta d\theta d\psi\\
+&= 8 \langle I_\text{free} \rangle \,\pi r^2 \int_{0}^{\pi/2} \sin^2 (kh \cos\theta) \sin\theta d\theta
+\end{align*} 
+The integral above is taken by letting \(q = \cos\theta\). The result is \[W = 4\,\pi r^2 I_\text{free} [1 - \sin(2kh)/2kh]\,.\]
+Note that \(4\,\pi r^2 \langle I_\text{free}\rangle = W_\text{free}\), the power radiated by a monopole, so the above result can be written as
+\[W = W_\text{free} [1 - \sin(2kh)/2kh]\,.\]
+Note that Blackstock does not use the \(\langle \dots \rangle\) notation to denote "time avarerage of \(\dots\)." Blackstock's "\(I\)" corresponds to \(\langle I \rangle\) on this site.
+</p>
+</div>
+</li>
+
+<li> Create a longitudinal quadrupole by positioning two out-of-phase dipoles along the line \(\theta = 0\), separated by distance \(h\). Recall that the pressure field due to each dipole is given by the equation for the \ref{slkdfjsdlkfjsldkfaj}. Take the \(kh \gg 1\) limit to obtain the directivity of a point quadrupole.
+<span class="expandable-toggle" onclick="toggleExpandableContent('10sol13')">[answer]</span>
+<div id="10sol13" class="expandable-content" style="color: #0000A0;">
+<p>
+The pressure field is given by 
+\begin{align*}
+p = p_d\big[ e^{jkh\cos(\theta)/2} - e^{-jkh\cos(\theta)/2}\big]
+\end{align*} 
+where
+\begin{align*}
+p_d = \frac{2Aj}{r} kh \cos\theta e^{j(\omega t - kr)} \,.
+\end{align*}
+Putting the equations together gives
+\begin{align}\label{sldkfdssdfsdfasdlf}\tag{i}
+p = \frac{2Aj}{r} kh \cos\theta e^{j(\omega t - kr)} \sin [kh\cos(\theta)/2]
+\end{align} 
+Taking the \(kh \ll 1\) limit of equation (\ref{sldkfdssdfsdfasdlf}) gives the directivity a point quadrupole:
+\[p = \frac{Aj}{r} (kh)^2 \cos^2\theta\, e^{j(\omega t - kr)}\,.\]
+</p>
+</div>
+</li>
+
+
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-9.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-11.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

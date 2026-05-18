@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reflection and transmission for normal incidence</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="3">Chapter 3: Reflection and transmission for normal incidence</h2>
+<ol>
+<li> Derive the reflection and transmission pressure coefficients for normal incidence of plane waves on a boundary. Check the results by assessing the limits.
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol1')">[answer]</span>
+<div id="3sol1" class="expandable-content" style="color: #0000A0;">
+<p>  
+On one side of the boundary (impedance \(Z_1\)) there is a pressure of \(p_i + p_r\). On the other side of the boundary (impedance \(Z_2\)) there is a pressure \(p_t\). Begin by noting that there cannot be any force at the boundary. That is, \(p_i + p_r = p_t\), or dividing by \(p_i\),
+\begin{align}\label{lskfjls}\tag{i}
+1 + R = T\,.
+\end{align}
+Also note that the particle velocity must be continuous at the boundary: \(u_i + u_r = u_t\). Using the plane wave impedance relation \(u= p/Z\), the above relation becomes
+\begin{align*}
+\frac{p_i}{Z_1} - \frac{p_r}{Z_1} &= \frac{p_t}{Z_2}\\
+p_i - p_r &= \frac{Z_1}{Z_2} p_t
+\end{align*}
+Dividing the above equation by \(p_i\) gives
+\begin{align}
+1 - R &= \frac{Z_1}{Z_2} T \label{lksjfdlj}\tag{ii}
+\end{align}
+Combining equations (\ref{lskfjls}) and (\ref{lksjfdlj}) yields
+\begin{align}\label{lksdfsff}\tag{iii}
+T = \frac{2}{1+Z_1/Z_2}\,.
+\end{align}
+Combining equation (\ref{lksdfsff}) with equation (\ref{lskfjls}) gives
+\begin{align}\label{lkref}\tag{iv}
+R = \frac{1- Z_1/Z_2}{1+Z_1/Z_2}\,.
+\end{align}
+Equations (\ref{lksdfsff}) and (\ref{lkref}) make sense because they match the following limits:
+
+<p>When \(Z_1/Z_2 \to 0\), the incident wave experiences a rigid boundary, and an in-phase reflection and pressure doubling at boundary is expected. Indeed, equation (\ref{lkref}) goes to \(1\) while equation (\ref{lksdfsff}) goes to \(2\). </p>
+
+<p>When \(Z_1/Z_2 \to \infty\) the incident wave experiences a pressure-release boundary, and an out-of-phase reflection and zero transmission at boundary is expected. Indeed, equation (\ref{lkref}) goes to \(-1\) while equation (\ref{lksdfsff}) goes to \(0\). </p>
+
+<p>Finally, when \(Z_1/Z_2 = 1\), the incident wave does not experience a boundary, and no reflection and perfect transmission is expected. Indeed, equation (\ref{lkref}) goes to \(0\) and equation (\ref{lksdfsff}) goes to \(1\).</p>
+</p>
+</div>
+</li>
+
+<li> Derive the power reflection and transmission coefficients. How does the result relate to the first law of thermodynamics.
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol2')">[answer]</span>
+<div id="3sol2" class="expandable-content" style="color: #0000A0;">
+<p>  
+Recall that the power is given by \(W = \oint \vec{I} \cdot d\vec{S}\), which for a plane wave simply reads \(p_\text{rms}^2 S/Z\). What is curious about this result is that the power in a plane wave is infinite, because the pressure extends over the infinite surface, and the integral of a constant over all space diverges. However, never mind this curiosity; it is resolved because the <i>ratio</i> of powers is taken, and thus the surface area cancels. The power reflection coefficient is 
+\begin{align*}
+r = \frac{W_r}{W_i} = \frac{p_{r, \text{rms}}^2 S/Z_1}{p_{i, \text{rms}}^2 S/Z_1}
+\end{align*}
+Critically, note that the ratio of the rms pressures equals the ratio of the pressures, because the reflected wave has the same waveform as the incident wave <i>in linear acoustics</i>. The reflection coefficient is therefore simply
+\begin{align*}
+r = \frac{p_r^2}{p_i^2} = R^2\,.
+\end{align*} 
+Meanwhile, the transmission coefficient is 
+\begin{align*}
+\tau &= \frac{W_t}{W_i}\\
+&= \frac{p_{t, \text{rms}}^2 S/Z_2}{p_{i, \text{rms}}^2 S/Z_1}\\
+&= \frac{p_t^2/Z_2}{p_i^2/Z_1}\\
+&= T^2 \frac{Z_1}{Z_2}\,.
+\end{align*}
+Evidently, since 
+\begin{align*}
+R^2 &= \frac{1+(Z_1/Z_2)^2 - 2Z_1/Z_2}{1+(Z_1/Z_2)^2 + 2Z_1/Z_2}\\
+T^2 &= \frac{4}{1 +(Z_1/Z_2)^2 + 2Z_1/Z_2}
+\end{align*}
+the conservation of power is recovered, i.e., 
+\begin{align*}
+r + \tau &= R^2 + T^2 \frac{Z_1}{Z_2}\\
+&= \frac{1+(Z_1/Z_2)^2 - 2Z_1/Z_2}{1+(Z_1/Z_2)^2 + 2Z_1/Z_2} + \frac{4 Z_1/Z_2}{1 +(Z_1/Z_2)^2 + 2Z_1/Z_2} \\
+&= \frac{1+(Z_1/Z_2)^2 + 2Z_1/Z_2}{1+(Z_1/Z_2)^2 + 2Z_1/Z_2}\\
+&= 1\,,
+\end{align*}
+and the result obeys the first law of thermodynamics.
+</p>
+</div>
+</li>
+
+<li> Derive \(R\) and \(T\) due to change in cross-sectional surface area.
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol3')">[answer]</span>
+<div id="3sol3" class="expandable-content" style="color: #0000A0;">
+<p>  
+If there is a change in surface area in a medium, then \(1+R = T\) as before (force-free surface), but now the <i>volume velocity</i> \(q\) must be conserved at the junction,
+\begin{align*}
+q_i + q_r &= q_t\\
+S_1 u_i + S_1 u_r &= S_2 u_t,
+\end{align*}
+where the definition of volume velocity has been used to obtain the second line above. Invoking the plane wave impedance relation gives
+\begin{align*}
+\frac{S_1}{Z} p_i - \frac{S_1}{Z} p_r &= \frac{S_2}{Z} p_t\\
+p_i - p_r &= \frac{S_2}{S_1}p_t\\
+1- R&= \frac{S_2}{S_1}T
+\end{align*}
+Combining the above with \(1+R = T\) gives
+\begin{align*}
+T &= \frac{2S_1}{S_1+S_2} \,.\\
+&= \frac{2}{1+S_2/S_1}
+\end{align*}
+and 
+\begin{align*}
+R &= \frac{1 -S_2/S_1}{1+S_2/S_1}\,.
+\end{align*}
+Again a physical interpretation is provided: 
+
+<p>For the case that the boundary is replaced by a rigid wall, \(S_2/S_1 \to 0\). Appropriately, \(R \to 1\) and \(T\to 2\). </p>
+
+<p>For the case that the boundary is replaced by a pressure release surface, \(S_2/S_1 \to \infty\). Appropriately, \(R \to -1\) and \(T\to 0\). </p>
+
+<p>Finally, for the degenerate case of no boundary, \(S_2/S_1 \to 1\). Appropriately, \(R \to 0\) and \(T\to 1\). </p>
+</p>
+</div>
+</li>
+
+<li> What is an implicit assumption about the expressions for \(R\) and \(T\) due to change in cross-sectional surface area?
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol3a')">[answer]</span>
+<div id="3sol3a" class="expandable-content" style="color: #0000A0;">
+<p>  
+An implicit assumption is that the wavelength is much longer than the characteristic length scale of the change in area. This is because the acoustic wave must maintain its plane-wave nature at the junctio for the the simple derivation above to hold.  For example, if the change in surface area is due to sharp corners at the junction of two pipes of two different cross sectional areas, then the scattering off these corners must be neglected; the scattering is minimal for the case when the corners are of a dimension much smaller than a wavelength.
+</p>
+</div>
+</li>
+
+<li> Derive \(R\) and \(T\) due to change in both surface area and impedance. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol4')">[answer]</span>
+<div id="3sol4" class="expandable-content" style="color: #0000A0;">
+<p>
+If there is a change in both surface area <i>and</i> impedance, then \(1+R = T\) and
+\begin{align*}
+q_i + q_r &= q_t\\
+S_1 u_i + S_1 u_r &= S_2 u_t,
+\end{align*}
+where the definition of volume velocity has been used to obtain the second line above. Invoking the plane wave impedance relation gives
+\begin{align*}
+\frac{S_1}{Z_1} p_i - \frac{S_1}{Z_1} p_r &= \frac{S_2}{Z_2} p_t\\
+p_i - p_r &= \frac{S_2 Z_1}{S_1 Z_2}p_t\\
+1- R&= \frac{S_2 Z_1}{S_1 Z_2}T
+\end{align*}
+Combining the above with \(1+R = T\) gives
+\begin{align*}
+T &= \frac{2S_1 Z_2}{S_1 Z_2 +S_2 Z_1} \,.\\
+&= \frac{2}{1+Z_1S_2/Z_2S_1}
+\end{align*}
+and 
+\begin{align*}
+R &= \frac{1 -Z_1S_2/Z_2S_1}{1+Z_1S_2/Z_2S_1}\,.
+\end{align*}
+The above results can easily be recast using the notion of <i>acoustic impedance</i>, which is defined as \(Z_\text{ac} = Z_\text{sp, ac}/S\):
+\begin{align*}
+T &= \frac{2}{1+Z_\text{ac,1}/Z_\text{ac,2}}\\
+R &= \frac{1 -Z_\text{ac,1}/Z_\text{ac,2}}{1+Z_\text{ac,1}/Z_\text{ac,2}}\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+<li> Derive the power reflection and transmission coefficients for the general case in problem (5). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol5')">[answer]</span>
+<div id="3sol5" class="expandable-content" style="color: #0000A0;">
+<p>  
+The setup is much the same as in problem (3), only this time accounting for the change in surface area as well as the change in impedance at the boundary:
+\begin{align*}
+r = \frac{p_r^2}{p_i^2} = R^2\,.
+\end{align*} 
+Meanwhile, the transmission coefficient is 
+\begin{align*}
+\tau &= \frac{W_t}{W_i}\\
+&= \frac{p_{t, \text{rms}}^2 S_2/Z_2}{p_{i, \text{rms}}^2 S_1/Z_1}\\
+&= \frac{p_t^2/Z_\text{ac,2}}{p_i^2/Z_\text{ac,1}}\\
+&= T^2 \frac{Z_\text{ac,1}}{Z_\text{ac,2}}\,.
+\end{align*}
+You can check for yourself that power is conserved, but the algebra is identical to that of problem (3). 
+</p>
+</div>
+</li>
+
+<li> Calculate pressure in a semi-infinite shock tube with a rigid termination at \(x=0\) due to a finite step shock. The initial conditions are
+\begin{align*}
+p(x,0) &= A[H(x) - H(x-L)]\\
+u(x,0) &= 0
+\end{align*}
+and the boundary condition is \(u(0,t) =0\). 
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol6')">[answer]</span>
+<div id="3sol6" class="expandable-content" style="color: #0000A0;">
+<p>  
+The general pressure solution is
+\begin{align*}
+p(x,t) = f(x-c_0t) + g(x+c_0t)\,.
+\end{align*}
+Using the plane wave impedance relation, the corresponding particle velocity is
+\begin{align*}
+u(x,t) = \frac{1}{\rho_0c_0}[f(x-c_0t) - g(x+c_0t)]\,.
+\end{align*}
+Matching the initial velocity condition gives
+\begin{align*}
+u(x,0) = \frac{1}{\rho_0c_0}[f(x) - g(x)] =0
+\end{align*}
+which means that \(f(x) = g(x)\). Thus the pressure and particle velocity solution reads  
+\begin{align*}
+p(x,t) &= f(x-c_0t) + f(x+c_0t)\\
+u(x,t) &= \frac{1}{\rho_0c_0}[f(x-c_0t) - f(x+c_0t)]\,.
+\end{align*}
+Next, matching the initial pressure condition \(p(x,0) = A[H(x) - H(x-L)]\) gives
+\begin{align*}
+p(x,0) = f(x) =  \frac{A}{2}[H(x) - H(x-L)]\,.
+\end{align*}
+The pressure and particle velocity solution then reads
+\begin{align*}
+p(x,t) &= \frac{A}{2}[H(x-c_0t) - H(x-L-c_0t) + H(x+c_0t) - H(x-L+c_0t)]\\
+u(x,t) &= \frac{A}{2\rho_0c_0}[H(x-c_0t) - H(x-L-c_0t) - H(x+c_0t) + H(x-L+c_0t)]\,,
+\end{align*}
+or, in terms of the "rect'' function (see footnote on page 10 of Blackstock for the definition),
+\begin{align*}
+p(x,t)&= \frac{A}{2}\bigg[\text{rect }\bigg(\frac{x-c_0t}{2L}\bigg) + \text{rect }\bigg(\frac{x+c_0t}{2L}\bigg)\bigg]\\
+u(x,t)&=\frac{A}{2\rho_0c_0}\bigg[\text{rect }\bigg(\frac{x-c_0t}{2L}\bigg) - \text{rect }\bigg(\frac{x+c_0t}{2L}\bigg)\bigg]\,.
+\end{align*}
+The solution for negative \(x\) is disregarded. 
+Note that the above particle velocity solution satisfies the  boundary condition \(u(0,t) =0\).  I don't know Dr. Blackstock makes a fuss about satisfying the boundary condition on page 120 (''But this is not a sufficient definition of \(f\) to satisfy the last condition...'').
+</p>
+</div>
+</li>
+
+<li> What is the volume velocity at the center of a spherically converging wave? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol8')">[answer]</span>
+<div id="3sol8" class="expandable-content" style="color: #0000A0;">
+<p> The volume velocity vanishes at the center of a spherical wave. A spherically converging wave is spherically symmetric, and therefore the particle velocities (which only have a radial component) coming from all directions towards the focus cancel each other out at the focus.</p>
+</div>
+</li>
+
+
+<li>&#9784; Calculate pressure in bursting balloon due to a finite step shock set off by the initial conditions
+\begin{align}
+p(r,0) &= A[H(r)- H(r-r_0)]\label{initialcondos1}\tag{i}\\
+u(r,0) &= 0\,.\label{initialcondos2}\tag{ii}
+\end{align}
+Note that the volume velocity \(q = Su\) must vanish at \(r =0\) (see previous problem for explanation):
+\begin{align}\label{zero vv}\tag{iii}
+\lim_{r\to 0} q = \lim_{r\to 0} Su = \lim_{r\to 0} 4\pi r^2 u = 0\,.
+\end{align}
+<i>Outline: Use the velocity potential \(\phi\), recalling that \(p = -\rho_0 \phi_t\) and \(u = \phi_r\). Match the initial velocity condition and conclude that \(g(r) = -f(r)\). Apply this result \(p(r,t)\) and \(u(r,t)\), calculate \(q(r,t) = \pi r^2 u(r,t)\), and apply the limit above to show that \(f\) is even and \(f'\) is odd. Then apply the initial pressure condition to \(p(r,t)\), solve for \(f'(t)\), replace \(r\) with \(r\pm c_0 t\). Substitute the resulting \(f'(r\pm c_0 t)\) into \(p(r,t)\).</i> 
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol7')">[answer]</span>
+<div id="3sol7" class="expandable-content" style="color: #0000A0;">
+<p>  
+Since the sound obeys the spherically symmetric wave equation, the velocity potential is of the form
+\begin{align*}
+\phi &= \frac{f(r -c_0 t)}{r} + \frac{g(r +c_0 t)}{r}\,.
+\end{align*}
+The pressure is therefore
+\begin{align}\label{form of p}\tag{iv}
+p(r,t) &= -\rho_0 \phi_t = \rho_0 c_0\frac{f'(r -c_0 t) -g'(r +c_0 t)}{r}\,,
+\end{align}
+and the particle velocity is
+\begin{align}\label{form of u}\tag{v}
+u(r,t) &= \phi_r = -\frac{f(r -c_0 t) + g(r + c_0 t)}{r^2} + \frac{f'(r -c_0 t) + g'(r + c_0 t)}{r} \,.
+\end{align}
+Applying the initial condition given by equation (\ref{initialcondos2}) on equation (\ref{form of u}) gives
+\begin{align*}
+\frac{f(r) + g(r)}{r^2} = \frac{f'(r ) + g'(r)}{r}  
+\end{align*}
+This equality is guaranteed if \(g(r) = -f(r)\), because this implies that \(g'(r) = -f'(r)\) (though the converse is not necessarily true). Therefore, equation (\ref{form of p}) becomes
+\begin{align}\label{form of p'}\tag{vi}
+p(r,t) &= \rho_0 c_0\frac{f'(r -c_0 t) + f'(r +c_0 t)}{r}\,,
+\end{align}
+and equation (\ref{form of u}) becomes
+\begin{align*}
+u(r,t) &= -\frac{f(r -c_0 t) - f(r + c_0 t)}{r^2} + \frac{f'(r -c_0 t) - f'(r + c_0 t)}{r} \,.
+\end{align*}
+The volume velocity is therefore
+\begin{align}
+q &= Su = 4\pi r^2 u \notag\\
+&= -4\pi [f(r -c_0 t) - f(r + c_0 t)] + 4\pi r [f'(r -c_0 t) - f'(r + c_0 t)] \,.\label{q}\tag{vii}
+\end{align}
+The condition given by equation (\ref{zero vv}) is applied to equation (\ref{q}):
+\begin{align}
+\lim_{r\to 0}q &=  -4\pi [f( -c_0 t) - f(c_0 t)] = 0\notag\\
+\implies f(-c_0 t) &= f(c_0 t) \,.\label{limq}\tag{viii}
+\end{align}
+Taking the derivative of equation (\ref{limq}) gives
+\begin{align}\label{oddy}\tag{ix}
+-f'(-c_0 t) &= f'(c_0 t)\,,
+\end{align}
+i.e., that \(f'\) is <b>odd</b>.</p>
+
+<p>
+Meanwhile, the initial condition given by equation (\ref{initialcondos1}) is applied to equation (\ref{form of p'}):
+\begin{align*}
+A[H(r) - H(r-r_0)] &= 2\rho_0 c_0\frac{f'(r)}{r}
+\end{align*}
+Solving the above for \(f'(r)\) gives
+\begin{align}\label{fprime}\tag{x}
+f'(r) &= \frac{rA[H(r) - H(r-r_0)]}{2\rho_0 c_0}
+\end{align}
+Enforcing equation (\ref{oddy}) (the oddness of \(f'\)) on equation (\ref{fprime}) requires that \(f'\) is defined for \(-r\) as well as \(+r\). This can be achieved using the rectangle function, where \(\text{rect }\big(
+\frac{x-x_0}{w}\big) = H(x-x_0 + w/2) - H(x-x_0 - w/2)\):
+\begin{align*}
+f'(r) = \frac{rA}{2\rho_0 c_0}\text{ rect } \bigg(\frac{r}{2r_0}\bigg)
+\end{align*}
+Therefore, 
+\begin{align}\label{final f'}\tag{xi}
+f'(r\pm c_0t) = \frac{A}{2\rho_0 c_0}(r\pm c_0t)\text{ rect } \bigg(\frac{r\pm c_0 t}{2r_0}\bigg)
+\end{align}
+Substituting equation (\ref{final f'}) into equation (\ref{form of p'}) gives the solution:
+\begin{align*}
+p(r,t) = \frac{A}{2r}
+\bigg[(r-c_0t)\text{ rect }\Big(\frac{r-c_0t}{2r_0}\Big) + 
+(r+c_0t)\text{ rect }\Big(\frac{r+c_0t}{2r_0}\Big)\bigg]
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li>&#9784; Consider a sphere of radius \(r_0\). At \(r = r_0\), the incident pressure wave is given by \(p_\mathrm{in}(t)\). The pressure solution is therefore of the form
+\begin{align}\label{form of pressuriners}\tag{i}
+p = \frac{r_0}{r}p_\mathrm{in}(t + r/c_0) + \frac{F(t-r/c_0)}{r},
+\end{align}
+where \(F(t-r/c_0)/r\) corresponds to the wave emerging through the focus. Determine \(F(t-r/c_0)\) in terms of \(p_\mathrm{in}\). What is the pressure at the center of a sphere? <i>Outline: Given equation (\ref{form of pressuriners}), find \(u\), where \(\tilde{F}\) is the antiderivative of \(F\) and \(\tilde{p}\) is the antiderivative of \(p\). Take the limit as \(r\to 0\), for which the volume velocity \(4\pi r^2 u = 0\). Solve for \(\tilde{F}\) and obtain \(F(t) = -r_0 p_\text{in}(t)\). </i>
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sol9')">[answer]</span>
+<div id="3sol9" class="expandable-content" style="color: #0000A0;">
+<p>  
+First, apply the momentum equation for a spherical wave, \(\rho_0\dot u = -p_r\), to equation (\ref{form of pressuriners}):
+\begin{align*}
+\rho_0 \frac{\partial u}{\partial t} &= \frac{F'(t-r/c_0) - r_0p_\mathrm{in}'(t + r/c_0)}{c_0 r} + \frac{F(t-r/c_0)+ r_0 p_\mathrm{in} (t + r/c_0)}{r^2}
+\end{align*}
+Solving the above for \(u\) by integration over time gives 
+\begin{align}
+u &= -\frac{1}{\rho_0}\int \frac{\partial p}{\partial t}\, dt\notag\\
+&= \frac{F(t-r/c_0) - r_0p_\mathrm{in}(t + r/c_0)}{\rho_0c_0 r} + \frac{\tilde{F}(t-r/c_0)+ r_0 \tilde{p}_\mathrm{in} (t + r/c_0)}{\rho_0 r^2}\,,\label{refthis}\tag{ii}
+\end{align}
+where \(\tilde{p}\) is the antiderivative of \(p\), and \(\tilde{F}\) is the antiderivative of \(F\). When the boundary condition \(\lim_{r\to 0} q = \lim_{r\to 0} 4\pi r^2 u = 0\) is applied to equation (\ref{refthis}), the first term of equation (\ref{refthis}) vanishes, and the second term gives
+\begin{align*}
+\frac{4\pi}{\rho_0}[\tilde{F}(t) + r_0 \tilde{p}_\mathrm{in}(t)] &= 0\,.
+\end{align*} 
+Solving the above for \(\tilde{F}(t)\) gives
+\begin{align*}
+\tilde{F}(t) = -r_0\tilde{p}_\mathrm{in}(t) \quad \implies \quad F(t) = -r_0 p_\mathrm{in}(t)\,.
+\end{align*}
+Substituting \(F(t) = -r_0 p_\mathrm{in}(t)\) into equation (\ref{form of pressuriners}) gives the solution
+\begin{equation}\label{pressuresolutioneerses}
+p = \frac{r_0}{r}p_\mathrm{in}(t + r/c_0) - \frac{r_0}{r}p_\mathrm{in}(t-r/c_0),\tag{iii}
+\end{equation}
+The first term corresponds to the incoming wave, and the second term corresponds to the outgoing wave. <i>Note that the outgoing wave is out of phase with respect to the incoming wave.</i> </p>
+
+<p>What happens at \(r=0\) (the focus)? The limit of equation (\ref{pressuresolutioneerses}) is taken:
+\begin{align*}
+\lim_{r\to 0}p &= \lim_{r\to 0}\frac{r_0}{r}\bigg[p_\mathrm{in}(t + r/c_0) - p_\mathrm{in}(t-r/c_0)\bigg]\\
+&=\lim_{r\to 0}\frac{r_0}{r}\bigg[p_\mathrm{in}(t)  +\frac{r}{c_0}p'_\mathrm{in}(t)- p_\mathrm{in}(t)+ \frac{r}{c_0} p_\mathrm{in}'(t)\bigg]\\
+&=\frac{2r_0}{c_0}p'_\mathrm{in}(t)
+\end{align*}
+In the second equality above, the function is Taylor expanded to first order, and the higher-order terms are dropped. The conclusion is that the pressure at the center of the sphere is proportional to the time derivative of the incident pressure.
+\begin{align*}
+p(r=0,t) = \frac{2r_0}{c_0}p'_\mathrm{in}(t)
+\end{align*}
+</p>
+</div>
+</li>
+
+<li>Given the previous result, what happens to the phase at the focal point of a focused sound beam?   
+<span class="expandable-toggle" onclick="toggleExpandableContent('3sollf')">[answer]</span>
+<div id="3sollf" class="expandable-content" style="color: #0000A0;">
+<p> The phase undergoes a \(180^\circ\) inversion. </p>
+</div>
+</li>
+
+<li>&#9784; Derive the reflection and transmission coefficients \(R\) amd \(T\) for the three-medium problem, where the three media are labelled I, II, and III, as described on p. 168 of <i>Fundamentals of Physical Acoustics</i>. Assume that \(P_{\mathrm{I}} = A_1 e^{-jk_1x} + B_1 e^{jk_1x}\), \(P_{\mathrm{II}} = A_2 e^{-jk_2x} + B_2 e^{jk_2x}\), and \(P_{\mathrm{III}} = A_3 e^{-jk_3(x-l)}\) and apply the boundary conditions at the two interfaces. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('3solthreemed')">[answer]</span>
+<div id="3solthreemed" class="expandable-content" style="color: #0000A0;">
+<p> The problem is worked out <a href="../acoustics_I/three-medium-problem.pdf" target="_blank" rel="noopener noreferrer">here</a>.  </p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-2.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-4.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cylindrical waves</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      divergence: "{\\boldsymbol{\\nabla}\\cdot}",
+      gradient: "{\\boldsymbol\\nabla}",
+      curl: "{\\boldsymbol\\nabla\\times}",
+      Laplacian: "{\\nabla^2}",
+      dAlambertian: "{\\Box^2}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      Re: "{\\operatorname{Re}}",
+      Im: "{\\operatorname{Im}}"
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+    <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+<div class="textbox">
+<h2 id="11">Chapter 11: Cylindrical waves</h2>
+<ol>
+<li> Obtain the general solution to the wave equation in cylindrical coordinates.
+<span class="expandable-toggle" onclick="toggleExpandableContent('11so0')">[answer]</span>
+<div id="11so0" class="expandable-content" style="color: #0000A0;">
+<p>  
+See the first section of Chap. 11 of Blackstock for the general solution of the wave equation in cylindrical coordinates.
+ </p>
+</div>
+</li>
+
+<li>&#9784; In <i>spherical</i> solutions to the wave equation, what are the names of the three indices used? What do they correspond to physically? What possible values can the indices equal? In <i>cylindrical</i> coordinates, what indices are used, what do they correspond to physically, and what are their possible values? Comment on the similarities and differences. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol1')">[answer]</span>
+<div id="11sol1" class="expandable-content" style="color: #0000A0;">
+<p>Note that Blackstock's convention is used in the following discussion.</p>
+<p>In <i>spherical</i> coordinates, \(n = 0,1,2,\dots\) corresponds to the order of the spherical Bessel function. \(n\) also appears as the index of the Legendre polynomial and the lower index of the associated Legendre function. Meanwhile, \(l = 1,2,3,\dots\) corresponds to the zero of the spherical Bessel function. Finally, \(m = 0, 1,2,\dots, n\) appears in the harmonic azimuthal dependence, as well as in the top index of the associated Legendre polynomial. <i>The eigenfrequencies in spherical coordinates depend only on \(n\) and \(l\) in even the most general case.</i>  </p>
+<p>In <i>cylindrical</i> coordinates, \(m = 0,1,2,\dots\) is the order of the Bessel function, while \(n = 1,2,3,\dots\) corresponds to the zero of the Bessel function. \(m\) is also the index corresponding to the harmonic polar dependence. \(l = 1,2,3,\dots\) (and sometimes \(0\)) is the index corresponding to the \(z\)-dependence. <i>The eigenfrequencies in cylindrical coordinates depend on all three indices in the most general case.</i> </p>
+<p>One similarity between spherical and cylindrical solutions is that the Bessel functions and polar functions in either case <i>share the same index</i>. In spherical coordinates, that index is \(n\); in cylindrical coordinates, that index is \(m\). <i>In light of this, I wish Dr. Blackstock had used \(n\) instead of \(m\) for the index in cylindrical coordinates, to preserve this similarity with spherical coordinates.</i></p>
+<p>One difference between spherical and cylindrical solutions is that \(n\) in spherical coordinates is necessarily an integer, but \(m\) in cylindrical coordinates can taken on non-integer (and in fact irrational) values. This happens in cylindrical wedge problems. In this case, the Latin \(m\) is replaced with the Greek \(\mu\).  </p>
+<p>One should not be militant about the names of indices; it is much more important to have the <i>form of solution</i> correct. In summary, the general solution in spherical coordinates is given by 
+\begin{align*}
+R(r)\Theta(\theta)\Psi(\psi)= \begin{Bmatrix}j_n(k_{nl}r) \\n_n(k_{nl}r)\end{Bmatrix} \begin{Bmatrix}P^m_n(\cos\theta) \\ Q^m_n(\cos\theta)\end{Bmatrix} \begin{Bmatrix}\cos m\psi \\ \sin m\psi \end{Bmatrix}\begin{Bmatrix}\cos \omega t \\ \sin \omega t\end{Bmatrix}
+\end{align*}
+while that in cylindrical coordinates is given by 
+\begin{align*}
+R(r)\Theta(\theta)Z(z)= \begin{Bmatrix}J_m(k_{mn}r) \\N_m(k_{mn}r)\end{Bmatrix} \begin{Bmatrix}\cos m\theta \\ \sin m\theta\end{Bmatrix} \begin{Bmatrix}\cos lz \\ \sin lz\end{Bmatrix}\begin{Bmatrix}\cos \omega t \\ \sin \omega t\end{Bmatrix}
+\end{align*}
+</p>
+</div>
+</li>
+
+
+<li> Obtain the complete solution to the 2D wave equation for a circular drumhead that is clamped at radius \(r =a\) and that is struck at \(r=0\) at \(t=0\). Let \(\eta\) be the displacement of the drumhead. The initial conditions are that the drumhead is initially silent, \(\eta = 0\), and the initial velocity is \(\dot{\eta} = v_0 \delta(r)/2\pi r\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol2')">[answer]</span>
+<div id="11sol2" class="expandable-content" style="color: #0000A0;">
+<p>Start with the general solution to the wave equation in \(r\) and \(\theta\). Neglect the Neumann functions since the origin is included.
+\begin{align*}
+\eta(r,\theta,t) =  J_m(kr) \begin{Bmatrix}\cos m\theta \\ \sin m\theta\end{Bmatrix} \begin{Bmatrix}\cos \omega t  \\ \sin\omega t\end{Bmatrix}
+\end{align*}
+Applying the radial boundary condition gives the eigenfrequencies:
+\begin{align*}
+J_m(ka) = 0\quad \implies\quad
+k_{mn} = \frac{\alpha_{mn}}{a}\quad \implies\quad 
+f_{mn} = \frac{c_0\alpha_{mn}}{2\pi a}\,,
+\end{align*}
+where \(\alpha_{mn}\) is the \(n\)th root of the Bessel function of order \(m\). The angular dependence can be written more conveniently as \(\cos(m\theta + \psi_m)\).  Thus the general solution becomes
+\begin{align*}
+\eta(r,\theta,t) = \sum_{n=1}^\infty \sum_{m=0}^\infty J_m(\alpha_{mn}'r/a) \cos (m\theta +\psi_m)(C_{mn}\cos \omega_{mn} t + D_{mn}\sin\omega_{mn} t)
+\end{align*}
+The condition that the drumhead is initially silent implies that \(C_{mn} = 0\). Also, since the initial condition is independent of \(\theta\), \(m=0\):
+\begin{align}\tag{i}\label{sldkfjasdlfj}
+\eta(r,\theta,t) = \sum_{n=1}^\infty D_{n} J_0(\alpha_{0n}r/a) \sin\omega_{n} t
+\end{align}
+To determine \(D_{n}\), the initial conditions \(\eta = 0\) and \(\dot{\eta} = v_0 \delta(r)/2\pi r\) at \(t=0\) are utilized.  Thus,
+\begin{align*}
+\dot{\eta} = \frac{v_0 \delta(r)}{2\pi r} =  \sum_{n=1}^\infty D_{n} \omega_{n} J_0(\alpha_{0n}r/a) 
+\end{align*}
+Multiplying both sides by \(J_0(\alpha_{0n'} r/a)r dr\) and integrating from \(r=0\) to \(r=a\) gives
+\begin{align}\tag{ii}\label{lskdfjalskdfj}
+\frac{v_0}{2\pi}\int_{0}^{a} \delta(r) J_0(\alpha_{0n'} r/a) dr &=  \sum_{n=1}^\infty \omega_{n} D_{n} \int_{0}^{a} J_0(\alpha_{0n'}r/a) J_0(\alpha_{0n}r/a)r dr
+\end{align}
+The integral on the left-hand side is trivial by the sifting property of the delta function.
+\[\frac{v_0}{2\pi}\int_{0}^{a} \delta(r) J_0(\alpha_{0n'} r/a) dr = \frac{v_0}{2\pi} J_0(0) = \frac{v_0}{2\pi} \] 
+The right-hand side of equation (\ref{lskdfjalskdfj}) is the orthogonality relation for the order 0 Bessel function. Making the substitution \(x \equiv r/a\) makes this more clear: 
+\begin{align*}
+\int_{0}^{a} J_0(\alpha_{0n'}r/a) J_0(\alpha_{0n}r/a)r dr &= a^2\int_{0}^{1} J_0(\alpha_{0n'}x) J_0(\alpha_{0n}x)x dx\\
+&=  \frac{a^2}{2} [J_0'(\alpha_{0n'})]^2\delta_{nn'}
+\end{align*}
+Thus equation (\ref{lskdfjalskdfj}) becomes
+\begin{align*}
+\frac{v_0}{2\pi} &= \frac{a^2}{2} \sum_{n=1}^\infty \omega_{n} D_{n}   [J_0'(\alpha_{0n'})]^2\delta_{nn'}
+\end{align*}
+Solving for \(D_n\) gives
+\[ D_{n} =\frac{v_0}{[J_0'(\alpha_{0n})]^2  \omega_{n} \pi a^2}.\]
+The complete solution is found by substituting the above into equation (\ref{sldkfjasdlfj}):
+\begin{align*}
+\eta(r,\theta,t) = \frac{v_0}{\pi a^2}\sum_{n=1}^\infty \frac{J_0(\alpha_{0n}r/a)}{[J_0'(\alpha_{0n})]^2  \omega_{n} }  \sin\omega_{n} t
+\end{align*}  </p>
+</div>
+</li>
+  
+
+<li> A driven circular drumhead obeys the inhomogeneous wave equation \[\nabla^2 \eta - \frac{1}{c^2}\eta_{tt} = -\frac{p_s}{\mathcal{T}_l},\]
+where \(p_s\) is the drive function, considered here to be \(p_s = p_{0} e^{j\omega t}\). Describe a situation in which this is the drive function of the drumhead. Solve the inhomogeneous wave equation.
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol2aa')">[answer]</span>
+<div id="11sol2aa" class="expandable-content" style="color: #0000A0;">
+<p></p>
+
+<p>
+To solve the inhomogeneous wave equation, first note that the time dependence will be \(e^{j\omega t}\) (that of the drive frequency), and that the only spatial dependence will be radial, i.e., \(\eta(r,t) = R(r) e^{j\omega t}\). Thus the inhomogeneous PDE to solved reduces to an inhomogeneous ODE:
+\begin{align*}
+R'' + \frac{1}{r}R' + k^2 R = -\frac{p_0}{\mathcal{T}}.
+\end{align*}
+The solution to this ODE is the sum of the homogeneous and inhomogeneous parts. The homogeneous solution is the solution to Bessel's equation of order \(0\): \(A \,J_0(kr)\). For the inhomogeneous solution, it is noted that the right-hand side is constant, so a trial solution \(C\) is used giving \(C = -p_0/k^2\mathcal{T}\). Thus the solution to the ODE is
+\begin{align*}
+R(r) = A \,J_0(kr) -\frac{p_0}{k^2\mathcal{T}}\,.
+\end{align*}
+Applying the boundary condition that \(R= 0\) at \(r=a\) gives
+\begin{align*}
+A= \frac{p_0}{k^2\mathcal{T}J_0(ka)}
+\end{align*}
+The solution is thus
+\begin{align*}
+\eta (r,t) &= \frac{p_0}{k^2\mathcal{T}}\bigg[\frac{J_0(kr)}{J_0(ka)}  - 1\bigg] e^{j\omega t}
+\end{align*}
+Note that when \(ka = \alpha_{0n}\), the response goes to \(\infty\).</p>
+</div>
+</li>
+
+
+
+<li> <b>Part 1.</b> Solve the 2D wave equation in \(\eta(r,\theta)\) for a pie-shaped drumhead subtending \(45^\circ\), where one edge, say \( \theta = 0\), is free, while the curved boundary at \(r = a\) and the other edge at \(\theta = 45^\circ\) are clamped:
+<img src="wedgedrum.png" width="270" height="170" style = "display: block; margin-left: auto; margin-right: auto;"/>
+Find the eigenfrequencies and identify the lowest one. <b>Part 2.</b> Suppose there is an initial displacement on the membrane of \(\eta_0\), which would correspond to a "plucked" initial condition. Also assume there is no initial velocity: 
+\begin{align*}
+\eta(r,\theta,0) &=
+\begin{cases}
+\eta_0,\quad &\theta = [0,\,\pi/4),\, r = [0,a]\\
+0,\quad &\theta = [\pi/4,\, 2\pi)
+\end{cases}\\
+\dot{\eta}(r,\theta,0) &= 0 
+\end{align*}
+Apply the initial condition to the eigenfunctions found in part 1 to find \(C_{mn}\) and \(D_{mn}\). Leave the relevant expansion coefficients in integral form, and evaluate the integral for \(m=0\) only. Compare the coefficients for \(m=0\) to Blackstock's equation (11.B-13) on page 400 for a circular drumhead clamped at \(r=a\) subject to the analogous "plucked'' initial condition.
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol3w')">[answer]</span>
+<div id="11sol3w" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="wedge-shaped-drumhead.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. 
+</div>
+</li>
+
+
+
+
+<li> What is the general solution to the 3D wave equation for sound in a hollow cylinder of length \(L\) and radius \(a\) with rigid walls? Which eigenfrequencies recover those corresponding purely harmonic axial modes (no propagation in \(r\) and \(\theta\))? Which eigenfrequencies correspond to purely radial modes (no dependence in \(\theta\) and \(z\))? Is it possible to have pure spinning modes?
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol3')">[answer]</span>
+<div id="11sol3" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="rigid_hollow_cylinder.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. Setting \(m = 0\) and \(n = 1\) results in purely axial modes because \(\alpha'_{01}= 0\), and thus the radial dependence is eliminated \(J_0(0)=1\). Setting \(m = 0\) and \(l =0\) gives purely radial modes because the angular dependence and axial dependence are both eliminated in that case.</p>
+
+<p>It is not possible to have pure spinning modes. One way to rationalize this is to note that there is no "angular wavenumber." One can also see by inspection that there must exist radial modes if there exist angular modes, because both depend on the same index \(m\).</p>
+</div>
+</li>
+
+
+<li> Solve the wave equation for sound in between two concentric cylinders of length \(L\), inner radius \(a\), and outer radius \(b\). Let all boundaries be pressure-release. Do not attempt to find the eigenfrequencies explicitly.
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol5aa')">[answer]</span>
+<div id="11sol5aa" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="vibrating_cylinder.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution.</p>
+</div>
+</li>
+
+
+<li> Calculate the pressure field due to a uniformly pulsating cylinder, for which the velocity boundary condition is \(u^{(r)}(r=a) = u_0 e^{j\omega t}\). What makes the near field of the impedance of the uniformly pulsating cylinder interesting?
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol4')">[answer]</span>
+<div id="11sol4" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="uniformly_pulsating_cylinder.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution. The near field impedance can be calculated given the \(kr \ll 1\) limit of the Hankel function.  What makes it interesting is that it depends on \(c_0\). In contrast, the near field spherical impedance relation is independent of \(c_0\).</p>
+</div>
+</li>
+
+<li> Calculate the pressure field due to a translating cylinder, for which the velocity boundary condition is \(u^{(r)}(r=a) = u_0 \cos\theta \, e^{j\omega t}\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('11sol5')">[answer]</span>
+<div id="11sol5" class="expandable-content" style="color: #0000A0;">
+<p>See <a href="vibrating_cylinder.pdf" target="_blank" rel="noopener noreferrer">here</a> for the solution.</p>
+</div>
+</li>
+
+<li> Consider a waveguide with pressure-release surfaces at \(z = 0\) and \(z = D\). A vertically oriented cylindrical source of radius \(a\) extending from \(z = 0\) to \(z = D\)
+pulses radially, i.e., \(u(a,\theta,z,t) = u_0 e^{j\omega t}\). Solve the pressure wave equation for this configuration
+<span class="expandable-toggle" onclick="toggleExpandableContent('11soldouble')">[answer]</span>
+<div id="11soldouble" class="expandable-content" style="color: #0000A0;">
+<p><a href="../acoustics_II/press-release-wvgd.pdf" target="_blank" rel="noopener noreferrer">Here</a> is the solution for (1) a radially pulsating cylindrical source of sound extending between two pressure-release parallel planes. Prof. Blackstock mentions this kind of waveguide on page 432 in <i>Fundamentals of Physical Acoustics</i>. He solves for (2) a radially pulsating cylindrical source between two rigid, parallel planes on page 430, and assigns the case of (3) a radially pulsating cylindrical source between one rigid boundary and one pressure-release boundary (a 0th-order model of sound in the ocean) as problem 12-13. Interestingly, case (1) and (3) excite many modes, but case (2) excites only the lowest mode.</p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="physical.html">&uparrow; Return to physical acoustics</a></span>
+<span><a href="physical-10.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="physical-12.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>
