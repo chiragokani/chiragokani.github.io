@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/svg']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+      nablav: "{\\boldsymbol\\nabla}",
+      T: "{^\\mathsf{T}}",
+      vecell: "{\\boldsymbol\\ell}",
+        }
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+<div class="textbox">
+<h2 id="vector">Vector algebra</h2>
+<p>In the section on <a href="math-4.html">linear algebra</a>, different symbols were used for vectors and their representation in a particular bases. In this section, we deal only with the vectors themselves. When vectors need to be expressed in a basis, \(3\times 1\) matrices are used. It is therefore not necessary to distinguish between \(\vec{v}\) and \(\mathsf{v}\) (and between \(A\) and \(\mathsf{A}\)).</p>
+
+<p>Some of the problems below come from chapter 1 of <i>Introduction to Electrodynamics</i> by D. J. Griffiths.</p>
+<ol>
+<li> Suppose we have a barrel of fruit that contains \(a_x\) bananas, \(a_y\) pears, and \(a_z\) apples. Denoting \(\vec{e}_n\) as the unit vector in the \(n\) direction in space, is \(\vec{a} = a_x\vec{e}_x + a_y\vec{e}_y + a_z\vec{e}_z\), a vector? Explain. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol0')">[answer]</span>
+<div id="8sol0" class="expandable-content" style="color: #0000A0;">
+<p>No, because \(\vec{a}\) does not obey coordinate transformations. For example, choosing a different set of axes does not turn a pear into a banana. By definition, "a vector is any set of three components that transforms in the same manner as a displacement when you change coordinates." (from Griffiths <i>Introduction to Electrodynamics</i>, section 1.1.5).</p>
+</div>
+</li>
+
+
+<li> How do the components \(a_x\), \(a_y\), and \(a_z\) of a vector \(\vec{a} = a_x \vec{e}_x + a_y \vec{e}_y + a_z \vec{e}_z \) transform under the translation of coordinates? 
+\begin{align*}
+x' &= x\\
+y' &= y-a\\
+z' &= z
+\end{align*} 
+In other words, what happens to \(a_x\), \(a_y\), and \(a_z\) when \(\vec{a}\) is written as \(\vec{a} = a_x \vec{e}_x' + a_y \vec{e}_y' + a_z \vec{e}_z' \)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol0a')">[answer]</span>
+<div id="8sol0a" class="expandable-content" style="color: #0000A0;">
+<p>The components of a vector are invariant under this transformation.</p>
+</div>
+</li>
+
+<li> How do the components of a vector transform under the inversion of coordinates? 
+\begin{align*}
+x' &= -x\\
+y' &= -y\\
+z' &= -z
+\end{align*} 
+In other words, what happens to \(a_x\), \(a_y\), and \(a_z\) when \(\vec{a}\) is written as \(\vec{a} = a_x \vec{e}_x' + a_y \vec{e}_y' + a_z \vec{e}_z' \)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol0b')">[answer]</span>
+<div id="8sol0b" class="expandable-content" style="color: #0000A0;">
+<p>The components are also inverted. \(a_x\mapsto -a_x\), \(a_y\mapsto -a_y\), and \(a_z\mapsto -a_y\).</p>
+</div>
+</li> 
+
+<li> How does the cross product of two vectors \(\vec{u}\) and \(\vec{v}\) transform under the inversion of coordinates? Is the cross product of two vectors really a vector?
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol0c')">[answer]</span>
+<div id="8sol0c" class="expandable-content" style="color: #0000A0;">
+<p>The cross product \(\vec{w} = \vec{u} \times \vec{v}\) is invariant under the inversion, because \(\vec{w} = -\vec{u} \times -\vec{v}\). Thus \(\vec{w}\) is a different kind of quantity than vectors \(\vec{u}\) and \(\vec{w}\). It is called a <i>psuedovector</i>.</p>
+</div>
+</li>
+
+
+<li> How does the scalar triple product of \(\vec{w}\cdot(\vec{u} \times \vec{v})\) transform under the inversion of coordinates? Is the scalar triple product really a scalar? (Griffiths problem 1.10d)
+<span class="expandable-toggle" onclick="toggleExpandableContent('8sol0d')">[answer]</span>
+<div id="8sol0d" class="expandable-content" style="color: #0000A0;">
+<p> 
+The scalar triple product transforms as \(-\vec{w}\cdot(-\vec{u} \times -\vec{v}) = -\vec{w}\cdot(\vec{u} \times \vec{v})\), i.e., the product changes signs when the coordinates are inverted. This is in contrast with the fact that scalars are invariant under coordinate inversions. Thus the scalar triple product is a different kind of quantity than an ordinary scalar. It is called a <i>psuedoscalar</i>.
+</div>
+</li>
+
+<li> Show that \( |\vec{u}\times \vec{v}|^2 + (\vec{u}\cdot \vec{v})^2 = |\vec{u}|^2|\vec{v}|^2  \).
+<span class="expandable-toggle" onclick="toggleExpandableContent('9sol2')">[answer]</span>
+<div id="9sol2" class="expandable-content" style="color: #0000A0;">
+<p>  
+\begin{align*}
+|\vec{u}\times \vec{v}|^2 + (\vec{u}\cdot \vec{v})^2 &=\epsilon_{ijk}u_j v_k \epsilon_{ilm}u_l v_m + u_i v_i u_j v_j\\
+&= \epsilon_{ijk}\epsilon_{ilm}u_j v_k u_l v_m + u_i v_i u_j v_j\\
+&=(\delta_{jl}\delta_{km}-\delta_{jm}\delta_{kl})u_j v_k u_l v_m + u_i v_i u_j v_j\\
+&=\delta_{jl}\delta_{km}u_j v_k u_l v_m  -\delta_{jm}\delta_{kl}u_j v_k u_l v_m   + u_i v_i u_j v_j \\
+&=u_l u_l v_k  v_k  - u_m v_m v_k u_k    + u_i v_i u_j v_j \\
+&=u_l u_l v_k  v_k  -   u_i v_i u_j v_j  + u_i v_i u_j v_j \\
+&=|\vec{u}|^2|\vec{v}|^2 
+\end{align*}
+</p>
+</div>
+</li>
+
+
+
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="math.html">&uparrow; Return to math index</a></span>
+<span><a href="math-6.html">&leftarrow; Return to previous topic</a></span>
+<span><a href="math-8.html">&rightarrow; Advance to next topic</a></span>
+</div></p>
+</div>
+</body>
+</html>

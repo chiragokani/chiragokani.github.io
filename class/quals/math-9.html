@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math</title>
+  <script>
+    window.MathJax = {
+      loader: {
+        load: ['input/tex', 'input/mml', 'output/chtml']
+      },
+      output: {
+        font: 'mathjax-termes' 
+      },
+      tex: {
+        tags: 'ams',
+        macros: {
+      Order: "{\\mathcal O}",
+      vec: ['\\mathbf{#1}',1] ,
+      dyad: ['\\boldsymbol{\\mathsf{#1}}',1],
+      nablav: "{\\boldsymbol\\nabla}",
+      Order: "{\\mathcal O}",
+      T: "{^\\mathsf{T}}",
+      vecell: "{\\boldsymbol\\ell}",
+        }
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+
+  <!-- MathJax 4 (NO async, NO es5) -->
+  <script
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
+  </script>
+
+<link rel="stylesheet" href="quals.css">
+
+ <script>
+    function toggleExpandableContent(id) {
+      var content = document.getElementById(id);
+      if (content.classList.contains("expanded")) {
+        content.classList.remove("expanded");
+      } else {
+        content.classList.add("expanded");
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<div class="textbox">
+<h2 id="PDE">Partial differential equations</h2>
+<ol>
+<li> Provide the name of each of the following partial differential equations. Also list a few physical phenomena described by each:
+\begin{align}
+\nabla^2 u &= 0\label{Laplace} \tag{i}\\
+\nabla^2 u &= f(\vec{r})\label{Poisson}\tag{ii}\\
+\nabla^2 u &= \frac{1}{\alpha^2}\frac{\partial u }{\partial t}\label{Diffusion}\tag{iii}\\
+\nabla^2 u &= \frac{1}{v^2}\frac{\partial^2 u}{\partial t^2}\label{Wave}\tag{iv}\\
+\nabla^2 F  + k^2 F&= 0\label{Helmholtz}\tag{v}\\
+i\hbar \frac{\partial\Psi}{\partial t}&= -\frac{\hbar^2}{2m}\nabla^2 \Psi + V\Psi \label{Schrodinger}\tag{vi}
+\end{align}
+Which two equations above both reduce to equation (\ref{Helmholtz}) upon assuming time-harmonic solutions?
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDE1a')">[answer]</span>
+<div id="PDE1a" class="expandable-content" style="color: #0000A0;">
+<p> Equation (\ref{Laplace}) is the Laplace equation, which describes the electric potential in a space that does not contain charge, the gravitational potential in a space that does not contain mass, and the velocity potential in an incompressible fluid in a space that does not contain vortices, sources, and sinks, to name a few examples. </p>
+<p> Equation (\ref{Poisson}) is the Poisson equation, which describes the electric potential in a space that contains charge, the gravitational potential in a space that contains mass, and the velocity potential in an incompressible fluid in a space that contains sources and sinks. </p>
+<p> Equation (\ref{Diffusion}) is the diffusion equation, which describes the temperature as a function of time in a space with no heat sources, or the concentration of a diffusing substance.</p>
+<p> Equation (\ref{Wave}) is the wave equation, which is the most beautiful PDE, describing light, sound, water waves, and gravitational waves, to name a few.</p>
+<p> Equation (\ref{Helmholtz}) is the Helmholtz equation, which is the spatial part of both the wave equation and the diffusion equation.</p>
+<p> Equation (\ref{Schrodinger}) is the Schrodinger equation, which describes nonrelativistic quanta. The paraxial wave equation also has the form of the Schrodinger equation, only with the temporal derivative in equation (\ref{Schrodinger}) replaced with a spatial derivative (\(\partial/\partial z\), for example), and with the Laplacian in equation (\ref{Schrodinger}) replaced with the transverse Laplacian \(\partial^2/\partial x^2 + \partial^2/\partial y^2\), for example).</p>
+</div>
+</li>
+
+<li> Solve Laplace's equation in 2D \(\frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} = 0\) where 
+\begin{align*}
+V&=0\quad \text{for}\quad y=0\\
+V&=0\quad \text{for}\quad y=a\\
+V&=V_0\quad \text{for}\quad x=-b\\
+V&=V_0\quad \text{for}\quad x=b\,.
+\end{align*}
+are the boundary conditions. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDE1')">[answer]</span>
+<div id="PDE1" class="expandable-content" style="color: #0000A0;">
+<p>  
+Separating variables gives
+\begin{align*}
+\frac{X''}{X} + \frac{Y''}{Y} = 0
+\end{align*}
+Introducing a separation constant gives
+\begin{align}
+\frac{X''}{X} &= k^2 \label{equationforX}\tag{i}\\
+\frac{Y''}{Y} &= -k^2 \label{equationforY}\tag{ii}
+\end{align}
+The sign in front of \(k^2\) determines variable is harmonic and which is exponential. Since the boundary condition on \(Y\)  goes to \(0\), it is chosen to be the harmonic solution. The boundary condition on \(X\) is finite, and thus it chosen to be exponential solution (because exponential solutions cannot satisfy a 0 boundary condition, because exponentials \(\neq 0 \)). Equation (\ref{equationforX}) gives
+\begin{align*}
+X = Ae^{ kx} + Be^{-kx},
+\end{align*}
+and equation (\ref{equationforY}) gives
+\begin{align*}
+Y = C\cos ky + D\sin ky  \,.
+\end{align*}
+Thus the general solution is
+\begin{align*}
+V = XY = (Ae^{ kx} + Be^{-kx})(C\cos ky + D\sin ky )
+\end{align*}
+Applying the boundary condition \(V=0\) for \(y=0\) sets \(C=0\). And applying the boundary condition \(V=0\) for \(y = L\) sets \(kL = n\pi\), where \(n = 1, 2, ,3 \dots\). Meanwhile, applying the boundary condition \(V=V_0\) at both \(x = -b \) and \(x=b\) requires that \(A=B\). The solution is therefore
+\begin{align*}
+V = XY = \sum_{n=1}^\infty C_n \cosh (n\pi x/L)\sin (n\pi y/L) 
+\end{align*}
+where \(\cosh x = (e^{x} + e^{-x})/2\) has been used.
+To find the expansion coefficients \(C_n\), employ the final (or third) boundary condition, \(V=V_0\) at \(x=b\) and invoke the orthogonality of sines is used:
+\begin{align*}
+V_0 &= \sum_{n=1}^\infty C_n \cosh (n\pi b/L)\sin (n\pi y/L)\\
+V_0 \sin (m\pi y/L) &= \sum_{n=1}^\infty C_n \cosh (n\pi b/L)\sin (n\pi y/L)\sin (m\pi y/L)\\
+V_0 \int_0^{L}\sin (m\pi y/L)dy &= \sum_{n=1}^\infty C_n \cosh (n\pi b/L)\int_{0}^{L}\sin (n\pi y/L)\sin (m\pi y/L)dy\\
+-V_0 \frac{L}{m\pi}\cos (m\pi y/L)\bigg\rvert_{0}^{L} &= \sum_{n=1}^\infty C_n \cosh (n\pi b/L)\frac{L}{2}\delta_{nm}\\
+C_n &= -V_0 \frac{1}{\cosh (n\pi b/L)}\frac{2}{n\pi}\bigg[\cos n\pi - 1\bigg]\\
+&= \begin{cases}
+0 \quad & n=0,2,4\dots\\
+\frac{4V_0}{n\pi\cosh(n\pi b/L)}\quad & n=1,3,5\dots
+\end{cases}
+\end{align*}
+The solution is thus fully determined.
+</p>
+</div>
+</li>
+
+<li> Solve the 2D Laplace equation \(\frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} = 0\) where now
+\begin{align*}
+V&=0\quad \text{for}\quad y=0\\
+V&=f(x)\quad \text{for}\quad y=H\\
+\frac{\partial V}{\partial x}&=0\quad \text{for}\quad x=0\\
+\frac{\partial V}{\partial x}&=0\quad \text{for}\quad x=L
+\end{align*}
+are the boundary conditions. Then solve the problem for \(f(x) = V_0x/L\).
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol2')">[answer]</span>
+<div id="2sol2" class="expandable-content" style="color: #0000A0;">
+<p>Separating variables leads to 
+\begin{align*}
+\frac{X''}{X} + \frac{Y''}{Y} &= 0
+\end{align*}
+Introduce the separation constant \(k^2\). Now one has to choose whether to set \(k^2\) equal to \(\frac{X''}{X} \) or \(\frac{Y''}{Y}\). The one that equals \(k^2\) will have decay/growth solutions, and the other one (that equals \(-k^2\)) will have harmonic solutions. Since \(X'\) goes to \(0\) at both boundaries,  \(\frac{X''}{X} = -k^2\), and thus  \(\frac{Y''}{Y} = k^2\). This is a good rule of thumb: the solutions that are zero at two boundaries must be harmonic. This choice gives the general solution
+\begin{align*}
+V = XY = (A\cos kx+ B\sin kx)(Ce^{ky}+ De^{-ky})\,.
+\end{align*}
+Now the boundary conditions are invoked. Since \(\frac{\partial V}{\partial x}=0\) for \(x=0\), \(B =0\), and since \(\frac{\partial V}{\partial x}=0\) for \(x=L\), \(\sin kL =0\), which means that \(kL = n\pi\), where \(n= 0, 1, 2,\dots\). Meanwhile, since \(V=0\) at \(y=0\), \(C = -D\). Thus the general solution is
+\begin{align*}
+V(x,y) = \sum_{n=0}^{\infty}A_n \cos \frac{n\pi x}{L} \sinh \frac{n\pi y}{L}\,.
+\end{align*}
+Now the final boundary condition at \(y=H\) is applied, which allows for the determination of \(A_n\) using the orthogonality of cosines:
+\begin{align*}
+f(x) &= \sum_{n=0}^{\infty}A_n \cos \frac{n\pi x}{L} \sinh \frac{n\pi y}{L}\\
+\int_{0}^{L}f(x)\cos \frac{m\pi x}{L}\, dx &= \sum_{n=0}^{\infty} \sinh \frac{n\pi H}{L} A_n \int_{0}^{L}\cos \frac{n\pi x}{L} \cos \frac{m\pi x}{L}dx \\
+\implies A_n&= \frac{2}{L\sinh (n\pi H/L)}\int_{0}^{L}f(x)\cos \frac{n\pi x}{L}\, dx 
+\end{align*}
+Therefore, the coefficients \(A_n\) above, along with the general solution for \(V(x,y)\), solves the Laplace equation for the given boundary conditions.   </p>
+<p>The coefficients are calculated for \(f(x) = V_0 x/L\):
+\begin{align*}
+A_n&= \frac{V_0}{L}\frac{2}{L\sinh (n\pi H/L)}\int_{0}^{L}  x\cos \frac{n\pi x}{L}\, dx \\
+&=
+\begin{cases}
+-\frac{4V_0}{n^2\pi^2\sinh (n\pi H/L)}  \quad \text{for } n = 1,3, 5\dots\\
+0  \quad \text{for } n = 0, 2, 4\dots
+\end{cases} 
+\end{align*}</p>
+</div>
+</li>
+  
+
+
+<li> Solve the 1D diffusion equation \(\kappa \frac{\partial^2 u}{\partial x^2} = \frac{\partial u}{\partial t}\) where
+\begin{align*}
+u&=0\quad \text{for}\quad x=-L\\
+u&=0\quad \text{for}\quad x=L\\
+u&=\begin{cases}
+1,\quad x\geq0\\
+0,\quad x<0
+\end{cases}
+\quad \text{at }t =0
+\end{align*}
+are the boundary and initial conditions. 
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol3')">[answer]</span>
+<div id="2sol3" class="expandable-content" style="color: #0000A0;">
+<p> 
+Pick and orthogonal set of basis functions, \(u= X(x)T(t)\), giving
+\begin{align*}
+\nu^2 \frac{X''}{X} &= \frac{T'}{T}
+\end{align*}
+Next, introduce the separation constant \(-k\) and set it equal to \(X''/X\), because harmonic spatial solutions are expected. This gives
+\begin{align*}
+ X'' + \frac{k^2}{\nu^2} X &= 0\\
+\implies X&= A\cos {k\nu}x +  B\sin {k\nu}x
+\end{align*}
+Meanwhile, 
+\begin{align*}
+T'  &= -k^2T\\
+\implies T&= e^{-k^2t}
+\end{align*}
+Thus 
+\begin{align*}
+XT = (A\cos \kappa \nu x +  B\sin \kappa \nu x )e^{-k^2t}\,.
+\end{align*}
+Applying the first to BCs gives \(A \cos (-k\nu L) + B \sin (-k\nu L) =0\) and \(A \cos (k\nu L) + B \sin (k\nu L) =0\). The odd and even properties of cosine and sine can be used in the first equation to obtain a full-rank linear system of equations:
+\begin{align*}
+A \cos (k\nu L) - B \sin (k\nu L) &=0\\
+A \cos (k\nu L) + B \sin (k\nu L) &=0
+\end{align*}
+Adding the two equations gives the condition \(k = (2n-1)\pi/2\nu L\), and subtracting the two equations gives the condition \(k = \pi n/\nu L\), where \(n=1,2,3\dots\). Thus the general solution is in terms of two infinite series:
+\begin{align*}
+u = \sum_{n=1}^{\infty}  \bigg\lbrace A_n \cos \frac{(2n-1)\pi x}{2L}\exp{\big[(-[2n-1]\pi/2)^2t\big]}  + B_n\sin \frac{n\pi x}{L}\exp{[(-{n\pi}/{L})^2t]}\bigg\rbrace
+\end{align*}
+What a terrible looking equation. Anyhow, denoting the Heaviside step function as \(H(x)\), the initial condition is invoked:  
+\begin{align*}
+H(x)= \sum_{n=1}^{\infty}  \bigg\lbrace A_n \cos \frac{(2n-1)\pi x}{2L} + B_n\sin \frac{n\pi x}{L}\bigg\rbrace
+\end{align*}
+Orthogonality can be used to find \(A_n\) and \(B_n\):
+\begin{align*}
+\int_{-L}^{L}H(x)\cos \frac{(2n-1)\pi x}{2L} dx &= \sum_{n=1}^{\infty}   A_n \int_{-L}^L \cos\frac{(2n-1)\pi x}{2L} \cos\frac{(2m-1)\pi x}{2L} dx\\
+\int_{0}^{L}\cos \frac{(2m-1)\pi x}{2L} dx &= L A_m\\
+A_n &= \frac{2}{\pi(2n-1)} \sin  \frac{(2n-1)\pi x}{2L}\bigg\rvert_{x=0}^{x=L}\\
+&=\frac{2}{\pi(2n-1)} \sin  \frac{(2n-1)\pi}{2}\\
+&=\frac{2(-1)^{n-1}}{\pi(2n-1)}\,,
+\end{align*}
+and 
+\begin{align*}
+\int_{-L}^{L}H(x)\sin \frac{n\pi x}{L} dx &= \sum_{n=1}^{\infty}  B_n \int_{-L}^L \sin\frac{n\pi x}{L} \sin\frac{n\pi x}{L} dx\\
+\int_{0}^{L}\sin \frac{n\pi x}{L} dx &= LB_n\\
+B_n &= -\frac{1}{n\pi}\cos\frac{n\pi x}{L}\bigg\rvert_{x=0}^{x=L}\\
+&=-\frac{1}{n\pi}[\cos (n\pi) - 1] = -\frac{1}{n\pi}[(-1)^n- 1]\\
+&= \begin{cases}
+0,\quad n = 0,2,4\dots\\
+\frac{2}{n\pi},\quad n = 1,3,5\dots
+\end{cases}
+\end{align*}
+Inserting the calculated values for \(A_n\) and \(B_n\) into the general solution above gives the complete solution. </p>
+
+<p>
+Note, however, that it is easier to shift the original coordinates by \(L\), i.e., \(x + L = x'\), so that the boundary conditions are 
+\begin{align*}
+u&=0\quad \text{for}\quad x'=0\\
+u&=0\quad \text{for}\quad x'=2\\
+u&=\begin{cases}
+1,\quad x'\geq L\\
+0,\quad x'<2L
+\end{cases}
+\quad \text{at }t =0\,.
+\end{align*}
+Then one must simply remember to shift the coordinates back, i.e., \(x  = x' - L\), when presenting the final solution.
+</p>
+</div>
+</li>
+
+<li> Solve the Schrodinger equation for a potential that is 0 inside a a cube of side length \(l\), and infinite at the boundaries. Discuss the degeneracy of modes.
+<span class="expandable-toggle" onclick="toggleExpandableContent('2sol4')">[answer]</span>
+<div id="2sol4" class="expandable-content" style="color: #0000A0;">
+<p> Let \(\Psi  = XYZT\). Separating variables leads to 
+\begin{align*}
+-\frac{\hbar^2}{2m}\bigg(\frac{X''}{X} + \frac{Y''}{Y} + \frac{Z''}{Z}\bigg)  = i\hbar \frac{T'}{T}
+\end{align*}
+The time dependence is easily solved, introducing the separation constant \(E\): 
+\begin{align*}
+i\hbar \frac{T'}{T}&= E\\
+\implies T &= \exp (-iEt/\hbar)
+\end{align*}
+Meanwhile the spatial dependence is solved by writing 
+\begin{align*}
+\frac{X''}{X}  + \frac{Y''}{Y} + \frac{Z''}{Z} &= -\frac{2mE}{\hbar^2}\\
+\frac{X''}{X}  &= - k_x^2\\
+\frac{Y''}{Y}  &= - k_y^2\\
+\frac{Z''}{Z}  &= - k_z^2\,.
+\end{align*}
+Since the boundary condition is \(0\) at \(X,Y,Z = 0\text{ and }L\), one throws out the cosine solutions and obtains 
+\begin{align*}
+k_x = \frac{n\pi}{L},\quad k_y = \frac{m\pi}{L},\quad k_z = \frac{l\pi}{L}.
+\end{align*}
+Thus the eigenenergies are 
+\begin{align*}
+E_n = \frac{\hbar^2 \pi}{2mL}\sqrt{n^2 + m^2 + l^2}
+\end{align*}
+There is no nice expression for the degeracy in terms of the indices. 
+</p>
+</div>
+</li>
+
+
+<li> List the eigenfunctions that solve the Helmholtz equation in Cartesian coordinates, cylindrical coordinates, and spherical coordinates. Given this, which equations in problem (1) of this section are solved spatially? What are the time dependences for each of these equations? 
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDE6s')">[answer]</span>
+<div id="PDE6s" class="expandable-content" style="color: #0000A0;">
+<p> The eigenfunctions that solve the Helmholtz equation in Cartesian coordinates are exponentials of (almost always) imaginary arguments (i.e., sines and cosines), which describe spatially harmonic waves. However, note that exponentials of real arguments are also eigenfunctions of the Helmholtz equation in Cartesian coordinates. These correspond to decay and (less often) growth (evanescent waves). This is an important distinction between the Helmholtz equation and its paraxial approximation in acoustics and optics: the paraxial approximation does not contain evanescent waves.</p>
+
+<p> The eigenfunctions that solve the Helmholtz equation in cylindrical coordinates consist of radial, polar, and axial functions. The radial eigenfunctions are Bessel and Neumann functions \(J_n\) and \(N_n\). The polar eigenfunctions are Legendre polynomials \(P_n\). The axial eigenfunctions are spatial harmonics (sines and cosines). </p>
+
+<p> The eigenfunctions that solve the Helmholtz equation in spherical coordinates consist of radial, polar, and azimuthal functions. The radial eigenfunctions are spherical Bessel and spherical Neumann functions \(j_n\) and \(n_n\). The polar eigenfunctions are the associated Legendre functions \(P^m_n\). The azimuthal eigenfunctions are spatial harmonics (sines and cosines). </p>
+
+<p> Given these eigenfunctions, the spatial part of equations (\ref{Diffusion}) (the diffusion equation), (\ref{Wave}) (the wave equation) are solved. Also, if \(V\) in equation (\ref{Schrodinger}) (the Schrodinger equation) is \(0\) in a box, sphere, or cylinder and \(\infty\) at the boundaries, then equation (\ref{Schrodinger}) reduces to equation (\ref{Diffusion}), and thus shares the same eigenfunctions as the Helmholtz equation. For example, a quantum particle in infinite spherical well has the same eigenfunctions as sound in a spherical enclosure, or temperature in a hollow sphere.</p>
+
+<p> Further, it is interesting to think of the <i>time</i> eigenfunctions of the diffusion equation, the wave equation, and the Schrodinger equation. All share the same <i>spatial</i> eigenfunctions, but the <i>time</i> eigenfunctions for the wave equation are harmonic, while those for the diffusion equation are exponential decay/growth. Meanwhile, what are the <i>time</i> eigenfunctions for the Schrodinger equation (regardless of \(V\)? They would be exponential decay/growth if it were not for the \(i\) in the Schrodinger equation, which makes them <i>harmonic</i>. Thus the Schrodinger equation is <i>physically</i> more like a wave equation than a diffusion equation, but is <i>mathematically</i> more like a diffusion equation than a wave equation.  </p>
+
+<p> On this point, one should note that the Schrodinger equation and heat diffusion equations do not obey time-reversal symmmetry, while the wave equation does. </p>
+</div>
+</li>
+
+<li>&#9784; One solution to the 1D wave equation \(\frac{\partial^2 p }{\partial x^2} - \frac{1}{c^2}\frac{\partial^2 p}{\partial t^2} = 0\) is
+\begin{align}\label{wavers}p = 
+\begin{Bmatrix}
+e^{\alpha x}\\ e^{-\alpha x}
+\end{Bmatrix}
+\begin{Bmatrix}
+e^{\alpha c t}\\ e^{-\alpha c t}
+\end{Bmatrix} \tag{a}
+\end{align}
+What a bizarre-looking solution! If you do not believe it is a solution to the wave equation, you can check it for yourself by setting the separation constant equal to \(X''/X = \alpha^2\), which gives \(T''/T = (\alpha c)^2\)! <i>Is this solution a wave?</i> Meanwhile, a solution to the 1D diffusion equation \(\frac{\partial^2 p }{\partial x^2} -  \kappa^2\frac{\partial p}{\partial t} = 0\) is 
+\begin{align}\label{heaters}p = 
+\begin{Bmatrix}
+\cos{k x}\\ \sin k x
+\end{Bmatrix}
+e^{-(k/\kappa)^2t} = 
+\begin{Bmatrix}
+e^{ik x}\\ e^{-ik x}
+\end{Bmatrix}
+e^{-(k/\kappa)^2t} \tag{b}
+\end{align}
+Is <i>this</i> solution a wave?
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDE7sa')">[answer]</span>
+<div id="PDE7sa" class="expandable-content" style="color: #0000A0;">
+<p>
+Equation \ref{wavers} describes solutions that grow exponentially in space and time. At first glance, this is no wave! We are not used to such bizarre behaviours, i.e., waves that grow and decay exponentially in space and time. 
+</p>
+<p>
+However, a wave need not be harmonic to be a wave (which can be proved by the closure of the Fourier series). A second glance at equation (\ref{wavers}) shows that it is in fact of the form \(f(x\pm ct)\), which we know solves the wave equation. Physically, equation (\ref{wavers}) is disturbance that propagates at a finite speed \(c\) whose waveform is exponential. Thus is equation (\ref{wavers}) indeed describes wave motion. 
+</p>
+<p>
+Meanwhile, equation (\ref{heaters}) is not a solution to the wave equation because it cannot be written in the form \(f(x\pm ct)\). Spatially, the solutions are harmonic (wave-like), but that is not a sufficient criterion for a physical wave.   
+</p>
+
+
+</div>
+</li>
+
+<li> List the eigenfunctions that solve the Laplace equation in Cartesian coordinates, cylindrical coordinates, and spherical coordinates.
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDE7s')">[answer]</span>
+<div id="PDE7s" class="expandable-content" style="color: #0000A0;">
+<p>The eigenfunctions of that solve the Laplace equation in Cartesian coordinates are equivalent those that solve the Helmholtz equation in Cartesian, i.e., exponentials of real and imaginary arguments. </p>
+<p>Two of the three  eigenfunctions that solve the Laplace equation in cylindrical coordinates are also identical to those that solve the Helmholtz equation in Cartesian coordinates: Bessel and Neumann functions in \(r\) and sines and cosines in \(\theta\). However, the eigenfunctions of the Laplace equation for \(z\) are exponentials of real arguments, while those of the Helmholtz equation are exponentials of imaginary arguments.</p>
+<p>Similarly, two of the three eigenfunctions that solve the Laplace equation in spherical coordinates are also equivalent to those that solve the Helmholtz equation in Spherical coordinates: Legendre polynomials in \(\cos\theta\) and sines and cosines in \(\phi\) (Blackstock's \(\psi\)). However, the eigenfunctions of the Laplace equation for \(r\) are \(r^l \) and \(r^{-(l+1)}\), while those of the Helmholtz equation are spherical Bessel and Neumann functions \(j_n\) and \(n_n\). </p>
+</div>
+</li>
+
+<li> Solve the Laplace equation \(\nabla^2 V = 0\) (assuming polar symmetry) where \(V=V_0(\theta)\) on the boundary of a sphere of radius \(a\), where
+\[ \frac{\partial}{\partial r} \bigg(r^2 \frac{\partial V}{\partial r}\bigg) + \frac{1}{\sin \theta} \frac{\partial }{\partial \theta}\bigg(\sin\theta \frac{\partial V}{\partial \theta}\bigg) = 0 \]
+is Laplace's equation in spherical coordinates with no azimuthal dependence. Does the coordinate \(z= \cos\theta\) actually correspond to the \(z\) axis?
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDE8s')">[answer]</span>
+<div id="PDE8s" class="expandable-content" style="color: #0000A0;">
+<p> Let \(V = R(r)\Theta(\theta)\) and substitute into the above:
+\begin{align*}
+\frac{\partial}{\partial r} (r^2 R'\Theta) + \frac{1}{\sin \theta} \frac{\partial }{\partial \theta}(\sin\theta R\Theta') &=0\,.
+\end{align*}
+Divide by \(R\Theta\):
+\begin{align*}
+\frac{1}{R}\frac{\partial}{\partial r} (r^2 R') + \frac{1}{\Theta}\frac{1}{\sin\theta} \frac{\partial }{\partial \theta}(\sin\theta \Theta') &=0\,.
+\end{align*}
+The variables have been separated in the two terms above. A separation constant \(l(l+1)\) is introduced. This is cheating, but it is done because we anticipate the solution to the polar equation to be Legendre polynomials, which converge when the separation constant is chosen:
+\begin{align*}
+\frac{1}{\Theta}\frac{1}{\sin\theta} \frac{d }{d \theta}(\sin\theta \Theta') &= -l(l+1)\\
+\frac{d }{d \theta}(\sin\theta \Theta') &= -l(l+1)\sin\theta \Theta
+\end{align*}
+That is a bizarre-looking equation may look more familiar if a change of variable \(z= \cos\theta\) is made. <i>This relation holds only for a unit sphere, so no, in reality \(z\) does not correspond to the Cartesian \(z\) coordinate.</i> Then, \(\frac{dz}{d\theta} = -\sin\theta\), and the derivatives with respect to \(\theta\) are
+\begin{align*}
+\frac{d}{d\theta} &= \frac{d}{dz}\frac{dz}{d\theta} = -\sin\theta\frac{d}{dz}\\
+\frac{d^2}{d\theta^2} &= \sin^2\theta\frac{d^2}{dz^2}
+\end{align*}
+The differential equation becomes
+\begin{align*}
+-\sin\theta\frac{d }{d z}\bigg(\sin^2\theta \frac{d\Theta}{dz}\bigg) &= -l(l+1)\sin\theta\, \Theta
+\end{align*}
+Dividing the equation above by \(-\sin\theta\) and writing \(\sin^2\theta = 1-\cos^2\theta\) gives
+\begin{align*}
+\frac{d }{d z}\bigg([1-z^2]\frac{d\Theta}{dz}\bigg) &= l(l+1)\, \Theta\,.
+\end{align*}
+Expanding the derivatives and writing everything on the left-hand side gives
+\begin{align*}
+(1-z^2)\frac{d^2 \Theta}{d z^2} - 2z\frac{d\Theta}{dz} + l(l+1)\Theta&= 0
+\end{align*}
+This is the canonical form of Legendre's equation. See the first question of the ODE section above for the solution. 
+
+Meanwhile, the radial equation is
+\begin{align*}
+\frac{d}{d r} \bigg(r^2 \frac{dR}{dr}\bigg) &= Rl(l+1)
+% r^2\frac{d^2R}{dr^2} + 2r \frac{dR}{dr} + R\, l(l+1) &=0  
+\end{align*} 
+The general solution to this equation is (just memorize it):
+\begin{align*}
+R(r) = A_l r^l + \frac{B_l}{r^{l+1}}
+\end{align*}
+Thus the general solution to Laplace's equation in spherical coordinates with no azimuthal dependence is 
+\begin{align*}
+V = \sum_{l = 0}^{\infty} \bigg( A_l r^l + \frac{B_l}{r^{l+1}} \bigg)P_l(\cos\theta)
+\end{align*} </p>
+
+<p>To satisfy the boundary condition that \(V= V_0(\theta)\) at \(r = a\), first the \(B_l = 0\) because those terms diverge at the origin. Then set \[\sum_{l=0}^\infty A_l a^l P_l(\cos\theta) = V_0(\theta).\] The coefficient \(A_l\) can be solved using the orthogonality of cosines: 
+\[A_l = \frac{2l+1}{2a^l} \int_0^\pi V_0(\theta) P_l(\cos\theta) \sin\theta d\theta.\]
+</p>
+
+<p>You can probably guess that solution to Laplace's equation (with no symmetry assumed) is
+\begin{align*}
+V = \sum_{m=0}^{m=l}\sum_{l = 0}^{\infty} \bigg( A_l r^l + \frac{B_l}{r^{l+1}} \bigg)P^m_l(\cos\theta)(C_m\cos m\phi + D_m\sin m\phi).
+\end{align*}
+where \(\phi\) is the azimuthal angle.
+ </p>
+</div>
+</li>
+
+
+<li> What is the solution to Poisson's equation \(\nabla^2 u  = f(\vec{r})\) in terms of the appropriate Green's function, \(G(\vec{r}|\vec{r}')\)?
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDEP')">[answer]</span>
+<div id="PDEP" class="expandable-content" style="color: #0000A0;">
+<p>The solution is
+\[u(\vec{r}) = \int_V G(\vec{r}|\vec{r}') f(\vec{r}') dV' \]
+where \(G(\vec{r}|\vec{r}')\) is the sum of the free space Green's function and the solution to Laplace's equation. 
+</p>
+</div>
+</li>
+
+
+<li> Solve Laplace's equation \(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0\) for a semi-infinite plate satisfying the following boundary conditions:
+\begin{align*}
+u(x,\infty) &= 0\\
+u(0,y) &=0\\
+u(x,0) &=\begin{cases}
+T_0 \quad \text{for }\quad x\in (0,a]\\
+0\quad \text{for }\quad x>1\\
+\end{cases}
+\end{align*}
+Note that
+\begin{align*}
+\begin{cases}f(x) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} g(k) \sin kx\, dk\\
+g(k) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \sin kx\, dx\,\end{cases}
+\end{align*}
+is the sine Fourier transform pair.
+<span class="expandable-toggle" onclick="toggleExpandableContent('PDEint')">[answer]</span>
+<div id="PDEint" class="expandable-content" style="color: #0000A0;">
+<p>
+Write the solution \(u\) as the product of basis functions \(XY\). The PDE becomes 
+\begin{align*}
+\frac{X''}{X} + \frac{Y''}{Y} = 0\,.
+\end{align*}
+Note that the eigenfunctions \(Y\) must vanish at \(y=\infty\). Anticipating exponential solutions for \(Y\), set \(\frac{Y''}{Y} = k^2\). Thus \(Y \,\propto \, e^{-ky}\), where the growth solutions have been tossed because they are unphysical. Meanwhile, \(\frac{X''}{X} = -k^2\), so \(X = A\cos kx + B\sin kx\). Since \(X(0) = 0\), the \(\cos kx\) term cannot be included, so \(A =0\). This leaves the general solution
+\begin{align*}
+u(x,y) = Be^{-ky}\sin kx \,.
+\end{align*}
+Now the boundary condition at \(y=0\) needs to be used to find the coefficient \(B\). However, \(u\) at the boundary changes value from \(T_0\) to \(0\) at \(x=a\). Thus a continuous variable is needed to satisfy the boundary condition (rather than a discrete variable):
+\begin{align*}
+u(x,y) = \int_{0}^\infty B(k)e^{-ky}\sin (kx) dk\,.
+\end{align*}
+At \(y=0\), the solution is
+\begin{align}\tag{i}\label{invertitoffthatway}
+u(x,0) = \int_{0}^\infty B(k)\sin (kx)\, dk\,.
+\end{align}
+Now, finding the coefficients \(B(k)\) amounts to taking an inverse Fourier transform. Note that Fourier sine transform pair is
+\begin{align*}
+f(x) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} g(k) \sin kx\, dk\\
+g(k) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \sin kx\, dx\,.
+\end{align*}
+The pair is written so that the first equation above has the form of equation (\ref{invertitoffthatway}):
+\begin{align*}
+u(x) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \bigg[\sqrt{\frac{\pi}{2}}B(k)\bigg] \sin (kx)\, dk\\
+B(k) &= \frac{2}{\pi} \int_{0}^{\infty} u(x) \sin (kx)\, dx\,.
+\end{align*}
+The second equation above is the equation for the expansion coefficients, upon letting \(u(x)\) be \(T_0\) for \(x\leq a\) and \(0\) otherwise:
+\begin{align*}
+B(k) &= \frac{2T_0}{\pi} \int_{0}^{1} \sin kx\, dx\\
+&= \frac{2T_0}{\pi k} (1 -\cos k)\,.
+\end{align*}
+Thus the integral solution of the PDE is 
+\begin{align*}
+u(x,y) = \frac{2T_0}{\pi}\int_{0}^\infty \frac{1 -\cos k}{k} \sin (kx) e^{-ky} dk\,.
+\end{align*}
+</p>
+</div>
+</li>
+
+</ol>
+<p><div style="display: flex; justify-content: space-between;">
+<span><a href="math.html">&uparrow; Return to math index</a></span>
+<span><a href="math-7.html">&leftarrow; Return to previous topic</a></span>
+</div></p>
+</div>
+</body>
+</html>
