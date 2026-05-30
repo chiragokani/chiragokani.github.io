@@ -2,9 +2,6 @@
 <html>
 <head>
   <title>Moving media</title>
-  <!-- MathJax 4 configuration --> 
-  <!--mathjax-termes goes well with Times fonts-->
-  <!--mathjax-stix2 goes well with Times fonts-->
   <script>
     window.MathJax = {
       loader: {
@@ -49,8 +46,7 @@
       ez: "{\\vec{e}_z}",
       ephi: "{\\vec{e}_\\phi}",
       thetaHP: "{\\theta_{\\mathrm{HP}}}",
-      erf: "{\\mathrm{\\,erf\\,}}",
-      NF: "{_\\mathrm{NF}}" 
+      erf: "{\\mathrm{\\,erf\\,}}" 
         }
       },
       startup: {
@@ -58,8 +54,6 @@
       }
     };
   </script>
-
-  <!-- MathJax 4 (NO async, NO es5) -->
   <script
     id="MathJax-script"
     src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
@@ -105,40 +99,40 @@
 <p>
 The exact continuity, momentum, and state equations are 
 \begin{align}
-\frac{D\rho}{Dt} + \rho \divergence \vec{v} = 0\,, \quad \rho \frac{D\vec{v}}{Dt} + \gradient P = \vec{0}\,,\quad P = P(\rho)\,, \label{eq:exact}\tag{1}
+\frac{D\rho}{Dt} + \rho \boldsymbol{\nabla}\cdot \vec{v} = 0\,, \quad \rho \frac{D\vec{v}}{Dt} + \boldsymbol{\nabla} P = \vec{0}\,,\quad P = P(\rho)\,, \label{eq:exact}\tag{1}
 \end{align}
-where \(D/Dt = \partial/\partial t + \vec{v}\cdot \gradient\) is the material derivative. It is to be shown that linearizing these equations, where \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\), leads to 
+where \(D/Dt = \partial/\partial t + \vec{v}\cdot \boldsymbol{\nabla}\) is the material derivative. It is to be shown that linearizing these equations, where \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\), leads to 
 \begin{align}
 \Laplacian p = \frac{1}{c_0^2} \frac{\mathcal{D}^2 p}{\mathcal{D} t^2}\,,
 \end{align}
-where \(\mathcal{D}/\mathcal{D} t = \partial/\partial t + \vec{v}_0 \cdot \gradient\).
+where \(\mathcal{D}/\mathcal{D} t = \partial/\partial t + \vec{v}_0 \cdot \boldsymbol{\nabla}\).
 </p>
 
 <p>
-Begin by writing Eqs. \eqref{eq:exact} in terms of \(\partial/\partial t + \vec{v}\cdot \gradient\) (rather than in terms of \(D/Dt\)):
+Begin by writing Eqs. \eqref{eq:exact} in terms of \(\partial/\partial t + \vec{v}\cdot \boldsymbol{\nabla}\) (rather than in terms of \(D/Dt\)):
 \begin{align}\tag{2}\label{eq:exact:d} 
 \begin{split}
-\frac{\partial \rho}{\partial t} + \vec{v} \cdot \gradient \rho + \rho \divergence \vec{v} &= 0\\
-\rho \left(\frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \gradient \vec{v} \right) + \gradient P &= \vec{0}\\
+\frac{\partial \rho}{\partial t} + \vec{v} \cdot \boldsymbol{\nabla} \rho + \rho \boldsymbol{\nabla}\cdot \vec{v} &= 0\\
+\rho \left(\frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \boldsymbol{\nabla} \vec{v} \right) + \boldsymbol{\nabla} P &= \vec{0}\\
 P(\rho) &= P\,.
 \end{split}
 \end{align}
-Now insert \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\) into Eqs. \eqref{eq:exact:d}, and note that \(\partial \rho_0/\partial t = 0\), \(\gradient \rho_0 = \vec{0}\), \(\divergence \vec{v}_0 = 0\), \(\partial \vec{v}_0/\partial t = \vec{0}\), \(\gradient \vec{v}_0=\boldsymbol{\mathsf{0}}\), and \(\gradient P_0 = \vec{0}\):
+Now insert \(P = P_0 + p\), \(\rho = \rho_0 + \rho'\), and \(\vec{v} =\vec{v}_0 + \vec{u}\) into Eqs. \eqref{eq:exact:d}, and note that \(\partial \rho_0/\partial t = 0\), \(\boldsymbol{\nabla} \rho_0 = \vec{0}\), \(\boldsymbol{\nabla}\cdot \vec{v}_0 = 0\), \(\partial \vec{v}_0/\partial t = \vec{0}\), \(\boldsymbol{\nabla} \vec{v}_0=\boldsymbol{\mathsf{0}}\), and \(\boldsymbol{\nabla} P_0 = \vec{0}\):
 \begin{align}\tag{3}\label{eq:exact:alg:1}
 \begin{split}
-\frac{\partial \rho'}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \gradient \rho' + (\rho_0 + \rho') \divergence \vec{u} &= 0\\
-(\rho_0 + \rho')\left[\frac{\partial \vec{u}}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \gradient \vec{u} \right] + \gradient p &= \vec{0}\\
+\frac{\partial \rho'}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \boldsymbol{\nabla} \rho' + (\rho_0 + \rho') \boldsymbol{\nabla}\cdot \vec{u} &= 0\\
+(\rho_0 + \rho')\left[\frac{\partial \vec{u}}{\partial t} + (\vec{v}_0 + \vec{u}) \cdot \boldsymbol{\nabla} \vec{u} \right] + \boldsymbol{\nabla} p &= \vec{0}\\
 P(\rho_0 + \rho') &= P\,.
 \end{split}
 \end{align}
 Nonlinear terms in Eqs. \eqref{eq:exact:alg:1} are now neglected. For the state equation, the linearization is achieved by Taylor expanding the function \(P(\rho)\) to linear order:
 \begin{align}\label{eq:alg:2}\tag{4}
 \begin{split}
-%\frac{\partial \rho'}{\partial t} +  \vec{v}_0 \cdot \gradient \rho' + \rho_0 \divergence(\vec{v}_0 + \vec{u}) + \rho' \divergence (\vec{v}_0 + \vec{u}) &= 0\\
-\frac{\partial \rho'}{\partial t} +  \vec{v}_0 \cdot \gradient \rho' + \rho_0 \divergence \vec{u} &= 0\\
-%(\rho_0 + \rho' )\left[\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right] + %gradient p &= 0\\
-%\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right) + \rho' \left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right) + \gradient p &= 0\\
-\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \gradient \vec{u} \right)  + \gradient p &= \vec{0}\\
+%\frac{\partial \rho'}{\partial t} +  \vec{v}_0 \cdot \boldsymbol{\nabla} \rho' + \rho_0 \boldsymbol{\nabla}\cdot(\vec{v}_0 + \vec{u}) + \rho' \boldsymbol{\nabla}\cdot (\vec{v}_0 + \vec{u}) &= 0\\
+\frac{\partial \rho'}{\partial t} +  \vec{v}_0 \cdot \boldsymbol{\nabla} \rho' + \rho_0 \boldsymbol{\nabla}\cdot \vec{u} &= 0\\
+%(\rho_0 + \rho' )\left[\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \vec{u} \right] + %gradient p &= 0\\
+%\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \vec{u} \right) + \rho' \left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \vec{u} \right) + \boldsymbol{\nabla} p &= 0\\
+\rho_0\left(\frac{\partial \vec{u}}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \vec{u} \right)  + \boldsymbol{\nabla} p &= \vec{0}\\
 P_0 + \left(\frac{\partial P}{\partial \rho}\right)_0 (\rho-\rho_0) &= P\,.
 \end{split}
 \end{align}
@@ -146,38 +140,38 @@ In the state equation [the third of Eqs. \eqref{eq:alg:2}], the quantities \(p =
 \[\rho' = p/c_0^2\,.\]
 The perturbation density \(\rho'\) is therefore eliminated from Eqs. \eqref{eq:alg:2}:
 \begin{align}
-\frac{1}{c_0^2}\frac{\partial p}{\partial t} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient p + \rho_0 \divergence \vec{u} &= 0 \label{eq:cont}\tag{5}\\
-\rho_0\frac{\partial \vec{u}}{\partial t} +  \rho_0 \vec{v}_0 \cdot \gradient \vec{u}  + \gradient p &= \vec{0}\,.\label{eq:mom}\tag{6}
+\frac{1}{c_0^2}\frac{\partial p}{\partial t} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} p + \rho_0 \boldsymbol{\nabla}\cdot \vec{u} &= 0 \label{eq:cont}\tag{5}\\
+\rho_0\frac{\partial \vec{u}}{\partial t} +  \rho_0 \vec{v}_0 \cdot \boldsymbol{\nabla} \vec{u}  + \boldsymbol{\nabla} p &= \vec{0}\,.\label{eq:mom}\tag{6}
 \end{align}
 Taking the time derivative of Eq. \eqref{eq:cont} and the divergence of Eq. \eqref{eq:mom} results in
 \begin{align}
-\frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)  + \rho_0 \divergence \left(\frac{\partial \vec{u}}{\partial t}\right)  &= 0 \label{eq:cont:alg:1}\tag{7}\\
-\rho_0\divergence \left(\frac{\partial \vec{u}}{\partial t}\right) +  \rho_0 \vec{v}_0 \cdot (\divergence \gradient \vec{u}) + \Laplacian p &= 0\,. \label{eq:mom:alg:1}\tag{8}
+\frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)  + \rho_0 \boldsymbol{\nabla}\cdot \left(\frac{\partial \vec{u}}{\partial t}\right)  &= 0 \label{eq:cont:alg:1}\tag{7}\\
+\rho_0\boldsymbol{\nabla}\cdot \left(\frac{\partial \vec{u}}{\partial t}\right) +  \rho_0 \vec{v}_0 \cdot (\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u}) + \Laplacian p &= 0\,. \label{eq:mom:alg:1}\tag{8}
 \end{align}
-Subtracting Eq. \eqref{eq:cont:alg:1} from Eq. \eqref{eq:mom:alg:1}, the \(\rho_0\divergence ({\partial \vec{u}}/{\partial t})\) terms cancel, resulting in 
+Subtracting Eq. \eqref{eq:cont:alg:1} from Eq. \eqref{eq:mom:alg:1}, the \(\rho_0\boldsymbol{\nabla}\cdot ({\partial \vec{u}}/{\partial t})\) terms cancel, resulting in 
 \begin{align}
-%\Laplacian p - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \rho_0 \vec{v}_0 \cdot (\divergence \gradient \vec{u})  -  \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)    &= 0\notag\\
-\Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \rho_0 \vec{v}_0 \cdot (\divergence \gradient \vec{u}) + \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)    \,.\label{eq:wave:alg:1}\tag{9}
+%\Laplacian p - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \rho_0 \vec{v}_0 \cdot (\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u})  -  \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)    &= 0\notag\\
+\Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \rho_0 \vec{v}_0 \cdot (\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u}) + \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)    \,.\label{eq:wave:alg:1}\tag{9}
 \end{align}
 To obtain a wave equation in terms of single wave variable, the particle velocity needs to be eliminated from Eq. \eqref{eq:wave:alg:1}. This is done by taking the gradient of Eq. \eqref{eq:cont}:
 \begin{align*}
-\frac{1}{c_0^2}\gradient \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p + \rho_0 \gradient(\divergence \vec{u}) &= 0\,.
+\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p + \rho_0 \boldsymbol{\nabla}(\boldsymbol{\nabla}\cdot \vec{u}) &= 0\,.
 \end{align*}
-Noting that \(\gradient(\divergence \vec{u}) = \divergence (\gradient \vec{u})\) and solving for \(\rho_0 \gradient (\divergence \vec{u})\) yields
+Noting that \(\boldsymbol{\nabla}(\boldsymbol{\nabla}\cdot \vec{u}) = \boldsymbol{\nabla}\cdot (\boldsymbol{\nabla} \vec{u})\) and solving for \(\rho_0 \boldsymbol{\nabla} (\boldsymbol{\nabla}\cdot \vec{u})\) yields
 \begin{align}
-\rho_0 \divergence (\gradient \vec{u}) &= -\frac{1}{c_0^2}\gradient \left(\frac{\partial p}{\partial t}\right) -  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\,.\label{eq:alg}\tag{10}
+\rho_0 \boldsymbol{\nabla}\cdot (\boldsymbol{\nabla} \vec{u}) &= -\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) -  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\,.\label{eq:alg}\tag{10}
 \end{align}
-Inserting Eq. \eqref{eq:alg} in for \(\rho_0(\divergence \gradient \vec{u})\) in Eq. \eqref{eq:wave:alg:1} results in
+Inserting Eq. \eqref{eq:alg} in for \(\rho_0(\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u})\) in Eq. \eqref{eq:wave:alg:1} results in
 \begin{align}
-\Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \vec{v}_0 \cdot \left[-\frac{1}{c_0^2}\gradient \left(\frac{\partial p}{\partial t}\right) -  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\right] + \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)   \notag\\
-%&= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} + \vec{v}_0 \cdot \left[\frac{1}{c_0^2}\gradient \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\right] + \frac{1}{c_0^2}\vec{v}_0 \cdot \gradient \left(\frac{\partial p}{\partial t}\right)  \notag  \,. \\
-&= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} + \vec{v}_0 \cdot \frac{2}{c_0^2}\gradient \left(\frac{\partial p}{\partial t}\right) + \frac{v_0^2}{c_0^2} \Laplacian p \,. \label{eq:wave:alg:2}\tag{11}
+\Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \vec{v}_0 \cdot \left[-\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) -  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\right] + \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)   \notag\\
+%&= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} + \vec{v}_0 \cdot \left[\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\right] + \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)  \notag  \,. \\
+&= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} + \vec{v}_0 \cdot \frac{2}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) + \frac{v_0^2}{c_0^2} \Laplacian p \,. \label{eq:wave:alg:2}\tag{11}
 \end{align}
 Equation \eqref{eq:wave:alg:2} can be factored as
 \begin{align}\label{eq:wave}\tag{12}
-\Laplacian p &= \frac{1}{c_0^2} \left( \frac{\partial p}{\partial t} + \vec{v}_0 \cdot \gradient p\right)^2 \,.
+\Laplacian p &= \frac{1}{c_0^2} \left( \frac{\partial p}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} p\right)^2 \,.
 \end{align}
-Equation \eqref{eq:wave} will be reproduced by the <a href="#wave">Galilean transformation of the Helmholtz equation</a>. Noting that \({\partial p}/{\partial t} + \vec{v}_0 \cdot \gradient \) is simply the definition of \(\mathcal{D}/\mathcal{D} t \), Eq. \eqref{eq:wave} can be written as 
+Equation \eqref{eq:wave} will be reproduced by the <a href="#wave">Galilean transformation of the Helmholtz equation</a>. Noting that \({\partial p}/{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \) is simply the definition of \(\mathcal{D}/\mathcal{D} t \), Eq. \eqref{eq:wave} can be written as 
 \begin{align}\label{eq:wave:D}
 \Laplacian p &= \frac{1}{c_0^2}\frac{\mathcal{D}^2p}{\mathcal{D}t^2}\,.
 \end{align}
@@ -197,11 +191,6 @@ Let \(\vec{r}\) be the coordinates in the frame \(S\) with origin \(O\), and let
 \end{align}
 where the \('\) symbol is used to denote the Laplacian in that frame" </p>
 <p align="middle"> <img src="galilean.svg" width="240" height="auto"></p>
-
-<!--
-<p><span class="Q">The situation above can be thought of as follows: suppose you are standing in a prairie, and there is a constant wind blowing with velocity \(\vec{v}_0\). A goose is flying along with the wind (i.e., in the same direction at the at the same speed as the wind) and honks while it is flying. The goose is in frame \(S'\), and the honk obeys the wave equation in the goose's frame, Eq. \eqref{1move}. Your frame is \(S\), and the honk obeys Eq. \eqref{3move} in your frame, as shall be seen.</span></p>
-<p align="middle"> <img  style='border:1px solid #000000' src="goose.jpg" width="240" height="auto"></p>
--->
 
 <p>Equation \eqref{1move} is now written in terms of the unprimed coordinates, which are defined with respect to the primed coordinates by the Galilean transformation,
 \begin{align}
@@ -243,26 +232,25 @@ which, upon noting that
 becomes
 \begin{align*}
 \frac{\partial f}{\partial t'} &= \frac{\partial f}{\partial t} + \bigg(v_{0x}\frac{\partial }{\partial x} + v_{0y}\frac{\partial}{\partial y} + v_{0z} \frac{\partial}{\partial z} \bigg) f\\
-&= \bigg(\frac{\partial}{\partial t} + \vec{v}_0\cdot \gradient\bigg)f\,.
+&= \bigg(\frac{\partial}{\partial t} + \vec{v}_0\cdot \boldsymbol{\nabla}\bigg)f\,.
 \end{align*}
 The second time derivative is therefore 
 \begin{align}\label{time}\tag{\(\star\star\)}
-\frac{\partial^2}{\partial t'^2} = \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \gradient\bigg)^{\!2} \,.
+\frac{\partial^2}{\partial t'^2} = \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla}\bigg)^{\!2} \,.
 \end{align}
 By Eqs. \eqref{space} and \eqref{time}, Eq. \eqref{1move} (the wave equation in frame \(S'\)) becomes, in frame \(S\),
 \begin{align}\label{3move}\tag{3}
-\boxed{\Laplacian p = \frac{1}{c_0^2} \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \gradient\bigg)^{\!2} p\,,}
+\boxed{\Laplacian p = \frac{1}{c_0^2} \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla}\bigg)^{\!2} p\,,}
 \end{align}
 where \(p = p(\vec{r},t)\). </p>
-
 <p>
 For \(p(\vec{r},t) = p_\omega(\vec{r}) e^{-i\omega t}\) (time-harmonic waves), Eq. \eqref{3move} becomes a Helmholtz-like equation,
 \begin{align*}
-\Laplacian p_\omega = \frac{1}{c_0^2}(-i\omega + \vec{v}_0 \cdot \gradient)^2 p_\omega\,,
+\Laplacian p_\omega = \frac{1}{c_0^2}(-i\omega + \vec{v}_0 \cdot \boldsymbol{\nabla})^2 p_\omega\,,
 \end{align*}
 which can be written as 
 \begin{align}\label{4move}\tag{4}
-\boxed{\Laplacian p_\omega + \bigg(\frac{\omega}{c_0} + i\vec{M}\cdot \gradient\bigg)^{\!2} p_\omega =0\,,}
+\boxed{\Laplacian p_\omega + \bigg(\frac{\omega}{c_0} + i\vec{M}\cdot \boldsymbol{\nabla}\bigg)^{\!2} p_\omega =0\,,}
 \end{align}
 where \(\vec{M} = \vec{v}_0/c_0\). </p>
 
@@ -281,10 +269,6 @@ p_\mathrm{NF}(\vec{r}',t') = p_\mathrm{NF}(\vec{r}- \vec{v}_0t,t)\,.
 \end{align}
 That is to say, Eq. \eqref{6move} is the pressure field in which the effects of motion have been accounted. Motion therefore generally "shears" the field, as illustrated below: </p>
 <p align="middle"> <img src="uniform_flow.svg" width="300" height="auto"></p>
-
-<!--
-<p>Note that \(\lambda\) will change if the motion has a component in the direction of propagation, but not the frequency \(\omega\) because the source and receiver are stationary. </p>
--->
 
 <p>The following example illustrates how the simple substitution in Eq. \eqref{6move} gives the field in the moving medium.
 </p>
@@ -310,10 +294,10 @@ so the shift is
 \Delta x &= 2M_0 \int_{0}^{d/2} \bigg(1 - 4\frac{z^2}{d^2}\bigg)dz = 2M_0 \bigg(z - \frac{4}{3}\frac{z^3}{d^2}\bigg)\bigg\rvert_{0}^{d/2}\\
 &= \frac{2}{3} M_0 d\,.
 \end{align*}
-The solution to the wave equation is therefore given by the solution in the absense of flow, only displaced by the amount \(2M_0d/3\), i.e., \(p\NF(x - 2M_0d/3,z, t)\,.\)
+The solution of the wave equation is therefore given by the solution in the absense of flow, only displaced by the amount \(2M_0 d/3\), i.e., \(p_\mathrm{NF}(x - 2M_0d/3,z, t)\,.\)
 </p>
 <p>
-Now suppose the flow profile is constant, i.e., \(M = M_0 = \) constant. Thus \(\Delta x = M_0 d\). So, the solution to the wave equation in that case is \(p\NF(x - M_0d,z, t)\,.\)
+Now suppose the flow profile is constant, i.e., \(M = M_0 = \) constant. Thus \(\Delta x = M_0 d\). So, the solution to the wave equation in that case is \(p_\mathrm{NF}(x - M_0d,z, t)\,.\)
 </p>
 </div>
 </div>
@@ -335,7 +319,7 @@ p_\omega = A e^{i\vec{k}\cdot \vec{r}'}\,, \quad \vec{M}= \frac{\vec{v_0}}{c_0}\
 requires the following quantities to be calculated:
 \begin{align*}
 \Laplacian p_\omega &= \Laplacianp p_\omega = -k^2 p_\omega = -(\omega'/c_0)^2 p_\omega\\
-i\vec{M}\cdot \gradient &= i\vec{M} \cdot \gradient' = i\vec{M} \cdot (i\omega' \vec{n}/c_0) = -M (\omega'/c_0) \cos\theta\,.
+i\vec{M}\cdot \boldsymbol{\nabla} &= i\vec{M} \cdot \boldsymbol{\nabla}' = i\vec{M} \cdot (i\omega' \vec{n}/c_0) = -M (\omega'/c_0) \cos\theta\,.
 \end{align*}
 Upon making these substitutions, Eq. \eqref{4move} becomes
 \begin{align*}
@@ -379,11 +363,10 @@ where it has been identified that
 <p>
 For fluid motion in the \(z\) direction, as depicted in the figure below, the Helmholtz equation describing sound in frame \(S\) becomes
 \begin{align}
-\Laplacian p_\omega &= -\bigg(\frac{\omega}{c_0} + i\vec{M} \cdot \gradient \bigg)^2 p_\omega\notag\\
+\Laplacian p_\omega &= -\bigg(\frac{\omega}{c_0} + i\vec{M} \cdot \boldsymbol{\nabla} \bigg)^2 p_\omega\notag\\
 &= -\bigg(\frac{\omega}{c_0} + iM \frac{\partial}{\partial z}\bigg)^2 p_\omega\,.\label{1duct}\tag{1}
 \end{align}
 A dispersion relation \(k_z(\omega)\) is sought by assuming Eq. \eqref{1duct} has solutions of the form 
-<!--The derivatives in \(x\) and \(y\) are unaltered, so the eigenfunctions are--> 
 \begin{align*}
 p_\omega = A \cos \frac{m\pi x}{a} \, \cos \frac{n\pi y}{b} e^{ik_zz}\,.
 \end{align*}
@@ -455,9 +438,9 @@ as illustrated below:</p>
 
 <p>The Helmholtz equation in frame \(S\),
 \begin{align*}
-\Laplacian p_\omega = -\bigg(\frac{\omega}{c_0} + i\vec{M} \cdot \gradient\bigg)^{\! 2} p_\omega\,,
+\Laplacian p_\omega = -\bigg(\frac{\omega}{c_0} + i\vec{M} \cdot \boldsymbol{\nabla}\bigg)^{\! 2} p_\omega\,,
 \end{align*}
-when assuming spatially harmonic solutions (\(\gradient \mapsto i\vec{k}\)) and denoting the Mach number as \(\vec{M} = \vec{v}_0/c_0\), becomes 
+when assuming spatially harmonic solutions (\(\boldsymbol{\nabla} \mapsto i\vec{k}\)) and denoting the Mach number as \(\vec{M} = \vec{v}_0/c_0\), becomes 
 \begin{align*}
 -k^2 p_\omega &= - \bigg(\frac{\omega}{c_0} - \vec{M}\cdot \vec{k} \bigg)^{\! 2} p_\omega = -\bigg( \frac{\omega}{c_0} - M k \cos\phi\bigg)^{\! 2} p_\omega\,,
 \end{align*}
@@ -469,10 +452,6 @@ which, solving for \(k\), yields
 \begin{align}\label{a refract}\tag{a}
 k = \frac{\omega/c_0}{1 + M\cos\phi} = \frac{\omega}{c_0 + v_0\cos\phi}\,.
 \end{align}
-<!--The trace velocity is 
-\begin{align*}
-c_g = \frac{\omega}{k_y} = \frac{\omega}{k\cos\phi} = \frac{c_0}{\cos\phi} + v_0\,.
-\end{align*} -->
 The original equations for \(p_i\) and \(p_t\) are now evaluated at \(x = 0\), and the continuity of the pressure field is enforced:
 \begin{align*}
 A_i e^{ik_1 y\cos\phi_1} = A_t e^{ik_2 y\cos\phi_2}\,.  
@@ -498,7 +477,6 @@ The equation for the critical angle, \(\cos\phi_{1c} = {c_1}/({c_2 + \Delta v})\
 </p>
 <p align="middle"> <img src="refraction_trap.svg" width="200" height="auto"></p>
 <p>Assuming the sound in the middle layer in which \(v_0=0\) is confined to angles smaller than the critical angle, the interfaces with the moving media serve as idealized boundaries. Thus, modes can develop in the middle layer, and the moving medium engulfing the stationary channel act as walls of a waveguide for sound.</p>
-<!--<p><span class="Q">Are the boundaries in this case rigid or pressure-release?</span></p>-->
 </div>
 <p>
 Interestingly, the flow at the boundary of two media results in <i>nonreciprocity</i> (also known as "broken symmetry"), which refers to the exchange of source and observer having an effect on the measured signal. This is illustrated by example below.  
@@ -549,7 +527,7 @@ p_\omega = A e^{ik(x\sin\phi + y\cos\phi)}\,. \tag{2}\label{2bend}
 \end{align}
 \(p_\omega\) satisfies the Helmholtz equation with \(\vec{v}_0 = v_0 \ey\):
 \begin{align*}
-\Laplacian p_\omega = -(\omega/c_0 + i \vec{M}\cdot \gradient)^2 p_\omega\,.
+\Laplacian p_\omega = -(\omega/c_0 + i \vec{M}\cdot \boldsymbol{\nabla})^2 p_\omega\,.
 \end{align*}
 Thus 
 \begin{align}
@@ -572,11 +550,11 @@ Otherwise, \(\sin\phi = \sqrt{1- \cos^2\phi}\), which is imaginary and correspon
 
 <p>Now the amplitudes \(A\) and \(\xi_0\) are related to each other. Following Morse and Ingard's approach, the (exact) momentum equation is appealed to: 
 \begin{align*}
-\rho \frac{D\vec{u}}{Dt} = \rho \frac{D^2 \vecxi}{D t^2} = -\gradient P\,,
+\rho \frac{D\vec{u}}{Dt} = \rho \frac{D^2 \vecxi}{D t^2} = -\boldsymbol{\nabla} P\,,
 \end{align*}
-where \(D/Dt = \partial/\partial t + (\vec{v}_0 + \vec{u})\cdot \gradient\) is the material derivative. Linearization results in 
+where \(D/Dt = \partial/\partial t + (\vec{v}_0 + \vec{u})\cdot \boldsymbol{\nabla}\) is the material derivative. Linearization results in 
 \begin{align*}
-\rho_0 \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \gradient \bigg)^2 \vecxi = -\gradient p\,.
+\rho_0 \bigg(\frac{\partial}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \bigg)^2 \vecxi = -\boldsymbol{\nabla} p\,.
 \end{align*}
 Since \(\vecxi\) and \(\vec{v}_0\) are perpendicular, i.e., \(\vecxi = \xi\ex\) and \(\vec{v} = v_0\ey\), the momentum equation reduces to 
 \begin{align}
@@ -666,7 +644,7 @@ Now the radiation due to a piston in a crossflow is studied. Determining the bou
 
 <p>Ingard pointed out that the fundamental boundary condition is on the displacement field, not the velocity. Note that the velocity field is given in terms of the displacement field by
 \begin{align}
-\vec{u} &= \frac{D\vecxi}{Dt} = \bigg(\frac{\partial }{\partial t} + \vec{v}_0 \cdot \gradient\bigg) \vecxi\,, \label{eq:disp}\tag{1}
+\vec{u} &= \frac{D\vecxi}{Dt} = \bigg(\frac{\partial }{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla}\bigg) \vecxi\,, \label{eq:disp}\tag{1}
 \end{align}
 and let the \(z\) component of the displacement be
 \begin{align*}
