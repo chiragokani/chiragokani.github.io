@@ -2,9 +2,7 @@
 <html>
 <head>
   <title>Scattering</title>
-  <!-- MathJax 4 configuration --> 
-  <!--mathjax-termes goes well with Times fonts-->
-  <!--mathjax-stix2 goes well with Times fonts-->
+
   <script>
     window.MathJax = {
       loader: {
@@ -21,10 +19,7 @@
       veckappa: "{\\boldsymbol{\\kappa}}",
       vecrho: "{\\boldsymbol{\\rho}}",   
       vecxi: "{\\boldsymbol{\\xi}}",   
-      divergence: "{\\boldsymbol{\\nabla}\\cdot\\,}",
-      gradient: "{\\boldsymbol\\nabla}",
       curl: "{\\boldsymbol\\nabla\\times\\,}",
-      Laplacian: "{\\nabla^2}",
       Laplacianp: "{\\nabla'^2}",
       Laplacianperp: "{\\nabla_{\\!\\!\\perp}^2}",
       dAlambertian: "{\\Box^2}",
@@ -50,7 +45,6 @@
       ephi: "{\\vec{e}_\\phi}",
       thetaHP: "{\\theta_{\\mathrm{HP}}}",
       erf: "{\\mathrm{\\,erf\\,}}",
-      NF: "{_\\mathrm{NF}}",
       Ell: "{\\mathcal{L}}"
         }
       },
@@ -60,7 +54,6 @@
     };
   </script>
 
-  <!-- MathJax 4 (NO async, NO es5) -->
   <script
     id="MathJax-script"
     src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js">
@@ -101,10 +94,9 @@ The scientist's urge to investigate, like the faith of the devout or the inspira
 </div>
 
 </div>
-
 <div class="textbox"><h2 id="green">General definition of Green's function</h2>
 <p>
-Consider a linear differential operator \(\mathcal{L}\) (e.g., \(\Laplacian + k^2\)). A Green's function \(g\) satisfies 
+Consider a linear differential operator \(\mathcal{L}\) (e.g., \(\nabla^2 + k^2\)). A Green's function \(g\) satisfies 
 \begin{align}\label{1green}\tag{1}
 \Ell\{g(\vec{r}|\vec{r}_0)\} = -\delta(\vec{r} - \vec{r}_0)\,.
 \end{align}
@@ -132,9 +124,8 @@ where \(\mathcal{L}\) is removed from the integral by the linearity of the integ
 where \(g(\vec{r}|\vec{r}_0)\) is the so-called free space Green's function is defined by Eq. \eqref{1green}. \(g\) satisfies \(\Ell\{g(\vec{r}|\vec{r}_0)\} = 0\) everywhere except for at \(\vec{r} = \vec{r}_0\).
  </p>
 
-<p><span class="Q">The "\(-\)" sign in Eq. \eqref{1green} is motivated by electrostatics. Gauss's law states that \(\divergence \vec{E} = \rho/\epsilon_0\), where \(\vec{E}\) is the electric field, \(\rho\) is the charge density, and \(\epsilon_0\) is the permittivity of free space. Meanwhile, the definition of the electric field is given in terms of the electric potential as \(\vec{E} = -\gradient V\). Combining these equations leads to Poisson's equation, which has a negative right-hand side: \(\Laplacian V = -\rho/\epsilon_0\). Thus it proves convenient in electrostatics to let \(g(\vec{r}|\vec{r}_0)\) solve the inhomogeneous Poisson equation with negative right-hand side. </span></p>
+<p><span class="Q">The "\(-\)" sign in Eq. \eqref{1green} is motivated by electrostatics. Gauss's law states that \(\boldsymbol{\nabla}\cdot \vec{E} = \rho/\epsilon_0\), where \(\vec{E}\) is the electric field, \(\rho\) is the charge density, and \(\epsilon_0\) is the permittivity of free space. Meanwhile, the definition of the electric field is given in terms of the electric potential as \(\vec{E} = -\boldsymbol{\nabla} V\). Combining these equations leads to Poisson's equation, which has a negative right-hand side: \(\nabla^2 V = -\rho/\epsilon_0\). Thus it proves convenient in electrostatics to let \(g(\vec{r}|\vec{r}_0)\) solve the inhomogeneous Poisson equation with negative right-hand side. </span></p>
 </div>
-
 
 <div class="textbox"><h2 id="helmholtz">Green's functions of inhomogeneous 1D, 2D, 3D Helmholtz equations</h2>
 <p>1D and 3D cases are discussed first. Attention is then turned to the more challenging 2D case, which is handled by modifying the 3D result.</p>
@@ -182,7 +173,7 @@ so the Green's function of the 1D Helmholtz equation is
 <p>
 The inhomogeneous Helmholtz equation is now 
 \begin{align}\label{3D1}\tag{1}
-\Laplacian g + k^2 g = -\delta(\vec{r} - \vec{r}_0)\,.
+\nabla^2 g + k^2 g = -\delta(\vec{r} - \vec{r}_0)\,.
 \end{align}
 The solution is supposed to have the form
 \begin{align*}
@@ -191,7 +182,7 @@ g(\vec{r}|\vec{r}_0) = A\frac{e^{ikR}}{R}\,,
 where \[R = |\vec{r}- \vec{r}_0| = \sqrt{(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2}\,.\] 
 To determine the constant \(A\), Eq. \eqref{3D1} is integrated over the volume of a sphere of radius \(\epsilon\) centered at \(\vec{r} = \vec{r}_0\). Noting that the surface area of this integral is \(S = 4\pi \epsilon^2\), its volume is \(V = \frac{4}{3}\pi \epsilon^3\), and \(dV = 4\pi R^2 dR\), the integral is taken,
 \begin{align*}
-\int \Laplacian g dV + k^2 \int g dV = -1\,.
+\int \nabla^2 g dV + k^2 \int g dV = -1\,.
 \end{align*}
 The second integral is easy to take:
 \begin{align*}
@@ -201,8 +192,8 @@ The second integral is easy to take:
 \end{align*}
 Meanwhile, for the first integral, Gauss's theorem is invoked:
 \begin{align*}
-\int \Laplacian g dV &= \int \divergence (\gradient g) dV\\
-&= \oint (\gradient g) \cdot d\vec{S}\\
+\int \nabla^2 g dV &= \int \boldsymbol{\nabla}\cdot (\boldsymbol{\nabla} g) dV\\
+&= \oint (\boldsymbol{\nabla} g) \cdot d\vec{S}\\
 &= \oint \frac{\partial g}{\partial R} dS\\
 &= \oint \left(-\frac{1}{R} + ik\right) A \frac{e^{ikR}}{R}\, dS\\
 &= \left(-\frac{1}{\epsilon} + ik\right) A \frac{e^{ik\epsilon}}{\epsilon} 4\pi \epsilon^2\\
@@ -224,7 +215,7 @@ In 2D, the inhomogeneous Helmholtz equation in Cartesian coordinates is
 \end{align*}
 Equivalently, the inhomogeneous Helmholtz equation can be written in 3D as
 \begin{align}\label{2D1}\tag{1}
-\Laplacian g + k^2 g = - f(x,y)\,,
+\nabla^2 g + k^2 g = - f(x,y)\,,
 \end{align}
 where the Laplacian is the 3D operator, and where \[f(x,y) = \delta(x-x_0)\delta(y-y_0)\,.\]
 The 3D solution of Eq. \eqref{2D1} was found to be 
@@ -273,7 +264,7 @@ The above approximation of the 2D Green's function of the Helmholtz equation is 
 <p>
 Consider a Green's function that satisfies 
 \begin{align} \label{BC1}\tag{1}
-\Laplacian G + k^2 G = -\delta(\vec{r} - \vec{r}_0)\,,
+\nabla^2 G + k^2 G = -\delta(\vec{r} - \vec{r}_0)\,,
 \end{align}
 where (following Morse and Ingard's notation, Eq. 7.1.15) \[G(\vec{r}|\vec{r}_0) = g(\vec{r}|\vec{r}_0) + h(\vec{r})\]
 where 
@@ -282,7 +273,7 @@ g(\vec{r}|\vec{r}_0) = \frac{e^{ikR}}{4\pi R}\,, R = |\vec{r} - \vec{r}_0|\,,
 \end{align*}
 and where \(h(\vec{r})\) is the homogeneous solution, i.e., 
 \begin{align}\label{BC2}\tag{2}
-\Laplacian h + k^2 h = 0\,.
+\nabla^2 h + k^2 h = 0\,.
 \end{align}
 That is to say, \(h\) is added to \(g\) to make the Green's function \(G\) satisfy not only \(1\) but also any boundary condition(s) involved in a physical situation. 
 </p>
@@ -302,8 +293,8 @@ That is to say, \(h\) is added to \(g\) to make the Green's function \(G\) satis
 
 <p>At these positions,
 \begin{align}
-(\Laplacian + k^2)G(\vec{r}|\vec{r}_1) &= -\delta(\vec{r} - \vec{r}_1) \label{recip1}\tag{a}\\
-(\Laplacian + k^2)G(\vec{r}|\vec{r}_2) &= -\delta(\vec{r} - \vec{r}_2)\,.\label{recip2}\tag{b}
+(\nabla^2 + k^2)G(\vec{r}|\vec{r}_1) &= -\delta(\vec{r} - \vec{r}_1) \label{recip1}\tag{a}\\
+(\nabla^2 + k^2)G(\vec{r}|\vec{r}_2) &= -\delta(\vec{r} - \vec{r}_2)\,.\label{recip2}\tag{b}
 \end{align}
 Now the following volume integral is calculated:
 \begin{align*}
@@ -311,7 +302,7 @@ Now the following volume integral is calculated:
 \end{align*}
 The \(k^2\) terms cancel, leaving 
 \begin{align*}
-\int_V \{G(\vec{r}|\vec{r}_2) \Laplacian G(\vec{r}|\vec{r}_1) - G(\vec{r}|\vec{r}_1)  \Laplacian G(\vec{r}|\vec{r}_r) dV = -G(\vec{r}_1 |\vec{r}_2) + G(\vec{r}_2|\vec{r}_1)\,.
+\int_V \{G(\vec{r}|\vec{r}_2) \nabla^2 G(\vec{r}|\vec{r}_1) - G(\vec{r}|\vec{r}_1)  \nabla^2 G(\vec{r}|\vec{r}_r) dV = -G(\vec{r}_1 |\vec{r}_2) + G(\vec{r}_2|\vec{r}_1)\,.
 \end{align*}
 By the divergence theorem,
 \begin{align}\label{recip3}\tag{3}
@@ -332,7 +323,7 @@ which is said to correspond to a ''locally reacting'' medium, which does not sup
 -ik\rho_0c_0 \vec{u}_\omega \cdot \vec{n} + \frac{\partial p_\omega}{\partial n} = 0\,.
 \end{align*}
 The condition \(\frac{G}{\partial G/\partial n} \) therefore becomes 
-\[\frac{G}{\partial G/\partial n} = \frac{Z}{ik\rho_0c_0}.\] <!--%Physically, this can be thought of as a lumped-element system of masses, springs, and dampers. 	--> 
+\[\frac{G}{\partial G/\partial n} = \frac{Z}{ik\rho_0c_0}.\] 
 </p>
 
 <p>
@@ -348,12 +339,12 @@ which implies that the source and receiver can be reversed in space without chan
 <p>
 Begin by considering two inhomogeneous Helmholtz equations:  
 \begin{align}
-(\Laplacian + k^2)p_\omega(\vec{r}) &= -f(\vec{r}) \label{helm1}\tag{1}\\
-(\Laplacian + k^2)G(\vec{r}|\vec{r}_0) &= -\delta(\vec{r} - \vec{r_0}) \label{helm2}\tag{2}
+(\nabla^2 + k^2)p_\omega(\vec{r}) &= -f(\vec{r}) \label{helm1}\tag{1}\\
+(\nabla^2 + k^2)G(\vec{r}|\vec{r}_0) &= -\delta(\vec{r} - \vec{r_0}) \label{helm2}\tag{2}
 \end{align}
 Take \(G\) times Eq. \eqref{helm1} minus \( p_\omega\) times Eq. \eqref{helm2}:
 \begin{align}
-G(\vec{r}|\vec{r}_0) \Laplacian p_\omega(\vec{r}) - p_\omega(\vec{r}) \Laplacian G(\vec{r}|\vec{r}_0) &=
+G(\vec{r}|\vec{r}_0) \nabla^2 p_\omega(\vec{r}) - p_\omega(\vec{r}) \nabla^2 G(\vec{r}|\vec{r}_0) &=
 -G(\vec{r}|\vec{r}_0) f(\vec{r}) + p_\omega(r) \delta(\vec{r}- \vec{r}_0)\,. \label{helm3}\tag{3}
 \end{align}
 Now rename \(\vec{r}\) with \(\vec{r}_0\) and visa versa, and require \(G\) to be reciprocal whether or not any boundary conditions are satisfied, e.g., can let \(G = g = e^{ikR}/4\pi R\):
@@ -362,12 +353,9 @@ G(\vec{r}|\vec{r}_0) = G(\vec{r}_0|\vec{r})\,.
 \end{align*}
 Now take \(\int_{V}[\text{Eq. (3)}] dV_0\):
 \begin{align*}
-\int &[G(\vec{r}|\vec{r}_0) \Laplacian_{\!\!\!0} p_\omega(\vec{r}_0) - p_\omega (\vec{r}_0) \Laplacian_{\!\!\!0} G(\vec{r}|\vec{r}_0) dV_0]\\
+\int &[G(\vec{r}|\vec{r}_0) \nabla^2_{\!\!\!0} p_\omega(\vec{r}_0) - p_\omega (\vec{r}_0) \nabla^2_{\!\!\!0} G(\vec{r}|\vec{r}_0) dV_0]\\
 &= - \iiint G(\vec{r}|\vec{r}_0) f(\vec{r}_0) dV_0 + \int p_\omega(\vec{r}_0) \delta(\vec{r}-\vec{r}_0)dV_0\,,
 \end{align*}
-<!--where 
-\[\Laplacian_{\!\!\!0} = 
-\frac{\partial^2}{\partial x_0^2} + \frac{\partial^2}{\partial y_0^2} + \frac{\partial^2}{\partial z_0^2}\,. \]-->
 Now use Gauss's theorem to solve (implicitly) for \(p_\omega(\vec{r})\):
 \begin{align}
 \boxed{p_\omega(\vec{r}) = \int f(\vec{r}) G(\vec{r}|\vec{r}_0)dV_0 + \oint \bigg[G(\vec{r}|\vec{r}_0) \frac{\partial p_\omega(\vec{r}_0)}{\partial n_0} - p_\omega(\vec{r_0})\frac{\partial G(\vec{r}|\vec{r}_0)}{\partial n_0}\bigg] dS_0 \tag{5}\label{helm5}}
@@ -423,6 +411,7 @@ p_\omega(x,y,z) &= \frac{-ik\rho_0c_0}{2\pi} \iint_{-\infty}^\infty u_0(x_0,y_0)
 </div>
 </div>
 
+
 <div class="textbox"><h2 id="multipole">Multipole expansion</h2>
 <p>It proves expedient to introduce the multipole expansion, since monopoles and dipoles arise in the <a href="#scattering">theory of scattering to follow</a>. The multipole expansion was covered in Acoustics II in the context of radiation from spherical and cylindrical sources [e.g., a pulsating sphere, shaking sphere, bipolar pulsating sphere, pulsating cylinder, shaking cylinder (string), etc.], while the emphasis here is on how monopolar and dipolar fields arise due to the scattering of sound.</p>
 <h3>Monopole</h3>
@@ -462,7 +451,7 @@ p_\omega(\vec{r}) &= -ik\rho_0c_0 Q [g(\vec{r}| z_0= d/2) - g(\vec{r}| z_0 = -d/
 &\to - ik\rho_0c_0 Qd [\partial g/\partial z_0]_{r_0 = 0}\,,\quad d\to 0 \,,
 \end{align*}
 where  \(g(\vec{r}|\vec{r_0}) = e^{ikR}/4\pi R\) from above. Generally, the dipole pressure is given by the <i>gradient</i> of the Green's function, where the dipole moment is defined as \(\vec{D} = Q\vec{d}\), where \(\vec{d}\) is the vector extending from the negative to positive monopoles defining the dipole:
-\[\boxed{p_\omega(\vec{r}|\vec{r}_0) = -ik\rho_0c_0 \vec{D} \cdot  \gradient g(\vec{r}|\vec{r}_0)\,.}\]
+\[\boxed{p_\omega(\vec{r}|\vec{r}_0) = -ik\rho_0c_0 \vec{D} \cdot  \boldsymbol{\nabla} g(\vec{r}|\vec{r}_0)\,.}\]
 To derive an expression for the dipole pressure in the far field, the derivative is evaluated in Cartesian coordinates: 
 \begin{align*}
 \frac{\partial g}{\partial z_0} = \frac{\partial g}{\partial R} \frac{\partial R}{\partial z_0} = (ik - 1/R)g \frac{\partial R}{\partial z_0}\,,
@@ -502,14 +491,14 @@ Begin by letting \(\rho(\vec{r}) = \rho_0 + \delta_I(\vec{r})\) be the (spatiall
 Pierce provides the appropriate equation of state [see first footnote on p. 15 of <i>Acoustics: An Introduction to Its Physical Principles and Applications</i> (1989)]:</p>
 <blockquote>
 If the ambient state is inhomogeneous, \(p = p(\rho,s_0)\) cannot be used and one falls back on \(p = p(\rho,s)\), \(Ds/Dt = 0\) as a starting point. If \(p_0(\vec{x})\) and \(\rho_0(\vec{x})\) are independent of \(t\), these lead to 
-\[\frac{\partial p'}{\partial t} + \vec{v}' \cdot \gradient p_0 = c^2 \left(\frac{\partial \rho'}{\partial t} + \vec{v}' \cdot \gradient \rho_0\right)\]
+\[\frac{\partial p'}{\partial t} + \vec{v}' \cdot \boldsymbol{\nabla} p_0 = c^2 \left(\frac{\partial \rho'}{\partial t} + \vec{v}' \cdot \boldsymbol{\nabla} \rho_0\right)\]
 as the linear equation that replaces [\(p' = c^2 \rho'\), \(c^2 = (\partial p/\partial \rho)_0\)].
 </blockquote>
-<p>Using the notation in the present work, and noting that \(\gradient p_0 =0\) here, Pierce's state equation reads
-\[\frac{\partial p}{\partial t} = c^2 \left[\frac{\partial \rho'}{\partial t} + \vec{u} \cdot \gradient \rho(\vec{r})\right]\,.\]
+<p>Using the notation in the present work, and noting that \(\boldsymbol{\nabla} p_0 =0\) here, Pierce's state equation reads
+\[\frac{\partial p}{\partial t} = c^2 \left[\frac{\partial \rho'}{\partial t} + \vec{u} \cdot \boldsymbol{\nabla} \rho(\vec{r})\right]\,.\]
 Solving this relation for \(\partial\rho'/\partial t\) yields
 \begin{align}
-\frac{\partial \rho'}{\partial t} &= \frac{1}{c^2}\frac{\partial p}{\partial t} - \vec{u}\cdot \gradient \rho(\vec{r})
+\frac{\partial \rho'}{\partial t} &= \frac{1}{c^2}\frac{\partial p}{\partial t} - \vec{u}\cdot \boldsymbol{\nabla} \rho(\vec{r})
 \,.\label{S}\tag{S}
 \end{align}
 This relation will be used to eliminate the perturbation density from the systems of partial differential equations that follow.</p>
@@ -517,42 +506,42 @@ This relation will be used to eliminate the perturbation density from the system
 <h4>Conservation of mass</h4>
 <p>
 The exact conservation of mass equation is 
-\[\frac{\partial}{\partial t}[\rho(\vec{r}) + \rho'(\vec{r},t)] + \divergence \{[\rho (\vec{r}) + \rho'(\vec{r},t)]\vec{u}\}= 0\,.\]
+\[\frac{\partial}{\partial t}[\rho(\vec{r}) + \rho'(\vec{r},t)] + \boldsymbol{\nabla}\cdot \{[\rho (\vec{r}) + \rho'(\vec{r},t)]\vec{u}\}= 0\,.\]
 Neglecting the nonlinear term \(\rho'(\vec{r},t) \vec{u}\) on the right-hand side of the above and expanding the divergence of the product \(\rho(\vec{r})\vec{u}\) results in 
 \[\frac{\partial \rho'(\vec{r},t)}{\partial t} 
- + \rho (\vec{r})\divergence \vec{u} + \vec{u} \cdot \gradient\rho (\vec{r}) =0\,.
+ + \rho (\vec{r})\boldsymbol{\nabla}\cdot \vec{u} + \vec{u} \cdot \boldsymbol{\nabla}\rho (\vec{r}) =0\,.
 \] 
 Inserting the linearized state equation given by Eq. \eqref{S} results in
-\[\frac{1}{c^2}\frac{\partial p}{\partial t} - \vec{u}\cdot \gradient \rho(\vec{r}) + \rho(\vec{r})  \divergence \vec{u} + \vec{u} \cdot \gradient\rho (\vec{r}) =0\,.\]
-The \(\vec{u}\cdot \gradient \rho(\vec{r})\) terms cancel, resulting in  \begin{equation}\label{cont}\tag{\(\star\star\)}
-\divergence \vec{u} = -\kappa(\vec{r},t)\frac{\partial p}{\partial t}\,.
+\[\frac{1}{c^2}\frac{\partial p}{\partial t} - \vec{u}\cdot \boldsymbol{\nabla} \rho(\vec{r}) + \rho(\vec{r})  \boldsymbol{\nabla}\cdot \vec{u} + \vec{u} \cdot \boldsymbol{\nabla}\rho (\vec{r}) =0\,.\]
+The \(\vec{u}\cdot \boldsymbol{\nabla} \rho(\vec{r})\) terms cancel, resulting in  \begin{equation}\label{cont}\tag{\(\star\star\)}
+\boldsymbol{\nabla}\cdot \vec{u} = -\kappa(\vec{r},t)\frac{\partial p}{\partial t}\,.
 \end{equation}
 </p>
 
 <h4>Conservation of momentum</h4>
 <p>
 Meanwhile, conservation of momentum requires that 
-\[\gradient p + \frac{\partial }{\partial t}\{[\rho(\vec{r}) + \rho'(\vec{r},t)] \vec{u}\} = 0\,.\]
+\[\boldsymbol{\nabla} p + \frac{\partial }{\partial t}\{[\rho(\vec{r}) + \rho'(\vec{r},t)] \vec{u}\} = 0\,.\]
 Neglecting the nonlinear term \(\rho' u\) yields
-\[\gradient p + \frac{\partial }{\partial t}[\rho(\vec{r})\vec{u}] = 0\,.\]
+\[\boldsymbol{\nabla} p + \frac{\partial }{\partial t}[\rho(\vec{r})\vec{u}] = 0\,.\]
 Since \(\rho\) is not a function of time, it can be removed from the time derivative: 
-\[\gradient p + \rho(\vec{r})\frac{\partial \vec{u}}{\partial t} = 0\,.\]
+\[\boldsymbol{\nabla} p + \rho(\vec{r})\frac{\partial \vec{u}}{\partial t} = 0\,.\]
 Solving for \(\partial \vec{u}/\partial t\) gives
 \begin{equation}\label{mom}\tag{\(\star\star\star\)}
-\frac{\partial \vec{u}}{\partial t} = -\frac{1}{\rho(\vec{r})}\gradient p\,.
+\frac{\partial \vec{u}}{\partial t} = -\frac{1}{\rho(\vec{r})}\boldsymbol{\nabla} p\,.
 \end{equation}
 Taking the time derivative of Eq. \eqref{cont}, taking the divergence of Eq. \eqref{mom}, and subtracting the resulting equations results in 
 \begin{align*}
-\frac{\partial}{\partial t} (\divergence \vec{u}) - \divergence \left[\frac{\partial \vec{u}}{\partial t}\right] = -\kappa(\vec{r})\frac{\partial^2p}{\partial t^2} + \divergence \left[\frac{1}{\rho(\vec{r})}\gradient p\right] \,,
+\frac{\partial}{\partial t} (\boldsymbol{\nabla}\cdot \vec{u}) - \boldsymbol{\nabla}\cdot \left[\frac{\partial \vec{u}}{\partial t}\right] = -\kappa(\vec{r})\frac{\partial^2p}{\partial t^2} + \boldsymbol{\nabla}\cdot \left[\frac{1}{\rho(\vec{r})}\boldsymbol{\nabla} p\right] \,,
 \end{align*}
 The left-hand side of the above equation can be seen to be \(0\), resulting in
 \begin{align*}
-\divergence \left[\frac{1}{\rho(\vec{r})}\gradient p\right] -\kappa(\vec{r})\frac{\partial^2p}{\partial t^2} = 0  \,.
+\boldsymbol{\nabla}\cdot \left[\frac{1}{\rho(\vec{r})}\boldsymbol{\nabla} p\right] -\kappa(\vec{r})\frac{\partial^2p}{\partial t^2} = 0  \,.
 \end{align*}
 Using the bulk modulus \(B = 1/\kappa\) results in Dr. Hamilton's wave equation \eqref{scat1}:
 
 \begin{align}\label{scat1}\tag{1}
-\divergence \left[\frac{\gradient p}{\rho(\vec{r})}\right] = \frac{1}{B(\vec{r})} \frac{\partial^2 p}{\partial t^2}\,.
+\boldsymbol{\nabla}\cdot \left[\frac{\boldsymbol{\nabla} p}{\rho(\vec{r})}\right] = \frac{1}{B(\vec{r})} \frac{\partial^2 p}{\partial t^2}\,.
 \end{align}
 </p>
 </span>
@@ -562,19 +551,19 @@ Defining the reference density, bulk modulus, and sound speed (which are constan
 \[\rho_0\,,\quad B_0\,,\quad c_0 = \sqrt{B_0/\rho_0}\,,\]
 Eq. \eqref{scat1} can be written as 
 \begin{align*}
-\divergence \left[\left(\frac{1}{\rho} - \frac{1}{\rho_0}\right)\gradient p + \frac{\gradient p}{\rho_0} \right] &= \left(\frac{1}{B} - \frac{1}{B_0}\right) \frac{\partial^2 p}{\partial t^2} + \frac{1}{B_0} \frac{\partial^2 p}{\partial t^2}\,.
+\boldsymbol{\nabla}\cdot \left[\left(\frac{1}{\rho} - \frac{1}{\rho_0}\right)\boldsymbol{\nabla} p + \frac{\boldsymbol{\nabla} p}{\rho_0} \right] &= \left(\frac{1}{B} - \frac{1}{B_0}\right) \frac{\partial^2 p}{\partial t^2} + \frac{1}{B_0} \frac{\partial^2 p}{\partial t^2}\,.
 \end{align*}
 Expanding the above equation yields
 \begin{align*}
-\frac{1}{\rho_0} \Laplacian p - \frac{1}{B_0} \frac{\partial^2 p_\omega}{\partial t^2} = \left(\frac{1}{B} - \frac{1}{B_0}\right) \frac{\partial^2 p}{\partial t^2} + \divergence  \left[\left(\frac{1}{\rho} - \frac{1}{\rho_0}\right)\gradient p \right]\,.
+\frac{1}{\rho_0} \nabla^2 p - \frac{1}{B_0} \frac{\partial^2 p_\omega}{\partial t^2} = \left(\frac{1}{B} - \frac{1}{B_0}\right) \frac{\partial^2 p}{\partial t^2} + \boldsymbol{\nabla}\cdot  \left[\left(\frac{1}{\rho} - \frac{1}{\rho_0}\right)\boldsymbol{\nabla} p \right]\,.
 \end{align*}
 This equation is rearranged further in preparation to identify dimensionless spatially dependent contrast factors:
 \begin{align*}
-\Laplacian p - \frac{\rho_0}{B_0}\frac{\partial^2 p}{\partial t^2} &= \frac{\rho_0}{B_0} \left(\frac{B_0}{B} - 1\right) \frac{\partial^2 p}{\partial t^2} + \divergence \left[\left(\frac{1}{\rho} - \frac{1}{\rho_0}\right)\gradient p \right]\,.
+\nabla^2 p - \frac{\rho_0}{B_0}\frac{\partial^2 p}{\partial t^2} &= \frac{\rho_0}{B_0} \left(\frac{B_0}{B} - 1\right) \frac{\partial^2 p}{\partial t^2} + \boldsymbol{\nabla}\cdot \left[\left(\frac{1}{\rho} - \frac{1}{\rho_0}\right)\boldsymbol{\nabla} p \right]\,.
 \end{align*}
 This equation can be written as 
 \begin{align}\label{scat2}\tag{2}
-\Laplacian - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} &= \frac{\gamma_B(\vec{r})}{c_0^2} \frac{\partial^2 p}{\partial t^2} + \divergence \left[\gamma_\rho(\vec{r})\gradient p \right]\,,
+\nabla^2 - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} &= \frac{\gamma_B(\vec{r})}{c_0^2} \frac{\partial^2 p}{\partial t^2} + \boldsymbol{\nabla}\cdot \left[\gamma_\rho(\vec{r})\boldsymbol{\nabla} p \right]\,,
 \end{align}
 where 
 \begin{align*}
@@ -585,13 +574,13 @@ where
 <p>
 In the frequency domain, this equation reads 
 \begin{align}\label{scat3}\tag{3}
-\Laplacian p_\omega + k^2 p_\omega = -k^2 \gamma_B p_\omega + \divergence (\gamma_\rho \gradient p_\omega)\,,
+\nabla^2 p_\omega + k^2 p_\omega = -k^2 \gamma_B p_\omega + \boldsymbol{\nabla}\cdot (\gamma_\rho \boldsymbol{\nabla} p_\omega)\,,
 \end{align}
 where \(k = \omega/c_0\). <i>Note that there is a sign error in Morse and Ingard's corresponding Eq. (8.1.12)</i>. Equation \eqref{scat3} can be recasted as
 \begin{align*}
-\Laplacian p_\omega + k^2 p_\omega = -f(\vec{r})\,,
+\nabla^2 p_\omega + k^2 p_\omega = -f(\vec{r})\,,
  \end{align*}
-where \(f(\vec{r}) = k^2 \gamma_B p_\omega - \divergence (\gamma_\rho \gradient p_\omega)\), which allows for implicit solution via the <a href="#hk">Helmholtz-Kirchhoff integral</a> [Eq. \eqref{helm5}].</p> 
+where \(f(\vec{r}) = k^2 \gamma_B p_\omega - \boldsymbol{\nabla}\cdot (\gamma_\rho \boldsymbol{\nabla} p_\omega)\), which allows for implicit solution via the <a href="#hk">Helmholtz-Kirchhoff integral</a> [Eq. \eqref{helm5}].</p> 
 
 <p>To prepare invoking the Helmholtz-Kirchhoff integral, let the inhomogeneities be confined to the volume \(V\), as illustrated schematically below:</p>
 
@@ -615,41 +604,41 @@ which is to say that the pressure field infinitely far away from the scatterer i
 \begin{align}
 p_\omega(\vec{r}) &= p_i(\vec{r}) + \int_{V_0} \left\{ 
 k^2 \gamma_B (\vec{r}_0) p_\omega(\vec{r}_0) 
-- \gradient_0 \cdot \left[\gamma_\rho(\vec{r}_0) \gradient_0 p_\omega(\vec{r}_0)\right] 
+- \boldsymbol{\nabla}_0 \cdot \left[\gamma_\rho(\vec{r}_0) \boldsymbol{\nabla}_0 p_\omega(\vec{r}_0)\right] 
 \right\}g(\vec{r}|\vec{r}_0) dV_0 \label{scat4}\tag{4}
 \end{align}
-By the vector calculus identity \(\divergence(a\vec{b}) = a \divergence \vec{b} + \vec{b} \cdot \gradient a\), the second term in Eq. \eqref{scat4} can be written as (identifying \(\vec{b} \equiv \gamma_\rho\gradient p\) and \(a \equiv g\) in the identity),
+By the vector calculus identity \(\boldsymbol{\nabla}\cdot(a\vec{b}) = a \boldsymbol{\nabla}\cdot \vec{b} + \vec{b} \cdot \boldsymbol{\nabla} a\), the second term in Eq. \eqref{scat4} can be written as (identifying \(\vec{b} \equiv \gamma_\rho\boldsymbol{\nabla} p\) and \(a \equiv g\) in the identity),
 \begin{align*}
-\divergence (\gamma_\rho \gradient p) g = \divergence [\gamma_\rho(\gradient p)g] -  \gamma_\rho \gradient p \cdot \gradient g\,.
+\boldsymbol{\nabla}\cdot (\gamma_\rho \boldsymbol{\nabla} p) g = \boldsymbol{\nabla}\cdot [\gamma_\rho(\boldsymbol{\nabla} p)g] -  \gamma_\rho \boldsymbol{\nabla} p \cdot \boldsymbol{\nabla} g\,.
 \end{align*}
-Applying the divergence theorem to the volume integral of the term \(\divergence [\gamma_\rho(\gradient p)g] \) results in 
+Applying the divergence theorem to the volume integral of the term \(\boldsymbol{\nabla}\cdot [\gamma_\rho(\boldsymbol{\nabla} p)g] \) results in 
 \begin{align*}
-\int_{V_0} \divergence \{\gamma_\rho (\vec{r}_0) [\gradient p_\omega(\vec{r}_0)]g(\vec{r}|\vec{r}_0)\} dV_0 &= \oint \gamma_\rho(\vec{r}_0) \frac{\partial p_\omega}{\partial n_0}g(\vec{r}|\vec{r}_0)dS_0,
+\int_{V_0} \boldsymbol{\nabla}\cdot \{\gamma_\rho (\vec{r}_0) [\boldsymbol{\nabla} p_\omega(\vec{r}_0)]g(\vec{r}|\vec{r}_0)\} dV_0 &= \oint \gamma_\rho(\vec{r}_0) \frac{\partial p_\omega}{\partial n_0}g(\vec{r}|\vec{r}_0)dS_0,
 \end{align*}
 which vanishes for \(S_0\) at \(\infty\) and finite \(V_0\), because \(\gamma_\rho = 0\) at \(\infty\). After making these considerations, Eq. \eqref{rayleigh4} becomes
 \begin{align}\label{rayleigh5}\tag{5}
 \boxed{p_\omega(\vec{r}) = p_i(\vec{r}) + \int_{V_0} \left[ 
-k^2 \gamma_B(\vec{r}_0) p_\omega(\vec{r}_0) g(\vec{r}|\vec{r}_0) + \gamma_\rho(\vec{r}_0) \gradient_0p_\omega (\vec{r}_0) \cdot \gradient_0 g(\vec{r}|\vec{r}_0) \right]dV_0\,.}
+k^2 \gamma_B(\vec{r}_0) p_\omega(\vec{r}_0) g(\vec{r}|\vec{r}_0) + \gamma_\rho(\vec{r}_0) \boldsymbol{\nabla}_0p_\omega (\vec{r}_0) \cdot \boldsymbol{\nabla}_0 g(\vec{r}|\vec{r}_0) \right]dV_0\,.}
 \end{align}
 
 Equation \eqref{rayleigh5} can be thought of as the contribution of monopoles and dipoles, 
 \begin{align*}
 p_\omega &= -ik\rho_0c_0 Q g(\vec{r}|\vec{r}_0) = \text{ monopole}\\
-p_\omega &= -ik\rho_0c_0 \vec{D} \cdot  \gradient g(\vec{r}|\vec{r}_0) = \text{ dipole}\,,
+p_\omega &= -ik\rho_0c_0 \vec{D} \cdot  \boldsymbol{\nabla} g(\vec{r}|\vec{r}_0) = \text{ dipole}\,,
 \end{align*}
 where \(D = |\vec{D}| = Qd\). Thus set 
 \begin{align*}
 k^2 \gamma_B p_\omega \Delta V &= -ik\rho_0c_0 \Delta Q\\
-\gamma_\rho \gradient p_\omega \Delta V &= -ik\rho_0c_0 \Delta \vec{D}\,,
+\gamma_\rho \boldsymbol{\nabla} p_\omega \Delta V &= -ik\rho_0c_0 \Delta \vec{D}\,,
 \end{align*}
 which leads to
 \begin{align*}
 q &= \frac{\Delta Q}{\Delta V} = \frac{\text{volume velocity}}{\text{unit volume}} = \frac{ik}{\rho_0c_0} \gamma_B(\vec{r}) p_\omega(\vec{r}) \\
-\vec{d} &= \frac{\Delta \vec{D}}{\Delta V} = \frac{\text{dipole strength}}{\text{unit volume}} = -\frac{1}{ik\rho_0c_0} \gamma_\rho(\vec{r}) \gradient p_\omega(\vec{r})\,.
+\vec{d} &= \frac{\Delta \vec{D}}{\Delta V} = \frac{\text{dipole strength}}{\text{unit volume}} = -\frac{1}{ik\rho_0c_0} \gamma_\rho(\vec{r}) \boldsymbol{\nabla} p_\omega(\vec{r})\,.
 \end{align*}
 Then Eq. \eqref{rayleigh5} can be written in terms of monopole strengths and dipole moments:
 \begin{align*}
-\boxed{p_\omega (\vec{r}) = p_i(\vec{r}) - ik\rho_0c_0 \int_{V_0} [q(\vec{r}_0) g(\vec{r}|\vec{r}_0) + \vec{d}(\vec{r}_0) \cdot \gradient_0 g(\vec{r}| \vec{r}_0)] dV_0 \,.}
+\boxed{p_\omega (\vec{r}) = p_i(\vec{r}) - ik\rho_0c_0 \int_{V_0} [q(\vec{r}_0) g(\vec{r}|\vec{r}_0) + \vec{d}(\vec{r}_0) \cdot \boldsymbol{\nabla}_0 g(\vec{r}| \vec{r}_0)] dV_0 \,.}
 \end{align*}
 </p>
 </div>
@@ -681,7 +670,7 @@ where \(\vec{k}_s = k \vec{e}_r = \vec{k}(k,\theta,\phi)\)  is the wave vector i
 So the Green's function and its gradient become
 \begin{align*}
 g(\vec{r}|\vec{r}_0) \simeq \frac{e^{ikr}}{4\pi r} e^{-i\vec{k}_s \cdot \vec{r}_0}\,,\quad 
-\gradient_0 g = -i\vec{k}_sg\,.
+\boldsymbol{\nabla}_0 g = -i\vec{k}_sg\,.
 \end{align*}
 The total field is then
 \begin{align}\label{field1}\tag{1}
@@ -690,7 +679,7 @@ p_\omega(\vec{r}) &= p_i(\vec{r}) + p_s(\vec{r}),
 where now the scattered field is 
 \begin{align*}
 p_s(\vec{r}) = k^2 \frac{e^{ikr}}{4\pi r} \int  \left[ 
-\gamma_B(\vec{r}_0) p_\omega(\vec{r}_0) - \gamma_\rho(\vec{r}_0) \frac{i\vec{k}_s}{k^2} \cdot \gradient_0 p_\omega (r_0)
+\gamma_B(\vec{r}_0) p_\omega(\vec{r}_0) - \gamma_\rho(\vec{r}_0) \frac{i\vec{k}_s}{k^2} \cdot \boldsymbol{\nabla}_0 p_\omega (r_0)
 \right] e^{-i\vec{k}_s \cdot \vec{r}_0}dV_0\,.
 \end{align*}
 The above result can be written as a <i>3D</i> Fourier transform:
@@ -699,7 +688,7 @@ p_s(\vec{r}) &=  k^2 \frac{e^{ikr}}{4\pi r} \int q_s(\vec{r}_0) e^{-i\vec{k}_s \
 \end{align}
 where 
 \begin{align}\label{field3}\tag{3}
-q_s(\vec{r}) \equiv \gamma_B (\vec{r}) p_\omega(\vec{r}) -\gamma_\rho(\vec{r}) \frac{i\vec{k}_s}{k^2} \cdot \gradient p_\omega(\vec{r})\,.
+q_s(\vec{r}) \equiv \gamma_B (\vec{r}) p_\omega(\vec{r}) -\gamma_\rho(\vec{r}) \frac{i\vec{k}_s}{k^2} \cdot \boldsymbol{\nabla} p_\omega(\vec{r})\,.
 \end{align}
 As such, Eqs. \eqref{field2} can be written using the old notation of Fourier transforms:
 \begin{align*}
@@ -711,7 +700,7 @@ Note that Eqs. \eqref{field2} and \eqref{field3} are still <i>implicit</i>. That
 <h3>Born approximation</h3>
 <p>If in Eq. \eqref{field1} the scattered field is much weaker than the incident field, i.e., \(|p_s| \ll |p_i|\), then \(p_s\) is a small correction to \(p_i\), so let \(p_\omega = p_i\) in Eq. \eqref{field3}:
 \begin{align}\label{field5}\tag{5}
-q_s(\vec{r}) = \gamma_B(\vec{r}) p_i(\vec{r}) - \gamma_\rho(\vec{r}) \frac{i\vec{k}_s}{k^2} \cdot \gradient p_i (\vec{r})\,.
+q_s(\vec{r}) = \gamma_B(\vec{r}) p_i(\vec{r}) - \gamma_\rho(\vec{r}) \frac{i\vec{k}_s}{k^2} \cdot \boldsymbol{\nabla} p_i (\vec{r})\,.
 \end{align}
 Thus the solution given by Eq. \eqref{field2} is now explicit. 
 </p>
@@ -761,8 +750,6 @@ Therefore, the intensity of red light scattered by the molecules in the atmosphe
 <p>The same effect explains why the moon appears red during lunar eclipses. </p>
 </div>
 </div>
-
-
 
 
 <div class="textbox"><h2 id="bubbles_1">Born scattering from bubbles below resonance</h2>
@@ -858,12 +845,12 @@ The previous two cases have considered the scattering of sound due to bubbles fa
 <p align="middle"> <img src="bubble_dist.svg" width="325" height="auto"></p>
 <p>From Eq. \eqref{scat2} from the <a href="#scattering">"Scattering from inhomogeneities" section</a>, the wave equation becomes, upon neglecting \(\gamma_\rho\),
 \begin{align}\label{bubstar}\tag{\(\star\)}
-\Laplacian - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} &= \frac{\gamma_B(\vec{r})}{c_0^2} \frac{\partial^2 p}{\partial t^2} \,.
+\nabla^2 - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} &= \frac{\gamma_B(\vec{r})}{c_0^2} \frac{\partial^2 p}{\partial t^2} \,.
 \end{align}
 To describe the well-distributed collection of bubbles in the medium, the ratio in bulk moduli factor \(\gamma_B\) is set to \[\gamma_B \simeq  (\rho_0c_0^2/\kappa P_0)\phi(\vec{r}) = (B_l/B_g)\phi\,,\] 
 where \(\phi\) is constant (equaling the total volume of air divided by the total volume of water). Equation \eqref{bubstar} then becomes
 \begin{align*}
-\Laplacian p = \left(1 + \frac{B_l}{B_g} \phi\right) \frac{1}{c_0^2} \frac{\partial^2 p}{\partial t^2} \equiv \frac{1}{c_\text{eff}^2} \frac{\partial^2 p}{\partial t^2}\,,
+\nabla^2 p = \left(1 + \frac{B_l}{B_g} \phi\right) \frac{1}{c_0^2} \frac{\partial^2 p}{\partial t^2} \equiv \frac{1}{c_\text{eff}^2} \frac{\partial^2 p}{\partial t^2}\,,
 \end{align*}
 where \[c_\text{eff} = \frac{c_0}{\sqrt{1 + \phi B_l/B_g}}\,. \]
 This effective sound speed is the so-called Wood model for \(\phi\ll 1\). (The model falls apart for any appreciable \(\phi\), e.g., \(\phi \gtrsim 0.01\), since the underlying physics changes. See the homework problem that investigates this further.) The effective sound speed's dependence on \(\phi\) is sketched below:
@@ -887,12 +874,13 @@ f_0
 </p>
 </div>
 
+
 <div class="textbox"><h2 id="bubbles">Scattering from bubbles at arbitrary frequencies</h2>
 <p>Now a theory for the scattering from bubbles at arbitrary frequencies (not just at frequencies below the bubble resonance frequency) is developed. </p>
 <p>
 Begin with the inhomogeneous wave equation for volume sources [See Blackstock's <i>Fundamentals of Physical Acoustics</i>, Eq. (10-D-10)]:
 \begin{align*}
-\Laplacian p - \frac{1}{c_0^2} \frac{\partial^2 p}{\partial t^2} &= -\rho_0 \frac{\partial q}{\partial t}\,,
+\nabla^2 p - \frac{1}{c_0^2} \frac{\partial^2 p}{\partial t^2} &= -\rho_0 \frac{\partial q}{\partial t}\,,
 \end{align*}
 where \(q\) is the ratio of the volume velocity to the unit volume. Let the pressure be 
 \begin{align*}
@@ -911,7 +899,7 @@ and
 \end{align*}
 Thus a Helmholtz equation is obtained from Blackstock's Eq. (10-D-10):
 \begin{align}\label{bubprop1}\tag{1}
-(\Laplacian + k^2)p_\omega = n_0\rho_0\omega^2 v_\omega\,.
+(\nabla^2 + k^2)p_\omega = n_0\rho_0\omega^2 v_\omega\,.
 \end{align}
 In addition to Eq. \eqref{bubprop1}, an additional equation is needed to relate \(p_\omega\) and \(v_\omega\). To obtain this equation, the bubble dynamics are needed. 
 </p>
@@ -977,11 +965,11 @@ where
 \delta_\text{visc} &= \frac{4\mu}{\rho_0\omega_0 a^2}\\
 \delta_\text{th} &= 3(\gamma-1) l_\text{th}/a \,,\quad a \gg l_\text{th}\,,
 \end{align*}
-where \(\gamma = C_p/C_v\), \(l_\text{th} = \sqrt{2\chi/\omega}\) is the boundary-layer thickness, and \(\partial T/\partial t = \chi \Laplacian T\).
+where \(\gamma = C_p/C_v\), \(l_\text{th} = \sqrt{2\chi/\omega}\) is the boundary-layer thickness, and \(\partial T/\partial t = \chi \nabla^2 T\).
 </div>
 Now use Eq. \eqref{bubble4} to eliminate \(v_\omega\) in Eq. \eqref{bubprop1}. This can be rewritten as 
 \begin{align*}
-(\Laplacian + \tilde{k}^2)p_\omega = 0\,,
+(\nabla^2 + \tilde{k}^2)p_\omega = 0\,,
 \end{align*}
 where \(\tilde{k}^2 \equiv \omega^2/\tilde{c}^2(\omega)\), where 
 \begin{align*}
