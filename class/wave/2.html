@@ -89,8 +89,8 @@
 <span><a href="1.html">&leftarrow; Return to previous topic</a></span>
 <span><a href="3.html">&rightarrow; Advance to next topic</a></span>
 </div>
-
 </div>
+
 
 <div class="textbox"><h2 id="pressuresource">Pressure source</h2>
 <p>Begin with the Helmholtz equation
@@ -178,8 +178,8 @@ p_0(\rho) = p_0\, J_0(\alpha \rho)\,,\quad \rho \leq a\,.
 \end{align*}
 </p>
 </div>
-
 </div>
+
 
 <div class="textbox"><h2 id="velocitysource">Velocity source</h2>
 <p> For a velocity source (which is more practical), we should recall the linearized Newton's law:
@@ -196,8 +196,9 @@ The 2D spatial Fourier transform of the left-hand side of the above is simply
 \end{align*}
 Meanwhile, for the right-hand side, note that by the <a href="1.html#transform_theorems" target="_blank" rel="noopener noreferrer">derivative property of the Fourier transform</a>,
 \begin{align*}
-\FTxy\{\gradient p_\omega(x,y,z)\} &= \FTxy\bigg\{\bigg(\ex \frac{\partial}{\partial x} + \ey \frac{\partial}{\partial y} + \ez \frac{\partial }{\partial z}\bigg)p_\omega\bigg\}\\
-&= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  +\ez \FTxy\bigg\{\frac{\partial p_\omega}{\partial z}\bigg\}\,.
+\FTxy\big\lbrace \boldsymbol{\nabla} p_\omega(x,y,z) \big\rbrace
+&= \FTxy\bigg\{\bigg(\ex \partial_x + \ey \partial_y + \ez \partial_z\bigg)p_\omega\bigg\}\\
+&= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  +\ez \FTxy\bigg\{\frac{\partial p_\omega}{\partial z}\bigg\}.
 \end{align*}
 But since \(P(k_x,k_y,z) = P(k_x,k_y,0) e^{ik_zz}\), the last term of the above, \(\ez \FTxy\{\partial p_\omega/\partial z\}\), is
 \begin{align*}
@@ -208,7 +209,7 @@ But since \(P(k_x,k_y,z) = P(k_x,k_y,0) e^{ik_zz}\), the last term of the above,
 \end{align*}
 So 
 \begin{align*}
-\FTxy\{ \gradient p_\omega(x,y,z)\} &= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  + \ez  ik_z P(k_x,k_y,z) \\
+\FTxy\{ \boldsymbol{\nabla} p_\omega(x,y,z)\} &= i(k_x \ex + k_y \ey)P(k_x,k_y,z)  + \ez  ik_z P(k_x,k_y,z) \\
 &=i\vec{k} P(k_x,k_y,z)\,,
 \end{align*}
 where
@@ -447,7 +448,6 @@ The directivity is thus proportional to
 and thus there is a zero field on the propagation axis.
 </div>
 </div>
-
 
 <div class="textbox"><h2 id="nearfield">Nearfield acoustical holography (NAH)</h2>
 
