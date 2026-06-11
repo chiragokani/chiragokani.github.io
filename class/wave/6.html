@@ -143,33 +143,9 @@ The perturbation density \(\rho'\) is therefore eliminated from Eqs. \eqref{eq:a
 \frac{1}{c_0^2}\frac{\partial p}{\partial t} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} p + \rho_0 \boldsymbol{\nabla}\cdot \vec{u} &= 0 \label{eq:cont}\tag{5}\\
 \rho_0\frac{\partial \vec{u}}{\partial t} +  \rho_0 \vec{v}_0 \cdot \boldsymbol{\nabla} \vec{u}  + \boldsymbol{\nabla} p &= \vec{0}\,.\label{eq:mom}\tag{6}
 \end{align}
-Taking the time derivative of Eq. \eqref{eq:cont} and the divergence of Eq. \eqref{eq:mom} results in
-\begin{align}
-\frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)  + \rho_0 \boldsymbol{\nabla}\cdot \left(\frac{\partial \vec{u}}{\partial t}\right)  &= 0 \label{eq:cont:alg:1}\tag{7}\\
-\rho_0\boldsymbol{\nabla}\cdot \left(\frac{\partial \vec{u}}{\partial t}\right) +  \rho_0 \vec{v}_0 \cdot (\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u}) + \Laplacian p &= 0\,. \label{eq:mom:alg:1}\tag{8}
-\end{align}
-Subtracting Eq. \eqref{eq:cont:alg:1} from Eq. \eqref{eq:mom:alg:1}, the \(\rho_0\boldsymbol{\nabla}\cdot ({\partial \vec{u}}/{\partial t})\) terms cancel, resulting in 
-\begin{align}
-%\Laplacian p - \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} +  \rho_0 \vec{v}_0 \cdot (\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u})  -  \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)    &= 0\notag\\
-\Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \rho_0 \vec{v}_0 \cdot (\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u}) + \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)    \,.\label{eq:wave:alg:1}\tag{9}
-\end{align}
-To obtain a wave equation in terms of single wave variable, the particle velocity needs to be eliminated from Eq. \eqref{eq:wave:alg:1}. This is done by taking the gradient of Eq. \eqref{eq:cont}:
-\begin{align*}
-\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p + \rho_0 \boldsymbol{\nabla}(\boldsymbol{\nabla}\cdot \vec{u}) &= 0\,.
-\end{align*}
-Noting that \(\boldsymbol{\nabla}(\boldsymbol{\nabla}\cdot \vec{u}) = \boldsymbol{\nabla}\cdot (\boldsymbol{\nabla} \vec{u})\) and solving for \(\rho_0 \boldsymbol{\nabla} (\boldsymbol{\nabla}\cdot \vec{u})\) yields
-\begin{align}
-\rho_0 \boldsymbol{\nabla}\cdot (\boldsymbol{\nabla} \vec{u}) &= -\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) -  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\,.\label{eq:alg}\tag{10}
-\end{align}
-Inserting Eq. \eqref{eq:alg} in for \(\rho_0(\boldsymbol{\nabla}\cdot \boldsymbol{\nabla} \vec{u})\) in Eq. \eqref{eq:wave:alg:1} results in
-\begin{align}
-\Laplacian p &= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} - \vec{v}_0 \cdot \left[-\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) -  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\right] + \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)   \notag\\
-%&= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} + \vec{v}_0 \cdot \left[\frac{1}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) +  \frac{1}{c_0^2}\vec{v}_0 \Laplacian p\right] + \frac{1}{c_0^2}\vec{v}_0 \cdot \boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right)  \notag  \,. \\
-&= \frac{1}{c_0^2}\frac{\partial^2 p}{\partial t^2} + \vec{v}_0 \cdot \frac{2}{c_0^2}\boldsymbol{\nabla} \left(\frac{\partial p}{\partial t}\right) + \frac{v_0^2}{c_0^2} \Laplacian p \,. \label{eq:wave:alg:2}\tag{11}
-\end{align}
-Equation \eqref{eq:wave:alg:2} can be factored as
+These equations can be combined to yield <i>(these notes are incomplete)</i>
 \begin{align}\label{eq:wave}\tag{12}
-\Laplacian p &= \frac{1}{c_0^2} \left( \frac{\partial p}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} p\right)^2 \,.
+\Laplacian p &= \frac{1}{c_0^2} \left( \frac{\partial p}{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \right)^2 p \,.
 \end{align}
 Equation \eqref{eq:wave} will be reproduced by the <a href="#wave">Galilean transformation of the Helmholtz equation</a>. Noting that \({\partial p}/{\partial t} + \vec{v}_0 \cdot \boldsymbol{\nabla} \) is simply the definition of \(\mathcal{D}/\mathcal{D} t \), Eq. \eqref{eq:wave} can be written as 
 \begin{align}\label{eq:wave:D}
