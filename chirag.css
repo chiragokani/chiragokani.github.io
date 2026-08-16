@@ -3,7 +3,7 @@ body {
   padding: 40px;
   line-height: 1.1;
   max-width: 850px; /* Adjust this value as needed */
-  font-family: 'Times New Roman', serif;
+  font-family: 'Times New Roman', 'Times', 'TeX Gyre Termes', serif;
   font-size: 12pt;
    text-align: justify;
   text-justify: inter-word;
